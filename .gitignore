@@ -35,3 +35,6 @@ yarn-error.log*
 
 # language server
 .log
+
+# linting
+.eslintcache
