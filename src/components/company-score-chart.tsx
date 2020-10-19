@@ -1,6 +1,7 @@
-import CompanyScoreChartSlice from "@src/components/company-score-chart-slice";
-import {ScoreCategory} from "@src/types";
 import {pie} from "d3-shape";
+
+import {ScoreCategory} from "../types";
+import CompanyScoreChartSlice from "./company-score-chart-slice";
 
 interface CompanyScoreChartProps {
   category: ScoreCategory;

@@ -1,6 +1,7 @@
-import {Company} from "@src/types";
 import Head from "next/head";
 import Link from "next/link";
+
+import {Company} from "../types";
 
 interface HomeProps {
   companies: Company[];

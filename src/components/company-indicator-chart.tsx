@@ -1,5 +1,5 @@
-import CompanyIndicatorChartBar from "@src/components/company-indicator-chart-bar";
-import {Indicator, ScoreCategory} from "@src/types";
+import {Indicator, ScoreCategory} from "../types";
+import CompanyIndicatorChartBar from "./company-indicator-chart-bar";
 
 interface CompanyIndicatorChartProps {
   indicators: Indicator[];

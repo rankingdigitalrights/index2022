@@ -1,5 +1,6 @@
-import {ScoreCategory} from "@src/types";
 import c from "clsx";
+
+import {ScoreCategory} from "../types";
 
 interface CompanyIndicatorChartBarProps {
   value: number;
