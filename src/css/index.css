@@ -1,18 +1,50 @@
 @tailwind base;
-
-/* Write your own custom base styles here */
-
-/* Start purging... */
 @tailwind components;
-/* Stop purging. */
-
-/* Write your own custom component styles here */
-.btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
-}
-
-/* Start purging... */
 @tailwind utilities;
-/* Stop purging. */
 
-/* Your own custom utilities */
+@layer base {
+  @font-face {
+    font-family: "Simplon-Light";
+    src: url("../../public/fonts/simplon/Simplon_BP_Light_1.ttf"),
+      url("../../public/fonts/simplon/Simplon_BP_Light_1.otf");
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Simplon-Bold";
+    src: url("../../public/fonts/simplon/Simplon_BP_Bold_2.woff"),
+      url("../../public/fonts/simplon/Simplon_BP_Bold_2.ttf"),
+      url("../../public/fonts/simplon/Simplon_BP_Bold_2.otf");
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  html {
+    @apply font-simplon-light p-4;
+  }
+
+  h1 {
+    @apply text-3xl font-simplon-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-simplon-bold pb-3;
+  }
+
+  h3 {
+    @apply text-xl font-simplon-bold pb-3;
+  }
+
+  h4 {
+    @apply text-lg font-simplon-light pb-3 pt-3;
+  }
+
+  ul {
+    @apply list-disc list-inside;
+  }
+
+  strong {
+    @apply text-black font-simplon-bold;
+  }
+}

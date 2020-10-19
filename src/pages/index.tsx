@@ -1,6 +1,27 @@
 import Head from "next/head";
+import Link from "next/link";
 
-const Home = () => {
+import {Company} from "../types";
+
+interface HomeProps {
+  companies: Company[];
+}
+
+export const getStaticProps = async () => {
+  const data = await fetch(
+    "https://rankingdigitalrights.org/index2019/assets/static/overview.json",
+  ).then((resp) => resp.json());
+  return {
+    props: {
+      companies: data.map(({id, display}: Company) => ({
+        id,
+        display,
+      })),
+    },
+  };
+};
+
+const Home = ({companies}: HomeProps) => {
   return (
     <div>
       <Head>
@@ -9,17 +30,18 @@ const Home = () => {
       </Head>
 
       <main className="md:flex">
-        <div className="md:flex-shrink-0">Hello World</div>
-
-        <div className="mt-4 md:mt-0 md:ml-6">
-          <div className="uppercase tracking-wide text-sm text-indigo-600 font-bold">
-            Marketing
-          </div>
-          <p className="mt-2 text-gray-600">
-            Getting a new business off the ground is a lot of hard work. Here
-            are five ideas you can use to find your first customers.
-          </p>
-        </div>
+        Click on any of the companies to see the company details.
+        <ul>
+          {companies.map(({id, display}) => {
+            return (
+              <li key={id}>
+                <Link href={`/companies/${encodeURIComponent(id)}`}>
+                  <a>{display}</a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </main>
     </div>
   );

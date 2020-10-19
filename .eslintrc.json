@@ -80,6 +80,8 @@
       {
         "devDependencies": [
           "webpack.*.js",
+          "postcss*.js",
+          "tailwind*.js",
           "test/ts/**/*.ts",
           "test/test-setup.js",
           "scripts/**/*.js",
@@ -93,7 +95,16 @@
     "react-hooks/exhaustive-deps": "warn",
     "unicorn/prevent-abbreviations": "off",
     "unicorn/no-useless-undefined": "off",
-    "unicorn/no-reduce": "off"
+    "unicorn/no-reduce": "off",
+    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402#issuecomment-368305051
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ]
   },
   "overrides": [
     {
