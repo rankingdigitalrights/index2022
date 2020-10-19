@@ -1,8 +1,7 @@
+import {ScoreCategory} from "@src/types";
 import c from "clsx";
 import {arc, PieArcDatum} from "d3-shape";
 import React from "react";
-
-import {ScoreCategory} from "../types";
 
 type Datum = PieArcDatum<number | {valueOf(): number}>;
 

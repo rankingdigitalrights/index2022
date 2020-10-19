@@ -1,13 +1,12 @@
 import {faCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import CompanyRankCard from "@src/components/company-rank-card";
+import CompanyScoreChart from "@src/components/company-score-chart";
+import CompanySection from "@src/components/company-section";
+import {Company, CompanyDetails} from "@src/types";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-
-import CompanyRankCard from "../../components/company-rank-card";
-import CompanyScoreChart from "../../components/company-score-chart";
-import CompanySection from "../../components/company-section";
-import {Company, CompanyDetails} from "../../types";
 
 const index2019Path = path.join(process.cwd(), "../index2019/app/_companies");
 

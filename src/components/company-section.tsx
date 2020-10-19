@@ -1,5 +1,5 @@
-import {Indicator, ScoreCategory} from "../types";
-import CompanyIndicatorChart from "./company-indicator-chart";
+import CompanyIndicatorChart from "@src/compponents/company-indicator-chart";
+import {Indicator, ScoreCategory} from "@src/types";
 
 interface CompanySectionProps {
   category: ScoreCategory;
