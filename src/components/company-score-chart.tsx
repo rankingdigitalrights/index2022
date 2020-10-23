@@ -1,9 +1,10 @@
 import {pie} from "d3-shape";
+import React from "react";
 
 import {ScoreCategory} from "../types";
 import CompanyScoreChartSlice from "./company-score-chart-slice";
 
-interface CompanyScoreChartProps {
+export interface CompanyScoreChartProps {
   category: ScoreCategory;
   score: number;
 }

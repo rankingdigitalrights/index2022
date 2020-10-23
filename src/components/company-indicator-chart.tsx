@@ -1,7 +1,9 @@
+import React from "react";
+
 import {Indicator, ScoreCategory} from "../types";
 import CompanyIndicatorChartBar from "./company-indicator-chart-bar";
 
-interface CompanyIndicatorChartProps {
+export interface CompanyIndicatorChartProps {
   indicators: Indicator[];
   category: ScoreCategory;
 }
