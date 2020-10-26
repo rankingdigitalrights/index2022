@@ -1,23 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import {Company} from "../types";
+import {loadData} from "../data";
+import {CompanyIndex} from "../types";
 
 interface HomeProps {
-  companies: Company[];
+  companies: CompanyIndex[];
 }
 
 export const getStaticProps = async () => {
-  const data = await fetch(
-    "https://rankingdigitalrights.org/index2019/assets/static/overview.json",
-  ).then((resp) => resp.json());
+  const companies = await loadData();
+
   return {
-    props: {
-      companies: data.map(({id, display}: Company) => ({
-        id,
-        display,
-      })),
-    },
+    props: {companies},
   };
 };
 
@@ -32,11 +27,11 @@ const Home = ({companies}: HomeProps) => {
       <main className="md:flex">
         Click on any of the companies to see the company details.
         <ul>
-          {companies.map(({id, display}) => {
+          {companies.map(({id, company}) => {
             return (
               <li key={id}>
                 <Link href={`/companies/${encodeURIComponent(id)}`}>
-                  <a>{display}</a>
+                  <a>{company}</a>
                 </Link>
               </li>
             );

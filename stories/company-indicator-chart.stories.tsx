@@ -1,23 +1,24 @@
 import {Story} from "@storybook/react/types-6-0";
 import React from "react";
 
-import CompanyIndicatorChart, {
-  CompanyIndicatorChartProps,
-} from "../src/components/company-indicator-chart";
-import {Indicator} from "../src/types";
+import CompanyIndicatorChart from "../src/components/company-indicator-chart";
+import {Indicator, ScoreCategory} from "../src/types";
+
+interface CompanyIndicatorChartStoryProps {
+  category: ScoreCategory;
+}
 
 const governanceIndicators: Indicator[] = [
-  {name: "G1. Policy commitment", value: 42},
-  {name: "G2. Governance and management oversight", value: 12},
+  {indicator: "G1", score: 42, category: "governance", indicatorNr: 1},
 ];
 
 const freedomIndicators: Indicator[] = [
-  {name: "F1. Access to terms of service", value: 42},
+  {indicator: "F1", score: 42, category: "freedom", indicatorNr: 1},
 ];
 
 const privacyIndicators: Indicator[] = [
-  {name: "P1. Access to privacy policies", value: 42},
-  {name: "P2. Changes to privacy policies", value: 23},
+  {indicator: "P1", score: 42, category: "privacy", indicatorNr: 1},
+  {indicator: "P2", score: 23, category: "privacy", indicatorNr: 1},
 ];
 
 export default {
@@ -33,13 +34,13 @@ export default {
   },
 };
 
-const Template: Story<CompanyIndicatorChartProps> = ({category}) => {
+const Template: Story<CompanyIndicatorChartStoryProps> = ({category}) => {
   let indicators: Indicator[] = [];
   if (category === "governance") indicators = governanceIndicators;
   if (category === "freedom") indicators = freedomIndicators;
   if (category === "privacy") indicators = privacyIndicators;
 
-  return <CompanyIndicatorChart category={category} indicators={indicators} />;
+  return <CompanyIndicatorChart indicators={indicators} />;
 };
 
 export const Chart = Template.bind({});

@@ -40,7 +40,7 @@ const CompanySection = ({
         <div className="md:w-1/3 md:m-2">
           <h4>Indicators</h4>
 
-          <CompanyIndicatorChart indicators={indicators} category={category} />
+          <CompanyIndicatorChart indicators={indicators} />
         </div>
 
         <div className="md:w-1/3 md:ml-2">

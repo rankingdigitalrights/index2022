@@ -1,39 +1,42 @@
-export type Indicator = {
-  value: number;
-  name: string;
-};
+export type Index = "2019" | "2020";
 
-export type Company = {
-  display: string;
-  id: string;
+export type ScoreCategory = "governance" | "freedom" | "privacy";
+
+export type Indicator = {
+  category: ScoreCategory;
+  indicator: string;
+  indicatorNr: number;
+  indicatorSuffix?: string;
+  score: number;
 };
 
 export type CompanyDetails = {
-  id: string;
-  display: string;
-  companyType: string;
-  rank: number;
   basicInformation: string;
   keyFindings: string;
   servicesEvaluated: string;
-  analysisValue: number;
   analysisText: string;
   keyRecommendation: string;
-  governanceValue: number;
   governanceText: string;
   summaryOfChangesGovernance: string;
-  freedomValue: number;
   freedomText: string;
   summaryOfChangesFreedom: string;
-  privacyValue: number;
   privacyText: string;
   summaryOfChangesPrivacy: string;
   footnotes: string;
-  indicators: {
-    governance: Indicator[];
-    freedom: Indicator[];
-    privacy: Indicator[];
-  };
 };
 
-export type ScoreCategory = "governance" | "freedom" | "privacy";
+export type CompanyKind = "telecom" | "internet";
+
+export type Scores = Record<ScoreCategory | "total", number>;
+
+export type Indicators = Record<ScoreCategory, Indicator[]>;
+
+export type CompanyIndex = {
+  id: string;
+  company: string;
+  index: string;
+  rank: number;
+  kind: CompanyKind;
+  scores: Scores;
+  indicators: Indicators;
+};

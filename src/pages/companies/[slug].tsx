@@ -1,15 +1,11 @@
 import {faCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import fs from "fs";
-import matter from "gray-matter";
-import path from "path";
 
 import CompanyRankCard from "../../components/company-rank-card";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
-import {Company, CompanyDetails} from "../../types";
-
-const index2019Path = path.join(process.cwd(), "../index2019/app/_companies");
+import {companyDetails, loadData} from "../../data";
+import {CompanyDetails, CompanyIndex} from "../../types";
 
 type Params = {
   params: {
@@ -18,16 +14,13 @@ type Params = {
 };
 
 interface CompanyProps {
-  company: CompanyDetails;
+  company: CompanyIndex;
+  details: CompanyDetails;
 }
 
-type IndicatorSource = {name: string; value: string};
-
 export const getStaticPaths = async () => {
-  const data = await fetch(
-    "https://rankingdigitalrights.org/index2019/assets/static/overview.json",
-  ).then((resp) => resp.json());
-  const paths = data.map(({id}: Company) => ({
+  const data = await loadData();
+  const paths = data.map(({id}) => ({
     params: {slug: id},
   }));
 
@@ -38,78 +31,29 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({params: {slug}}: Params) => {
-  const filePath = path.join(index2019Path, `${slug}/index.md`);
-  const fileContents = fs.readFileSync(filePath, "utf8");
-  const {data} = matter(fileContents);
+  const [data, details] = await Promise.all([loadData(), companyDetails(slug)]);
 
-  const allIndicators = await fetch(
-    "https://rankingdigitalrights.org/index2019/assets/static/company/all-indicators.json",
-  ).then((resp) => resp.json());
-  const {
-    commitment: governanceIndicators,
-    freedom: freedomIndicators,
-    privacy: privacyIndicators,
-  } = allIndicators.find(({id}: {id: string}) => id === slug) || {
-    commitment: [],
-    freedom: [],
-    privacy: [],
-  };
+  const company = data.find((d) => d.id === slug);
+  if (!company) throw new Error(`Couldn't extract company for slug ${slug}`);
 
   // Map from the input format to the internal type.
   return {
     props: {
-      company: {
-        id: data.id,
-        display: data.display,
-        rank: data.rank,
-        companyType: data.company_type,
-        basicInformation: data.basic_information,
-        keyFindings: data.key_findings,
-        servicesEvaluated: data.services_evaluated,
-        analysisText: data.analysis_text,
-        analysisValue: Number.parseInt(data.analysis_value, 10),
-        keyRecommendation: data.key_recommendation,
-        governanceText: data.governance_text,
-        governanceValue: Number.parseInt(data.governance_value, 10),
-        summaryOfChangesGovernance: data.summary_of_changes_governance,
-        freedomText: data.freedom_text,
-        freedomValue: Number.parseInt(data.freedom_value, 10),
-        summaryOfChangesFreedom: data.summary_of_changes_freedom,
-        privacyText: data.privacy_text,
-        privacyValue: Number.parseInt(data.privacy_value, 10),
-        summaryOfChangesPrivacy: data.summary_of_changes_privacy,
-        footnotes: data.footnotes,
-        indicators: {
-          governance: governanceIndicators.map(
-            (indicator: IndicatorSource) => ({
-              ...indicator,
-              value:
-                indicator.value === "N/A"
-                  ? 0
-                  : Number.parseInt(indicator.value, 10),
-            }),
-          ),
-          freedom: freedomIndicators.map((indicator: IndicatorSource) => ({
-            ...indicator,
-            value:
-              indicator.value === "N/A"
-                ? 0
-                : Number.parseInt(indicator.value, 10),
-          })),
-          privacy: privacyIndicators.map((indicator: IndicatorSource) => ({
-            ...indicator,
-            value:
-              indicator.value === "N/A"
-                ? 0
-                : Number.parseInt(indicator.value, 10),
-          })),
-        },
-      },
+      company,
+      details,
     },
   };
 };
 
-const CompanyPage = ({company}: CompanyProps) => {
+const CompanyPage = ({company, details}: CompanyProps) => {
+  // FIXME: Dummy Data:
+  //        - company kind
+
+  const companyKind =
+    company.kind === "telecom"
+      ? "Telecommunications company"
+      : "Internet and mobile ecosystem companies";
+
   return (
     <div>
       <section className="flex">
@@ -119,36 +63,40 @@ const CompanyPage = ({company}: CompanyProps) => {
               <FontAwesomeIcon icon={faCircle} />
             </span>
             <div className="font-simplon-light text-medium-gray text-sm">
-              {company.companyType}
+              {companyKind}
             </div>
           </div>
-          <h1>{company.display}</h1>
+          <h1>{company.company}</h1>
         </div>
 
         <div className="w-1/2">
-          <CompanyRankCard rank={company.rank} score={company.analysisValue} />
+          <CompanyRankCard rank={company.rank} score={company.scores.total} />
         </div>
       </section>
 
       <section className="flex">
         <div className="w-1/2 pt-3">
           <h2>Key findings</h2>
-          <div dangerouslySetInnerHTML={{__html: company.keyFindings}} />
+          <div dangerouslySetInnerHTML={{__html: details.keyFindings}} />
         </div>
 
         <div className="w-1/2 pt-3">
           <div className="pb-3">Services evaluated</div>
-          <div dangerouslySetInnerHTML={{__html: company.servicesEvaluated}} />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: details.servicesEvaluated,
+            }}
+          />
         </div>
       </section>
 
       <div className="flex flex-wrap bg-offset-gray center">
         <CompanyScoreChart
           category="governance"
-          score={company.governanceValue}
+          score={company.scores.governance}
         />
-        <CompanyScoreChart category="freedom" score={company.freedomValue} />
-        <CompanyScoreChart category="privacy" score={company.privacyValue} />
+        <CompanyScoreChart category="freedom" score={company.scores.freedom} />
+        <CompanyScoreChart category="privacy" score={company.scores.privacy} />
       </div>
 
       <section className="flex flex-col">
@@ -156,14 +104,16 @@ const CompanyPage = ({company}: CompanyProps) => {
 
         <div className="flex">
           <div className="w-1/2">
-            <h3>Overall score {company.analysisValue}%</h3>
-            <div dangerouslySetInnerHTML={{__html: company.analysisText}} />
+            <h3>Overall score {company.scores.total}%</h3>
+            <div dangerouslySetInnerHTML={{__html: details.analysisText}} />
           </div>
 
           <div className="w-1/2">
             <h3>Key recommendations</h3>
             <div
-              dangerouslySetInnerHTML={{__html: company.keyRecommendation}}
+              dangerouslySetInnerHTML={{
+                __html: details.keyRecommendation,
+              }}
             />
           </div>
         </div>
@@ -171,28 +121,28 @@ const CompanyPage = ({company}: CompanyProps) => {
 
       <CompanySection
         category="governance"
-        score={company.governanceValue}
-        text={company.governanceText}
+        score={company.scores.governance}
+        text={details.governanceText}
         indicators={company.indicators.governance}
       />
 
       <CompanySection
         category="freedom"
-        score={company.freedomValue}
-        text={company.freedomText}
+        score={company.scores.freedom}
+        text={details.freedomText}
         indicators={company.indicators.freedom}
       />
 
       <CompanySection
         category="privacy"
-        score={company.privacyValue}
-        text={company.privacyText}
+        score={company.scores.privacy}
+        text={details.privacyText}
         indicators={company.indicators.privacy}
       />
 
       <footer>
         <h3>Footnotes</h3>
-        <div dangerouslySetInnerHTML={{__html: company.footnotes}} />
+        <div dangerouslySetInnerHTML={{__html: details.footnotes}} />
       </footer>
     </div>
   );
