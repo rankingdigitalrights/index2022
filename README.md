@@ -8,14 +8,21 @@ Make sure to have a recent version of [NodeJS](https://nodejs.org). This project
 
 ## Getting Started
 
-This repository depends on the index2019 repository. The repository has to be cloned into the parent directory of this repository and be named `index2019`, e.g.
+Install all dependencies,
 
 ```
-+-~
-  +-Projects
-    +-index2019
-    +-index2020-poc
+yarn install
 ```
+
+### Storybook
+
+There is a [Storybook](https://storybook.js.org/) for UI component development.
+
+```
+yarn storybook
+```
+
+The Storybook is accessible at `http://localhost:6006`.
 
 ### Development server
 
