@@ -26,6 +26,8 @@
     "clsx": "^1.1.1",
     "csv-parse": "^4.12.0",
     "d3": "^6.2.0",
+    "d3-scale": "^3.2.3",
+    "d3-scale-chromatic": "^2.0.0",
     "d3-shape": "^2.0.0",
     "gray-matter": "^4.0.2",
     "next": "9.5.5",

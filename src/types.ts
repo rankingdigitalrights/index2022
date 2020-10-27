@@ -29,6 +29,13 @@ export type CompanyKind = "telecom" | "internet";
 
 export type Scores = Record<ScoreCategory | "total", number>;
 
+export type CategoryScores = Record<ScoreCategory, number>;
+
+export type CategoryCaption =
+  | "Governance"
+  | "Freedom of Expression"
+  | "Privacy";
+
 export type Indicators = Record<ScoreCategory, Indicator[]>;
 
 export type CompanyIndex = {
