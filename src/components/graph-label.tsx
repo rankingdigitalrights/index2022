@@ -8,6 +8,7 @@ interface GraphLabelProps {
   textAnchor?: "start" | "middle" | "end";
   bold?: boolean;
   debug?: boolean;
+  className?: string;
 }
 
 /*
@@ -20,21 +21,24 @@ const GraphLabel = ({
   textAnchor = "start",
   bold = false,
   debug = false,
+  className,
 }: GraphLabelProps) => {
-  const className = {
-    "font-simplon-light": !bold,
-    "font-simplon-bold": bold,
-    "text-sm": size === "small",
-    "text-lg": size === "large",
-    "text-2xl": size === "extra-large",
-    "border border-yellow-400": debug,
-  };
-
   return (
     <text
       transform={transform}
       textAnchor={textAnchor}
-      className={c(className)}
+      className={c(
+        "select-none",
+        {
+          "font-simplon-light": !bold,
+          "font-simplon-bold": bold,
+          "text-sm": size === "small",
+          "text-lg": size === "large",
+          "text-2xl": size === "extra-large",
+          "border border-yellow-400": debug,
+        },
+        className,
+      )}
     >
       {value}
     </text>

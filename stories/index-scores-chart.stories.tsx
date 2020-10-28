@@ -21,32 +21,32 @@ const companies = [
   {
     id: "alibaba",
     company: "Alibaba",
-    scores: {total: 23, governance: 1, freedom: 1, privacy: 1},
+    scores: {total: 23, governance: 12, freedom: 76, privacy: 23},
   },
   {
     id: "apple",
     company: "Apple",
-    scores: {total: 42, governance: 1, freedom: 1, privacy: 1},
+    scores: {total: 42, governance: 67, freedom: 10, privacy: 45},
   },
   {
     id: "tencent",
     company: "Tencent",
-    scores: {total: 34, governance: 1, freedom: 1, privacy: 1},
+    scores: {total: 34, governance: 23, freedom: 45, privacy: 10},
   },
   {
     id: "Orange",
     company: "Orange",
-    scores: {total: 52, governance: 1, freedom: 1, privacy: 1},
+    scores: {total: 52, governance: 32, freedom: 54, privacy: 89},
   },
   {
     id: "Microsoft",
     company: "Microsoft",
-    scores: {total: 79, governance: 1, freedom: 1, privacy: 1},
+    scores: {total: 79, governance: 34, freedom: 23, privacy: 23},
   },
   {
     id: "Verizon Media",
     company: "Verizon Media",
-    scores: {total: 10, governance: 1, freedom: 1, privacy: 1},
+    scores: {total: 10, governance: 45, freedom: 10, privacy: 67},
   },
 ];
 
