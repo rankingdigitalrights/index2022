@@ -5,8 +5,9 @@ interface GraphLabelProps {
   value: string;
   size?: "small" | "regular" | "large" | "extra-large";
   transform?: string;
-  textAnchor?: "left" | "middle" | "right";
+  textAnchor?: "start" | "middle" | "end";
   bold?: boolean;
+  debug?: boolean;
 }
 
 /*
@@ -16,8 +17,9 @@ const GraphLabel = ({
   value,
   size = "regular",
   transform = "translate(0,0)",
-  textAnchor = "left",
+  textAnchor = "start",
   bold = false,
+  debug = false,
 }: GraphLabelProps) => {
   const className = {
     "font-simplon-light": !bold,
@@ -25,6 +27,7 @@ const GraphLabel = ({
     "text-sm": size === "small",
     "text-lg": size === "large",
     "text-2xl": size === "extra-large",
+    "border border-yellow-400": debug,
   };
 
   return (

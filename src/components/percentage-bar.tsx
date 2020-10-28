@@ -6,6 +6,7 @@ interface PercentageBarProps {
   value: number;
   width: number;
   height?: number;
+  transform?: string;
   className?: string | Record<string, boolean>;
 }
 
@@ -17,6 +18,7 @@ const PercentageBar = ({
   value,
   width,
   height = 8,
+  transform = "translate(0,0)",
   className,
 }: PercentageBarProps) => {
   const valueWidth = scaleLinear().domain([0, 100]).range([0, width]);
@@ -24,7 +26,7 @@ const PercentageBar = ({
   const percentage = valueWidth(value) || 0;
 
   return (
-    <g>
+    <g transform={transform}>
       <rect
         className={c("fill-current", className)}
         x={0}
