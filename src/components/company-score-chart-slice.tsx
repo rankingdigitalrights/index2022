@@ -8,9 +8,7 @@ type Datum = PieArcDatum<number | {valueOf(): number}>;
 
 interface CompanyScoreChartSliceProps {
   datum: Datum;
-  // FIXME: Not sure why I need to disable the following eslint
-  // rule. I didn't have to in the past. What is the right approach here?
-  category?: ScoreCategory; // eslint-disable-line react/require-default-props
+  category?: ScoreCategory;
 }
 
 const CompanyScoreChartSlice = ({

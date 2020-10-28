@@ -1,9 +1,10 @@
 import c from "clsx";
-import React from "react";
 import {scaleOrdinal} from "d3-scale";
 import {schemeTableau10} from "d3-scale-chromatic";
+import React from "react";
 
-import {CategoryScores, CategoryCaption} from "../../types";
+import {CategoryCaption, CategoryScores} from "../../types";
+import GraphLabel from "../graph-label";
 
 interface CategoriesRadarChartProps {
   scores: CategoryScores | CategoryScores[];
@@ -26,7 +27,7 @@ const polarToY = (angle: number, distance: number): number =>
   Math.sin(angle - Math.PI / 2) * distance;
 
 const scaleGroups = (scales: number, size: number) => {
-  return Array.from(Array(scales).keys())
+  return [...new Array(scales).keys()]
     .map((i) => i + 1) // This +1 adds an additional circle to the 100%
     .reverse()
     .map((i) => {
@@ -64,7 +65,7 @@ const shapeGroups = (columns: Column[], size: number, data: ChartData[]) => {
   return data.map((d, i) => {
     return (
       <path
-        key={`shape-${i}`}
+        key={`shape-${d}`}
         d={pathDefinition(
           columns.map(({key, angle}) => {
             const value = d[key] / 100;
@@ -81,18 +82,18 @@ const shapeGroups = (columns: Column[], size: number, data: ChartData[]) => {
   });
 };
 
-const points = (points: number[][]) => {
+const pointsPath = (points: number[][]) => {
   return points
     .map((point) => `${point[0].toFixed(4)},${point[1].toFixed(4)}`)
     .join(" ");
 };
 
 const axisGroups = (columns: Column[], size: number) => {
-  return columns.map(({angle}, i) => {
+  return columns.map(({key, angle}) => {
     return (
       <polyline
-        key={`poly-axis-${i}`}
-        points={points([
+        key={`poly-axis-${key}`}
+        points={pointsPath([
           [0, 0],
           [polarToX(angle, size / 2), polarToY(angle, size / 2)],
         ])}
@@ -105,8 +106,8 @@ const axisGroups = (columns: Column[], size: number) => {
 
 const captionGroups = (columns: Column[], size: number) => {
   return columns.map(({key, angle}, i) => {
-    let x = polarToX(angle, (size / 2) * 1.15);
-    let y = polarToY(angle, (size / 2) * 1.15);
+    const x = polarToX(angle, (size / 2) * 1.15);
+    const y = polarToY(angle, (size / 2) * 1.15);
     let rotation = 0;
 
     // i === 1 => Freedom of Expression, bottom right
@@ -120,16 +121,13 @@ const captionGroups = (columns: Column[], size: number) => {
     }
 
     return (
-      <text
+      <GraphLabel
         key={`caption-of-${key}`}
-        dy={10 / 2}
-        fill="#444"
-        fontWeight="400"
-        textAnchor="middle"
         transform={`translate(${x},${y}), rotate(${rotation})`}
-      >
-        {key}
-      </text>
+        textAnchor="middle"
+        value={key}
+        size="large"
+      />
     );
   });
 };

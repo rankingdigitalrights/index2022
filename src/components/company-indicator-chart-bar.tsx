@@ -1,47 +1,46 @@
-import c from "clsx";
 import React from "react";
 
 import {ScoreCategory} from "../types";
+import GraphLabel from "./graph-label";
+import PercentageBar from "./percentage-bar";
 
 interface CompanyIndicatorChartBarProps {
   value: number;
   name: string;
-  pos: number;
+  width: number;
   category: ScoreCategory;
+  height?: number;
 }
 
 const CompanyIndicatorChartBar = ({
   value,
   name,
-  pos,
+  width,
   category,
+  height = 8,
 }: CompanyIndicatorChartBarProps) => {
-  //
-  return (
-    <g>
-      <rect
-        className={c("fill-current", {
-          "text-governance": category === "governance",
-          "text-freedom": category === "freedom",
-          "text-privacy": category === "privacy",
-          "text-vis-negative": category === undefined,
-        })}
-        x={0}
-        y={`${pos - 23}px`}
-        width={value}
-        height={8}
-      />
-      <rect
-        className="text-vis-negative fill-current"
-        x={value}
-        y={`${pos - 23}px`}
-        width={100 - value}
-        height={8}
-      />
+  // Shift the label by this much along the y axis to appear below the bar.
+  const textShift = 25;
+  const className = {
+    "text-governance": category === "governance",
+    "text-freedom": category === "freedom",
+    "text-privacy": category === "privacy",
+    "text-vis-negative": category === undefined,
+  };
 
-      <text className="text-sm font-simplon-light" y={`${pos}px`}>
-        {name}
-      </text>
+  return (
+    <g transform="translate(0,0)">
+      <PercentageBar
+        value={value}
+        width={width}
+        height={height}
+        className={className}
+      />
+      <GraphLabel
+        transform={`translate(0,${textShift})`}
+        value={name}
+        size="small"
+      />
     </g>
   );
 };

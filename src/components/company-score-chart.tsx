@@ -3,6 +3,7 @@ import React from "react";
 
 import {ScoreCategory} from "../types";
 import CompanyScoreChartSlice from "./company-score-chart-slice";
+import GraphLabel from "./graph-label";
 
 export interface CompanyScoreChartProps {
   category: ScoreCategory;
@@ -33,20 +34,19 @@ const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
           <CompanyScoreChartSlice datum={datumNeg} />
           <CompanyScoreChartSlice datum={datum} category={category} />
 
-          <text
-            className="text-2xl font-simplon-bold"
-            y="5px"
-            style={{textAnchor: "middle"}}
-          >
-            {score}%
-          </text>
-          <text
-            className="text-lg font-simplon-light"
-            y="35px"
-            style={{textAnchor: "middle"}}
-          >
-            {title}
-          </text>
+          <GraphLabel
+            transform="translate(0,5)"
+            value={`${score}%`}
+            textAnchor="middle"
+            size="extra-large"
+            bold={true}
+          />
+          <GraphLabel
+            transform="translate(0,35)"
+            value={title}
+            textAnchor="middle"
+            size="large"
+          />
         </g>
       </svg>
     </div>
