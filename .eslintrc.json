@@ -54,7 +54,9 @@
     ],
     "react/react-in-jsx-scope": 0,
     "react/display-name": 0,
-    "react/prop-types": 0,
+    // eslint has no sense for React + TS + FC component
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-use-before-define": "off",
