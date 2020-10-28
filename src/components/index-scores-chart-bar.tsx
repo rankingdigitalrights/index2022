@@ -17,8 +17,8 @@ const IndexScoresChartBar = ({
   height = 14,
 }: IndexScoresChartBarProps) => {
   // Shift the label by this much along the y axis to appear below the bar.
-  const textShiftLeft = 100;
-  const textShiftRight = 40;
+  const textShiftLeft = 120;
+  const textShiftRight = 58;
   const labelSpacing = 13;
 
   return (

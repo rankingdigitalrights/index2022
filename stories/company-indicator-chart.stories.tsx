@@ -4,27 +4,23 @@ import React from "react";
 import CompanyIndicatorChart from "../src/components/company-indicator-chart";
 import {Indicator, ScoreCategory} from "../src/types";
 
+import fixtures from "./fixtures.json";
+
 interface CompanyIndicatorChartStoryProps {
+  company: string;
   category: ScoreCategory;
 }
-
-const governanceIndicators: Indicator[] = [
-  {indicator: "G1", score: 42, category: "governance", indicatorNr: 1},
-];
-
-const freedomIndicators: Indicator[] = [
-  {indicator: "F1", score: 42, category: "freedom", indicatorNr: 1},
-];
-
-const privacyIndicators: Indicator[] = [
-  {indicator: "P1", score: 42, category: "privacy", indicatorNr: 1},
-  {indicator: "P2", score: 23, category: "privacy", indicatorNr: 1},
-];
 
 export default {
   title: "CompanyIndicatorChart",
   component: CompanyIndicatorChart,
   argTypes: {
+    company: {
+      control: {
+        type: "select",
+        options: fixtures.map(({company}) => company),
+      },
+    },
     category: {
       control: {
         type: "inline-radio",
@@ -34,11 +30,21 @@ export default {
   },
 };
 
-const Template: Story<CompanyIndicatorChartStoryProps> = ({category}) => {
-  let indicators: Indicator[] = [];
-  if (category === "governance") indicators = governanceIndicators;
-  if (category === "freedom") indicators = freedomIndicators;
-  if (category === "privacy") indicators = privacyIndicators;
+const Template: Story<CompanyIndicatorChartStoryProps> = ({
+  category,
+  company,
+}) => {
+  const selectedCompany = fixtures.find(
+    (fixture) => fixture.company === company,
+  );
+
+  console.log(selectedCompany);
+
+  if (!selectedCompany) throw new Error(`${company} not found in fixtures.`);
+
+  const indicators: Indicator[] = selectedCompany.indicators[
+    category
+  ] as Indicator[];
 
   return <CompanyIndicatorChart indicators={indicators} />;
 };
@@ -46,4 +52,5 @@ const Template: Story<CompanyIndicatorChartStoryProps> = ({category}) => {
 export const Chart = Template.bind({});
 Chart.args = {
   category: "governance",
+  company: "Ooredoo",
 };

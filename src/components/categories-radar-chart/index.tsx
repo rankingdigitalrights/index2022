@@ -62,10 +62,11 @@ const shapeGroups = (columns: Column[], size: number, data: ChartData[]) => {
   const color = scaleOrdinal(schemeTableau10);
   color.domain(data.map((_, i) => `${i}`));
 
+  // FIXME: I don't like that I use JSON.stringify on d to create a unique key.
   return data.map((d, i) => {
     return (
       <path
-        key={`shape-${d}`}
+        key={`shape-${JSON.stringify(d)}`}
         d={pathDefinition(
           columns.map(({key, angle}) => {
             const value = d[key] / 100;

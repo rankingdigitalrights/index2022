@@ -3,7 +3,10 @@ import React from "react";
 
 import CategoriesRadarChart from "../src/components/categories-radar-chart";
 
+import fixtures from "./fixtures.json";
+
 interface CategoriesRadarChartStoryProps {
+  compareWith: string;
   governance: number;
   freedom: number;
   privacy: number;
@@ -32,22 +35,36 @@ export default {
     scales: {
       control: {type: "range", min: 1, max: 10, step: 1},
     },
+    compareWith: {
+      control: {
+        type: "select",
+        options: ["RESET"].concat(fixtures.map(({company}) => company)),
+      },
+    },
   },
 };
 
 const Template: Story<CategoriesRadarChartStoryProps> = ({
+  compareWith,
   governance,
   freedom,
   privacy,
   size,
   scales,
-  comparison,
   debug,
 }) => {
   const data = [{governance, freedom, privacy}];
-  if (comparison) {
-    data.push({governance: 67, freedom: 42, privacy: 23});
+  if (compareWith && compareWith !== "RESET") {
+    const selectedCompany = fixtures.find(
+      (fixture) => fixture.company === compareWith,
+    );
+
+    if (!selectedCompany)
+      throw new Error(`${compareWith} not found in fixtures.`);
+
+    data.push(selectedCompany.scores);
   }
+
   return (
     <CategoriesRadarChart
       scores={data}
@@ -65,6 +82,6 @@ Chart.args = {
   privacy: 67,
   scales: 3,
   size: 300,
-  comparison: false,
+  compareWith: undefined,
   debug: false,
 };
