@@ -39,7 +39,7 @@ const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
             value={`${score}%`}
             textAnchor="middle"
             size="extra-large"
-            bold={true}
+            bold
           />
           <GraphLabel
             transform="translate(0,35)"

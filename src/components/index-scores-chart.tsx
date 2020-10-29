@@ -1,8 +1,9 @@
+import c from "clsx";
 import React, {useState} from "react";
 
-import IndexScoresChartBar from "./index-scores-chart-bar";
-import CategoriesRadarChart from "./categories-radar-chart";
 import {CompanyIndex} from "../types";
+import CategoriesRadarChart from "./categories-radar-chart";
+import IndexScoresChartBar from "./index-scores-chart-bar";
 
 type IndexScores = Pick<CompanyIndex, "id" | "company" | "scores">;
 
@@ -12,7 +13,11 @@ interface IndexScoresChartProps {
   debug?: boolean;
 }
 
-const IndexScoreChart = ({companies, width = 250}: IndexScoresChartProps) => {
+const IndexScoreChart = ({
+  companies,
+  width = 250,
+  debug = false,
+}: IndexScoresChartProps) => {
   const [selectedCompany, setSelectedCompany] = useState<
     IndexScores | undefined
   >();
@@ -20,13 +25,15 @@ const IndexScoreChart = ({companies, width = 250}: IndexScoresChartProps) => {
   const height = 35 * companies.length;
 
   const toggleCompany = (company: IndexScores) => {
-    if (selectedCompany && selectedCompany.id === company.id)
-      return setSelectedCompany(undefined);
-    setSelectedCompany(company);
+    if (selectedCompany && selectedCompany.id === company.id) {
+      setSelectedCompany(undefined);
+    } else {
+      setSelectedCompany(company);
+    }
   };
 
   return (
-    <div className="flex">
+    <div className={c("flex", debug ? "border border-yellow-400" : undefined)}>
       <div>
         <svg
           version="1"

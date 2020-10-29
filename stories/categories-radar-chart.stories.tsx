@@ -2,7 +2,6 @@ import {Story} from "@storybook/react/types-6-0";
 import React from "react";
 
 import CategoriesRadarChart from "../src/components/categories-radar-chart";
-
 import fixtures from "./fixtures.json";
 
 interface CategoriesRadarChartStoryProps {

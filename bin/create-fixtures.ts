@@ -1,8 +1,6 @@
-import fs from "fs";
-import path from "path";
 import {loadData} from "../src/data";
 
-(async () => {
+(async (): Promise<void> => {
   const data = await loadData();
-  console.log(JSON.stringify(data, null, "  "));
+  console.log(JSON.stringify(data, undefined, "  "));
 })();

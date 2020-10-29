@@ -1,9 +1,8 @@
 import {Story} from "@storybook/react/types-6-0";
 import React from "react";
 
-import fixtures from "./fixtures.json";
-
 import IndexScoresChart from "../src/components/index-scores-chart";
+import fixtures from "./fixtures.json";
 
 interface IndexScoresChartStoryProps {
   width: number;
