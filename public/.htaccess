@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+# Disable directory indexes and MultiViews
+Options -Indexes -MultiViews
+
+# Prevent mod_dir appending a slash to directory requests
+DirectorySlash Off
+
+# Prevent any further processing if the URL already ends with a file extension
+RewriteRule \.\w{2.4}$ - [L]
+
+# Redirect any requests to remove a trailing slash
+RewriteRule (.*)/$ /$1 [R=302,L]
+
+# Rewrite /foo to /foo.html if it exists
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+RewriteRule !\.\w{2,4}$ %{REQUEST_URI}.html [L]
+
+# Otherwise, rewrite /foo to /foo/index.html if it exists
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
+RewriteRule !\.\w{2,4}$ %{REQUEST_URI}/index.html [L]
+</IfModule>
+
+AuthType Basic
+AuthName "index2020"
+AuthGroupFile /dev/null
+Require valid-user
+AuthUserFile "/home1/ranking5/.htpasswds/public_html/index2019-working/passwd"

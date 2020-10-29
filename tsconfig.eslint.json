@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["tailwind.config.js", "postcss.config.js"],
+  "include": ["tailwind.config.js", "postcss.config.js", "next.config.js"],
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
