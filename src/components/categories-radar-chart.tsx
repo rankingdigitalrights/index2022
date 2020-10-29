@@ -3,8 +3,8 @@ import {scaleOrdinal} from "d3-scale";
 import {schemeTableau10} from "d3-scale-chromatic";
 import React from "react";
 
-import {CategoryCaption, CategoryScores} from "../../types";
-import GraphLabel from "../graph-label";
+import {CategoryCaption, CategoryScores} from "../types";
+import GraphLabel from "./graph-label";
 
 interface CategoriesRadarChartProps {
   scores: CategoryScores | CategoryScores[];
