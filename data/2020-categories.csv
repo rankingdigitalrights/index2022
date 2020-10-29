@@ -35,6 +35,9 @@ Index,Company,Category,Score,Score_Adjusted
 2019,Google,G,50.37,50.37
 2019,Google,F,68.06,68.06
 2019,Google,P,55.61,55.61
+2019,Kakao,G,28.6,28.6
+2019,Kakao,F,59.44,59.44
+2019,Kakao,P,50.22,50.22
 2019,Mail.Ru,G,4.17,4.17
 2019,Mail.Ru,F,25.74,25.74
 2019,Mail.Ru,P,21.87,21.87
@@ -76,20 +79,20 @@ Index,Company,Category,Score,Score_Adjusted
 2019,Yandex,P,34.55,34.55
 2020,Alibaba,G,4.1,4.55
 2020,Alibaba,F,18,22.6
-2020,Alibaba,P,32.47,39.09
+2020,Alibaba,P,32.83,39.51
 2020,Amazon,G,3.33,5.56
 2020,Amazon,F,17.75,17.56
 2020,Amazon,P,27.23,32.5
-2020,AmericaMovil,G,25.42,31.94
+2020,AmericaMovil,G,30.56,37.65
 2020,AmericaMovil,F,10.76,20.45
-2020,AmericaMovil,P,18.73,23.46
-2020,Apple,G,18.78,23.56
-2020,Apple,F,19.62,41.1
-2020,Apple,P,43.53,56.3
+2020,AmericaMovil,P,19.87,24.86
+2020,Apple,G,34.06,46.24
+2020,Apple,F,20.63,41.68
+2020,Apple,P,51.12,64.93
 2020,ATT,G,36.48,46.76
-2020,ATT,F,23.28,31.57
-2020,ATT,P,36.39,44.19
-2020,Axiata,G,12.77,15.74
+2020,ATT,F,23.37,31.75
+2020,ATT,P,37.66,45.76
+2020,Axiata,G,14.02,17.13
 2020,Axiata,F,7.88,15.11
 2020,Axiata,P,19.05,22.41
 2020,Baidu,G,7.49,9.16
@@ -98,57 +101,57 @@ Index,Company,Category,Score,Score_Adjusted
 2020,Bharti Airtel,G,24.61,25.62
 2020,Bharti Airtel,F,3.5,7.99
 2020,Bharti Airtel,P,16.57,22.48
-2020,DeutscheTelekom,G,30.47,42.9
+2020,DeutscheTelekom,G,31.72,44.29
 2020,DeutscheTelekom,F,9.82,16.69
-2020,DeutscheTelekom,P,44.5,56.22
+2020,DeutscheTelekom,P,45.31,57.23
 2020,Etisalat,G,7.64,8.95
 2020,Etisalat,F,11.63,17.5
 2020,Etisalat,P,11.9,15.44
-2020,Facebook,G,42.28,53.4
-2020,Facebook,F,36,49.35
+2020,Facebook,G,49.85,56.17
+2020,Facebook,F,36.28,49.35
 2020,Facebook,P,44.27,52.12
 2020,Google,G,42.94,50.74
 2020,Google,F,46.81,64.76
 2020,Google,P,46.71,55.61
-2020,Kakao,G,19.89,29.53
-2020,Kakao,F,30.04,62.31
-2020,Kakao,P,42.07,50.24
+2020,Kakao,G,27.71,36.93
+2020,Kakao,F,35.25,63.55
+2020,Kakao,P,43.23,51.58
 2020,Mail.Ru,G,13.29,19.44
 2020,Mail.Ru,F,20.16,25.56
 2020,Mail.Ru,P,31.27,36.82
-2020,Microsoft,G,53.59,69.75
-2020,Microsoft,F,39.48,55.9
-2020,Microsoft,P,49.26,57.07
-2020,MTN,G,21.6,28.55
-2020,MTN,F,9.16,14.93
-2020,MTN,P,16.18,21.02
-2020,Ooredoo,G,1.88,2.08
+2020,Microsoft,G,54.14,70.37
+2020,Microsoft,F,41.81,55.9
+2020,Microsoft,P,48.83,57.07
+2020,MTN,G,31.72,40.12
+2020,MTN,F,10.74,18.55
+2020,MTN,P,19.91,25.14
+2020,Ooredoo,G,2.71,3.47
 2020,Ooredoo,F,5.82,13.37
 2020,Ooredoo,P,9.09,11.52
 2020,Orange,G,49.65,58.02
 2020,Orange,F,13.19,21.7
 2020,Orange,P,23.64,31.44
-2020,Samsung,G,18.48,24.07
+2020,Samsung,G,19.6,25.31
 2020,Samsung,F,15.87,32.04
-2020,Samsung,P,22.09,27.38
-2020,Telefonica,G,72.32,87.04
-2020,Telefonica,F,26.41,49.96
-2020,Telefonica,P,42.85,49.87
+2020,Samsung,P,22.81,28.21
+2020,Telefonica,G,75,87.04
+2020,Telefonica,F,36.26,55.11
+2020,Telefonica,P,51.03,54.09
 2020,Telenor,G,47.35,57.41
-2020,Telenor,F,23.07,37.82
-2020,Telenor,P,29.41,38.27
+2020,Telenor,F,25.55,42.79
+2020,Telenor,P,32.13,41.93
 2020,Tencent,G,2.73,2.78
 2020,Tencent,F,20.63,18.89
 2020,Tencent,P,31.21,36.72
 2020,Twitter,G,28.62,40.28
-2020,Twitter,F,47.82,73.33
-2020,Twitter,P,48.69,57.04
-2020,Verizon Media,G,58.64,69.14
-2020,Verizon Media,F,32.19,48.33
-2020,Verizon Media,P,44.35,54.17
+2020,Twitter,F,52.4,73.33
+2020,Twitter,P,49.31,57.75
+2020,Verizon Media,G,61.96,74.69
+2020,Verizon Media,F,45.73,48.33
+2020,Verizon Media,P,49.02,57.08
 2020,Vodafone,G,47.4,56.79
 2020,Vodafone,F,27.5,51.48
-2020,Vodafone,P,36.17,43.4
+2020,Vodafone,P,36.96,44.38
 2020,Yandex,G,16.44,20.99
 2020,Yandex,F,25,26.82
 2020,Yandex,P,31.79,37.68
