@@ -8,6 +8,9 @@ export type Indicator = {
   indicatorNr: number;
   indicatorSuffix?: string;
   score: number;
+  label: string;
+  description: string;
+  familyMembers: Indicator[];
 };
 
 export type CompanyDetails = {

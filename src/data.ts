@@ -35,6 +35,10 @@ type CsvIndicator = {
   indicatorNr: number;
   indicatorSuffix?: string;
   score?: number;
+  label: string;
+  description: string;
+  isFamilyMember: boolean;
+  indicatorFamily: string;
 };
 
 interface MemoizedLoadData {
@@ -65,33 +69,50 @@ const mapCategory = (value: string): ScoreCategory => {
   }
 };
 
+const isIndicatorFamily = (value: string): boolean =>
+  value === "TRUE" ? true : false;
+
 /* A helper function to extract and map indicators for one category
  * from a list of indicators. This is used by the loadData function.
  */
-const categoryIndicators = (
-  category: ScoreCategory,
-  csvIndicators: CsvIndicator[],
-): Indicator[] => {
-  return csvIndicators
-    .filter((indicator) => indicator.category === category && indicator.score)
-    .sort((a, b) => {
-      if (a.indicator < b.indicator) {
-        return -1;
-      }
-      if (a.indicator > b.indicator) {
-        return 1;
-      }
-      return 0;
-    })
-    .map((indicator) => ({
-      category: indicator.category,
-      indicator: indicator.indicator,
-      indicatorNr: indicator.indicatorNr,
-      score: indicator.score || 0,
-      ...(indicator.indicatorSuffix
-        ? {indicatorSuffix: indicator.indicatorSuffix}
-        : undefined),
-    }));
+const categoryIndicators = (csvIndicators: CsvIndicator[]): Indicator[] => {
+  const iterator = (
+    indicators: CsvIndicator[],
+    skipFamilyMembers: boolean,
+  ): Indicator[] => {
+    return indicators
+      .sort((a, b) => {
+        if (a.indicator < b.indicator) {
+          return -1;
+        }
+        if (a.indicator > b.indicator) {
+          return 1;
+        }
+        return 0;
+      })
+      .filter(({isFamilyMember}) => skipFamilyMembers === isFamilyMember)
+      .map((indicator) => {
+        const familyMembers = csvIndicators.filter(
+          ({isFamilyMember, indicatorFamily}) =>
+            indicatorFamily === indicator.indicator && isFamilyMember,
+        );
+
+        return {
+          category: indicator.category,
+          indicator: indicator.indicator,
+          indicatorNr: indicator.indicatorNr,
+          score: indicator.score || 0,
+          label: indicator.label,
+          description: indicator.description,
+          familyMembers: iterator(familyMembers, true),
+          ...(indicator.indicatorSuffix
+            ? {indicatorSuffix: indicator.indicatorSuffix}
+            : undefined),
+        };
+      });
+  };
+
+  return iterator(csvIndicators, false);
 };
 
 /*
@@ -160,6 +181,10 @@ const loadIndicatorsCsv = async (file: string): Promise<CsvIndicator[]> => {
     indicatorNr: Number.parseInt(record.IndicatorNr, 10),
     indicatorSuffix: stringOrNil(record.IndicatorSuffix),
     score: floatOrNil(record.Score),
+    label: record.labelLong,
+    description: record.description,
+    isFamilyMember: isIndicatorFamily(record.isSubindicator),
+    indicatorFamily: record.IndicatorFam,
   }));
 };
 
@@ -232,16 +257,20 @@ export const loadData: MemoizedLoadData = async () => {
         );
 
         const governanceIndicators: Indicator[] = categoryIndicators(
-          "governance",
-          companyIndicators,
+          companyIndicators.filter(
+            (indicator) =>
+              indicator.category === "governance" && indicator.score,
+          ),
         );
         const freedomIndicators: Indicator[] = categoryIndicators(
-          "freedom",
-          companyIndicators,
+          companyIndicators.filter(
+            (indicator) => indicator.category === "freedom" && indicator.score,
+          ),
         );
         const privacyIndicators: Indicator[] = categoryIndicators(
-          "privacy",
-          companyIndicators,
+          companyIndicators.filter(
+            (indicator) => indicator.category === "privacy" && indicator.score,
+          ),
         );
 
         return {
