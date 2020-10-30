@@ -1,5 +1,5 @@
 import c from "clsx";
-import React, {useState} from "react";
+import React from "react";
 
 import {CompanyIndex, Indicator} from "../types";
 import GraphLabel from "./graph-label";
@@ -29,7 +29,6 @@ const indicatorLabelGroups = (size: number, labels: string[]) => {
 
 const companyLabelGroups = (size: number, labels: string[]) => {
   return labels.map((label, i) => {
-    const y = labels.length * size;
     const x = size * i;
 
     return (
@@ -45,7 +44,7 @@ const companyLabelGroups = (size: number, labels: string[]) => {
 };
 
 const gridGroups = (size: number, rows: number, columns: number) => {
-  const horizontalLines = [...Array(rows).keys()].map((i) => {
+  const horizontalLines = [...new Array(rows + 1).keys()].map((i) => {
     const x1 = 0;
     const y1 = size * i;
     const x2 = size * columns;
@@ -53,6 +52,7 @@ const gridGroups = (size: number, rows: number, columns: number) => {
 
     return (
       <line
+        key={`horizontal-line-${x1}-${y1}-${x2}-${y2}`}
         x1={x1}
         y1={y1}
         x2={x2}
@@ -64,7 +64,7 @@ const gridGroups = (size: number, rows: number, columns: number) => {
     );
   });
 
-  const verticalLines = [...Array(columns + 1).keys()].map((i) => {
+  const verticalLines = [...new Array(columns + 1).keys()].map((i) => {
     const x1 = size * i;
     const y1 = 0;
     const x2 = x1;
@@ -72,6 +72,7 @@ const gridGroups = (size: number, rows: number, columns: number) => {
 
     return (
       <line
+        key={`vertical-line-${x1}-${y1}-${x2}-${y2}`}
         x1={x1}
         y1={y1}
         x2={x2}
@@ -98,83 +99,89 @@ const squareGroups = (
   freedomLabels: string[],
   privacyLabels: string[],
 ) => {
-  const rect = (i: number, j: number, indicator: Indicator | undefined) => {
+  const rect = (
+    label: string,
+    i: number,
+    j: number,
+    indicator: Indicator | undefined,
+  ) => {
     const score = indicator ? indicator.score : 0;
-    const x = i * size + 1;
-    const y = j * size + 1;
+    const x = i * size;
+    const y = j * size;
+
     return (
-      <g>
-        <rect
-          x={x}
-          y={y}
-          width={size}
-          height={size}
-          fill="#0C2637"
-          fillOpacity={`${Math.round(score / 10) * 10}%`}
-        />
-        {/*<GraphLabel
-            transform={`translate(${x + size / 2 - 8},${y + size / 2})`}
-            value={`${score}%`}
-            size="small"
-            />*/}
-      </g>
+      <rect
+        key={`value-rect-${label}`}
+        x={x}
+        y={y}
+        width={size}
+        height={size}
+        fill="#0C2637"
+        fillOpacity={`${Math.round(score / 10) * 10}%`}
+      />
     );
   };
 
   return companies.map(({indicators}, i) => {
-    let j = 0;
+    // I track the number of rows here.
+    let j = -1;
     return governanceLabels
       .map((label) => {
         const indicator = indicators.governance.find(
-          (indicator) => indicator.indicator === label,
+          (gIndicator) => gIndicator.indicator === label,
         );
-        return rect(i, j++, indicator);
+        j += 1;
+        return rect(label, i, j, indicator);
       })
       .concat(
         freedomLabels.map((label) => {
           const indicator = indicators.freedom.find(
-            (indicator) => indicator.indicator === label,
+            (fIndicator) => fIndicator.indicator === label,
           );
-          return rect(i, j++, indicator);
+          j += 1;
+          return rect(label, i, j, indicator);
         }),
       )
       .concat(
         privacyLabels.map((label) => {
           const indicator = indicators.privacy.find(
-            (indicator) => indicator.indicator === label,
+            (pIndicator) => pIndicator.indicator === label,
           );
-          return rect(i, j++, indicator);
+          j += 1;
+          return rect(label, i, j, indicator);
         }),
       );
   });
 };
 
+// FIXME: Break this chart apart and render each category of indicators
+//        independently. Will make for cleaner code.
 const IndicatorScoresChart = ({
   companies,
   gridSize = 40,
   debug = false,
 }: IndicatorScoresChartProps) => {
   // Get a list of all indicator labels;
-  const indicatorGovernanceLabels: string[] = Array.from(
-    companies.reduce((memo, {indicators}) => {
+  const indicatorGovernanceLabels: string[] = [
+    ...companies.reduce((memo, {indicators}) => {
       indicators.governance.forEach(({indicator}) => memo.add(indicator));
       return memo;
     }, new Set<string>()),
-  ).sort();
+  ].sort();
 
-  const indicatorFreedomLabels: string[] = Array.from(
-    companies.reduce((memo, {indicators}) => {
+  const indicatorFreedomLabels: string[] = [
+    ...companies.reduce((memo, {indicators}) => {
       indicators.freedom.forEach(({indicator}) => memo.add(indicator));
       return memo;
     }, new Set<string>()),
-  ).sort();
+  ].sort();
 
-  const indicatorPrivacyLabels: string[] = Array.from(
-    companies.reduce((memo, {indicators}) => {
+  const indicatorPrivacyLabels: string[] = [
+    ...companies.reduce((memo, {indicators}) => {
       indicators.privacy.forEach(({indicator}) => memo.add(indicator));
       return memo;
     }, new Set<string>()),
-  ).sort();
+  ].sort();
 
   const indicatorLabels: string[] = ([] as string[])
     .concat(indicatorGovernanceLabels)
@@ -209,10 +216,14 @@ const IndicatorScoresChart = ({
         width={width + 122}
         height={height + 150}
       >
-        <g transform="translate(40, 20)">{indicatorLabelElems}</g>
-        <g transform={`translate(75, ${height + 10})`}>{companyLabelElems}</g>
-        <g transform="translate(60, 1)">{gridElems}</g>
+        <g transform={`translate(40, ${gridSize / 2 + 1})`}>
+          {indicatorLabelElems}
+        </g>
+        <g transform={`translate(${60 + gridSize / 3}, ${height + 10})`}>
+          {companyLabelElems}
+        </g>
         <g transform="translate(60, 1)">{squareElems}</g>
+        <g transform="translate(60, 1)">{gridElems}</g>
       </svg>
     </div>
   );
