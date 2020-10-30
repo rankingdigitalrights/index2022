@@ -46,48 +46,37 @@ const scaleGroups = (scales: number, size: number) => {
     });
 };
 
-// M :: moveTo - move the cursor to this position.
-// L :: lineTo - draw a line from here to there.
-// z :: closePath - close the path.
-const pathDefinition = ([start, ...points]: number[][]) => {
-  const d = points.reduce(
-    (memo, point) =>
-      memo.concat([`L${point[0].toFixed(4)},${point[1].toFixed(4)}`]),
-    [`M${start[0].toFixed(4)},${start[1].toFixed(4)}`],
-  );
-  return d.concat(["z"]).join("");
-};
-
 const shapeGroups = (columns: Column[], size: number, data: ChartData[]) => {
   const color = scaleOrdinal(schemeTableau10);
   color.domain(data.map((_, i) => `${i}`));
 
   // FIXME: I don't like that I use JSON.stringify on d to create a unique key.
-  const lines = data.map((d, i) => {
-    return columns.map(({key, angle}) => {
-      const value = d[key] / 100;
-      const x1 = 0;
-      const y1 = 0;
-      const x2 = polarToX(angle, (value * size) / 2);
-      const y2 = polarToY(angle, (value * size) / 2);
+  return data
+    .map((d, i) => {
+      return columns.map(({key, angle}) => {
+        const value = d[key] / 100;
+        const x1 = 0;
+        const y1 = 0;
+        const x2 = polarToX(angle, (value * size) / 2);
+        const y2 = polarToY(angle, (value * size) / 2);
 
-      return (
-        <g key={`shape-${key}-${d[key]}`} transform="translate(0,0)">
-          <line
-            x1={x1}
-            y1={y1}
-            x2={x2}
-            y2={y2}
-            stroke={color(`${i}`)}
-            fillOpacity="1"
-            strokeWidth="4"
-          />
-          <circle cx={x2} cy={y2} r={5} fill={color(`${i}`)} />
-        </g>
-      );
-    });
-  });
-  return lines.reduce((memo, lines) => memo.concat(lines), []);
+        return (
+          <g key={`shape-${key}-${d[key]}`} transform="translate(0,0)">
+            <line
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
+              stroke={color(`${i}`)}
+              fillOpacity="1"
+              strokeWidth="4"
+            />
+            <circle cx={x2} cy={y2} r={5} fill={color(`${i}`)} />
+          </g>
+        );
+      });
+    })
+    .reduce((memo, lines) => memo.concat(lines), []);
 };
 
 const pointsPath = (points: number[][]) => {

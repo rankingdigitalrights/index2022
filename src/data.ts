@@ -69,8 +69,7 @@ const mapCategory = (value: string): ScoreCategory => {
   }
 };
 
-const isIndicatorFamily = (value: string): boolean =>
-  value === "TRUE" ? true : false;
+const isIndicatorFamily = (value: string): boolean => value === "TRUE";
 
 /* A helper function to extract and map indicators for one category
  * from a list of indicators. This is used by the loadData function.
