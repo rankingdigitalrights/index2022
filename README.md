@@ -6,6 +6,8 @@ This is a test to see how well this stack would work for the Index 2020.
 
 Make sure to have a recent version of [NodeJS](https://nodejs.org). This project is developed using NodeJS 12. Further, install the [Yarn package manager](https://yarnpkg.com/).
 
+To fetch the editorial content from Google Docs the authentication token for Google Drive has to be placed in the `./.auth.json` file in the repository root.
+
 ## Getting Started
 
 Install all dependencies,

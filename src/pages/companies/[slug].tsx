@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import CompanyRankCard from "../../components/company-rank-card";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
-import {companyDetails, loadData} from "../../data";
+import {companyData, companyIndices} from "../../data";
 import {CompanyDetails, CompanyIndex} from "../../types";
 
 type Params = {
@@ -14,12 +14,12 @@ type Params = {
 };
 
 interface CompanyProps {
-  company: CompanyIndex;
+  index: CompanyIndex;
   details: CompanyDetails;
 }
 
 export const getStaticPaths = async () => {
-  const data = await loadData();
+  const data = await companyIndices();
   const paths = data.map(({id}) => ({
     params: {slug: id},
   }));
@@ -31,26 +31,21 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({params: {slug}}: Params) => {
-  const [data, details] = await Promise.all([loadData(), companyDetails(slug)]);
-
-  const company = data.find((d) => d.id === slug);
-  if (!company) throw new Error(`Couldn't extract company for slug ${slug}`);
+  const [index, details] = await companyData(slug);
 
   // Map from the input format to the internal type.
   return {
     props: {
-      company,
+      index,
       details,
     },
   };
 };
 
-const CompanyPage = ({company, details}: CompanyProps) => {
-  // FIXME: Dummy Data:
-  //        - company kind
-
+const CompanyPage = ({index, details}: CompanyProps) => {
+  // FIXME: I don't receive the company kind yet as part of the CSV data.
   const companyKind =
-    company.kind === "telecom"
+    index.kind === "telecom"
       ? "Telecommunications company"
       : "Internet and mobile ecosystem companies";
 
@@ -66,37 +61,32 @@ const CompanyPage = ({company, details}: CompanyProps) => {
               {companyKind}
             </div>
           </div>
-          <h1>{company.company}</h1>
+          <h1>{index.company}</h1>
         </div>
 
         <div className="w-1/2">
-          <CompanyRankCard rank={company.rank} score={company.scores.total} />
+          <CompanyRankCard rank={index.rank} score={index.scores.total} />
         </div>
       </section>
 
       <section className="flex">
         <div className="w-1/2 pt-3">
           <h2>Key findings</h2>
-          <div dangerouslySetInnerHTML={{__html: details.keyFindings}} />
+          <div dangerouslySetInnerHTML={{__html: details.keyFindings || ""}} />
         </div>
 
         <div className="w-1/2 pt-3">
           <div className="pb-3">Services evaluated</div>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: details.servicesEvaluated,
-            }}
-          />
         </div>
       </section>
 
       <div className="flex flex-wrap bg-offset-gray center">
         <CompanyScoreChart
           category="governance"
-          score={company.scores.governance}
+          score={index.scores.governance}
         />
-        <CompanyScoreChart category="freedom" score={company.scores.freedom} />
-        <CompanyScoreChart category="privacy" score={company.scores.privacy} />
+        <CompanyScoreChart category="freedom" score={index.scores.freedom} />
+        <CompanyScoreChart category="privacy" score={index.scores.privacy} />
       </div>
 
       <section className="flex flex-col">
@@ -104,15 +94,20 @@ const CompanyPage = ({company, details}: CompanyProps) => {
 
         <div className="flex">
           <div className="w-1/2">
-            <h3>Overall score {company.scores.total}%</h3>
-            <div dangerouslySetInnerHTML={{__html: details.analysisText}} />
+            <h3>Overall score {index.scores.total}%</h3>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: details.analysis || "analysis missing",
+              }}
+            />
           </div>
 
           <div className="w-1/2">
             <h3>Key recommendations</h3>
             <div
               dangerouslySetInnerHTML={{
-                __html: details.keyRecommendation,
+                __html:
+                  details.keyRecommendation || "key recommendation missing",
               }}
             />
           </div>
@@ -121,29 +116,31 @@ const CompanyPage = ({company, details}: CompanyProps) => {
 
       <CompanySection
         category="governance"
-        score={company.scores.governance}
-        text={details.governanceText}
-        indicators={company.indicators.governance}
+        score={index.scores.governance}
+        text={details.governance || "governance missing"}
+        indicators={index.indicators.governance}
       />
 
       <CompanySection
         category="freedom"
-        score={company.scores.freedom}
-        text={details.freedomText}
-        indicators={company.indicators.freedom}
+        score={index.scores.freedom}
+        text={details.freedom || "freedom missing"}
+        indicators={index.indicators.freedom}
       />
 
       <CompanySection
         category="privacy"
-        score={company.scores.privacy}
-        text={details.privacyText}
-        indicators={company.indicators.privacy}
+        score={index.scores.privacy}
+        text={details.privacy || "privacy missing"}
+        indicators={index.indicators.privacy}
       />
 
-      <footer>
-        <h3>Footnotes</h3>
-        <div dangerouslySetInnerHTML={{__html: details.footnotes}} />
-      </footer>
+      {details.footnotes && (
+        <footer>
+          <h3>Footnotes</h3>
+          <div dangerouslySetInnerHTML={{__html: details.footnotes}} />
+        </footer>
+      )}
     </div>
   );
 };

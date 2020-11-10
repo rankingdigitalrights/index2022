@@ -14,18 +14,18 @@ export type Indicator = {
 };
 
 export type CompanyDetails = {
-  basicInformation: string;
-  keyFindings: string;
-  servicesEvaluated: string;
-  analysisText: string;
-  keyRecommendation: string;
-  governanceText: string;
-  summaryOfChangesGovernance: string;
-  freedomText: string;
-  summaryOfChangesFreedom: string;
-  privacyText: string;
-  summaryOfChangesPrivacy: string;
-  footnotes: string;
+  id: string;
+  basicInformation?: string;
+  keyFindings?: string;
+  analysis?: string;
+  keyRecommendation?: string;
+  governance?: string;
+  summaryOfChangesGovernance?: string;
+  freedom?: string;
+  summaryOfChangesFreedom?: string;
+  privacy?: string;
+  summaryOfChangesPrivacy?: string;
+  footnotes?: string;
 };
 
 export type CompanyKind = "telecom" | "internet";

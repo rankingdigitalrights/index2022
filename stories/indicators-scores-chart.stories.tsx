@@ -2,6 +2,7 @@ import {Story} from "@storybook/react/types-6-0";
 import React from "react";
 
 import IndicatorScoresChart from "../src/components/indicator-scores-chart";
+import {CompanyIndex} from "../src/types";
 import fixtures from "./fixtures.json";
 
 interface IndicatorScoresChartStoryProps {
@@ -21,7 +22,11 @@ export default {
 
 const Template: Story<IndicatorScoresChartStoryProps> = ({size, debug}) => {
   return (
-    <IndicatorScoresChart gridSize={size} companies={fixtures} debug={debug} />
+    <IndicatorScoresChart
+      gridSize={size}
+      companies={fixtures as CompanyIndex[]}
+      debug={debug}
+    />
   );
 };
 

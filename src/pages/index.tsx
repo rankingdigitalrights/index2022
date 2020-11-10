@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import {loadData} from "../data";
+import {companyIndices} from "../data";
 import {CompanyIndex} from "../types";
 
 interface HomeProps {
@@ -9,7 +9,7 @@ interface HomeProps {
 }
 
 export const getStaticProps = async () => {
-  const companies = await loadData();
+  const companies = await companyIndices();
 
   return {
     props: {companies},

@@ -1,8 +1,10 @@
 import slugify from "@sindresorhus/slugify";
 import parse from "csv-parse";
-import fs from "fs";
+import fs, {promises as fsP} from "fs";
 import path from "path";
 
+import {companyDetails as companyDetails2, processHtml} from "./formatter";
+import {fetchDocumentHtml, getAuth, listFiles} from "./google";
 import {
   CompanyDetails,
   CompanyIndex,
@@ -11,6 +13,7 @@ import {
   ScoreCategory,
   Scores,
 } from "./types";
+import {memoizeAsync} from "./utils";
 
 type CsvRecord = Record<string, string>;
 
@@ -41,10 +44,11 @@ type CsvIndicator = {
   indicatorFamily: string;
 };
 
-interface MemoizedLoadData {
-  (): Promise<CompanyIndex[]>;
-  cache: CompanyIndex[];
-}
+/*
+ * The ID's of the Google Drive folders. Maybe move this into some
+ * configuration file?
+ */
+const companiesFolder = "1aByjKhv9N9nNQBRNK1GVdraU0qorv7dX";
 
 /*
  * Some utility functions to parse the CSV data.
@@ -188,37 +192,11 @@ const loadIndicatorsCsv = async (file: string): Promise<CsvIndicator[]> => {
 };
 
 /*
- * Load the company details. This is a dummy right now. It needs to be
- * seen how we can load those. Ideally I fetch them directly from Wordpress.
- */
-export const companyDetails = async (_id: string): Promise<CompanyDetails> => {
-  return Promise.resolve({
-    basicInformation: "dummy content: basic information",
-    keyFindings: "dummy content: key findings",
-    servicesEvaluated: "dummy content: services evaluated",
-    analysisText: "dummy content: analysis text",
-    keyRecommendation: "dummy content: ket recommendations",
-    governanceText: "dummy content: governance text",
-    summaryOfChangesGovernance: "dummy content: summary of changes governance",
-    freedomText: "dummy content: freedom text",
-    summaryOfChangesFreedom: "dummy content: summary of changes freedom",
-    privacyText: "dummy content: privacy text",
-    summaryOfChangesPrivacy: "dummy content: summary of changes privacy",
-    footnotes: "dummy content: footnotes",
-  });
-};
-
-/*
  * Load the source data and construct the company index for 2020. This
  * function is called to populate the website pages.
  */
-export const loadData: MemoizedLoadData = async () => {
-  // If we haven't loaded the data from CSV yet, do it now. We cache
-  // the result of the load. Once we loaded the data, we should definitely
-  // have at least one company.
-  if (loadData.cache.length === 0) {
-    // loadData.cache = [];
-
+export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
+  async () => {
     const [csvTotals, csvCategories, csvIndicators] = await Promise.all([
       loadTotalsCsv("data/2020-totals.csv"),
       loadCategoriesCsv("data/2020-categories.csv"),
@@ -228,78 +206,127 @@ export const loadData: MemoizedLoadData = async () => {
     // FIXME: We only deal with 2020 data right now.
     const index = "2020";
 
-    loadData.cache = csvTotals
-      .filter((total) => {
-        return total.score && total.index !== index;
-      })
-      .map((total) => {
-        const companyCategories = csvCategories.filter(
-          (category) =>
-            category.company === total.company && category.index === index,
-        );
-        const companyIndicators = csvIndicators.filter(
-          (indicator) =>
-            indicator.company === total.company && indicator.index === index,
-        );
-
-        const scores: Scores = companyCategories.reduce(
-          (memo, category) => {
-            if (category.score === undefined) return memo;
-            return Object.assign(memo, {[category.category]: category.score});
-          },
-          {
-            total: total.score,
-            governance: 0,
-            freedom: 0,
-            privacy: 0,
-          } as Scores,
-        );
-
-        const governanceIndicators: Indicator[] = categoryIndicators(
-          companyIndicators.filter(
+    return (
+      csvTotals
+        .filter((total) => {
+          return total.score && total.index !== index;
+        })
+        .map((total) => {
+          const companyCategories = csvCategories.filter(
+            (category) =>
+              category.company === total.company && category.index === index,
+          );
+          const companyIndicators = csvIndicators.filter(
             (indicator) =>
-              indicator.category === "governance" && indicator.score,
-          ),
-        );
-        const freedomIndicators: Indicator[] = categoryIndicators(
-          companyIndicators.filter(
-            (indicator) => indicator.category === "freedom" && indicator.score,
-          ),
-        );
-        const privacyIndicators: Indicator[] = categoryIndicators(
-          companyIndicators.filter(
-            (indicator) => indicator.category === "privacy" && indicator.score,
-          ),
-        );
+              indicator.company === total.company && indicator.index === index,
+          );
 
-        return {
-          id: slugify(total.company),
-          index: total.index,
-          company: total.company,
-          rank: -1, // We set the real rank further below
-          kind: "telecom" as CompanyKind,
-          scores,
-          indicators: {
-            governance: governanceIndicators,
-            freedom: freedomIndicators,
-            privacy: privacyIndicators,
-          },
-        };
-      })
-      // Set the real rank of the company after we sorted the
-      // companies by score.
-      .sort((a, b) => {
-        if (a.scores.total < b.scores.total) {
-          return -1;
-        }
-        if (a.scores.total > b.scores.total) {
-          return 1;
-        }
-        return 0;
-      })
-      .map((company, i) => Object.assign(company, {rank: i + 1}));
+          const scores: Scores = companyCategories.reduce(
+            (memo, category) => {
+              if (category.score === undefined) return memo;
+              return Object.assign(memo, {[category.category]: category.score});
+            },
+            {
+              total: total.score,
+              governance: 0,
+              freedom: 0,
+              privacy: 0,
+            } as Scores,
+          );
+
+          const governanceIndicators: Indicator[] = categoryIndicators(
+            companyIndicators.filter(
+              (indicator) =>
+                indicator.category === "governance" && indicator.score,
+            ),
+          );
+          const freedomIndicators: Indicator[] = categoryIndicators(
+            companyIndicators.filter(
+              (indicator) =>
+                indicator.category === "freedom" && indicator.score,
+            ),
+          );
+          const privacyIndicators: Indicator[] = categoryIndicators(
+            companyIndicators.filter(
+              (indicator) =>
+                indicator.category === "privacy" && indicator.score,
+            ),
+          );
+
+          return {
+            id: slugify(total.company),
+            index: total.index,
+            company: total.company,
+            rank: -1, // We set the real rank further below
+            kind: "telecom" as CompanyKind,
+            scores,
+            indicators: {
+              governance: governanceIndicators,
+              freedom: freedomIndicators,
+              privacy: privacyIndicators,
+            },
+          };
+        })
+        // Set the real rank of the company after we sorted the
+        // companies by score.
+        .sort((a, b) => {
+          if (a.scores.total < b.scores.total) {
+            return -1;
+          }
+          if (a.scores.total > b.scores.total) {
+            return 1;
+          }
+          return 0;
+        })
+        .map((company, i) => Object.assign(company, {rank: i + 1}))
+    );
+  },
+);
+
+/*
+ * Load editorial content from Google Docs.
+ */
+const companyDetails = memoizeAsync<
+  (folderId: string) => Promise<CompanyDetails[]>
+>(async (folderId) => {
+  const auth = getAuth();
+  const googleDocs = await listFiles(auth, folderId);
+  const companiesDir = path.join(process.cwd(), "content/companies");
+  await fsP.mkdir(companiesDir, {recursive: true});
+
+  return Promise.all(
+    googleDocs.map(async (googleDoc) => {
+      const doc = await fetchDocumentHtml(auth, companiesDir, googleDoc);
+      if (!doc.download) return {id: doc.id};
+      const src = await fsP.readFile(doc.download.target, "utf-8");
+      const html = processHtml(src);
+      return companyDetails2(doc.name, html);
+    }),
+  );
+});
+
+/*
+ * Load the company details. This is a dummy right now. It needs to be
+ * seen how we can load those. Ideally I fetch them directly from Wordpress.
+ */
+export const companyData = async (
+  companyId: string,
+): Promise<[CompanyIndex, CompanyDetails]> => {
+  const [indexCache, detailsCache] = await Promise.all([
+    companyIndices(),
+    companyDetails(companiesFolder),
+  ]);
+  const index = indexCache.find(({id}) => id === companyId);
+  // Until all editorial content is finished we provide an empty company
+  // details page.
+  const details = detailsCache.find(({id}) => id === companyId) || {
+    id: companyId,
+  };
+
+  if (!(index && details)) {
+    throw new Error(
+      `Couldn't extract company index and details for "${companyId}"`,
+    );
   }
-
-  return Promise.resolve(loadData.cache);
+  return [index, details];
 };
-loadData.cache = [];
