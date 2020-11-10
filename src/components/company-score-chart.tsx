@@ -25,14 +25,26 @@ const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
 
   // Render the negative arc first.
   // eslint-disable-next-line unicorn/no-null
-  const [datumNeg, datum] = pie().sort(null)([100 - score, score]);
+  const [datum,] = pie().sort(null)([score, 100 - score]);
+  const outerRadius = 120;
+  const innerRadius = 110;
 
   return (
     <div className="p-4 m-4 flex-grow">
       <svg className="h-64">
-        <g transform="translate(125,125)">
-          <CompanyScoreChartSlice datum={datumNeg} />
-          <CompanyScoreChartSlice datum={datum} category={category} />
+        <g transform={`translate(${outerRadius + 5},${outerRadius + 5})`}>
+          <circle
+            r={(outerRadius + innerRadius) / 2}
+            stroke="#1C5275"
+            stroke-width="2"
+            fill="none"
+          />
+
+          <CompanyScoreChartSlice
+            datum={datum}
+            outerRadius={outerRadius}
+            innerRadius={innerRadius}
+          />
 
           <GraphLabel
             transform="translate(0,5)"
@@ -40,12 +52,6 @@ const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
             textAnchor="middle"
             size="extra-large"
             bold
-          />
-          <GraphLabel
-            transform="translate(0,35)"
-            value={title}
-            textAnchor="middle"
-            size="large"
           />
         </g>
       </svg>

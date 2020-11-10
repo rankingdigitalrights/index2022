@@ -8,34 +8,26 @@ type Datum = PieArcDatum<number | {valueOf(): number}>;
 
 interface CompanyScoreChartSliceProps {
   datum: Datum;
-  category?: ScoreCategory;
+  innerRadius?: number;
+  outerRadius?: number;
 }
 
 const CompanyScoreChartSlice = ({
   datum,
-  category,
+  outerRadius = 120,
+  innerRadius = 110,
 }: CompanyScoreChartSliceProps) => {
   const sliceRef = React.createRef<SVGGElement>();
-
-  const outerRadius = 120;
-  const innerRadius = 110;
 
   const sliceArc = arc<Datum>()
     .innerRadius(innerRadius)
     .outerRadius(outerRadius)
+    .cornerRadius(90)
     .startAngle(datum.startAngle)
     .endAngle(datum.endAngle)(datum);
 
   return (
-    <g
-      className={c("fill-current", {
-        "text-governance": category === "governance",
-        "text-freedom": category === "freedom",
-        "text-privacy": category === "privacy",
-        "text-vis-negative": category === undefined,
-      })}
-      ref={sliceRef}
-    >
+    <g className="text-governance fill-current" ref={sliceRef}>
       <path d={sliceArc === null ? undefined : sliceArc} />
     </g>
   );
