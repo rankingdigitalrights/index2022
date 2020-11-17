@@ -12,7 +12,7 @@ To fetch the editorial content from Google Docs the authentication token for Goo
 
 Install all dependencies,
 
-```
+```sh
 yarn install
 ```
 
@@ -20,7 +20,7 @@ yarn install
 
 There is a [Storybook](https://storybook.js.org/) for UI component development.
 
-```
+```sh
 yarn storybook
 ```
 
@@ -33,7 +33,7 @@ yarn install
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/index2020](http://localhost:3000/index2020) with your browser to see the result.
 
 ### Verify
 
@@ -41,17 +41,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 yarn verify
 ```
 
-This will run `yarn lint` and `yarn type-check`. 
+This will run `yarn lint` and `yarn type-check`.
 
 ### Production builds
 
 ```sh
 yarn prod
 ```
-
-### Storybook
-
-```sh
-yarn storybook
-```
-
