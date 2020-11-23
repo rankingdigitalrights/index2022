@@ -1,15 +1,4 @@
 /* eslint @typescript-eslint/no-explicit-any: off */
-type Parameters<T extends (...args: any[]) => any> = T extends (
-  ...args: infer P
-) => any
-  ? P
-  : never;
-type ReturnType<T extends (...args: any[]) => any> = T extends (
-  ...args: any[]
-) => infer R
-  ? R
-  : any;
-
 export const memoize = <T extends (...args: any[]) => any>(
   fn: T,
 ): ((...funcArgs: Parameters<T>) => ReturnType<T>) => {
