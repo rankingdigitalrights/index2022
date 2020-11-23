@@ -68,7 +68,7 @@ const mapCategory = (value: string): ScoreCategory => {
     case "P":
       return "privacy";
     default: {
-      throw new Error("Unknow score category.");
+      throw new Error("Unknown score category.");
     }
   }
 };
@@ -204,21 +204,21 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
     ]);
 
     // FIXME: We only deal with 2020 data right now.
-    const index = "2020";
+    const indexYears = new Set(["2020"]);
 
     return (
       csvTotals
-        .filter((total) => {
-          return total.score && total.index !== index;
-        })
+        .filter((total) => total.score && indexYears.has(total.index))
         .map((total) => {
           const companyCategories = csvCategories.filter(
             (category) =>
-              category.company === total.company && category.index === index,
+              category.company === total.company &&
+              indexYears.has(category.index),
           );
           const companyIndicators = csvIndicators.filter(
             (indicator) =>
-              indicator.company === total.company && indicator.index === index,
+              indicator.company === total.company &&
+              indexYears.has(indicator.index),
           );
 
           const scores: Scores = companyCategories.reduce(
