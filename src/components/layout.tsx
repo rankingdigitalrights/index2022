@@ -9,7 +9,7 @@ interface LayoutProps {
 const Layout = ({children}: LayoutProps) => {
   return (
     <div>
-      <header className="container mx-auto">
+      <header className="container mx-auto pt-4 mb-8">
         <Navigation />
       </header>
 

@@ -87,7 +87,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between relative mt-4 mb-4">
+    <nav className="flex items-center justify-between relative">
       <ul className="flex inset-0 list-none">
         {navigation.map(({label, href, nodes = []}) => {
           return (

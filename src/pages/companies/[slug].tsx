@@ -52,7 +52,7 @@ const CompanyPage = ({index, details}: CompanyProps) => {
 
   return (
     <Layout>
-      <div>
+      <div className="container mx-auto">
         <section className="flex">
           <div className="w-1/2">
             <div className="flex items-start items-center">
