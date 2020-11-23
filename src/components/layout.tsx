@@ -1,5 +1,7 @@
 import React from "react";
 
+import Navigation from "./navigation";
+
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -7,7 +9,10 @@ interface LayoutProps {
 const Layout = ({children}: LayoutProps) => {
   return (
     <div>
-      <p>Navigation</p>
+      <header className="container mx-auto">
+        <Navigation />
+      </header>
+
       {children}
     </div>
   );

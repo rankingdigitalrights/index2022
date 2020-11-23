@@ -12,6 +12,7 @@
     "fix": "yarn lint --fix",
     "fixtures": "ts-node --transpile-only -P tsconfig.ts-node.json bin/create-fixtures.ts > stories/fixtures.json",
     "google-docs": "ts-node --transpile-only -P tsconfig.ts-node.json bin/fetch-google-docs.ts",
+    "navigation": "ts-node  --transpile-only -P tsconfig.ts-node.json bin/generate-navigation.ts",
     "lint": "eslint . --cache --ext ts --ext tsx --ext js",
     "preprod": "yarn clean && yarn verify && yarn build",
     "prod": "next export",
