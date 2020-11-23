@@ -20,6 +20,14 @@
     font-style: normal;
   }
 
+  /* Get rid of the border outlines on button unless user is actually tabbing. */
+  body:not(.user-is-tabbing) button:focus,
+  body:not(.user-is-tabbing) input:focus,
+  body:not(.user-is-tabbing) select:focus,
+  body:not(.user-is-tabbing) textarea:focus {
+    outline: none;
+  }
+
   html {
     @apply font-simplon-light p-4;
   }
