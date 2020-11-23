@@ -38,6 +38,7 @@
     "googleapis": "64",
     "gray-matter": "^4.0.2",
     "next": "9.5.5",
+    "next-svgr": "^0.0.2",
     "pretty": "^2.0.0",
     "react": "16.14.0",
     "react-dom": "16.14.0"
