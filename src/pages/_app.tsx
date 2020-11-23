@@ -20,7 +20,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 
     window.addEventListener("keydown", handleFirstTab);
     setFirstTabHandled(true);
-  });
+  }, [firstTabHandled]);
 
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <Component {...pageProps} />;
