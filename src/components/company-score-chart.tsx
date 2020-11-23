@@ -10,22 +10,10 @@ export interface CompanyScoreChartProps {
   score: number;
 }
 
-const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
-  let title;
-
-  if (category === "governance") {
-    title = "Governance";
-  } else if (category === "freedom") {
-    title = "Freedom of Expression";
-  } else if (category === "privacy") {
-    title = "Privacy";
-  } else {
-    title = "UNKNOWN CATEGORY!!!";
-  }
-
+const CompanyScoreChart = ({score}: CompanyScoreChartProps) => {
   // Render the negative arc first.
   // eslint-disable-next-line unicorn/no-null
-  const [datum,] = pie().sort(null)([score, 100 - score]);
+  const [datum] = pie().sort(null)([score, 100 - score]);
   const outerRadius = 120;
   const innerRadius = 110;
 
@@ -36,7 +24,7 @@ const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
           <circle
             r={(outerRadius + innerRadius) / 2}
             stroke="#1C5275"
-            stroke-width="2"
+            strokeWidth="2"
             fill="none"
           />
 
