@@ -10,9 +10,9 @@
     "predev": "yarn clean",
     "dev": "next dev",
     "fix": "yarn lint --fix",
-    "fixtures": "ts-node --transpile-only -P tsconfig.ts-node.json bin/create-fixtures.ts > stories/fixtures.json",
-    "google-docs": "ts-node --transpile-only -P tsconfig.ts-node.json bin/fetch-google-docs.ts",
-    "navigation": "ts-node  --transpile-only -P tsconfig.ts-node.json bin/generate-navigation.ts",
+    "fixtures": "yarn indexctl fixtures --write",
+    "indexctl": "ts-node --transpile-only -P tsconfig.ts-node.json bin/indexctl.ts",
+    "navigation": "yarn indexctl navigation --write",
     "lint": "eslint . --cache --ext ts --ext tsx --ext js",
     "preprod": "yarn clean && yarn verify && yarn build",
     "prod": "next export",
@@ -42,7 +42,8 @@
     "next-svgr": "^0.0.2",
     "pretty": "^2.0.0",
     "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react-dom": "16.14.0",
+    "yargs": "^16.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.1",
@@ -58,6 +59,7 @@
     "@types/node": "^14.11.9",
     "@types/pretty": "^2.0.0",
     "@types/react": "^16.9.52",
+    "@types/yargs": "^15.0.10",
     "@typescript-eslint/eslint-plugin": "^4.4.1",
     "@typescript-eslint/parser": "^4.4.1",
     "awesome-typescript-loader": "^5.2.1",
