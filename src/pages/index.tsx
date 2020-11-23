@@ -1,18 +1,11 @@
-import Head from "next/head";
+import React from "react";
 
 import Layout from "../components/layout";
 
 const Home = () => {
   return (
     <Layout>
-      <div>
-        <Head>
-          <title>Create Next App</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
-        <main className="container mx-auto md:flex">Home!</main>
-      </div>
+      <main className="container mx-auto">Home!</main>
     </Layout>
   );
 };
