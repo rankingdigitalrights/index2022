@@ -35,10 +35,16 @@ const generateNavigation = async (): Promise<NavigationNode[]> => {
       nodes: [
         {
           label: "Companies",
-          nodes: indices.map(({id, company}) => ({
-            label: company,
-            href: `/companies/${id}`,
-          })),
+          nodes: indices
+            .sort((a, b) => {
+              if (a.company < b.company) return -1;
+              if (a.company > b.company) return 1;
+              return 0;
+            })
+            .map(({id, company}) => ({
+              label: company,
+              href: `/companies/${id}`,
+            })),
         },
       ],
     },
