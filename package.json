@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "next build",
+    "prebuild-storybook": "yarn fixtures",
     "build-storybook": "build-storybook",
     "clean": "rimraf storybook-static out .next",
     "predev": "yarn clean",
