@@ -1,4 +1,4 @@
-/* eslint @typescript-eslint/no-explicit-any: off */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const memoize = <T extends (...args: any[]) => any>(
   fn: T,
 ): ((...funcArgs: Parameters<T>) => ReturnType<T>) => {
@@ -12,6 +12,7 @@ export const memoize = <T extends (...args: any[]) => any>(
   return memoizedFn;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const memoizeAsync = <T extends (...args: any[]) => any>(
   fn: T,
 ): ((...funcArgs: Parameters<T>) => ReturnType<T>) => {
