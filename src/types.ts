@@ -1,4 +1,4 @@
-export type Index = "2019" | "2020";
+export type IndexYear = "2019" | "2020";
 
 export type ScoreCategory = "governance" | "freedom" | "privacy";
 

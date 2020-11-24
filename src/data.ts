@@ -9,6 +9,7 @@ import {
   CompanyDetails,
   CompanyIndex,
   CompanyKind,
+  IndexYear,
   Indicator,
   ScoreCategory,
   Scores,
@@ -18,20 +19,20 @@ import {memoizeAsync} from "./utils";
 type CsvRecord = Record<string, string>;
 
 type CsvTotal = {
-  index: string;
+  index: IndexYear;
   company: string;
   score?: number;
 };
 
 type CsvCategory = {
-  index: string;
+  index: IndexYear;
   company: string;
   category: ScoreCategory;
   score?: number;
 };
 
 type CsvIndicator = {
-  index: string;
+  index: IndexYear;
   company: string;
   category: ScoreCategory;
   indicator: string;
@@ -43,6 +44,11 @@ type CsvIndicator = {
   isFamilyMember: boolean;
   indicatorFamily: string;
 };
+
+/*
+ * The years we include in the data extraction.
+ */
+const indexYears: Set<IndexYear> = new Set(["2020"]);
 
 /*
  * The ID's of the Google Drive folders. Maybe move this into some
@@ -146,7 +152,7 @@ const loadTotalsCsv = async (file: string): Promise<CsvTotal[]> => {
   const totals = await loadCsv(file);
 
   return totals.map((record) => ({
-    index: record.Index,
+    index: record.Index as IndexYear,
     company: record.Company,
     score: floatOrNil(record.Score),
   }));
@@ -159,7 +165,7 @@ const loadCategoriesCsv = async (file: string): Promise<CsvCategory[]> => {
   const categories = await loadCsv(file);
 
   return categories.map((record) => ({
-    index: record.Index,
+    index: record.Index as IndexYear,
     company: record.Company,
     category: mapCategory(record.Category),
     score: floatOrNil(record.Score),
@@ -173,7 +179,7 @@ const loadIndicatorsCsv = async (file: string): Promise<CsvIndicator[]> => {
   const indicators = await loadCsv(file);
 
   return indicators.map((record) => ({
-    index: record.Index,
+    index: record.Index as IndexYear,
     company: record.Company,
     category: mapCategory(record.Category),
     indicator: record.Indicator,
@@ -198,9 +204,6 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
       loadCategoriesCsv("data/2020-categories.csv"),
       loadIndicatorsCsv("data/2020-indicators.csv"),
     ]);
-
-    // FIXME: We only deal with 2020 data right now.
-    const indexYears = new Set(["2020"]);
 
     return (
       csvTotals
