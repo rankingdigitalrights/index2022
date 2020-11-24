@@ -1,3 +1,4 @@
+import slugify from "@sindresorhus/slugify";
 import cheerio from "cheerio";
 import pretty from "pretty";
 
@@ -51,8 +52,7 @@ export const normalizeHtml = (src: string): string => {
 
   // rewrite the id's to something more friendly.
   $("h2").each((_idx, el) => {
-    // FIXME: use a proper slugify.
-    const id = $(el).text().toLowerCase().replace(/ /g, "-");
+    const id = slugify($(el).text());
     $(el).attr("id", id);
   });
 
