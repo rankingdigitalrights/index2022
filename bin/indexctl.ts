@@ -4,6 +4,7 @@ import yargs from "yargs";
 
 import {companyIndices} from "../src/data";
 import generateNav from "../src/navigation";
+import {unreachable} from "../src/utils";
 
 type OutOrFile =
   | {
@@ -27,9 +28,8 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
       );
       return;
     }
-    default: {
-      throw new Error("unknown output target.");
-    }
+    default:
+      unreachable("Unknown output target.");
   }
 };
 

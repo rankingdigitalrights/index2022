@@ -33,3 +33,14 @@ export const isString = (x: unknown): x is string => {
 export const isNumber = (x: unknown): x is number => {
   return typeof x === "number";
 };
+
+/*
+ * Denote code paths that won't be reached under normal circumstances.
+ */
+export const unreachable = (message?: string): never => {
+  if (message === undefined) {
+    throw new Error("Unreachable code reached.");
+  } else {
+    throw new Error(`Unreachable code reached: ${message}`);
+  }
+};
