@@ -69,7 +69,7 @@ export const normalizeHtml = (src: string): string => {
       // FIXME: I'm filtering out width styles of images. Right now I
       // assume that images are not a requirement. But, I need to deal
       // with those if the need ever arises.
-      // Keep italic, bold and underline style definitons
+      // Keep italic, bold and underline style definitions.
       elStyle
         .split(";")
         .filter((styleRule) => {
@@ -143,9 +143,9 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
   details.footnotes =
     $("<div></div>").append($("p").has("a[href^=#ftnt_ref]")).html() || "";
 
-  // Since we extracted teh footnotes already, remove them.
+  // Since we extracted the footnotes already, remove them.
   removeTag("p", "a[href^=#ftnt_ref]", $);
-  // The footnotes were seperated by a divider, we don't need it anymore.
+  // The footnotes were separated by a divider, we don't need it anymore.
   removeTag("hr", undefined, $);
   // By extracting the footnotes we leave a whole bunch of empty div's behind.
   removeEmptyTag("div", $);
