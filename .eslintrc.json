@@ -87,6 +87,7 @@
           "test/ts/**/*.ts",
           "test/test-setup.js",
           "scripts/**/*.js",
+          "bin/**/*.ts",
           "src/ts/__fixtures__/**/*.tsx"
         ]
       }
