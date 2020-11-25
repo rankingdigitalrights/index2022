@@ -16,13 +16,34 @@ module.exports = {
         "simplon-bold": ["Simplon-Bold", "sans-serif"],
       },
       colors: {
-        "accent-1": "#333",
-        "medium-gray": "#6d6f71",
-        "offset-gray": "#f7f7f7",
-        governance: "#57a8d5",
-        freedom: "#21bcb3",
-        privacy: "#238e88",
-        "vis-negative": "#e5dcd2",
+        beige: "#F7F4F2",
+        prissian: "#1C5275",
+        rdr: "#4D9ECF",
+
+        cat: {
+          governance: "#57a8d5",
+          freedom: "#21bcb3",
+          privacy: "#238e88",
+          negative: "#e5dcd2",
+        },
+
+        diff: {
+          add: "#BFAB25",
+          del: "#D00000",
+        },
+
+        accent: {
+          gold: "#ECA400",
+          orange: "#F17105",
+          pink: "#F17105",
+          red: "#ED6A5A",
+        },
+
+        disabled: {
+          dark: "#D6C9C9",
+          default: "#E5DCD2",
+          light: "#F7F4F2",
+        },
       },
     },
   },

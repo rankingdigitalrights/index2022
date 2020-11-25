@@ -34,7 +34,7 @@ const PercentageCircle = ({
         height={height}
       />
       <rect
-        className="text-vis-negative fill-current"
+        className="text-cat-negative fill-current"
         x={percentage}
         width={width - percentage}
         height={height}

@@ -24,7 +24,7 @@ const CompanyScoreChartSlice = ({
     .endAngle(datum.endAngle)(datum);
 
   return (
-    <g className="text-governance fill-current" ref={sliceRef}>
+    <g className="text-cat-governance fill-current" ref={sliceRef}>
       <path d={sliceArc === null ? undefined : sliceArc} />
     </g>
   );

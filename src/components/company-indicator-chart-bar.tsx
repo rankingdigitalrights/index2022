@@ -22,10 +22,10 @@ const CompanyIndicatorChartBar = ({
   // Shift the label by this much along the y axis to appear below the bar.
   const textShift = 25;
   const className = {
-    "text-governance": category === "governance",
-    "text-freedom": category === "freedom",
-    "text-privacy": category === "privacy",
-    "text-vis-negative": category === undefined,
+    "text-cat-governance": category === "governance",
+    "text-cat-freedom": category === "freedom",
+    "text-cat-privacy": category === "privacy",
+    "text-cat-negative": category === undefined,
   };
 
   return (
