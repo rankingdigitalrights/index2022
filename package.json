@@ -13,7 +13,7 @@
     "fixtures": "yarn indexctl fixtures --write",
     "indexctl": "ts-node --transpile-only -P tsconfig.ts-node.json bin/indexctl.ts",
     "navigation": "yarn indexctl navigation --write",
-    "lint": "eslint . --cache --ext ts --ext tsx --ext js",
+    "lint": "eslint . --cache --ext ts --ext tsx --ext js --ext jsx",
     "preprod": "yarn clean && yarn verify && yarn build",
     "prod": "next export",
     "start": "next start",
@@ -42,7 +42,8 @@
     "next-svgr": "^0.0.2",
     "pretty": "^2.0.0",
     "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react-dom": "16.14.0",
+    "scrollama": "^2.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.1",

@@ -55,4 +55,64 @@
   strong {
     @apply text-black font-simplon-bold;
   }
+
+  section h2 {
+    @apply sticky;
+    top: 60px;
+  }
+
+  section.scrolly {
+    @apply relative p-4 bg-gray-100 max-w-6xl;
+    width: calc(100% - 2rem);
+  }
+
+  figure.scrolly-canvas {
+    @apply sticky w-full m-0 left-0;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out,
+                width 1s ease-in-out;
+  }
+
+  figure.scrolly-canvas p {
+    @apply absolute m-0 p-4 text-center text-6xl font-black text-white transform -translate-y-1/2 -translate-x-1/2;
+    top: 50%;
+    left: 50%;
+  }
+
+  div.scrolly-steps {
+    @apply relative p-0 max-w-md mx-auto z-10;
+    margin-top: 150vh;
+    margin-bottom: 150vh;
+  }
+
+  .step.invisible {
+    visibility: hidden;
+  }
+
+  .step {
+    @apply text-white bg-black bg-opacity-25 mx-auto;
+    margin-top: 133vh;
+    margin-bottom: 133vh;
+  }
+
+  .step:last-child {
+    margin-bottom: 66vh;
+  }
+
+  .step.is-active h4 {
+    @apply bg-yellow-500 text-gray-200;
+  }
+
+  .step h4 {
+    @apply text-center p-4 bg-gray-200;
+  }
+
+  .step p {
+    @apply text-white p-4;
+  }
 }
