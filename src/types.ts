@@ -44,6 +44,8 @@ export type Indicators = Record<ScoreCategory, Indicator[]>;
 export type CompanyIndex = {
   id: string;
   company: string;
+  companyPretty: string;
+  country: string;
   index: string;
   rank: number;
   kind: CompanyKind;

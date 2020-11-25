@@ -14,7 +14,7 @@ import {
   ScoreCategory,
   Scores,
 } from "./types";
-import {memoizeAsync} from "./utils";
+import {memoizeAsync, unreachable} from "./utils";
 
 type CsvRecord = Record<string, string>;
 
@@ -43,6 +43,13 @@ type CsvIndicator = {
   description: string;
   isFamilyMember: boolean;
   indicatorFamily: string;
+};
+
+type CsvCompanySpec = {
+  company: string;
+  companyPretty: string;
+  kind: CompanyKind;
+  country: string;
 };
 
 /*
@@ -194,21 +201,45 @@ const loadIndicatorsCsv = async (file: string): Promise<CsvIndicator[]> => {
 };
 
 /*
+ * Load the company specs.
+ */
+const loadCompaniesCsv = async (file: string): Promise<CsvCompanySpec[]> => {
+  const companies = await loadCsv(file);
+
+  return companies.map((record) => ({
+    company: record.companyClean,
+    companyPretty: record.company,
+    kind: record.maintype === "platforms" ? "internet" : "telecom",
+    country: record.country,
+  }));
+};
+
+/*
  * Load the source data and construct the company index for 2020. This
  * function is called to populate the website pages.
  */
 export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
   async () => {
-    const [csvTotals, csvCategories, csvIndicators] = await Promise.all([
+    const [
+      csvTotals,
+      csvCategories,
+      csvIndicators,
+      csvCompanies,
+    ] = await Promise.all([
       loadTotalsCsv("data/2020-totals.csv"),
       loadCategoriesCsv("data/2020-categories.csv"),
       loadIndicatorsCsv("data/2020-indicators.csv"),
+      loadCompaniesCsv("data/2020-companies.csv"),
     ]);
 
     return (
       csvTotals
         .filter((total) => total.score && indexYears.has(total.index))
         .map((total) => {
+          const company =
+            csvCompanies.find((r) => r.company === total.company) ||
+            unreachable(`Company ${total.company} not found in specs.`);
+
           const companyCategories = csvCategories.filter(
             (category) =>
               category.company === total.company &&
@@ -256,8 +287,10 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
             id: slugify(total.company),
             index: total.index,
             company: total.company,
+            companyPretty: company.companyPretty,
             rank: -1, // We set the real rank further below
-            kind: "telecom" as CompanyKind,
+            kind: company.kind,
+            country: company.country,
             scores,
             indicators: {
               governance: governanceIndicators,
