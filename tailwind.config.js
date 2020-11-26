@@ -12,9 +12,21 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "simplon-light": ["Simplon-Light", "sans-serif"],
-        "simplon-bold": ["Simplon-Bold", "sans-serif"],
+        circular: ["Circular", "sans-serif"],
+        platform: ["Platform", "sans-serif"],
+        lyon: ["Lyon", "serif"],
       },
+
+      fontSize: {
+        xxs: "0.625rem",
+        xs: "0.937rem",
+        sm: "1rem",
+        base: "1.125rem",
+        lg: "1.625rem",
+        xl: "2.5rem",
+        xxl: "4.0625rem",
+      },
+
       colors: {
         beige: "#F7F4F2",
         prissian: "#1C5275",

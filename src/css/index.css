@@ -4,20 +4,71 @@
 
 @layer base {
   @font-face {
-    font-family: "Simplon-Light";
-    src: url("../../public/fonts/simplon/Simplon_BP_Light_1.ttf"),
-      url("../../public/fonts/simplon/Simplon_BP_Light_1.otf");
-    font-weight: 100;
-    font-style: normal;
+    font-family: Circular;
+    src:url(../../public/fonts/CircularStd-Black.otf);
+    src:url(../../public/fonts/CircularStd-Black.eot) format("embedded-opentype"),
+        url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
+        url(../../public/fonts/CircularStd-Black.woff) format("woff");
+    font-weight: 700;
+    font-style: normal
   }
 
   @font-face {
-    font-family: "Simplon-Bold";
-    src: url("../../public/fonts/simplon/Simplon_BP_Bold_2.woff"),
-      url("../../public/fonts/simplon/Simplon_BP_Bold_2.ttf"),
-      url("../../public/fonts/simplon/Simplon_BP_Bold_2.otf");
-    font-weight: 900;
-    font-style: normal;
+    font-family: Circular;
+    src:url(../../public/fonts/CircularStd-Book.ttf);
+    src:url(../../public/fonts/CircularStd-Book.eot) format("embedded-opentype"),
+        url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
+        url(../../public/fonts/CircularStd-Book.woff) format("woff");
+    font-weight: 400;
+    font-style: normal
+  }
+
+  @font-face {
+    font-family: Platform;
+    src:url(../../public/fonts/Platform-Medium.otf);
+    src:url(../../public/fonts/Platform-Medium.eot) format("embedded-opentype"),
+        url(../../public/fonts/Platform-Medium.woff2) format("woff2"),
+        url(../../public/fonts/Platform-Medium.woff) format("woff");
+    font-weight: 700
+  }
+
+  @font-face {
+    font-family: Lyon;
+    src:url(../../public/fonts/LyonText-Regular.otf);
+    src:url(../../public/fonts/LyonText-Regular.eot) format("embedded-opentype"),
+        url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
+        url(../../public/fonts/LyonText-Regular.woff) format("woff");
+    font-weight: 400;
+    font-style: none
+  }
+
+  @font-face {
+    font-family: Lyon;
+    src:url(../../public/fonts/LyonText-Bold.otf);
+    src:url(../../public/fonts/LyonText-Bold.eot) format("embedded-opentype"),
+        url(../../public/fonts/LyonText-Bold.woff2) format("woff2"),
+        url(../../public/fonts/LyonText-Bold.woff) format("woff");
+    font-weight: 700;
+    font-style: none
+  }
+
+  @font-face {
+    font-family: Lyon;
+    src:url(../../public/fonts/LyonText-RegularItalic.otf);
+    src:url(../../public/fonts/LyonText-RegularItalic.eot) format("embedded-opentype"),
+        url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
+        url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
+    font-weight: 400;
+    font-style: italic
+  }
+  
+  @font-face {
+    font-family: Lyon;
+    src:url(../../public/fonts/LyonText-BoldItalic.otf);
+    src:url(../../public/fonts/LyonText-BoldItalic.eot) format("embedded-opentype"),
+        url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
+    font-weight: 700;
+    font-style: italic
   }
 
   /* Get rid of the border outlines on button unless user is actually tabbing. */
@@ -29,31 +80,35 @@
   }
 
   html {
-    @apply font-simplon-light p-4;
+    @apply font-lyon text-base;
   }
 
   h1 {
-    @apply text-3xl font-simplon-bold;
+    @apply text-xl font-platform;
   }
 
   h2 {
-    @apply text-2xl font-simplon-bold pb-3;
+    @apply text-lg font-platform;
   }
 
   h3 {
-    @apply text-xl font-simplon-bold pb-3;
+    @apply text-base font-circular;
   }
 
   h4 {
-    @apply text-lg font-simplon-light pb-3 pt-3;
+    @apply text-xs font-circular;
+  }
+
+  h5 {
+    @apply text-xxs font-circular;
+  }
+
+  button {
+    @apply font-lyon;
   }
 
   ul {
     @apply list-disc list-inside;
-  }
-
-  strong {
-    @apply text-black font-simplon-bold;
   }
 
   section h2 {
