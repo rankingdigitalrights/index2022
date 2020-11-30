@@ -25,24 +25,26 @@ const CompanyIndicatorChart = ({
       height={height}
     >
       <g>
-        {indicators.map(({indicator, category, score}, index) => {
-          const pos = 35 * index;
+        {indicators.map(
+          ({indicator, display, label, category, score}, index) => {
+            const pos = 35 * index;
 
-          return (
-            <g
-              key={`indicator-chart-${indicator}`}
-              transform={`translate(0,${pos})`}
-            >
-              <CompanyIndicatorChartBar
-                key={indicator}
-                name={indicator}
-                value={score}
-                width={width}
-                category={category}
-              />
-            </g>
-          );
-        })}
+            return (
+              <g
+                key={`indicator-chart-${indicator}`}
+                transform={`translate(0,${pos})`}
+              >
+                <CompanyIndicatorChartBar
+                  key={indicator}
+                  name={`${display} ${label}`}
+                  value={score}
+                  width={width}
+                  category={category}
+                />
+              </g>
+            );
+          },
+        )}
       </g>
     </svg>
   );

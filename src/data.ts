@@ -55,7 +55,7 @@ type CsvCompanySpec = {
 type CsvIndicatorSpec = {
   category: ScoreCategory;
   indicator: string;
-  indicatorDisplay: string;
+  display: string;
   indicatorNr: number;
   indicatorSuffix?: string;
   label: string;
@@ -112,7 +112,10 @@ const isIndicatorFamily = (value: string): boolean => value === "TRUE";
 /* A helper function to extract and map indicators for one category
  * from a list of indicators. This is used by the loadData function.
  */
-const categoryIndicators = (csvIndicators: CsvIndicator[]): Indicator[] => {
+const categoryIndicators = (
+  csvIndicators: CsvIndicator[],
+  specs: CsvIndicatorSpec[],
+): Indicator[] => {
   const iterator = (
     indicators: CsvIndicator[],
     skipFamilyMembers: boolean,
@@ -125,6 +128,10 @@ const categoryIndicators = (csvIndicators: CsvIndicator[]): Indicator[] => {
       })
       .filter(({isFamilyMember}) => skipFamilyMembers === isFamilyMember)
       .map((indicator) => {
+        const {label, description, guidance, display} =
+          specs.find((r) => r.indicator === indicator.indicator) ||
+          unreachable(`Indicator ${indicator.indicator} not found in specs.`);
+
         const familyMembers = csvIndicators.filter(
           ({isFamilyMember, indicatorFamily}) =>
             indicatorFamily === indicator.indicator && isFamilyMember,
@@ -135,8 +142,10 @@ const categoryIndicators = (csvIndicators: CsvIndicator[]): Indicator[] => {
           indicator: indicator.indicator,
           indicatorNr: indicator.indicatorNr,
           score: indicator.score || 0,
-          label: indicator.label,
-          description: indicator.description,
+          label,
+          description,
+          guidance,
+          display,
           familyMembers: iterator(familyMembers, true),
           ...(indicator.indicatorSuffix
             ? {indicatorSuffix: indicator.indicatorSuffix}
@@ -236,7 +245,7 @@ const loadCompanySpecsCsv = loadCsv<CsvCompanySpec>((record) => ({
 const loadIndicatorSpecsCsv = loadCsv<CsvIndicatorSpec>((record) => ({
   category: mapCategory(record.Category),
   indicator: record.Indicator,
-  indicatorDisplay: record.indicatorDisplay,
+  display: record.labelShort,
   indicatorNr: Number.parseInt(record.indicatorNr, 10),
   indicatorSuffix: stringOrNil(record.indicatorSuffix),
   label: record.labelLong,
@@ -268,7 +277,6 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
       csvCategories,
       csvIndicators,
       csvCompanySpecs,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       csvIndicatorSpecs,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       csvElementSpecs,
@@ -285,7 +293,7 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
       csvTotals
         .filter((total) => total.score && indexYears.has(total.index))
         .map((total) => {
-          const company =
+          const companySpec =
             csvCompanySpecs.find((r) => r.company === total.company) ||
             unreachable(`Company ${total.company} not found in specs.`);
 
@@ -318,28 +326,31 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
               (indicator) =>
                 indicator.category === "governance" && indicator.score,
             ),
+            csvIndicatorSpecs,
           );
           const freedomIndicators: Indicator[] = categoryIndicators(
             companyIndicators.filter(
               (indicator) =>
                 indicator.category === "freedom" && indicator.score,
             ),
+            csvIndicatorSpecs,
           );
           const privacyIndicators: Indicator[] = categoryIndicators(
             companyIndicators.filter(
               (indicator) =>
                 indicator.category === "privacy" && indicator.score,
             ),
+            csvIndicatorSpecs,
           );
 
           return {
             id: slugify(total.company),
             index: total.index,
             company: total.company,
-            companyPretty: company.companyPretty,
+            companyPretty: companySpec.companyPretty,
             rank: -1, // We set the real rank further below
-            kind: company.kind,
-            country: company.country,
+            kind: companySpec.kind,
+            country: companySpec.country,
             scores,
             indicators: {
               governance: governanceIndicators,

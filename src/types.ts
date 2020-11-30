@@ -5,11 +5,13 @@ export type ScoreCategory = "governance" | "freedom" | "privacy";
 export type Indicator = {
   category: ScoreCategory;
   indicator: string;
+  display: string;
   indicatorNr: number;
   indicatorSuffix?: string;
   score: number;
   label: string;
   description: string;
+  guidance: string;
   familyMembers: Indicator[];
 };
 

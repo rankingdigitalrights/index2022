@@ -32,7 +32,7 @@ const GraphLabel = ({
         {
           "font-simplon-light": !bold,
           "font-simplon-bold": bold,
-          "text-sm": size === "small",
+          "text-xxs": size === "small",
           "text-lg": size === "large",
           "text-2xl": size === "extra-large",
           "border border-yellow-400": debug,
