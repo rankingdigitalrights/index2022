@@ -52,6 +52,17 @@ type CsvCompanySpec = {
   country: string;
 };
 
+type CsvIndicatorSpec = {
+  category: ScoreCategory;
+  indicator: string;
+  indicatorDisplay: string;
+  indicatorNr: number;
+  indicatorSuffix?: string;
+  label: string;
+  description: string;
+  guidance: string;
+};
+
 type CsvElementSpec = {
   category: ScoreCategory;
   indicator: string;
@@ -220,6 +231,20 @@ const loadCompanySpecsCsv = loadCsv<CsvCompanySpec>((record) => ({
 }));
 
 /*
+ * Load the indicator specs.
+ */
+const loadIndicatorSpecsCsv = loadCsv<CsvIndicatorSpec>((record) => ({
+  category: mapCategory(record.Category),
+  indicator: record.Indicator,
+  indicatorDisplay: record.indicatorDisplay,
+  indicatorNr: Number.parseInt(record.indicatorNr, 10),
+  indicatorSuffix: stringOrNil(record.indicatorSuffix),
+  label: record.labelLong,
+  description: record.description,
+  guidance: record.guidance,
+}));
+
+/*
  * Load the elements specs.
  */
 const loadElementSpecsCsv = loadCsv<CsvElementSpec>((record) => ({
@@ -244,12 +269,15 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
       csvIndicators,
       csvCompanySpecs,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      csvIndicatorSpecs,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       csvElementSpecs,
     ] = await Promise.all([
       loadTotalsCsv("data/2020-totals.csv"),
       loadCategoriesCsv("data/2020-categories.csv"),
       loadIndicatorsCsv("data/2020-indicators.csv"),
       loadCompanySpecsCsv("data/2020-company-specs.csv"),
+      loadIndicatorSpecsCsv("data/2020-indicator-specs.csv"),
       loadElementSpecsCsv("data/2020-element-specs.csv"),
     ]);
 
