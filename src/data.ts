@@ -9,6 +9,7 @@ import {
   CompanyDetails,
   CompanyIndex,
   CompanyKind,
+  ElementValue,
   IndexYear,
   Indicator,
   ScoreCategory,
@@ -43,6 +44,19 @@ type CsvIndicator = {
   description: string;
   isFamilyMember: boolean;
   indicatorFamily: string;
+};
+
+type CsvElement = {
+  index: IndexYear;
+  company: string;
+  category: ScoreCategory;
+  indicator: string;
+  element: string;
+  indicatorNr: number;
+  indicatorSuffix?: string;
+  elementNr: number;
+  score?: number;
+  value: ElementValue;
 };
 
 type CsvCompanySpec = {
@@ -103,6 +117,32 @@ const mapCategory = (value: string): ScoreCategory => {
       return "privacy";
     default: {
       throw new Error("Unknown score category.");
+    }
+  }
+};
+
+const mapElementValue = (value: string): ElementValue => {
+  switch (value) {
+    case "NA":
+      return "NA";
+    case "New / Revised Element":
+      return "New / Revised Element";
+    case "No disclosure found":
+    case "no disclosure found":
+      return "No Disclosure Found";
+    case "No":
+    case "no":
+      return "No";
+    case "Yes":
+    case "yes":
+      return "Yes";
+    case "not selected":
+      return "Not Selected";
+    case "Partial":
+    case "partial":
+      return "Partial";
+    default: {
+      throw new Error("Unknown element value.");
     }
   }
 };
@@ -230,6 +270,22 @@ const loadIndicatorsCsv = loadCsv<CsvIndicator>((record) => ({
 }));
 
 /*
+ * Load the all elements for each company and indicator from a CSV.
+ */
+const loadElementsCsv = loadCsv<CsvElement>((record) => ({
+  index: record.Index as IndexYear,
+  company: record.Company,
+  category: mapCategory(record.Category),
+  indicator: record.Indicator,
+  element: record.Element,
+  indicatorNr: Number.parseInt(record.IndicatorNr, 10),
+  indicatorSuffix: stringOrNil(record.IndicatorSuffix),
+  elementNr: Number.parseInt(record.ElemNr, 10),
+  score: floatOrNil(record.Score),
+  value: mapElementValue(record.Value),
+}));
+
+/*
  * Load the company specs.
  */
 const loadCompanySpecsCsv = loadCsv<CsvCompanySpec>((record) => ({
@@ -276,6 +332,8 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
       csvTotals,
       csvCategories,
       csvIndicators,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      csvElements,
       csvCompanySpecs,
       csvIndicatorSpecs,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -284,6 +342,7 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
       loadTotalsCsv("data/2020-totals.csv"),
       loadCategoriesCsv("data/2020-categories.csv"),
       loadIndicatorsCsv("data/2020-indicators.csv"),
+      loadElementsCsv("data/2020-elements.csv"),
       loadCompanySpecsCsv("data/2020-company-specs.csv"),
       loadIndicatorSpecsCsv("data/2020-indicator-specs.csv"),
       loadElementSpecsCsv("data/2020-element-specs.csv"),

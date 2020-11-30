@@ -54,3 +54,23 @@ export type CompanyIndex = {
   scores: Scores;
   indicators: Indicators;
 };
+
+export type ElementValue =
+  | "NA"
+  | "New / Revised Element"
+  | "No"
+  | "Yes"
+  | "No Disclosure Found"
+  | "Not Selected"
+  | "Partial";
+
+// NA
+// New / Revised Element
+// no
+// no disclosure found
+// No disclosure found
+// not selected
+// Partial
+// partial
+// Yes
+// yes
