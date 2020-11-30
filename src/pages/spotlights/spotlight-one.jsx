@@ -179,7 +179,11 @@ const SpotlightOne = () => {
           </figure>
 
           <div className="scrolly-steps side">
-            <div className="step side" data-step="5" data-color="bg-cat-governance">
+            <div
+              className="step side"
+              data-step="5"
+              data-color="bg-cat-governance"
+            >
               <h4>Substep 5</h4>
               <p>
                 Prow scuttle parrel provost Sail ho shrouds spirits boom
@@ -206,10 +210,18 @@ const SpotlightOne = () => {
             <div className="step side" data-step="6" data-color="bg-rdr">
               <h4>Substep 6</h4>
             </div>
-            <div className="step side" data-step="7" data-color="bg-cat-freedom">
+            <div
+              className="step side"
+              data-step="7"
+              data-color="bg-cat-freedom"
+            >
               <h4>Substep 7</h4>
             </div>
-            <div className="step side" data-step="8" data-color="bg-cat-privacy">
+            <div
+              className="step side"
+              data-step="8"
+              data-color="bg-cat-privacy"
+            >
               <h4>Substep 8</h4>
             </div>
           </div>
