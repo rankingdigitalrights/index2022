@@ -52,6 +52,16 @@ type CsvCompanySpec = {
   country: string;
 };
 
+type CsvElementSpec = {
+  category: ScoreCategory;
+  indicator: string;
+  element: string;
+  indicatorNr: number;
+  elementNr: number;
+  label: string;
+  description?: string;
+};
+
 /*
  * The years we include in the data extraction.
  */
@@ -130,7 +140,7 @@ const categoryIndicators = (csvIndicators: CsvIndicator[]): Indicator[] => {
 /*
  * Load data from a CSV file relative to the project root.
  */
-const loadCsv = async (file: string): Promise<CsvRecord[]> => {
+const loadCsvFile = async (file: string): Promise<CsvRecord[]> => {
   const data: CsvRecord[] = [];
 
   const source = fs.createReadStream(path.join(process.cwd(), file));
@@ -153,10 +163,21 @@ const loadCsv = async (file: string): Promise<CsvRecord[]> => {
 };
 
 /*
+ * Load Records from a CSV file and map them to a useful type.
+ */
+const loadCsv = <T extends Record<string, unknown>>(
+  mapper: (record: CsvRecord) => T,
+): ((f: string) => Promise<T[]>) => async (file: string): Promise<T[]> => {
+  const records = await loadCsvFile(file);
+
+  return records.map((record) => mapper(record));
+};
+
+/*
  * Load the scores for every company from a CSV.
  */
 const loadTotalsCsv = async (file: string): Promise<CsvTotal[]> => {
-  const totals = await loadCsv(file);
+  const totals = await loadCsvFile(file);
 
   return totals.map((record) => ({
     index: record.Index as IndexYear,
@@ -169,7 +190,7 @@ const loadTotalsCsv = async (file: string): Promise<CsvTotal[]> => {
  * Load the scores for every category and each company from a CSV.
  */
 const loadCategoriesCsv = async (file: string): Promise<CsvCategory[]> => {
-  const categories = await loadCsv(file);
+  const categories = await loadCsvFile(file);
 
   return categories.map((record) => ({
     index: record.Index as IndexYear,
@@ -183,7 +204,7 @@ const loadCategoriesCsv = async (file: string): Promise<CsvCategory[]> => {
  * Load the scores for every indicator for each category and company from a CSV.
  */
 const loadIndicatorsCsv = async (file: string): Promise<CsvIndicator[]> => {
-  const indicators = await loadCsv(file);
+  const indicators = await loadCsvFile(file);
 
   return indicators.map((record) => ({
     index: record.Index as IndexYear,
@@ -204,7 +225,7 @@ const loadIndicatorsCsv = async (file: string): Promise<CsvIndicator[]> => {
  * Load the company specs.
  */
 const loadCompaniesCsv = async (file: string): Promise<CsvCompanySpec[]> => {
-  const companies = await loadCsv(file);
+  const companies = await loadCsvFile(file);
 
   return companies.map((record) => ({
     company: record.companyClean,
@@ -213,6 +234,19 @@ const loadCompaniesCsv = async (file: string): Promise<CsvCompanySpec[]> => {
     country: record.country,
   }));
 };
+
+/*
+ * Load the elements specs.
+ */
+const loadElementSpecsCsv = loadCsv<CsvElementSpec>((record) => ({
+  category: mapCategory(record.Category),
+  indicator: record.Indicator,
+  element: record.Element,
+  indicatorNr: Number.parseInt(record.indicatorNr, 10),
+  elementNr: Number.parseInt(record.elemNr, 10),
+  label: record.labelShort,
+  description: record.description,
+}));
 
 /*
  * Load the source data and construct the company index for 2020. This
@@ -225,11 +259,14 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
       csvCategories,
       csvIndicators,
       csvCompanies,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      csvElementSpecs,
     ] = await Promise.all([
       loadTotalsCsv("data/2020-totals.csv"),
       loadCategoriesCsv("data/2020-categories.csv"),
       loadIndicatorsCsv("data/2020-indicators.csv"),
       loadCompaniesCsv("data/2020-companies.csv"),
+      loadElementSpecsCsv("data/2020-element-specs.csv"),
     ]);
 
     return (
