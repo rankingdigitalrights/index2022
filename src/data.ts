@@ -249,7 +249,7 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
       loadTotalsCsv("data/2020-totals.csv"),
       loadCategoriesCsv("data/2020-categories.csv"),
       loadIndicatorsCsv("data/2020-indicators.csv"),
-      loadCompanySpecsCsv("data/2020-companies.csv"),
+      loadCompanySpecsCsv("data/2020-company-specs.csv"),
       loadElementSpecsCsv("data/2020-element-specs.csv"),
     ]);
 
