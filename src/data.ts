@@ -212,7 +212,7 @@ const loadIndicatorsCsv = loadCsv<CsvIndicator>((record) => ({
 /*
  * Load the company specs.
  */
-const loadCompaniesCsv = loadCsv<CsvCompanySpec>((record) => ({
+const loadCompanySpecsCsv = loadCsv<CsvCompanySpec>((record) => ({
   company: record.companyClean,
   companyPretty: record.company,
   kind: record.maintype === "platforms" ? "internet" : "telecom",
@@ -242,14 +242,14 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
       csvTotals,
       csvCategories,
       csvIndicators,
-      csvCompanies,
+      csvCompanySpecs,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       csvElementSpecs,
     ] = await Promise.all([
       loadTotalsCsv("data/2020-totals.csv"),
       loadCategoriesCsv("data/2020-categories.csv"),
       loadIndicatorsCsv("data/2020-indicators.csv"),
-      loadCompaniesCsv("data/2020-companies.csv"),
+      loadCompanySpecsCsv("data/2020-companies.csv"),
       loadElementSpecsCsv("data/2020-element-specs.csv"),
     ]);
 
@@ -258,7 +258,7 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
         .filter((total) => total.score && indexYears.has(total.index))
         .map((total) => {
           const company =
-            csvCompanies.find((r) => r.company === total.company) ||
+            csvCompanySpecs.find((r) => r.company === total.company) ||
             unreachable(`Company ${total.company} not found in specs.`);
 
           const companyCategories = csvCategories.filter(
