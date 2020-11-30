@@ -176,64 +176,48 @@ const loadCsv = <T extends Record<string, unknown>>(
 /*
  * Load the scores for every company from a CSV.
  */
-const loadTotalsCsv = async (file: string): Promise<CsvTotal[]> => {
-  const totals = await loadCsvFile(file);
-
-  return totals.map((record) => ({
-    index: record.Index as IndexYear,
-    company: record.Company,
-    score: floatOrNil(record.Score),
-  }));
-};
+const loadTotalsCsv = loadCsv<CsvTotal>((record) => ({
+  index: record.Index as IndexYear,
+  company: record.Company,
+  score: floatOrNil(record.Score),
+}));
 
 /*
  * Load the scores for every category and each company from a CSV.
  */
-const loadCategoriesCsv = async (file: string): Promise<CsvCategory[]> => {
-  const categories = await loadCsvFile(file);
-
-  return categories.map((record) => ({
-    index: record.Index as IndexYear,
-    company: record.Company,
-    category: mapCategory(record.Category),
-    score: floatOrNil(record.Score),
-  }));
-};
+const loadCategoriesCsv = loadCsv<CsvCategory>((record) => ({
+  index: record.Index as IndexYear,
+  company: record.Company,
+  category: mapCategory(record.Category),
+  score: floatOrNil(record.Score),
+}));
 
 /*
  * Load the scores for every indicator for each category and company from a CSV.
  */
-const loadIndicatorsCsv = async (file: string): Promise<CsvIndicator[]> => {
-  const indicators = await loadCsvFile(file);
-
-  return indicators.map((record) => ({
-    index: record.Index as IndexYear,
-    company: record.Company,
-    category: mapCategory(record.Category),
-    indicator: record.Indicator,
-    indicatorNr: Number.parseInt(record.IndicatorNr, 10),
-    indicatorSuffix: stringOrNil(record.IndicatorSuffix),
-    score: floatOrNil(record.Score),
-    label: record.labelLong,
-    description: record.description,
-    isFamilyMember: isIndicatorFamily(record.isSubindicator),
-    indicatorFamily: record.IndicatorFam,
-  }));
-};
+const loadIndicatorsCsv = loadCsv<CsvIndicator>((record) => ({
+  index: record.Index as IndexYear,
+  company: record.Company,
+  category: mapCategory(record.Category),
+  indicator: record.Indicator,
+  indicatorNr: Number.parseInt(record.IndicatorNr, 10),
+  indicatorSuffix: stringOrNil(record.IndicatorSuffix),
+  score: floatOrNil(record.Score),
+  label: record.labelLong,
+  description: record.description,
+  isFamilyMember: isIndicatorFamily(record.isSubindicator),
+  indicatorFamily: record.IndicatorFam,
+}));
 
 /*
  * Load the company specs.
  */
-const loadCompaniesCsv = async (file: string): Promise<CsvCompanySpec[]> => {
-  const companies = await loadCsvFile(file);
-
-  return companies.map((record) => ({
-    company: record.companyClean,
-    companyPretty: record.company,
-    kind: record.maintype === "platforms" ? "internet" : "telecom",
-    country: record.country,
-  }));
-};
+const loadCompaniesCsv = loadCsv<CsvCompanySpec>((record) => ({
+  company: record.companyClean,
+  companyPretty: record.company,
+  kind: record.maintype === "platforms" ? "internet" : "telecom",
+  country: record.country,
+}));
 
 /*
  * Load the elements specs.
