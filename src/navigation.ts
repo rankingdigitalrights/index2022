@@ -1,4 +1,4 @@
-import {companyIndices} from "./data";
+import {companyIndices, indicatorIndices} from "./data";
 
 export type NavigationNode = {
   label: string;
@@ -7,7 +7,10 @@ export type NavigationNode = {
 };
 
 const generateNavigation = async (): Promise<NavigationNode[]> => {
-  const indices = await companyIndices();
+  const [companies, indicators] = await Promise.all([
+    companyIndices(),
+    indicatorIndices(),
+  ]);
 
   return [
     {label: "Home", href: "/"},
@@ -35,7 +38,7 @@ const generateNavigation = async (): Promise<NavigationNode[]> => {
       nodes: [
         {
           label: "Companies",
-          nodes: indices
+          nodes: companies
             .sort((a, b) => {
               if (a.company < b.company) return -1;
               if (a.company > b.company) return 1;
@@ -58,7 +61,19 @@ const generateNavigation = async (): Promise<NavigationNode[]> => {
       label: "Data + Methods",
       nodes: [
         {label: "Explore our Data", href: "/explore-our-data"},
-        {label: "Indicators", href: "/indicators"},
+        {
+          label: "Indicators",
+          nodes: indicators
+            .sort((a, b) => {
+              if (a.id < b.id) return -1;
+              if (a.id > b.id) return 1;
+              return 0;
+            })
+            .map(({id, label}) => ({
+              label: `${id} ${label}`,
+              href: `/indicators/${id}`,
+            })),
+        },
       ],
     },
   ];

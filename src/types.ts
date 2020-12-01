@@ -2,6 +2,9 @@ export type IndexYear = "2019" | "2020";
 
 export type ScoreCategory = "governance" | "freedom" | "privacy";
 
+// FIXME: Deprecate ScoreCategory in favor of Category.
+export type Category = ScoreCategory;
+
 export type Indicator = {
   category: ScoreCategory;
   indicator: string;
@@ -74,3 +77,13 @@ export type ElementValue =
 // partial
 // Yes
 // yes
+
+export type IndicatorIndex = {
+  id: string;
+  indicator: string;
+  category: string;
+  display: string;
+  label: string;
+  description: string;
+  guidance: string;
+};

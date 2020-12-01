@@ -12,6 +12,7 @@ import {
   ElementValue,
   IndexYear,
   Indicator,
+  IndicatorIndex,
   ScoreCategory,
   Scores,
 } from "./types";
@@ -422,6 +423,30 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
         })
         .map((company, i) => Object.assign(company, {rank: i + 1}))
     );
+  },
+);
+
+/*
+ * Load the source data and construct the indicator index for 2020. This
+ * function is called to populate the website pages.
+ */
+export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
+  async () => {
+    const [csvIndicatorSpecs] = await Promise.all([
+      loadIndicatorSpecsCsv("data/2020-indicator-specs.csv"),
+    ]);
+
+    return csvIndicatorSpecs.map((spec) => {
+      return {
+        id: spec.display,
+        indicator: spec.indicator,
+        category: spec.category,
+        display: spec.display,
+        label: spec.label,
+        description: spec.description,
+        guidance: spec.guidance,
+      };
+    });
   },
 );
 
