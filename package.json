@@ -102,13 +102,13 @@
     }
   },
   "lint-staged": {
-    "*.@(json|rc)": [
+    "*.{json,rc}": [
       "prettier --parser json --write"
     ],
     "package.json": [
       "prettier-package-json --write"
     ],
-    "*.@(js|ts|tsx)": [
+    "*.{js,ts,tsx}": [
       "yarn fix"
     ]
   }
