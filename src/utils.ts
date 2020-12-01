@@ -1,3 +1,5 @@
+import {NA} from "./types";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const memoize = <T extends (...args: any[]) => any>(
   fn: T,
@@ -32,6 +34,10 @@ export const isString = (x: unknown): x is string => {
 
 export const isNumber = (x: unknown): x is number => {
   return typeof x === "number";
+};
+
+export const isNA = (x: unknown): x is NA => {
+  return x === "NA";
 };
 
 /*

@@ -9,14 +9,16 @@ import {
   CompanyDetails,
   CompanyIndex,
   CompanyKind,
+  Element,
   ElementValue,
   IndexYear,
   Indicator,
   IndicatorIndex,
+  NA,
   ScoreCategory,
   Scores,
 } from "./types";
-import {memoizeAsync, unreachable} from "./utils";
+import {isNA, memoizeAsync, unreachable} from "./utils";
 
 type CsvRecord = Record<string, string>;
 
@@ -56,9 +58,9 @@ type CsvElement = {
   indicatorNr: number;
   indicatorSuffix?: string;
   elementNr: number;
-  score?: number;
+  score: number | NA;
   value: ElementValue;
-  class: string;
+  kind: string;
   service: string;
 };
 
@@ -87,7 +89,7 @@ type CsvElementSpec = {
   indicatorNr: number;
   elementNr: number;
   label: string;
-  description?: string;
+  description: string;
 };
 
 /*
@@ -106,6 +108,9 @@ const companiesFolder = "1aByjKhv9N9nNQBRNK1GVdraU0qorv7dX";
  */
 const floatOrNil = (value: string): number | undefined =>
   value === "NA" ? undefined : Number.parseFloat(value);
+
+const floatOrNA = (value: string): number | NA =>
+  isNA(value) ? "NA" : Number.parseFloat(value);
 
 const stringOrNil = (value: string): string | undefined =>
   value === "NA" ? undefined : value;
@@ -201,6 +206,10 @@ const categoryIndicators = (
 };
 
 /*
+ * Sort a list of elements into a list of elements by companies and
+ */
+
+/*
  * Load Records from a CSV file and map them to a useful type.
  */
 const loadCsv = <T extends Record<string, unknown>>(
@@ -275,9 +284,9 @@ const loadElementsCsv = loadCsv<CsvElement>((record) => ({
   indicatorNr: Number.parseInt(record.IndicatorNr, 10),
   indicatorSuffix: stringOrNil(record.IndicatorSuffix),
   elementNr: Number.parseInt(record.ElemNr, 10),
-  score: floatOrNil(record.Score),
+  score: floatOrNA(record.Score),
   value: mapElementValue(record.Value),
-  class: record.Class,
+  kind: record.Class,
   service: record.Service,
 }));
 
@@ -432,11 +441,85 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
  */
 export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
   async () => {
-    const [csvIndicatorSpecs] = await Promise.all([
+    const [
+      csvElements,
+      csvIndicatorSpecs,
+      csvElementSpecs,
+    ] = await Promise.all([
+      loadElementsCsv("data/2020-elements.csv"),
       loadIndicatorSpecsCsv("data/2020-indicator-specs.csv"),
+      loadElementSpecsCsv("data/2020-element-specs.csv"),
     ]);
 
     return csvIndicatorSpecs.map((spec) => {
+      const elements: Element[] = csvElements
+        .filter(
+          (element) =>
+            element.indicator === spec.indicator &&
+            indexYears.has(element.index),
+        )
+        .map(({element, company, score, value, kind, service}) => {
+          const {category, elementNr, label, description} =
+            csvElementSpecs.find((e) => e.element === element) ||
+            unreachable(`Element ${element} not found in element specs.`);
+          return {
+            id: element,
+            element,
+            elementNr,
+            category,
+            label,
+            description,
+            score,
+            value,
+            kind,
+            service,
+            company,
+          };
+        });
+
+      const companies = [
+        ...elements.reduce(
+          (memo, {company}) => memo.add(company),
+          new Set<string>(),
+        ),
+      ];
+
+      const services = companies.reduce(
+        (memo, company) => ({
+          [company]: [
+            ...elements
+              .filter((element) => element.company === company)
+              .reduce((agg, {service}) => agg.add(service), new Set<string>()),
+          ],
+          ...memo,
+        }),
+        {} as Record<string, string[]>,
+      );
+
+      const sortedElements = companies.reduce((memo, company) => {
+        if (!services[company]) return memo;
+
+        return {
+          [company]: services[company].reduce(
+            (agg, service) => ({
+              [service]: elements
+                .filter(
+                  (element) =>
+                    element.company === company && element.service === service,
+                )
+                .sort((a, b) => {
+                  if (a.elementNr < b.elementNr) return -1;
+                  if (a.elementNr > b.elementNr) return 1;
+                  return 0;
+                }),
+              ...agg,
+            }),
+            {} as Record<string, Element[]>,
+          ),
+          ...memo,
+        };
+      }, {} as Record<string, Record<string, Element[]>>);
+
       return {
         id: spec.display,
         indicator: spec.indicator,
@@ -445,6 +528,9 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
         label: spec.label,
         description: spec.description,
         guidance: spec.guidance,
+        companies,
+        services,
+        elements: sortedElements,
       };
     });
   },
@@ -492,8 +578,23 @@ export const companyData = async (
 
   if (!(index && details)) {
     throw new Error(
-      `Couldn't extract company index and details for "${companyId}"`,
+      `Couldn't extract company index and details for "${companyId}."`,
     );
   }
   return [index, details];
+};
+
+/*
+ * Load the indicator details.
+ */
+export const indicatorData = async (
+  indicatorId: string,
+): Promise<IndicatorIndex> => {
+  const indexCache = await indicatorIndices();
+  const index = indexCache.find(({id}) => id === indicatorId);
+
+  if (!index) {
+    throw new Error(`Couldn't extract indicator index for "${indicatorId}".`);
+  }
+  return index;
 };

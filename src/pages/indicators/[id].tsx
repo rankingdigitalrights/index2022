@@ -1,9 +1,9 @@
 import React from "react";
 
+import CompanyElements from "../../components/company-elements";
 import Layout from "../../components/layout";
-import {indicatorIndices} from "../../data";
-import {Indicator} from "../../types";
-import {unreachable} from "../../utils";
+import {indicatorData, indicatorIndices} from "../../data";
+import {IndicatorIndex} from "../../types";
 
 type Params = {
   params: {
@@ -12,7 +12,7 @@ type Params = {
 };
 
 interface IndicatorPageProps {
-  indicator: Indicator;
+  index: IndicatorIndex;
 }
 
 export const getStaticPaths = async () => {
@@ -28,21 +28,29 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({params: {id}}: Params) => {
-  const indices = await indicatorIndices();
-  const indicator =
-    indices.find((i) => i.id === id) ||
-    unreachable(`Indicator ${id} not found in indicator index.`);
+  const index = (await indicatorData(id)) as IndicatorIndex;
+
   return {
     props: {
-      indicator,
+      index,
     },
   };
 };
 
-const IndicatorPage = ({indicator}: IndicatorPageProps) => {
+const IndicatorPage = ({index}: IndicatorPageProps) => {
   return (
     <Layout>
-      <div>{indicator.label}</div>
+      <div className="container mx-auto">
+        <section>{index.description}</section>
+        {index.companies.map((company) => (
+          <CompanyElements
+            key={`company-element-${company}`}
+            indicatorLabel={index.label}
+            company={company}
+            companyElements={index.elements[company] || {}}
+          />
+        ))}
+      </div>
     </Layout>
   );
 };

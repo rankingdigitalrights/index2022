@@ -5,6 +5,8 @@ export type ScoreCategory = "governance" | "freedom" | "privacy";
 // FIXME: Deprecate ScoreCategory in favor of Category.
 export type Category = ScoreCategory;
 
+export type NA = "NA";
+
 export type Indicator = {
   category: ScoreCategory;
   indicator: string;
@@ -59,7 +61,7 @@ export type CompanyIndex = {
 };
 
 export type ElementValue =
-  | "NA"
+  | NA
   | "New / Revised Element"
   | "No"
   | "Yes"
@@ -78,6 +80,19 @@ export type ElementValue =
 // Yes
 // yes
 
+export type Element = {
+  element: string;
+  elementNr: number;
+  category: string;
+  label: string;
+  description: string;
+  score: number | NA;
+  value: ElementValue;
+  company: string;
+  kind: string;
+  service: string;
+};
+
 export type IndicatorIndex = {
   id: string;
   indicator: string;
@@ -86,4 +101,7 @@ export type IndicatorIndex = {
   label: string;
   description: string;
   guidance: string;
+  companies: string[];
+  services: Record<string, string[]>;
+  elements: Record<string, Record<string, Element[]>>;
 };
