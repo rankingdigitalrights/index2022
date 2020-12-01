@@ -48,11 +48,13 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
         },
       },
       async (argv) => {
-        const data = await companyIndices();
-        const outTarget: OutOrFile = argv.write
-          ? {target: "file", output: "stories/fixtures.json"}
+        const scores = await companyIndices();
+
+        const scoresTarget: OutOrFile = argv.write
+          ? {target: "file", output: "stories/scores-fixtures.json"}
           : {target: "stdout"};
-        await outOrFile(outTarget, data);
+
+        await outOrFile(scoresTarget, scores);
       },
     )
     .command(

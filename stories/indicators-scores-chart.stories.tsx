@@ -3,7 +3,7 @@ import React from "react";
 
 import IndicatorScoresChart from "../src/components/indicator-scores-chart";
 import {CompanyIndex} from "../src/types";
-import fixtures from "./fixtures.json";
+import fixtures from "./scores-fixtures.json";
 
 interface IndicatorScoresChartStoryProps {
   size: number;
