@@ -57,6 +57,8 @@ type CsvElement = {
   elementNr: number;
   score?: number;
   value: ElementValue;
+  class: string;
+  service: string;
 };
 
 type CsvCompanySpec = {
@@ -274,6 +276,8 @@ const loadElementsCsv = loadCsv<CsvElement>((record) => ({
   elementNr: Number.parseInt(record.ElemNr, 10),
   score: floatOrNil(record.Score),
   value: mapElementValue(record.Value),
+  class: record.Class,
+  service: record.Service,
 }));
 
 /*
