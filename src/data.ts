@@ -198,10 +198,12 @@ const categoryIndicators = (
 };
 
 /*
- * Load data from a CSV file relative to the project root.
+ * Load Records from a CSV file and map them to a useful type.
  */
-const loadCsvFile = async (file: string): Promise<CsvRecord[]> => {
-  const data: CsvRecord[] = [];
+const loadCsv = <T extends Record<string, unknown>>(
+  mapper: (record: CsvRecord) => T,
+): ((f: string) => Promise<T[]>) => async (file: string): Promise<T[]> => {
+  const data: T[] = [];
 
   const source = fs.createReadStream(path.join(process.cwd(), file));
 
@@ -211,7 +213,7 @@ const loadCsvFile = async (file: string): Promise<CsvRecord[]> => {
     let record;
     // eslint-disable-next-line no-cond-assign
     while ((record = parser.read())) {
-      data.push(record);
+      data.push(mapper(record));
     }
   });
 
@@ -220,17 +222,6 @@ const loadCsvFile = async (file: string): Promise<CsvRecord[]> => {
     parser.on("end", () => resolve(data));
     source.pipe(parser);
   });
-};
-
-/*
- * Load Records from a CSV file and map them to a useful type.
- */
-const loadCsv = <T extends Record<string, unknown>>(
-  mapper: (record: CsvRecord) => T,
-): ((f: string) => Promise<T[]>) => async (file: string): Promise<T[]> => {
-  const records = await loadCsvFile(file);
-
-  return records.map((record) => mapper(record));
 };
 
 /*
