@@ -2,7 +2,7 @@ import {promises as fs} from "fs";
 import path from "path";
 import yargs from "yargs";
 
-import {companyIndices} from "../src/data";
+import {companyIndices, indicatorIndices} from "../src/data";
 import generateNav from "../src/navigation";
 import {unreachable} from "../src/utils";
 
@@ -49,12 +49,20 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
       },
       async (argv) => {
         const scores = await companyIndices();
+        const indicators = await indicatorIndices();
 
         const scoresTarget: OutOrFile = argv.write
           ? {target: "file", output: "stories/scores-fixtures.json"}
           : {target: "stdout"};
 
-        await outOrFile(scoresTarget, scores);
+        const indicatorsTarget: OutOrFile = argv.write
+          ? {target: "file", output: "stories/indicator-fixtures.json"}
+          : {target: "stdout"};
+
+        await Promise.all([
+          outOrFile(scoresTarget, scores),
+          outOrFile(indicatorsTarget, indicators),
+        ]);
       },
     )
     .command(
