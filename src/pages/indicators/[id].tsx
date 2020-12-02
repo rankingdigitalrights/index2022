@@ -64,15 +64,28 @@ const IndicatorPage = ({index, indicators}: IndicatorPageProps) => {
 
           <section className="w-full mt-6 mx-auto">{index.description}</section>
         </div>
+      </div>
 
-        {index.companies.map((company) => (
-          <CompanyElements
-            key={`company-element-${company}`}
-            indicatorLabel={index.label}
-            company={company}
-            companyElements={index.elements[company] || {}}
-          />
-        ))}
+      <div className="bg-beige pt-6 mt-6">
+        <div className="container mx-auto">
+
+          <div className="flex flex-row w-9/12 mx-auto justify-between">
+            <div className="w-1/2">Company Selection</div>
+
+            <div className="w-1/4">Sorting</div>
+
+            <div className="w-1/4">Value Toggle</div>
+          </div>
+
+          {index.companies.map((company) => (
+            <CompanyElements
+              key={`company-element-${company}`}
+              indicatorLabel={index.label}
+              company={company}
+              companyElements={index.elements[company] || {}}
+            />
+          ))}
+        </div>
       </div>
     </Layout>
   );
