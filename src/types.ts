@@ -88,7 +88,7 @@ export type Element = {
   description: string;
   score: number | NA;
   value: ElementValue;
-  company: string;
+  companyId: string;
   kind: string;
   service: string;
 };

@@ -1,4 +1,3 @@
-import slugify from "@sindresorhus/slugify";
 import parse from "csv-parse";
 import fs, {promises as fsP} from "fs";
 import path from "path";
@@ -408,9 +407,9 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
           );
 
           return {
-            id: slugify(total.company),
+            id: companySpec.company,
             index: total.index,
-            company: total.company,
+            company: companySpec.company,
             companyPretty: companySpec.companyPretty,
             rank: -1, // We set the real rank further below
             kind: companySpec.kind,
@@ -458,7 +457,7 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
             element.indicator === spec.indicator &&
             indexYears.has(element.index),
         )
-        .map(({element, company, score, value, kind, service}) => {
+        .map(({element, company: companyId, score, value, kind, service}) => {
           const {category, elementNr, label, description} =
             csvElementSpecs.find((e) => e.element === element) ||
             unreachable(`Element ${element} not found in element specs.`);
@@ -473,13 +472,13 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
             value,
             kind,
             service,
-            company,
+            companyId,
           };
         });
 
       const companies = [
         ...elements.reduce(
-          (memo, {company}) => memo.add(company),
+          (memo, {companyId}) => memo.add(companyId),
           new Set<string>(),
         ),
       ];
@@ -488,7 +487,7 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
         (memo, company) => ({
           [company]: [
             ...elements
-              .filter((element) => element.company === company)
+              .filter((element) => element.companyId === company)
               .reduce((agg, {service}) => agg.add(service), new Set<string>()),
           ],
           ...memo,
@@ -505,7 +504,8 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
               [service]: elements
                 .filter(
                   (element) =>
-                    element.company === company && element.service === service,
+                    element.companyId === company &&
+                    element.service === service,
                 )
                 .sort((a, b) => {
                   if (a.elementNr < b.elementNr) return -1;
