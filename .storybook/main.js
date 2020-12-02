@@ -4,6 +4,15 @@ module.exports = {
   stories: ["../stories/**/**/*.stories.@(ts|tsx|js|jsx|mdx)"],
   addons: ["@storybook/addon-essentials", "@storybook/addon-links"],
   webpackFinal: async (config) => {
+    const assetRule = config.module.rules.find(({test}) => test.test(".svg"));
+
+    assetRule.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/;
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+    
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       use: [
