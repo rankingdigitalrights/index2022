@@ -19,7 +19,7 @@ export default {
 };
 
 const Template: Story<CompanyTagProps> = ({company, active}) => (
-  <CompanyTag company={company} active={active} />
+  <CompanyTag company={company} active={active} onClick={() => {}} />
 );
 
 export const Component = Template.bind({});
