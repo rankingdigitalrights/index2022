@@ -163,7 +163,7 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
         </div>
       </div>
 
-      <div className="bg-beige pt-6 mt-6">
+      <div className="bg-beige pt-6 pb-6 mt-6">
         <div className="container mx-auto">
           <div className="flex flex-row w-9/12 mx-auto justify-between items-center">
             <div className="w-1/2">
