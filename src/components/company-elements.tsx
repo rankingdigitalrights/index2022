@@ -1,3 +1,4 @@
+import c from "clsx";
 import React from "react";
 
 import {Element} from "../types";
@@ -34,16 +35,23 @@ const CompanyElements = ({
     return memo.concat([[element].concat(elements)]);
   }, [] as Element[][]);
 
-  const legend = legendRow.map((item) => (
-    <div className="border w-64 p-4 text-xxs" key={item}>
-      {item}
-    </div>
-  ));
+  const legend = legendRow.map((item, idx) => {
+    const className = {
+      "w-64": idx === 0,
+      "w-40": idx > 0,
+    };
+
+    return (
+      <div className={c("border p-4 text-xxs", className)} key={item}>
+        {item}
+      </div>
+    );
+  });
 
   const grid = rows.map((row) => {
     return (
       <div className="flex w-full">
-        <div className="flex flex-row w-full justify-between">
+        <div className="flex flex-row w-full">
           {row.map((element, idx) => {
             if (idx === 0)
               return (
@@ -56,7 +64,7 @@ const CompanyElements = ({
               );
             return (
               <div
-                className="border w-64 p-4 text-xxs"
+                className="border w-40 p-4 text-xxs"
                 key={`${element.service}-${element.label}`}
               >
                 {literalValues ? element.score : element.value}
@@ -72,8 +80,8 @@ const CompanyElements = ({
     <div className="mt-6">
       <h3>{company}</h3>
 
-      <div className="border flex flex-col w-full mt-3 font-circular">
-        <div className="border flex flex-row justify-between">{legend}</div>
+      <div className="flex flex-col w-full mt-3 font-circular">
+        <div className="flex flex-row">{legend}</div>
 
         {grid}
       </div>

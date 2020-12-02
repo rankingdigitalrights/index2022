@@ -455,7 +455,8 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
         .filter(
           (element) =>
             element.indicator === spec.indicator &&
-            indexYears.has(element.index),
+            indexYears.has(element.index) &&
+            !["OpCom", "Group"].includes(element.service),
         )
         .map(({element, company: companyId, score, value, kind, service}) => {
           const {category, elementNr, label, description} =
