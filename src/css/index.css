@@ -5,70 +5,75 @@
 @layer base {
   @font-face {
     font-family: Circular;
-    src:url(../../public/fonts/CircularStd-Black.otf);
-    src:url(../../public/fonts/CircularStd-Black.eot) format("embedded-opentype"),
-        url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
-        url(../../public/fonts/CircularStd-Black.woff) format("woff");
+    src: url(../../public/fonts/CircularStd-Black.otf);
+    src: url(../../public/fonts/CircularStd-Black.eot)
+        format("embedded-opentype"),
+      url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
+      url(../../public/fonts/CircularStd-Black.woff) format("woff");
     font-weight: 700;
-    font-style: normal
+    font-style: normal;
   }
 
   @font-face {
     font-family: Circular;
-    src:url(../../public/fonts/CircularStd-Book.ttf);
-    src:url(../../public/fonts/CircularStd-Book.eot) format("embedded-opentype"),
-        url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
-        url(../../public/fonts/CircularStd-Book.woff) format("woff");
+    src: url(../../public/fonts/CircularStd-Book.ttf);
+    src: url(../../public/fonts/CircularStd-Book.eot)
+        format("embedded-opentype"),
+      url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
+      url(../../public/fonts/CircularStd-Book.woff) format("woff");
     font-weight: 400;
-    font-style: normal
+    font-style: normal;
   }
 
   @font-face {
     font-family: Platform;
-    src:url(../../public/fonts/Platform-Medium.otf);
-    src:url(../../public/fonts/Platform-Medium.eot) format("embedded-opentype"),
-        url(../../public/fonts/Platform-Medium.woff2) format("woff2"),
-        url(../../public/fonts/Platform-Medium.woff) format("woff");
-    font-weight: 700
-  }
-
-  @font-face {
-    font-family: Lyon;
-    src:url(../../public/fonts/LyonText-Regular.otf);
-    src:url(../../public/fonts/LyonText-Regular.eot) format("embedded-opentype"),
-        url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
-        url(../../public/fonts/LyonText-Regular.woff) format("woff");
-    font-weight: 400;
-    font-style: none
-  }
-
-  @font-face {
-    font-family: Lyon;
-    src:url(../../public/fonts/LyonText-Bold.otf);
-    src:url(../../public/fonts/LyonText-Bold.eot) format("embedded-opentype"),
-        url(../../public/fonts/LyonText-Bold.woff2) format("woff2"),
-        url(../../public/fonts/LyonText-Bold.woff) format("woff");
+    src: url(../../public/fonts/Platform-Medium.otf);
+    src: url(../../public/fonts/Platform-Medium.eot) format("embedded-opentype"),
+      url(../../public/fonts/Platform-Medium.woff2) format("woff2"),
+      url(../../public/fonts/Platform-Medium.woff) format("woff");
     font-weight: 700;
-    font-style: none
   }
 
   @font-face {
     font-family: Lyon;
-    src:url(../../public/fonts/LyonText-RegularItalic.otf);
-    src:url(../../public/fonts/LyonText-RegularItalic.eot) format("embedded-opentype"),
-        url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
-        url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
+    src: url(../../public/fonts/LyonText-Regular.otf);
+    src: url(../../public/fonts/LyonText-Regular.eot)
+        format("embedded-opentype"),
+      url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
+      url(../../public/fonts/LyonText-Regular.woff) format("woff");
     font-weight: 400;
-    font-style: italic
+    font-style: none;
   }
-  
+
   @font-face {
     font-family: Lyon;
-    src:url(../../public/fonts/LyonText-BoldItalic.otf);
-    src:url(../../public/fonts/LyonText-BoldItalic.eot) format("embedded-opentype"),
-        url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
+    src: url(../../public/fonts/LyonText-Bold.otf);
+    src: url(../../public/fonts/LyonText-Bold.eot) format("embedded-opentype"),
+      url(../../public/fonts/LyonText-Bold.woff2) format("woff2"),
+      url(../../public/fonts/LyonText-Bold.woff) format("woff");
     font-weight: 700;
-    font-style: italic
+    font-style: none;
+  }
+
+  @font-face {
+    font-family: Lyon;
+    src: url(../../public/fonts/LyonText-RegularItalic.otf);
+    src: url(../../public/fonts/LyonText-RegularItalic.eot)
+        format("embedded-opentype"),
+      url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
+      url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: Lyon;
+    src: url(../../public/fonts/LyonText-BoldItalic.otf);
+    src: url(../../public/fonts/LyonText-BoldItalic.eot)
+        format("embedded-opentype"),
+      url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
+    font-weight: 700;
+    font-style: italic;
   }
 
   /* Get rid of the border outlines on button unless user is actually tabbing. */
@@ -129,8 +134,7 @@
     -webkit-transition: background-color 0.5s ease-out;
     -moz-transition: background-color 0.5s ease-out;
     -o-transition: background-color 0.5s ease-out;
-    transition: background-color 0.5s ease-out,
-                width 1s ease-in-out;
+    transition: background-color 0.5s ease-out, width 1s ease-in-out;
   }
 
   figure.scrolly-canvas p {
@@ -177,9 +181,5 @@
 
   .toggle-checkbox:checked {
     right: 0.2rem;
-  }
-
-  .toggle-checked {
-    @apply bg-accent-gold;
   }
 }
