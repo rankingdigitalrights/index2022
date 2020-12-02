@@ -103,6 +103,22 @@ const MultiValue = ({
   );
 };
 
+const Placeholder = () => {
+  return <span className="text-xxs font-circular">All companies</span>;
+};
+
+const ControlComponent = ({children}) => {
+  return (
+    <div className="bg-beige border-b-2 border-prissian flex flex-row justify-between items-start w-full">
+      {children}
+    </div>
+  );
+};
+
+const IndicatorSeparator = () => {
+  return <span />;
+};
+
 const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
   const [literalValues, setLiteralValues] = useState(false);
   const [selectedCompanies, setSelectedCompanies] = useState<Set<string>>(
@@ -166,7 +182,9 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
       <div className="bg-beige pt-6 pb-6 mt-6">
         <div className="container mx-auto">
           <div className="flex flex-row w-9/12 mx-auto justify-between items-center">
-            <div className="w-1/2">
+            <div className="w-1/2 flex flex-col justify-between h-14">
+              <span className="text-xs font-circular">Select companies:</span>
+
               <Select
                 id="company-select"
                 options={companies}
@@ -176,18 +194,31 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
                 isMulti
                 isClearable
                 closeMenuOnSelect={false}
-                components={{MenuList, MultiValue}}
+                components={{
+                  MenuList,
+                  MultiValue,
+                  Placeholder,
+                  IndicatorSeparator,
+                  Control: ControlComponent,
+                }}
                 onChange={handleSelectCompany}
               />
             </div>
 
-            <div className="w-1/4" />
+            <div className="w-1/4 flex flex-col justify-between h-14 mx-6">
+              <span className="text-xs font-circular">Sort:</span>
+              <span>&nbsp;</span>
+            </div>
 
-            <div className="w-1/4">
-              <ToggleSwitch
-                label="Literal values"
-                onChange={handleToggleSwitch}
-              />
+            <div className="w-1/4 flex flex-col justify-between h-14">
+              <span className="text-xs font-circular">&nbsp;</span>
+
+              <div>
+                <ToggleSwitch
+                  label="Literal values"
+                  onChange={handleToggleSwitch}
+                />
+              </div>
             </div>
           </div>
 
