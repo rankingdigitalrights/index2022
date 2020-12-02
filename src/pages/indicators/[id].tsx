@@ -1,9 +1,10 @@
 import {useRouter} from "next/router";
-import React from "react";
+import React, {useState} from "react";
 
 import CompanyElements from "../../components/company-elements";
 import IndicatorSelector from "../../components/indicator-selector";
 import Layout from "../../components/layout";
+import ToggleSwitch from "../../components/toggle-switch";
 import {indicatorData, indicatorIndices} from "../../data";
 import {IndicatorIndex} from "../../types";
 
@@ -46,10 +47,15 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
 };
 
 const IndicatorPage = ({index, indicators}: IndicatorPageProps) => {
+  const [literalValues, setLiteralValues] = useState(false);
   const router = useRouter();
 
   const handleSelect = (id: string) => {
     router.push(`/indicators/${id}`);
+  };
+
+  const handleToggleSwitch = (toggle: boolean) => {
+    setLiteralValues(toggle);
   };
 
   return (
@@ -68,13 +74,17 @@ const IndicatorPage = ({index, indicators}: IndicatorPageProps) => {
 
       <div className="bg-beige pt-6 mt-6">
         <div className="container mx-auto">
-
           <div className="flex flex-row w-9/12 mx-auto justify-between">
             <div className="w-1/2">Company Selection</div>
 
             <div className="w-1/4">Sorting</div>
 
-            <div className="w-1/4">Value Toggle</div>
+            <div className="w-1/4">
+              <ToggleSwitch
+                label="Literal values"
+                onChange={handleToggleSwitch}
+              />
+            </div>
           </div>
 
           {index.companies.map((company) => (
@@ -83,6 +93,7 @@ const IndicatorPage = ({index, indicators}: IndicatorPageProps) => {
               indicatorLabel={index.label}
               company={company}
               companyElements={index.elements[company] || {}}
+              literalValues={literalValues}
             />
           ))}
         </div>

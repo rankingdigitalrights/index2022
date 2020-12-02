@@ -6,12 +6,14 @@ interface CompanyElementsProps {
   indicatorLabel: string;
   company: string;
   companyElements: Record<string, Element[]>;
+  literalValues: boolean;
 }
 
 const CompanyElements = ({
   indicatorLabel,
   company,
   companyElements,
+  literalValues,
 }: CompanyElementsProps) => {
   const services = Object.keys(companyElements);
 
@@ -57,7 +59,7 @@ const CompanyElements = ({
                 className="border w-64 p-4 text-xxs"
                 key={`${element.service}-${element.label}`}
               >
-                {element.value}
+                {literalValues ? element.score : element.value}
               </div>
             );
           })}
@@ -70,7 +72,7 @@ const CompanyElements = ({
     <div className="mt-6">
       <h3>{company}</h3>
 
-      <div className="border flex flex-col w-full mt-3">
+      <div className="border flex flex-col w-full mt-3 font-circular">
         <div className="border flex flex-row justify-between">{legend}</div>
 
         {grid}
