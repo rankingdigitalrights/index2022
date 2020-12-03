@@ -1,5 +1,5 @@
 import React from "react";
-import Select, {ControlProps, ValueType} from "react-select";
+import Select, {SingleValueProps, ControlProps, ValueType} from "react-select";
 
 export type IndicatorOption = {
   value: string;
@@ -16,13 +16,21 @@ const IndicatorSeparator = () => {
   return <span />;
 };
 
-const IndicatorControlComponent = ({
-  children,
-}: ControlProps<IndicatorOption, false>) => {
+const ControlComponent = ({children, props}: ControlProps<IndicatorOption, false>) => {
   return (
     <div className="border-b-2 border-prissian flex flex-row justify-between items-start w-full">
       {children}
     </div>
+  );
+}
+
+const SingleValue = ({
+  children,
+}: SingleValueProps<IndicatorOption>) => {
+  return (
+    <span className="text-lg text-prissian font-platform">
+      {children}
+    </span>
   );
 };
 
@@ -44,7 +52,8 @@ const IndicatorSelector = ({
         openMenuOnFocus
         components={{
           IndicatorSeparator,
-          Control: IndicatorControlComponent,
+          SingleValue,
+          Control: ControlComponent,
         }}
         onChange={handleChange}
       />
