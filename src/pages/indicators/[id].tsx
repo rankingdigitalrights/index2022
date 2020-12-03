@@ -218,7 +218,7 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
               <span>&nbsp;</span>
             </div>
 
-            <div className="w-1/4 flex flex-col justify-between h-14">
+            <div className="flex flex-col justify-between h-14">
               <span className="text-xs font-circular">&nbsp;</span>
 
               <div>
