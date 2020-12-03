@@ -3,10 +3,10 @@ import Select, {ControlProps, SingleValueProps, ValueType} from "react-select";
 
 import {SelectOption} from "../types";
 
-interface IndicatorSelectorProps {
-  indicators: SelectOption[];
-  selected: SelectOption;
-  onSelect: (indicator: string) => void;
+interface SortSelectorProps {
+  strategies: SelectOption[];
+  selected: string;
+  onSelect: (strategy: string) => void;
 }
 
 const IndicatorSeparator = () => {
@@ -22,26 +22,22 @@ const ControlComponent = ({children}: ControlProps<SelectOption, false>) => {
 };
 
 const SingleValue = ({children}: SingleValueProps<SelectOption>) => {
-  return (
-    <span className="text-lg text-prissian font-platform">{children}</span>
-  );
+  return <span className="text-xxs font-circular">{children}</span>;
 };
 
-const IndicatorSelector = ({
-  indicators,
-  selected,
-  onSelect,
-}: IndicatorSelectorProps) => {
+const SortSelector = ({strategies, selected, onSelect}: SortSelectorProps) => {
   const handleChange = (value: ValueType<SelectOption, false>) => {
     if (value) onSelect(value.value);
   };
+
+  const selectedOption = strategies.find(({value}) => selected === value);
 
   return (
     <div className="w-full">
       <Select
         id="indicator-select"
-        options={indicators}
-        value={selected}
+        options={strategies}
+        value={selectedOption}
         openMenuOnFocus
         components={{
           IndicatorSeparator,
@@ -54,4 +50,4 @@ const IndicatorSelector = ({
   );
 };
 
-export default IndicatorSelector;
+export default SortSelector;

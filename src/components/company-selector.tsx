@@ -7,24 +7,21 @@ import Select, {
   ValueType,
 } from "react-select";
 
+import {SelectOption, SortStrategy} from "../types";
 import CompanyTag from "./company-tag";
 
-export type CompanyOption = {
-  value: string;
-  label: string;
-};
-
 interface CompanySelectorProps {
-  companies: CompanyOption[];
+  companies: SelectOption[];
   selected: string[];
   onSelect: (companies: string[]) => void;
+  sortStrategy: SortStrategy;
 }
 
 const MenuList = ({
   options,
   getValue,
   setValue,
-}: MenuListComponentProps<CompanyOption, true>) => {
+}: MenuListComponentProps<SelectOption, true>) => {
   const selectedCompanies = new Set((getValue() || []).map(({value}) => value));
 
   return (
@@ -46,7 +43,7 @@ const MenuList = ({
 const MultiValue = ({
   data: {value, label},
   setValue,
-}: MultiValueProps<CompanyOption>) => {
+}: MultiValueProps<SelectOption>) => {
   return (
     <CompanyTag
       key={value}
@@ -62,7 +59,7 @@ const Placeholder = () => {
   return <span className="text-xxs font-circular">All companies</span>;
 };
 
-const ControlComponent = ({children}: ControlProps<CompanyOption, true>) => {
+const ControlComponent = ({children}: ControlProps<SelectOption, true>) => {
   return (
     <div className="bg-beige border-b-2 border-prissian flex flex-row justify-between items-start w-full">
       {children}
@@ -78,10 +75,11 @@ const CompanySelector = ({
   companies,
   selected,
   onSelect,
+  sortStrategy,
 }: CompanySelectorProps) => {
   const handleSelectCompany = (
-    value: ValueType<CompanyOption, true>,
-    {action}: ActionMeta<CompanyOption>,
+    value: ValueType<SelectOption, true>,
+    {action}: ActionMeta<SelectOption>,
   ) => {
     // eslint-disable-next-line default-case
     switch (action) {
@@ -116,8 +114,10 @@ const CompanySelector = ({
     <div className="w-full">
       <Select
         id="company-select"
-        options={companies}
-        value={companies.filter((obj) => selected.includes(obj.value))}
+        options={sortStrategy(companies)}
+        value={sortStrategy(
+          companies.filter((obj) => selected.includes(obj.value)),
+        )}
         isMulti
         isClearable
         closeMenuOnSelect={false}

@@ -105,3 +105,14 @@ export type IndicatorIndex = {
   services: Record<string, string[]>;
   elements: Record<string, Record<string, Element[]>>;
 };
+
+export type SelectOption = {
+  value: string;
+  label: string;
+};
+
+export interface SortStrategy {
+  (xs: SelectOption[]): SelectOption[];
+}
+
+export type SortStrategies = Map<string, SortStrategy>;

@@ -2,16 +2,18 @@ import {useRouter} from "next/router";
 import React, {useState} from "react";
 
 import CompanyElements from "../../components/company-elements";
-import CompanySelector, {
-  CompanyOption,
-} from "../../components/company-selector";
-import IndicatorSelector, {
-  IndicatorOption,
-} from "../../components/indicator-selector";
+import CompanySelector from "../../components/company-selector";
+import IndicatorSelector from "../../components/indicator-selector";
 import Layout from "../../components/layout";
+import SortSelector from "../../components/sort-selector";
 import ToggleSwitch from "../../components/toggle-switch";
 import {companyIndices, indicatorData, indicatorIndices} from "../../data";
-import {IndicatorIndex} from "../../types";
+import {
+  IndicatorIndex,
+  SelectOption,
+  SortStrategies,
+  SortStrategy,
+} from "../../types";
 
 type Params = {
   params: {
@@ -21,8 +23,8 @@ type Params = {
 
 interface IndicatorPageProps {
   index: IndicatorIndex;
-  indicators: IndicatorOption[];
-  companies: CompanyOption[];
+  indicators: SelectOption[];
+  companies: SelectOption[];
 }
 
 export const getStaticPaths = async () => {
@@ -58,8 +60,35 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   };
 };
 
+const strategies: SortStrategies = new Map<string, SortStrategy>();
+strategies.set(
+  "Alphabetically Ascending",
+  (options: SelectOption[]): SelectOption[] => {
+    return options.sort((a, b) => {
+      if (a.label < b.label) return -1;
+      if (a.label > b.label) return 1;
+      return 0;
+    });
+  },
+);
+strategies.set(
+  "Alphabetically Descending",
+  (options: SelectOption[]): SelectOption[] => {
+    return options.sort((a, b) => {
+      if (a.label < b.label) return 1;
+      if (a.label > b.label) return -1;
+      return 0;
+    });
+  },
+);
+
+const identitySortFn: SortStrategy = (xs) => xs;
+
 const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
+  const [sortStrategy, setSortStrategy] = useState<string>(
+    "Alphabetically Ascending",
+  );
   const [literalValues, setLiteralValues] = useState(false);
 
   const router = useRouter();
@@ -72,20 +101,31 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
     setSelectedCompanies(ids);
   };
 
+  const handleSelectSortStrategy = (strategy: string) => {
+    setSortStrategy(strategy);
+  };
+
   const handleToggleSwitch = (toggle: boolean) => {
     setLiteralValues(toggle);
   };
 
-  const activeSelector: IndicatorOption = {
+  const sortStrategyFn = strategies.get(sortStrategy) || identitySortFn;
+
+  const activeSelector: SelectOption = {
     value: index.id,
     label: `${index.id}. ${index.label}`,
   };
 
+  const sortOptions: SelectOption[] = [...strategies.keys()].map((value) => ({
+    value,
+    label: value,
+  }));
+
   const dataGrids =
     selectedCompanies.length === 0
-      ? index.companies
-      : index.companies.filter((company) =>
-          selectedCompanies.includes(company),
+      ? sortStrategyFn(companies)
+      : sortStrategyFn(
+          companies.filter(({value}) => selectedCompanies.includes(value)),
         );
 
   return (
@@ -112,12 +152,18 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
                 companies={companies}
                 selected={selectedCompanies}
                 onSelect={handleSelectCompany}
+                sortStrategy={sortStrategyFn}
               />
             </div>
 
             <div className="w-1/4 flex flex-col justify-between h-14 mx-6">
               <span className="text-xs font-circular">Sort:</span>
-              <span>&nbsp;</span>
+
+              <SortSelector
+                strategies={sortOptions}
+                selected={sortStrategy}
+                onSelect={handleSelectSortStrategy}
+              />
             </div>
 
             <div className="flex flex-col justify-between h-14">
@@ -132,12 +178,12 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
             </div>
           </div>
 
-          {dataGrids.map((company) => (
+          {dataGrids.map(({value}) => (
             <CompanyElements
-              key={`company-element-${company}`}
+              key={`company-element-${value}`}
               indicatorLabel={index.label}
-              company={company}
-              companyElements={index.elements[company] || {}}
+              company={value}
+              companyElements={index.elements[value] || {}}
               literalValues={literalValues}
             />
           ))}
