@@ -60,7 +60,7 @@ const CompanySection = ({
 
       <div className="flex flex-col md:flex-row mt-8 md:mt-20">
         <div className="md:w-1/3 md:mr-2">
-          <div className="flex md:h-64">
+          <div className="flex md:h-40">
             <div className="flex flex-col">
               <h4 className="text-lg font-circular">Score 2019</h4>
               <div className="text-xl font-platform font-bold mb-2">
@@ -80,7 +80,7 @@ const CompanySection = ({
         </div>
 
         <div ref={chartRef} className="md:w-1/3">
-          <h4 className="text-lg font-circular md:h-64 mt-4 md:mt-0">
+          <h4 className="text-lg font-circular md:h-40 mt-4 md:mt-0">
             Indicators
           </h4>
 
@@ -88,7 +88,7 @@ const CompanySection = ({
         </div>
 
         <div className="md:w-1/3 md:ml-2">
-          <h4 className="text-lg font-circular md:h-64 mt-4 md:mt-0">
+          <h4 className="text-lg font-circular md:h-40 mt-4 md:mt-0">
             Summary of changes
           </h4>
         </div>
