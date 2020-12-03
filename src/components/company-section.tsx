@@ -18,7 +18,13 @@ const CompanySection = ({
 }: CompanySectionProps) => {
   // eslint-disable-next-line unicorn/no-null
   const chartRef = useRef<HTMLDivElement>(null);
-  const [chartWidth, setChartWidth] = useState(250);
+
+  // Set the default width of the indicator chart to 0 to avoid a visible
+  // rerender when the page loads the first time. React needs to render the
+  // chart once in order to figure out the width of the surrounding div
+  // element. Better not to show any graph than a graph with the wrong width
+  // before resizing it to the appropriate width.
+  const [chartWidth, setChartWidth] = useState(0);
 
   useEffect(() => {
     const resize = () => {
