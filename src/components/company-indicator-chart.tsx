@@ -106,7 +106,7 @@ const CompanyIndicatorChart = ({
                       <svg
                         version="1"
                         xmlns="http://www.w3.org/2000/svg"
-                        width={250}
+                        width={width - 10}
                         height={10}
                         transform="translate(0, 0)"
                       >

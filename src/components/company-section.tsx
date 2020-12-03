@@ -1,3 +1,5 @@
+import React, {useEffect, useRef, useState} from "react";
+
 import {Indicator, ScoreCategory} from "../types";
 import CompanyIndicatorChart from "./company-indicator-chart";
 
@@ -14,6 +16,26 @@ const CompanySection = ({
   text,
   indicators,
 }: CompanySectionProps) => {
+  // eslint-disable-next-line unicorn/no-null
+  const chartRef = useRef<HTMLDivElement>(null);
+  const [chartWidth, setChartWidth] = useState(250);
+
+  useEffect(() => {
+    const resize = () => {
+      if (!chartRef?.current?.offsetWidth) return;
+      const width = chartRef.current.offsetWidth;
+      setChartWidth(width);
+    };
+
+    window.addEventListener("resize", resize);
+
+    resize();
+
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, [chartRef]);
+
   let title;
   if (category === "governance") {
     title = "Governance";
@@ -37,10 +59,10 @@ const CompanySection = ({
           <div dangerouslySetInnerHTML={{__html: text}} />
         </div>
 
-        <div className="md:w-1/3 md:m-2">
+        <div ref={chartRef} className="md:w-1/3 md:m-2">
           <h4>Indicators</h4>
 
-          <CompanyIndicatorChart indicators={indicators} />
+          <CompanyIndicatorChart indicators={indicators} width={chartWidth} />
         </div>
 
         <div className="md:w-1/3 md:ml-2">
