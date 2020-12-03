@@ -12,8 +12,8 @@
     "fix": "yarn lint --fix",
     "fixtures": "yarn indexctl fixtures --write",
     "indexctl": "ts-node --transpile-only -P tsconfig.ts-node.json bin/indexctl.ts",
-    "navigation": "yarn indexctl navigation --write",
     "lint": "eslint . --cache --ext ts --ext tsx --ext js --ext jsx",
+    "navigation": "yarn indexctl navigation --write",
     "prod": "next build && next export",
     "start": "next start",
     "prestorybook": "yarn fixtures",
@@ -100,7 +100,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "! git rev-parse --abbrev-ref HEAD | grep -q master || (yarn verify && lint-staged)"
+      "pre-commit": "! git rev-parse --abbrev-ref HEAD | grep -q main || (yarn verify && lint-staged)"
     }
   },
   "lint-staged": {
