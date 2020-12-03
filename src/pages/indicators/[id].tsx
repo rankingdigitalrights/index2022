@@ -2,6 +2,7 @@ import {useRouter} from "next/router";
 import React, {useState} from "react";
 import Select, {
   ActionMeta,
+  ControlProps,
   MenuListComponentProps,
   MultiValueProps,
   ValueType,
@@ -9,7 +10,9 @@ import Select, {
 
 import CompanyElements from "../../components/company-elements";
 import CompanyTag from "../../components/company-tag";
-import IndicatorSelector from "../../components/indicator-selector";
+import IndicatorSelector, {
+  IndicatorOption,
+} from "../../components/indicator-selector";
 import Layout from "../../components/layout";
 import ToggleSwitch from "../../components/toggle-switch";
 import {companyIndices, indicatorData, indicatorIndices} from "../../data";
@@ -28,7 +31,7 @@ type Params = {
 
 interface IndicatorPageProps {
   index: IndicatorIndex;
-  indicators: Array<{id: string; label: string}>;
+  indicators: IndicatorOption[];
   companies: CompanyOption[];
 }
 
@@ -46,9 +49,9 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   const index = (await indicatorData(indicatorId)) as IndicatorIndex;
-  const indicators = (await indicatorIndices()).map(({id, label}) => ({
-    id,
-    label,
+  const indicators = (await indicatorIndices()).map(({id: value, label}) => ({
+    value,
+    label: `${value}. ${label}`,
   }));
   const companyIndex = await companyIndices();
   const companies = companyIndex.map(({id: value, companyPretty: label}) => ({
@@ -107,7 +110,7 @@ const Placeholder = () => {
   return <span className="text-xxs font-circular">All companies</span>;
 };
 
-const ControlComponent = ({children}) => {
+const ControlComponent = ({children}: ControlProps<IndicatorOption, true>) => {
   return (
     <div className="bg-beige border-b-2 border-prissian flex flex-row justify-between items-start w-full">
       {children}
@@ -120,12 +123,17 @@ const IndicatorSeparator = () => {
 };
 
 const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
-  const [literalValues, setLiteralValues] = useState(false);
   const [selectedCompanies, setSelectedCompanies] = useState<Set<string>>(
     new Set(),
   );
+  const [literalValues, setLiteralValues] = useState(false);
 
   const router = useRouter();
+
+  const activeSelector: IndicatorOption = {
+    value: index.id,
+    label: `${index.id}. ${index.label}`,
+  };
 
   const handleSelectIndicator = (id: string) => {
     router.push(`/indicators/${id}`);
@@ -171,7 +179,7 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
         <div className="flex flex-col w-9/12 mx-auto">
           <IndicatorSelector
             indicators={indicators}
-            selected={index.id}
+            selected={activeSelector}
             onSelect={handleSelectIndicator}
           />
 

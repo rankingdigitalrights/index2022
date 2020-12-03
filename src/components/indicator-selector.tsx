@@ -1,30 +1,53 @@
 import React from "react";
+import Select, {ControlProps, ValueType} from "react-select";
+
+export type IndicatorOption = {
+  value: string;
+  label: string;
+};
 
 interface IndicatorSelectorProps {
-  indicators: Array<{id: string; label: string}>;
-  selected: string;
-  onSelect: (id: string) => void;
+  indicators: IndicatorOption[];
+  selected: IndicatorOption;
+  onSelect: (indicator: string) => void;
 }
+
+const IndicatorSeparator = () => {
+  return <span />;
+};
+
+const IndicatorControlComponent = ({
+  children,
+}: ControlProps<IndicatorOption, false>) => {
+  return (
+    <div className="border-b-2 border-prissian flex flex-row justify-between items-start w-full">
+      {children}
+    </div>
+  );
+};
 
 const IndicatorSelector = ({
   indicators,
   selected,
   onSelect,
 }: IndicatorSelectorProps) => {
+  const handleChange = (value: ValueType<IndicatorOption, false>) => {
+    if (value) onSelect(value.value);
+  };
+
   return (
     <div className="w-full">
-      <select
-        className="w-full text-lg text-prissian font-black font-platform"
-        name="indicator-selector"
+      <Select
+        id="indicator-select"
+        options={indicators}
         value={selected}
-        onChange={(event) => onSelect(event.target.value)}
-      >
-        {indicators.map(({id, label}) => (
-          <option key={id} value={id}>
-            {id}. {label}
-          </option>
-        ))}
-      </select>
+        openMenuOnFocus
+        components={{
+          IndicatorSeparator,
+          Control: IndicatorControlComponent,
+        }}
+        onChange={handleChange}
+      />
     </div>
   );
 };
