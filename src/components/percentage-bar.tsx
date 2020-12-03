@@ -28,15 +28,17 @@ const PercentageBar = ({
   return (
     <g transform={transform}>
       <rect
-        className={c("fill-current", className)}
+        className="text-cat-negative fill-current"
         x={0}
-        width={percentage}
+        rx={5}
+        width={width}
         height={height}
       />
       <rect
-        className="text-cat-negative fill-current"
-        x={percentage}
-        width={width - percentage}
+        className={c("fill-current", className)}
+        x={0}
+        rx={5}
+        width={percentage}
         height={height}
       />
     </g>
