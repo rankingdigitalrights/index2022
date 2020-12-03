@@ -70,21 +70,52 @@ const CompanyPage = ({index, details}: CompanyProps) => {
             <CompanyRankCard rank={index.rank} score={index.scores.total} />
           </div>
         </section>
+      </div>
 
-        <section className="flex">
-          <div className="w-1/2 pt-3">
-            <h2>Key findings</h2>
-            <div
-              dangerouslySetInnerHTML={{__html: details.keyFindings || ""}}
-            />
-          </div>
+      <div className="bg-beige pt-6 pb-6 mt-6">
+        <div className="container mx-auto">
+          <section className="flex">
+            <div className="w-1/2 pt-3">
+              <h2>Key findings</h2>
+              <div
+                dangerouslySetInnerHTML={{__html: details.keyFindings || ""}}
+              />
+            </div>
 
-          <div className="w-1/2 pt-3">
-            <div className="pb-3">Services evaluated</div>
-          </div>
-        </section>
+            <div className="w-1/2 pt-3">
+              <div className="pb-3">Services evaluated</div>
+            </div>
+          </section>
 
-        <div className="flex flex-wrap bg-offset-gray center">
+          <section className="flex flex-col">
+            <h2 className="text-medium-gray">Analysis</h2>
+
+            <div className="flex">
+              <div className="w-1/2">
+                <h3>Overall score {index.scores.total}%</h3>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: details.analysis || "analysis missing",
+                  }}
+                />
+              </div>
+
+              <div className="w-1/2">
+                <h3>Key recommendations</h3>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      details.keyRecommendation || "key recommendation missing",
+                  }}
+                />
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div className="container mx-auto">
+        <div className="flex flex-wrap place-content-center bg-offset-gray center">
           <CompanyScoreChart
             category="governance"
             score={index.scores.governance}
@@ -92,31 +123,6 @@ const CompanyPage = ({index, details}: CompanyProps) => {
           <CompanyScoreChart category="freedom" score={index.scores.freedom} />
           <CompanyScoreChart category="privacy" score={index.scores.privacy} />
         </div>
-
-        <section className="flex flex-col">
-          <h2 className="text-medium-gray">Analysis</h2>
-
-          <div className="flex">
-            <div className="w-1/2">
-              <h3>Overall score {index.scores.total}%</h3>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: details.analysis || "analysis missing",
-                }}
-              />
-            </div>
-
-            <div className="w-1/2">
-              <h3>Key recommendations</h3>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html:
-                    details.keyRecommendation || "key recommendation missing",
-                }}
-              />
-            </div>
-          </div>
-        </section>
 
         <CompanySection
           category="governance"
