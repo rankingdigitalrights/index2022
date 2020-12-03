@@ -1,8 +1,8 @@
 import React from "react";
 
-import {ScoreCategory} from "../types";
-import GraphLabel from "./graph-label";
-import PercentageBar from "./percentage-bar";
+import {ScoreCategory} from "../../types";
+import GraphLabel from "../graph-label";
+import PercentageBar from "../percentage-bar";
 
 interface CompanyIndicatorChartBarProps {
   value: number;

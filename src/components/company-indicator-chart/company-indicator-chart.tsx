@@ -1,7 +1,7 @@
 import c from "clsx";
 import React from "react";
 
-import {Indicator} from "../types";
+import {Indicator} from "../../types";
 import CompanyIndicatorChartBar from "./company-indicator-chart-bar";
 
 interface CompanyIndicatorChartProps {
