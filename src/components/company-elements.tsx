@@ -1,8 +1,8 @@
 import c from "clsx";
 import React from "react";
 
-import IndicatorElementTag from "./indicator-element-tag";
 import {Element} from "../types";
+import IndicatorElementTag from "./indicator-element-tag";
 
 interface CompanyElementsProps {
   indicatorLabel: string;
@@ -47,8 +47,19 @@ const CompanyElements = ({
     };
 
     return (
-      <div className={c("flex flex-col items-center justify-center border border-disabled-dark", className)} key={item}>
-        <span className={c("flex flex-col items-center justify-center", innerClassName)}>
+      <div
+        className={c(
+          "flex flex-col items-center justify-center border border-disabled-dark",
+          className,
+        )}
+        key={item}
+      >
+        <span
+          className={c(
+            "flex flex-col items-center justify-center",
+            innerClassName,
+          )}
+        >
           <span>{item}</span>
         </span>
       </div>
