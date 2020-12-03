@@ -30,11 +30,10 @@ const GraphLabel = ({
       className={c(
         "select-none",
         {
-          "font-simplon-light": !bold,
-          "font-simplon-bold": bold,
-          "text-xxs": size === "small",
-          "text-lg": size === "large",
-          "text-2xl": size === "extra-large",
+          "font-black": bold,
+          "text-xs font-circular": size === "small",
+          "text-lg font-platform": size === "large",
+          "text-xl font-platform": size === "extra-large",
           "border border-yellow-400": debug,
         },
         className,

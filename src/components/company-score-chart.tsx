@@ -10,7 +10,7 @@ export interface CompanyScoreChartProps {
   score: number;
 }
 
-const CompanyScoreChart = ({score}: CompanyScoreChartProps) => {
+const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
   // Render the negative arc first.
   // eslint-disable-next-line unicorn/no-null
   const [datum] = pie().sort(null)([score, 100 - score]);
@@ -18,8 +18,12 @@ const CompanyScoreChart = ({score}: CompanyScoreChartProps) => {
   const innerRadius = 110;
 
   return (
-    <div className="p-4 m-4 flex-grow">
-      <svg className="h-64">
+    <div className="p-4 m-4 flex flex-col w-64">
+      <span className="font-circular text-sm font-black text-center">
+        {category.replace(/^\w/, (c) => c.toUpperCase())}
+      </span>
+
+      <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260">
         <g transform={`translate(${outerRadius + 5},${outerRadius + 5})`}>
           <circle
             r={(outerRadius + innerRadius) / 2}
@@ -38,7 +42,7 @@ const CompanyScoreChart = ({score}: CompanyScoreChartProps) => {
             transform="translate(0,5)"
             value={`${score}%`}
             textAnchor="middle"
-            size="extra-large"
+            size="large"
             bold
           />
         </g>
