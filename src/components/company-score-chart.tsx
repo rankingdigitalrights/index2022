@@ -1,9 +1,12 @@
-import {pie} from "d3-shape";
-import React from "react";
+import c from "clsx";
+import {arc, pie, PieArcDatum} from "d3-shape";
+import React, {useRef} from "react";
 
 import {ScoreCategory} from "../types";
-import CompanyScoreChartSlice from "./company-score-chart-slice";
+import {mapCategoryName} from "../utils";
 import GraphLabel from "./graph-label";
+
+type Datum = PieArcDatum<number | {valueOf(): number}>;
 
 export interface CompanyScoreChartProps {
   category: ScoreCategory;
@@ -11,16 +14,32 @@ export interface CompanyScoreChartProps {
 }
 
 const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
-  // Render the negative arc first.
+  // eslint-disable-next-line unicorn/no-null
+  const sliceRef = useRef<SVGGElement>(null);
+
   // eslint-disable-next-line unicorn/no-null
   const [datum] = pie().sort(null)([score, 100 - score]);
+
   const outerRadius = 120;
   const innerRadius = 110;
+
+  const sliceArc = arc<Datum>()
+    .innerRadius(innerRadius)
+    .outerRadius(outerRadius)
+    .cornerRadius(90)
+    .startAngle(datum.startAngle)
+    .endAngle(datum.endAngle)(datum);
+
+  const sliceClassName = c("fill-current", {
+    "text-cat-governance": category === "governance",
+    "text-cat-freedom": category === "freedom",
+    "text-cat-privacy": category === "privacy",
+  });
 
   return (
     <div className="p-4 m-4 flex flex-col w-64">
       <span className="font-circular text-sm font-black text-center">
-        {category.replace(/^\w/, (c) => c.toUpperCase())}
+        {mapCategoryName(category)}
       </span>
 
       <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260">
@@ -32,11 +51,9 @@ const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
             fill="none"
           />
 
-          <CompanyScoreChartSlice
-            datum={datum}
-            outerRadius={outerRadius}
-            innerRadius={innerRadius}
-          />
+          <g className={sliceClassName} ref={sliceRef}>
+            <path d={sliceArc === null ? undefined : sliceArc} />
+          </g>
 
           <GraphLabel
             transform="translate(0,5)"

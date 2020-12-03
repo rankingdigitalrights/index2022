@@ -1,4 +1,4 @@
-import {NA} from "./types";
+import {NA, ScoreCategory} from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const memoize = <T extends (...args: any[]) => any>(
@@ -48,5 +48,18 @@ export const unreachable = (message?: string): never => {
     throw new Error("Unreachable code reached.");
   } else {
     throw new Error(`Unreachable code reached: ${message}`);
+  }
+};
+
+export const mapCategoryName = (category: ScoreCategory): string => {
+  switch (category) {
+    case "governance":
+      return "Governance";
+    case "freedom":
+      return "Freedom of Expression";
+    case "privacy":
+      return "Privacy";
+    default:
+      return unreachable(`Category ${category} couldn't be mapped.`);
   }
 };
