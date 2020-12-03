@@ -1,6 +1,7 @@
 import c from "clsx";
 import React from "react";
 
+import IndicatorElementTag from "./indicator-element-tag";
 import {Element} from "../types";
 
 interface CompanyElementsProps {
@@ -37,13 +38,19 @@ const CompanyElements = ({
 
   const legend = legendRow.map((item, idx) => {
     const className = {
-      "w-64": idx === 0,
-      "w-40": idx > 0,
+      "w-40 text-xs p-2": idx === 0,
+      "w-36 text-xxs p-6": idx > 0,
+    };
+
+    const innerClassName = {
+      "w-24 h-16 text-center": idx > 0,
     };
 
     return (
-      <div className={c("border p-4 text-xxs", className)} key={item}>
-        {item}
+      <div className={c("flex flex-col items-center justify-center border border-disabled-dark", className)} key={item}>
+        <span className={c("flex flex-col items-center justify-center", innerClassName)}>
+          <span>{item}</span>
+        </span>
       </div>
     );
   });
@@ -56,18 +63,22 @@ const CompanyElements = ({
             if (idx === 0)
               return (
                 <div
-                  className="border w-64 p-4 text-xxs"
+                  className="flex flex-col items-center justify-center border border-disabled-dark w-40 p-2 text-xxs"
                   key={`legend-element-${element.label}`}
                 >
-                  {element.description}
+                  <span>{element.description}</span>
                 </div>
               );
             return (
               <div
-                className="border w-40 p-4 text-xxs"
+                className="flex flex-col items-center justify-center border border-disabled-dark w-36 p-6 text-xxs flex flex-col items-center"
                 key={`${element.service}-${element.label}`}
               >
-                {literalValues ? element.score : element.value}
+                <IndicatorElementTag
+                  score={element.score}
+                  value={element.value}
+                  activeTag={literalValues ? "score" : "value"}
+                />
               </div>
             );
           })}
