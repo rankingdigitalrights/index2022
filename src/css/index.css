@@ -116,7 +116,7 @@
     @apply list-disc list-inside;
   }
 
-  section h2 {
+  section.scolly h2 {
     @apply sticky;
     top: 60px;
   }
