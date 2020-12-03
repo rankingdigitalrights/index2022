@@ -38,7 +38,7 @@ const CompanyIndicatorChart = ({
   return (
     <div>
       {indicators.map(
-        ({indicator, display, label, category, score, familyMembers}) => {
+        ({indicator, display, label, category, score, familyMembers}, idx) => {
           const hasCollapse = collapsedIndicators.has(indicator);
           const isOpen =
             (hasCollapse && collapsedIndicators.get(indicator)) || false;
@@ -59,7 +59,7 @@ const CompanyIndicatorChart = ({
           return (
             <div
               key={`company-indicator-chart-${indicator}`}
-              className="flex flex-col"
+              className={c("flex flex-col", {"mt-2": idx > 0})}
             >
               <button
                 className={className}
@@ -67,7 +67,9 @@ const CompanyIndicatorChart = ({
                   hasCollapse ? () => handleCollapse(indicator) : () => {}
                 }
               >
-                <span className="text-left">{indicatorPretty}</span>
+                <span className="text-left text-xxs font-circular">
+                  {indicatorPretty}
+                </span>
 
                 {hasCollapse && isOpen && <ChevronDown className="ml-2" />}
                 {hasCollapse && !isOpen && <ChevronUp className="ml-2" />}
@@ -95,9 +97,11 @@ const CompanyIndicatorChart = ({
                   return (
                     <div
                       key={`company-indicator-chart-${m.indicator}`}
-                      className="pl-2 flex flex-col"
+                      className="pl-2 flex flex-col mt-2"
                     >
-                      <span className="text-left">{mIndicatorPretty}</span>
+                      <span className="text-left text-xxs font-circular">
+                        {mIndicatorPretty}
+                      </span>
 
                       <svg
                         version="1"
