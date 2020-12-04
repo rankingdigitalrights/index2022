@@ -45,7 +45,7 @@ const IndicatorCompaniesChart = ({
       >
         {sortedScores.map(({company, score}, idx) => {
           return (
-            <g>
+            <g key={`companies-chart-bar-${company}`}>
               <PercentageBar
                 key={company}
                 value={score}
