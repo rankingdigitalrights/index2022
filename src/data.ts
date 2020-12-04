@@ -442,10 +442,12 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
 export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
   async () => {
     const [
+      csvIndicators,
       csvElements,
       csvIndicatorSpecs,
       csvElementSpecs,
     ] = await Promise.all([
+      loadIndicatorsCsv("data/2020-indicators.csv"),
       loadElementsCsv("data/2020-elements.csv"),
       loadIndicatorSpecsCsv("data/2020-indicator-specs.csv"),
       loadElementSpecsCsv("data/2020-element-specs.csv"),
@@ -484,6 +486,13 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
           new Set<string>(),
         ),
       ];
+
+      const scores = companies.reduce((memo, company) => {
+        const indicator = csvIndicators.find(
+          (i) => i.company === company && i.indicator === spec.indicator,
+        );
+        return {[company]: indicator ? indicator.score : "NA", ...memo};
+      }, {} as Record<string, IndicatorScore>);
 
       const services = companies.reduce(
         (memo, company) => ({
@@ -531,6 +540,7 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
         description: spec.description,
         guidance: spec.guidance,
         companies,
+        scores,
         services,
         elements: sortedElements,
       };

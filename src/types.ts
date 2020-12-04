@@ -104,6 +104,7 @@ export type IndicatorIndex = {
   description: string;
   guidance: string;
   companies: string[];
+  scores: Record<string, IndicatorScore>;
   services: Record<string, string[]>;
   elements: Record<string, Record<string, Element[]>>;
 };
