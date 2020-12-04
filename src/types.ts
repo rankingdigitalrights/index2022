@@ -7,13 +7,15 @@ export type Category = ScoreCategory;
 
 export type NA = "NA";
 
+export type IndicatorScore = number | NA;
+
 export type Indicator = {
   category: ScoreCategory;
   indicator: string;
   display: string;
   indicatorNr: number;
   indicatorSuffix?: string;
-  score: number;
+  score: IndicatorScore;
   label: string;
   description: string;
   guidance: string;

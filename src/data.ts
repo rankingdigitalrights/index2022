@@ -13,6 +13,7 @@ import {
   IndexYear,
   Indicator,
   IndicatorIndex,
+  IndicatorScore,
   NA,
   ScoreCategory,
   Scores,
@@ -24,14 +25,14 @@ type CsvRecord = Record<string, string>;
 type CsvTotal = {
   index: IndexYear;
   company: string;
-  score?: number;
+  score: IndicatorScore;
 };
 
 type CsvCategory = {
   index: IndexYear;
   company: string;
   category: ScoreCategory;
-  score?: number;
+  score: IndicatorScore;
 };
 
 type CsvIndicator = {
@@ -41,7 +42,7 @@ type CsvIndicator = {
   indicator: string;
   indicatorNr: number;
   indicatorSuffix?: string;
-  score?: number;
+  score: IndicatorScore;
   label: string;
   description: string;
   isFamilyMember: boolean;
@@ -57,7 +58,7 @@ type CsvElement = {
   indicatorNr: number;
   indicatorSuffix?: string;
   elementNr: number;
-  score: number | NA;
+  score: IndicatorScore;
   value: ElementValue;
   kind: string;
   service: string;
@@ -105,9 +106,6 @@ const companiesFolder = "1aByjKhv9N9nNQBRNK1GVdraU0qorv7dX";
 /*
  * Some utility functions to parse the CSV data.
  */
-const floatOrNil = (value: string): number | undefined =>
-  value === "NA" ? undefined : Number.parseFloat(value);
-
 const floatOrNA = (value: string): number | NA =>
   isNA(value) ? "NA" : Number.parseFloat(value);
 
@@ -184,11 +182,14 @@ const categoryIndicators = (
             indicatorFamily === indicator.indicator && isFamilyMember,
         );
 
+        const score: IndicatorScore =
+          indicator.score === "NA" ? "NA" : indicator.score;
+
         return {
           category: indicator.category,
           indicator: indicator.indicator,
           indicatorNr: indicator.indicatorNr,
-          score: indicator.score || 0,
+          score,
           label,
           description,
           guidance,
@@ -241,7 +242,7 @@ const loadCsv = <T extends Record<string, unknown>>(
 const loadTotalsCsv = loadCsv<CsvTotal>((record) => ({
   index: record.Index as IndexYear,
   company: record.Company,
-  score: floatOrNil(record.Score),
+  score: floatOrNA(record.Score),
 }));
 
 /*
@@ -251,7 +252,7 @@ const loadCategoriesCsv = loadCsv<CsvCategory>((record) => ({
   index: record.Index as IndexYear,
   company: record.Company,
   category: mapCategory(record.Category),
-  score: floatOrNil(record.Score),
+  score: floatOrNA(record.Score),
 }));
 
 /*
@@ -264,7 +265,7 @@ const loadIndicatorsCsv = loadCsv<CsvIndicator>((record) => ({
   indicator: record.Indicator,
   indicatorNr: Number.parseInt(record.IndicatorNr, 10),
   indicatorSuffix: stringOrNil(record.IndicatorSuffix),
-  score: floatOrNil(record.Score),
+  score: floatOrNA(record.Score),
   label: record.labelLong,
   description: record.description,
   isFamilyMember: isIndicatorFamily(record.isSubindicator),

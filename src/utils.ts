@@ -1,4 +1,4 @@
-import {NA, ScoreCategory} from "./types";
+import {IndicatorScore, NA, ScoreCategory} from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const memoize = <T extends (...args: any[]) => any>(
@@ -62,4 +62,8 @@ export const mapCategoryName = (category: ScoreCategory): string => {
     default:
       return unreachable(`Category ${category} couldn't be mapped.`);
   }
+};
+
+export const mapScore = (score: IndicatorScore): number => {
+  return isNA(score) ? 0 : score;
 };

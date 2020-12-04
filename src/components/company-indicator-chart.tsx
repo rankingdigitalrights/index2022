@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import ChevronDown from "../../static/chevron-down.svg";
 import ChevronUp from "../../static/chevron-up.svg";
 import {Indicator} from "../types";
+import {mapScore} from "../utils";
 import PercentageBar from "./percentage-bar";
 
 interface CompanyIndicatorChartProps {
@@ -83,7 +84,7 @@ const CompanyIndicatorChart = ({
                 transform="translate(0, 0)"
               >
                 <PercentageBar
-                  value={score}
+                  value={mapScore(score)}
                   width={width}
                   height={9}
                   className={classNameBar}
@@ -111,7 +112,7 @@ const CompanyIndicatorChart = ({
                         transform="translate(0, 0)"
                       >
                         <PercentageBar
-                          value={m.score}
+                          value={mapScore(m.score)}
                           width={width - 10}
                           height={9}
                           className={classNameBar}

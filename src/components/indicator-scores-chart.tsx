@@ -2,6 +2,7 @@ import c from "clsx";
 import React from "react";
 
 import {CompanyIndex, Indicator} from "../types";
+import {mapScore} from "../utils";
 import GraphLabel from "./graph-label";
 
 interface IndicatorScoresChartProps {
@@ -105,7 +106,7 @@ const squareGroups = (
     j: number,
     indicator: Indicator | undefined,
   ) => {
-    const score = indicator ? indicator.score : 0;
+    const score = indicator ? mapScore(indicator.score) : 0;
     const x = i * size;
     const y = j * size;
 
