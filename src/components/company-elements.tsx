@@ -8,6 +8,7 @@ interface CompanyElementsProps {
   indicatorLabel: string;
   company: string;
   score: IndicatorScore;
+  averages: Record<string, IndicatorScore>;
   companyElements: Record<string, Element[]>;
   literalValues: boolean;
 }
@@ -16,6 +17,7 @@ const CompanyElements = ({
   indicatorLabel,
   company,
   score,
+  averages,
   companyElements,
   literalValues,
 }: CompanyElementsProps) => {
@@ -26,6 +28,9 @@ const CompanyElements = ({
   if (!templateService) return <div />;
 
   const legendRow = [indicatorLabel].concat(services);
+  const averagesRow = ["Averages"].concat(
+    services.map((service) => averages[service]).toString(),
+  );
   const rows = templateService.reduce((memo, element) => {
     const elements = services.reduce((agg, service) => {
       const serviceElement = companyElements[service].find(
@@ -62,6 +67,32 @@ const CompanyElements = ({
             innerClassName,
           )}
         >
+          <span>{item}</span>
+        </span>
+      </div>
+    );
+  });
+
+  const footer = averagesRow.map((item, idx) => {
+    const className = {
+      "w-40 text-xs font-bold": idx === 0,
+      "w-36 text-xs px-6": idx > 0,
+    };
+
+    const innerClassName = {
+      "h-8": idx === 0,
+      "w-24 h-8 text-center": idx > 0,
+    };
+
+    return (
+      <div
+        className={c(
+          "flex flex-col items-center justify-center border border-disabled-dark",
+          className,
+        )}
+        key={item}
+      >
+        <span className={c("flex flex-col justify-center", innerClassName)}>
           <span>{item}</span>
         </span>
       </div>
@@ -115,6 +146,8 @@ const CompanyElements = ({
         <div className="flex flex-row">{legend}</div>
 
         {grid}
+
+        <div className="flex flex-row">{footer}</div>
       </div>
     </div>
   );
