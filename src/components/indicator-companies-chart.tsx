@@ -28,11 +28,12 @@ const IndicatorCompaniesChart = ({
       return 0;
     });
 
-  const gap = 6;
-  const insetX = 45;
-  const barWidth = Math.floor(
-    (width - insetX - sortedScores.length * gap) / sortedScores.length,
-  );
+  const gap = 17;
+  const insetX = 44;
+  const barWidth = 8;
+  /* const barWidth = Math.floor(
+   *   (width - insetX - sortedScores.length * gap) / sortedScores.length,
+   * ); */
 
   return (
     <div>
@@ -46,6 +47,15 @@ const IndicatorCompaniesChart = ({
         {sortedScores.map(({company, score}, idx) => {
           return (
             <g key={`companies-chart-bar-${company}`}>
+              <GraphLabel
+                value={score.toString()}
+                size="extra-small"
+                textAnchor="middle"
+                transform={`translate(${
+                  (barWidth + gap) * idx + 21 + insetX
+                },10)`}
+                className="text-prissian stroke-current"
+              />
               <PercentageBar
                 key={company}
                 value={score}
@@ -53,17 +63,18 @@ const IndicatorCompaniesChart = ({
                 height={180}
                 transform={`translate(${
                   (barWidth + gap) * idx + gap + insetX
-                },0)`}
+                },20)`}
                 orientation="vertical"
-                roundedCorners={false}
                 className={`text-cat-${category}`}
               />
               <GraphLabel
                 value={company}
                 size="small"
+                textAnchor="end"
                 transform={`translate(${
-                  (barWidth + gap) * idx + 2 + insetX
-                },190) rotate(90,0,6)`}
+                  (barWidth + gap) * idx + 31 + insetX
+                },210) rotate(270,0,6)`}
+                className="text-prissian stroke-current"
               />
             </g>
           );
@@ -71,25 +82,9 @@ const IndicatorCompaniesChart = ({
 
         <line
           x1={insetX}
-          y1="0"
-          x2={width + insetX}
-          y2="0"
-          strokeWidth={2}
-          className="text-disabled-dark stroke-current"
-        />
-        <line
-          x1={insetX}
-          y1="0"
+          y1="30"
           x2={insetX}
-          y2={180}
-          strokeWidth={2}
-          className="text-disabled-dark stroke-current"
-        />
-        <line
-          x1={insetX}
-          y1={180}
-          x2={width + insetX}
-          y2={180}
+          y2={190}
           strokeWidth={2}
           className="text-disabled-dark stroke-current"
         />
@@ -97,7 +92,7 @@ const IndicatorCompaniesChart = ({
         <GraphLabel
           value="100%"
           size="extra-small"
-          transform={`translate(${insetX - gap},10)`}
+          transform={`translate(${insetX - gap},30)`}
           textAnchor="end"
           className="text-prissian stroke-current"
         />
@@ -105,7 +100,7 @@ const IndicatorCompaniesChart = ({
         <GraphLabel
           value="0%"
           size="extra-small"
-          transform={`translate(${insetX - gap},180)`}
+          transform={`translate(${insetX - gap},200)`}
           textAnchor="end"
           className="text-prissian stroke-current"
         />
