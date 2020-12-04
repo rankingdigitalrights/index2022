@@ -49,6 +49,18 @@ type CsvIndicator = {
   indicatorFamily: string;
 };
 
+type CsvLevel = {
+  index: IndexYear;
+  company: string;
+  category: ScoreCategory;
+  indicator: string;
+  indicatorNr: number;
+  indicatorSuffix?: string;
+  score: IndicatorScore;
+  kind: string;
+  service: string;
+};
+
 type CsvElement = {
   index: IndexYear;
   company: string;
@@ -275,6 +287,21 @@ const loadIndicatorsCsv = loadCsv<CsvIndicator>((record) => ({
 /*
  * Load the all elements for each company and indicator from a CSV.
  */
+const loadLevelsCsv = loadCsv<CsvLevel>((record) => ({
+  index: record.Index as IndexYear,
+  company: record.Company,
+  category: mapCategory(record.Category),
+  indicator: record.Indicator,
+  indicatorNr: Number.parseInt(record.IndicatorNr, 10),
+  indicatorSuffix: stringOrNil(record.IndicatorSuffix),
+  score: floatOrNA(record.Score),
+  kind: record.Class,
+  service: record.Service,
+}));
+
+/*
+ * Load the all elements for each company and indicator from a CSV.
+ */
 const loadElementsCsv = loadCsv<CsvElement>((record) => ({
   index: record.Index as IndexYear,
   company: record.Company,
@@ -443,11 +470,13 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
   async () => {
     const [
       csvIndicators,
+      csvLevels,
       csvElements,
       csvIndicatorSpecs,
       csvElementSpecs,
     ] = await Promise.all([
       loadIndicatorsCsv("data/2020-indicators.csv"),
+      loadLevelsCsv("data/2020-levels.csv"),
       loadElementsCsv("data/2020-elements.csv"),
       loadIndicatorSpecsCsv("data/2020-indicator-specs.csv"),
       loadElementSpecsCsv("data/2020-element-specs.csv"),
@@ -506,6 +535,28 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
         {} as Record<string, string[]>,
       );
 
+      const averages = companies.reduce((memo, company) => {
+        const companyAverages = (services[company] || []).reduce(
+          (agg, service) => {
+            const levels = csvLevels.find(
+              (l) =>
+                l.company === company &&
+                l.service === service &&
+                l.indicator === spec.indicator &&
+                indexYears.has(l.index),
+            );
+            if (!levels)
+              return unreachable(
+                `No level found for ${company}/${service}/${spec.indicator}.`,
+              );
+
+            return {[service]: levels.score, ...agg};
+          },
+          {} as Record<string, IndicatorScore>,
+        );
+        return {[company]: companyAverages, ...memo};
+      }, {} as Record<string, Record<string, IndicatorScore>>);
+
       const sortedElements = companies.reduce((memo, company) => {
         if (!services[company]) return memo;
 
@@ -540,8 +591,9 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
         description: spec.description,
         guidance: spec.guidance,
         companies,
-        scores,
         services,
+        scores,
+        averages,
         elements: sortedElements,
       };
     });
