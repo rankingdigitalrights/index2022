@@ -3,6 +3,7 @@ import React, {useState} from "react";
 
 import CompanyElements from "../../components/company-elements";
 import CompanySelector from "../../components/company-selector";
+import IndicatorCompaniesChart from "../../components/indicator-companies-chart";
 import IndicatorSelector from "../../components/indicator-selector";
 import Layout from "../../components/layout";
 import SortSelector from "../../components/sort-selector";
@@ -128,6 +129,8 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
           companies.filter(({value}) => selectedCompanies.includes(value)),
         );
 
+  const hasScores = Object.keys(index.scores).length > 0;
+
   return (
     <Layout>
       <div className="container mx-auto">
@@ -139,6 +142,17 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
           />
 
           <section className="w-full mt-6 mx-auto">{index.description}</section>
+
+          <div className="mx-auto mt-6">
+            {hasScores && (
+              <IndicatorCompaniesChart
+                category={index.category}
+                scores={index.scores}
+                width={680}
+                height={330}
+              />
+            )}
+          </div>
         </div>
       </div>
 

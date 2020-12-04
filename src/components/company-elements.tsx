@@ -29,7 +29,7 @@ const CompanyElements = ({
 
   const legendRow = [indicatorLabel].concat(services);
   const averagesRow = ["Averages"].concat(
-    services.map((service) => averages[service]).toString(),
+    services.map((service) => averages[service].toString()),
   );
   const rows = templateService.reduce((memo, element) => {
     const elements = services.reduce((agg, service) => {
