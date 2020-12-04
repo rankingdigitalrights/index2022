@@ -183,7 +183,9 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
               key={`company-element-${value}`}
               indicatorLabel={index.label}
               company={value}
-              score={index.scores[value] || "NA"}
+              score={
+                index.scores[value] === undefined ? "NA" : index.scores[value]
+              }
               companyElements={index.elements[value] || {}}
               literalValues={literalValues}
             />
