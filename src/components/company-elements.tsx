@@ -1,12 +1,13 @@
 import c from "clsx";
 import React from "react";
 
-import {Element} from "../types";
+import {Element, IndicatorScore} from "../types";
 import IndicatorElementTag from "./indicator-element-tag";
 
 interface CompanyElementsProps {
   indicatorLabel: string;
   company: string;
+  score: IndicatorScore;
   companyElements: Record<string, Element[]>;
   literalValues: boolean;
 }
@@ -14,6 +15,7 @@ interface CompanyElementsProps {
 const CompanyElements = ({
   indicatorLabel,
   company,
+  score,
   companyElements,
   literalValues,
 }: CompanyElementsProps) => {
@@ -100,7 +102,14 @@ const CompanyElements = ({
 
   return (
     <div className="mt-6">
-      <h3>{company}</h3>
+      <div className="flex items-center">
+        {score !== "NA" && (
+          <span className="font-circular text-md text-white bg-prissian rounded-lg px-2 py-1 text-center mr-3">
+            {score}%
+          </span>
+        )}
+        <h3 className="text-ls font-platform">{company}</h3>
+      </div>
 
       <div className="flex flex-col w-full mt-3 font-circular">
         <div className="flex flex-row">{legend}</div>

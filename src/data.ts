@@ -488,9 +488,9 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
       ];
 
       const scores = companies.reduce((memo, company) => {
-        const indicator = csvIndicators.find(
-          (i) => i.company === company && i.indicator === spec.indicator,
-        );
+        const indicator = csvIndicators
+          .filter((i) => indexYears.has(i.index))
+          .find((i) => i.company === company && i.indicator === spec.indicator);
         return {[company]: indicator ? indicator.score : "NA", ...memo};
       }, {} as Record<string, IndicatorScore>);
 
