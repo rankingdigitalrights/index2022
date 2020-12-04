@@ -1,3 +1,4 @@
+import c from "clsx";
 import React, {useEffect, useRef, useState} from "react";
 
 import {Indicator, ScoreCategory} from "../types";
@@ -5,17 +6,11 @@ import CompanyIndicatorChart from "./company-indicator-chart";
 
 interface CompanySectionProps {
   category: ScoreCategory;
-  score: number;
   text: string;
   indicators: Indicator[];
 }
 
-const CompanySection = ({
-  category,
-  score,
-  text,
-  indicators,
-}: CompanySectionProps) => {
+const CompanySection = ({category, text, indicators}: CompanySectionProps) => {
   // eslint-disable-next-line unicorn/no-null
   const chartRef = useRef<HTMLDivElement>(null);
 
@@ -53,44 +48,30 @@ const CompanySection = ({
     title = "UNKNOWN CATEGORY!!!";
   }
 
+  const titleClassName = c("font-platform text-xl", {
+    "text-cat-governance": category === "governance",
+    "text-cat-freedom": category === "freedom",
+    "text-cat-privacy": category === "privacy",
+  });
+
   return (
-    <section className="mt-6 pt-6 pb-6 border-t-2 border-black m-2">
-      <div className="font-circular text-md">Category</div>
-      <h2 className="font-platform text-xl">{title}</h2>
-
-      <div className="flex flex-col md:flex-row mt-8 md:mt-20">
-        <div className="md:w-1/3 md:mr-2">
-          <div className="flex md:h-40">
-            <div className="flex flex-col">
-              <h4 className="text-lg font-circular">Score 2019</h4>
-              <div className="text-xl font-platform font-bold mb-2">
-                {score}%
-              </div>
-            </div>
-
-            <div className="flex flex-col ml-12">
-              <h4 className="text-lg font-circular">Score 2020</h4>
-              <div className="text-xl font-platform font-bold mb-2">
-                {score}%
-              </div>
-            </div>
+    <section className="mt-6 pt-6 pb-6 border-t-2 border-beige m-2">
+      <div className="flex flex-col md:flex-row mt-8 md:mt-16">
+        <div className="md:w-1/2 md:mr-2">
+          <div className="flex flex-col justify-end mb-12 md:h-16">
+            <div className="font-circular text-md text-prissian">Category</div>
+            <h2 className={titleClassName}>{title}</h2>
           </div>
 
           <div dangerouslySetInnerHTML={{__html: text}} />
         </div>
 
-        <div ref={chartRef} className="md:w-1/3">
-          <h4 className="text-lg font-circular md:h-40 mt-4 md:mt-0">
-            Indicators
-          </h4>
+        <div ref={chartRef} className="md:w-1/2">
+          <div className="flex flex-col justify-end md:h-16 mb-12 mt-4 md:mt-0">
+            <h3 className="text-lg font-circular">Indicators</h3>
+          </div>
 
           <CompanyIndicatorChart indicators={indicators} width={chartWidth} />
-        </div>
-
-        <div className="md:w-1/3 md:ml-2">
-          <h4 className="text-lg font-circular md:h-40 mt-4 md:mt-0">
-            Summary of changes
-          </h4>
         </div>
       </div>
     </section>

@@ -126,21 +126,18 @@ const CompanyPage = ({index, details}: CompanyProps) => {
 
         <CompanySection
           category="governance"
-          score={index.scores.governance}
           text={details.governance || "governance missing"}
           indicators={index.indicators.governance}
         />
 
         <CompanySection
           category="freedom"
-          score={index.scores.freedom}
           text={details.freedom || "freedom missing"}
           indicators={index.indicators.freedom}
         />
 
         <CompanySection
           category="privacy"
-          score={index.scores.privacy}
           text={details.privacy || "privacy missing"}
           indicators={index.indicators.privacy}
         />
