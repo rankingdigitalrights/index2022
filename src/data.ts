@@ -414,22 +414,19 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
 
           const governanceIndicators: Indicator[] = categoryIndicators(
             companyIndicators.filter(
-              (indicator) =>
-                indicator.category === "governance" && indicator.score,
+              (indicator) => indicator.category === "governance",
             ),
             csvIndicatorSpecs,
           );
           const freedomIndicators: Indicator[] = categoryIndicators(
             companyIndicators.filter(
-              (indicator) =>
-                indicator.category === "freedom" && indicator.score,
+              (indicator) => indicator.category === "freedom",
             ),
             csvIndicatorSpecs,
           );
           const privacyIndicators: Indicator[] = categoryIndicators(
             companyIndicators.filter(
-              (indicator) =>
-                indicator.category === "privacy" && indicator.score,
+              (indicator) => indicator.category === "privacy",
             ),
             csvIndicatorSpecs,
           );
