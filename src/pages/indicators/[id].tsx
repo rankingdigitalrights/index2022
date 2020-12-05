@@ -128,6 +128,8 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
   };
 
   const sortStrategyFn = strategies.get(sortStrategy) || identitySortFn;
+  const companySortStrategyFn =
+    strategies.get("Alphabetically") || identitySortFn;
 
   const activeSelector: IndicatorSelectOption = {
     value: index.id,
@@ -182,7 +184,9 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
               <span className="text-xs font-circular">Select companies:</span>
 
               <CompanySelector
-                companies={companies}
+                companies={companySortStrategyFn(
+                  companies.map((obj) => ({...obj})),
+                )}
                 selected={selectedCompanies}
                 onSelect={handleSelectCompany}
               />
