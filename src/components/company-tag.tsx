@@ -5,7 +5,7 @@ import CancelX from "../../static/cancel-x.svg";
 
 export interface CompanyTagProps {
   company: string;
-  onClick: () => void;
+  onClick?: () => void;
   active?: boolean;
   className?: string;
 }
@@ -18,10 +18,6 @@ const CompanyTag = ({
 }: CompanyTagProps) => {
   const className2 = c(
     "flex justify-between items-center font-circular text-xxs rounded-lg px-2 py-1 text-center",
-    {
-      "bg-beige": !active,
-      "bg-prissian text-white": active,
-    },
     className,
   );
 

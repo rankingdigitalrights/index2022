@@ -1,9 +1,11 @@
+import c from "clsx";
 import React from "react";
 import Select, {
   ActionMeta,
   ControlProps,
   MenuListComponentProps,
   MultiValueProps,
+  OptionProps,
   ValueType,
 } from "react-select";
 
@@ -17,24 +19,13 @@ interface CompanySelectorProps {
 }
 
 const MenuList = ({
-  options,
-  getValue,
-  setValue,
+  children,
+  ...props
 }: MenuListComponentProps<SelectOption, true>) => {
-  const selectedCompanies = new Set((getValue() || []).map(({value}) => value));
-
   return (
-    <div className="flex flex-wrap bg-white">
-      {options
-        .filter(({value}) => !selectedCompanies.has(value))
-        .map(({label, value}) => (
-          <CompanyTag
-            key={value}
-            className="m-1"
-            company={label}
-            onClick={() => setValue([{label, value}], "select-option")}
-          />
-        ))}
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <div className="flex flex-wrap bg-white" {...props}>
+      {children}
     </div>
   );
 };
@@ -47,7 +38,7 @@ const MultiValue = ({
     <CompanyTag
       key={value}
       active
-      className="m-1"
+      className="m-1 bg-prissian text-white"
       company={label}
       onClick={() => setValue([{label, value}], "deselect-option")}
     />
@@ -68,6 +59,28 @@ const ControlComponent = ({children}: ControlProps<SelectOption, true>) => {
 
 const IndicatorSeparator = () => {
   return <span />;
+};
+
+const Option = ({
+  isSelected,
+  isFocused,
+  innerRef,
+  innerProps,
+  data,
+}: OptionProps<SelectOption, true>) => {
+  const {value, label} = data;
+
+  const className = c("m-1", {
+    "bg-prissian text-white": isFocused && !isSelected,
+    "bg-beige text-prissian": !isFocused && !isSelected,
+  });
+
+  return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <div ref={innerRef} {...innerProps}>
+      <CompanyTag key={value} className={className} company={label} />
+    </div>
+  );
 };
 
 const CompanySelector = ({
@@ -122,6 +135,7 @@ const CompanySelector = ({
           MultiValue,
           Placeholder,
           IndicatorSeparator,
+          Option,
           Control: ControlComponent,
         }}
         onChange={handleSelectCompany}
