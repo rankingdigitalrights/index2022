@@ -601,6 +601,7 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
         description: spec.description,
         guidance: spec.guidance,
         isParent: spec.isParent,
+        hasParent: /[a-z]+$/.test(spec.indicator),
         companies,
         services,
         scores,

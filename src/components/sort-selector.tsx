@@ -39,8 +39,8 @@ const Option = ({
   data,
 }: OptionProps<SelectOption, false>) => {
   const className = c("text-xs font-circular pl-2 pr-2", {
-    "bg-disabled-dark text-white": isSelected,
-    "bg-prissian text-white": isFocused,
+    "bg-prissian text-white": isSelected,
+    "bg-beige text-prissian": isFocused && !isSelected,
     "cursor-pointer": !isSelected,
     "bg-white text-prissian": !isFocused && !isSelected,
   });

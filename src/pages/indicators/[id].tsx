@@ -4,7 +4,9 @@ import React, {useState} from "react";
 import CompanyElements from "../../components/company-elements";
 import CompanySelector from "../../components/company-selector";
 import IndicatorCompaniesChart from "../../components/indicator-companies-chart";
-import IndicatorSelector from "../../components/indicator-selector";
+import IndicatorSelector, {
+  IndicatorSelectOption,
+} from "../../components/indicator-selector";
 import Layout from "../../components/layout";
 import SortSelector from "../../components/sort-selector";
 import ToggleSwitch from "../../components/toggle-switch";
@@ -24,15 +26,17 @@ type Params = {
 
 interface IndicatorPageProps {
   index: IndicatorIndex;
-  indicators: SelectOption[];
+  indicators: IndicatorSelectOption[];
   companies: SelectOption[];
 }
 
 export const getStaticPaths = async () => {
   const data = await indicatorIndices();
-  const paths = data.map(({id}) => ({
-    params: {id},
-  }));
+  const paths = data
+    .filter(({isParent}) => !isParent)
+    .map(({id}) => ({
+      params: {id},
+    }));
 
   return {
     paths,
@@ -42,10 +46,14 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   const index = (await indicatorData(indicatorId)) as IndicatorIndex;
-  const indicators = (await indicatorIndices()).map(({id: value, label}) => ({
-    value,
-    label: `${value}. ${label}`,
-  }));
+  const indicators = (await indicatorIndices()).map(
+    ({id: value, label, isParent, hasParent}) => ({
+      value,
+      isParent,
+      hasParent,
+      label: `${value}. ${label}`,
+    }),
+  );
   const companyIndex = await companyIndices();
   const companies = companyIndex.map(({id: value, companyPretty: label}) => ({
     value,
@@ -112,8 +120,10 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
 
   const sortStrategyFn = strategies.get(sortStrategy) || identitySortFn;
 
-  const activeSelector: SelectOption = {
+  const activeSelector: IndicatorSelectOption = {
     value: index.id,
+    isParent: index.isParent,
+    hasParent: index.hasParent,
     label: `${index.id}. ${index.label}`,
   };
 
