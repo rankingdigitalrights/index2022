@@ -3,6 +3,7 @@ import React, {useState} from "react";
 
 import CompanyElements from "../../components/company-elements";
 import CompanySelector from "../../components/company-selector";
+import ExpandableDescription from "../../components/expandable-description";
 import IndicatorCompaniesChart from "../../components/indicator-companies-chart";
 import IndicatorSelector, {
   IndicatorSelectOption,
@@ -150,6 +151,10 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
           companies.filter(({value}) => selectedCompanies.includes(value)),
         );
 
+  const elementDescriptions = Object.values(
+    Object.values(index.elements)[0] || {},
+  )[0];
+
   const hasScores = Object.keys(index.scores).length > 0;
 
   return (
@@ -163,6 +168,26 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
           />
 
           <section className="w-full mt-6 mx-auto">{index.description}</section>
+
+          <section className="w-full mt-6 mx-auto">
+            <ExpandableDescription label="Elements">
+              <ol className="list-none list-decimal">
+                {elementDescriptions.map(({description, label}) => {
+                  return (
+                    <li key={`element-description-${label}`} className="ml-4">
+                      {description}
+                    </li>
+                  );
+                })}
+              </ol>
+            </ExpandableDescription>
+          </section>
+
+          <section className="w-full mt-2 mx-auto">
+            <ExpandableDescription label="Research guidance">
+              <p className="mt-2">{index.guidance}</p>
+            </ExpandableDescription>
+          </section>
 
           <div className="mx-auto mt-6">
             {hasScores && (
