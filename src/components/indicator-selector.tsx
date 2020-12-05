@@ -1,5 +1,11 @@
+import c from "clsx";
 import React from "react";
-import Select, {ControlProps, SingleValueProps, ValueType} from "react-select";
+import Select, {
+  ControlProps,
+  OptionProps,
+  SingleValueProps,
+  ValueType,
+} from "react-select";
 
 import {SelectOption} from "../types";
 
@@ -27,6 +33,34 @@ const SingleValue = ({children}: SingleValueProps<SelectOption>) => {
   );
 };
 
+const Option = ({
+  isSelected,
+  isFocused,
+  innerRef,
+  innerProps,
+  data,
+  options,
+}: OptionProps<SelectOption, false>) => {
+  const isNotFirstOption = options[0]?.value !== data.value;
+
+  const className = c("text-xs font-circular pl-2 pr-2", {
+    "bg-disabled-dark text-white": isSelected,
+    "bg-prissian text-white": isFocused,
+    "cursor-pointer": !isSelected,
+    "bg-white text-prissian": !isFocused && !isSelected,
+    // We inject a little space before the first option of a new category, but
+    // not the very first option of the list of options.
+    "mt-3": isNotFirstOption && /^[FGP]+1$/.test(data.value),
+  });
+
+  return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <div className={className} ref={innerRef} {...innerProps}>
+      {data.label}
+    </div>
+  );
+};
+
 const IndicatorSelector = ({
   indicators,
   selected,
@@ -46,6 +80,7 @@ const IndicatorSelector = ({
         components={{
           IndicatorSeparator,
           SingleValue,
+          Option,
           Control: ControlComponent,
         }}
         onChange={handleChange}
