@@ -7,14 +7,13 @@ import Select, {
   ValueType,
 } from "react-select";
 
-import {SelectOption, SortStrategy} from "../types";
+import {SelectOption} from "../types";
 import CompanyTag from "./company-tag";
 
 interface CompanySelectorProps {
   companies: SelectOption[];
   selected: string[];
   onSelect: (companies: string[]) => void;
-  sortStrategy: SortStrategy;
 }
 
 const MenuList = ({
@@ -75,7 +74,6 @@ const CompanySelector = ({
   companies,
   selected,
   onSelect,
-  sortStrategy,
 }: CompanySelectorProps) => {
   const handleSelectCompany = (
     value: ValueType<SelectOption, true>,
@@ -114,10 +112,8 @@ const CompanySelector = ({
     <div className="w-full">
       <Select
         id="company-select"
-        options={sortStrategy(companies)}
-        value={sortStrategy(
-          companies.filter((obj) => selected.includes(obj.value)),
-        )}
+        options={companies}
+        value={companies.filter((obj) => selected.includes(obj.value))}
         isMulti
         isClearable
         closeMenuOnSelect={false}

@@ -117,8 +117,11 @@ export interface SelectOption {
   label: string;
 }
 
-export interface SortStrategy {
-  (xs: SelectOption[]): SelectOption[];
+export interface SortStrategy<T extends SelectOption = SelectOption> {
+  (xs: T[]): T[];
 }
 
-export type SortStrategies = Map<string, SortStrategy>;
+export type SortStrategies<T extends SelectOption = SelectOption> = Map<
+  string,
+  SortStrategy<T>
+>;

@@ -24,10 +24,14 @@ type Params = {
   };
 };
 
+interface CompanySelectOption extends SelectOption {
+  score: number;
+}
+
 interface IndicatorPageProps {
   index: IndicatorIndex;
   indicators: IndicatorSelectOption[];
-  companies: SelectOption[];
+  companies: CompanySelectOption[];
 }
 
 export const getStaticPaths = async () => {
@@ -55,10 +59,14 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
     }),
   );
   const companyIndex = await companyIndices();
-  const companies = companyIndex.map(({id: value, companyPretty: label}) => ({
-    value,
-    label,
-  }));
+  const companies = companyIndex.map(({id: value, companyPretty: label}) => {
+    const score = index.scores[value];
+    return {
+      value,
+      label,
+      score: score === "NA" || !score ? 0 : score,
+    };
+  });
 
   return {
     props: {
@@ -69,10 +77,13 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   };
 };
 
-const strategies: SortStrategies = new Map<string, SortStrategy>();
+const strategies: SortStrategies<CompanySelectOption> = new Map<
+  string,
+  SortStrategy<CompanySelectOption>
+>();
 strategies.set(
-  "Alphabetically Ascending",
-  (options: SelectOption[]): SelectOption[] => {
+  "Alphabetically",
+  (options: CompanySelectOption[]): CompanySelectOption[] => {
     return options.sort((a, b) => {
       if (a.label < b.label) return -1;
       if (a.label > b.label) return 1;
@@ -81,11 +92,11 @@ strategies.set(
   },
 );
 strategies.set(
-  "Alphabetically Descending",
-  (options: SelectOption[]): SelectOption[] => {
+  "Score",
+  (options: CompanySelectOption[]): CompanySelectOption[] => {
     return options.sort((a, b) => {
-      if (a.label < b.label) return 1;
-      if (a.label > b.label) return -1;
+      if (a.score < b.score) return 1;
+      if (a.score > b.score) return -1;
       return 0;
     });
   },
@@ -95,9 +106,7 @@ const identitySortFn: SortStrategy = (xs) => xs;
 
 const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
-  const [sortStrategy, setSortStrategy] = useState<string>(
-    "Alphabetically Ascending",
-  );
+  const [sortStrategy, setSortStrategy] = useState<string>("Alphabetically");
   const [literalValues, setLiteralValues] = useState(false);
 
   const router = useRouter();
@@ -176,7 +185,6 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
                 companies={companies}
                 selected={selectedCompanies}
                 onSelect={handleSelectCompany}
-                sortStrategy={sortStrategyFn}
               />
             </div>
 
