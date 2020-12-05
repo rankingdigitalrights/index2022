@@ -85,7 +85,7 @@ export type ElementValue =
 export type Element = {
   element: string;
   elementNr: number;
-  category: string;
+  category: ScoreCategory;
   label: string;
   description: string;
   score: number | NA;
@@ -98,7 +98,7 @@ export type Element = {
 export type IndicatorIndex = {
   id: string;
   indicator: string;
-  category: string;
+  category: ScoreCategory;
   display: string;
   label: string;
   description: string;
@@ -110,10 +110,10 @@ export type IndicatorIndex = {
   elements: Record<string, Record<string, Element[]>>;
 };
 
-export type SelectOption = {
+export interface SelectOption {
   value: string;
   label: string;
-};
+}
 
 export interface SortStrategy {
   (xs: SelectOption[]): SelectOption[];
