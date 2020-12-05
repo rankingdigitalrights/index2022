@@ -1,11 +1,15 @@
+/* eslint react/jsx-props-no-spreading: off */
 import c from "clsx";
 import React from "react";
 import Select, {
   ActionMeta,
+  components,
   ControlProps,
+  InputProps,
   MenuListComponentProps,
   MultiValueProps,
   OptionProps,
+  PlaceholderProps,
   ValueType,
 } from "react-select";
 
@@ -18,12 +22,15 @@ interface CompanySelectorProps {
   onSelect: (companies: string[]) => void;
 }
 
+const Input = (props: InputProps) => {
+  return <components.Input {...props} className="text-xxs" />;
+};
+
 const MenuList = ({
   children,
   ...props
 }: MenuListComponentProps<SelectOption, true>) => {
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
     <div className="flex flex-wrap bg-white" {...props}>
       {children}
     </div>
@@ -45,13 +52,28 @@ const MultiValue = ({
   );
 };
 
-const Placeholder = () => {
-  return <span className="text-xxs font-circular">All companies</span>;
+const Placeholder = ({
+  children,
+  innerProps,
+}: PlaceholderProps<SelectOption, true>) => {
+  return (
+    <div className="text-xxs text-black" {...innerProps}>
+      {children}
+    </div>
+  );
 };
 
-const ControlComponent = ({children}: ControlProps<SelectOption, true>) => {
+const ControlComponent = ({
+  children,
+  innerRef,
+  innerProps,
+}: ControlProps<SelectOption, true>) => {
   return (
-    <div className="bg-beige border-b-2 border-prissian flex flex-row justify-between items-start w-full">
+    <div
+      className="bg-beige border-b-2 border-prissian flex flex-row justify-between items-start w-full"
+      ref={innerRef}
+      {...innerProps}
+    >
       {children}
     </div>
   );
@@ -76,7 +98,6 @@ const Option = ({
   });
 
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
     <div ref={innerRef} {...innerProps}>
       <CompanyTag key={value} className={className} company={label} />
     </div>
@@ -125,12 +146,15 @@ const CompanySelector = ({
     <div className="w-full">
       <Select
         id="company-select"
+        className="font-circular"
+        placeholder="All companies"
         options={companies}
         value={companies.filter((obj) => selected.includes(obj.value))}
         isMulti
         isClearable
         closeMenuOnSelect={false}
         components={{
+          Input,
           MenuList,
           MultiValue,
           Placeholder,

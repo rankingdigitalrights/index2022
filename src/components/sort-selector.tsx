@@ -1,7 +1,10 @@
+/* eslint react/jsx-props-no-spreading: off */
 import c from "clsx";
 import React from "react";
 import Select, {
+  components,
   ControlProps,
+  InputProps,
   OptionProps,
   SingleValueProps,
   ValueType,
@@ -15,20 +18,32 @@ interface SortSelectorProps {
   onSelect: (strategy: string) => void;
 }
 
+const Input = (props: InputProps) => {
+  return <components.Input {...props} className="text-xxs" />;
+};
+
 const IndicatorSeparator = () => {
   return <span />;
 };
 
-const ControlComponent = ({children}: ControlProps<SelectOption, false>) => {
+const ControlComponent = ({
+  children,
+  innerRef,
+  innerProps,
+}: ControlProps<SelectOption, false>) => {
   return (
-    <div className="border-b-2 border-prissian flex flex-row justify-between items-start w-full">
+    <div
+      className="border-b-2 border-prissian flex flex-row justify-between items-start w-full"
+      ref={innerRef}
+      {...innerProps}
+    >
       {children}
     </div>
   );
 };
 
-const SingleValue = ({children}: SingleValueProps<SelectOption>) => {
-  return <span className="text-xxs font-circular">{children}</span>;
+const SingleValue = (props: SingleValueProps<SelectOption>) => {
+  return <components.SingleValue {...props} className="text-xxs" />;
 };
 
 const Option = ({
@@ -38,7 +53,7 @@ const Option = ({
   innerProps,
   data,
 }: OptionProps<SelectOption, false>) => {
-  const className = c("text-xs font-circular pl-2 pr-2", {
+  const className = c("text-xs pl-2 pr-2", {
     "bg-prissian text-white": isSelected,
     "bg-beige text-prissian": isFocused && !isSelected,
     "cursor-pointer": !isSelected,
@@ -46,7 +61,6 @@ const Option = ({
   });
 
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
     <div className={className} ref={innerRef} {...innerProps}>
       {data.label}
     </div>
@@ -66,8 +80,10 @@ const SortSelector = ({strategies, selected, onSelect}: SortSelectorProps) => {
         id="indicator-select"
         options={strategies}
         value={selectedOption}
+        className="font-circular"
         openMenuOnFocus
         components={{
+          Input,
           IndicatorSeparator,
           SingleValue,
           Option,
