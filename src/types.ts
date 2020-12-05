@@ -99,6 +99,7 @@ export type IndicatorIndex = {
   id: string;
   indicator: string;
   category: ScoreCategory;
+  isParent: boolean;
   display: string;
   label: string;
   description: string;
