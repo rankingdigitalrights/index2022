@@ -1,6 +1,7 @@
 import React from "react";
 
 import {IndicatorScore} from "../types";
+import {isNA} from "../utils";
 import GraphLabel from "./graph-label";
 import PercentageBar from "./percentage-bar";
 
@@ -23,17 +24,20 @@ const IndicatorCompaniesChart = ({
       return {company, score};
     })
     .sort((a, b) => {
-      if (a.score > b.score) return -1;
-      if (a.score < b.score) return 1;
+      // In order to locate scores with NA last in
+      // line we set it to -1 to sort it below the
+      // real 0 scores.
+      const aScore = isNA(a.score) ? -1 : a.score;
+      const bScore = isNA(b.score) ? -1 : b.score;
+
+      if (aScore > bScore) return -1;
+      if (aScore < bScore) return 1;
       return 0;
     });
 
   const gap = 17;
   const insetX = 44;
   const barWidth = 8;
-  /* const barWidth = Math.floor(
-   *   (width - insetX - sortedScores.length * gap) / sortedScores.length,
-   * ); */
 
   return (
     <div>
