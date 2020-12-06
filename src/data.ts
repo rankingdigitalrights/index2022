@@ -92,6 +92,7 @@ type CsvIndicatorSpec = {
   label: string;
   description: string;
   guidance: string;
+  isParent: boolean;
 };
 
 type CsvElementSpec = {
@@ -123,6 +124,17 @@ const floatOrNA = (value: string): number | NA =>
 
 const stringOrNil = (value: string): string | undefined =>
   value === "NA" ? undefined : value;
+
+const mapBoolean = (value: string): boolean => {
+  switch (value) {
+    case "TRUE":
+      return true;
+    case "FALSE":
+      return false;
+    default:
+      return unreachable(`Failed to parse ${value} as boolean`);
+  }
+};
 
 const mapCategory = (value: string): ScoreCategory => {
   switch (value) {
@@ -339,6 +351,7 @@ const loadIndicatorSpecsCsv = loadCsv<CsvIndicatorSpec>((record) => ({
   label: record.labelLong,
   description: record.description,
   guidance: record.guidance,
+  isParent: mapBoolean(record.isParent),
 }));
 
 /*
@@ -414,22 +427,19 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
 
           const governanceIndicators: Indicator[] = categoryIndicators(
             companyIndicators.filter(
-              (indicator) =>
-                indicator.category === "governance" && indicator.score,
+              (indicator) => indicator.category === "governance",
             ),
             csvIndicatorSpecs,
           );
           const freedomIndicators: Indicator[] = categoryIndicators(
             companyIndicators.filter(
-              (indicator) =>
-                indicator.category === "freedom" && indicator.score,
+              (indicator) => indicator.category === "freedom",
             ),
             csvIndicatorSpecs,
           );
           const privacyIndicators: Indicator[] = categoryIndicators(
             companyIndicators.filter(
-              (indicator) =>
-                indicator.category === "privacy" && indicator.score,
+              (indicator) => indicator.category === "privacy",
             ),
             csvIndicatorSpecs,
           );
@@ -590,6 +600,8 @@ export const indicatorIndices = memoizeAsync<() => Promise<IndicatorIndex[]>>(
         label: spec.label,
         description: spec.description,
         guidance: spec.guidance,
+        isParent: spec.isParent,
+        hasParent: /[a-z]+$/.test(spec.indicator),
         companies,
         services,
         scores,

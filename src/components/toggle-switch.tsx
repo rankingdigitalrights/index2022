@@ -25,7 +25,7 @@ const ToggleSwitch = ({label, onChange}: ToggleSwitchProps) => {
           htmlFor="toggle"
           className={c(
             "toggle-label block overflow-hidden h-5 rounded-full border-2 border-prissian cursor-pointer flex items-center",
-            toggle ? "bg-beige" : "bg-prissian",
+            toggle ? "bg-prissian" : "bg-beige",
           )}
         >
           <input
@@ -35,7 +35,7 @@ const ToggleSwitch = ({label, onChange}: ToggleSwitchProps) => {
             defaultChecked={toggle}
             className={c(
               "toggle-checkbox absolute block w-3 h-3 rounded-full appearance-none cursor-pointer",
-              toggle ? "bg-prissian" : "bg-beige",
+              toggle ? "bg-beige" : "bg-prissian",
             )}
             onChange={handleToggle}
           />

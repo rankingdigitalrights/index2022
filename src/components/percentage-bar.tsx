@@ -2,12 +2,17 @@ import c from "clsx";
 import {scaleLinear} from "d3-scale";
 import React from "react";
 
+import {IndicatorScore} from "../types";
+import {isNA} from "../utils";
+
 interface PercentageBarProps {
-  value: number;
+  value: IndicatorScore;
   width: number;
   height?: number;
   transform?: string;
   className?: string | Record<string, boolean>;
+  orientation?: "horizontal" | "vertical";
+  roundedCorners?: boolean;
 }
 
 /*
@@ -17,29 +22,49 @@ interface PercentageBarProps {
 const PercentageBar = ({
   value,
   width,
+  className,
   height = 8,
   transform = "translate(0,0)",
-  className,
+  orientation = "horizontal",
+  roundedCorners = true,
 }: PercentageBarProps) => {
-  const valueWidth = scaleLinear().domain([0, 100]).range([0, width]);
+  const rx = roundedCorners ? 5 : 0;
 
-  const percentage = valueWidth(value) || 0;
+  if (isNA(value))
+    return (
+      <g transform={transform}>
+        <rect
+          className="text-disabled-light fill-current"
+          x={0}
+          rx={rx}
+          width={width}
+          height={height}
+        />
+      </g>
+    );
+
+  const valueScale = scaleLinear()
+    .domain([0, 100])
+    .range([0, orientation === "horizontal" ? width : height]);
+
+  const percentage = valueScale(value) || 0;
 
   return (
     <g transform={transform}>
       <rect
         className="text-cat-negative fill-current"
         x={0}
-        rx={5}
+        rx={rx}
         width={width}
         height={height}
       />
       <rect
         className={c("fill-current", className)}
         x={0}
-        rx={5}
-        width={percentage}
-        height={height}
+        y={orientation === "vertical" ? height - percentage : 0}
+        rx={rx}
+        width={orientation === "horizontal" ? percentage : width}
+        height={orientation === "vertical" ? percentage : height}
       />
     </g>
   );

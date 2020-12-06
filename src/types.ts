@@ -85,7 +85,7 @@ export type ElementValue =
 export type Element = {
   element: string;
   elementNr: number;
-  category: string;
+  category: ScoreCategory;
   label: string;
   description: string;
   score: number | NA;
@@ -98,7 +98,9 @@ export type Element = {
 export type IndicatorIndex = {
   id: string;
   indicator: string;
-  category: string;
+  category: ScoreCategory;
+  isParent: boolean;
+  hasParent: boolean;
   display: string;
   label: string;
   description: string;
@@ -110,13 +112,16 @@ export type IndicatorIndex = {
   elements: Record<string, Record<string, Element[]>>;
 };
 
-export type SelectOption = {
+export interface SelectOption {
   value: string;
   label: string;
-};
-
-export interface SortStrategy {
-  (xs: SelectOption[]): SelectOption[];
 }
 
-export type SortStrategies = Map<string, SortStrategy>;
+export interface SortStrategy<T extends SelectOption = SelectOption> {
+  (xs: T[]): T[];
+}
+
+export type SortStrategies<T extends SelectOption = SelectOption> = Map<
+  string,
+  SortStrategy<T>
+>;

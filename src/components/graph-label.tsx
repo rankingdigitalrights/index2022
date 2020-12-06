@@ -3,7 +3,7 @@ import React from "react";
 
 interface GraphLabelProps {
   value: string;
-  size?: "small" | "regular" | "large" | "extra-large";
+  size?: "extra-small" | "small" | "regular" | "large" | "extra-large";
   transform?: string;
   textAnchor?: "start" | "middle" | "end";
   bold?: boolean;
@@ -31,6 +31,7 @@ const GraphLabel = ({
         "select-none",
         {
           "font-black": bold,
+          "text-xxs font-circular": size === "extra-small",
           "text-xs font-circular": size === "small",
           "text-lg font-platform": size === "large",
           "text-xl font-platform": size === "extra-large",

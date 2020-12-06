@@ -3,7 +3,11 @@ import React, {useState} from "react";
 
 import CompanyElements from "../../components/company-elements";
 import CompanySelector from "../../components/company-selector";
-import IndicatorSelector from "../../components/indicator-selector";
+import ExpandableDescription from "../../components/expandable-description";
+import IndicatorCompaniesChart from "../../components/indicator-companies-chart";
+import IndicatorSelector, {
+  IndicatorSelectOption,
+} from "../../components/indicator-selector";
 import Layout from "../../components/layout";
 import SortSelector from "../../components/sort-selector";
 import ToggleSwitch from "../../components/toggle-switch";
@@ -21,17 +25,23 @@ type Params = {
   };
 };
 
+interface CompanySelectOption extends SelectOption {
+  score: number;
+}
+
 interface IndicatorPageProps {
   index: IndicatorIndex;
-  indicators: SelectOption[];
-  companies: SelectOption[];
+  indicators: IndicatorSelectOption[];
+  companies: CompanySelectOption[];
 }
 
 export const getStaticPaths = async () => {
   const data = await indicatorIndices();
-  const paths = data.map(({id}) => ({
-    params: {id},
-  }));
+  const paths = data
+    .filter(({isParent}) => !isParent)
+    .map(({id}) => ({
+      params: {id},
+    }));
 
   return {
     paths,
@@ -41,15 +51,23 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   const index = (await indicatorData(indicatorId)) as IndicatorIndex;
-  const indicators = (await indicatorIndices()).map(({id: value, label}) => ({
-    value,
-    label: `${value}. ${label}`,
-  }));
+  const indicators = (await indicatorIndices()).map(
+    ({id: value, label, isParent, hasParent}) => ({
+      value,
+      isParent,
+      hasParent,
+      label: `${value}. ${label}`,
+    }),
+  );
   const companyIndex = await companyIndices();
-  const companies = companyIndex.map(({id: value, companyPretty: label}) => ({
-    value,
-    label,
-  }));
+  const companies = companyIndex.map(({id: value, companyPretty: label}) => {
+    const score = index.scores[value];
+    return {
+      value,
+      label,
+      score: score === "NA" || !score ? 0 : score,
+    };
+  });
 
   return {
     props: {
@@ -60,10 +78,13 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   };
 };
 
-const strategies: SortStrategies = new Map<string, SortStrategy>();
+const strategies: SortStrategies<CompanySelectOption> = new Map<
+  string,
+  SortStrategy<CompanySelectOption>
+>();
 strategies.set(
-  "Alphabetically Ascending",
-  (options: SelectOption[]): SelectOption[] => {
+  "Alphabetically",
+  (options: CompanySelectOption[]): CompanySelectOption[] => {
     return options.sort((a, b) => {
       if (a.label < b.label) return -1;
       if (a.label > b.label) return 1;
@@ -72,11 +93,11 @@ strategies.set(
   },
 );
 strategies.set(
-  "Alphabetically Descending",
-  (options: SelectOption[]): SelectOption[] => {
+  "Score",
+  (options: CompanySelectOption[]): CompanySelectOption[] => {
     return options.sort((a, b) => {
-      if (a.label < b.label) return 1;
-      if (a.label > b.label) return -1;
+      if (a.score < b.score) return 1;
+      if (a.score > b.score) return -1;
       return 0;
     });
   },
@@ -86,9 +107,7 @@ const identitySortFn: SortStrategy = (xs) => xs;
 
 const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
-  const [sortStrategy, setSortStrategy] = useState<string>(
-    "Alphabetically Ascending",
-  );
+  const [sortStrategy, setSortStrategy] = useState<string>("Alphabetically");
   const [literalValues, setLiteralValues] = useState(false);
 
   const router = useRouter();
@@ -110,9 +129,13 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
   };
 
   const sortStrategyFn = strategies.get(sortStrategy) || identitySortFn;
+  const companySortStrategyFn =
+    strategies.get("Alphabetically") || identitySortFn;
 
-  const activeSelector: SelectOption = {
+  const activeSelector: IndicatorSelectOption = {
     value: index.id,
+    isParent: index.isParent,
+    hasParent: index.hasParent,
     label: `${index.id}. ${index.label}`,
   };
 
@@ -128,6 +151,12 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
           companies.filter(({value}) => selectedCompanies.includes(value)),
         );
 
+  const elementDescriptions = Object.values(
+    Object.values(index.elements)[0] || {},
+  )[0];
+
+  const hasScores = Object.keys(index.scores).length > 0;
+
   return (
     <Layout>
       <div className="container mx-auto">
@@ -139,6 +168,37 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
           />
 
           <section className="w-full mt-6 mx-auto">{index.description}</section>
+
+          <section className="w-full mt-6 mx-auto">
+            <ExpandableDescription label="Elements">
+              <ol className="list-none list-decimal mt-1">
+                {elementDescriptions.map(({description, label}) => {
+                  return (
+                    <li key={`element-description-${label}`} className="ml-4">
+                      {description}
+                    </li>
+                  );
+                })}
+              </ol>
+            </ExpandableDescription>
+          </section>
+
+          <section className="w-full mt-2 mx-auto">
+            <ExpandableDescription label="Research guidance">
+              <p className="mt-1">{index.guidance}</p>
+            </ExpandableDescription>
+          </section>
+
+          <div className="mx-auto mt-6">
+            {hasScores && (
+              <IndicatorCompaniesChart
+                category={index.category}
+                scores={index.scores}
+                width={700}
+                height={350}
+              />
+            )}
+          </div>
         </div>
       </div>
 
@@ -149,10 +209,11 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
               <span className="text-sm font-circular">Select companies:</span>
 
               <CompanySelector
-                companies={companies}
+                companies={companySortStrategyFn(
+                  companies.map((obj) => ({...obj})),
+                )}
                 selected={selectedCompanies}
                 onSelect={handleSelectCompany}
-                sortStrategy={sortStrategyFn}
               />
             </div>
 
@@ -178,11 +239,11 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
             </div>
           </div>
 
-          {dataGrids.map(({value}) => (
+          {dataGrids.map(({value, label}) => (
             <CompanyElements
               key={`company-element-${value}`}
               indicatorLabel={index.label}
-              company={value}
+              company={label}
               score={
                 index.scores[value] === undefined ? "NA" : index.scores[value]
               }

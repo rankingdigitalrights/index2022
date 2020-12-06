@@ -29,7 +29,7 @@ const CompanyElements = ({
 
   const legendRow = [indicatorLabel].concat(services);
   const averagesRow = ["Averages"].concat(
-    services.map((service) => averages[service]).toString(),
+    services.map((service) => averages[service].toString()),
   );
   const rows = templateService.reduce((memo, element) => {
     const elements = services.reduce((agg, service) => {
@@ -84,13 +84,15 @@ const CompanyElements = ({
       "w-24 h-8 text-center": idx > 0,
     };
 
+    const serviceName = idx === 0 ? "averages-label" : services[idx - 1];
+
     return (
       <div
         className={c(
           "flex flex-col items-center justify-center border border-disabled-dark",
           className,
         )}
-        key={item}
+        key={`${company}-averages-${serviceName}-${item}`}
       >
         <span className={c("flex flex-col justify-center", innerClassName)}>
           <span>{item}</span>
