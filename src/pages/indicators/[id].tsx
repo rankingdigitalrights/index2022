@@ -146,7 +146,7 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
         <div className="container mx-auto">
           <div className="flex flex-row w-9/12 mx-auto justify-between items-center">
             <div className="w-1/2 flex flex-col justify-between h-14">
-              <span className="text-xs font-circular">Select companies:</span>
+              <span className="text-sm font-circular">Select companies:</span>
 
               <CompanySelector
                 companies={companies}
@@ -157,7 +157,7 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
             </div>
 
             <div className="w-1/4 flex flex-col justify-between h-14 mx-6">
-              <span className="text-xs font-circular">Sort:</span>
+              <span className="text-sm font-circular">Sort:</span>
 
               <SortSelector
                 strategies={sortOptions}

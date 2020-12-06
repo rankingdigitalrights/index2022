@@ -15,8 +15,8 @@ const IndicatorElementTag = ({
   activeTag,
 }: IndicatorElementTagProps) => {
   const className = c(
-    "flex flex-col items-center justify-center w-24 h-16",
-    "p-2 font-circular text-white font-black text-xs text-center",
+    "flex flex-col items-center justify-center w-24 h-12",
+    "p-2 font-circular text-white text-sm text-center leading-none",
     {
       "bg-prissian": value === "Yes",
       "bg-accent-gold": value === "Partial",

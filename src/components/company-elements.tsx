@@ -45,8 +45,8 @@ const CompanyElements = ({
 
   const legend = legendRow.map((item, idx) => {
     const className = {
-      "w-40 text-xs p-2": idx === 0,
-      "w-36 text-xxs p-6": idx > 0,
+      "w-40 text-base p-2 leading-tight": idx === 0,
+      "w-36 text-xs p-6": idx > 0,
     };
 
     const innerClassName = {
@@ -115,7 +115,7 @@ const CompanyElements = ({
               );
             return (
               <div
-                className="flex flex-col items-center justify-center border border-disabled-dark w-36 p-6 text-xxs flex flex-col items-center"
+                className="flex flex-col items-center justify-center border border-disabled-dark w-36 p-6 text-sm flex flex-col items-center"
                 key={`${element.service}-${element.label}`}
               >
                 <IndicatorElementTag
@@ -135,11 +135,11 @@ const CompanyElements = ({
     <div className="mt-6">
       <div className="flex items-center">
         {score !== "NA" && (
-          <span className="font-circular text-md text-white bg-prissian rounded-lg px-2 py-1 text-center mr-3">
+          <span className="font-circular text-md text-white bg-prissian rounded px-2 py-1 text-center mr-3">
             {score}%
           </span>
         )}
-        <h3 className="text-ls font-platform">{company}</h3>
+        <h3 className="text-lg font-platform">{company}</h3>
       </div>
 
       <div className="flex flex-col w-full mt-3 font-circular">

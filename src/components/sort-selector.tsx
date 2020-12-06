@@ -22,7 +22,7 @@ const ControlComponent = ({children}: ControlProps<SelectOption, false>) => {
 };
 
 const SingleValue = ({children}: SingleValueProps<SelectOption>) => {
-  return <span className="text-xxs font-circular">{children}</span>;
+  return <span className="text-xs font-circular">{children}</span>;
 };
 
 const SortSelector = ({strategies, selected, onSelect}: SortSelectorProps) => {

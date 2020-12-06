@@ -86,6 +86,7 @@
 
   html {
     @apply font-lyon text-base;
+     font-size:18px;
   }
 
   h1 {

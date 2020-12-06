@@ -56,7 +56,7 @@ const MultiValue = ({
 };
 
 const Placeholder = () => {
-  return <span className="text-xxs font-circular">All companies</span>;
+  return <span className="text-xs font-circular">All companies</span>;
 };
 
 const ControlComponent = ({children}: ControlProps<SelectOption, true>) => {

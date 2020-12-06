@@ -18,14 +18,14 @@ module.exports = {
       },
 
       fontSize: {
-        xxs: "0.625rem",
-        xs: "0.937rem",
-        sm: "1rem",
-        base: "1.125rem",
-        md: "1.25rem",
-        lg: "1.625rem",
+        xxs: "0.58rem",
+        xs: "0.694rem",
+        sm: "0.833rem",
+        base: "1rem",
+        md: "1.2rem",
+        lg: "1.44rem",
         xl: "2.5rem",
-        xxl: "4.0625rem",
+        xxl: "3.6rem",
       },
 
       colors: {

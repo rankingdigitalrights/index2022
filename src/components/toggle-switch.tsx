@@ -17,7 +17,7 @@ const ToggleSwitch = ({label, onChange}: ToggleSwitchProps) => {
 
   return (
     <>
-      <label htmlFor="toggle" className="font-circular text-xxs mr-3">
+      <label htmlFor="toggle" className="font-circular text-xs mr-3">
         {label}
       </label>
       <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
