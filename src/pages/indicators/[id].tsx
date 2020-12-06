@@ -171,7 +171,7 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
 
           <section className="w-full mt-6 mx-auto">
             <ExpandableDescription label="Elements">
-              <ol className="list-none list-decimal">
+              <ol className="list-none list-decimal mt-1">
                 {elementDescriptions.map(({description, label}) => {
                   return (
                     <li key={`element-description-${label}`} className="ml-4">
@@ -185,7 +185,7 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
 
           <section className="w-full mt-2 mx-auto">
             <ExpandableDescription label="Research guidance">
-              <p className="mt-2">{index.guidance}</p>
+              <p className="mt-1">{index.guidance}</p>
             </ExpandableDescription>
           </section>
 
