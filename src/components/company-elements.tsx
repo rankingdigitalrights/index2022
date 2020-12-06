@@ -45,7 +45,7 @@ const CompanyElements = ({
 
   const legend = legendRow.map((item, idx) => {
     const className = {
-      "w-40 text-base p-2 leading-tight": idx === 0,
+      "w-40 text-sm p-2 leading-tight": idx === 0,
       "w-36 text-xs p-6": idx > 0,
     };
 
@@ -134,7 +134,7 @@ const CompanyElements = ({
   });
 
   return (
-    <div className="mt-6">
+    <div className="mt-10">
       <div className="flex items-center">
         {score !== "NA" && (
           <span className="font-circular text-md text-white bg-prissian rounded px-2 py-1 text-center mr-3">

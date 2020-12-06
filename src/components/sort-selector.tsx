@@ -53,7 +53,7 @@ const Option = ({
   innerProps,
   data,
 }: OptionProps<SelectOption, false>) => {
-  const className = c("text-xs pl-2 pr-2", {
+  const className = c("text-xs pl-2 pr-2 p-1", {
     "bg-prissian text-white": isSelected,
     "bg-beige text-prissian": isFocused && !isSelected,
     "cursor-pointer": !isSelected,

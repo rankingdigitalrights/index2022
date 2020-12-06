@@ -58,7 +58,7 @@ const IndicatorCompaniesChart = ({
                 transform={`translate(${
                   (barWidth + gap) * idx + 21 + insetX
                 },10)`}
-                className="text-prissian stroke-current"
+                className="text-prissian"
               />
               <PercentageBar
                 key={company}
@@ -78,7 +78,7 @@ const IndicatorCompaniesChart = ({
                 transform={`translate(${
                   (barWidth + gap) * idx + 31 + insetX
                 },210) rotate(270,0,6)`}
-                className="text-prissian stroke-current"
+                className="text-prissian"
               />
             </g>
           );
@@ -86,9 +86,9 @@ const IndicatorCompaniesChart = ({
 
         <line
           x1={insetX}
-          y1="30"
+          y1="21"
           x2={insetX}
-          y2={190}
+          y2={200}
           strokeWidth={2}
           className="text-disabled-dark stroke-current"
         />
@@ -98,7 +98,7 @@ const IndicatorCompaniesChart = ({
           size="extra-small"
           transform={`translate(${insetX - gap},30)`}
           textAnchor="end"
-          className="text-prissian stroke-current"
+          className="text-prissian"
         />
 
         <GraphLabel
@@ -106,7 +106,7 @@ const IndicatorCompaniesChart = ({
           size="extra-small"
           transform={`translate(${insetX - gap},200)`}
           textAnchor="end"
-          className="text-prissian stroke-current"
+          className="text-prissian"
         />
       </svg>
     </div>

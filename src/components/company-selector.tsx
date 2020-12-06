@@ -31,7 +31,7 @@ const MenuList = ({
   ...props
 }: MenuListComponentProps<SelectOption, true>) => {
   return (
-    <div className="flex flex-wrap bg-white" {...props}>
+    <div className="flex flex-wrap bg-white p-2" {...props}>
       {children}
     </div>
   );

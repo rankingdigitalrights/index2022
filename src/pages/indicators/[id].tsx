@@ -160,14 +160,16 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
   return (
     <Layout>
       <div className="container mx-auto">
-        <div className="flex flex-col w-9/12 mx-auto">
+        <div className="flex flex-col mx-auto md:w-3/5 w-11/12">
           <IndicatorSelector
             indicators={indicators}
             selected={activeSelector}
             onSelect={handleSelectIndicator}
           />
 
-          <section className="w-full mt-6 mx-auto">{index.description}</section>
+          <section className="w-full mt-6 mx-auto  text-sm font-circular">
+            {index.description}
+          </section>
 
           <section className="w-full mt-6 mx-auto">
             <ExpandableDescription label="Elements">
@@ -189,7 +191,7 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
             </ExpandableDescription>
           </section>
 
-          <div className="mx-auto mt-6">
+          <div className="mt-10">
             {hasScores && (
               <IndicatorCompaniesChart
                 category={index.category}
@@ -203,7 +205,7 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
       </div>
 
       <div className="bg-beige pt-6 pb-6 mt-6">
-        <div className="container mx-auto">
+        <div className="container mx-auto md:w-8/12 w-11/12">
           <div className="flex flex-row w-9/12 mx-auto justify-between items-center">
             <div className="w-1/2 flex flex-col justify-between h-14">
               <span className="text-sm font-circular">Select companies:</span>

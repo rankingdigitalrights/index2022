@@ -24,7 +24,12 @@ interface IndicatorSelectorProps {
 }
 
 const Input = (props: InputProps) => {
-  return <components.Input {...props} className="text-lg text-prissian" />;
+  return (
+    <components.Input
+      {...props}
+      className="text-lg leading-none text-prissian"
+    />
+  );
 };
 
 const IndicatorSeparator = () => {
@@ -52,7 +57,7 @@ const SingleValue = ({
   innerProps,
 }: SingleValueProps<IndicatorSelectOption>) => {
   return (
-    <div className="text-lg" {...innerProps}>
+    <div className="text-lg flex-1 leading-none" {...innerProps}>
       {children}
     </div>
   );
@@ -69,7 +74,7 @@ const Option = ({
   const {value, isParent, hasParent} = data;
   const isNotFirstOption = options[0]?.value !== value;
 
-  const className = c("text-xs font-circular pl-2 pr-2", {
+  const className = c("text-xs font-circular p-1 pl-2 pr-2", {
     "bg-prissian text-white": isSelected,
     "bg-beige text-prissian": isFocused && !isSelected,
     "text-disabled-dark": isParent,
