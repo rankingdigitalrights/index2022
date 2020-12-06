@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 import ChevronDown from "../../static/chevron-down.svg";
-import ChevronUp from "../../static/chevron-up.svg";
+import ChevronRight from "../../static/chevron-right.svg";
 
 interface ExpandableDescriptionProps {
   label: string;
@@ -26,7 +26,7 @@ const ExpandableDescription = ({
         {isExpanded ? (
           <ChevronDown className="ml-2 text-prissian stroke-current" />
         ) : (
-          <ChevronUp className="ml-2 text-prissian stroke-current" />
+          <ChevronRight className="ml-2 text-prissian stroke-current" />
         )}
       </button>
 

@@ -72,8 +72,8 @@ const CompanyIndicatorChart = ({
                   {indicatorPretty}
                 </span>
 
-                {hasCollapse && isOpen && <ChevronDown className="ml-2" />}
-                {hasCollapse && !isOpen && <ChevronUp className="ml-2" />}
+                {hasCollapse && isOpen && <ChevronUp className="ml-2" />}
+                {hasCollapse && !isOpen && <ChevronDown className="ml-2" />}
               </button>
 
               <svg
