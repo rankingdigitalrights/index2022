@@ -239,11 +239,11 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
             </div>
           </div>
 
-          {dataGrids.map(({value}) => (
+          {dataGrids.map(({value, label}) => (
             <CompanyElements
               key={`company-element-${value}`}
               indicatorLabel={index.label}
-              company={value}
+              company={label}
               score={
                 index.scores[value] === undefined ? "NA" : index.scores[value]
               }
