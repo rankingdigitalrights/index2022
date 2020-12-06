@@ -8,19 +8,26 @@ import {
   CompanyDetails,
   CompanyIndex,
   CompanyKind,
+  CsvRecord,
   Element,
   ElementValue,
   IndexYear,
   Indicator,
+  IndicatorCategory,
   IndicatorIndex,
   IndicatorScore,
-  NA,
-  ScoreCategory,
   Scores,
 } from "./types";
-import {isNA, memoizeAsync, unreachable} from "./utils";
-
-type CsvRecord = Record<string, string>;
+import {
+  floatOrNA,
+  isIndicatorFamily,
+  mapBoolean,
+  mapCategory,
+  mapElementValue,
+  memoizeAsync,
+  stringOrNil,
+  unreachable,
+} from "./utils";
 
 type CsvTotal = {
   index: IndexYear;
@@ -31,14 +38,14 @@ type CsvTotal = {
 type CsvCategory = {
   index: IndexYear;
   company: string;
-  category: ScoreCategory;
+  category: IndicatorCategory;
   score: IndicatorScore;
 };
 
 type CsvIndicator = {
   index: IndexYear;
   company: string;
-  category: ScoreCategory;
+  category: IndicatorCategory;
   indicator: string;
   indicatorNr: number;
   indicatorSuffix?: string;
@@ -52,7 +59,7 @@ type CsvIndicator = {
 type CsvLevel = {
   index: IndexYear;
   company: string;
-  category: ScoreCategory;
+  category: IndicatorCategory;
   indicator: string;
   indicatorNr: number;
   indicatorSuffix?: string;
@@ -64,7 +71,7 @@ type CsvLevel = {
 type CsvElement = {
   index: IndexYear;
   company: string;
-  category: ScoreCategory;
+  category: IndicatorCategory;
   indicator: string;
   element: string;
   indicatorNr: number;
@@ -84,7 +91,7 @@ type CsvCompanySpec = {
 };
 
 type CsvIndicatorSpec = {
-  category: ScoreCategory;
+  category: IndicatorCategory;
   indicator: string;
   display: string;
   indicatorNr: number;
@@ -96,7 +103,7 @@ type CsvIndicatorSpec = {
 };
 
 type CsvElementSpec = {
-  category: ScoreCategory;
+  category: IndicatorCategory;
   indicator: string;
   element: string;
   indicatorNr: number;
@@ -115,68 +122,6 @@ const indexYears: Set<IndexYear> = new Set(["2020"]);
  * configuration file?
  */
 const companiesFolder = "1aByjKhv9N9nNQBRNK1GVdraU0qorv7dX";
-
-/*
- * Some utility functions to parse the CSV data.
- */
-const floatOrNA = (value: string): number | NA =>
-  isNA(value) ? "NA" : Number.parseFloat(value);
-
-const stringOrNil = (value: string): string | undefined =>
-  value === "NA" ? undefined : value;
-
-const mapBoolean = (value: string): boolean => {
-  switch (value) {
-    case "TRUE":
-      return true;
-    case "FALSE":
-      return false;
-    default:
-      return unreachable(`Failed to parse ${value} as boolean`);
-  }
-};
-
-const mapCategory = (value: string): ScoreCategory => {
-  switch (value) {
-    case "G":
-      return "governance";
-    case "F":
-      return "freedom";
-    case "P":
-      return "privacy";
-    default: {
-      throw new Error("Unknown score category.");
-    }
-  }
-};
-
-const mapElementValue = (value: string): ElementValue => {
-  switch (value) {
-    case "NA":
-      return "NA";
-    case "New / Revised Element":
-      return "New / Revised Element";
-    case "No disclosure found":
-    case "no disclosure found":
-      return "No Disclosure Found";
-    case "No":
-    case "no":
-      return "No";
-    case "Yes":
-    case "yes":
-      return "Yes";
-    case "not selected":
-      return "Not Selected";
-    case "Partial":
-    case "partial":
-      return "Partial";
-    default: {
-      throw new Error("Unknown element value.");
-    }
-  }
-};
-
-const isIndicatorFamily = (value: string): boolean => value === "TRUE";
 
 /* A helper function to extract and map indicators for one category
  * from a list of indicators. This is used by the loadData function.
@@ -228,10 +173,6 @@ const categoryIndicators = (
 
   return iterator(csvIndicators, false);
 };
-
-/*
- * Sort a list of elements into a list of elements by companies and
- */
 
 /*
  * Load Records from a CSV file and map them to a useful type.
@@ -377,20 +318,14 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
       csvTotals,
       csvCategories,
       csvIndicators,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      csvElements,
       csvCompanySpecs,
       csvIndicatorSpecs,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      csvElementSpecs,
     ] = await Promise.all([
       loadTotalsCsv("data/2020-totals.csv"),
       loadCategoriesCsv("data/2020-categories.csv"),
       loadIndicatorsCsv("data/2020-indicators.csv"),
-      loadElementsCsv("data/2020-elements.csv"),
       loadCompanySpecsCsv("data/2020-company-specs.csv"),
       loadIndicatorSpecsCsv("data/2020-indicator-specs.csv"),
-      loadElementSpecsCsv("data/2020-element-specs.csv"),
     ]);
 
     return (

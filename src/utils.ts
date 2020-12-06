@@ -1,4 +1,4 @@
-import {IndicatorScore, NA, ScoreCategory} from "./types";
+import {ElementValue, IndicatorCategory, IndicatorScore, NA} from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const memoize = <T extends (...args: any[]) => any>(
@@ -51,7 +51,69 @@ export const unreachable = (message?: string): never => {
   }
 };
 
-export const mapCategoryName = (category: ScoreCategory): string => {
+/*
+ * Some utility functions to parse the CSV data.
+ */
+export const floatOrNA = (value: string): number | NA =>
+  isNA(value) ? "NA" : Number.parseFloat(value);
+
+export const stringOrNil = (value: string): string | undefined =>
+  value === "NA" ? undefined : value;
+
+export const mapBoolean = (value: string): boolean => {
+  switch (value) {
+    case "TRUE":
+      return true;
+    case "FALSE":
+      return false;
+    default:
+      return unreachable(`Failed to parse ${value} as boolean`);
+  }
+};
+
+export const mapCategory = (value: string): IndicatorCategory => {
+  switch (value) {
+    case "G":
+      return "governance";
+    case "F":
+      return "freedom";
+    case "P":
+      return "privacy";
+    default: {
+      throw new Error("Unknown score category.");
+    }
+  }
+};
+
+export const mapElementValue = (value: string): ElementValue => {
+  switch (value) {
+    case "NA":
+      return "NA";
+    case "New / Revised Element":
+      return "New / Revised Element";
+    case "No disclosure found":
+    case "no disclosure found":
+      return "No Disclosure Found";
+    case "No":
+    case "no":
+      return "No";
+    case "Yes":
+    case "yes":
+      return "Yes";
+    case "not selected":
+      return "Not Selected";
+    case "Partial":
+    case "partial":
+      return "Partial";
+    default: {
+      throw new Error("Unknown element value.");
+    }
+  }
+};
+
+export const isIndicatorFamily = (value: string): boolean => value === "TRUE";
+
+export const mapCategoryName = (category: IndicatorCategory): string => {
   switch (category) {
     case "governance":
       return "Governance";

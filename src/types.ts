@@ -1,16 +1,13 @@
 export type IndexYear = "2019" | "2020";
 
-export type ScoreCategory = "governance" | "freedom" | "privacy";
-
-// FIXME: Deprecate ScoreCategory in favor of Category.
-export type Category = ScoreCategory;
-
 export type NA = "NA";
+
+export type IndicatorCategory = "governance" | "freedom" | "privacy";
 
 export type IndicatorScore = number | NA;
 
 export type Indicator = {
-  category: ScoreCategory;
+  category: IndicatorCategory;
   indicator: string;
   display: string;
   indicatorNr: number;
@@ -39,16 +36,16 @@ export type CompanyDetails = {
 
 export type CompanyKind = "telecom" | "internet";
 
-export type Scores = Record<ScoreCategory | "total", number>;
+export type Scores = Record<IndicatorCategory | "total", number>;
 
-export type CategoryScores = Record<ScoreCategory, number>;
+export type CategoryScores = Record<IndicatorCategory, number>;
 
 export type CategoryCaption =
   | "Governance"
   | "Freedom of Expression"
   | "Privacy";
 
-export type Indicators = Record<ScoreCategory, Indicator[]>;
+export type Indicators = Record<IndicatorCategory, Indicator[]>;
 
 export type CompanyIndex = {
   id: string;
@@ -85,7 +82,7 @@ export type ElementValue =
 export type Element = {
   element: string;
   elementNr: number;
-  category: ScoreCategory;
+  category: IndicatorCategory;
   label: string;
   description: string;
   score: number | NA;
@@ -98,7 +95,7 @@ export type Element = {
 export type IndicatorIndex = {
   id: string;
   indicator: string;
-  category: ScoreCategory;
+  category: IndicatorCategory;
   isParent: boolean;
   hasParent: boolean;
   display: string;
@@ -111,6 +108,8 @@ export type IndicatorIndex = {
   averages: Record<string, Record<string, IndicatorScore>>;
   elements: Record<string, Record<string, Element[]>>;
 };
+
+export type CsvRecord = Record<string, string>;
 
 export interface SelectOption {
   value: string;

@@ -2,14 +2,14 @@ import c from "clsx";
 import {arc, pie, PieArcDatum} from "d3-shape";
 import React, {useRef} from "react";
 
-import {ScoreCategory} from "../types";
+import {IndicatorCategory} from "../types";
 import {mapCategoryName} from "../utils";
 import GraphLabel from "./graph-label";
 
 type Datum = PieArcDatum<number | {valueOf(): number}>;
 
 export interface CompanyScoreChartProps {
-  category: ScoreCategory;
+  category: IndicatorCategory;
   score: number;
 }
 

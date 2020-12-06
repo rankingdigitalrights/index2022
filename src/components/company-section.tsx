@@ -1,11 +1,11 @@
 import c from "clsx";
 import React, {useEffect, useRef, useState} from "react";
 
-import {Indicator, ScoreCategory} from "../types";
+import {Indicator, IndicatorCategory} from "../types";
 import CompanyIndicatorChart from "./company-indicator-chart";
 
 interface CompanySectionProps {
-  category: ScoreCategory;
+  category: IndicatorCategory;
   text: string;
   indicators: Indicator[];
 }
