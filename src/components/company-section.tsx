@@ -57,7 +57,7 @@ const CompanySection = ({category, text, indicators}: CompanySectionProps) => {
   return (
     <section className="mt-6 pt-6 pb-6 border-t-2 border-beige m-2">
       <div className="flex flex-col md:flex-row mt-8 md:mt-16">
-        <div className="md:w-1/2 md:mr-2">
+        <div className="md:w-1/2 md:mr-3">
           <div className="flex flex-col justify-end mb-12 md:h-16">
             <div className="font-circular text-md text-prissian">Category</div>
             <h2 className={titleClassName}>{title}</h2>
@@ -66,7 +66,7 @@ const CompanySection = ({category, text, indicators}: CompanySectionProps) => {
           <div dangerouslySetInnerHTML={{__html: text}} />
         </div>
 
-        <div ref={chartRef} className="md:w-1/2">
+        <div ref={chartRef} className="md:w-1/2 md:ml-3">
           <div className="flex flex-col justify-end md:h-16 mb-12 mt-4 md:mt-0">
             <h3 className="text-lg font-circular">Indicators</h3>
           </div>

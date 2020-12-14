@@ -74,48 +74,47 @@ const CompanyPage = ({index, details}: CompanyProps) => {
 
       <div className="bg-beige pt-6 pb-6 mt-6">
         <div className="container mx-auto">
-          <section className="flex">
-            <div className="w-1/2 pt-3">
-              <h2>Key findings</h2>
+          <section className="flex pt-3">
+            <div className="w-1/2 pr-3">
+              <h2 className="text-prissian mb-6">Highlights:</h2>
               <div
-                dangerouslySetInnerHTML={{__html: details.keyFindings || ""}}
+                className="mt-6"
+                dangerouslySetInnerHTML={{__html: details.keyFindings}}
+              />
+
+              <h2 className="text-prissian mt-8 mb-6">Recommendations:</h2>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: details.keyRecommendation,
+                }}
               />
             </div>
 
-            <div className="w-1/2 pt-3">
-              <div className="pb-3">Services evaluated</div>
+            <div className="w-1/2 pl-3">
+              <div className="pb-3 mb-6">Services evaluated</div>
             </div>
           </section>
 
-          <section className="flex flex-col">
-            <h2 className="text-medium-gray">Analysis</h2>
+          <section className="flex flex-col mt-6">
+            <h2 className="text-prissian mb-6">Changes since 2019:</h2>
 
-            <div className="flex">
-              <div className="w-1/2">
-                <h3>Overall score {index.scores.total}%</h3>
+            <div className="flex pt-3">
+              <div className="w-1/2 pr-3">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: details.analysis || "analysis missing",
+                    __html: details.analysis,
                   }}
                 />
               </div>
 
-              <div className="w-1/2">
-                <h3>Key recommendations</h3>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      details.keyRecommendation || "key recommendation missing",
-                  }}
-                />
-              </div>
+              <div className="w-1/2 pl-3" />
             </div>
           </section>
         </div>
       </div>
 
       <div className="container mx-auto">
-        <div className="flex flex-wrap place-content-center bg-offset-gray center">
+        <div className="flex flex-wrap place-content-center border-top border-bottom center">
           <CompanyScoreChart
             category="governance"
             score={index.scores.governance}
@@ -126,19 +125,19 @@ const CompanyPage = ({index, details}: CompanyProps) => {
 
         <CompanySection
           category="governance"
-          text={details.governance || "governance missing"}
+          text={details.governance}
           indicators={index.indicators.governance}
         />
 
         <CompanySection
           category="freedom"
-          text={details.freedom || "freedom missing"}
+          text={details.freedom}
           indicators={index.indicators.freedom}
         />
 
         <CompanySection
           category="privacy"
-          text={details.privacy || "privacy missing"}
+          text={details.privacy}
           indicators={index.indicators.privacy}
         />
 
