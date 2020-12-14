@@ -21,17 +21,14 @@ export type Indicator = {
 
 export type CompanyDetails = {
   id: string;
-  basicInformation?: string;
-  keyFindings?: string;
-  analysis?: string;
-  keyRecommendation?: string;
-  governance?: string;
-  summaryOfChangesGovernance?: string;
-  freedom?: string;
-  summaryOfChangesFreedom?: string;
-  privacy?: string;
-  summaryOfChangesPrivacy?: string;
-  footnotes?: string;
+  basicInformation: string;
+  keyFindings: string;
+  analysis: string;
+  keyRecommendation: string;
+  governance: string;
+  freedom: string;
+  privacy: string;
+  footnotes: string;
 };
 
 export type CompanyKind = "telecom" | "internet";

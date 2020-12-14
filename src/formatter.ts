@@ -121,27 +121,25 @@ export const processHtml = (src: string): string => {
   return html;
 };
 
-const emptyCompany = (id: string): CompanyDetails => ({
+export const emptyCompany = (id: string): CompanyDetails => ({
   id,
   basicInformation: "basic information missing",
   keyFindings: "key findings missing",
   analysis: "analysis missing",
   keyRecommendation: "key recommendations missing",
   governance: "governance missing",
-  summaryOfChangesGovernance: "summary of changes governance missing",
   freedom: "freedom of expression missing",
-  summaryOfChangesFreedom: "summary of freedom of expression missing",
   privacy: "privacy missing",
-  summaryOfChangesPrivacy: "summary of changes privacy missing",
   footnotes: "footnotes missing",
 });
 
 export const companyDetails = (id: string, src: string): CompanyDetails => {
+  const scaffold = emptyCompany(id);
   const $ = cheerio.load(src);
-  const details = emptyCompany(id);
 
-  details.footnotes =
-    $("<div></div>").append($("p").has("a[href^=#ftnt_ref]")).html() || "";
+  const footnotes =
+    $("<div></div>").append($("p").has("a[href^=#ftnt_ref]")).html() ||
+    "footnotes missing";
 
   // Since we extracted the footnotes already, remove them.
   removeTag("p", "a[href^=#ftnt_ref]", $);
@@ -150,21 +148,39 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
   // By extracting the footnotes we leave a whole bunch of empty div's behind.
   removeEmptyTag("div", $);
 
-  details.basicInformation =
-    extractSection("basic-information", "key-findings", $).html() || undefined;
-  details.keyFindings =
-    extractSection("key-findings", "key-recommendations", $).html() ||
-    undefined;
-  details.keyRecommendation =
-    extractSection("key-recommendations", "analysis", $).html() || undefined;
-  details.analysis =
-    extractSection("analysis", "governance", $).html() || undefined;
-  details.governance =
-    extractSection("governance", "freedom-of-expression", $).html() ||
-    undefined;
-  details.freedom =
-    extractSection("freedom-of-expression", "privacy", $).html() || undefined;
-  details.privacy = extractSection("privacy", "", $).html() || undefined;
+  const basicInformation = extractSection(
+    "basic-information",
+    "key-findings",
+    $,
+  ).html();
+  const keyFindings = extractSection(
+    "key-findings",
+    "key-recommendations",
+    $,
+  ).html();
+  const keyRecommendation = extractSection(
+    "key-recommendations",
+    "analysis",
+    $,
+  ).html();
+  const analysis = extractSection("analysis", "governance", $).html();
+  const governance = extractSection(
+    "governance",
+    "freedom-of-expression",
+    $,
+  ).html();
+  const freedom = extractSection("freedom-of-expression", "privacy", $).html();
+  const privacy = extractSection("privacy", "", $).html();
 
-  return details;
+  return {
+    ...scaffold,
+    ...(basicInformation ? {basicInformation} : undefined),
+    ...(keyFindings ? {keyFindings} : undefined),
+    ...(keyRecommendation ? {keyRecommendation} : undefined),
+    ...(analysis ? {analysis} : undefined),
+    ...(governance ? {governance} : undefined),
+    ...(freedom ? {freedom} : undefined),
+    ...(privacy ? {privacy} : undefined),
+    ...(footnotes ? {footnotes} : undefined),
+  };
 };

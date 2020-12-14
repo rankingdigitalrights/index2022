@@ -2,7 +2,11 @@ import parse from "csv-parse";
 import fs, {promises as fsP} from "fs";
 import path from "path";
 
-import {companyDetails as companyDetails2, processHtml} from "./formatter";
+import {
+  companyDetails as companyDetails2,
+  emptyCompany,
+  processHtml,
+} from "./formatter";
 import {fetchDocumentHtml, getAuth, listFiles} from "./google";
 import {
   CompanyDetails,
@@ -561,7 +565,7 @@ const companyDetails = memoizeAsync<
   return Promise.all(
     googleDocs.map(async (googleDoc) => {
       const doc = await fetchDocumentHtml(auth, companiesDir, googleDoc);
-      if (!doc.download) return {id: doc.id};
+      if (!doc.download) return emptyCompany(doc.id);
       const src = await fsP.readFile(doc.download.target, "utf-8");
       const html = processHtml(src);
       return companyDetails2(doc.name, html);
@@ -583,9 +587,9 @@ export const companyData = async (
   const index = indexCache.find(({id}) => id === companyId);
   // Until all editorial content is finished we provide an empty company
   // details page.
-  const details = detailsCache.find(({id}) => id === companyId) || {
-    id: companyId,
-  };
+  const details =
+    detailsCache.find(({id}) => id === companyId.toLocaleLowerCase()) ||
+    emptyCompany(companyId);
 
   if (!(index && details)) {
     throw new Error(
