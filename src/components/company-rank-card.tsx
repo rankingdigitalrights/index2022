@@ -1,24 +1,67 @@
+import c from "clsx";
+import React from "react";
+
+import {CompanyKind} from "../types";
+import {enumerate} from "../utils";
+
 interface CompanyRankCardProps {
+  company: string;
   score: number;
   rank: number;
+  kind: CompanyKind;
+  counts: Record<CompanyKind | "total", number>;
+  className?: string;
 }
 
-const CompanyRankCard = ({score, rank}: CompanyRankCardProps) => {
+const CompanyRankCard = ({
+  company,
+  score,
+  rank,
+  kind,
+  counts,
+  className,
+}: CompanyRankCardProps) => {
+  const rankLabel =
+    kind === "telecom"
+      ? `${counts[kind]} telecommunication companies`
+      : `${counts[kind]} digital platforms`;
+
   return (
-    <div className="flex">
-      <div className="w-24">
-        <div className="font-simplon-light text-lg text-medium-gray">Rank</div>
-        <div className="mt-4 font-simplon-bold text-white rounded-full h-12 w-12 flex items-center justify-center bg-blue-500 text-xl">
-          {rank}
+    <div className={c("flex flex-col", className)}>
+      <h1 className="font-platform text-white bold text-xl">{company}</h1>
+
+      <div className="flex mt-6">
+        <div className="flex flex-col">
+          <div className="flex items-center font-circular text-white text-md bold">
+            <span className="mr-3">Ranked:</span>{" "}
+            <span className="border border-white rounded ml-3 p-1">
+              {enumerate(rank)}
+            </span>
+          </div>
+          <span className="font-circular text-sm text-disabled-dark mt-3">
+            Out of {rankLabel}.
+          </span>
+        </div>
+
+        <div className="flex flex-col ml-8">
+          <div className="flex items-center font-circular text-white text-md bold">
+            <span className="mr-3">Scored:</span>{" "}
+            <span className="border border-white rounded ml-3 p-1">
+              {score}%
+            </span>
+          </div>
+          <span className="font-circular text-sm text-disabled-dark mt-3">
+            Out of 100 possible points.
+          </span>
         </div>
       </div>
 
-      <div className="w-24">
-        <div className="font-simplon-light text-lg text-medium-gray">Score</div>
-        <div className="mt-4 font-simplon-bold h-16 w-16 flex items-center justify-center text-xl">
-          {score}%
-        </div>
-      </div>
+      <p className="font-circular text-sm text-white mt-6">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae
+        congue mauris rhoncus aenean. Odio pellentesque diam volutpat commodo
+        sed egestas egestas fringilla phasellus.
+      </p>
     </div>
   );
 };

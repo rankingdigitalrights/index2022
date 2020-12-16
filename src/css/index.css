@@ -183,4 +183,16 @@
   .toggle-checkbox:checked {
     right: 0.2rem;
   }
+
+  .score-label:before {
+    @apply absolute;
+ 
+    content: "";
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #1C5275;
+    transform:rotate(-90deg);
+    left: 7px;
+    top: 6px;
+  }
 }

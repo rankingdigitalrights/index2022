@@ -129,3 +129,19 @@ export const mapCategoryName = (category: IndicatorCategory): string => {
 export const mapScore = (score: IndicatorScore): number => {
   return isNA(score) ? 0 : score;
 };
+
+export const enumerate = (value: string | number): string => {
+  switch (value) {
+    case "1":
+    case 1:
+      return `${value}st`;
+    case "2":
+    case 2:
+      return `${value}nd`;
+    case "3":
+    case 3:
+      return `${value}rd`;
+    default:
+      return `${value}th`;
+  }
+};

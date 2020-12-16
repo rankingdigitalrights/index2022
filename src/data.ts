@@ -402,8 +402,8 @@ export const companyIndices = memoizeAsync<() => Promise<CompanyIndex[]>>(
         // Set the real rank of the company after we sorted the
         // companies by score.
         .sort((a, b) => {
-          if (a.scores.total < b.scores.total) return -1;
-          if (a.scores.total > b.scores.total) return 1;
+          if (a.scores.total < b.scores.total) return 1;
+          if (a.scores.total > b.scores.total) return -1;
           return 0;
         })
         .map((company, i) => Object.assign(company, {rank: i + 1}))

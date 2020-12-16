@@ -1,12 +1,12 @@
-import {faCircle} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useRouter} from "next/router";
 
 import CompanyRankCard from "../../components/company-rank-card";
+import CompanyRankChart from "../../components/company-rank-chart";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
 import Layout from "../../components/layout";
 import {companyData, companyIndices} from "../../data";
-import {CompanyDetails, CompanyIndex} from "../../types";
+import {CompanyDetails, CompanyIndex, CompanyRank} from "../../types";
 
 type Params = {
   params: {
@@ -17,6 +17,7 @@ type Params = {
 interface CompanyProps {
   index: CompanyIndex;
   details: CompanyDetails;
+  ranking: CompanyRank[];
 }
 
 export const getStaticPaths = async () => {
@@ -32,6 +33,16 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({params: {slug}}: Params) => {
+  const data = await companyIndices();
+  const ranking = data
+    .map(({id, companyPretty, kind, scores: {total}}) => {
+      return {id, companyPretty, kind, score: total};
+    })
+    .sort((a, b) => {
+      if (a.score < b.score) return 1;
+      if (a.score > b.score) return -1;
+      return 0;
+    });
   const [index, details] = await companyData(slug);
 
   // Map from the input format to the internal type.
@@ -39,43 +50,67 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
     props: {
       index,
       details,
+      ranking,
     },
   };
 };
 
-const CompanyPage = ({index, details}: CompanyProps) => {
+const CompanyPage = ({index, details, ranking}: CompanyProps) => {
+  const router = useRouter();
+
   // FIXME: I don't receive the company kind yet as part of the CSV data.
   const companyKind =
     index.kind === "telecom"
       ? "Telecommunications company"
-      : "Internet and mobile ecosystem companies";
+      : "Digital platforms";
+  const companyCounts = {
+    telecom: ranking.filter(({kind}) => kind === "telecom").length,
+    internet: ranking.filter(({kind}) => kind === "internet").length,
+    total: ranking.length,
+  };
+
+  const handleCompanyClick = (id: string) => {
+    router.push(`/companies/${id}`);
+  };
 
   return (
     <Layout>
-      <div className="container mx-auto">
-        <section className="flex">
-          <div className="w-1/2">
-            <div className="flex items-start items-center">
-              <span className="text-red-600 mr-2">
-                <FontAwesomeIcon icon={faCircle} />
-              </span>
-              <div className="font-simplon-light text-medium-gray text-sm">
-                {companyKind}
-              </div>
+      <div className="relative">
+        <div className="absolute flex w-full h-full top-0">
+          <div className="w-3/5 bg-prissian" />
+          <div className="w-2/5 bg-beige" />
+        </div>
+
+        <div className="container mx-auto flex">
+          <div className="flex flex-col float-right w-3/5 pt-6 pb-3 pr-3 z-10">
+            <div className="font-circular text-white text-xxs">
+              FIXME &gt; Companies &gt; {companyKind} &gt; {index.company}
             </div>
-            <h1>{index.company}</h1>
+
+            <CompanyRankCard
+              company={index.company}
+              rank={index.rank}
+              score={index.scores.total}
+              kind={index.kind}
+              counts={companyCounts}
+              className="mt-6"
+            />
           </div>
 
-          <div className="w-1/2">
-            <CompanyRankCard rank={index.rank} score={index.scores.total} />
+          <div className="w-2/5 pt-6 pb-3 pl-12 z-10">
+            <CompanyRankChart
+              activeCompany={index.id}
+              ranking={ranking}
+              onClick={handleCompanyClick}
+            />
           </div>
-        </section>
+        </div>
       </div>
 
-      <div className="bg-beige pt-6 pb-6 mt-6">
+      <div className="pt-6 pb-6 mt-6">
         <div className="container mx-auto">
           <section className="flex pt-3">
-            <div className="w-1/2 pr-3">
+            <div className="w-3/5 pr-3">
               <h2 className="text-prissian mb-6">Highlights:</h2>
               <div
                 className="mt-6"
@@ -90,7 +125,7 @@ const CompanyPage = ({index, details}: CompanyProps) => {
               />
             </div>
 
-            <div className="w-1/2 pl-3">
+            <div className="w-2/5 pl-3">
               <div className="pb-3 mb-6">Services evaluated</div>
             </div>
           </section>
@@ -99,7 +134,7 @@ const CompanyPage = ({index, details}: CompanyProps) => {
             <h2 className="text-prissian mb-6">Changes since 2019:</h2>
 
             <div className="flex pt-3">
-              <div className="w-1/2 pr-3">
+              <div className="w-3/5 pr-3">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: details.analysis,
@@ -107,42 +142,50 @@ const CompanyPage = ({index, details}: CompanyProps) => {
                 />
               </div>
 
-              <div className="w-1/2 pl-3" />
+              <div className="w-2/5 pl-3" />
             </div>
           </section>
         </div>
       </div>
 
-      <div className="container mx-auto">
-        <div className="flex flex-wrap place-content-center border-top border-bottom center">
-          <CompanyScoreChart
+      <div className="border-t border-disabled-dark">
+        <div className="container mx-auto">
+          <div className="flex flex-wrap place-content-center center">
+            <CompanyScoreChart
+              category="governance"
+              score={index.scores.governance}
+            />
+            <CompanyScoreChart
+              category="freedom"
+              score={index.scores.freedom}
+            />
+            <CompanyScoreChart
+              category="privacy"
+              score={index.scores.privacy}
+            />
+          </div>
+
+          <CompanySection
             category="governance"
-            score={index.scores.governance}
+            text={details.governance}
+            indicators={index.indicators.governance}
           />
-          <CompanyScoreChart category="freedom" score={index.scores.freedom} />
-          <CompanyScoreChart category="privacy" score={index.scores.privacy} />
+
+          <CompanySection
+            category="freedom"
+            text={details.freedom}
+            indicators={index.indicators.freedom}
+          />
+
+          <CompanySection
+            category="privacy"
+            text={details.privacy}
+            indicators={index.indicators.privacy}
+          />
         </div>
 
-        <CompanySection
-          category="governance"
-          text={details.governance}
-          indicators={index.indicators.governance}
-        />
-
-        <CompanySection
-          category="freedom"
-          text={details.freedom}
-          indicators={index.indicators.freedom}
-        />
-
-        <CompanySection
-          category="privacy"
-          text={details.privacy}
-          indicators={index.indicators.privacy}
-        />
-
         {details.footnotes && (
-          <footer>
+          <footer className="container mx-auto">
             <h3>Footnotes</h3>
             <div dangerouslySetInnerHTML={{__html: details.footnotes}} />
           </footer>

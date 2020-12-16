@@ -44,6 +44,13 @@ export type CategoryCaption =
 
 export type Indicators = Record<IndicatorCategory, Indicator[]>;
 
+export type CompanyRank = {
+  id: string;
+  companyPretty: string;
+  score: number;
+  kind: CompanyKind;
+};
+
 export type CompanyIndex = {
   id: string;
   company: string;
