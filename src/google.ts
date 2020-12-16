@@ -1,8 +1,15 @@
-import fs from "fs";
+import fs, {promises as fsP} from "fs";
 import {GoogleAuth} from "google-auth-library";
 import {drive_v3, google} from "googleapis";
+import os from "os";
 import path from "path";
 
+import {
+  companyDetails as companyDetails2,
+  emptyCompany,
+  processHtml,
+} from "./formatter";
+import {CompanyDetails} from "./types";
 import {memoize} from "./utils";
 
 type GoogleDownload = {
@@ -15,6 +22,12 @@ type GoogleDoc = {
   name: string;
   download?: GoogleDownload;
 };
+
+/*
+ * The ID's of the Google Drive folders. Maybe move this into some
+ * configuration file?
+ */
+const companiesFolder = "1aByjKhv9N9nNQBRNK1GVdraU0qorv7dX";
 
 // The scopes we require to have the right permissions.
 const SCOPES = ["https://www.googleapis.com/auth/drive.readonly"];
@@ -146,6 +159,25 @@ export const fetchDocumentHtml = async (
         resolve({id, name, download});
       });
   });
+};
+
+/*
+ * Load editorial content from Google Docs.
+ */
+export const companyDetails = async (): Promise<CompanyDetails[]> => {
+  const auth = getAuth();
+  const googleDocs = await listFiles(auth, companiesFolder);
+  const companiesDir = await fsP.mkdtemp(path.join(os.tmpdir(), "index2020-"));
+
+  return Promise.all(
+    googleDocs.map(async (googleDoc) => {
+      const doc = await fetchDocumentHtml(auth, companiesDir, googleDoc);
+      if (!doc.download) return emptyCompany(doc.id);
+      const src = await fsP.readFile(doc.download.target, "utf-8");
+      const html = processHtml(src);
+      return companyDetails2(doc.name, html);
+    }),
+  );
 };
 
 // FIXME: I keep this code in case I might need it in the future. Create

@@ -5,7 +5,7 @@ import CompanyRankChart from "../../components/company-rank-chart";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
 import Layout from "../../components/layout";
-import {companyData, companyIndices} from "../../data";
+import {companyData, companyIndices, companyRankingData} from "../../data";
 import {CompanyDetails, CompanyIndex, CompanyRank} from "../../types";
 
 type Params = {
@@ -33,17 +33,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({params: {slug}}: Params) => {
-  const data = await companyIndices();
-  const ranking = data
-    .map(({id, companyPretty, kind, scores: {total}}) => {
-      return {id, companyPretty, kind, score: total};
-    })
-    .sort((a, b) => {
-      if (a.score < b.score) return 1;
-      if (a.score > b.score) return -1;
-      return 0;
-    });
-  const [index, details] = await companyData(slug);
+  const [[index, details], ranking] = await Promise.all([
+    companyData(slug),
+    companyRankingData("total"),
+  ]);
 
   // Map from the input format to the internal type.
   return {

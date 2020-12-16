@@ -1,8 +1,8 @@
 import {Story} from "@storybook/react/types-6-0";
 import React from "react";
 
+import fixtures from "../data/scores.json";
 import CategoriesRadarChart from "../src/components/categories-radar-chart";
-import fixtures from "./scores-fixtures.json";
 
 interface CategoriesRadarChartStoryProps {
   compareWith: string;

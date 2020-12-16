@@ -2,7 +2,8 @@ import {promises as fs} from "fs";
 import path from "path";
 import yargs from "yargs";
 
-import {companyIndices, indicatorIndices} from "../src/data";
+import {companyIndices, indicatorIndices} from "../src/csv";
+import {companyDetails} from "../src/google";
 import generateNav from "../src/navigation";
 import {unreachable} from "../src/utils";
 
@@ -37,34 +38,40 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   yargs
     .scriptName("indexctl")
-    .command(
-      "fixtures",
-      "generate data fixtures.",
-      {
-        write: {
-          type: "boolean",
-          alias: "w",
-          default: false,
-        },
-      },
-      async (argv) => {
-        const scores = await companyIndices();
-        const indicators = await indicatorIndices();
+    .command("data", "generate data structures.", async () => {
+      const companiesDir = "data/companies";
+      await fs.mkdir(path.join(process.cwd(), companiesDir), {recursive: true});
 
-        const scoresTarget: OutOrFile = argv.write
-          ? {target: "file", output: "stories/scores-fixtures.json"}
-          : {target: "stdout"};
+      const [scores, indicators, companies] = await Promise.all([
+        companyIndices(),
+        indicatorIndices(),
+        companyDetails(),
+      ]);
 
-        const indicatorsTarget: OutOrFile = argv.write
-          ? {target: "file", output: "stories/indicator-fixtures.json"}
-          : {target: "stdout"};
+      const scoresTarget: OutOrFile = {
+        target: "file",
+        output: "data/scores.json",
+      };
+      const indicatorsTarget: OutOrFile = {
+        target: "file",
+        output: "data/indicators.json",
+      };
 
-        await Promise.all([
+      await Promise.all(
+        [
           outOrFile(scoresTarget, scores),
           outOrFile(indicatorsTarget, indicators),
-        ]);
-      },
-    )
+        ].concat(
+          companies.map((company) => {
+            const target: OutOrFile = {
+              target: "file",
+              output: path.join(companiesDir, `${company.id}.json`),
+            };
+            return outOrFile(target, company);
+          }),
+        ),
+      );
+    })
     .command(
       "navigation",
       "generate navigation structure.",

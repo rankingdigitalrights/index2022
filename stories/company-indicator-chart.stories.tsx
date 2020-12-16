@@ -1,9 +1,9 @@
 import {Story} from "@storybook/react/types-6-0";
 import React from "react";
 
+import fixtures from "../data/scores.json";
 import CompanyIndicatorChart from "../src/components/company-indicator-chart";
 import {Indicator, IndicatorCategory} from "../src/types";
-import fixtures from "./scores-fixtures.json";
 
 interface CompanyIndicatorChartStoryProps {
   company: string;

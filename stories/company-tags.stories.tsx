@@ -1,8 +1,8 @@
 import {Story} from "@storybook/react/types-6-0";
 import React from "react";
 
+import fixtures from "../data/scores.json";
 import CompanyTag, {CompanyTagProps} from "../src/components/company-tag";
-import fixtures from "./scores-fixtures.json";
 
 export default {
   title: "CompanyTag",
