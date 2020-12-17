@@ -40,7 +40,7 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
     .scriptName("indexctl")
     .command("data", "generate data structures.", async () => {
       const companiesDir = "data/companies";
-      await fs.mkdir(path.join(process.cwd(), companiesDir), {recursive: true});
+      const indicatorsDir = "data/indicators";
 
       const [scores, indicators, companies] = await Promise.all([
         companyIndices(),
@@ -48,29 +48,48 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
         companyDetails(),
       ]);
 
-      const scoresTarget: OutOrFile = {
-        target: "file",
-        output: "data/scores.json",
-      };
-      const indicatorsTarget: OutOrFile = {
-        target: "file",
-        output: "data/indicators.json",
-      };
+      await Promise.all([
+        Promise.all(
+          companies.map(async (company) => {
+            const companyDir = path.join(companiesDir, company.id);
+            await fs.mkdir(path.join(process.cwd(), companyDir), {
+              recursive: true,
+            });
 
-      await Promise.all(
-        [
-          outOrFile(scoresTarget, scores),
-          outOrFile(indicatorsTarget, indicators),
-        ].concat(
-          companies.map((company) => {
             const target: OutOrFile = {
               target: "file",
-              output: path.join(companiesDir, `${company.id}.json`),
+              output: path.join(companyDir, "details.json"),
             };
             return outOrFile(target, company);
           }),
         ),
-      );
+        Promise.all(
+          scores.map(async (score) => {
+            const companyDir = path.join(companiesDir, score.id);
+            await fs.mkdir(path.join(process.cwd(), companyDir), {
+              recursive: true,
+            });
+            const target: OutOrFile = {
+              target: "file",
+              output: path.join(companyDir, "scores.json"),
+            };
+            return outOrFile(target, score);
+          }),
+        ),
+        Promise.all(
+          indicators.map(async (indicator) => {
+            const indicatorDir = path.join(indicatorsDir, indicator.id);
+            await fs.mkdir(path.join(process.cwd(), indicatorDir), {
+              recursive: true,
+            });
+            const target: OutOrFile = {
+              target: "file",
+              output: path.join(indicatorDir, "scores.json"),
+            };
+            return outOrFile(target, indicator);
+          }),
+        ),
+      ]);
     })
     .command("fixtures", "generate test fixtures.", async () => {
       const fixturesDir = "fixtures";

@@ -19,22 +19,32 @@ const loadJson = <T extends unknown>(
 
 export const loadJsonDir = <T extends unknown>(
   dir: string,
+  kind: string,
 ): (() => Promise<T[]>) => async (): Promise<T[]> => {
-  const files = await fsP.readdir(path.join(process.cwd(), dir));
+  const subDirs = await fsP.readdir(path.join(process.cwd(), dir));
 
   return Promise.all(
-    files.map(async (file) => {
-      const data = await fsP.readFile(path.join(process.cwd(), dir, file));
+    subDirs.map(async (subDir) => {
+      const data = await fsP.readFile(
+        path.join(process.cwd(), dir, subDir, `${kind}.json`),
+      );
       return JSON.parse(data.toString());
     }),
   );
 };
 
-export const companyIndices = loadJson<CompanyIndex[]>("data/scores.json");
-export const indicatorIndices = loadJson<IndicatorIndex[]>(
-  "data/indicators.json",
+export const companyIndices = loadJsonDir<CompanyIndex>(
+  "data/companies",
+  "scores",
 );
-export const companyDetails = loadJsonDir<CompanyDetails>("data/companies");
+export const indicatorIndices = loadJsonDir<IndicatorIndex>(
+  "data/indicators",
+  "scores",
+);
+export const companyDetails = loadJsonDir<CompanyDetails>(
+  "data/companies",
+  "details",
+);
 
 /*
  * Load the company details. This is a dummy right now. It needs to be
@@ -43,23 +53,20 @@ export const companyDetails = loadJsonDir<CompanyDetails>("data/companies");
 export const companyData = async (
   companyId: string,
 ): Promise<[CompanyIndex, CompanyDetails]> => {
-  const [indexCache, detailsCache] = await Promise.all([
-    companyIndices(),
-    companyDetails(),
-  ]);
-  const index = indexCache.find(({id}) => id === companyId);
-  // Until all editorial content is finished we provide an empty company
-  // details page.
-  const details =
-    detailsCache.find(({id}) => id === companyId.toLocaleLowerCase()) ||
-    emptyCompany(companyId);
+  const companyDir = path.join("data/companies", companyId);
 
-  if (!(index && details)) {
-    throw new Error(
-      `Couldn't extract company index and details for "${companyId}."`,
-    );
-  }
-  return [index, details];
+  return Promise.all([
+    loadJson<CompanyIndex>(path.join(companyDir, "scores.json"))().catch(() => {
+      throw new Error(
+        `Couldn't extract company index and details for "${companyId}."`,
+      );
+    }),
+    // Until all editorial content is finished we provide an empty company
+    // details page.
+    loadJson<CompanyDetails>(
+      path.join(companyDir, "details.json"),
+    )().catch(() => emptyCompany(companyId)),
+  ]);
 };
 
 /*
@@ -68,20 +75,20 @@ export const companyData = async (
 export const indicatorData = async (
   indicatorId: string,
 ): Promise<IndicatorIndex> => {
-  const indexCache = await indicatorIndices();
-  const index = indexCache.find(({id}) => id === indicatorId);
+  const indicatorDir = path.join("data/indicators", indicatorId);
 
-  if (!index) {
+  return loadJson<IndicatorIndex>(
+    path.join(indicatorDir, "scores.json"),
+  )().catch(() => {
     throw new Error(`Couldn't extract indicator index for "${indicatorId}".`);
-  }
-  return index;
+  });
 };
 
 /*
  * Load the company rankings, sorted descending by the total score.
  */
 export const companyRankingData = async (
-  score: IndicatorCategory | "total",
+  score: IndicatorCategory | "total" = "total",
 ): Promise<CompanyRank[]> => {
   const companyCache = await companyIndices();
 

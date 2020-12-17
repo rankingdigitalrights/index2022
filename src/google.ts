@@ -80,10 +80,7 @@ export const listFiles = async (
     if (id && name) {
       // We have a document.
       if (mimeType === "application/vnd.google-apps.document") {
-        docs.push({
-          id,
-          name: name.toLowerCase().replace(/ /g, "-"),
-        });
+        docs.push({id, name});
       }
     }
   });
