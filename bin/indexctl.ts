@@ -72,6 +72,29 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
         ),
       );
     })
+    .command("fixtures", "generate test fixtures.", async () => {
+      const fixturesDir = "fixtures";
+      await fs.mkdir(path.join(process.cwd(), fixturesDir), {recursive: true});
+
+      const [scores, indicators] = await Promise.all([
+        companyIndices(),
+        indicatorIndices(),
+      ]);
+
+      const scoresTarget: OutOrFile = {
+        target: "file",
+        output: path.join(fixturesDir, "scores.json"),
+      };
+      const indicatorsTarget: OutOrFile = {
+        target: "file",
+        output: path.join(fixturesDir, "indicators.json"),
+      };
+
+      await Promise.all([
+        outOrFile(scoresTarget, scores),
+        outOrFile(indicatorsTarget, indicators),
+      ]);
+    })
     .command(
       "navigation",
       "generate navigation structure.",

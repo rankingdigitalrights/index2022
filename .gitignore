@@ -39,12 +39,13 @@ yarn-error.log*
 # linting
 .eslintcache
 
+# testing
+fixtures
+
 # storybook
 storybook-static
-stories/*fixtures.json
 
 # Google Docs
 .auth.json
-content/*
 
 !.keep

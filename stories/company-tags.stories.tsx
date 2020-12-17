@@ -1,7 +1,7 @@
 import {Story} from "@storybook/react/types-6-0";
 import React from "react";
 
-import fixtures from "../data/scores.json";
+import fixtures from "../fixtures/scores.json";
 import CompanyTag, {CompanyTagProps} from "../src/components/company-tag";
 
 export default {

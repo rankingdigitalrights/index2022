@@ -1,7 +1,7 @@
 import {Story} from "@storybook/react/types-6-0";
 import React from "react";
 
-import fixtures from "../data/scores.json";
+import fixtures from "../fixtures/scores.json";
 import IndicatorScoresChart from "../src/components/indicator-scores-chart";
 import {CompanyIndex} from "../src/types";
 
