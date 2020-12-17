@@ -53,9 +53,7 @@ export type CompanyRank = {
 
 export type CompanyIndex = {
   id: string;
-  company: string;
   companyPretty: string;
-  country: string;
   index: string;
   rank: number;
   kind: CompanyKind;
@@ -102,7 +100,6 @@ export type IndicatorIndex = {
   category: IndicatorCategory;
   isParent: boolean;
   hasParent: boolean;
-  display: string;
   label: string;
   description: string;
   guidance: string;

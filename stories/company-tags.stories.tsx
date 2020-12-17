@@ -11,7 +11,7 @@ export default {
     company: {
       control: {
         type: "select",
-        options: fixtures.map(({company}) => company).sort(),
+        options: fixtures.map(({companyPretty}) => companyPretty).sort(),
       },
     },
     active: false,

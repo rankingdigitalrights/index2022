@@ -40,12 +40,12 @@ const generateNavigation = async (): Promise<NavigationNode[]> => {
           label: "Companies",
           nodes: companies
             .sort((a, b) => {
-              if (a.company < b.company) return -1;
-              if (a.company > b.company) return 1;
+              if (a.id < b.id) return -1;
+              if (a.id > b.id) return 1;
               return 0;
             })
-            .map(({id, company}) => ({
-              label: company,
+            .map(({id, companyPretty}) => ({
+              label: companyPretty,
               href: `/companies/${id}`,
             })),
         },

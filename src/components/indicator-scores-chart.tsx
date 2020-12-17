@@ -189,7 +189,9 @@ const IndicatorScoresChart = ({
     .concat(indicatorFreedomLabels)
     .concat(indicatorPrivacyLabels);
 
-  const companyLabels: string[] = companies.map(({company}) => company);
+  const companyLabels: string[] = companies.map(
+    ({companyPretty}) => companyPretty,
+  );
 
   const height = indicatorLabels.length * gridSize;
   const width = companyLabels.length * gridSize;

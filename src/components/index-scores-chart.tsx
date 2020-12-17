@@ -5,7 +5,7 @@ import {CompanyIndex} from "../types";
 import CategoriesRadarChart from "./categories-radar-chart";
 import IndexScoresChartBar from "./index-scores-chart-bar";
 
-type IndexScores = Pick<CompanyIndex, "id" | "company" | "scores">;
+type IndexScores = Pick<CompanyIndex, "id" | "companyPretty" | "scores">;
 
 interface IndexScoresChartProps {
   companies: IndexScores[];
@@ -43,7 +43,7 @@ const IndexScoreChart = ({
         >
           <g>
             {companies.map((company, index) => {
-              const {id, company: name, scores} = company;
+              const {id, companyPretty: name, scores} = company;
               const pos = 35 * index;
 
               return (

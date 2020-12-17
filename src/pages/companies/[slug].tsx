@@ -77,11 +77,11 @@ const CompanyPage = ({index, details, ranking}: CompanyProps) => {
         <div className="container mx-auto flex">
           <div className="flex flex-col float-right w-3/5 pt-6 pb-3 pr-3 z-10">
             <div className="font-circular text-white text-xxs">
-              FIXME &gt; Companies &gt; {companyKind} &gt; {index.company}
+              FIXME &gt; Companies &gt; {companyKind} &gt; {index.companyPretty}
             </div>
 
             <CompanyRankCard
-              company={index.company}
+              company={index.companyPretty}
               rank={index.rank}
               score={index.scores.total}
               kind={index.kind}

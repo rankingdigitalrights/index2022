@@ -17,7 +17,7 @@ export default {
     company: {
       control: {
         type: "select",
-        options: fixtures.map(({company}) => company),
+        options: fixtures.map(({companyPretty}) => companyPretty),
       },
     },
     category: {
@@ -34,7 +34,7 @@ const Template: Story<CompanyIndicatorChartStoryProps> = ({
   company,
 }) => {
   const selectedCompany = fixtures.find(
-    (fixture) => fixture.company === company,
+    (fixture) => fixture.companyPretty === company,
   );
 
   console.log(selectedCompany);

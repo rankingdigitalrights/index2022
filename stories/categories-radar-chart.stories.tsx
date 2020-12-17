@@ -37,7 +37,9 @@ export default {
     compareWith: {
       control: {
         type: "select",
-        options: ["RESET"].concat(fixtures.map(({company}) => company)),
+        options: ["RESET"].concat(
+          fixtures.map(({companyPretty}) => companyPretty),
+        ),
       },
     },
   },
@@ -55,7 +57,7 @@ const Template: Story<CategoriesRadarChartStoryProps> = ({
   const data = [{governance, freedom, privacy}];
   if (compareWith && compareWith !== "RESET") {
     const selectedCompany = fixtures.find(
-      (fixture) => fixture.company === compareWith,
+      (fixture) => fixture.companyPretty === compareWith,
     );
 
     if (!selectedCompany)

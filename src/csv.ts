@@ -373,11 +373,9 @@ export const companyIndices = memoizeAsync(
           return {
             id: companySpec.company,
             index: total.index,
-            company: companySpec.company,
             companyPretty: companySpec.companyPretty,
             rank: -1, // We set the real rank further below
             kind: companySpec.kind,
-            country: companySpec.country,
             scores,
             indicators: {
               governance: governanceIndicators,
@@ -522,7 +520,6 @@ export const indicatorIndices = memoizeAsync(
         id: spec.display,
         indicator: spec.indicator,
         category: spec.category,
-        display: spec.display,
         label: spec.label,
         description: spec.description,
         guidance: spec.guidance,
