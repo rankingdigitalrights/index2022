@@ -17,23 +17,24 @@ const loadJson = <T extends unknown>(
   return JSON.parse(data.toString());
 };
 
+export const loadJsonDir = <T extends unknown>(
+  dir: string,
+): (() => Promise<T[]>) => async (): Promise<T[]> => {
+  const files = await fsP.readdir(path.join(process.cwd(), dir));
+
+  return Promise.all(
+    files.map(async (file) => {
+      const data = await fsP.readFile(path.join(process.cwd(), dir, file));
+      return JSON.parse(data.toString());
+    }),
+  );
+};
+
 export const companyIndices = loadJson<CompanyIndex[]>("data/scores.json");
 export const indicatorIndices = loadJson<IndicatorIndex[]>(
   "data/indicators.json",
 );
-
-export const companyDetails = async (): Promise<CompanyDetails[]> => {
-  const files = await fsP.readdir(path.join(process.cwd(), "data/companies"));
-
-  return Promise.all(
-    files.map(async (file) => {
-      const data = await fsP.readFile(
-        path.join(process.cwd(), "data/companies", file),
-      );
-      return JSON.parse(data.toString()) as CompanyDetails;
-    }),
-  );
-};
+export const companyDetails = loadJsonDir<CompanyDetails>("data/companies");
 
 /*
  * Load the company details. This is a dummy right now. It needs to be
