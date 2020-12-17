@@ -50,7 +50,13 @@ const PercentageBar = ({
   const percentage = valueScale(value) || 0;
 
   return (
-    <g transform={transform}>
+    <g
+      transform={
+        orientation === "horizontal"
+          ? transform
+          : `scale(1,-1) translate(0,-${height})`
+      }
+    >
       <rect
         className="text-cat-negative fill-current"
         x={0}
@@ -61,11 +67,31 @@ const PercentageBar = ({
       <rect
         className={c("fill-current", className)}
         x={0}
-        y={orientation === "vertical" ? height - percentage : 0}
+        y={0}
         rx={rx}
-        width={orientation === "horizontal" ? percentage : width}
-        height={orientation === "vertical" ? percentage : height}
-      />
+        width={orientation === "horizontal" ? 0 : width}
+        height={orientation === "vertical" ? 0 : height}
+      >
+        {orientation === "horizontal" ? (
+          <animate
+            attributeName="width"
+            from={0}
+            to={percentage}
+            dur="0.6s"
+            fill="freeze"
+          />
+        ) : (
+          <animate
+            attributeName="height"
+            from={0}
+            to={percentage}
+            dur="1s"
+            calcMode="spline"
+            keySplines="0.42 0 1 1"
+            fill="freeze"
+          />
+        )}
+      </rect>
     </g>
   );
 };

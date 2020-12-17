@@ -8,15 +8,11 @@ import PercentageBar from "./percentage-bar";
 interface IndicatorCompaniesChartProps {
   category: string;
   scores: Record<string, IndicatorScore>;
-  width?: number;
-  height?: number;
 }
 
 const IndicatorCompaniesChart = ({
   category,
   scores,
-  width = 600,
-  height = 250,
 }: IndicatorCompaniesChartProps) => {
   const sortedScores = Object.keys(scores)
     .map((company) => {
@@ -35,80 +31,82 @@ const IndicatorCompaniesChart = ({
       return 0;
     });
 
-  const gap = 17;
-  const insetX = 44;
-  const barWidth = 8;
-
   return (
-    <div>
-      <svg
-        version="1"
-        xmlns="http://www.w3.org/2000/svg"
-        width={width}
-        height={height}
-        transform="translate(0, 0)"
-      >
-        {sortedScores.map(({company, score}, idx) => {
+    <div className="flex font-circular text-xxs">
+      <div className="flex flex-col items-center">
+        <span>&nbsp;</span>
+        <svg
+          version="1"
+          xmlns="http://www.w3.org/2000/svg"
+          width={44}
+          height={200}
+          transform="translate(0, 0)"
+          className="mt-3"
+        >
+          <line
+            x1={35}
+            y1={0}
+            x2={35}
+            y2={180}
+            strokeWidth={2}
+            className="text-disabled-dark stroke-current"
+          />
+
+          <GraphLabel
+            value="100%"
+            size="extra-small"
+            transform="translate(25,10)"
+            textAnchor="end"
+          />
+
+          <GraphLabel
+            value="0%"
+            size="extra-small"
+            transform="translate(25,180)"
+            textAnchor="end"
+          />
+        </svg>
+      </div>
+
+      <div className="flex justify-between w-full">
+        {sortedScores.map(({company, score}) => {
           return (
-            <g key={`companies-chart-bar-${company}`}>
-              <GraphLabel
-                value={score.toString()}
-                size="extra-small"
-                textAnchor="middle"
-                transform={`translate(${
-                  (barWidth + gap) * idx + 21 + insetX
-                },10)`}
-                className="text-prissian"
-              />
-              <PercentageBar
-                key={company}
-                value={score}
-                width={barWidth}
-                height={180}
-                transform={`translate(${
-                  (barWidth + gap) * idx + gap + insetX
-                },20)`}
-                orientation="vertical"
-                className={`text-cat-${category}`}
-              />
-              <GraphLabel
-                value={company}
-                size="small"
-                textAnchor="end"
-                transform={`translate(${
-                  (barWidth + gap) * idx + 31 + insetX
-                },210) rotate(270,0,6)`}
-                className="text-prissian"
-              />
-            </g>
+            <div
+              key={`companies-chart-bar-${company}`}
+              className="flex flex-col items-center"
+            >
+              <span className="select-none text-center">
+                {score === "NA" ? "NA" : `${score}%`}
+              </span>
+              <div>
+                <svg
+                  className="mt-3"
+                  version="1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={10}
+                  height={290}
+                  transform="translate(0, 0)"
+                >
+                  <PercentageBar
+                    key={company}
+                    value={score}
+                    width={8}
+                    height={180}
+                    orientation="vertical"
+                    className={`text-cat-${category}`}
+                  />
+                  <GraphLabel
+                    value={company}
+                    size="small"
+                    textAnchor="end"
+                    transform="translate(14,185) rotate(270,0,5)"
+                  />
+                </svg>
+              </div>
+            </div>
           );
         })}
-
-        <line
-          x1={insetX}
-          y1="21"
-          x2={insetX}
-          y2={200}
-          strokeWidth={2}
-          className="text-disabled-dark stroke-current"
-        />
-
-        <GraphLabel
-          value="100%"
-          size="extra-small"
-          transform={`translate(${insetX - gap},30)`}
-          textAnchor="end"
-          className="text-prissian"
-        />
-
-        <GraphLabel
-          value="0%"
-          size="extra-small"
-          transform={`translate(${insetX - gap},200)`}
-          textAnchor="end"
-          className="text-prissian"
-        />
-      </svg>
+      </div>
     </div>
   );
 };
