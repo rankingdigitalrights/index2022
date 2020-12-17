@@ -12,13 +12,13 @@ import {
 
 const loadJson = <T extends unknown>(
   file: string,
-): (() => Promise<T[]>) => async (): Promise<T[]> => {
+): (() => Promise<T>) => async (): Promise<T> => {
   const data = await fsP.readFile(path.join(process.cwd(), file));
   return JSON.parse(data.toString());
 };
 
-export const companyIndices = loadJson<CompanyIndex>("data/scores.json");
-export const indicatorIndices = loadJson<IndicatorIndex>(
+export const companyIndices = loadJson<CompanyIndex[]>("data/scores.json");
+export const indicatorIndices = loadJson<IndicatorIndex[]>(
   "data/indicators.json",
 );
 
