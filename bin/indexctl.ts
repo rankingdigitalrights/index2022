@@ -2,9 +2,10 @@ import {promises as fs} from "fs";
 import path from "path";
 import yargs from "yargs";
 
-import {companyIndices, indicatorIndices} from "../src/csv";
+import {companyIndices, companyRanking, indicatorIndices} from "../src/csv";
 import {companyDetails} from "../src/google";
 import generateNav from "../src/navigation";
+import {CompanyKind} from "../src/types";
 import {unreachable} from "../src/utils";
 
 type OutOrFile =
@@ -88,6 +89,20 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
             };
             return outOrFile(target, indicator);
           }),
+        ),
+        (["telecom", "internet"] as CompanyKind[]).map(
+          async (kind: CompanyKind) => {
+            const dataDir = "data";
+            await fs.mkdir(path.join(process.cwd(), dataDir), {
+              recursive: true,
+            });
+            const target: OutOrFile = {
+              target: "file",
+              output: path.join(dataDir, `ranking-${kind}.json`),
+            };
+            const ranking = await companyRanking(kind);
+            return outOrFile(target, ranking);
+          },
         ),
       ]);
     })

@@ -5,6 +5,7 @@ import path from "path";
 import {
   CompanyIndex,
   CompanyKind,
+  CompanyRank,
   CsvRecord,
   Element,
   ElementValue,
@@ -534,3 +535,20 @@ export const indicatorIndices = memoizeAsync(
     });
   },
 );
+
+export const companyRanking = async (
+  companyKind: CompanyKind,
+): Promise<CompanyRank[]> => {
+  const index = await companyIndices();
+
+  return index
+    .filter(({kind}) => kind === companyKind)
+    .map(({id, companyPretty, kind, scores}) => {
+      return {id, companyPretty, kind, score: scores.total};
+    })
+    .sort((a, b) => {
+      if (a.score < b.score) return 1;
+      if (a.score > b.score) return -1;
+      return 0;
+    });
+};
