@@ -320,6 +320,11 @@ export const companyIndices = memoizeAsync(
       loadIndicatorSpecsCsv("csv/2020-indicator-specs.csv"),
     ]);
 
+    // We increment the rank counters further below to set a rank based on
+    // the company kind.
+    let telecomRank = 0;
+    let internetRank = 0;
+
     return (
       csvTotals
         .filter((total) => total.score && indexYears.has(total.index))
@@ -392,7 +397,21 @@ export const companyIndices = memoizeAsync(
           if (a.scores.total > b.scores.total) return -1;
           return 0;
         })
-        .map((company, i) => Object.assign(company, {rank: i + 1}))
+        .map((company) => {
+          switch (company.kind) {
+            case "telecom": {
+              telecomRank += 1;
+              return Object.assign(company, {rank: telecomRank});
+            }
+            case "internet": {
+              internetRank += 1;
+              return Object.assign(company, {rank: internetRank});
+            }
+            default: {
+              return unreachable(`No suitable rank found for ${company.id}`);
+            }
+          }
+        })
     );
   },
 );
