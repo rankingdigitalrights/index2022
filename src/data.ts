@@ -5,8 +5,8 @@ import {emptyCompany} from "./formatter";
 import {
   CompanyDetails,
   CompanyIndex,
+  CompanyKind,
   CompanyRank,
-  IndicatorCategory,
   IndicatorIndex,
 } from "./types";
 
@@ -88,17 +88,7 @@ export const indicatorData = async (
  * Load the company rankings, sorted descending by the total score.
  */
 export const companyRankingData = async (
-  score: IndicatorCategory | "total" = "total",
+  companyKind: CompanyKind,
 ): Promise<CompanyRank[]> => {
-  const companyCache = await companyIndices();
-
-  return companyCache
-    .map(({id, companyPretty, kind, scores}) => {
-      return {id, companyPretty, kind, score: scores[score]};
-    })
-    .sort((a, b) => {
-      if (a.score < b.score) return 1;
-      if (a.score > b.score) return -1;
-      return 0;
-    });
+  return loadJson<CompanyRank[]>(`data/ranking-${companyKind}.json`)();
 };

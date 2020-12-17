@@ -9,7 +9,7 @@ interface CompanyRankCardProps {
   score: number;
   rank: number;
   kind: CompanyKind;
-  counts: Record<CompanyKind | "total", number>;
+  counts: number;
   className?: string;
 }
 
@@ -23,8 +23,8 @@ const CompanyRankCard = ({
 }: CompanyRankCardProps) => {
   const rankLabel =
     kind === "telecom"
-      ? `${counts[kind]} telecommunication companies`
-      : `${counts[kind]} digital platforms`;
+      ? `${counts} telecommunication companies`
+      : `${counts} digital platforms`;
 
   return (
     <div className={c("flex flex-col", className)}>

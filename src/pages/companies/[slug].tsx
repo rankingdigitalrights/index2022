@@ -33,10 +33,8 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({params: {slug}}: Params) => {
-  const [[index, details], ranking] = await Promise.all([
-    companyData(slug),
-    companyRankingData("total"),
-  ]);
+  const [index, details] = await companyData(slug);
+  const ranking = await companyRankingData(index.kind);
 
   // Map from the input format to the internal type.
   return {
@@ -56,11 +54,6 @@ const CompanyPage = ({index, details, ranking}: CompanyProps) => {
     index.kind === "telecom"
       ? "Telecommunications company"
       : "Digital platforms";
-  const companyCounts = {
-    telecom: ranking.filter(({kind}) => kind === "telecom").length,
-    internet: ranking.filter(({kind}) => kind === "internet").length,
-    total: ranking.length,
-  };
 
   const handleCompanyClick = (id: string) => {
     router.push(`/companies/${id}`);
@@ -85,7 +78,7 @@ const CompanyPage = ({index, details, ranking}: CompanyProps) => {
               rank={index.rank}
               score={index.scores.total}
               kind={index.kind}
-              counts={companyCounts}
+              counts={ranking.length}
               className="mt-6"
             />
           </div>
