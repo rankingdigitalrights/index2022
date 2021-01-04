@@ -186,7 +186,7 @@
 
   .score-label:before {
     @apply absolute;
- 
+
     content: "";
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
@@ -194,5 +194,13 @@
     transform:rotate(-90deg);
     left: 7px;
     top: 6px;
+  }
+
+  p {
+    padding-bottom: 1rem;
+  }
+
+  li {
+    padding-bottom: 1rem;
   }
 }
