@@ -30,8 +30,8 @@ const CompanyRankCard = ({
     <div className={c("flex flex-col", className)}>
       <h1 className="font-platform text-white bold text-xl">{company}</h1>
 
-      <div className="flex mt-6">
-        <div className="flex flex-col">
+      <div className="flex flex-wrap ">
+        <div className="flex flex-col mr-8 mt-4">
           <div className="flex items-center font-circular text-white text-md bold">
             <span className="mr-3">Ranked:</span>{" "}
             <span className="border border-white rounded ml-3 p-1">
@@ -43,7 +43,7 @@ const CompanyRankCard = ({
           </span>
         </div>
 
-        <div className="flex flex-col ml-8">
+        <div className="flex flex-col mt-4">
           <div className="flex items-center font-circular text-white text-md bold">
             <span className="mr-3">Scored:</span>{" "}
             <span className="border border-white rounded ml-3 p-1">
