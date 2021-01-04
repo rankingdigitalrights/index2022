@@ -86,7 +86,7 @@
 
   html {
     @apply font-lyon text-base;
-     font-size:18px;
+    font-size: 18px;
   }
 
   h1 {
@@ -131,8 +131,8 @@
     content: "";
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 5px solid #1C5275;
-    transform:rotate(-90deg);
+    border-bottom: 5px solid #1c5275;
+    transform: rotate(-90deg);
     left: 7px;
     top: 6px;
   }
@@ -147,7 +147,6 @@
 
   /* Spotlights Start */
 
-  
   header.spotlight {
     position: fixed;
     top: 0;
@@ -243,8 +242,6 @@
     transition: background-color 0.5s ease-out, width 1s ease-in-out;
   }
 
-
-
   /* figure.scrolly-canvas p {
     @apply absolute m-0 p-4 text-center text-6xl font-black text-white transform -translate-y-1/2 -translate-x-1/2;
     top: 50%;
@@ -300,18 +297,17 @@
     margin-bottom: 133vh;
   }
 
-  .step.is-active h4 {
+  .step.is-active h3 {
     @apply bg-yellow-500 text-gray-200;
   }
 
-  .step h4 {
+  .step h3 {
     @apply text-center p-4 bg-gray-200;
   }
 
   .step p {
     @apply text-white p-4;
   }
-  
+
   /* Spotlights End */
-  
 }
