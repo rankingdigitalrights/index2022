@@ -2,5 +2,6 @@
   "trailingComma": "all",
   "bracketSpacing": false,
   "arrowParens": "always",
-  "tabWidth": 2
+  "tabWidth": 2,
+  "proseWrap": "never"
 }
