@@ -20,8 +20,8 @@ const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
   // eslint-disable-next-line unicorn/no-null
   const [datum] = pie().sort(null)([score, 100 - score]);
 
-  const outerRadius = 120;
-  const innerRadius = 110;
+  const outerRadius = 95;
+  const innerRadius = 85;
 
   const sliceArc = arc<Datum>()
     .innerRadius(innerRadius)
@@ -38,12 +38,12 @@ const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
 
   return (
     <div className="p-4 m-4 flex flex-col w-64">
-      <span className="font-circular text-sm font-black text-center">
+      <span className="font-circular text-md font-black text-center">
         {mapCategoryName(category)}
       </span>
 
       <svg version="1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260">
-        <g transform={`translate(${outerRadius + 5},${outerRadius + 5})`}>
+        <g transform={`translate(${outerRadius + 35},${outerRadius + 30})`}>
           <circle
             r={(outerRadius + innerRadius) / 2}
             stroke="#1C5275"

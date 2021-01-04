@@ -29,7 +29,7 @@ const CompanyRankChart = ({
         const isActiveCompany = id === activeCompany;
         const isHighlightedCompany = id === highlightedCompany;
 
-        const className = c("flex items-center font-circular text-xs", {
+        const className = c("flex items-center m-0.5 font-circular text-xs", {
           "text-prissian": isActiveCompany || isHighlightedCompany,
         });
 

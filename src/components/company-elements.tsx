@@ -109,7 +109,7 @@ const CompanyElements = ({
             if (idx === 0)
               return (
                 <div
-                  className="flex flex-col items-center justify-center border border-disabled-dark w-40 p-2 text-xxs"
+                  className="flex flex-col items-center justify-center border border-disabled-dark w-40 p-2 text-xs"
                   key={`legend-element-${element.label}`}
                 >
                   <span>{element.description}</span>

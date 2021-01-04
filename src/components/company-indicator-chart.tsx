@@ -68,7 +68,7 @@ const CompanyIndicatorChart = ({
                   hasCollapse ? () => handleCollapse(indicator) : () => {}
                 }
               >
-                <span className="text-left text-xxs font-circular">
+                <span className="text-left text-xs font-circular">
                   {indicatorPretty}
                 </span>
 
@@ -100,7 +100,7 @@ const CompanyIndicatorChart = ({
                       key={`company-indicator-chart-${m.indicator}`}
                       className="pl-2 flex flex-col mt-2"
                     >
-                      <span className="text-left text-xxs font-circular">
+                      <span className="text-left text-xs font-circular">
                         {mIndicatorPretty}
                       </span>
 
