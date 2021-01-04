@@ -159,7 +159,7 @@ const SpotlightOne = () => {
           </div>
         </section>
 
-        <section id="analysis-3">
+        <section id="analysis-3" className="max-w-6xl">
           <h2>Analysis 3</h2>
 
           <p>
@@ -185,7 +185,7 @@ const SpotlightOne = () => {
           </p>
         </section>
 
-        <section id="outro">
+        <section id="outro" className="max-w-6xl">
           <h2>Outro</h2>
 
           <p>

@@ -26,7 +26,6 @@ export const handleStepEnter = (figure, steps) => ({
   // direction,
 }) => {
   toggleActiveStep(index, steps);
-  // eslint-disable-next-line no-param-reassign
   figure.querySelector("p#scene-counter").textContent = "On";
   figure.querySelector("p#index-counter").textContent = index;
   updateBGColor(figure, element.dataset.color);
@@ -40,19 +39,6 @@ export const handleStepExit = (figure) => ({index, direction}) => {
     setTimeout(() => resetScene(figure), 300);
   }
 };
-
-// TODO: remove upon arrival of content
-// export const handleResize = (scroller, figure, steps) => () => {
-//   const stepHeight = Math.floor(window.innerHeight * 0.75);
-
-//   steps.forEach((el) =>
-//     Object.assign(el.style, {
-//       height: `${stepHeight}px`,
-//     }),
-//   );
-
-//   scroller.resize();
-// };
 
 export const setupSpotlight = (ref, scroller, stepSelector) => {
   const {current: scrolly} = ref;
@@ -69,14 +55,7 @@ export const setupSpotlight = (ref, scroller, stepSelector) => {
     .onStepEnter(handleStepEnter(figure, steps))
     .onStepExit(handleStepExit(figure));
 
-  // const resize = handleResize(scroller, figure, steps);
-
-  // window.addEventListener("resize", resize);
-
-  // resize();
-
   return () => {
     scroller.destroy();
-    // window.removeEventListener("resize", resize);
   };
 };
