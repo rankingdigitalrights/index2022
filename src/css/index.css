@@ -117,65 +117,6 @@
     @apply list-disc list-outside ml-3;
   }
 
-  section.scolly h2 {
-    @apply sticky;
-    top: 60px;
-  }
-
-  section.scrolly {
-    @apply relative p-4 bg-gray-100 max-w-6xl;
-    width: calc(100% - 2rem);
-  }
-
-  figure.scrolly-canvas {
-    @apply sticky w-full m-0 left-0;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-transition: background-color 0.5s ease-out;
-    -moz-transition: background-color 0.5s ease-out;
-    -o-transition: background-color 0.5s ease-out;
-    transition: background-color 0.5s ease-out, width 1s ease-in-out;
-  }
-
-  figure.scrolly-canvas p {
-    @apply absolute m-0 p-4 text-center text-6xl font-black text-white transform -translate-y-1/2 -translate-x-1/2;
-    top: 50%;
-    left: 50%;
-  }
-
-  div.scrolly-steps {
-    @apply relative p-0 max-w-md mx-auto z-10;
-    margin-top: 150vh;
-    margin-bottom: 150vh;
-  }
-
-  .step.invisible {
-    visibility: hidden;
-  }
-
-  .step {
-    @apply text-white bg-black bg-opacity-25 mx-auto;
-    margin-top: 133vh;
-    margin-bottom: 133vh;
-  }
-
-  .step:last-child {
-    margin-bottom: 66vh;
-  }
-
-  .step.is-active h4 {
-    @apply bg-yellow-500 text-gray-200;
-  }
-
-  .step h4 {
-    @apply text-center p-4 bg-gray-200;
-  }
-
-  .step p {
-    @apply text-white p-4;
-  }
-
   .toggle-checkbox:not(:checked) {
     left: 0.2rem;
   }
@@ -203,4 +144,174 @@
   li {
     padding-bottom: 1rem;
   }
+
+  /* Spotlights Start */
+
+  
+  header.spotlight {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 999;
+    height: 60px;
+    padding: 1rem;
+    display: flex;
+    align-items: baseline;
+  }
+
+  /* TODO: remove upon prod progress */
+  @media only screen and (max-width: 900px) {
+    header.spotlight {
+      overflow: clip;
+    }
+  }
+
+  header.spotlight nav {
+    display: inline-flex;
+    margin: 0 auto;
+  }
+
+  header.spotlight button a,
+  header.spotlight button span {
+    font-family: Platform, sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  main.spotlight {
+    max-width: 100%;
+    margin-top: 60px;
+  }
+
+  main.spotlight p {
+    max-width: 720px;
+    margin: 1rem auto;
+  }
+
+  main.spotlight section {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  main.spotlight section.scrolly {
+    @apply relative;
+    padding: 1rem 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  main.spotlight section h2 {
+    @apply sticky;
+    top: 60px;
+    width: 100%;
+    background-color: white;
+  }
+
+  main.spotlight section.scrolly h2 {
+    @apply max-w-6xl;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    background-color: unset;
+    z-index: 10;
+  }
+
+  div.scrolly-canvas {
+    @apply sticky w-full m-0 left-0;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    height: calc(100vh - 60px);
+    margin: 0;
+    z-index: 0;
+  }
+
+  figure.scrolly-figure {
+    width: 100%;
+    height: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out, width 1s ease-in-out;
+  }
+
+
+
+  /* figure.scrolly-canvas p {
+    @apply absolute m-0 p-4 text-center text-6xl font-black text-white transform -translate-y-1/2 -translate-x-1/2;
+    top: 50%;
+    left: 50%;
+  } */
+
+  figure.scrolly-figure p#scene-counter {
+    @apply fixed m-0 p-4 text-right text-6xl font-black;
+    margin: 3rem 0;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    /* -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%); */
+    transform: translateY(-50%);
+    font-size: 4rem;
+    font-weight: 900;
+  }
+
+  figure.scrolly-figure p#index-counter {
+    @apply fixed m-0 p-4 text-left text-6xl font-black;
+    margin: 0;
+    text-align: center;
+    padding: 0 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 4rem;
+    font-weight: 700;
+  }
+
+  div.scrolly-steps {
+    @apply relative p-0 max-w-md mx-auto z-10;
+    margin-top: 150vh;
+    margin-bottom: 0;
+    padding: 0 1rem;
+  }
+
+  .step.invisible {
+    visibility: hidden;
+    margin: 50vh auto 50vh auto;
+  }
+
+  .step {
+    @apply text-white bg-black bg-opacity-25 mx-auto;
+    margin-top: 133vh;
+    margin-bottom: 133vh;
+  }
+
+  .step:last-child {
+    margin-bottom: 133vh;
+  }
+
+  .step.is-active h4 {
+    @apply bg-yellow-500 text-gray-200;
+  }
+
+  .step h4 {
+    @apply text-center p-4 bg-gray-200;
+  }
+
+  .step p {
+    @apply text-white p-4;
+  }
+  
+  /* Spotlights End */
+  
 }
