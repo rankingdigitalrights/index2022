@@ -15,7 +15,7 @@ const Layout = ({children}: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="container mx-auto pt-4 mb-8">
+      <header className="container mx-auto pt-4 mb-8 hidden sm:block">
         <Navigation />
       </header>
 
