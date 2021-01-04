@@ -2,6 +2,7 @@ import React, {useEffect, useMemo, useRef} from "react";
 import scrollama from "scrollama";
 
 import Layout from "../../components/layout-spotlights";
+import ScrollySteps from "../../components/spotlight-steps";
 import {setupSpotlight} from "../../spotlights";
 
 const SpotlightOne = () => {
@@ -88,74 +89,7 @@ const SpotlightOne = () => {
               data-color="bg-gray-400"
             />
 
-            <div className="step" data-step="1" data-color="bg-cat-governance">
-              <h4>Substep 1</h4>
-              <p>
-                Prow scuttle parrel provost Sail ho shrouds spirits boom
-                mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows
-                nest nipperkin grog yardarm hempen halter furl. Swab barque
-                interloper chantey doubloon starboard grog black jack gangway
-                rutters.
-              </p>
-              <p>
-                Prow scuttle parrel provost Sail ho shrouds spirits boom
-                mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows
-                nest nipperkin grog yardarm hempen halter furl. Swab barque
-                interloper chantey doubloon starboard grog black jack gangway
-                rutters.
-              </p>
-            </div>
-            <div className="step" data-step="2" data-color="bg-cat-freedom">
-              <h4>Substep 2</h4>
-              <p>
-                Prow scuttle parrel provost Sail ho shrouds spirits boom
-                mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows
-                nest nipperkin grog yardarm hempen halter furl. Swab barque
-                interloper chantey doubloon starboard grog black jack gangway
-                rutters.
-              </p>
-              <p>
-                Prow scuttle parrel provost Sail ho shrouds spirits boom
-                mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows
-                nest nipperkin grog yardarm hempen halter furl. Swab barque
-                interloper chantey doubloon starboard grog black jack gangway
-                rutters.
-              </p>
-            </div>
-            <div className="step" data-step="3" data-color="bg-cat-privacy">
-              <h4>Substep 3</h4>
-              <p>
-                Prow scuttle parrel provost Sail ho shrouds spirits boom
-                mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows
-                nest nipperkin grog yardarm hempen halter furl. Swab barque
-                interloper chantey doubloon starboard grog black jack gangway
-                rutters.
-              </p>
-              <p>
-                Prow scuttle parrel provost Sail ho shrouds spirits boom
-                mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows
-                nest nipperkin grog yardarm hempen halter furl. Swab barque
-                interloper chantey doubloon starboard grog black jack gangway
-                rutters.
-              </p>
-            </div>
-            <div className="step" data-step="4" data-color="bg-cat-governance">
-              <h4>Substep 4</h4>
-              <p>
-                Prow scuttle parrel provost Sail ho shrouds spirits boom
-                mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows
-                nest nipperkin grog yardarm hempen halter furl. Swab barque
-                interloper chantey doubloon starboard grog black jack gangway
-                rutters.
-              </p>
-              <p>
-                Prow scuttle parrel provost Sail ho shrouds spirits boom
-                mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows
-                nest nipperkin grog yardarm hempen halter furl. Swab barque
-                interloper chantey doubloon starboard grog black jack gangway
-                rutters.
-              </p>
-            </div>
+            <ScrollySteps />
           </div>
         </section>
 

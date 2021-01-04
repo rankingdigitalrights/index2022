@@ -31,12 +31,14 @@ export const handleStepEnter = (figure, steps) => ({
   updateBGColor(figure, element.dataset.color);
 };
 
-export const handleStepExit = (figure) => ({index, direction}) => {
+export const handleStepExit = (figure, steps) => ({index, direction}) => {
   if (
     (index === 0 && direction === "up") ||
     (index === figure.maxStep && direction === "down")
   ) {
     setTimeout(() => resetScene(figure), 300);
+  } else if (direction === "down") {
+    toggleActiveStep(index, steps);
   }
 };
 
@@ -53,7 +55,7 @@ export const setupSpotlight = (ref, scroller, stepSelector) => {
       offset: 0.8,
     })
     .onStepEnter(handleStepEnter(figure, steps))
-    .onStepExit(handleStepExit(figure));
+    .onStepExit(handleStepExit(figure, steps));
 
   return () => {
     scroller.destroy();
