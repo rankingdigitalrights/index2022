@@ -196,8 +196,6 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
               <IndicatorCompaniesChart
                 category={index.category}
                 scores={index.scores}
-                width={700}
-                height={350}
               />
             )}
           </div>
