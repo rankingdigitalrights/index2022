@@ -3,7 +3,7 @@
 Options -Indexes -MultiViews
 
 # Prevent mod_dir appending a slash to directory requests
-DirectorySlash Off
+DirectorySlash On
 
 # Prevent any further processing if the URL already ends with a file extension
 RewriteRule \.\w{2.4}$ - [L]
