@@ -52,9 +52,6 @@
         "variables": true
       }
     ],
-    "no-param-reassign": [
-      "warn"
-    ],
     "react/react-in-jsx-scope": 0,
     "react/display-name": 0,
     // eslint has no sense for React + TS + FC component

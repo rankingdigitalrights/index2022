@@ -1,3 +1,5 @@
+/* eslint no-param-reassign: off */
+
 import React, {useEffect, useMemo, useRef} from "react";
 import scrollama from "scrollama";
 
