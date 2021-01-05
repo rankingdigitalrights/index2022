@@ -7,6 +7,9 @@ import Layout from "../../components/layout-spotlights";
 import ScrollySteps from "../../components/spotlight-steps";
 import {setupSpotlight} from "../../spotlights";
 
+import story from "../../../data/spotlights/spotlight-1.json";
+console.log(story);
+
 /* importing a PNG fails, both from /static/ and /public/ */
 /* React calls for Webpack */
 /* cf. https://create-react-app.dev/docs/adding-images-fonts-and-files/ */
@@ -110,15 +113,7 @@ const SpotlightOne = () => {
             </figure>
           </div>
 
-          <div className="scrolly-steps">
-            <div
-              className="step invisible"
-              data-step="-99"
-              data-color="bg-gray-400"
-            />
-
-            <ScrollySteps />
-          </div>
+          <ScrollySteps story={story} />
         </section>
 
         <section id="analysis-3" className="max-w-6xl">
