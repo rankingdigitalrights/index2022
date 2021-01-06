@@ -9,7 +9,7 @@ import ScrollySteps from "../../components/spotlight-steps";
 import MyImage from "../../images/spotlights/datawrapper-map-dummy.png";
 import {setupSpotlight} from "../../spotlights";
 
-const datawrapperIframe = `<iframe title="Countries with Facebook's internet.org" aria-label="Map" id="datawrapper-chart-mcT4c" src="https://datawrapper.dwcdn.net/mcT4c/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="702" />`;
+const datawrapperIframe = `<iframe title="Countries with Facebook's internet.org" aria-label="Map" id="datawrapper-chart-mcT4c" src="https://datawrapper.dwcdn.net/mcT4c/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="710" class="shadow-lg" />`;
 
 const SpotlightOne = () => {
   const scrolly1El = useRef(undefined);
@@ -54,21 +54,6 @@ const SpotlightOne = () => {
 
         <section className="max-w-6xl datawrapper-dummy-embed">
           <Iframe html={datawrapperIframe} />
-
-          <figure>
-            <img src={MyImage} alt="Some data stuff" width={500} height={500} />
-          </figure>
-        </section>
-
-        <section className="max-w-6xl">
-          <figure>
-            <img
-              src={MyImage}
-              alt="Some other data stuff"
-              width={300}
-              height={500}
-            />
-          </figure>
         </section>
 
         <section className="max-w-6xl">
@@ -119,6 +104,11 @@ const SpotlightOne = () => {
             grog yardarm hempen halter furl. Swab barque interloper chantey
             doubloon starboard grog black jack gangway rutters.
           </p>
+
+          <figure>
+            <img src={MyImage} alt="Some other data stuff" />
+            <figcaption>Caption: Example PNG Image</figcaption>
+          </figure>
 
           <p>
             Deadlights jack lad schooner scallywag dance the hempen jig carouser

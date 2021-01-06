@@ -208,6 +208,7 @@
     top: 60px;
     width: 100%;
     background-color: white;
+    text-transform: uppercase;
   }
 
   main.spotlight section.scrolly h2 {
@@ -220,6 +221,28 @@
     z-index: 10;
   }
 
+  main.spotlight iframe {
+    margin: 3rem auto;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+
+  main.spotlight figure {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto 3rem auto;
+  }
+
+  main.spotlight figure img {
+    margin: 1rem auto;
+  }
+
+  main.spotlight figure figcaption {
+    @apply font-platform;
+    text-align: right;
+    margin: 1rem auto;
+  }
+
   div.scrolly-canvas {
     @apply sticky w-full m-0 left-0;
     left: 0;
@@ -230,9 +253,11 @@
     z-index: 0;
   }
 
-  figure.scrolly-figure {
+  div.scrolly-canvas figure.scrolly-figure {
     width: 100%;
     height: 100%;
+    max-width: unset;
+    margin-bottom: 3rem;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -248,9 +273,9 @@
     left: 50%;
   } */
 
-  figure.scrolly-figure p#scene-counter {
+  div.scrolly-canvas figure.scrolly-figure p#scene-counter {
     @apply fixed m-0 p-4 text-right text-6xl font-black;
-    margin: 3rem 0;
+    margin: 0;
     text-align: center;
     padding: 1rem;
     position: fixed;
@@ -263,7 +288,7 @@
     font-weight: 900;
   }
 
-  figure.scrolly-figure p#index-counter {
+  div.scrolly-canvas figure.scrolly-figure p#index-counter {
     @apply fixed m-0 p-4 text-left text-6xl font-black;
     margin: 0;
     text-align: center;
