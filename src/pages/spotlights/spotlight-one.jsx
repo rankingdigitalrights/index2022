@@ -3,11 +3,12 @@
 import React, {useEffect, useMemo, useRef} from "react";
 import scrollama from "scrollama";
 
+import story from "../../../data/spotlights/spotlight-1.json";
+import Iframe from "../../components/iframe";
 import Layout from "../../components/layout-spotlights";
 import ScrollySteps from "../../components/spotlight-steps";
 import {setupSpotlight} from "../../spotlights";
 
-import story from "../../../data/spotlights/spotlight-1.json";
 console.log(story);
 
 /* importing a PNG fails, both from /static/ and /public/ */
@@ -16,6 +17,8 @@ console.log(story);
 // import dwMapDummy from "../../../public/spotlights/datawrapper-map-dummy.png";
 // import dwMapDummy from "%PUBLIC_URL%/spotlights/datawrapper-map-dummy.png";
 console.log(process.env.PUBLIC_URL); // undefined
+
+const datawrapperIframe = `<iframe title="Countries with Facebook's internet.org" aria-label="Map" id="datawrapper-chart-mcT4c" src="https://datawrapper.dwcdn.net/mcT4c/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="402" />`;
 
 const SpotlightOne = () => {
   const scrolly1El = useRef(undefined);
@@ -59,16 +62,15 @@ const SpotlightOne = () => {
         </section>
 
         {/* Datawrapper Embed */}
-        {/* injecting vanilla HTML snippets would be the most pleasant approach of course*/}
+        {/* injecting vanilla HTML snippets would be the most pleasant approach of course */}
         {/* for embedding datawrapper, there is a node package https://www.npmjs.com/package/react-data-wrapper?activeTab=readme */}
         {/* not sure if developing a custom component is feasible */}
 
         <section className="datawrapper-dummy-embed">
-          {/* <iframe title="Countries with Facebook's internet.org" aria-label="Map" id="datawrapper-chart-mcT4c" src="https://datawrapper.dwcdn.net/mcT4c/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="402"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}}))}();
-</script> */}
+          <Iframe html={datawrapperIframe} />
 
           {/* PNG Embed */}
-          <figure className="datawrapper-dummy-png"></figure>
+          <figure className="datawrapper-dummy-png" />
         </section>
 
         <section>
