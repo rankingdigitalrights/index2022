@@ -1,3 +1,4 @@
+/* eslint react/destructuring-assignment: off */
 const ScrollySteps = (props) => {
   console.log(`props: ${props}`);
   return (

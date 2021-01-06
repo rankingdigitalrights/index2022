@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: off */
 export const updateBGColor = (figure, color = "bg-gray-200") => {
   figure.classList.remove(
     ...["bg-cat-governance", "bg-cat-freedom", "bg-cat-privacy", "bg-gray-400"],
