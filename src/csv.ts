@@ -417,6 +417,26 @@ export const companyIndices = memoizeAsync(
 );
 
 /*
+ * Depending on the indicator we have to include different elements for an
+ * indicator.
+ */
+const isValidElement = (element: CsvElement): boolean => {
+  // Indicators G1 and G5 only have elements of Group and OpCom (Company).
+  if (["G01", "G05"].includes(element.indicator))
+    return ["OpCom", "Group"].includes(element.service);
+
+  // Indicators G2, G3 and G4x have services and Group and OpCom (Full).
+  if (
+    element.category === "governance" &&
+    [2, 3, 4].includes(element.indicatorNr)
+  )
+    return true;
+
+  // All F and P indicators, and G6x only have service elements (Services).
+  return !["OpCom", "Group"].includes(element.service);
+};
+
+/*
  * Load the source data and construct the indicator index for 2020. This
  * function is called to populate the website pages.
  */
@@ -442,7 +462,7 @@ export const indicatorIndices = memoizeAsync(
           (element) =>
             element.indicator === spec.indicator &&
             indexYears.has(element.index) &&
-            !["OpCom", "Group"].includes(element.service),
+            isValidElement(element),
         )
         .map(({element, company: companyId, score, value, kind, service}) => {
           const {category, elementNr, label, description} =
