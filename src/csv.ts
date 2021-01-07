@@ -8,6 +8,7 @@ import {
   CompanyKind,
   CompanyRank,
   CsvRecord,
+  Element,
   ElementValue,
   IndexYear,
   Indicator,
@@ -23,6 +24,7 @@ import {
   isIndicatorFamily,
   mapBoolean,
   mapCategory,
+  mapCompanyKindOrNil,
   mapElementValue,
   memoizeAsync,
   stringOrNil,
@@ -110,6 +112,7 @@ type CsvElementSpec = {
   elementNr: number;
   label: string;
   description: string;
+  excludedCompanyKind?: CompanyKind;
 };
 
 /*
@@ -300,6 +303,7 @@ const loadElementSpecsCsv = loadCsv<CsvElementSpec>((record) => ({
   elementNr: Number.parseInt(record.elemNr, 10),
   label: record.labelShort,
   description: record.description,
+  excludedCompanies: mapCompanyKindOrNil(record.excludedCompanies),
 }));
 
 /*
@@ -365,6 +369,41 @@ export const indicators = memoizeAsync(
           label,
           description,
           guidance,
+        };
+      },
+    );
+  },
+);
+
+/*
+ * Generate a complete list of all elements.
+ */
+export const elements = memoizeAsync(
+  async (): Promise<Element[]> => {
+    const csvElements = await loadElementSpecsCsv("csv/2020-element-specs.csv");
+
+    return csvElements.map(
+      ({
+        element,
+        label,
+        elementNr,
+        category,
+        indicator,
+        description,
+        excludedCompanyKind,
+      }) => {
+        const isTelecom = excludedCompanyKind !== "telecom";
+        const isPlatform = excludedCompanyKind !== "internet";
+
+        return {
+          id: element,
+          name: label,
+          position: elementNr,
+          indicatorId: indicator,
+          category,
+          description,
+          isTelecom,
+          isPlatform,
         };
       },
     );
@@ -532,7 +571,7 @@ export const indicatorIndices = memoizeAsync(
     ]);
 
     return csvIndicatorSpecs.map((spec) => {
-      const elements: IndicatorIndexElement[] = csvElements
+      const indexElements: IndicatorIndexElement[] = csvElements
         .filter(
           (element) =>
             element.indicator === spec.indicator &&
@@ -561,7 +600,7 @@ export const indicatorIndices = memoizeAsync(
       // Filter out companies that have no elements for this indicator.
       const companyIds = allCompanies
         .filter(({id}) => {
-          return !!elements.find(({companyId}) => id === companyId);
+          return !!indexElements.find(({companyId}) => id === companyId);
         })
         .map(({id}) => id);
 
@@ -575,7 +614,7 @@ export const indicatorIndices = memoizeAsync(
       const services = companyIds.reduce(
         (memo, company) => ({
           [company]: [
-            ...elements
+            ...indexElements
               .filter((element) => element.companyId === company)
               .reduce((agg, {service}) => agg.add(service), new Set<string>()),
           ],
@@ -612,7 +651,7 @@ export const indicatorIndices = memoizeAsync(
         return {
           [company]: services[company].reduce(
             (agg, service) => ({
-              [service]: elements
+              [service]: indexElements
                 .filter(
                   (element) =>
                     element.companyId === company &&

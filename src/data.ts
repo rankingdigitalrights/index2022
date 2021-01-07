@@ -8,6 +8,7 @@ import {
   CompanyIndex,
   CompanyKind,
   CompanyRank,
+  Element,
   Indicator,
   IndicatorIndex,
 } from "./types";
@@ -37,6 +38,7 @@ export const loadJsonDir = <T extends unknown>(
 
 export const allCompanies = loadJson<Company[]>("data/companies.json");
 export const allIndicators = loadJson<Indicator[]>("data/indicators.json");
+export const allElements = loadJson<Element[]>("data/elements.json");
 
 export const companyIndices = loadJsonDir<CompanyIndex>(
   "data/companies",
@@ -52,8 +54,7 @@ export const companyDetails = loadJsonDir<CompanyDetails>(
 );
 
 /*
- * Load the company details. This is a dummy right now. It needs to be
- * seen how we can load those. Ideally I fetch them directly from Wordpress.
+ * Load the company details.
  */
 export const companyData = async (
   companyId: string,

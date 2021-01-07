@@ -7,6 +7,7 @@ import {
   companies,
   companyIndices,
   companyRanking,
+  elements,
   indicatorIndices,
   indicators,
 } from "../src/csv";
@@ -54,12 +55,14 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
       const [
         allCompanies,
         allIndicators,
+        allElements,
         scores,
         indicatorScores,
         details,
       ] = await Promise.all([
         companies(),
         indicators(),
+        elements(),
         companyIndices(),
         indicatorIndices(),
         companyDetails(),
@@ -77,9 +80,15 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
         output: path.join(dataDir, "indicators.json"),
       };
 
+      const elementsTarget: OutOrFile = {
+        target: "file",
+        output: path.join(dataDir, "elements.json"),
+      };
+
       await Promise.all([
         outOrFile(companiesTarget, allCompanies),
         outOrFile(indicatorsTarget, allIndicators),
+        outOrFile(elementsTarget, allElements),
         Promise.all(
           details.map(async (company) => {
             const companyDir = path.join(companiesDir, company.id);

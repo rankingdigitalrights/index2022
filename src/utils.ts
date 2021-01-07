@@ -1,4 +1,10 @@
-import {ElementValue, IndicatorCategory, IndicatorScore, NA} from "./types";
+import {
+  CompanyKind,
+  ElementValue,
+  IndicatorCategory,
+  IndicatorScore,
+  NA,
+} from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const memoize = <T extends (...args: any[]) => any>(
@@ -82,6 +88,18 @@ export const mapCategory = (value: string): IndicatorCategory => {
     default: {
       throw new Error("Unknown score category.");
     }
+  }
+};
+
+export const mapCompanyKindOrNil = (value: string): CompanyKind | void => {
+  switch (value) {
+    case "telcos":
+    case "telecom":
+      return "telecom";
+    case "platforms":
+      return "internet";
+    default:
+      return undefined;
   }
 };
 

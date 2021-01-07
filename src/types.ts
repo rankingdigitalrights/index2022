@@ -102,6 +102,17 @@ export type ElementValue =
 // Yes
 // yes
 
+export type Element = {
+  id: string;
+  name: string;
+  position: number;
+  category: IndicatorCategory;
+  indicatorId: string;
+  description: string;
+  isTelecom: boolean;
+  isPlatform: boolean;
+};
+
 export type IndicatorIndexElement = {
   element: string;
   elementNr: number;
