@@ -102,7 +102,7 @@ export type ElementValue =
 // Yes
 // yes
 
-export type Element = {
+export type IndicatorIndexElement = {
   element: string;
   elementNr: number;
   category: IndicatorCategory;
@@ -128,7 +128,7 @@ export type IndicatorIndex = {
   services: Record<string, string[]>;
   scores: Record<string, IndicatorScore>;
   averages: Record<string, Record<string, IndicatorScore>>;
-  elements: Record<string, Record<string, Element[]>>;
+  elements: Record<string, Record<string, IndicatorIndexElement[]>>;
 };
 
 export type CsvRecord = Record<string, string>;

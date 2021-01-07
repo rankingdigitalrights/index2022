@@ -8,12 +8,12 @@ import {
   CompanyKind,
   CompanyRank,
   CsvRecord,
-  Element,
   ElementValue,
   IndexYear,
   Indicator,
   IndicatorCategory,
   IndicatorIndex,
+  IndicatorIndexElement,
   IndicatorNested,
   IndicatorScore,
   Scores,
@@ -519,6 +519,7 @@ export const indicatorIndices = memoizeAsync(
       csvElements,
       csvIndicatorSpecs,
       csvElementSpecs,
+      // allIndicators,
       allCompanies,
     ] = await Promise.all([
       loadIndicatorsCsv("csv/2020-indicators.csv"),
@@ -526,11 +527,12 @@ export const indicatorIndices = memoizeAsync(
       loadElementsCsv("csv/2020-elements.csv"),
       loadIndicatorSpecsCsv("csv/2020-indicator-specs.csv"),
       loadElementSpecsCsv("csv/2020-element-specs.csv"),
+      // indicators(),
       companies(),
     ]);
 
     return csvIndicatorSpecs.map((spec) => {
-      const elements: Element[] = csvElements
+      const elements: IndicatorIndexElement[] = csvElements
         .filter(
           (element) =>
             element.indicator === spec.indicator &&
@@ -623,11 +625,11 @@ export const indicatorIndices = memoizeAsync(
                 }),
               ...agg,
             }),
-            {} as Record<string, Element[]>,
+            {} as Record<string, IndicatorIndexElement[]>,
           ),
           ...memo,
         };
-      }, {} as Record<string, Record<string, Element[]>>);
+      }, {} as Record<string, Record<string, IndicatorIndexElement[]>>);
 
       return {
         id: spec.display,

@@ -1,7 +1,7 @@
 import c from "clsx";
 import React from "react";
 
-import {Element, IndicatorScore} from "../types";
+import {IndicatorIndexElement, IndicatorScore} from "../types";
 import IndicatorElementTag from "./indicator-element-tag";
 
 interface CompanyElementsProps {
@@ -9,7 +9,7 @@ interface CompanyElementsProps {
   company: string;
   score: IndicatorScore;
   averages: Record<string, IndicatorScore>;
-  companyElements: Record<string, Element[]>;
+  companyElements: Record<string, IndicatorIndexElement[]>;
   literalValues: boolean;
 }
 
@@ -38,10 +38,10 @@ const CompanyElements = ({
       );
       if (!serviceElement) return agg;
       return agg.concat([serviceElement]);
-    }, [] as Element[]);
+    }, [] as IndicatorIndexElement[]);
 
     return memo.concat([[element].concat(elements)]);
-  }, [] as Element[][]);
+  }, [] as IndicatorIndexElement[][]);
 
   const legend = legendRow.map((item, idx) => {
     const className = {
