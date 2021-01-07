@@ -33,6 +33,12 @@ export type CompanyDetails = {
 
 export type CompanyKind = "telecom" | "internet";
 
+export type Company = {
+  id: string;
+  name: string;
+  kind: CompanyKind;
+};
+
 export type Scores = Record<IndicatorCategory | "total", number>;
 
 export type CategoryScores = Record<IndicatorCategory, number>;

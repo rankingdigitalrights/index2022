@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 
 import {
+  Company,
   CompanyIndex,
   CompanyKind,
   CompanyRank,
@@ -301,6 +302,22 @@ const loadElementSpecsCsv = loadCsv<CsvElementSpec>((record) => ({
 }));
 
 /*
+ * Generate a complete list of all available companies.
+ */
+export const companies = memoizeAsync(
+  async (): Promise<Company[]> => {
+    const csvCompanySpecs = await loadCompanySpecsCsv(
+      "csv/2020-company-specs.csv",
+    );
+    return csvCompanySpecs.map(({company: id, companyPretty: name, kind}) => ({
+      id,
+      name,
+      kind,
+    }));
+  },
+);
+
+/*
  * Load the source data and construct the company index for 2020. This
  * function is called to populate the website pages.
  */
@@ -448,12 +465,14 @@ export const indicatorIndices = memoizeAsync(
       csvElements,
       csvIndicatorSpecs,
       csvElementSpecs,
+      allCompanies,
     ] = await Promise.all([
       loadIndicatorsCsv("csv/2020-indicators.csv"),
       loadLevelsCsv("csv/2020-levels.csv"),
       loadElementsCsv("csv/2020-elements.csv"),
       loadIndicatorSpecsCsv("csv/2020-indicator-specs.csv"),
       loadElementSpecsCsv("csv/2020-element-specs.csv"),
+      companies(),
     ]);
 
     return csvIndicatorSpecs.map((spec) => {
@@ -483,21 +502,21 @@ export const indicatorIndices = memoizeAsync(
           };
         });
 
-      const companies = [
-        ...elements.reduce(
-          (memo, {companyId}) => memo.add(companyId),
-          new Set<string>(),
-        ),
-      ];
+      // Filter out companies that have no elements for this indicator.
+      const companyIds = allCompanies
+        .filter(({id}) => {
+          return !!elements.find(({companyId}) => id === companyId);
+        })
+        .map(({id}) => id);
 
-      const scores = companies.reduce((memo, company) => {
+      const scores = companyIds.reduce((memo, company) => {
         const indicator = csvIndicators
           .filter((i) => indexYears.has(i.index))
           .find((i) => i.company === company && i.indicator === spec.indicator);
         return {[company]: indicator ? indicator.score : "NA", ...memo};
       }, {} as Record<string, IndicatorScore>);
 
-      const services = companies.reduce(
+      const services = companyIds.reduce(
         (memo, company) => ({
           [company]: [
             ...elements
@@ -509,7 +528,7 @@ export const indicatorIndices = memoizeAsync(
         {} as Record<string, string[]>,
       );
 
-      const averages = companies.reduce((memo, company) => {
+      const averages = companyIds.reduce((memo, company) => {
         const companyAverages = (services[company] || []).reduce(
           (agg, service) => {
             const levels = csvLevels.find(
@@ -531,7 +550,7 @@ export const indicatorIndices = memoizeAsync(
         return {[company]: companyAverages, ...memo};
       }, {} as Record<string, Record<string, IndicatorScore>>);
 
-      const sortedElements = companies.reduce((memo, company) => {
+      const sortedElements = companyIds.reduce((memo, company) => {
         if (!services[company]) return memo;
 
         return {
@@ -565,7 +584,7 @@ export const indicatorIndices = memoizeAsync(
         guidance: spec.guidance,
         isParent: spec.isParent,
         hasParent: /[a-z]+$/.test(spec.indicator),
-        companies,
+        companies: companyIds,
         services,
         scores,
         averages,
