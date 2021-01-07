@@ -45,8 +45,8 @@ const CompanyElements = ({
 
   const legend = legendRow.map((item, idx) => {
     const className = {
-      "w-40 text-sm p-2 leading-tight": idx === 0,
-      "w-36 text-xs p-6": idx > 0,
+      "w-40 p-2 leading-tight": idx === 0,
+      "w-36 p-6": idx > 0,
     };
 
     const innerClassName = {
@@ -75,8 +75,8 @@ const CompanyElements = ({
 
   const footer = averagesRow.map((item, idx) => {
     const className = {
-      "w-40 text-xs font-bold": idx === 0,
-      "w-36 text-xs px-6": idx > 0,
+      "w-40 font-bold": idx === 0,
+      "w-36 px-6": idx > 0,
     };
 
     const innerClassName = {
@@ -103,13 +103,13 @@ const CompanyElements = ({
 
   const grid = rows.map((row, itemPos) => {
     return (
-      <div className="flex w-full">
+      <div className="flex w-full text-sm">
         <div className="flex flex-row w-full">
           {row.map((element, idx) => {
             if (idx === 0)
               return (
                 <div
-                  className="flex flex-col items-center justify-center border border-disabled-dark w-40 p-2 text-xs"
+                  className="flex flex-col items-center justify-center border border-disabled-dark w-40 p-2"
                   key={`legend-element-${element.label}`}
                 >
                   <span>
