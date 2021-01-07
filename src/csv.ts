@@ -329,8 +329,9 @@ export const indicators = memoizeAsync(
 
     return csvIndicators.map(
       ({
-        category,
+        indicator,
         display,
+        category,
         indicatorNr,
         indicatorSuffix,
         label,
@@ -352,11 +353,11 @@ export const indicators = memoizeAsync(
           });
           if (!parentIndicator)
             return unreachable(`Unable to find parent for ${display}.`);
-          parent = parentIndicator.display;
+          parent = parentIndicator.indicator;
         }
 
         return {
-          id: display,
+          id: indicator,
           name: display,
           category,
           isParent,

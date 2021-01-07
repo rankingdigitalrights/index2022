@@ -34,13 +34,17 @@ export type CompanyDetails = {
 export type CompanyKind = "telecom" | "internet";
 
 export type Company = {
+  // The slug of the company name, e.g. AmericaMovil.
   id: string;
+  // The display name of the company, e.g. América Móvil.
   name: string;
   kind: CompanyKind;
 };
 
 export type Indicator = {
+  // The full length name of the indicator, e.g. G01.
   id: string;
+  // The display name of the indicator, e.g. G1.
   name: string;
   category: IndicatorCategory;
   isParent: boolean;

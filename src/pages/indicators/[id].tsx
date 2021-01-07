@@ -39,8 +39,8 @@ export const getStaticPaths = async () => {
   const data = await allIndicators();
   const paths = data
     .filter(({isParent}) => !isParent)
-    .map(({id}) => ({
-      params: {id},
+    .map(({name}) => ({
+      params: {id: name},
     }));
 
   return {
@@ -52,7 +52,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   const index = (await indicatorData(indicatorId)) as IndicatorIndex;
   const indicators = (await allIndicators()).map(
-    ({id: value, label, isParent, parent}) => ({
+    ({name: value, label, isParent, parent}) => ({
       value,
       isParent,
       hasParent: !!parent,

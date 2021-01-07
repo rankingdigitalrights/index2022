@@ -65,13 +65,13 @@ const generateNavigation = async (): Promise<NavigationNode[]> => {
           label: "Indicators",
           nodes: indicators
             .sort((a, b) => {
-              if (a.id < b.id) return -1;
-              if (a.id > b.id) return 1;
+              if (a.name < b.name) return -1;
+              if (a.name > b.name) return 1;
               return 0;
             })
-            .map(({id, label}) => ({
-              label: `${id} ${label}`,
-              href: `/indicators/${id}`,
+            .map(({name, label}) => ({
+              label: `${name} ${label}`,
+              href: `/indicators/${name}`,
             })),
         },
       ],
