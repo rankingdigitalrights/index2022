@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 
 import Navigation from "./navigation";
+import Footer from "./spotlight-footer";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -20,6 +21,8 @@ const Layout = ({children}: LayoutProps) => {
       </header>
 
       {children}
+
+      <Footer />
     </div>
   );
 };
