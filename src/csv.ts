@@ -11,6 +11,7 @@ import {
   Element,
   ElementValue,
   IndexYear,
+  Indicator,
   IndicatorCategory,
   IndicatorIndex,
   IndicatorNested,
@@ -314,6 +315,58 @@ export const companies = memoizeAsync(
       name,
       kind,
     }));
+  },
+);
+
+/*
+ * Generate a complete list of all indicators.
+ */
+export const indicators = memoizeAsync(
+  async (): Promise<Indicator[]> => {
+    const csvIndicators = await loadIndicatorSpecsCsv(
+      "csv/2020-indicator-specs.csv",
+    );
+
+    return csvIndicators.map(
+      ({
+        category,
+        display,
+        indicatorNr,
+        indicatorSuffix,
+        label,
+        description,
+        guidance,
+        isParent,
+      }) => {
+        let parent;
+
+        // If there is a suffix defined we have a child indicator. Let's find
+        // the parent.
+        if (indicatorSuffix) {
+          const parentIndicator = csvIndicators.find((row) => {
+            return (
+              row.isParent &&
+              row.indicatorNr === indicatorNr &&
+              row.category === category
+            );
+          });
+          if (!parentIndicator)
+            return unreachable(`Unable to find parent for ${display}.`);
+          parent = parentIndicator.display;
+        }
+
+        return {
+          id: display,
+          name: display,
+          category,
+          isParent,
+          parent,
+          label,
+          description,
+          guidance,
+        };
+      },
+    );
   },
 );
 

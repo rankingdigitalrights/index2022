@@ -8,6 +8,7 @@ import {
   companyIndices,
   companyRanking,
   indicatorIndices,
+  indicators,
 } from "../src/csv";
 import {companyDetails} from "../src/google";
 import generateNav from "../src/navigation";
@@ -50,8 +51,15 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
       const companiesDir = "data/companies";
       const indicatorsDir = "data/indicators";
 
-      const [allCompanies, scores, indicators, details] = await Promise.all([
+      const [
+        allCompanies,
+        allIndicators,
+        scores,
+        indicatorScores,
+        details,
+      ] = await Promise.all([
         companies(),
+        indicators(),
         companyIndices(),
         indicatorIndices(),
         companyDetails(),
@@ -64,8 +72,14 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
         output: path.join(dataDir, "companies.json"),
       };
 
+      const indicatorsTarget: OutOrFile = {
+        target: "file",
+        output: path.join(dataDir, "indicators.json"),
+      };
+
       await Promise.all([
         outOrFile(companiesTarget, allCompanies),
+        outOrFile(indicatorsTarget, allIndicators),
         Promise.all(
           details.map(async (company) => {
             const companyDir = path.join(companiesDir, company.id);
@@ -94,7 +108,7 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
           }),
         ),
         Promise.all(
-          indicators.map(async (indicator) => {
+          indicatorScores.map(async (indicator) => {
             const indicatorDir = path.join(indicatorsDir, indicator.id);
             await fs.mkdir(path.join(process.cwd(), indicatorDir), {
               recursive: true,
@@ -122,7 +136,7 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
       const fixturesDir = "fixtures";
       await fs.mkdir(path.join(process.cwd(), fixturesDir), {recursive: true});
 
-      const [scores, indicators] = await Promise.all([
+      const [scores, indicatorScores] = await Promise.all([
         companyIndices(),
         indicatorIndices(),
       ]);
@@ -138,7 +152,7 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
 
       await Promise.all([
         outOrFile(scoresTarget, scores),
-        outOrFile(indicatorsTarget, indicators),
+        outOrFile(indicatorsTarget, indicatorScores),
       ]);
     })
     .command(

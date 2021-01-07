@@ -39,6 +39,17 @@ export type Company = {
   kind: CompanyKind;
 };
 
+export type Indicator = {
+  id: string;
+  name: string;
+  category: IndicatorCategory;
+  isParent: boolean;
+  parent?: string;
+  label: string;
+  description: string;
+  guidance: string;
+};
+
 export type Scores = Record<IndicatorCategory | "total", number>;
 
 export type CategoryScores = Record<IndicatorCategory, number>;
