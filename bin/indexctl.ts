@@ -3,7 +3,12 @@ import {promises as fs} from "fs";
 import path from "path";
 import yargs from "yargs";
 
-import {companyIndices, companyRanking, indicatorIndices} from "../src/csv";
+import {
+  companies,
+  companyIndices,
+  companyRanking,
+  indicatorIndices,
+} from "../src/csv";
 import {companyDetails} from "../src/google";
 import generateNav from "../src/navigation";
 import {CompanyKind} from "../src/types";
@@ -41,18 +46,28 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
   yargs
     .scriptName("indexctl")
     .command("data", "generate data structures.", async () => {
+      const dataDir = "data";
       const companiesDir = "data/companies";
       const indicatorsDir = "data/indicators";
 
-      const [scores, indicators, companies] = await Promise.all([
+      const [allCompanies, scores, indicators, details] = await Promise.all([
+        companies(),
         companyIndices(),
         indicatorIndices(),
         companyDetails(),
       ]);
 
+      await fs.mkdir(path.join(process.cwd(), dataDir), {recursive: true});
+
+      const companiesTarget: OutOrFile = {
+        target: "file",
+        output: path.join(dataDir, "companies.json"),
+      };
+
       await Promise.all([
+        outOrFile(companiesTarget, allCompanies),
         Promise.all(
-          companies.map(async (company) => {
+          details.map(async (company) => {
             const companyDir = path.join(companiesDir, company.id);
             await fs.mkdir(path.join(process.cwd(), companyDir), {
               recursive: true,
@@ -93,10 +108,6 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
         ),
         (["telecom", "internet"] as CompanyKind[]).map(
           async (kind: CompanyKind) => {
-            const dataDir = "data";
-            await fs.mkdir(path.join(process.cwd(), dataDir), {
-              recursive: true,
-            });
             const target: OutOrFile = {
               target: "file",
               output: path.join(dataDir, `ranking-${kind}.json`),

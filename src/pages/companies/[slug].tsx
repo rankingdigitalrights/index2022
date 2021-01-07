@@ -5,7 +5,7 @@ import CompanyRankChart from "../../components/company-rank-chart";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
 import Layout from "../../components/layout";
-import {companyData, companyIndices, companyRankingData} from "../../data";
+import {allCompanies, companyData, companyRankingData} from "../../data";
 import {CompanyDetails, CompanyIndex, CompanyRank} from "../../types";
 
 type Params = {
@@ -21,7 +21,7 @@ interface CompanyProps {
 }
 
 export const getStaticPaths = async () => {
-  const data = await companyIndices();
+  const data = await allCompanies();
   const paths = data.map(({id}) => ({
     params: {slug: id},
   }));
