@@ -101,7 +101,7 @@ const CompanyElements = ({
     );
   });
 
-  const grid = rows.map((row) => {
+  const grid = rows.map((row, itemPos) => {
     return (
       <div className="flex w-full">
         <div className="flex flex-row w-full">
@@ -112,7 +112,9 @@ const CompanyElements = ({
                   className="flex flex-col items-center justify-center border border-disabled-dark w-40 p-2 text-xs"
                   key={`legend-element-${element.label}`}
                 >
-                  <span>{element.description}</span>
+                  <span>
+                    {itemPos + 1}. {element.description}
+                  </span>
                 </div>
               );
             return (
