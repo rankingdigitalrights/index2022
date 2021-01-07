@@ -1,4 +1,4 @@
-import {allCompanies, indicatorIndices} from "./data";
+import {allCompanies, allIndicators} from "./data";
 
 export type NavigationNode = {
   label: string;
@@ -9,7 +9,7 @@ export type NavigationNode = {
 const generateNavigation = async (): Promise<NavigationNode[]> => {
   const [companies, indicators] = await Promise.all([
     allCompanies(),
-    indicatorIndices(),
+    allIndicators(),
   ]);
 
   return [

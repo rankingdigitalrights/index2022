@@ -11,7 +11,7 @@ import IndicatorSelector, {
 import Layout from "../../components/layout";
 import SortSelector from "../../components/sort-selector";
 import ToggleSwitch from "../../components/toggle-switch";
-import {companyIndices, indicatorData, indicatorIndices} from "../../data";
+import {allIndicators, companyIndices, indicatorData} from "../../data";
 import {
   IndicatorIndex,
   SelectOption,
@@ -36,7 +36,7 @@ interface IndicatorPageProps {
 }
 
 export const getStaticPaths = async () => {
-  const data = await indicatorIndices();
+  const data = await allIndicators();
   const paths = data
     .filter(({isParent}) => !isParent)
     .map(({id}) => ({
@@ -51,11 +51,11 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   const index = (await indicatorData(indicatorId)) as IndicatorIndex;
-  const indicators = (await indicatorIndices()).map(
-    ({id: value, label, isParent, hasParent}) => ({
+  const indicators = (await allIndicators()).map(
+    ({id: value, label, isParent, parent}) => ({
       value,
       isParent,
-      hasParent,
+      hasParent: !!parent,
       label: `${value}. ${label}`,
     }),
   );
