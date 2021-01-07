@@ -1,13 +1,13 @@
 import c from "clsx";
 import React, {useEffect, useRef, useState} from "react";
 
-import {Indicator, IndicatorCategory} from "../types";
+import {IndicatorCategory, IndicatorNested} from "../types";
 import CompanyIndicatorChart from "./company-indicator-chart";
 
 interface CompanySectionProps {
   category: IndicatorCategory;
   text: string;
-  indicators: Indicator[];
+  indicators: IndicatorNested[];
 }
 
 const CompanySection = ({category, text, indicators}: CompanySectionProps) => {

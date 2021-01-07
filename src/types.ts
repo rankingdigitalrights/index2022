@@ -6,7 +6,7 @@ export type IndicatorCategory = "governance" | "freedom" | "privacy";
 
 export type IndicatorScore = number | NA;
 
-export type Indicator = {
+export type IndicatorNested = {
   category: IndicatorCategory;
   indicator: string;
   display: string;
@@ -16,7 +16,7 @@ export type Indicator = {
   label: string;
   description: string;
   guidance: string;
-  familyMembers: Indicator[];
+  familyMembers: IndicatorNested[];
 };
 
 export type CompanyDetails = {
@@ -48,7 +48,7 @@ export type CategoryCaption =
   | "Freedom of Expression"
   | "Privacy";
 
-export type Indicators = Record<IndicatorCategory, Indicator[]>;
+export type Indicators = Record<IndicatorCategory, IndicatorNested[]>;
 
 export type CompanyRank = {
   id: string;

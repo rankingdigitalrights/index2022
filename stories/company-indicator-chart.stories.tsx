@@ -3,7 +3,7 @@ import React from "react";
 
 import fixtures from "../fixtures/scores.json";
 import CompanyIndicatorChart from "../src/components/company-indicator-chart";
-import {Indicator, IndicatorCategory} from "../src/types";
+import {IndicatorCategory, IndicatorNested} from "../src/types";
 
 interface CompanyIndicatorChartStoryProps {
   company: string;
@@ -41,9 +41,9 @@ const Template: Story<CompanyIndicatorChartStoryProps> = ({
 
   if (!selectedCompany) throw new Error(`${company} not found in fixtures.`);
 
-  const indicators: Indicator[] = selectedCompany.indicators[
+  const indicators: IndicatorNested[] = selectedCompany.indicators[
     category
-  ] as Indicator[];
+  ] as IndicatorNested[];
 
   return <CompanyIndicatorChart indicators={indicators} />;
 };

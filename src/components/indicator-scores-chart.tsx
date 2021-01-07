@@ -1,7 +1,7 @@
 import c from "clsx";
 import React from "react";
 
-import {CompanyIndex, Indicator} from "../types";
+import {CompanyIndex, IndicatorNested} from "../types";
 import {mapScore} from "../utils";
 import GraphLabel from "./graph-label";
 
@@ -104,7 +104,7 @@ const squareGroups = (
     label: string,
     i: number,
     j: number,
-    indicator: Indicator | undefined,
+    indicator: IndicatorNested | undefined,
   ) => {
     const score = indicator ? mapScore(indicator.score) : 0;
     const x = i * size;

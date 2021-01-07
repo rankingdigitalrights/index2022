@@ -11,9 +11,9 @@ import {
   Element,
   ElementValue,
   IndexYear,
-  Indicator,
   IndicatorCategory,
   IndicatorIndex,
+  IndicatorNested,
   IndicatorScore,
   Scores,
 } from "./types";
@@ -122,11 +122,11 @@ const indexYears: Set<IndexYear> = new Set(["2020"]);
 const categoryIndicators = (
   csvIndicators: CsvIndicator[],
   specs: CsvIndicatorSpec[],
-): Indicator[] => {
+): IndicatorNested[] => {
   const iterator = (
     indicators: CsvIndicator[],
     skipFamilyMembers: boolean,
-  ): Indicator[] => {
+  ): IndicatorNested[] => {
     return indicators
       .sort((a, b) => {
         if (a.indicator < b.indicator) return -1;
@@ -374,19 +374,19 @@ export const companyIndices = memoizeAsync(
             } as Scores,
           );
 
-          const governanceIndicators: Indicator[] = categoryIndicators(
+          const governanceIndicators: IndicatorNested[] = categoryIndicators(
             companyIndicators.filter(
               (indicator) => indicator.category === "governance",
             ),
             csvIndicatorSpecs,
           );
-          const freedomIndicators: Indicator[] = categoryIndicators(
+          const freedomIndicators: IndicatorNested[] = categoryIndicators(
             companyIndicators.filter(
               (indicator) => indicator.category === "freedom",
             ),
             csvIndicatorSpecs,
           );
-          const privacyIndicators: Indicator[] = categoryIndicators(
+          const privacyIndicators: IndicatorNested[] = categoryIndicators(
             companyIndicators.filter(
               (indicator) => indicator.category === "privacy",
             ),

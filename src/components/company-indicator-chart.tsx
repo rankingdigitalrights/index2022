@@ -3,12 +3,12 @@ import React, {useState} from "react";
 
 import ChevronDown from "../../static/chevron-down.svg";
 import ChevronUp from "../../static/chevron-up.svg";
-import {Indicator} from "../types";
+import {IndicatorNested} from "../types";
 import {mapScore} from "../utils";
 import PercentageBar from "./percentage-bar";
 
 interface CompanyIndicatorChartProps {
-  indicators: Indicator[];
+  indicators: IndicatorNested[];
   width?: number;
 }
 
