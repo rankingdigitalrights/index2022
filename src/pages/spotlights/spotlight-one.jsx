@@ -3,13 +3,11 @@ import React, {useEffect, useMemo, useRef} from "react";
 import scrollama from "scrollama";
 
 import story from "../../../data/spotlights/spotlight-1.json";
-import Iframe from "../../components/iframe";
+import Iframe from "../../components/datawrapper";
 import Layout from "../../components/layout-spotlights";
 import ScrollySteps from "../../components/spotlight-steps";
 import MyImage from "../../images/spotlights/datawrapper-map-dummy.png";
 import {setupSpotlight} from "../../spotlights";
-
-const datawrapperIframe = `<iframe title="Countries with Facebook's internet.org" aria-label="Map" id="datawrapper-chart-mcT4c" src="https://datawrapper.dwcdn.net/mcT4c/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="710" class="shadow-lg" />`;
 
 const SpotlightOne = () => {
   const scrolly1El = useRef(undefined);
@@ -53,7 +51,11 @@ const SpotlightOne = () => {
         </section>
 
         <section className="max-w-6xl datawrapper-dummy-embed">
-          <Iframe html={datawrapperIframe} />
+          <Iframe
+            title="Countries with Facebook's internet.org"
+            src="https://datawrapper.dwcdn.net/mcT4c/1/"
+            initialHeight={720}
+          />
         </section>
 
         <section className="max-w-6xl">
