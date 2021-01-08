@@ -24,6 +24,7 @@ import {
   isIndicatorFamily,
   mapBoolean,
   mapCategory,
+  mapCompanyKind,
   mapCompanyKindOrNil,
   mapElementValue,
   memoizeAsync,
@@ -113,6 +114,11 @@ type CsvElementSpec = {
   label: string;
   description: string;
   excludedCompanyKind?: CompanyKind;
+};
+
+type CsvIndicatorExclude = {
+  indicatorId: string;
+  exclude: CompanyKind;
 };
 
 /*
@@ -307,6 +313,14 @@ const loadElementSpecsCsv = loadCsv<CsvElementSpec>((record) => ({
 }));
 
 /*
+ * Load a list of excluded company kinds for an indicator.
+ */
+const loadIndicatorExcludesCsv = loadCsv<CsvIndicatorExclude>((record) => ({
+  indicatorId: record.Indicator,
+  exclude: mapCompanyKind(record.exclude),
+}));
+
+/*
  * Generate a complete list of all available companies.
  */
 export const companies = memoizeAsync(
@@ -327,9 +341,10 @@ export const companies = memoizeAsync(
  */
 export const indicators = memoizeAsync(
   async (): Promise<Indicator[]> => {
-    const csvIndicators = await loadIndicatorSpecsCsv(
-      "csv/2020-indicator-specs.csv",
-    );
+    const [csvIndicators, csvExcludes] = await Promise.all([
+      loadIndicatorSpecsCsv("csv/2020-indicator-specs.csv"),
+      loadIndicatorExcludesCsv("csv/2020-indicator-excludes.csv"),
+    ]);
 
     return csvIndicators.map(
       ({
@@ -360,9 +375,14 @@ export const indicators = memoizeAsync(
           parent = parentIndicator.indicator;
         }
 
+        const isExcluded = csvExcludes.find(
+          ({indicatorId}) => indicatorId === indicator,
+        );
+
         return {
           id: indicator,
           name: display,
+          exclude: isExcluded?.exclude,
           category,
           isParent,
           parent,

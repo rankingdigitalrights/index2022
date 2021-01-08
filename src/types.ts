@@ -52,6 +52,7 @@ export type Indicator = {
   label: string;
   description: string;
   guidance: string;
+  exclude?: CompanyKind;
 };
 
 export type Scores = Record<IndicatorCategory | "total", number>;

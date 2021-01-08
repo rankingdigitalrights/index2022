@@ -91,16 +91,19 @@ export const mapCategory = (value: string): IndicatorCategory => {
   }
 };
 
+const telecomCompanyKinds = new Set(["telcos", "telecom"]);
+const platformCompanyKinds = new Set(["platforms", "internet"]);
+
 export const mapCompanyKindOrNil = (value: string): CompanyKind | void => {
-  switch (value) {
-    case "telcos":
-    case "telecom":
-      return "telecom";
-    case "platforms":
-      return "internet";
-    default:
-      return undefined;
-  }
+  if (telecomCompanyKinds.has(value)) return "telecom";
+  if (platformCompanyKinds.has(value)) return "internet";
+  return undefined;
+};
+
+export const mapCompanyKind = (value: string): CompanyKind => {
+  if (telecomCompanyKinds.has(value)) return "telecom";
+  if (platformCompanyKinds.has(value)) return "internet";
+  return unreachable(`Failed to map ${value} to a company kind`);
 };
 
 export const mapElementValue = (value: string): ElementValue => {
