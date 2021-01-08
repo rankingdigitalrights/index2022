@@ -58,7 +58,7 @@ const CompanyIndicatorChart = ({
             "text-cat-negative": category === undefined,
           };
 
-          const highlightClassName = "text-accent-orange";
+          const highlightClassName = "text-prissian";
 
           const classNameBarRow =
             "flex items-center justify-between font-circular m-0.5 text-xs";

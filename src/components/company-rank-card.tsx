@@ -26,8 +26,7 @@ const CompanyRankCard = ({
       ? `${counts} telecommunication companies`
       : `${counts} digital platforms`;
 
-  const classNameLabel =
-    "border border-white bg-white text-accent-orange rounded ml-3 p-1";
+  const classNameLabel = "border border-white rounded ml-3 p-1";
 
   return (
     <div className={c("flex flex-col", className)}>
