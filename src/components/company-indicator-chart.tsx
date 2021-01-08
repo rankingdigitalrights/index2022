@@ -54,6 +54,9 @@ const CompanyIndicatorChart = ({
             "text-cat-negative": category === undefined,
           };
 
+          const classNameBarRow =
+            "flex items-center justify-between font-circular m-0.5 text-xs";
+
           return (
             <div
               key={`company-indicator-chart-${indicator}`}
@@ -67,7 +70,7 @@ const CompanyIndicatorChart = ({
                     : () => onClick(display)
                 }
               >
-                <span className="text-left text-xs font-circular">
+                <span className="text-left text-xs font-circular w-11/12">
                   {indicatorPretty}
                 </span>
 
@@ -75,20 +78,31 @@ const CompanyIndicatorChart = ({
                 {hasCollapse && !isOpen && <ChevronDown className="ml-2" />}
               </button>
 
-              <svg
-                version="1"
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                height={10}
-                transform="translate(0, 0)"
-              >
-                <PercentageBar
-                  value={mapScore(score)}
-                  width={width}
-                  height={9}
-                  className={className}
-                />
-              </svg>
+              <div className={classNameBarRow}>
+                <div>
+                  <svg
+                    version="1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="100%"
+                    height={10}
+                    transform="translate(0, 0)"
+                  >
+                    <PercentageBar
+                      value={mapScore(score)}
+                      width={width - 50}
+                      height={9}
+                      className={className}
+                    />
+                  </svg>
+                </div>
+
+                <div className="ml-2">
+                  <span>
+                    {score}
+                    {score === "NA" ? "" : "%"}
+                  </span>
+                </div>
+              </div>
 
               {isOpen &&
                 familyMembers.map((m) => {
@@ -103,25 +117,36 @@ const CompanyIndicatorChart = ({
                         className="flex justify-between cursor-pointer"
                         onClick={() => onClick(m.display)}
                       >
-                        <span className="text-left text-xs font-circular">
+                        <span className="text-left text-xs font-circular w-11/12">
                           {mIndicatorPretty}
                         </span>
                       </button>
 
-                      <svg
-                        version="1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width={width - 10}
-                        height={10}
-                        transform="translate(0, 0)"
-                      >
-                        <PercentageBar
-                          value={mapScore(m.score)}
-                          width={width - 10}
-                          height={9}
-                          className={className}
-                        />
-                      </svg>
+                      <div className={classNameBarRow}>
+                        <div>
+                          <svg
+                            version="1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={width - 60}
+                            height={10}
+                            transform="translate(0, 0)"
+                          >
+                            <PercentageBar
+                              value={mapScore(m.score)}
+                              width={width - 60}
+                              height={9}
+                              className={className}
+                            />
+                          </svg>
+                        </div>
+
+                        <div className="ml-2">
+                          <span>
+                            {m.score}
+                            {score === "NA" ? "" : "%"}
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   );
                 })}
