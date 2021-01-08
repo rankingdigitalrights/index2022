@@ -29,6 +29,9 @@ const CompanyIndicatorChart = ({
       new Map(),
     ),
   );
+  const [highlightedIndicator, setHighlightedIndicator] = useState<
+    string | undefined
+  >();
 
   const handleCollapse = (indicator: string) => {
     setCollapsedIndicators(
@@ -42,6 +45,7 @@ const CompanyIndicatorChart = ({
     <div>
       {indicators.map(
         ({indicator, display, label, category, score, familyMembers}, idx) => {
+          const isHighlightedIndicator = indicator === highlightedIndicator;
           const hasCollapse = collapsedIndicators.has(indicator);
           const isOpen =
             (hasCollapse && collapsedIndicators.get(indicator)) || false;
@@ -54,6 +58,8 @@ const CompanyIndicatorChart = ({
             "text-cat-negative": category === undefined,
           };
 
+          const highlightClassName = "text-accent-orange";
+
           const classNameBarRow =
             "flex items-center justify-between font-circular m-0.5 text-xs";
 
@@ -61,6 +67,8 @@ const CompanyIndicatorChart = ({
             <div
               key={`company-indicator-chart-${indicator}`}
               className={c("flex flex-col", {"mt-2": idx > 0})}
+              onMouseEnter={() => setHighlightedIndicator(indicator)}
+              onMouseLeave={() => setHighlightedIndicator(undefined)}
             >
               <button
                 className="flex justify-between items-center cursor-pointer"
@@ -91,12 +99,19 @@ const CompanyIndicatorChart = ({
                       value={mapScore(score)}
                       width={width - 40}
                       height={9}
-                      className={className}
+                      className={
+                        isHighlightedIndicator ? highlightClassName : className
+                      }
                     />
                   </svg>
                 </div>
 
-                <div className="ml-2">
+                <div
+                  className={c(
+                    "ml-2",
+                    isHighlightedIndicator ? highlightClassName : undefined,
+                  )}
+                >
                   <span>
                     {score}
                     {score === "NA" ? "" : "%"}
@@ -135,12 +150,23 @@ const CompanyIndicatorChart = ({
                               value={mapScore(m.score)}
                               width={width - 50}
                               height={9}
-                              className={className}
+                              className={
+                                isHighlightedIndicator
+                                  ? highlightClassName
+                                  : className
+                              }
                             />
                           </svg>
                         </div>
 
-                        <div className="ml-2">
+                        <div
+                          className={c(
+                            "ml-2",
+                            isHighlightedIndicator
+                              ? highlightClassName
+                              : undefined,
+                          )}
+                        >
                           <span>
                             {m.score}
                             {score === "NA" ? "" : "%"}
