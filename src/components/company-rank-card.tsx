@@ -26,6 +26,9 @@ const CompanyRankCard = ({
       ? `${counts} telecommunication companies`
       : `${counts} digital platforms`;
 
+  const classNameLabel =
+    "border border-white bg-white text-accent-orange rounded ml-3 p-1";
+
   return (
     <div className={c("flex flex-col", className)}>
       <h1 className="font-platform text-white bold text-xl">{company}</h1>
@@ -34,9 +37,7 @@ const CompanyRankCard = ({
         <div className="flex flex-col mr-8 mt-4">
           <div className="flex items-center font-circular text-white text-md bold">
             <span className="mr-3">Ranked:</span>{" "}
-            <span className="border border-white rounded ml-3 p-1">
-              {enumerate(rank)}
-            </span>
+            <span className={classNameLabel}>{enumerate(rank)}</span>
           </div>
           <span className="font-circular text-sm text-disabled-dark mt-3">
             Out of {rankLabel}.
@@ -46,9 +47,7 @@ const CompanyRankCard = ({
         <div className="flex flex-col mt-4">
           <div className="flex items-center font-circular text-white text-md bold">
             <span className="mr-3">Scored:</span>{" "}
-            <span className="border border-white rounded ml-3 p-1">
-              {score}%
-            </span>
+            <span className={classNameLabel}>{score}%</span>
           </div>
           <span className="font-circular text-sm text-disabled-dark mt-3">
             Out of 100 possible points.
