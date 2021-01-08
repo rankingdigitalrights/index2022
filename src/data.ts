@@ -91,6 +91,25 @@ export const indicatorData = async (
 };
 
 /*
+ * Load the companies for a single indicator.
+ */
+export const indicatorCompanies = async (
+  indicatorId: string,
+): Promise<Company[]> => {
+  const indicatorDir = path.join(
+    "data/indicators",
+    indicatorId,
+    "companies.json",
+  );
+
+  return loadJson<Company[]>(indicatorDir)().catch(() => {
+    throw new Error(
+      `Couldn't extract indicator companies for "${indicatorId}".`,
+    );
+  });
+};
+
+/*
  * Load the company rankings, sorted descending by the total score.
  */
 export const companyRankingData = async (

@@ -8,6 +8,7 @@ import {
   companyIndices,
   companyRanking,
   elements,
+  indicatorCompanies,
   indicatorIndices,
   indicators,
 } from "../src/csv";
@@ -129,6 +130,25 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
             return outOrFile(target, indicator);
           }),
         ),
+
+        // Generate companies for every indicator.
+        Promise.all(
+          allIndicators.map(async (indicator) => {
+            const indicatorDir = path.join(indicatorsDir, indicator.name);
+            await fs.mkdir(path.join(process.cwd(), indicatorDir), {
+              recursive: true,
+            });
+            const target: OutOrFile = {
+              target: "file",
+              output: path.join(indicatorDir, "companies.json"),
+            };
+            const validIndicatorCompanies = await indicatorCompanies(
+              indicator.id,
+            );
+            return outOrFile(target, validIndicatorCompanies);
+          }),
+        ),
+
         (["telecom", "internet"] as CompanyKind[]).map(
           async (kind: CompanyKind) => {
             const target: OutOrFile = {

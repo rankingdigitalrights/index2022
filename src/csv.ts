@@ -431,6 +431,26 @@ export const elements = memoizeAsync(
 );
 
 /*
+ * List all companies for a single indicator.
+ */
+export const indicatorCompanies = memoizeAsync(
+  async (indicatorId: string): Promise<Company[]> => {
+    const [allCompanies, allIndicators] = await Promise.all([
+      companies(),
+      indicators(),
+    ]);
+
+    const indicator = allIndicators.find(({id}) => id === indicatorId);
+    if (!indicator)
+      return unreachable(
+        `Indicator ${indicatorId} not found while listing the companies for the indicator.`,
+      );
+
+    return allCompanies.filter(({kind}) => indicator.exclude !== kind);
+  },
+);
+
+/*
  * Load the source data and construct the company index for 2020. This
  * function is called to populate the website pages.
  */
