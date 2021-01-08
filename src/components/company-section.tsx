@@ -8,9 +8,15 @@ interface CompanySectionProps {
   category: IndicatorCategory;
   text: string;
   indicators: IndicatorNested[];
+  onClick: (id: string) => void;
 }
 
-const CompanySection = ({category, text, indicators}: CompanySectionProps) => {
+const CompanySection = ({
+  category,
+  text,
+  indicators,
+  onClick,
+}: CompanySectionProps) => {
   // eslint-disable-next-line unicorn/no-null
   const chartRef = useRef<HTMLDivElement>(null);
 
@@ -71,7 +77,11 @@ const CompanySection = ({category, text, indicators}: CompanySectionProps) => {
             <h3 className="text-lg font-circular">Indicators</h3>
           </div>
 
-          <CompanyIndicatorChart indicators={indicators} width={chartWidth} />
+          <CompanyIndicatorChart
+            indicators={indicators}
+            width={chartWidth}
+            onClick={onClick}
+          />
         </div>
       </div>
     </section>

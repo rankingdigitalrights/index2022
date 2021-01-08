@@ -9,6 +9,7 @@ import PercentageBar from "./percentage-bar";
 
 interface CompanyIndicatorChartProps {
   indicators: IndicatorNested[];
+  onClick: (id: string) => void;
   width?: number;
 }
 
@@ -16,6 +17,7 @@ type CollapseableIndicator = Map<string, boolean>;
 
 const CompanyIndicatorChart = ({
   indicators,
+  onClick,
   width = 250,
 }: CompanyIndicatorChartProps) => {
   const [collapsedIndicators, setCollapsedIndicators] = useState<
@@ -43,14 +45,9 @@ const CompanyIndicatorChart = ({
           const hasCollapse = collapsedIndicators.has(indicator);
           const isOpen =
             (hasCollapse && collapsedIndicators.get(indicator)) || false;
-          const indicatorPretty = `${display} ${label}`;
+          const indicatorPretty = `${display}. ${label}`;
 
-          const className = c("flex justify-between items-center", {
-            "cursor-pointer": hasCollapse,
-            "cursor-text": !hasCollapse,
-          });
-
-          const classNameBar = {
+          const className = {
             "text-cat-governance": category === "governance",
             "text-cat-freedom": category === "freedom",
             "text-cat-privacy": category === "privacy",
@@ -63,9 +60,11 @@ const CompanyIndicatorChart = ({
               className={c("flex flex-col", {"mt-2": idx > 0})}
             >
               <button
-                className={className}
+                className="flex justify-between items-center cursor-pointer"
                 onClick={
-                  hasCollapse ? () => handleCollapse(indicator) : () => {}
+                  hasCollapse
+                    ? () => handleCollapse(indicator)
+                    : () => onClick(display)
                 }
               >
                 <span className="text-left text-xs font-circular">
@@ -87,22 +86,27 @@ const CompanyIndicatorChart = ({
                   value={mapScore(score)}
                   width={width}
                   height={9}
-                  className={classNameBar}
+                  className={className}
                 />
               </svg>
 
               {isOpen &&
                 familyMembers.map((m) => {
-                  const mIndicatorPretty = `${m.display} ${m.label}`;
+                  const mIndicatorPretty = `${m.display}. ${m.label}`;
 
                   return (
                     <div
                       key={`company-indicator-chart-${m.indicator}`}
                       className="pl-2 flex flex-col mt-2"
                     >
-                      <span className="text-left text-xs font-circular">
-                        {mIndicatorPretty}
-                      </span>
+                      <button
+                        className="flex justify-between cursor-pointer"
+                        onClick={() => onClick(m.display)}
+                      >
+                        <span className="text-left text-xs font-circular">
+                          {mIndicatorPretty}
+                        </span>
+                      </button>
 
                       <svg
                         version="1"
@@ -115,7 +119,7 @@ const CompanyIndicatorChart = ({
                           value={mapScore(m.score)}
                           width={width - 10}
                           height={9}
-                          className={classNameBar}
+                          className={className}
                         />
                       </svg>
                     </div>

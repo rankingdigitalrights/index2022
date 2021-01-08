@@ -60,6 +60,10 @@ const CompanyPage = ({index, details, ranking}: CompanyProps) => {
     router.push(`/companies/${id}`);
   };
 
+  const handleIndicatorClick = (id: string) => {
+    router.push(`/indicators/${id}`);
+  };
+
   return (
     <Layout>
       <div className="relative">
@@ -165,18 +169,21 @@ const CompanyPage = ({index, details, ranking}: CompanyProps) => {
             category="governance"
             text={details.governance}
             indicators={index.indicators.governance}
+            onClick={handleIndicatorClick}
           />
 
           <CompanySection
             category="freedom"
             text={details.freedom}
             indicators={index.indicators.freedom}
+            onClick={handleIndicatorClick}
           />
 
           <CompanySection
             category="privacy"
             text={details.privacy}
             indicators={index.indicators.privacy}
+            onClick={handleIndicatorClick}
           />
         </div>
 
