@@ -1,3 +1,4 @@
+import c from "clsx";
 import {useRouter} from "next/router";
 
 import CompanyRankCard from "../../components/company-rank-card";
@@ -69,8 +70,15 @@ const CompanyPage = ({index, details, ranking}: CompanyProps) => {
 
         <div className="container mx-auto flex flex-wrap lg:w-8/12 md:w-10/12 w-11/12">
           <div className="flex flex-col float-right md:w-3/5 w-full pt-6 pb-6 pr-3 z-10">
-            <div className="font-circular text-white text-xxs">
-              FIXME &gt; Companies &gt; {companyKind} &gt; {index.companyPretty}
+            <div className="font-circular text-white text-xxs flex items-center">
+              <div
+                className={c(
+                  "rounded-full border border-white w-3 h-3",
+                  index.kind === "telecom" ? "bg-diff-del" : "bg-accent-orange",
+                )}
+              />
+
+              <div className="ml-2">{companyKind}</div>
             </div>
 
             <CompanyRankCard
