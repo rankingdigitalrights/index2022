@@ -79,7 +79,7 @@ const CompanyIndicatorChart = ({
               </button>
 
               <div className={classNameBarRow}>
-                <div>
+                <div className="w-11/12">
                   <svg
                     version="1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +89,7 @@ const CompanyIndicatorChart = ({
                   >
                     <PercentageBar
                       value={mapScore(score)}
-                      width={width - 50}
+                      width={width - 40}
                       height={9}
                       className={className}
                     />
@@ -123,17 +123,17 @@ const CompanyIndicatorChart = ({
                       </button>
 
                       <div className={classNameBarRow}>
-                        <div>
+                        <div className="w-11/12">
                           <svg
                             version="1"
                             xmlns="http://www.w3.org/2000/svg"
-                            width={width - 60}
+                            width={width - 50}
                             height={10}
                             transform="translate(0, 0)"
                           >
                             <PercentageBar
                               value={mapScore(m.score)}
-                              width={width - 60}
+                              width={width - 50}
                               height={9}
                               className={className}
                             />
