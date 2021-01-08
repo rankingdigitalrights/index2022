@@ -30,17 +30,17 @@ const CompanyRankChart = ({
         const isHighlightedCompany = id === highlightedCompany;
 
         const className = c("flex items-center m-0.5 font-circular text-xs", {
-          "text-prissian": isActiveCompany || isHighlightedCompany,
+          "text-accent-orange": isActiveCompany || isHighlightedCompany,
         });
 
         const barClassName = c(
           isActiveCompany || isHighlightedCompany
-            ? "text-prissian"
+            ? "text-accent-orange"
             : "text-disabled-dark",
         );
 
         const scoreClassName = c("ml-3 pl-1 pr-1 select-none", {
-          "text-white bg-prissian score-label": isActiveCompany,
+          "text-white bg-accent-orange score-label": isActiveCompany,
         });
 
         return (
