@@ -2,6 +2,7 @@ import parse from "csv-parse";
 import fs from "fs";
 import path from "path";
 
+import {byScore} from "./sort";
 import {
   Company,
   CompanyIndex,
@@ -13,6 +14,7 @@ import {
   IndexYear,
   Indicator,
   IndicatorCategory,
+  IndicatorCompanyScore,
   IndicatorIndex,
   IndicatorIndexElement,
   IndicatorNested,
@@ -447,6 +449,34 @@ export const indicatorCompanies = memoizeAsync(
       );
 
     return allCompanies.filter(({kind}) => indicator.exclude !== kind);
+  },
+);
+
+/*
+ * Generate scoring list for one indicator and one company kind.
+ */
+export const indicatorScores = memoizeAsync(
+  async (indicatorId: string): Promise<IndicatorCompanyScore[]> => {
+    const [allCompanies, csvIndicators] = await Promise.all([
+      indicatorCompanies(indicatorId),
+      loadIndicatorsCsv("csv/2020-indicators.csv"),
+    ]);
+
+    return allCompanies
+      .map(({id, kind}) => {
+        const indicator = csvIndicators
+          .filter((i) => indexYears.has(i.index))
+          .find((i) => i.company === id && i.indicator === indicatorId);
+
+        if (!indicator) {
+          return unreachable(
+            `Indicator company score ${indicatorId} not found for ${id}`,
+          );
+        }
+
+        return {id, kind, score: indicator.score};
+      })
+      .sort(byScore("desc"));
   },
 );
 

@@ -114,6 +114,12 @@ export type Element = {
   isPlatform: boolean;
 };
 
+export type IndicatorCompanyScore = {
+  id: string;
+  kind: CompanyKind;
+  score: IndicatorScore;
+};
+
 export type IndicatorIndexElement = {
   element: string;
   elementNr: number;
