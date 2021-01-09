@@ -57,11 +57,17 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
       const indicatorsTarget = path.join(dataDir, "indicators.json");
       const elementsTarget = path.join(dataDir, "elements.json");
 
+      console.log(
+        `Generating ${companiesTarget}, ${indicatorsTarget} and ${elementsTarget}`,
+      );
+
       await Promise.all([
         writeFile(companiesTarget)(allCompanies),
         writeFile(indicatorsTarget)(allIndicators),
         writeFile(elementsTarget)(allElements),
       ]);
+
+      console.log("Generating company details.");
 
       await Promise.all(
         details.map(async (company) => {
@@ -75,19 +81,7 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
         }),
       );
 
-      // Generate services for every company.
-      await Promise.all(
-        allCompanies.map(async (company) => {
-          const companyDir = path.join(companiesDir, company.id);
-          await fs.mkdir(path.join(process.cwd(), companyDir), {
-            recursive: true,
-          });
-          const target = path.join(companyDir, "services.json");
-          const validCompanyServices = await companyServices(company.id);
-          return writeFile(target)(validCompanyServices);
-        }),
-      );
-
+      console.log("Generating company scores data");
       await Promise.all(
         scores.map(async (score) => {
           const companyDir = path.join(companiesDir, score.id);
@@ -98,6 +92,24 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
           return writeFile(target)(score);
         }),
       );
+
+      await allCompanies.reduce(async (memo, company) => {
+        await memo;
+
+        // Ensure company data directory.
+        const companyDir = path.join(companiesDir, company.id);
+        await fs.mkdir(path.join(process.cwd(), companyDir), {
+          recursive: true,
+        });
+
+        console.log(`Generating company data for ${company.name}`);
+
+        const target = path.join(companyDir, "services.json");
+        const validCompanyServices = await companyServices(company.id);
+        return writeFile(target)(validCompanyServices);
+      }, Promise.resolve());
+
+      console.log("Generating indicator indices.");
 
       await Promise.all(
         indicatorIndexScores.map(async (indicator) => {
@@ -132,6 +144,8 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
           "elements.json",
         );
 
+        console.log(`Generating indicator data for ${indicator.name}`);
+
         await indicatorCompanies(indicator.id).then(
           writeFile(indicatorCompaniesTarget),
         );
@@ -142,6 +156,8 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
           writeFile(indicatorElementsTarget),
         );
       }, Promise.resolve());
+
+      console.log("Generating ranking scores data.");
 
       await Promise.all(
         (["telecom", "internet"] as CompanyKind[]).map(
