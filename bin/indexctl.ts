@@ -9,6 +9,7 @@ import {
   companyRanking,
   companyServices,
   elements,
+  indicatorAverages,
   indicatorCompanies,
   indicatorElements,
   indicatorIndices,
@@ -143,6 +144,10 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
           indicatorDir,
           "elements.json",
         );
+        const indicatorAveragesTarget = path.join(
+          indicatorDir,
+          "averages.json",
+        );
 
         console.log(`Generating indicator data for ${indicator.name}`);
 
@@ -154,6 +159,9 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
         );
         await indicatorElements(indicator.id).then(
           writeFile(indicatorElementsTarget),
+        );
+        await indicatorAverages(indicator.id).then(
+          writeFile(indicatorAveragesTarget),
         );
       }, Promise.resolve());
 

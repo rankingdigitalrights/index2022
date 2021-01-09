@@ -10,6 +10,7 @@ import {
   CompanyRank,
   Element,
   Indicator,
+  IndicatorAverages,
   IndicatorCompanyScore,
   IndicatorElements,
   IndicatorIndex,
@@ -161,6 +162,25 @@ export const indicatorElements = async (
   return loadJson<IndicatorElements>(indicatorDir)().catch(() => {
     throw new Error(
       `Couldn't extract indicator elements for "${indicatorId}".`,
+    );
+  });
+};
+
+/*
+ * Load the companies for a single indicator.
+ */
+export const indicatorAverages = async (
+  indicatorId: string,
+): Promise<IndicatorAverages> => {
+  const indicatorDir = path.join(
+    "data/indicators",
+    indicatorId,
+    "averages.json",
+  );
+
+  return loadJson<IndicatorAverages>(indicatorDir)().catch(() => {
+    throw new Error(
+      `Couldn't extract indicator averages for "${indicatorId}".`,
     );
   });
 };

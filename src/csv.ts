@@ -13,6 +13,8 @@ import {
   ElementValue,
   IndexYear,
   Indicator,
+  IndicatorAverage,
+  IndicatorAverages,
   IndicatorCategory,
   IndicatorCompanyScore,
   IndicatorElement,
@@ -606,6 +608,39 @@ export const indicatorElements = memoizeAsync(
         csvElements,
       );
       return {[companyId]: companyElements, ...agg};
+    }, Promise.resolve({}));
+  },
+);
+
+/*
+ * Generate indicator averages for an indicator and for a service.
+ */
+export const indicatorAverages = memoizeAsync(
+  async (indicatorId: string): Promise<IndicatorAverages> => {
+    const [allCompanies, csvLevels] = await Promise.all([
+      indicatorCompanies(indicatorId),
+      loadLevelsCsv("csv/2020-levels.csv"),
+    ]);
+
+    return allCompanies.reduce(async (memo, {id: companyId}) => {
+      const data = await memo;
+      const allServices = await companyServices(companyId);
+
+      const companyAverages = allServices.reduce((agg, {id: serviceId}) => {
+        const levels = csvLevels.find(
+          (l) =>
+            l.company === companyId &&
+            l.service === serviceId &&
+            l.indicator === indicatorId &&
+            indexYears.has(l.index),
+        );
+        // FIXME: I assume a missing level indicates that we deal with a parent
+        // indicator, so let's skip it. Need to verify this though.
+        if (!levels) return agg;
+
+        return {[serviceId]: levels.score, ...agg};
+      }, {} as IndicatorAverage);
+      return {[companyId]: companyAverages, ...data};
     }, Promise.resolve({}));
   },
 );

@@ -140,6 +140,10 @@ export type IndicatorElements = Record<
   Record<string, IndicatorElement[]>
 >;
 
+export type IndicatorAverage = Record<string, IndicatorScore>;
+
+export type IndicatorAverages = Record<string, IndicatorAverage>;
+
 export type IndicatorIndexElement = {
   element: string;
   elementNr: number;
