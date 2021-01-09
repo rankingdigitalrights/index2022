@@ -1,36 +1,18 @@
 import React from "react";
 
-import {IndicatorScore} from "../types";
-import {isNA} from "../utils";
+import {IndicatorCompanyScore} from "../types";
 import GraphLabel from "./graph-label";
 import PercentageBar from "./percentage-bar";
 
 interface IndicatorCompaniesChartProps {
   category: string;
-  scores: Record<string, IndicatorScore>;
+  scores: IndicatorCompanyScore[];
 }
 
 const IndicatorCompaniesChart = ({
   category,
   scores,
 }: IndicatorCompaniesChartProps) => {
-  const sortedScores = Object.keys(scores)
-    .map((company) => {
-      const score = scores[company];
-      return {company, score};
-    })
-    .sort((a, b) => {
-      // In order to locate scores with NA last in
-      // line we set it to -1 to sort it below the
-      // real 0 scores.
-      const aScore = isNA(a.score) ? -1 : a.score;
-      const bScore = isNA(b.score) ? -1 : b.score;
-
-      if (aScore > bScore) return -1;
-      if (aScore < bScore) return 1;
-      return 0;
-    });
-
   return (
     <div className="flex font-circular text-xxs">
       <div className="flex flex-col items-center">
@@ -69,10 +51,10 @@ const IndicatorCompaniesChart = ({
       </div>
 
       <div className="flex justify-between w-full">
-        {sortedScores.map(({company, score}) => {
+        {scores.map(({id, score}) => {
           return (
             <div
-              key={`companies-chart-bar-${company}`}
+              key={`companies-chart-bar-${id}`}
               className="flex flex-col items-center"
             >
               <span className="select-none text-center">
@@ -88,7 +70,7 @@ const IndicatorCompaniesChart = ({
                   transform="translate(0, 0)"
                 >
                   <PercentageBar
-                    key={company}
+                    key={id}
                     value={score}
                     width={8}
                     height={180}
@@ -96,7 +78,7 @@ const IndicatorCompaniesChart = ({
                     className={`text-cat-${category}`}
                   />
                   <GraphLabel
-                    value={company}
+                    value={id}
                     size="small"
                     textAnchor="end"
                     transform="translate(14,185) rotate(270,0,5)"

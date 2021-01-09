@@ -11,8 +11,14 @@ import IndicatorSelector, {
 import Layout from "../../components/layout";
 import SortSelector from "../../components/sort-selector";
 import ToggleSwitch from "../../components/toggle-switch";
-import {allIndicators, companyIndices, indicatorData} from "../../data";
 import {
+  allIndicators,
+  companyIndices,
+  indicatorData,
+  indicatorScores,
+} from "../../data";
+import {
+  IndicatorCompanyScore,
   IndicatorIndex,
   SelectOption,
   SortStrategies,
@@ -33,6 +39,7 @@ interface IndicatorPageProps {
   index: IndicatorIndex;
   indicators: IndicatorSelectOption[];
   companies: CompanySelectOption[];
+  scores: IndicatorCompanyScore[];
 }
 
 export const getStaticPaths = async () => {
@@ -50,6 +57,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
+  const scores = await indicatorScores(indicatorId);
   const index = (await indicatorData(indicatorId)) as IndicatorIndex;
   const indicators = (await allIndicators()).map(
     ({name: value, label, isParent, parent}) => ({
@@ -60,20 +68,28 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
     }),
   );
   const companyIndex = await companyIndices();
-  const companies = companyIndex.map(({id: value, companyPretty: label}) => {
-    const score = index.scores[value];
-    return {
-      value,
-      label,
-      score: score === "NA" || !score ? 0 : score,
-    };
-  });
+
+  // FIXME: this companies value assumes that all indicators have all companies,
+  // but this is not the case. Once I switch over to the indicatorCompanies data
+  // structure this will be resolved.
+  const companies = companyIndex.map(
+    ({id: companyId, companyPretty: label}) => {
+      const score = scores.find(({id}) => id === companyId);
+
+      return {
+        value: companyId,
+        label,
+        score: score ? score.score : "NA",
+      };
+    },
+  );
 
   return {
     props: {
       index,
       indicators,
       companies,
+      scores,
     },
   };
 };
@@ -105,7 +121,12 @@ strategies.set(
 
 const identitySortFn: SortStrategy = (xs) => xs;
 
-const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
+const IndicatorPage = ({
+  index,
+  indicators,
+  companies,
+  scores,
+}: IndicatorPageProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [sortStrategy, setSortStrategy] = useState<string>("Alphabetically");
   const [literalValues, setLiteralValues] = useState(false);
@@ -155,8 +176,6 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
     Object.values(index.elements)[0] || {},
   )[0];
 
-  const hasScores = Object.keys(index.scores).length > 0;
-
   return (
     <Layout>
       <div className="container mx-auto">
@@ -192,12 +211,10 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
           </section>
 
           <div className="mt-10">
-            {hasScores && (
-              <IndicatorCompaniesChart
-                category={index.category}
-                scores={index.scores}
-              />
-            )}
+            <IndicatorCompaniesChart
+              category={index.category}
+              scores={scores}
+            />
           </div>
         </div>
       </div>
@@ -239,21 +256,27 @@ const IndicatorPage = ({index, indicators, companies}: IndicatorPageProps) => {
             </div>
           </div>
 
-          {dataGrids.map(({value, label}) => (
-            <CompanyElements
-              key={`company-element-${value}`}
-              indicatorLabel={index.label}
-              company={label}
-              score={
-                index.scores[value] === undefined ? "NA" : index.scores[value]
-              }
-              averages={
-                index.averages[value] === undefined ? {} : index.averages[value]
-              }
-              companyElements={index.elements[value] || {}}
-              literalValues={literalValues}
-            />
-          ))}
+          {dataGrids.map(({value, label}) => {
+            const {score} = scores.find(({id}) => id === value) || {
+              score: "NA",
+            };
+
+            return (
+              <CompanyElements
+                key={`company-element-${value}`}
+                indicatorLabel={index.label}
+                company={label}
+                score={score}
+                averages={
+                  index.averages[value] === undefined
+                    ? {}
+                    : index.averages[value]
+                }
+                companyElements={index.elements[value] || {}}
+                literalValues={literalValues}
+              />
+            );
+          })}
         </div>
       </div>
     </Layout>

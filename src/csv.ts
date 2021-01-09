@@ -623,7 +623,6 @@ const isValidElement = (element: CsvElement): boolean => {
 export const indicatorIndices = memoizeAsync(
   async (): Promise<IndicatorIndex[]> => {
     const [
-      csvIndicators,
       csvLevels,
       csvElements,
       csvIndicatorSpecs,
@@ -631,7 +630,6 @@ export const indicatorIndices = memoizeAsync(
       // allIndicators,
       allCompanies,
     ] = await Promise.all([
-      loadIndicatorsCsv("csv/2020-indicators.csv"),
       loadLevelsCsv("csv/2020-levels.csv"),
       loadElementsCsv("csv/2020-elements.csv"),
       loadIndicatorSpecsCsv("csv/2020-indicator-specs.csv"),
@@ -673,13 +671,6 @@ export const indicatorIndices = memoizeAsync(
           return !!indexElements.find(({companyId}) => id === companyId);
         })
         .map(({id}) => id);
-
-      const scores = companyIds.reduce((memo, company) => {
-        const indicator = csvIndicators
-          .filter((i) => indexYears.has(i.index))
-          .find((i) => i.company === company && i.indicator === spec.indicator);
-        return {[company]: indicator ? indicator.score : "NA", ...memo};
-      }, {} as Record<string, IndicatorScore>);
 
       const services = companyIds.reduce(
         (memo, company) => ({
@@ -751,7 +742,6 @@ export const indicatorIndices = memoizeAsync(
         hasParent: /[a-z]+$/.test(spec.indicator),
         companies: companyIds,
         services,
-        scores,
         averages,
         elements: sortedElements,
       };
