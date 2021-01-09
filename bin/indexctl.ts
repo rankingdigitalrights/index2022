@@ -7,6 +7,7 @@ import {
   companies,
   companyIndices,
   companyRanking,
+  companyServices,
   elements,
   indicatorCompanies,
   indicatorIndices,
@@ -105,6 +106,23 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
             return outOrFile(target, company);
           }),
         ),
+
+        // Generate services for every company.
+        Promise.all(
+          allCompanies.map(async (company) => {
+            const companyDir = path.join(companiesDir, company.id);
+            await fs.mkdir(path.join(process.cwd(), companyDir), {
+              recursive: true,
+            });
+            const target: OutOrFile = {
+              target: "file",
+              output: path.join(companyDir, "services.json"),
+            };
+            const validCompanyServices = await companyServices(company.id);
+            return outOrFile(target, validCompanyServices);
+          }),
+        ),
+
         Promise.all(
           scores.map(async (score) => {
             const companyDir = path.join(companiesDir, score.id);

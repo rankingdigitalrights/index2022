@@ -73,6 +73,12 @@ export type CompanyRank = {
   kind: CompanyKind;
 };
 
+export type Service = {
+  id: string;
+  name: string;
+  kind: string;
+};
+
 export type CompanyIndex = {
   id: string;
   companyPretty: string;

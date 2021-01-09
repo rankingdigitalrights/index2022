@@ -20,6 +20,7 @@ import {
   IndicatorNested,
   IndicatorScore,
   Scores,
+  Service,
 } from "./types";
 import {
   floatOrNA,
@@ -93,6 +94,14 @@ type CsvCompanySpec = {
   companyPretty: string;
   kind: CompanyKind;
   country: string;
+};
+
+type CsvServiceSpec = {
+  company: string;
+  companyPretty: string;
+  kind: string;
+  service: string;
+  label: string;
 };
 
 type CsvIndicatorSpec = {
@@ -286,6 +295,17 @@ const loadCompanySpecsCsv = loadCsv<CsvCompanySpec>((record) => ({
 }));
 
 /*
+ * Load the service specs.
+ */
+const loadServiceSpecsCsv = loadCsv<CsvServiceSpec>((record) => ({
+  company: record.CompanyClean,
+  companyPretty: record.Company,
+  kind: record.Class,
+  service: record.Label,
+  label: record.LabelShort,
+}));
+
+/*
  * Load the indicator specs.
  */
 const loadIndicatorSpecsCsv = loadCsv<CsvIndicatorSpec>((record) => ({
@@ -335,6 +355,25 @@ export const companies = memoizeAsync(
       name,
       kind,
     }));
+  },
+);
+
+/*
+ * Generate a list of services for a company.
+ */
+export const companyServices = memoizeAsync(
+  async (companyId: string): Promise<Service[]> => {
+    const csvServiceSpecs = await loadServiceSpecsCsv(
+      "csv/2020-service-specs.csv",
+    );
+
+    return csvServiceSpecs
+      .filter(({company}) => company === companyId)
+      .map(({kind, service: id, label: name}) => {
+        if (kind === "OpCom") return {id: "OpCom", name: "OpCom", kind};
+        if (kind === "Group") return {id: "Group", name, kind};
+        return {id, name, kind};
+      });
   },
 );
 

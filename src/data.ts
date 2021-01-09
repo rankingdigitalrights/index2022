@@ -12,6 +12,7 @@ import {
   Indicator,
   IndicatorCompanyScore,
   IndicatorIndex,
+  Service,
 } from "./types";
 
 const loadJson = <T extends unknown>(
@@ -74,6 +75,21 @@ export const companyData = async (
       path.join(companyDir, "details.json"),
     )().catch(() => emptyCompany(companyId)),
   ]);
+};
+
+/*
+ * Load the company services.
+ */
+export const companyServices = async (
+  companyId: string,
+): Promise<Service[]> => {
+  const companyDir = path.join("data/companies", companyId);
+
+  return loadJson<Service[]>(path.join(companyDir, "services.json"))().catch(
+    () => {
+      throw new Error(`Couldn't extract company services for "${companyId}."`);
+    },
+  );
 };
 
 /*
