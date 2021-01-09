@@ -132,7 +132,6 @@ export type IndicatorElement = {
   position: number;
   score: IndicatorScore;
   value: ElementValue;
-  description: string;
 };
 
 // A record of companies containing mapping from service to indicator elements.

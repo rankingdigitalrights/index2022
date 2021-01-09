@@ -564,14 +564,13 @@ const indicatorCompanyElements = async (
           isValidElement(element),
       )
       .map(({element, score, value}) => {
-        const {position, description} =
+        const {position} =
           allElements.find((e) => e.id === element) ||
           unreachable(`Element ${element} not found in element specs.`);
         return {
           id: `${indicatorId}-${companyId}-${serviceId}-${element}`,
           name: element,
           position,
-          description,
           score,
           value,
         };
