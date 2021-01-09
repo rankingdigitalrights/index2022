@@ -92,98 +92,94 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
         outOrFile(companiesTarget, allCompanies),
         outOrFile(indicatorsTarget, allIndicators),
         outOrFile(elementsTarget, allElements),
-        Promise.all(
-          details.map(async (company) => {
-            const companyDir = path.join(companiesDir, company.id);
-            await fs.mkdir(path.join(process.cwd(), companyDir), {
-              recursive: true,
-            });
+      ]);
 
-            const target: OutOrFile = {
-              target: "file",
-              output: path.join(companyDir, "details.json"),
-            };
-            return outOrFile(target, company);
-          }),
-        ),
+      await Promise.all(
+        details.map(async (company) => {
+          const companyDir = path.join(companiesDir, company.id);
+          await fs.mkdir(path.join(process.cwd(), companyDir), {
+            recursive: true,
+          });
 
-        // Generate services for every company.
-        Promise.all(
-          allCompanies.map(async (company) => {
-            const companyDir = path.join(companiesDir, company.id);
-            await fs.mkdir(path.join(process.cwd(), companyDir), {
-              recursive: true,
-            });
-            const target: OutOrFile = {
-              target: "file",
-              output: path.join(companyDir, "services.json"),
-            };
-            const validCompanyServices = await companyServices(company.id);
-            return outOrFile(target, validCompanyServices);
-          }),
-        ),
+          const target: OutOrFile = {
+            target: "file",
+            output: path.join(companyDir, "details.json"),
+          };
+          return outOrFile(target, company);
+        }),
+      );
 
-        Promise.all(
-          scores.map(async (score) => {
-            const companyDir = path.join(companiesDir, score.id);
-            await fs.mkdir(path.join(process.cwd(), companyDir), {
-              recursive: true,
-            });
-            const target: OutOrFile = {
-              target: "file",
-              output: path.join(companyDir, "scores.json"),
-            };
-            return outOrFile(target, score);
-          }),
-        ),
-        Promise.all(
-          indicatorIndexScores.map(async (indicator) => {
-            const indicatorDir = path.join(indicatorsDir, indicator.id);
-            await fs.mkdir(path.join(process.cwd(), indicatorDir), {
-              recursive: true,
-            });
-            const target: OutOrFile = {
-              target: "file",
-              output: path.join(indicatorDir, "scores.json"),
-            };
-            return outOrFile(target, indicator);
-          }),
-        ),
+      // Generate services for every company.
+      await Promise.all(
+        allCompanies.map(async (company) => {
+          const companyDir = path.join(companiesDir, company.id);
+          await fs.mkdir(path.join(process.cwd(), companyDir), {
+            recursive: true,
+          });
+          const target: OutOrFile = {
+            target: "file",
+            output: path.join(companyDir, "services.json"),
+          };
+          const validCompanyServices = await companyServices(company.id);
+          return outOrFile(target, validCompanyServices);
+        }),
+      );
 
-        // Generate companies for every indicator.
-        Promise.all(
-          allIndicators.map(async (indicator) => {
-            const indicatorDir = path.join(indicatorsDir, indicator.name);
-            await fs.mkdir(path.join(process.cwd(), indicatorDir), {
-              recursive: true,
-            });
-            const target: OutOrFile = {
-              target: "file",
-              output: path.join(indicatorDir, "companies.json"),
-            };
-            const validIndicatorCompanies = await indicatorCompanies(
-              indicator.id,
-            );
-            return outOrFile(target, validIndicatorCompanies);
-          }),
-        ),
+      await Promise.all(
+        scores.map(async (score) => {
+          const companyDir = path.join(companiesDir, score.id);
+          await fs.mkdir(path.join(process.cwd(), companyDir), {
+            recursive: true,
+          });
+          const target: OutOrFile = {
+            target: "file",
+            output: path.join(companyDir, "scores.json"),
+          };
+          return outOrFile(target, score);
+        }),
+      );
 
-        // Generate company scores for every indicator.
-        Promise.all(
-          allIndicators.map(async (indicator) => {
-            const indicatorDir = path.join(indicatorsDir, indicator.name);
-            await fs.mkdir(path.join(process.cwd(), indicatorDir), {
-              recursive: true,
-            });
-            const target: OutOrFile = {
-              target: "file",
-              output: path.join(indicatorDir, "company-scores.json"),
-            };
-            const validIndicatorScores = await indicatorScores(indicator.id);
-            return outOrFile(target, validIndicatorScores);
-          }),
-        ),
+      await Promise.all(
+        indicatorIndexScores.map(async (indicator) => {
+          const indicatorDir = path.join(indicatorsDir, indicator.id);
+          await fs.mkdir(path.join(process.cwd(), indicatorDir), {
+            recursive: true,
+          });
+          const target: OutOrFile = {
+            target: "file",
+            output: path.join(indicatorDir, "scores.json"),
+          };
+          return outOrFile(target, indicator);
+        }),
+      );
 
+      // Generate companies for every indicator.
+      await Promise.all(
+        allIndicators.map(async (indicator) => {
+          const indicatorDir = path.join(indicatorsDir, indicator.name);
+          await fs.mkdir(path.join(process.cwd(), indicatorDir), {
+            recursive: true,
+          });
+          const indicatorCompaniesTarget: OutOrFile = {
+            target: "file",
+            output: path.join(indicatorDir, "companies.json"),
+          };
+          const indicatorScoresTarget: OutOrFile = {
+            target: "file",
+            output: path.join(indicatorDir, "company-scores.json"),
+          };
+
+          const validIndicatorCompanies = await indicatorCompanies(
+            indicator.id,
+          );
+          await outOrFile(indicatorCompaniesTarget, validIndicatorCompanies);
+
+          const validIndicatorScores = await indicatorScores(indicator.id);
+          await outOrFile(indicatorScoresTarget, validIndicatorScores);
+        }),
+      );
+
+      await Promise.all(
         (["telecom", "internet"] as CompanyKind[]).map(
           async (kind: CompanyKind) => {
             const target: OutOrFile = {
@@ -194,7 +190,7 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
             return outOrFile(target, ranking);
           },
         ),
-      ]);
+      );
     })
     .command("fixtures", "generate test fixtures.", async () => {
       const fixturesDir = "fixtures";
