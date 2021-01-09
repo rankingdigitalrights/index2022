@@ -18,33 +18,13 @@ import {
 import {companyDetails} from "../src/google";
 import generateNav from "../src/navigation";
 import {CompanyKind} from "../src/types";
-import {unreachable} from "../src/utils";
 
-type OutOrFile =
-  | {
-      target: "stdout";
-    }
-  | {
-      target: "file";
-      output: string;
-    };
+const dataDir = "data";
 
-const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
-  switch (opts.target) {
-    case "stdout": {
-      console.log(JSON.stringify(data, undefined, "  "));
-      return;
-    }
-    case "file": {
-      await fs.writeFile(
-        path.join(process.cwd(), opts.output),
-        JSON.stringify(data),
-      );
-      return;
-    }
-    default:
-      unreachable("Unknown output target.");
-  }
+const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
+  data: unknown,
+): Promise<void> => {
+  await fs.writeFile(path.join(process.cwd(), target), JSON.stringify(data));
 };
 
 (async (): Promise<void> => {
@@ -52,7 +32,6 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
   yargs
     .scriptName("indexctl")
     .command("data", "generate data structures.", async () => {
-      const dataDir = "data";
       const companiesDir = "data/companies";
       const indicatorsDir = "data/indicators";
 
@@ -74,25 +53,14 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
 
       await fs.mkdir(path.join(process.cwd(), dataDir), {recursive: true});
 
-      const companiesTarget: OutOrFile = {
-        target: "file",
-        output: path.join(dataDir, "companies.json"),
-      };
-
-      const indicatorsTarget: OutOrFile = {
-        target: "file",
-        output: path.join(dataDir, "indicators.json"),
-      };
-
-      const elementsTarget: OutOrFile = {
-        target: "file",
-        output: path.join(dataDir, "elements.json"),
-      };
+      const companiesTarget = path.join(dataDir, "companies.json");
+      const indicatorsTarget = path.join(dataDir, "indicators.json");
+      const elementsTarget = path.join(dataDir, "elements.json");
 
       await Promise.all([
-        outOrFile(companiesTarget, allCompanies),
-        outOrFile(indicatorsTarget, allIndicators),
-        outOrFile(elementsTarget, allElements),
+        writeFile(companiesTarget)(allCompanies),
+        writeFile(indicatorsTarget)(allIndicators),
+        writeFile(elementsTarget)(allElements),
       ]);
 
       await Promise.all(
@@ -102,11 +70,8 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
             recursive: true,
           });
 
-          const target: OutOrFile = {
-            target: "file",
-            output: path.join(companyDir, "details.json"),
-          };
-          return outOrFile(target, company);
+          const target = path.join(companyDir, "details.json");
+          return writeFile(target)(company);
         }),
       );
 
@@ -117,12 +82,9 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
           await fs.mkdir(path.join(process.cwd(), companyDir), {
             recursive: true,
           });
-          const target: OutOrFile = {
-            target: "file",
-            output: path.join(companyDir, "services.json"),
-          };
+          const target = path.join(companyDir, "services.json");
           const validCompanyServices = await companyServices(company.id);
-          return outOrFile(target, validCompanyServices);
+          return writeFile(target)(validCompanyServices);
         }),
       );
 
@@ -132,11 +94,8 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
           await fs.mkdir(path.join(process.cwd(), companyDir), {
             recursive: true,
           });
-          const target: OutOrFile = {
-            target: "file",
-            output: path.join(companyDir, "scores.json"),
-          };
-          return outOrFile(target, score);
+          const target = path.join(companyDir, "scores.json");
+          return writeFile(target)(score);
         }),
       );
 
@@ -146,11 +105,8 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
           await fs.mkdir(path.join(process.cwd(), indicatorDir), {
             recursive: true,
           });
-          const target: OutOrFile = {
-            target: "file",
-            output: path.join(indicatorDir, "scores.json"),
-          };
-          return outOrFile(target, indicator);
+          const target = path.join(indicatorDir, "scores.json");
+          return writeFile(target)(indicator);
         }),
       );
 
@@ -163,38 +119,36 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
         await fs.mkdir(path.join(process.cwd(), indicatorDir), {
           recursive: true,
         });
-        const indicatorCompaniesTarget: OutOrFile = {
-          target: "file",
-          output: path.join(indicatorDir, "companies.json"),
-        };
-        const indicatorScoresTarget: OutOrFile = {
-          target: "file",
-          output: path.join(indicatorDir, "company-scores.json"),
-        };
-        const indicatorElementsTarget: OutOrFile = {
-          target: "file",
-          output: path.join(indicatorDir, "elements.json"),
-        };
+        const indicatorCompaniesTarget = path.join(
+          indicatorDir,
+          "companies.json",
+        );
+        const indicatorScoresTarget = path.join(
+          indicatorDir,
+          "company-scores.json",
+        );
+        const indicatorElementsTarget = path.join(
+          indicatorDir,
+          "elements.json",
+        );
 
-        const validIndicatorCompanies = await indicatorCompanies(indicator.id);
-        await outOrFile(indicatorCompaniesTarget, validIndicatorCompanies);
-
-        const validIndicatorScores = await indicatorScores(indicator.id);
-        await outOrFile(indicatorScoresTarget, validIndicatorScores);
-
-        const validIndicatorElements = await indicatorElements(indicator.id);
-        return outOrFile(indicatorElementsTarget, validIndicatorElements);
+        await indicatorCompanies(indicator.id).then(
+          writeFile(indicatorCompaniesTarget),
+        );
+        await indicatorScores(indicator.id).then(
+          writeFile(indicatorScoresTarget),
+        );
+        await indicatorElements(indicator.id).then(
+          writeFile(indicatorElementsTarget),
+        );
       }, Promise.resolve());
 
       await Promise.all(
         (["telecom", "internet"] as CompanyKind[]).map(
           async (kind: CompanyKind) => {
-            const target: OutOrFile = {
-              target: "file",
-              output: path.join(dataDir, `ranking-${kind}.json`),
-            };
+            const target = path.join(dataDir, `ranking-${kind}.json`);
             const ranking = await companyRanking(kind);
-            return outOrFile(target, ranking);
+            return writeFile(target)(ranking);
           },
         ),
       );
@@ -208,38 +162,19 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
         indicatorIndices(),
       ]);
 
-      const scoresTarget: OutOrFile = {
-        target: "file",
-        output: path.join(fixturesDir, "scores.json"),
-      };
-      const indicatorsTarget: OutOrFile = {
-        target: "file",
-        output: path.join(fixturesDir, "indicators.json"),
-      };
+      const scoresTarget = path.join(fixturesDir, "scores.json");
+      const indicatorsTarget = path.join(fixturesDir, "indicators.json");
 
       await Promise.all([
-        outOrFile(scoresTarget, scores),
-        outOrFile(indicatorsTarget, indicatorIndexScores),
+        writeFile(scoresTarget)(scores),
+        writeFile(indicatorsTarget)(indicatorIndexScores),
       ]);
     })
-    .command(
-      "navigation",
-      "generate navigation structure.",
-      {
-        write: {
-          type: "boolean",
-          alias: "w",
-          default: false,
-        },
-      },
-      async (argv) => {
-        const data = await generateNav();
-        const outTarget: OutOrFile = argv.write
-          ? {target: "file", output: "data/navigation.json"}
-          : {target: "stdout"};
-        await outOrFile(outTarget, data);
-      },
-    )
+    .command("navigation", "generate navigation structure.", async () => {
+      const data = await generateNav();
+      const outTarget = path.join(dataDir, "navigation.json");
+      await writeFile(outTarget)(data);
+    })
     .demandCommand(1)
     .help()
     .alias("help", "h")
