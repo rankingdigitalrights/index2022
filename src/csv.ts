@@ -740,7 +740,6 @@ export const indicatorIndices = memoizeAsync(
         guidance: spec.guidance,
         isParent: spec.isParent,
         hasParent: /[a-z]+$/.test(spec.indicator),
-        companies: companyIds,
         services,
         averages,
         elements: sortedElements,

@@ -13,7 +13,7 @@ import SortSelector from "../../components/sort-selector";
 import ToggleSwitch from "../../components/toggle-switch";
 import {
   allIndicators,
-  companyIndices,
+  indicatorCompanies,
   indicatorData,
   indicatorScores,
 } from "../../data";
@@ -58,6 +58,18 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   const scores = await indicatorScores(indicatorId);
+  const companies = (await indicatorCompanies(indicatorId)).map(
+    ({id: companyId, name}) => {
+      const score = scores.find(({id}) => id === companyId);
+
+      return {
+        value: companyId,
+        label: name,
+        score: score ? score.score : "NA",
+      };
+    },
+  );
+
   const index = (await indicatorData(indicatorId)) as IndicatorIndex;
   const indicators = (await allIndicators()).map(
     ({name: value, label, isParent, parent}) => ({
@@ -66,22 +78,6 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
       hasParent: !!parent,
       label: `${value}. ${label}`,
     }),
-  );
-  const companyIndex = await companyIndices();
-
-  // FIXME: this companies value assumes that all indicators have all companies,
-  // but this is not the case. Once I switch over to the indicatorCompanies data
-  // structure this will be resolved.
-  const companies = companyIndex.map(
-    ({id: companyId, companyPretty: label}) => {
-      const score = scores.find(({id}) => id === companyId);
-
-      return {
-        value: companyId,
-        label,
-        score: score ? score.score : "NA",
-      };
-    },
   );
 
   return {
