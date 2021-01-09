@@ -154,30 +154,29 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
       );
 
       // Generate companies for every indicator.
-      await Promise.all(
-        allIndicators.map(async (indicator) => {
-          const indicatorDir = path.join(indicatorsDir, indicator.name);
-          await fs.mkdir(path.join(process.cwd(), indicatorDir), {
-            recursive: true,
-          });
-          const indicatorCompaniesTarget: OutOrFile = {
-            target: "file",
-            output: path.join(indicatorDir, "companies.json"),
-          };
-          const indicatorScoresTarget: OutOrFile = {
-            target: "file",
-            output: path.join(indicatorDir, "company-scores.json"),
-          };
+      await allIndicators.reduce(async (memo, indicator) => {
+        await memo;
 
-          const validIndicatorCompanies = await indicatorCompanies(
-            indicator.id,
-          );
-          await outOrFile(indicatorCompaniesTarget, validIndicatorCompanies);
+        // Ensure indicators directory.
+        const indicatorDir = path.join(indicatorsDir, indicator.name);
+        await fs.mkdir(path.join(process.cwd(), indicatorDir), {
+          recursive: true,
+        });
+        const indicatorCompaniesTarget: OutOrFile = {
+          target: "file",
+          output: path.join(indicatorDir, "companies.json"),
+        };
+        const indicatorScoresTarget: OutOrFile = {
+          target: "file",
+          output: path.join(indicatorDir, "company-scores.json"),
+        };
 
-          const validIndicatorScores = await indicatorScores(indicator.id);
-          await outOrFile(indicatorScoresTarget, validIndicatorScores);
-        }),
-      );
+        const validIndicatorCompanies = await indicatorCompanies(indicator.id);
+        await outOrFile(indicatorCompaniesTarget, validIndicatorCompanies);
+
+        const validIndicatorScores = await indicatorScores(indicator.id);
+        await outOrFile(indicatorScoresTarget, validIndicatorScores);
+      }, Promise.resolve());
 
       await Promise.all(
         (["telecom", "internet"] as CompanyKind[]).map(
