@@ -15,6 +15,8 @@ import {
   Indicator,
   IndicatorCategory,
   IndicatorCompanyScore,
+  IndicatorElement,
+  IndicatorElements,
   IndicatorIndex,
   IndicatorIndexElement,
   IndicatorNested,
@@ -343,6 +345,27 @@ const loadIndicatorExcludesCsv = loadCsv<CsvIndicatorExclude>((record) => ({
 }));
 
 /*
+ * Depending on the indicator we have to include different elements for an
+ * indicator. This is a helper function that hekps to determine whether an
+ * element is valid for an indicator.
+ */
+const isValidElement = (element: CsvElement): boolean => {
+  // Indicators G1 and G5 only have elements of Group and OpCom (Company).
+  if (["G01", "G05"].includes(element.indicator))
+    return ["OpCom", "Group"].includes(element.service);
+
+  // Indicators G2, G3 and G4x have services and Group and OpCom (Full).
+  if (
+    element.category === "governance" &&
+    [2, 3, 4].includes(element.indicatorNr)
+  )
+    return true;
+
+  // All F and P indicators, and G6x only have service elements (Services).
+  return !["OpCom", "Group"].includes(element.service);
+};
+
+/*
  * Generate a complete list of all available companies.
  */
 export const companies = memoizeAsync(
@@ -520,6 +543,75 @@ export const indicatorScores = memoizeAsync(
 );
 
 /*
+ * Generate elements for an indicator and company.
+ */
+const indicatorCompanyElements = async (
+  indicatorId: string,
+  companyId: string,
+  allElements: Element[],
+  csvElements: CsvElement[],
+): Promise<Record<string, IndicatorElement[]>> => {
+  const allServices = await companyServices(companyId);
+
+  return allServices.reduce((memo, {id: serviceId}) => {
+    const indicatorElements: IndicatorElement[] = csvElements
+      .filter(
+        (element) =>
+          element.indicator === indicatorId &&
+          element.company === companyId &&
+          element.service === serviceId &&
+          indexYears.has(element.index) &&
+          isValidElement(element),
+      )
+      .map(({element, score, value}) => {
+        const {position, description} =
+          allElements.find((e) => e.id === element) ||
+          unreachable(`Element ${element} not found in element specs.`);
+        return {
+          id: `${indicatorId}-${companyId}-${serviceId}-${element}`,
+          name: element,
+          position,
+          description,
+          score,
+          value,
+        };
+      })
+      .sort((a, b) => {
+        if (a.position < b.position) return -1;
+        if (a.position > b.position) return 1;
+        return 0;
+      });
+
+    return {[serviceId]: indicatorElements, ...memo};
+  }, {} as Record<string, IndicatorElement[]>);
+};
+
+/*
+ * Generate elements for an indicator.
+ */
+export const indicatorElements = memoizeAsync(
+  async (indicatorId: string): Promise<IndicatorElements> => {
+    const [allCompanies, allElements, csvElements] = await Promise.all([
+      indicatorCompanies(indicatorId),
+      elements(),
+      loadElementsCsv("csv/2020-elements.csv"),
+    ]);
+
+    return allCompanies.reduce(async (memo, {id: companyId}) => {
+      await memo;
+
+      const companyElements = await indicatorCompanyElements(
+        indicatorId,
+        companyId,
+        allElements,
+        csvElements,
+      );
+      return {[companyId]: companyElements, ...memo};
+    }, Promise.resolve({}));
+  },
+);
+
+/*
  * Load the source data and construct the company index for 2020. This
  * function is called to populate the website pages.
  */
@@ -634,26 +726,6 @@ export const companyIndices = memoizeAsync(
     );
   },
 );
-
-/*
- * Depending on the indicator we have to include different elements for an
- * indicator.
- */
-const isValidElement = (element: CsvElement): boolean => {
-  // Indicators G1 and G5 only have elements of Group and OpCom (Company).
-  if (["G01", "G05"].includes(element.indicator))
-    return ["OpCom", "Group"].includes(element.service);
-
-  // Indicators G2, G3 and G4x have services and Group and OpCom (Full).
-  if (
-    element.category === "governance" &&
-    [2, 3, 4].includes(element.indicatorNr)
-  )
-    return true;
-
-  // All F and P indicators, and G6x only have service elements (Services).
-  return !["OpCom", "Group"].includes(element.service);
-};
 
 /*
  * Load the source data and construct the indicator index for 2020. This

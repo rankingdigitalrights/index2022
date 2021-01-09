@@ -126,6 +126,21 @@ export type IndicatorCompanyScore = {
   score: IndicatorScore;
 };
 
+export type IndicatorElement = {
+  id: string;
+  name: string;
+  position: number;
+  score: IndicatorScore;
+  value: ElementValue;
+  description: string;
+};
+
+// A record of companies containing mapping from service to indicator elements.
+export type IndicatorElements = Record<
+  string,
+  Record<string, IndicatorElement[]>
+>;
+
 export type IndicatorIndexElement = {
   element: string;
   elementNr: number;

@@ -11,6 +11,7 @@ import {
   Element,
   Indicator,
   IndicatorCompanyScore,
+  IndicatorElements,
   IndicatorIndex,
   Service,
 } from "./types";
@@ -141,6 +142,25 @@ export const indicatorScores = async (
   return loadJson<IndicatorCompanyScore[]>(indicatorDir)().catch(() => {
     throw new Error(
       `Couldn't extract indicator company score for "${indicatorId}".`,
+    );
+  });
+};
+
+/*
+ * Load the elements data for a single indicator.
+ */
+export const indicatorElements = async (
+  indicatorId: string,
+): Promise<IndicatorElements> => {
+  const indicatorDir = path.join(
+    "data/indicators",
+    indicatorId,
+    "elements.json",
+  );
+
+  return loadJson<IndicatorElements>(indicatorDir)().catch(() => {
+    throw new Error(
+      `Couldn't extract indicator elements for "${indicatorId}".`,
     );
   });
 };

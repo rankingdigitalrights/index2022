@@ -10,6 +10,7 @@ import {
   companyServices,
   elements,
   indicatorCompanies,
+  indicatorElements,
   indicatorIndices,
   indicators,
   indicatorScores,
@@ -170,12 +171,19 @@ const outOrFile = async (opts: OutOrFile, data: unknown): Promise<void> => {
           target: "file",
           output: path.join(indicatorDir, "company-scores.json"),
         };
+        const indicatorElementsTarget: OutOrFile = {
+          target: "file",
+          output: path.join(indicatorDir, "elements.json"),
+        };
 
         const validIndicatorCompanies = await indicatorCompanies(indicator.id);
         await outOrFile(indicatorCompaniesTarget, validIndicatorCompanies);
 
         const validIndicatorScores = await indicatorScores(indicator.id);
         await outOrFile(indicatorScoresTarget, validIndicatorScores);
+
+        const validIndicatorElements = await indicatorElements(indicator.id);
+        return outOrFile(indicatorElementsTarget, validIndicatorElements);
       }, Promise.resolve());
 
       await Promise.all(
