@@ -598,7 +598,7 @@ export const indicatorElements = memoizeAsync(
     ]);
 
     return allCompanies.reduce(async (memo, {id: companyId}) => {
-      await memo;
+      const agg = await memo;
 
       const companyElements = await indicatorCompanyElements(
         indicatorId,
@@ -606,7 +606,7 @@ export const indicatorElements = memoizeAsync(
         allElements,
         csvElements,
       );
-      return {[companyId]: companyElements, ...memo};
+      return {[companyId]: companyElements, ...agg};
     }, Promise.resolve({}));
   },
 );
