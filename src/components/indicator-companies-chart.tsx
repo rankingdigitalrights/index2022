@@ -1,3 +1,4 @@
+import c from "clsx";
 import React from "react";
 
 import {IndicatorCompanyScore} from "../types";
@@ -7,14 +8,16 @@ import PercentageBar from "./percentage-bar";
 interface IndicatorCompaniesChartProps {
   category: string;
   scores: IndicatorCompanyScore[];
+  className?: string;
 }
 
 const IndicatorCompaniesChart = ({
   category,
   scores,
+  className,
 }: IndicatorCompaniesChartProps) => {
   return (
-    <div className="flex font-circular text-xxs">
+    <div className={c("flex font-circular text-xxs", className)}>
       <div className="flex flex-col items-center">
         <span>&nbsp;</span>
         <svg

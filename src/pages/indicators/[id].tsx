@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import CompanyElements from "../../components/company-elements";
 import CompanySelector from "../../components/company-selector";
 import ExpandableDescription from "../../components/expandable-description";
-import IndicatorCompaniesChart from "../../components/indicator-companies-chart";
+import IndicatorCompaniesChartContainer from "../../components/indicator-companies-chart-container";
 import IndicatorSelector, {
   IndicatorSelectOption,
 } from "../../components/indicator-selector";
@@ -207,7 +207,7 @@ const IndicatorPage = ({
           </section>
 
           <div className="mt-10">
-            <IndicatorCompaniesChart
+            <IndicatorCompaniesChartContainer
               category={index.category}
               scores={scores}
             />
