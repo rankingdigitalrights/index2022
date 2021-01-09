@@ -346,25 +346,29 @@ const loadIndicatorExcludesCsv = loadCsv<CsvIndicatorExclude>((record) => ({
   exclude: mapCompanyKind(record.exclude),
 }));
 
+const isValidService = (serviceId: string, indicatorId: string): boolean => {
+  // Indicators G1 and G5 only have elements of Group and OpCom (Company).
+  if (["G01", "G05"].includes(indicatorId))
+    return ["OpCom", "Group"].includes(serviceId);
+
+  // Indicators G2, G3 and G4x have services and Group and OpCom (Full).
+  if (
+    indicatorId.startsWith("G02") ||
+    indicatorId.startsWith("G03") ||
+    indicatorId.startsWith("G04")
+  )
+    return true;
+
+  // All F and P indicators, and G6x only have service elements (Services).
+  return !["OpCom", "Group"].includes(serviceId);
+};
 /*
  * Depending on the indicator we have to include different elements for an
  * indicator. This is a helper function that hekps to determine whether an
  * element is valid for an indicator.
  */
-const isValidElement = (element: CsvElement): boolean => {
-  // Indicators G1 and G5 only have elements of Group and OpCom (Company).
-  if (["G01", "G05"].includes(element.indicator))
-    return ["OpCom", "Group"].includes(element.service);
-
-  // Indicators G2, G3 and G4x have services and Group and OpCom (Full).
-  if (
-    element.category === "governance" &&
-    [2, 3, 4].includes(element.indicatorNr)
-  )
-    return true;
-
-  // All F and P indicators, and G6x only have service elements (Services).
-  return !["OpCom", "Group"].includes(element.service);
+const isValidElement = ({service, indicator}: CsvElement): boolean => {
+  return isValidService(service, indicator);
 };
 
 /*
@@ -555,36 +559,38 @@ const indicatorCompanyElements = async (
 ): Promise<Record<string, IndicatorElement[]>> => {
   const allServices = await companyServices(companyId);
 
-  return allServices.reduce((memo, {id: serviceId}) => {
-    const indicatorElements: IndicatorElement[] = csvElements
-      .filter(
-        (element) =>
-          element.indicator === indicatorId &&
-          element.company === companyId &&
-          element.service === serviceId &&
-          indexYears.has(element.index) &&
-          isValidElement(element),
-      )
-      .map(({element, score, value}) => {
-        const {position} =
-          allElements.find((e) => e.id === element) ||
-          unreachable(`Element ${element} not found in element specs.`);
-        return {
-          id: `${indicatorId}-${companyId}-${serviceId}-${element}`,
-          name: element,
-          position,
-          score,
-          value,
-        };
-      })
-      .sort((a, b) => {
-        if (a.position < b.position) return -1;
-        if (a.position > b.position) return 1;
-        return 0;
-      });
+  return allServices
+    .filter((service) => isValidService(service.id, indicatorId))
+    .reduce((memo, {id: serviceId}) => {
+      const indicatorElements: IndicatorElement[] = csvElements
+        .filter(
+          (element) =>
+            element.indicator === indicatorId &&
+            element.company === companyId &&
+            element.service === serviceId &&
+            indexYears.has(element.index) &&
+            isValidElement(element),
+        )
+        .map(({element, score, value}) => {
+          const {position} =
+            allElements.find((e) => e.id === element) ||
+            unreachable(`Element ${element} not found in element specs.`);
+          return {
+            id: `${indicatorId}-${companyId}-${serviceId}-${element}`,
+            name: element,
+            position,
+            score,
+            value,
+          };
+        })
+        .sort((a, b) => {
+          if (a.position < b.position) return -1;
+          if (a.position > b.position) return 1;
+          return 0;
+        });
 
-    return {[serviceId]: indicatorElements, ...memo};
-  }, {} as Record<string, IndicatorElement[]>);
+      return {[serviceId]: indicatorElements, ...memo};
+    }, {} as Record<string, IndicatorElement[]>);
 };
 
 /*
