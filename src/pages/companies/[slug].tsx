@@ -6,8 +6,13 @@ import CompanyRankChart from "../../components/company-rank-chart";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
 import Layout from "../../components/layout";
-import {allCompanies, companyData, companyRankingData} from "../../data";
-import {CompanyDetails, CompanyIndex, CompanyRank} from "../../types";
+import {
+  allCompanies,
+  companyData,
+  companyRankingData,
+  companyServices,
+} from "../../data";
+import {CompanyDetails, CompanyIndex, CompanyRank, Service} from "../../types";
 
 type Params = {
   params: {
@@ -19,6 +24,7 @@ interface CompanyProps {
   index: CompanyIndex;
   details: CompanyDetails;
   ranking: CompanyRank[];
+  services: Service[];
 }
 
 export const getStaticPaths = async () => {
@@ -36,6 +42,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({params: {slug}}: Params) => {
   const [index, details] = await companyData(slug);
   const ranking = await companyRankingData(index.kind);
+  const services = await companyServices(slug);
 
   // Map from the input format to the internal type.
   return {
@@ -43,11 +50,12 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
       index,
       details,
       ranking,
+      services,
     },
   };
 };
 
-const CompanyPage = ({index, details, ranking}: CompanyProps) => {
+const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
   const router = useRouter();
 
   // FIXME: I don't receive the company kind yet as part of the CSV data.
@@ -125,7 +133,16 @@ const CompanyPage = ({index, details, ranking}: CompanyProps) => {
             </div>
 
             <div className="w-2/6 pl-3">
-              <div className="pb-3 mb-6">Services evaluated</div>
+              <h3 className="pb-3 mb-6 mt-16">Services evaluated:</h3>
+              <ul className="list-inside">
+                {services
+                  .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
+                  .map(({id, name, kind}) => (
+                    <li key={id} className="font-circular text-sm pb-0">
+                      {name} [{kind}]
+                    </li>
+                  ))}
+              </ul>
             </div>
           </section>
 
