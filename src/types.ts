@@ -144,6 +144,17 @@ export type IndicatorAverage = Record<string, IndicatorScore>;
 
 export type IndicatorAverages = Record<string, IndicatorAverage>;
 
+export type IndicatorDetails = {
+  id: string;
+  indicator: string;
+  category: IndicatorCategory;
+  isParent: boolean;
+  hasParent: boolean;
+  label: string;
+  description: string;
+  guidance: string;
+};
+
 export type IndicatorIndexElement = {
   element: string;
   elementNr: number;
@@ -166,7 +177,9 @@ export type IndicatorIndex = {
   label: string;
   description: string;
   guidance: string;
+  companies: string[];
   services: Record<string, string[]>;
+  scores: Record<string, IndicatorScore>;
   averages: Record<string, Record<string, IndicatorScore>>;
   elements: Record<string, Record<string, IndicatorIndexElement[]>>;
 };

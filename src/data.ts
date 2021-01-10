@@ -12,8 +12,8 @@ import {
   Indicator,
   IndicatorAverages,
   IndicatorCompanyScore,
+  IndicatorDetails,
   IndicatorElements,
-  IndicatorIndex,
   Service,
 } from "./types";
 
@@ -47,14 +47,6 @@ export const allElements = loadJson<Element[]>("data/elements.json");
 export const companyIndices = loadJsonDir<CompanyIndex>(
   "data/companies",
   "scores",
-);
-export const indicatorIndices = loadJsonDir<IndicatorIndex>(
-  "data/indicators",
-  "scores",
-);
-export const companyDetails = loadJsonDir<CompanyDetails>(
-  "data/companies",
-  "details",
 );
 
 /*
@@ -97,15 +89,17 @@ export const companyServices = async (
 /*
  * Load the indicator details.
  */
-export const indicatorData = async (
+export const indicatorDetails = async (
   indicatorId: string,
-): Promise<IndicatorIndex> => {
-  const indicatorDir = path.join("data/indicators", indicatorId);
+): Promise<IndicatorDetails> => {
+  const indicatorDir = path.join(
+    "data/indicators",
+    indicatorId,
+    "details.json",
+  );
 
-  return loadJson<IndicatorIndex>(
-    path.join(indicatorDir, "scores.json"),
-  )().catch(() => {
-    throw new Error(`Couldn't extract indicator index for "${indicatorId}".`);
+  return loadJson<IndicatorDetails>(indicatorDir)().catch(() => {
+    throw new Error(`Couldn't extract indicator details for "${indicatorId}".`);
   });
 };
 

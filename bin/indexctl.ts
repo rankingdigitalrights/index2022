@@ -11,6 +11,7 @@ import {
   elements,
   indicatorAverages,
   indicatorCompanies,
+  indicatorDetails,
   indicatorElements,
   indicatorIndices,
   indicators,
@@ -41,14 +42,12 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
         allIndicators,
         allElements,
         scores,
-        indicatorIndexScores,
         details,
       ] = await Promise.all([
         companies(),
         indicators(),
         elements(),
         companyIndices(),
-        indicatorIndices(),
         companyDetails(),
       ]);
 
@@ -110,19 +109,6 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
         return writeFile(target)(validCompanyServices);
       }, Promise.resolve());
 
-      console.log("Generating indicator indices.");
-
-      await Promise.all(
-        indicatorIndexScores.map(async (indicator) => {
-          const indicatorDir = path.join(indicatorsDir, indicator.id);
-          await fs.mkdir(path.join(process.cwd(), indicatorDir), {
-            recursive: true,
-          });
-          const target = path.join(indicatorDir, "scores.json");
-          return writeFile(target)(indicator);
-        }),
-      );
-
       // Generate companies for every indicator.
       await allIndicators.reduce(async (memo, indicator) => {
         await memo;
@@ -132,6 +118,7 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
         await fs.mkdir(path.join(process.cwd(), indicatorDir), {
           recursive: true,
         });
+        const indicatorDetailsTarget = path.join(indicatorDir, "details.json");
         const indicatorCompaniesTarget = path.join(
           indicatorDir,
           "companies.json",
@@ -151,6 +138,9 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
 
         console.log(`Generating indicator data for ${indicator.name}`);
 
+        await indicatorDetails(indicator.id).then(
+          writeFile(indicatorDetailsTarget),
+        );
         await indicatorCompanies(indicator.id).then(
           writeFile(indicatorCompaniesTarget),
         );

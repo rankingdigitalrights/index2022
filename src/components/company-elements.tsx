@@ -1,7 +1,7 @@
 import c from "clsx";
 import React from "react";
 
-import {IndicatorIndexElement, IndicatorScore} from "../types";
+import {Element, IndicatorElement, IndicatorScore} from "../types";
 import IndicatorElementTag from "./indicator-element-tag";
 
 interface CompanyElementsProps {
@@ -9,8 +9,9 @@ interface CompanyElementsProps {
   company: string;
   score: IndicatorScore;
   averages: Record<string, IndicatorScore>;
-  companyElements: Record<string, IndicatorIndexElement[]>;
+  companyElements: Record<string, IndicatorElement[]>;
   literalValues: boolean;
+  elementDescriptions: Element[];
 }
 
 const CompanyElements = ({
@@ -20,6 +21,7 @@ const CompanyElements = ({
   averages,
   companyElements,
   literalValues,
+  elementDescriptions,
 }: CompanyElementsProps) => {
   const services = Object.keys(companyElements);
 
@@ -34,14 +36,15 @@ const CompanyElements = ({
   const rows = templateService.reduce((memo, element) => {
     const elements = services.reduce((agg, service) => {
       const serviceElement = companyElements[service].find(
-        (e) => e.element === element.element,
+        (e) => e.name === element.name,
       );
+
       if (!serviceElement) return agg;
       return agg.concat([serviceElement]);
-    }, [] as IndicatorIndexElement[]);
+    }, [] as IndicatorElement[]);
 
     return memo.concat([[element].concat(elements)]);
-  }, [] as IndicatorIndexElement[][]);
+  }, [] as IndicatorElement[][]);
 
   const legend = legendRow.map((item, idx) => {
     const className = {
@@ -106,21 +109,24 @@ const CompanyElements = ({
       <div className="flex w-full text-sm">
         <div className="flex flex-row w-full">
           {row.map((element, idx) => {
+            const elementDescription =
+              elementDescriptions.find((e) => e.id === element.name)
+                ?.description || "";
             if (idx === 0)
               return (
                 <div
                   className="flex flex-col items-center justify-center border border-disabled-dark w-40 p-2"
-                  key={`legend-element-${element.label}`}
+                  key={`legend-element-${element.id}`}
                 >
                   <span>
-                    {itemPos + 1}. {element.description}
+                    {itemPos + 1}. {elementDescription}
                   </span>
                 </div>
               );
             return (
               <div
                 className="flex flex-col items-center justify-center border border-disabled-dark w-36 p-6 text-sm flex flex-col items-center"
-                key={`${element.service}-${element.label}`}
+                key={`${element.id}`}
               >
                 <IndicatorElementTag
                   score={element.score}

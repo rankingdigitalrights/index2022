@@ -17,6 +17,7 @@ import {
   IndicatorAverages,
   IndicatorCategory,
   IndicatorCompanyScore,
+  IndicatorDetails,
   IndicatorElement,
   IndicatorElements,
   IndicatorIndex,
@@ -768,12 +769,41 @@ export const companyIndices = memoizeAsync(
 );
 
 /*
- * Load the source data and construct the indicator index for 2020. This
- * function is called to populate the website pages.
+ * Generate details for an indicator.
+ */
+export const indicatorDetails = memoizeAsync(
+  async (indicatorId: string): Promise<IndicatorDetails> => {
+    const csvIndicatorSpecs = await loadIndicatorSpecsCsv(
+      "csv/2020-indicator-specs.csv",
+    );
+
+    const spec = csvIndicatorSpecs.find(
+      ({indicator}) => indicator === indicatorId,
+    );
+
+    if (!spec) return unreachable(`No indicator spec found for ${indicatorId}`);
+
+    return {
+      id: spec.indicator,
+      indicator: spec.display,
+      category: spec.category,
+      label: spec.label,
+      description: spec.description,
+      guidance: spec.guidance,
+      isParent: spec.isParent,
+      hasParent: /[a-z]+$/.test(spec.indicator),
+    };
+  },
+);
+
+/*
+ * Generate full indicator indices. This is deprecated but still in use for the
+ * storybook fixtures.
  */
 export const indicatorIndices = memoizeAsync(
   async (): Promise<IndicatorIndex[]> => {
     const [
+      csvIndicators,
       csvLevels,
       csvElements,
       csvIndicatorSpecs,
@@ -781,6 +811,7 @@ export const indicatorIndices = memoizeAsync(
       // allIndicators,
       allCompanies,
     ] = await Promise.all([
+      loadIndicatorsCsv("csv/2020-indicators.csv"),
       loadLevelsCsv("csv/2020-levels.csv"),
       loadElementsCsv("csv/2020-elements.csv"),
       loadIndicatorSpecsCsv("csv/2020-indicator-specs.csv"),
@@ -822,6 +853,13 @@ export const indicatorIndices = memoizeAsync(
           return !!indexElements.find(({companyId}) => id === companyId);
         })
         .map(({id}) => id);
+
+      const scores = companyIds.reduce((memo, company) => {
+        const indicator = csvIndicators
+          .filter((i) => indexYears.has(i.index))
+          .find((i) => i.company === company && i.indicator === spec.indicator);
+        return {[company]: indicator ? indicator.score : "NA", ...memo};
+      }, {} as Record<string, IndicatorScore>);
 
       const services = companyIds.reduce(
         (memo, company) => ({
@@ -891,7 +929,9 @@ export const indicatorIndices = memoizeAsync(
         guidance: spec.guidance,
         isParent: spec.isParent,
         hasParent: /[a-z]+$/.test(spec.indicator),
+        companies: companyIds,
         services,
+        scores,
         averages,
         elements: sortedElements,
       };

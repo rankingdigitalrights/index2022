@@ -12,18 +12,25 @@ import Layout from "../../components/layout";
 import SortSelector from "../../components/sort-selector";
 import ToggleSwitch from "../../components/toggle-switch";
 import {
+  allElements,
   allIndicators,
+  indicatorAverages,
   indicatorCompanies,
-  indicatorData,
+  indicatorDetails,
+  indicatorElements,
   indicatorScores,
 } from "../../data";
 import {
+  Element,
+  IndicatorAverages,
   IndicatorCompanyScore,
-  IndicatorIndex,
+  IndicatorDetails,
+  IndicatorElements,
   SelectOption,
   SortStrategies,
   SortStrategy,
 } from "../../types";
+import {unreachable} from "../../utils";
 
 type Params = {
   params: {
@@ -36,10 +43,13 @@ interface CompanySelectOption extends SelectOption {
 }
 
 interface IndicatorPageProps {
-  index: IndicatorIndex;
+  details: IndicatorDetails;
   indicators: IndicatorSelectOption[];
   companies: CompanySelectOption[];
   scores: IndicatorCompanyScore[];
+  averages: IndicatorAverages;
+  elements: IndicatorElements;
+  elementDescriptions: Element[];
 }
 
 export const getStaticPaths = async () => {
@@ -57,6 +67,14 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
+  const indicator = (await allIndicators()).find(
+    ({name}) => name === indicatorId,
+  );
+
+  if (!indicator)
+    return unreachable(`Failed to load indicator for ${indicatorId}`);
+
+  const details = await indicatorDetails(indicatorId);
   const scores = await indicatorScores(indicatorId);
   const companies = (await indicatorCompanies(indicatorId)).map(
     ({id: companyId, name}) => {
@@ -69,8 +87,11 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
       };
     },
   );
-
-  const index = (await indicatorData(indicatorId)) as IndicatorIndex;
+  const averages = await indicatorAverages(indicatorId);
+  const elements = await indicatorElements(indicatorId);
+  const elementDescriptions = (await allElements()).filter(
+    (e) => e.indicatorId === indicator.id,
+  );
   const indicators = (await allIndicators()).map(
     ({name: value, label, isParent, parent}) => ({
       value,
@@ -82,10 +103,13 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
 
   return {
     props: {
-      index,
+      details,
       indicators,
       companies,
       scores,
+      averages,
+      elements,
+      elementDescriptions,
     },
   };
 };
@@ -118,10 +142,13 @@ strategies.set(
 const identitySortFn: SortStrategy = (xs) => xs;
 
 const IndicatorPage = ({
-  index,
+  details,
   indicators,
   companies,
   scores,
+  elements,
+  averages,
+  elementDescriptions,
 }: IndicatorPageProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [sortStrategy, setSortStrategy] = useState<string>("Alphabetically");
@@ -150,10 +177,10 @@ const IndicatorPage = ({
     strategies.get("Alphabetically") || identitySortFn;
 
   const activeSelector: IndicatorSelectOption = {
-    value: index.id,
-    isParent: index.isParent,
-    hasParent: index.hasParent,
-    label: `${index.id}. ${index.label}`,
+    value: details.id,
+    isParent: details.isParent,
+    hasParent: details.hasParent,
+    label: `${details.id}. ${details.label}`,
   };
 
   const sortOptions: SelectOption[] = [...strategies.keys()].map((value) => ({
@@ -168,10 +195,6 @@ const IndicatorPage = ({
           companies.filter(({value}) => selectedCompanies.includes(value)),
         );
 
-  const elementDescriptions = Object.values(
-    Object.values(index.elements)[0] || {},
-  )[0];
-
   return (
     <Layout>
       <div className="container mx-auto">
@@ -183,15 +206,15 @@ const IndicatorPage = ({
           />
 
           <section className="w-full mt-6 mx-auto  text-sm font-circular">
-            {index.description}
+            {details.description}
           </section>
 
           <section className="w-full mt-6 mx-auto">
             <ExpandableDescription label="Elements">
               <ol className="list-none list-decimal mt-1">
-                {elementDescriptions.map(({description, label}) => {
+                {elementDescriptions.map(({description, id}) => {
                   return (
-                    <li key={`element-description-${label}`} className="ml-4">
+                    <li key={`element-description-${id}`} className="ml-4">
                       {description}
                     </li>
                   );
@@ -202,13 +225,13 @@ const IndicatorPage = ({
 
           <section className="w-full mt-2 mx-auto">
             <ExpandableDescription label="Research guidance">
-              <p className="mt-1">{index.guidance}</p>
+              <p className="mt-1">{details.guidance}</p>
             </ExpandableDescription>
           </section>
 
           <div className="mt-10">
             <IndicatorCompaniesChartContainer
-              category={index.category}
+              category={details.category}
               scores={scores}
             />
           </div>
@@ -252,23 +275,22 @@ const IndicatorPage = ({
             </div>
           </div>
 
-          {dataGrids.map(({value, label}) => {
-            const {score} = scores.find(({id}) => id === value) || {
+          {dataGrids.map(({value: companyId, label}) => {
+            const {score} = scores.find(({id}) => id === companyId) || {
               score: "NA",
             };
 
             return (
               <CompanyElements
-                key={`company-element-${value}`}
-                indicatorLabel={index.label}
+                key={`company-element-${companyId}`}
+                indicatorLabel={details.label}
                 company={label}
                 score={score}
                 averages={
-                  index.averages[value] === undefined
-                    ? {}
-                    : index.averages[value]
+                  averages[companyId] === undefined ? {} : averages[companyId]
                 }
-                companyElements={index.elements[value] || {}}
+                companyElements={elements[companyId] || {}}
+                elementDescriptions={elementDescriptions}
                 literalValues={literalValues}
               />
             );
