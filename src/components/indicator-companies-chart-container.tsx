@@ -1,6 +1,7 @@
 import React from "react";
 
 import {IndicatorCategory, IndicatorCompanyScore} from "../types";
+import CompanyKindLabel from "./company-kind-label";
 import IndicatorCompaniesChart from "./indicator-companies-chart";
 
 interface IndicatorCompaniesChartContainerProps {
@@ -23,17 +24,25 @@ const IndicatorCompaniesChartContainer = ({
   if (hasTelecomScores && hasPlatformScores)
     return (
       <div className="flex justify-between">
-        <IndicatorCompaniesChart
-          category={category}
-          scores={telecomScores}
-          className="pr-3 w-1/2"
-        />
+        <div className="flex flex-col pr-3 w-1/2">
+          <CompanyKindLabel kind="telecom" theme="dark" />
 
-        <IndicatorCompaniesChart
-          category={category}
-          scores={platformScores}
-          className="pl-3 w-1/2"
-        />
+          <IndicatorCompaniesChart
+            category={category}
+            scores={telecomScores}
+            className="mt-3"
+          />
+        </div>
+
+        <div className="flex flex-col pl-3 w-1/2">
+          <CompanyKindLabel kind="internet" theme="dark" />
+
+          <IndicatorCompaniesChart
+            category={category}
+            scores={platformScores}
+            className="mt-3"
+          />
+        </div>
       </div>
     );
 
@@ -44,11 +53,18 @@ const IndicatorCompaniesChartContainer = ({
   const singleScores = hasTelecomScores ? telecomScores : platformScores;
   return (
     <div className="flex justify-center mx-auto">
-      <IndicatorCompaniesChart
-        category={category}
-        scores={singleScores}
-        className="w-1/2"
-      />
+      <div className="flex flex-col w-1/2">
+        <CompanyKindLabel
+          kind={hasTelecomScores ? "telecom" : "internet"}
+          theme="dark"
+        />
+
+        <IndicatorCompaniesChart
+          category={category}
+          scores={singleScores}
+          className="mt-3"
+        />
+      </div>
     </div>
   );
 };

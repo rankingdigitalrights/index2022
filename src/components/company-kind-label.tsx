@@ -5,23 +5,30 @@ import {CompanyKind} from "../types";
 
 interface CompanyKindLabelProps {
   kind: CompanyKind;
+  theme?: "light" | "dark";
 }
 
 const telecomText = "Telecommunications company";
 const platformsText = "Digital platforms";
 
-const CompanyKindLabel = ({kind}: CompanyKindLabelProps) => {
+const CompanyKindLabel = ({kind, theme = "light"}: CompanyKindLabelProps) => {
   const text = kind === "telecom" ? telecomText : platformsText;
 
-  const className = {
+  const labelClassName = {
+    "text-white": theme === "light",
+    "text-black": theme === "dark",
+  };
+  const dotClassName = {
     "bg-diff-del": kind === "telecom",
     "bg-accent-orange": kind === "internet",
   };
 
   return (
-    <div className="font-circular text-white text-xxs flex items-center">
+    <div
+      className={c("font-circular text-xxs flex items-center", labelClassName)}
+    >
       <div
-        className={c("rounded-full border border-white w-3 h-3", className)}
+        className={c("rounded-full border border-white w-3 h-3", dotClassName)}
       />
 
       <div className="ml-2">{text}</div>
