@@ -69,13 +69,13 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
   return (
     <Layout>
       <div className="relative">
-        <div className="absolute flex flex-wrap w-full h-full top-0">
-          <div className="md:w-3/5 w-full bg-prissian" />
-          <div className="md:w-2/5 w-full bg-beige" />
+        <div className="absolute flex flex-row w-full h-full top-0">
+          <div className="md:w-3/5 w-full md:bg-prissian" />
+          <div className="md:w-2/5 w-full md:bg-beige" />
         </div>
 
-        <div className="container mx-auto flex flex-wrap lg:w-8/12 md:w-10/12 w-11/12">
-          <div className="flex flex-col float-right md:w-3/5 w-full pt-6 pb-6 pr-3 z-10">
+        <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between md:w-10/12 lg:w-8/12">
+          <div className="flex flex-col bg-prissian w-full md:w-7/12 p-3 md:mt-6 md:mb-6 z-10">
             <CompanyKindLabel kind={index.kind} />
 
             <CompanyRankCard
@@ -88,7 +88,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             />
           </div>
 
-          <div className="md:w-2/5 w-full pt-6 pb-3 md:pl-20 pl-0 z-10">
+          <div className="w-full md:w-4/12 bg-beige p-3 md:mt-6 md:mb-3 z-10">
             <CompanyRankChart
               activeCompany={index.id}
               ranking={ranking}
@@ -100,8 +100,8 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
 
       <div className="pt-6 pb-6 mt-6">
         <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
-          <section className="flex flex-wrap pt-3">
-            <div className="w-4/6 pr-3">
+          <section className="flex flex-col md:flex-row pt-3">
+            <div className="w-full md:w-4/6 pr-3">
               <h2 className="text-prissian mb-6">Highlights:</h2>
               <div
                 className="mt-6 font-circular text-sm"
@@ -117,8 +117,10 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
               />
             </div>
 
-            <div className="w-2/6 pl-3">
-              <h3 className="pb-3 mb-6 mt-16">Services evaluated:</h3>
+            <div className="w-full md:w-2/6 pl-3">
+              <h3 className="pb-3 md:mb-6 mt-6 md:mt-16">
+                Services evaluated:
+              </h3>
               <ul className="list-inside">
                 {services
                   .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
@@ -131,11 +133,11 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             </div>
           </section>
 
-          <section className="flex flex-col mt-4">
+          <section className="flex flex-col mt-6 md:mt-4">
             <h2 className="text-prissian mb-6">Changes since 2019:</h2>
 
-            <div className="flex pt-3">
-              <div className="w-4/6 pr-3">
+            <div className="flex flex-col md:flex-row pt-3">
+              <div className="w-full md:w-4/6 pr-3">
                 <div
                   className="font-circular text-sm"
                   dangerouslySetInnerHTML={{
@@ -144,15 +146,15 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
                 />
               </div>
 
-              <div className="w-2/6 pl-3" />
+              <div className="md:w-2/6 pl-3" />
             </div>
           </section>
         </div>
       </div>
 
       <div className="border-t border-disabled-dark">
-        <div className="container mx-auto">
-          <div className="flex flex-wrap place-content-center center">
+        <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
+          <div className="flex flex-col md:flex-row items-center">
             <CompanyScoreChart
               category="governance"
               score={index.scores.governance}
@@ -190,7 +192,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
         </div>
 
         {details.footnotes && (
-          <footer className="container mx-auto">
+          <footer className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
             <h3>Footnotes</h3>
             <div dangerouslySetInnerHTML={{__html: details.footnotes}} />
           </footer>
