@@ -90,9 +90,6 @@ deploy_path="~/deploys/${base_path}-${now}"
 msg_info "clearing stale builds"
 yarn -s clean || die "failing to clean local environment"
 
-msg_info "generating index data"
-yarn -s indexctl data || die "failing to generate index data"
-
 BASE_PATH="${base_path}" yarn -s build
 BASE_PATH="${base_path}" yarn -s export
 
