@@ -177,10 +177,10 @@ const IndicatorPage = ({
     strategies.get("Alphabetically") || identitySortFn;
 
   const activeSelector: IndicatorSelectOption = {
-    value: details.id,
+    value: details.name,
     isParent: details.isParent,
     hasParent: details.hasParent,
-    label: `${details.id}. ${details.label}`,
+    label: `${details.name}. ${details.label}`,
   };
 
   const sortOptions: SelectOption[] = [...strategies.keys()].map((value) => ({

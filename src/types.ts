@@ -146,7 +146,7 @@ export type IndicatorAverages = Record<string, IndicatorAverage>;
 
 export type IndicatorDetails = {
   id: string;
-  indicator: string;
+  name: string;
   category: IndicatorCategory;
   isParent: boolean;
   hasParent: boolean;

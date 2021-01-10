@@ -785,7 +785,7 @@ export const indicatorDetails = memoizeAsync(
 
     return {
       id: spec.indicator,
-      indicator: spec.display,
+      name: spec.display,
       category: spec.category,
       label: spec.label,
       description: spec.description,

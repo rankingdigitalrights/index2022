@@ -1,1 +1,1 @@
-{"id":"P01","indicator":"P1","category":"privacy","label":"Access to policies affecting users’ privacy","description":"NA","guidance":"NA","isParent":true,"hasParent":false}
+{"id":"P01","name":"P1","category":"privacy","label":"Access to policies affecting users’ privacy","description":"NA","guidance":"NA","isParent":true,"hasParent":false}
