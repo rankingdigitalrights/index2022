@@ -62,7 +62,7 @@ const CompanySection = ({
 
   return (
     <section className="mt-6 pb-6 border-t border-disabled-dark m-2">
-      <div className="flex flex-col md:flex-row mt-8 md:mt-16 font-circular text-sm">
+      <div className="flex flex-col md:flex-row mt-8 md:mt-16 text-sm">
         <div className="md:w-4/6 md:mr-3">
           <div className="flex flex-col justify-end mb-12 md:h-16">
             <div className="font-circular text-md text-prissian">Category</div>

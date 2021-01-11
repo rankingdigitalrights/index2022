@@ -104,13 +104,13 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             <div className="w-full md:w-4/6 pr-3">
               <h2 className="text-prissian mb-6">Highlights:</h2>
               <div
-                className="mt-6 font-circular text-sm"
+                className="mt-6 text-sm"
                 dangerouslySetInnerHTML={{__html: details.keyFindings}}
               />
 
               <h2 className="text-prissian mt-8 mb-6">Recommendations:</h2>
               <div
-                className="mt-6 font-circular text-sm"
+                className="mt-6 text-sm"
                 dangerouslySetInnerHTML={{
                   __html: details.keyRecommendation,
                 }}
@@ -139,7 +139,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             <div className="flex flex-col md:flex-row pt-3">
               <div className="w-full md:w-4/6 pr-3">
                 <div
-                  className="font-circular text-sm"
+                  className="text-sm"
                   dangerouslySetInnerHTML={{
                     __html: details.analysis,
                   }}
