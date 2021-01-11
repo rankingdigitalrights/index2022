@@ -19,9 +19,8 @@ export const byScore = (order?: SortOrder) => <
     right = -1;
   }
 
-  // In order to locate scores with NA last in
-  // line we set it to -1 to sort it below the
-  // real 0 scores.
+  // In order to locate scores with NA last in line we set it to -1 to sort it
+  // below the real 0 scores.
   const aScore = isNA(a.score) ? -1 : a.score;
   const bScore = isNA(b.score) ? -1 : b.score;
 
