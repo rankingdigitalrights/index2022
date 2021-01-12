@@ -12,6 +12,7 @@ interface CompanyElementsProps {
   companyElements: Record<string, IndicatorElement[]>;
   literalValues: boolean;
   elementDescriptions: Element[];
+  services: string[];
 }
 
 const CompanyElements = ({
@@ -22,9 +23,8 @@ const CompanyElements = ({
   companyElements,
   literalValues,
   elementDescriptions,
+  services,
 }: CompanyElementsProps) => {
-  const services = Object.keys(companyElements);
-
   const templateService = services[0] && companyElements[services[0]];
 
   if (!templateService) return <div />;

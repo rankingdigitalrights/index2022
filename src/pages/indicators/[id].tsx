@@ -14,6 +14,7 @@ import ToggleSwitch from "../../components/toggle-switch";
 import {
   allElements,
   allIndicators,
+  companyServices,
   indicatorAverages,
   indicatorCompanies,
   indicatorDetails,
@@ -30,7 +31,7 @@ import {
   SortStrategies,
   SortStrategy,
 } from "../../types";
-import {unreachable} from "../../utils";
+import {isValidService, unreachable} from "../../utils";
 
 type Params = {
   params: {
@@ -50,6 +51,7 @@ interface IndicatorPageProps {
   averages: IndicatorAverages;
   elements: IndicatorElements;
   elementDescriptions: Element[];
+  services: Record<string, string[]>;
 }
 
 export const getStaticPaths = async () => {
@@ -100,6 +102,20 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
       label: `${value}. ${label}`,
     }),
   );
+  const services = (
+    await Promise.all(
+      companies.map(async ({value: companyId}) => {
+        const localServices = (await companyServices(companyId))
+          .filter(({id: serviceId}) =>
+            isValidService(serviceId, indicator.id, companyId),
+          )
+          .map(({id}) => id);
+        return {
+          [companyId]: localServices,
+        };
+      }),
+    )
+  ).reduce((memo, localServices) => ({...localServices, ...memo}));
 
   return {
     props: {
@@ -110,6 +126,7 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
       averages,
       elements,
       elementDescriptions,
+      services,
     },
   };
 };
@@ -149,6 +166,7 @@ const IndicatorPage = ({
   elements,
   averages,
   elementDescriptions,
+  services,
 }: IndicatorPageProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [sortStrategy, setSortStrategy] = useState<string>("Alphabetically");
@@ -292,6 +310,7 @@ const IndicatorPage = ({
                 companyElements={elements[companyId] || {}}
                 elementDescriptions={elementDescriptions}
                 literalValues={literalValues}
+                services={services[companyId] || []}
               />
             );
           })}

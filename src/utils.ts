@@ -190,3 +190,39 @@ export const enumerate = (value: string | number): string => {
       return `${value}th`;
   }
 };
+
+export const isValidService = (
+  serviceId: string,
+  indicatorId: string,
+  companyId: string,
+): boolean => {
+  // Indicators G1 and G5 only have elements of Group and OpCom (Company), with
+  // the exception of AT&T.
+  if (["G01", "G05"].includes(indicatorId) && companyId !== "ATT")
+    return ["OpCom", "Group"].includes(serviceId);
+
+  if (["G01", "G05"].includes(indicatorId) && companyId === "ATT")
+    return ["Group"].includes(serviceId);
+
+  // Indicators G2, G3 and G4x have services and Group and OpCom (Full) with the
+  // exception of AT&T.
+  if (
+    (indicatorId.startsWith("G02") ||
+      indicatorId.startsWith("G03") ||
+      indicatorId.startsWith("G04")) &&
+    serviceId === "Group"
+  )
+    return true;
+
+  if (
+    (indicatorId.startsWith("G02") ||
+      indicatorId.startsWith("G03") ||
+      indicatorId.startsWith("G04")) &&
+    serviceId === "OpCom" &&
+    companyId !== "ATT"
+  )
+    return true;
+
+  // All F and P indicators, and G6x only have service elements (Services).
+  return !["OpCom", "Group"].includes(serviceId);
+};
