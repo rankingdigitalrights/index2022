@@ -25,7 +25,7 @@ const CompanyKindLabel = ({kind, theme = "light"}: CompanyKindLabelProps) => {
 
   return (
     <div
-      className={c("font-circular text-xxs flex items-center", labelClassName)}
+      className={c("font-circular text-sm flex items-center", labelClassName)}
     >
       <div
         className={c("rounded-full border border-white w-3 h-3", dotClassName)}
