@@ -78,12 +78,13 @@ const CompanyIndicatorChart = ({
                     : () => onClick(display)
                 }
               >
-                <span className="text-left text-xs font-circular w-11/12">
-                  {indicatorPretty}
+                <span className="flex justify-between items-center text-left text-xs font-circular w-11/12">
+                  <span>{indicatorPretty}</span>
+                  {hasCollapse && isOpen && <ChevronUp className="ml-2 mr-4" />}
+                  {hasCollapse && !isOpen && (
+                    <ChevronDown className="ml-2 mr-4" />
+                  )}
                 </span>
-
-                {hasCollapse && isOpen && <ChevronUp className="ml-2" />}
-                {hasCollapse && !isOpen && <ChevronDown className="ml-2" />}
               </button>
 
               <div className={classNameBarRow}>
