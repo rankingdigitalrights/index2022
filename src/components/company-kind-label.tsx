@@ -9,7 +9,7 @@ interface CompanyKindLabelProps {
 }
 
 const telecomText = "Telecommunications company";
-const platformsText = "Digital platforms";
+const platformsText = "Digital platform";
 
 const CompanyKindLabel = ({kind, theme = "light"}: CompanyKindLabelProps) => {
   const text = kind === "telecom" ? telecomText : platformsText;
