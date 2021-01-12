@@ -4,6 +4,7 @@ import {
   IndicatorCategory,
   IndicatorScore,
   NA,
+  ServiceKind,
 } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -149,6 +150,29 @@ export const mapCategoryName = (category: IndicatorCategory): string => {
 
 export const mapScore = (score: IndicatorScore): number => {
   return isNA(score) ? 0 : score;
+};
+
+export const mapServiceKind = (value: string): ServiceKind => {
+  if (
+    [
+      "Group",
+      "OpCom",
+      "broadband",
+      "cloud",
+      "eCommerce",
+      "email",
+      "messagingVoip",
+      "mobile",
+      "mobileEcosystem",
+      "pda",
+      "photoVideo",
+      "search",
+      "socialNetworkBlogs",
+    ].includes(value)
+  )
+    return value as ServiceKind;
+
+  return unreachable(`${value} could not be mapped to a valid service kind.`);
 };
 
 export const enumerate = (value: string | number): string => {

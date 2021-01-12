@@ -73,10 +73,25 @@ export type CompanyRank = {
   kind: CompanyKind;
 };
 
+export type ServiceKind =
+  | "Group"
+  | "OpCom"
+  | "broadband"
+  | "cloud"
+  | "eCommerce"
+  | "email"
+  | "messagingVoip"
+  | "mobile"
+  | "mobileEcosystem"
+  | "pda"
+  | "photoVideo"
+  | "search"
+  | "socialNetworkBlogs";
+
 export type Service = {
   id: string;
   name: string;
-  kind: string;
+  kind: ServiceKind;
 };
 
 export type CompanyIndex = {

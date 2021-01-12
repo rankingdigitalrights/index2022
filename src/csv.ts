@@ -26,6 +26,7 @@ import {
   IndicatorScore,
   Scores,
   Service,
+  ServiceKind,
 } from "./types";
 import {
   floatOrNA,
@@ -35,6 +36,7 @@ import {
   mapCompanyKind,
   mapCompanyKindOrNil,
   mapElementValue,
+  mapServiceKind,
   memoizeAsync,
   stringOrNil,
   unreachable,
@@ -104,7 +106,7 @@ type CsvCompanySpec = {
 type CsvServiceSpec = {
   company: string;
   companyPretty: string;
-  kind: string;
+  kind: ServiceKind;
   service: string;
   label: string;
 };
@@ -305,7 +307,7 @@ const loadCompanySpecsCsv = loadCsv<CsvCompanySpec>((record) => ({
 const loadServiceSpecsCsv = loadCsv<CsvServiceSpec>((record) => ({
   company: record.CompanyClean,
   companyPretty: record.Company,
-  kind: record.Class,
+  kind: mapServiceKind(record.Class),
   service: record.Label,
   label: record.LabelShort,
 }));
