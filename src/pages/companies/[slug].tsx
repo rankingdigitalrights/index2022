@@ -5,6 +5,7 @@ import CompanyRankCard from "../../components/company-rank-card";
 import CompanyRankChart from "../../components/company-rank-chart";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
+import EvaluatedService from "../../components/evaluated-service";
 import Layout from "../../components/layout";
 import {
   allCompanies,
@@ -126,7 +127,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
                   .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
                   .map(({id, name, kind}) => (
                     <li key={id} className="font-circular text-sm pb-0">
-                      {name} [{kind}]
+                      <EvaluatedService name={name} kind={kind} />
                     </li>
                   ))}
               </ul>
