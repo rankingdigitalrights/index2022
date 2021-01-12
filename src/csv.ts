@@ -349,16 +349,35 @@ const loadIndicatorExcludesCsv = loadCsv<CsvIndicatorExclude>((record) => ({
   exclude: mapCompanyKind(record.exclude),
 }));
 
-const isValidService = (serviceId: string, indicatorId: string): boolean => {
-  // Indicators G1 and G5 only have elements of Group and OpCom (Company).
-  if (["G01", "G05"].includes(indicatorId))
+const isValidService = (
+  serviceId: string,
+  indicatorId: string,
+  companyId: string,
+): boolean => {
+  // Indicators G1 and G5 only have elements of Group and OpCom (Company), with
+  // the exception of AT&T.
+  if (["G01", "G05"].includes(indicatorId) && companyId !== "ATT")
     return ["OpCom", "Group"].includes(serviceId);
 
-  // Indicators G2, G3 and G4x have services and Group and OpCom (Full).
+  if (["G01", "G05"].includes(indicatorId) && companyId === "ATT")
+    return ["Group"].includes(serviceId);
+
+  // Indicators G2, G3 and G4x have services and Group and OpCom (Full) with the
+  // exception of AT&T.
   if (
-    indicatorId.startsWith("G02") ||
-    indicatorId.startsWith("G03") ||
-    indicatorId.startsWith("G04")
+    (indicatorId.startsWith("G02") ||
+      indicatorId.startsWith("G03") ||
+      indicatorId.startsWith("G04")) &&
+    serviceId === "Group"
+  )
+    return true;
+
+  if (
+    (indicatorId.startsWith("G02") ||
+      indicatorId.startsWith("G03") ||
+      indicatorId.startsWith("G04")) &&
+    serviceId === "OpCom" &&
+    companyId !== "ATT"
   )
     return true;
 
@@ -370,8 +389,8 @@ const isValidService = (serviceId: string, indicatorId: string): boolean => {
  * indicator. This is a helper function that hekps to determine whether an
  * element is valid for an indicator.
  */
-const isValidElement = ({service, indicator}: CsvElement): boolean => {
-  return isValidService(service, indicator);
+const isValidElement = ({service, indicator, company}: CsvElement): boolean => {
+  return isValidService(service, indicator, company);
 };
 
 /*
@@ -563,7 +582,7 @@ const indicatorCompanyElements = async (
   const allServices = await companyServices(companyId);
 
   return allServices
-    .filter((service) => isValidService(service.id, indicatorId))
+    .filter((service) => isValidService(service.id, indicatorId, companyId))
     .reduce((memo, {id: serviceId}) => {
       const indicatorElements: IndicatorElement[] = csvElements
         .filter(
