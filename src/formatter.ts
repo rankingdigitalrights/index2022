@@ -80,8 +80,10 @@ export const normalizeHtml = (src: string): string => {
         .forEach((style) => {
           if (style === "font-style:italic") $(el).addClass("italic");
           if (style === "font-weight:700") $(el).addClass("font-bold");
-          if (style === "text-decoration:underline")
-            $(el).addClass("underline");
+          // FIXME: Ignore underlined text since it clashes with the style of
+          // links.
+          // if (style === "text-decoration:underline")
+          // $(el).addClass("underline");
         });
 
       $el.removeAttr("style");
