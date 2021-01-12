@@ -351,15 +351,6 @@ const loadIndicatorExcludesCsv = loadCsv<CsvIndicatorExclude>((record) => ({
 }));
 
 /*
- * Depending on the indicator we have to include different elements for an
- * indicator. This is a helper function that hekps to determine whether an
- * element is valid for an indicator.
- */
-const isValidElement = ({service, indicator, company}: CsvElement): boolean => {
-  return isValidService(service, indicator, company);
-};
-
-/*
  * Generate a complete list of all available companies.
  */
 export const companies = memoizeAsync(
@@ -542,13 +533,16 @@ export const indicatorScores = memoizeAsync(
 const indicatorCompanyElements = async (
   indicatorId: string,
   companyId: string,
+  companyKind: CompanyKind,
   allElements: Element[],
   csvElements: CsvElement[],
 ): Promise<Record<string, IndicatorElement[]>> => {
   const allServices = await companyServices(companyId);
 
   return allServices
-    .filter((service) => isValidService(service.id, indicatorId, companyId))
+    .filter((service) =>
+      isValidService(service.id, indicatorId, companyId, companyKind),
+    )
     .reduce((memo, {id: serviceId}) => {
       const indicatorElements: IndicatorElement[] = csvElements
         .filter(
@@ -557,7 +551,12 @@ const indicatorCompanyElements = async (
             element.company === companyId &&
             element.service === serviceId &&
             indexYears.has(element.index) &&
-            isValidElement(element),
+            isValidService(
+              element.service,
+              element.indicator,
+              companyId,
+              companyKind,
+            ),
         )
         .map(({element, score, value}) => {
           const {position} =
@@ -592,17 +591,21 @@ export const indicatorElements = memoizeAsync(
       loadElementsCsv("csv/2020-elements.csv"),
     ]);
 
-    return allCompanies.reduce(async (memo, {id: companyId}) => {
-      const agg = await memo;
+    return allCompanies.reduce(
+      async (memo, {id: companyId, kind: companyKind}) => {
+        const agg = await memo;
 
-      const companyElements = await indicatorCompanyElements(
-        indicatorId,
-        companyId,
-        allElements,
-        csvElements,
-      );
-      return {[companyId]: companyElements, ...agg};
-    }, Promise.resolve({}));
+        const companyElements = await indicatorCompanyElements(
+          indicatorId,
+          companyId,
+          companyKind,
+          allElements,
+          csvElements,
+        );
+        return {[companyId]: companyElements, ...agg};
+      },
+      Promise.resolve({}),
+    );
   },
 );
 
@@ -809,12 +812,28 @@ export const indicatorIndices = memoizeAsync(
 
     return csvIndicatorSpecs.map((spec) => {
       const indexElements: IndicatorIndexElement[] = csvElements
-        .filter(
-          (element) =>
+        .filter((element) => {
+          // I'm not super happy about having to look for a company for every
+          // element, but once I refactor the fixtures, this whole data
+          // structure should go anyways.
+          const company = allCompanies.find(({id}) => id === element.company);
+
+          if (!company)
+            return unreachable(
+              `Company ${element.company} not found for element ${element.element}`,
+            );
+
+          return (
             element.indicator === spec.indicator &&
             indexYears.has(element.index) &&
-            isValidElement(element),
-        )
+            isValidService(
+              element.service,
+              element.indicator,
+              element.company,
+              company.kind,
+            )
+          );
+        })
         .map(({element, company: companyId, score, value, kind, service}) => {
           const {category, elementNr, label, description} =
             csvElementSpecs.find((e) => e.element === element) ||

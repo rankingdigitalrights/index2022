@@ -195,34 +195,42 @@ export const isValidService = (
   serviceId: string,
   indicatorId: string,
   companyId: string,
+  companyKind: CompanyKind,
 ): boolean => {
   // Indicators G1 and G5 only have elements of Group and OpCom (Company), with
-  // the exception of AT&T.
-  if (["G01", "G05"].includes(indicatorId) && companyId !== "ATT")
-    return ["OpCom", "Group"].includes(serviceId);
+  // the exception of AT&T and digital platforms, which only have Group.
+  if (["G01", "G05"].includes(indicatorId)) {
+    if (serviceId === "Group") return true;
+    if (
+      serviceId === "OpCom" &&
+      companyKind === "telecom" &&
+      companyId !== "ATT"
+    )
+      return true;
 
-  if (["G01", "G05"].includes(indicatorId) && companyId === "ATT")
-    return ["Group"].includes(serviceId);
+    // All other services are skipped.
+    return false;
+  }
 
   // Indicators G2, G3 and G4x have services and Group and OpCom (Full) with the
-  // exception of AT&T.
+  // exception of AT&T digital platforms.
   if (
-    (indicatorId.startsWith("G02") ||
-      indicatorId.startsWith("G03") ||
-      indicatorId.startsWith("G04")) &&
-    serviceId === "Group"
-  )
-    return true;
+    indicatorId.startsWith("G02") ||
+    indicatorId.startsWith("G03") ||
+    indicatorId.startsWith("G04")
+  ) {
+    if (serviceId !== "OpCom") return true;
+    if (
+      serviceId === "OpCom" &&
+      companyId !== "ATT" &&
+      companyKind === "telecom"
+    )
+      return true;
+  }
 
-  if (
-    (indicatorId.startsWith("G02") ||
-      indicatorId.startsWith("G03") ||
-      indicatorId.startsWith("G04")) &&
-    serviceId === "OpCom" &&
-    companyId !== "ATT"
-  )
-    return true;
+  // All F and P indicators, and G6x (the rest) only have service elements
+  // (Services).
+  if (!["OpCom", "Group"].includes(serviceId)) return true;
 
-  // All F and P indicators, and G6x only have service elements (Services).
-  return !["OpCom", "Group"].includes(serviceId);
+  return false;
 };

@@ -72,23 +72,22 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   const indicator = (await allIndicators()).find(
     ({name}) => name === indicatorId,
   );
+  const allCompanies = await indicatorCompanies(indicatorId);
 
   if (!indicator)
     return unreachable(`Failed to load indicator for ${indicatorId}`);
 
   const details = await indicatorDetails(indicatorId);
   const scores = await indicatorScores(indicatorId);
-  const companies = (await indicatorCompanies(indicatorId)).map(
-    ({id: companyId, name}) => {
-      const score = scores.find(({id}) => id === companyId);
+  const companies = allCompanies.map(({id: companyId, name}) => {
+    const score = scores.find(({id}) => id === companyId);
 
-      return {
-        value: companyId,
-        label: name,
-        score: score ? score.score : "NA",
-      };
-    },
-  );
+    return {
+      value: companyId,
+      label: name,
+      score: score ? score.score : "NA",
+    };
+  });
   const averages = await indicatorAverages(indicatorId);
   const elements = await indicatorElements(indicatorId);
   const elementDescriptions = (await allElements()).filter(
@@ -104,10 +103,10 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   );
   const services = (
     await Promise.all(
-      companies.map(async ({value: companyId}) => {
+      allCompanies.map(async ({id: companyId, kind: companyKind}) => {
         const localServices = (await companyServices(companyId))
           .filter(({id: serviceId}) =>
-            isValidService(serviceId, indicator.id, companyId),
+            isValidService(serviceId, indicator.id, companyId, companyKind),
           )
           .map(({id}) => id);
         return {
