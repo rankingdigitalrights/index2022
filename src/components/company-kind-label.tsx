@@ -19,8 +19,8 @@ const CompanyKindLabel = ({kind, theme = "light"}: CompanyKindLabelProps) => {
     "text-black": theme === "dark",
   };
   const dotClassName = {
-    "bg-diff-del": kind === "telecom",
-    "bg-accent-orange": kind === "internet",
+    "bg-accent-orange": kind === "telecom",
+    "bg-diff-del": kind === "internet",
   };
 
   return (
