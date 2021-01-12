@@ -17,6 +17,13 @@ import {
   Service,
 } from "./types";
 
+const loadHtml = (file: string): (() => Promise<string>) => async (): Promise<
+  string
+> => {
+  const data = await fsP.readFile(path.join(process.cwd(), file));
+  return data.toString();
+};
+
 const loadJson = <T extends unknown>(
   file: string,
 ): (() => Promise<T>) => async (): Promise<T> => {
@@ -187,3 +194,10 @@ export const companyRankingData = async (
 ): Promise<CompanyRank[]> => {
   return loadJson<CompanyRank[]>(`data/ranking-${companyKind}.json`)();
 };
+
+/*
+ * Load the policy recommendations HTML.
+ */
+export const policyRecommendations = loadHtml(
+  "data/policy-recommendations.html",
+);

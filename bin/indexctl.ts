@@ -17,16 +17,22 @@ import {
   indicators,
   indicatorScores,
 } from "../src/csv";
-import {companyDetails} from "../src/google";
+import {companyDetails, policyRecommendations} from "../src/google";
 import generateNav from "../src/navigation";
 import {CompanyKind} from "../src/types";
 
 const dataDir = "data";
 
-const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
-  data: unknown,
-): Promise<void> => {
+const writeJsonFile = (
+  target: string,
+): ((d: unknown) => Promise<void>) => async (data: unknown): Promise<void> => {
   await fs.writeFile(path.join(process.cwd(), target), JSON.stringify(data));
+};
+
+const writeHtmlFile = (
+  target: string,
+): ((d: string) => Promise<void>) => async (d: string): Promise<void> => {
+  await fs.writeFile(path.join(process.cwd(), target), d);
 };
 
 (async (): Promise<void> => {
@@ -56,15 +62,25 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
       const companiesTarget = path.join(dataDir, "companies.json");
       const indicatorsTarget = path.join(dataDir, "indicators.json");
       const elementsTarget = path.join(dataDir, "elements.json");
+      const policyRecommendationsTarget = path.join(
+        dataDir,
+        "policy-recommendations.html",
+      );
+
+      console.log(`Generating ${policyRecommendationsTarget}`);
+
+      await policyRecommendations().then(
+        writeHtmlFile(policyRecommendationsTarget),
+      );
 
       console.log(
         `Generating ${companiesTarget}, ${indicatorsTarget} and ${elementsTarget}`,
       );
 
       await Promise.all([
-        writeFile(companiesTarget)(allCompanies),
-        writeFile(indicatorsTarget)(allIndicators),
-        writeFile(elementsTarget)(allElements),
+        writeJsonFile(companiesTarget)(allCompanies),
+        writeJsonFile(indicatorsTarget)(allIndicators),
+        writeJsonFile(elementsTarget)(allElements),
       ]);
 
       console.log("Generating company details.");
@@ -77,7 +93,7 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
           });
 
           const target = path.join(companyDir, "details.json");
-          return writeFile(target)(company);
+          return writeJsonFile(target)(company);
         }),
       );
 
@@ -89,7 +105,7 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
             recursive: true,
           });
           const target = path.join(companyDir, "scores.json");
-          return writeFile(target)(score);
+          return writeJsonFile(target)(score);
         }),
       );
 
@@ -106,7 +122,7 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
 
         const target = path.join(companyDir, "services.json");
         const validCompanyServices = await companyServices(company.id);
-        return writeFile(target)(validCompanyServices);
+        return writeJsonFile(target)(validCompanyServices);
       }, Promise.resolve());
 
       // Generate companies for every indicator.
@@ -139,19 +155,19 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
         console.log(`Generating indicator data for ${indicator.name}`);
 
         await indicatorDetails(indicator.id).then(
-          writeFile(indicatorDetailsTarget),
+          writeJsonFile(indicatorDetailsTarget),
         );
         await indicatorCompanies(indicator.id).then(
-          writeFile(indicatorCompaniesTarget),
+          writeJsonFile(indicatorCompaniesTarget),
         );
         await indicatorScores(indicator.id).then(
-          writeFile(indicatorScoresTarget),
+          writeJsonFile(indicatorScoresTarget),
         );
         await indicatorElements(indicator.id).then(
-          writeFile(indicatorElementsTarget),
+          writeJsonFile(indicatorElementsTarget),
         );
         await indicatorAverages(indicator.id).then(
-          writeFile(indicatorAveragesTarget),
+          writeJsonFile(indicatorAveragesTarget),
         );
       }, Promise.resolve());
 
@@ -162,7 +178,7 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
           async (kind: CompanyKind) => {
             const target = path.join(dataDir, `ranking-${kind}.json`);
             const ranking = await companyRanking(kind);
-            return writeFile(target)(ranking);
+            return writeJsonFile(target)(ranking);
           },
         ),
       );
@@ -180,14 +196,14 @@ const writeFile = (target: string): ((d: unknown) => Promise<void>) => async (
       const indicatorsTarget = path.join(fixturesDir, "indicators.json");
 
       await Promise.all([
-        writeFile(scoresTarget)(scores),
-        writeFile(indicatorsTarget)(indicatorIndexScores),
+        writeJsonFile(scoresTarget)(scores),
+        writeJsonFile(indicatorsTarget)(indicatorIndexScores),
       ]);
     })
     .command("navigation", "generate navigation structure.", async () => {
       const data = await generateNav();
       const outTarget = path.join(dataDir, "navigation.json");
-      await writeFile(outTarget)(data);
+      await writeJsonFile(outTarget)(data);
     })
     .demandCommand(1)
     .help()

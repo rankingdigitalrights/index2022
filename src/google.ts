@@ -10,7 +10,7 @@ import {
   processHtml,
 } from "./formatter";
 import {CompanyDetails} from "./types";
-import {memoize} from "./utils";
+import {memoize, unreachable} from "./utils";
 
 type GoogleDownload = {
   target: string;
@@ -27,6 +27,7 @@ type GoogleDoc = {
  * The ID's of the Google Drive folders. Maybe move this into some
  * configuration file?
  */
+const rootFolder = "1Hu0Bi5yMBk-NSzsoTMV42ldA-d0ji2vA";
 const companiesFolder = "1aByjKhv9N9nNQBRNK1GVdraU0qorv7dX";
 
 // The scopes we require to have the right permissions.
@@ -175,6 +176,27 @@ export const companyDetails = async (): Promise<CompanyDetails[]> => {
       return companyDetails2(doc.name, html);
     }),
   );
+};
+
+/*
+ * Load the policy recommendations from Google Docs.
+ */
+export const policyRecommendations = async (): Promise<string> => {
+  const auth = getAuth();
+  const googleDocs = await listFiles(auth, rootFolder);
+  const downloadsDir = await fsP.mkdtemp(path.join(os.tmpdir(), "index2020-"));
+
+  const googleDoc = googleDocs.find(
+    ({name}) => name === "Policy Recommendations",
+  );
+  if (!googleDoc) return unreachable("unable to fetch policy recommendations");
+  const doc = await fetchDocumentHtml(auth, downloadsDir, googleDoc);
+  if (!doc.download)
+    return unreachable("unable to find policy recommendations download");
+  const src = await fsP.readFile(doc.download.target, "utf-8");
+  const html = processHtml(src);
+
+  return html;
 };
 
 // FIXME: I keep this code in case I might need it in the future. Create
