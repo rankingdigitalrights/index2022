@@ -70,7 +70,7 @@ const CompanyRankChart = ({
                 className={barClassName}
               />
             </svg>
-            <div className="relative">
+            <div className="relative w-24">
               <span className={scoreClassName}>{score}%</span>
             </div>
           </div>
