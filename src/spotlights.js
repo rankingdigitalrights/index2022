@@ -32,7 +32,7 @@ export const handleStepEnter = (figure, steps) => ({
   updateBGColor(figure, element.dataset.color);
 };
 
-export const handleStepExit = (figure, steps) => ({index, direction}) => {
+export const handleStepExit = (figure, steps, {index, direction}) => {
   if (
     (index === 0 && direction === "up") ||
     (index === figure.maxStep && direction === "down")
@@ -43,7 +43,13 @@ export const handleStepExit = (figure, steps) => ({index, direction}) => {
   }
 };
 
-export const setupSpotlight = (ref, scroller, stepSelector) => {
+export const setupSpotlight = (
+  ref,
+  scroller,
+  stepSelector,
+  onStepEnter,
+  onStepExit,
+) => {
   const {current: scrolly} = ref;
 
   const figure = scrolly.querySelector("figure");
@@ -55,8 +61,14 @@ export const setupSpotlight = (ref, scroller, stepSelector) => {
       step: stepSelector,
       offset: 0.8,
     })
-    .onStepEnter(handleStepEnter(figure, steps))
-    .onStepExit(handleStepExit(figure, steps));
+    .onStepEnter((...args) => {
+      handleStepEnter(figure, steps, ...args);
+      onStepEnter(...args);
+    })
+    .onStepExit((...args) => {
+      handleStepExit(figure, steps, ...args);
+      onStepExit(...args);
+    });
 
   return () => {
     scroller.destroy();

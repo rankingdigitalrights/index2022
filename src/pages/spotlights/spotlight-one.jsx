@@ -1,5 +1,5 @@
 /* eslint no-param-reassign: off */
-import React, {useEffect, useMemo, useRef} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import scrollama from "scrollama";
 
 import story from "../../../data/spotlights/spotlight-1.json";
@@ -10,16 +10,38 @@ import MyImage from "../../images/spotlights/datawrapper-map-dummy.png";
 import {setupSpotlight} from "../../spotlights";
 
 const SpotlightOne = () => {
+  const [currentStep, setCurrentStep] = useState();
   const scrolly1El = useRef(undefined);
   const scroller1 = useMemo(() => scrollama(), []);
 
   useEffect(() => {
-    const unmount1 = setupSpotlight(scrolly1El, scroller1, "#scrolly-1 .step");
+    // arguments of both call back functions are the arguments of the callback
+    // call emitted by the scrollama.onStepEnter/onStepExit callbacks.
+    const onStepEnter = ({index, direction}) => {
+      // we set the current active step
+      setCurrentStep(index);
+      console.log("Entering a step.", index, direction);
+    };
+
+    const onStepExit = ({index, direction}) => {
+      console.log("Exiting a step.", index, direction);
+    };
+
+    const unmount1 = setupSpotlight(
+      scrolly1El,
+      scroller1,
+      "#scrolly-1 .step",
+      onStepEnter,
+      onStepExit,
+    );
 
     return () => {
       unmount1();
     };
   }, [scroller1, scrolly1El]);
+
+  // just to demonstrate that you have the current step available.
+  console.log("Current Step", currentStep);
 
   return (
     <Layout>
