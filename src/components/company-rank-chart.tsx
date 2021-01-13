@@ -68,8 +68,8 @@ const CompanyRankChart = ({
             : "text-disabled-dark",
         );
 
-        const scoreClassName = c("ml-3 select-none", {
-          "text-white bg-prissian score-label": isActiveCompany,
+        const scoreClassName = c("ml-3 pl-1 pr-1 select-none", {
+          "text-white bg-prissian": isActiveCompany,
         });
 
         return (
@@ -103,7 +103,12 @@ const CompanyRankChart = ({
               />
             </svg>
 
-            <div className="relative">
+            <div
+              className={c(
+                "relative w-4",
+                isActiveCompany ? "score-label" : undefined,
+              )}
+            >
               <span className={scoreClassName}>{score}%</span>
             </div>
           </div>
