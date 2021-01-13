@@ -69,10 +69,16 @@ const generateNavigation = async (): Promise<NavigationNode[]> => {
               if (a.name > b.name) return 1;
               return 0;
             })
-            .map(({name, label}) => ({
-              label: `${name} ${label}`,
-              href: `/indicators/${name}`,
-            })),
+            .map(({name, label, isParent}) => {
+              if (isParent)
+                return {
+                  label: `${name} ${label}`,
+                };
+              return {
+                label: `${name} ${label}`,
+                href: `/indicators/${name}`,
+              };
+            }),
         },
       ],
     },
