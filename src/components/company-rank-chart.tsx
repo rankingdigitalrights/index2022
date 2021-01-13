@@ -9,7 +9,6 @@ interface CompanyRankChartProps {
   activeCompany: string;
   ranking: CompanyRank[];
   onClick: (id: string) => void;
-  width?: number;
   height?: number;
 }
 
@@ -17,7 +16,6 @@ const CompanyRankChart = ({
   activeCompany,
   ranking,
   onClick,
-  width = 150,
   height = 10,
 }: CompanyRankChartProps) => {
   // eslint-disable-next-line unicorn/no-null
@@ -114,7 +112,7 @@ const CompanyRankChart = ({
         );
       })}
       <div className="flex">
-        <div className="w-24 mr-2">&nbsp;</div>
+        <div className="w-20">&nbsp;</div>
         <svg
           version="1"
           xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +129,7 @@ const CompanyRankChart = ({
           <GraphLabel
             value="100%"
             size="extra-small"
-            transform={`translate(${width},10)`}
+            transform={`translate(${chartWidth},10)`}
             textAnchor="end"
           />
         </svg>
