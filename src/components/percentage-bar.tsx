@@ -72,27 +72,7 @@ const PercentageBar = ({
         rx={rx}
         width={orientation === "horizontal" ? percentage : width}
         height={orientation === "vertical" ? percentage : height}
-      >
-        {orientation === "horizontal" ? (
-          <animate
-            attributeName="width"
-            from={0}
-            to={percentage}
-            dur="0.6s"
-            fill="freeze"
-          />
-        ) : (
-          <animate
-            attributeName="height"
-            from={0}
-            to={percentage}
-            dur="1s"
-            calcMode="spline"
-            keySplines="0.42 0 1 1"
-            fill="freeze"
-          />
-        )}
-      </rect>
+      />
     </g>
   );
 };
