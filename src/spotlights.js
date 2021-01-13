@@ -17,8 +17,8 @@ const toggleActiveStep = (index, steps) => {
 
 export const resetScene = (figure) => {
   updateBGColor(figure);
-  figure.querySelector("p#scene-counter").textContent = "Off";
-  figure.querySelector("p#index-counter").textContent = "Off";
+  // figure.querySelector("p#scene-counter").textContent = "Off";
+  // figure.querySelector("p#index-counter").textContent = "Off";
 };
 
 export const handleStepEnter = (figure, steps) => ({
@@ -27,8 +27,8 @@ export const handleStepEnter = (figure, steps) => ({
   // direction,
 }) => {
   toggleActiveStep(index, steps);
-  figure.querySelector("p#scene-counter").textContent = "On";
-  figure.querySelector("p#index-counter").textContent = index;
+  // figure.querySelector("p#scene-counter").textContent = "On";
+  // figure.querySelector("p#index-counter").textContent = index;
   updateBGColor(figure, element.dataset.color);
 };
 

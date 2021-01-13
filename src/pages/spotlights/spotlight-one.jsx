@@ -5,11 +5,20 @@ import scrollama from "scrollama";
 import story from "../../../data/spotlights/spotlight-1.json";
 import Iframe from "../../components/datawrapper";
 import Layout from "../../components/layout-spotlights";
+import SpotlightChart from "../../components/spotlight-chart";
 import ScrollySteps from "../../components/spotlight-steps";
 import MyImage from "../../images/spotlights/datawrapper-map-dummy.png";
 import {setupSpotlight} from "../../spotlights";
 
+const chartData = [
+  {id: "twitter", name: "Twitter", value: 37},
+  {id: "ooredo", name: "Ooredo", value: 54},
+  {id: "apple", name: "Apple", value: 10},
+  {id: "amazon", name: "Amazon", value: 67},
+];
+
 const SpotlightOne = () => {
+  // We store the current scroll step.
   const [currentStep, setCurrentStep] = useState();
   const scrolly1El = useRef(undefined);
   const scroller1 = useMemo(() => scrollama(), []);
@@ -18,8 +27,9 @@ const SpotlightOne = () => {
     // arguments of both call back functions are the arguments of the callback
     // call emitted by the scrollama.onStepEnter/onStepExit callbacks.
     const onStepEnter = ({index, direction}) => {
-      // we set the current active step
-      setCurrentStep(index);
+      // we set the current active step. Scrollama indices are 1 based, we adopt
+      // a 0 based index for the current step.
+      setCurrentStep(index - 1);
       console.log("Entering a step.", index, direction);
     };
 
@@ -39,9 +49,6 @@ const SpotlightOne = () => {
       unmount1();
     };
   }, [scroller1, scrolly1El]);
-
-  // just to demonstrate that you have the current step available.
-  console.log("Current Step", currentStep);
 
   return (
     <Layout>
@@ -111,7 +118,9 @@ const SpotlightOne = () => {
 
           <div id="scrolly-canvas" className="scrolly-canvas">
             <figure className="scrolly-figure bg-gray-200">
-              <p id="scene-counter">Off</p>
+              <p id="scene-counter">
+                <SpotlightChart data={chartData} highlightedBar={currentStep} />
+              </p>
               <p id="index-counter">Off</p>
             </figure>
           </div>
