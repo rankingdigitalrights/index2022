@@ -1,5 +1,5 @@
 import c from "clsx";
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import {CompanyRank} from "../types";
 import GraphLabel from "./graph-label";
@@ -20,12 +20,41 @@ const CompanyRankChart = ({
   width = 150,
   height = 10,
 }: CompanyRankChartProps) => {
+  // eslint-disable-next-line unicorn/no-null
+  const chartRef = useRef<HTMLDivElement>(null);
+
+  // Set the default width of the indicator chart to 0 to avoid a visible
+  // rerender when the page loads the first time. React needs to render the
+  // chart once in order to figure out the width of the surrounding div
+  // element. Better not to show any graph than a graph with the wrong width
+  // before resizing it to the appropriate width.
+  const [chartWidth, setChartWidth] = useState(0);
+
+  useEffect(() => {
+    const resize = () => {
+      if (!chartRef?.current?.offsetWidth) return;
+      const divWidth = chartRef.current.offsetWidth;
+      setChartWidth(divWidth - 130);
+    };
+
+    window.addEventListener("resize", resize);
+
+    resize();
+
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, [chartRef]);
+  console.log(chartWidth);
+
   const [highlightedCompany, setHighlightedCompany] = useState<
     string | undefined
   >();
   return (
     <div className="flex flex-col">
-      {ranking.map(({id, companyPretty, score}) => {
+      {ranking.map(({id, companyPretty, score}, idx) => {
+        // eslint-disable-next-line unicorn/no-null
+        const ref = idx === 0 ? chartRef : null;
         const isActiveCompany = id === activeCompany;
         const isHighlightedCompany = id === highlightedCompany;
 
@@ -39,38 +68,42 @@ const CompanyRankChart = ({
             : "text-disabled-dark",
         );
 
-        const scoreClassName = c("ml-3 pl-1 pr-1 select-none", {
+        const scoreClassName = c("ml-3 select-none", {
           "text-white bg-prissian score-label": isActiveCompany,
         });
 
         return (
           <div
+            ref={ref}
             key={id}
             className={className}
             onMouseEnter={() => setHighlightedCompany(id)}
             onMouseLeave={() => setHighlightedCompany(undefined)}
           >
             <button
-              className="font-circular w-24 mr-2 select-none text-left"
+              className="font-circular w-20 select-none text-left"
               onClick={() => onClick(id)}
             >
               {companyPretty}
             </button>
+
             <svg
+              className=""
               version="1"
               xmlns="http://www.w3.org/2000/svg"
-              width={width}
+              width={chartWidth === 0 ? 0 : chartWidth}
               height={height}
               transform="translate(0, 0)"
             >
               <PercentageBar
                 value={score}
-                width={width}
+                width={chartWidth === 0 ? 0 : chartWidth}
                 height={height}
                 className={barClassName}
               />
             </svg>
-            <div className="relative w-24">
+
+            <div className="relative">
               <span className={scoreClassName}>{score}%</span>
             </div>
           </div>
@@ -81,7 +114,7 @@ const CompanyRankChart = ({
         <svg
           version="1"
           xmlns="http://www.w3.org/2000/svg"
-          width={width}
+          width={chartWidth}
           height={height}
           transform="translate(0, 0)"
         >

@@ -32,7 +32,7 @@ const PercentageBar = ({
 
   if (isNA(value))
     return (
-      <g transform={transform}>
+      <g width={width} transform={transform}>
         <rect
           className="text-disabled-light fill-current"
           x={0}
@@ -51,6 +51,7 @@ const PercentageBar = ({
 
   return (
     <g
+      width={width}
       transform={
         orientation === "horizontal"
           ? transform
@@ -69,8 +70,8 @@ const PercentageBar = ({
         x={0}
         y={0}
         rx={rx}
-        width={orientation === "horizontal" ? 0 : width}
-        height={orientation === "vertical" ? 0 : height}
+        width={orientation === "horizontal" ? percentage : width}
+        height={orientation === "vertical" ? percentage : height}
       >
         {orientation === "horizontal" ? (
           <animate
