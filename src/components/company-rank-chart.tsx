@@ -45,7 +45,6 @@ const CompanyRankChart = ({
       window.removeEventListener("resize", resize);
     };
   }, [chartRef]);
-  console.log(chartWidth);
 
   const [highlightedCompany, setHighlightedCompany] = useState<
     string | undefined
