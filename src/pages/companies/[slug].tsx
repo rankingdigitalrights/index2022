@@ -71,8 +71,8 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
     <Layout>
       <div className="relative">
         <div className="absolute flex flex-row w-full h-full top-0">
-          <div className="md:w-3/5 w-full md:bg-prissian" />
-          <div className="md:w-2/5 w-full md:bg-beige" />
+          <div className="md:w-3/5 xl:w-7/12 w-full md:bg-prissian" />
+          <div className="md:w-2/5 xl:w-5/12 w-full md:bg-beige" />
         </div>
 
         <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between md:w-10/12 lg:w-8/12">
