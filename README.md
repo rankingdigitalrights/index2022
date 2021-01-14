@@ -62,7 +62,7 @@ Open [http://localhost:3000/index2020](http://localhost:3000/index2020) with you
 ### Update HTML meta tags
 
 1. [Fetch the latest version](#fetch-the-latest-version).
-2. Edit [`data/html-meta.json`](./data/html-meta-json) and update fields as needed. The file is in JSON format and consists of keys and values. Each key generates one entry in the HTML `<head>` section in the form of `<meta name="<key>" content="<value>" />`. The only required keys in this file are `title` and `description`. The other keys are taken as they are.
+2. Edit [`data/html-meta.json`](./data/html-meta.json) and update fields as needed. The file is in JSON format and consists of keys and values. Each key generates one entry in the HTML `<head>` section in the form of `<meta name="<key>" content="<value>" />`. The only required keys in this file are `title` and `description`. The other keys are taken as they are.
 3. [Commit data changes](#commit-data-changes).
 4. _Optionally:_ [Run the local development server](#run-the-local-development-server) to verify the changes are working as expected.
 5. [Deploy website](#deploy-website).
