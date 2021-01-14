@@ -2,6 +2,50 @@
 
 > Surveying internet and telecommunications companies on user privacy and freedom of expression
 
+## I want to do ...
+
+There are a few common tasks that developers and administrators of this website want to commonly do. This is a summary of each of these tasks and recipes on how to them. All of those tasks are executed on the terminal. Please see [Setup Development Environment](#setup-development-environment) and make sure the environment and dependencies are set up.
+
+### Fetch the latest version
+
+```sh
+git pull
+yarn install
+```
+
+### Commit data changes
+
+```sh
+git add data
+git commit -m "update website data"
+git push
+```
+
+### Deploy website
+
+The website can be deployed to staging or to production. The deploy works such that it builds the complete website locally on your own computer and then copies your version of the website to the remote server.
+
+#### Deploy to staging
+
+```sh
+yarn deploy
+```
+
+#### Deploy to production
+
+Use the `-p` flag to deploy to production instead.
+
+```sh
+yarn deploy -p
+```
+
+### Update HTML meta tags
+
+1. [Fetch the latest version](#fetch-the-latest-version).
+2. Edit [`data/html-meta.json`](./data/html-meta-json) and update fields as needed. The file is in JSON format and consists of keys and values. Each key generates one entry in the HTML `<head>` section in the form of `<meta name="<key>" content="<value>" />`. The only required keys in this file are `title` and `description`. The other keys are taken as they are.
+3. [Commit data changes](#commit-data-changes)
+4. [Deploy website](#deploy-website)
+
 ## Setup Development Environment
 
 Make sure to have a recent version of [NodeJS](https://nodejs.org). This project is developed using NodeJS 12. Further, install the [Yarn package manager](https://yarnpkg.com/).
@@ -42,16 +86,6 @@ yarn storybook
 ```
 
 The Storybook is accessible at `http://localhost:6006`.
-
-### Deploy to remote
-
-The [`.scripts/deploy.sh`](.scripts/deploy.sh) script can be used to deploy the website to the remote. As a default it deploys to the staging area. Use the `-p` flag to deploy to production instead.
-
-```sh
-yarn deploy
-# or to deploy to production
-yarn deploy -p
-```
 
 ### Navigation
 
