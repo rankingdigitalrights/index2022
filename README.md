@@ -1,30 +1,20 @@
-# Index 2020 - Proof of Concept
+# Ranking Digital Rights - 2020 Corporate Accountability Index
 
-This is a test to see how well this stack would work for the Index 2020.
+> Surveying internet and telecommunications companies on user privacy and freedom of expression
 
-## Requirements
+## Setup Development Environment
 
 Make sure to have a recent version of [NodeJS](https://nodejs.org). This project is developed using NodeJS 12. Further, install the [Yarn package manager](https://yarnpkg.com/).
 
 To fetch the editorial content from Google Docs the authentication token for Google Drive has to be placed in the `./.auth.json` file in the repository root.
 
-## Getting Started
+### Dependencies
 
 Install all dependencies,
 
 ```sh
 yarn install
 ```
-
-### Storybook
-
-There is a [Storybook](https://storybook.js.org/) for UI component development.
-
-```sh
-yarn storybook
-```
-
-The Storybook is accessible at `http://localhost:6006`.
 
 ### Development server
 
@@ -43,11 +33,15 @@ yarn verify
 
 This will run `yarn lint` and `yarn type-check`.
 
-### Production builds
+### Storybook
+
+There is a [Storybook](https://storybook.js.org/) for UI component development.
 
 ```sh
-yarn prod
+yarn storybook
 ```
+
+The Storybook is accessible at `http://localhost:6006`.
 
 ### Deploy to remote
 
@@ -65,19 +59,4 @@ The navigation structure is defined as a JSON file in [`data/navigation.json`](d
 
 ## `indexctl`
 
-The `bin/indexctl.ts` script provides operational support for the index 2020. See all available commands by calling `yarn indexctl -h`.
-
-```sh
-$ yarn indexctl -h
-
-yarn run v1.22.4
-$ ts-node --transpile-only -P tsconfig.ts-node.json bin/indexctl.ts -h
-indexctl <command>
-
-Commands:
-  indexctl fixtures    generate data fixtures.
-  indexctl navigation  generate navigation structure.
-
-Options:
-  -h, --help  Show help                                                [boolean]
-```
+The `bin/indexctl.ts` script provides operational support for the index 2020. The command can be invoked with `yarn indexctl`. See all available commands by calling `yarn indexctl -h`.
