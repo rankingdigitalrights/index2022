@@ -32,7 +32,7 @@ const CompanyRankChart = ({
     const resize = () => {
       if (!chartRef?.current?.offsetWidth) return;
       const divWidth = chartRef.current.offsetWidth;
-      setChartWidth(divWidth - 130);
+      setChartWidth(divWidth - 130 < 0 ? 0 : divWidth - 130);
     };
 
     window.addEventListener("resize", resize);
@@ -88,13 +88,13 @@ const CompanyRankChart = ({
               className=""
               version="1"
               xmlns="http://www.w3.org/2000/svg"
-              width={chartWidth === 0 ? 0 : chartWidth}
+              width={chartWidth}
               height={height}
               transform="translate(0, 0)"
             >
               <PercentageBar
                 value={score}
-                width={chartWidth === 0 ? 0 : chartWidth}
+                width={chartWidth}
                 height={height}
                 className={barClassName}
               />

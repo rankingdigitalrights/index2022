@@ -31,7 +31,7 @@ const CompanySection = ({
     const resize = () => {
       if (!chartRef?.current?.offsetWidth) return;
       const width = chartRef.current.offsetWidth;
-      setChartWidth(width);
+      setChartWidth(width < 0 ? 0 : width);
     };
 
     window.addEventListener("resize", resize);

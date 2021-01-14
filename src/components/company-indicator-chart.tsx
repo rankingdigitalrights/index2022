@@ -41,6 +41,10 @@ const CompanyIndicatorChart = ({
     );
   };
 
+  // FIXME: I make sure that I don't attempt to render rects that have a
+  // negative width. There might be a nicer way to make sure of this.
+  const chartWidth = width - 40 < 0 ? 0 : width - 40;
+
   return (
     <div>
       {indicators.map(
@@ -98,7 +102,7 @@ const CompanyIndicatorChart = ({
                   >
                     <PercentageBar
                       value={mapScore(score)}
-                      width={width - 40}
+                      width={chartWidth}
                       height={9}
                       className={
                         isHighlightedIndicator ? highlightClassName : className
@@ -122,6 +126,8 @@ const CompanyIndicatorChart = ({
 
               {isOpen &&
                 familyMembers.map((m) => {
+                  const mChartWidth =
+                    chartWidth - 1 < 0 ? chartWidth : chartWidth - 8;
                   const mIndicatorPretty = `${m.display}. ${m.label}`;
 
                   return (
@@ -143,13 +149,13 @@ const CompanyIndicatorChart = ({
                           <svg
                             version="1"
                             xmlns="http://www.w3.org/2000/svg"
-                            width={width - 50}
+                            width={mChartWidth}
                             height={10}
                             transform="translate(0, 0)"
                           >
                             <PercentageBar
                               value={mapScore(m.score)}
-                              width={width - 50}
+                              width={mChartWidth}
                               height={9}
                               className={
                                 isHighlightedIndicator
