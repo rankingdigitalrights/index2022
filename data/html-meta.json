@@ -1,0 +1,20 @@
+{
+  "title": "Ranking Digital Rights - 2020 Corporate Accountability Index",
+  "description": "Surveying internet and telecommunications companies on user privacy and freedom of expression",
+
+  "og:locale": "en_US",
+  "og:type": "article",
+  "og:title": "2020 Ranking Digital Rights Corporate Accountability Index",
+  "og:description": "24 of the world’s most powerful internet, mobile, and telecommunications companies' disclosed policies and practices affecting users’ freedom of expression and privacy.",
+  "og:site_name": "Ranking Digital Rights",
+  "og:image": "/index2020/2020RDRranking.png",
+
+  "twitter:card": "summary_large_image",
+  "twitter:site": "@rankingrights",
+  "twitter:title": "2020 Ranking Digital Rights Corporate Accountability Index",
+  "twitter:description": "24 of the world’s most powerful internet, mobile, and telecommunications companies' disclosed policies and practices affecting users’ freedom of expression and privacy.",
+  "twitter:domain": "Ranking Digital Rights",
+  "twitter:image": "/index2020/2020RDRranking.png",
+
+  "msapplication-TileImage": "/index2020/cropped-rdr_icon_black-270x270.png"
+}

@@ -1,6 +1,6 @@
-import Head from "next/head";
 import React from "react";
 
+import HtmlHead from "./html-head";
 import Navigation from "./navigation";
 
 interface LayoutProps {
@@ -10,10 +10,7 @@ interface LayoutProps {
 const Layout = ({children}: LayoutProps) => {
   return (
     <div>
-      <Head>
-        <title>Ranking Digital Rights - Index 2020</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <HtmlHead />
 
       <header className="container mx-auto pt-4 mb-8 hidden sm:block">
         <Navigation />
