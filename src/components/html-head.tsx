@@ -10,6 +10,9 @@ const HtmlHead = () => {
     key.startsWith("twitter"),
   );
   const ogTags = Object.keys(metaTags).filter((key) => key.startsWith("og"));
+  const otherTags = Object.keys(metaTags).filter(
+    (key) => !(key.startsWith("twitter") || key.startsWith("og")),
+  );
 
   return (
     <Head>
@@ -28,6 +31,12 @@ const HtmlHead = () => {
       <>
         {ogTags.map((property) => (
           <meta property={property} content={metaTags[property]} />
+        ))}
+      </>
+
+      <>
+        {otherTags.map((name) => (
+          <meta name={name} content={metaTags[name]} />
         ))}
       </>
 
