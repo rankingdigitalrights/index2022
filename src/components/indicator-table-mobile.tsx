@@ -101,13 +101,15 @@ const IndicatorTableMobile = ({
                     </div>
                   );
                 })}
-                <div className="flex justify-evenly items-center pl-1 pr-1 border-t border-b border-disabled-dark">
-                  <div className="flex justify-between items-center w-9/12">
-                    <span className="font-bold text-center w-24 p-2">
+                <div className="flex justify-between items-center pl-1 pr-1 border-t border-b border-disabled-dark">
+                  <div className="w-1/12" />
+                  <div className="flex justify-around items-center w-10/12">
+                    <span className="font-bold text-center p-2 w-5/12">
                       Average
                     </span>
-                    <span className="text-center w-24 p-2">{average}</span>
+                    <span className="pl-10 p-2 w-5/12">{average}</span>
                   </div>
+                  <div className="w-1/12" />
                 </div>
               </SwiperSlide>
             );
