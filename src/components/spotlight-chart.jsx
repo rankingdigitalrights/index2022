@@ -10,7 +10,8 @@ const SpotlightChart = ({data, highlightedBar}) => {
       {data.map(({id, name, value}, idx) => {
         const isActiveBar = idx === highlightedBar;
 
-        const barClassName = c(
+        const textClass = c(isActiveBar ? "label" : "text-disabled-dark");
+        const barClass = c(
           isActiveBar ? "text-prissian" : "text-disabled-dark",
         );
 
@@ -19,7 +20,7 @@ const SpotlightChart = ({data, highlightedBar}) => {
             key={id}
             className="flex justify-between items-center font-circular text-xs"
           >
-            <span>{name}</span>
+            <span className={textClass}>{name}</span>
 
             <svg
               className="ml-2"
@@ -33,7 +34,7 @@ const SpotlightChart = ({data, highlightedBar}) => {
                 value={value}
                 width={300}
                 height={10}
-                className={barClassName}
+                className={barClass}
               />
             </svg>
           </div>

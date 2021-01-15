@@ -1,6 +1,6 @@
 import React from "react";
 
-import HtmlHead from "./html-head";
+// import HtmlHead from "./html-head";
 import Navigation from "./navigation";
 import Footer from "./spotlight-footer";
 
@@ -11,7 +11,7 @@ interface LayoutProps {
 const Layout = ({children}: LayoutProps) => {
   return (
     <div>
-      <HtmlHead />
+      {/* <HtmlHead /> */}
 
       <header className="spotlight">
         <Navigation />

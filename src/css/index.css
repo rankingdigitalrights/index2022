@@ -173,14 +173,14 @@
     height: 400px;
     color: white;
     margin-top: 1rem;
-    padding:1rem 2rem;
+    padding: 1rem 2rem;
   }
 
   footer.spotlight ul {
     @apply text-base font-circular;
     margin-top: 0.6rem;
     margin-bottom: 1rem;
-    margin-left: 2rem
+    margin-left: 2rem;
   }
 
   footer.spotlight ul li {
@@ -226,6 +226,10 @@
     margin-right: auto;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  main.spotlight section:first-of-type {
+    padding-top: 30px;
   }
 
   main.spotlight section.scrolly {
@@ -299,12 +303,6 @@
     transition: background-color 0.5s ease-out, width 1s ease-in-out;
   }
 
-  /* figure.scrolly-canvas p {
-    @apply absolute m-0 p-4 text-center text-6xl font-black text-white transform -translate-y-1/2 -translate-x-1/2;
-    top: 50%;
-    left: 50%;
-  } */
-
   div.scrolly-canvas figure.scrolly-figure p#scene-counter {
     @apply fixed m-0 p-4 text-right text-6xl font-black;
     margin: 0;
@@ -313,8 +311,6 @@
     position: fixed;
     top: 60px;
     right: 0;
-    /* -moz-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%); */
     transform: translateY(-50%);
     font-size: 4rem;
     font-weight: 900;
@@ -342,10 +338,11 @@
   .step.invisible {
     visibility: hidden;
     margin: 50vh auto 50vh auto;
+    height: 1vh;
   }
 
   .step {
-    @apply text-white bg-black bg-opacity-25 mx-auto;
+    @apply bg-white mx-auto;
     margin-top: 133vh;
     margin-bottom: 133vh;
   }
@@ -363,7 +360,22 @@
   }
 
   .step p {
-    @apply text-white p-4;
+    @apply p-4;
+  }
+
+  div.scrolly-chart {
+    max-width: 600px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  div.scrolly-chart .label {
+    color: black;
+    font-weight: 700;
   }
 
   /* Spotlights End */
