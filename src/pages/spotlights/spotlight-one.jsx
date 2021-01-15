@@ -83,13 +83,13 @@ const SpotlightOne = () => {
 
   useEffect(() => {
     // arguments passed as ...args from global Step Handler
-    const localOnStepEnter = ({index, direction, element}) => {
+    const localOnStepEnter = ({element}) => {
       // Hook step --> state of viz
       setCurrentStep(element.dataset.step - 1);
       // console.log(`Local Enter: ${index} - ${direction}`);
     };
 
-    const localOnStepExit = ({index, direction}) => {
+    const localOnStepExit = () => {
       // console.log(`Local Exit: ${index} - ${direction}`);
     };
 
