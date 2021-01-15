@@ -91,6 +91,7 @@ const IndicatorTableMobile = ({
                         <div className="cursor-pointer w-1/12">
                           {!isLastService && (
                             <ChevronRight
+                              className="float-right"
                               onClick={() => {
                                 if (swiper) swiper.slideNext();
                               }}
