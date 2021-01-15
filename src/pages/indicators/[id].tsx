@@ -300,7 +300,8 @@ const IndicatorPage = ({
             return (
               <CompanyElements
                 key={`company-element-${companyId}`}
-                indicatorLabel={details.label}
+                indicator={details.name}
+                label={details.label}
                 company={label}
                 score={score}
                 averages={

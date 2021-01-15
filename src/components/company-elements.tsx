@@ -2,9 +2,11 @@ import React from "react";
 
 import {Element, IndicatorElement, IndicatorScore} from "../types";
 import IndicatorTableDesktop from "./indicator-table-desktop";
+import IndicatorTableMobile from "./indicator-table-mobile";
 
 interface CompanyElementsProps {
-  indicatorLabel: string;
+  indicator: string;
+  label: string;
   company: string;
   score: IndicatorScore;
   averages: Record<string, IndicatorScore>;
@@ -15,7 +17,8 @@ interface CompanyElementsProps {
 }
 
 const CompanyElements = ({
-  indicatorLabel,
+  indicator,
+  label,
   company,
   score,
   averages,
@@ -41,7 +44,8 @@ const CompanyElements = ({
 
       <div className="hidden md:block mt-3">
         <IndicatorTableDesktop
-          indicatorLabel={indicatorLabel}
+          key={indicator}
+          indicatorLabel={`${indicator}. ${label}`}
           company={company}
           averages={averages}
           companyElements={companyElements}
@@ -51,7 +55,18 @@ const CompanyElements = ({
         />
       </div>
 
-      <div className="md:hidden mt-3">Mobile View</div>
+      <div className="md:hidden mt-3">
+        <IndicatorTableMobile
+          key={indicator}
+          indicatorLabel={`${indicator}. ${label}`}
+          company={company}
+          averages={averages}
+          companyElements={companyElements}
+          literalValues={literalValues}
+          elementDescriptions={elementDescriptions}
+          services={services}
+        />
+      </div>
     </div>
   );
 };

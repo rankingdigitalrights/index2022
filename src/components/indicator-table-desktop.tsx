@@ -4,7 +4,7 @@ import React from "react";
 import {Element, IndicatorElement, IndicatorScore} from "../types";
 import IndicatorElementTag from "./indicator-element-tag";
 
-interface IndicatorTableDesktopProps {
+export interface IndicatorTableProps {
   indicatorLabel: string;
   company: string;
   averages: Record<string, IndicatorScore>;
@@ -22,7 +22,7 @@ const IndicatorTableDesktop = ({
   literalValues,
   elementDescriptions,
   services,
-}: IndicatorTableDesktopProps) => {
+}: IndicatorTableProps) => {
   const templateService = services[0] && companyElements[services[0]];
 
   if (!templateService) return <div />;
