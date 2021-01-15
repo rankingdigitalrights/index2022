@@ -24,7 +24,7 @@ const IndicatorCompaniesChartContainer = ({
   if (hasTelecomScores && hasPlatformScores)
     return (
       <div className="flex flex-col md:flex-row md:justify-between">
-        <div className="flex flex-col pr-3 w-1/2">
+        <div className="flex flex-col pr-3 w-full md:w-1/2">
           <CompanyKindLabel kind="telecom" theme="dark" />
 
           <IndicatorCompaniesChart
@@ -34,7 +34,7 @@ const IndicatorCompaniesChartContainer = ({
           />
         </div>
 
-        <div className="flex flex-col pl-3 w-1/2">
+        <div className="flex flex-col pl-3 w-full md:w-1/2">
           <CompanyKindLabel kind="internet" theme="dark" />
 
           <IndicatorCompaniesChart
