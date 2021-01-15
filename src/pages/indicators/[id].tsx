@@ -283,10 +283,7 @@ const IndicatorPage = ({
               <span className="text-xs font-circular">&nbsp;</span>
 
               <div>
-                <ToggleSwitch
-                  label="Literal values"
-                  onChange={handleToggleSwitch}
-                />
+                <ToggleSwitch label="Points" onChange={handleToggleSwitch} />
               </div>
             </div>
           </div>
