@@ -135,7 +135,7 @@ const strategies: SortStrategies<CompanySelectOption> = new Map<
   SortStrategy<CompanySelectOption>
 >();
 strategies.set(
-  "Alphabetically",
+  "Company",
   (options: CompanySelectOption[]): CompanySelectOption[] => {
     return options.sort((a, b) => {
       if (a.label < b.label) return -1;
@@ -168,7 +168,7 @@ const IndicatorPage = ({
   services,
 }: IndicatorPageProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
-  const [sortStrategy, setSortStrategy] = useState<string>("Alphabetically");
+  const [sortStrategy, setSortStrategy] = useState<string>("Company");
   const [literalValues, setLiteralValues] = useState(false);
 
   const router = useRouter();
@@ -190,8 +190,7 @@ const IndicatorPage = ({
   };
 
   const sortStrategyFn = strategies.get(sortStrategy) || identitySortFn;
-  const companySortStrategyFn =
-    strategies.get("Alphabetically") || identitySortFn;
+  const companySortStrategyFn = strategies.get("Company") || identitySortFn;
 
   const activeSelector: IndicatorSelectOption = {
     value: details.name,
@@ -257,8 +256,8 @@ const IndicatorPage = ({
 
       <div className="bg-beige pt-6 pb-6 mt-6">
         <div className="container mx-auto md:w-8/12 w-11/12">
-          <div className="flex flex-row w-9/12 mx-auto justify-between items-center">
-            <div className="w-1/2 flex flex-col justify-between h-14">
+          <div className="flex flex-col md:flex-row md:w-9/12 md:mx-auto md:justify-between items-center">
+            <div className="w-full md:w-1/2 flex flex-col justify-between h-14">
               <span className="text-sm font-circular">Select companies:</span>
 
               <CompanySelector
@@ -270,7 +269,7 @@ const IndicatorPage = ({
               />
             </div>
 
-            <div className="w-1/4 flex flex-col justify-between h-14 mx-6">
+            <div className="w-full mt-2 md:mt-0 md:w-1/4 flex flex-col justify-between h-14 mx-6">
               <span className="text-sm font-circular">Sort:</span>
 
               <SortSelector
@@ -280,7 +279,7 @@ const IndicatorPage = ({
               />
             </div>
 
-            <div className="flex flex-col justify-between h-14">
+            <div className="w-full md:w-1/4 flex flex-col lg:flex-row lg:justify-between h-14">
               <span className="text-xs font-circular">&nbsp;</span>
 
               <div>
