@@ -1,8 +1,8 @@
 import React from "react";
 
+import Footer from "./footer";
 // import HtmlHead from "./html-head";
 import Navigation from "./navigation";
-import Footer from "./spotlight-footer";
 
 interface LayoutProps {
   children: React.ReactNode;

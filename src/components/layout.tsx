@@ -1,5 +1,6 @@
 import React from "react";
 
+import Footer from "./footer";
 import HtmlHead from "./html-head";
 import Navigation from "./navigation";
 
@@ -17,6 +18,8 @@ const Layout = ({children}: LayoutProps) => {
       </header>
 
       {children}
+
+      <Footer />
     </div>
   );
 };
