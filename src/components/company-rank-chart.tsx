@@ -1,6 +1,7 @@
 import c from "clsx";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useState} from "react";
 
+import {useChartResize} from "../hooks";
 import {CompanyRank} from "../types";
 import GraphLabel from "./graph-label";
 import PercentageBar from "./percentage-bar";
@@ -18,35 +19,14 @@ const CompanyRankChart = ({
   onClick,
   height = 10,
 }: CompanyRankChartProps) => {
-  // eslint-disable-next-line unicorn/no-null
-  const chartRef = useRef<HTMLDivElement>(null);
-
-  // Set the default width of the indicator chart to 0 to avoid a visible
-  // rerender when the page loads the first time. React needs to render the
-  // chart once in order to figure out the width of the surrounding div
-  // element. Better not to show any graph than a graph with the wrong width
-  // before resizing it to the appropriate width.
-  const [chartWidth, setChartWidth] = useState(0);
-
-  useEffect(() => {
-    const resize = () => {
-      if (!chartRef?.current?.offsetWidth) return;
-      const divWidth = chartRef.current.offsetWidth;
-      setChartWidth(divWidth - 130 < 0 ? 0 : divWidth - 130);
-    };
-
-    window.addEventListener("resize", resize);
-
-    resize();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, [chartRef]);
+  const [chartRef, divWidth] = useChartResize();
 
   const [highlightedCompany, setHighlightedCompany] = useState<
     string | undefined
   >();
+
+  const chartWidth = divWidth - 130 < 0 ? 0 : divWidth - 130;
+
   return (
     <div className="flex flex-col">
       {ranking.map(({id, companyPretty, score}, idx) => {

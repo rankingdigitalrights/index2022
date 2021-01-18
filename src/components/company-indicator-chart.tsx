@@ -1,8 +1,9 @@
 import c from "clsx";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useState} from "react";
 
 import ChevronDown from "../../static/chevron-down.svg";
 import ChevronUp from "../../static/chevron-up.svg";
+import {useChartResize} from "../hooks";
 import {IndicatorNested} from "../types";
 import {mapScore} from "../utils";
 import PercentageBar from "./percentage-bar";
@@ -18,15 +19,7 @@ const CompanyIndicatorChart = ({
   indicators,
   onClick,
 }: CompanyIndicatorChartProps) => {
-  // eslint-disable-next-line unicorn/no-null
-  const chartRef = useRef<HTMLDivElement>(null);
-
-  // Set the default width of the indicator chart to 0 to avoid a visible
-  // rerender when the page loads the first time. React needs to render the
-  // chart once in order to figure out the width of the surrounding div
-  // element. Better not to show any graph than a graph with the wrong width
-  // before resizing it to the appropriate width.
-  const [chartWidth, setChartWidth] = useState(0);
+  const [chartRef, divWidth] = useChartResize();
 
   const [collapsedIndicators, setCollapsedIndicators] = useState<
     CollapseableIndicator
@@ -41,22 +34,6 @@ const CompanyIndicatorChart = ({
     string | undefined
   >();
 
-  useEffect(() => {
-    const resize = () => {
-      if (!chartRef?.current?.offsetWidth) return;
-      const width = chartRef.current.offsetWidth;
-      setChartWidth(width < 0 ? 0 : width - 45);
-    };
-
-    window.addEventListener("resize", resize);
-
-    resize();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, [chartRef]);
-
   const handleCollapse = (indicator: string) => {
     setCollapsedIndicators(
       new Map(
@@ -64,6 +41,8 @@ const CompanyIndicatorChart = ({
       ),
     );
   };
+
+  const chartWidth = divWidth < 0 ? 0 : divWidth;
 
   return (
     <div ref={chartRef}>
@@ -147,7 +126,7 @@ const CompanyIndicatorChart = ({
               {isOpen &&
                 familyMembers.map((m) => {
                   const mChartWidth =
-                    chartWidth - 1 < 0 ? chartWidth : chartWidth - 8;
+                    chartWidth - 8 < 0 ? chartWidth : chartWidth - 8;
                   const mIndicatorPretty = `${m.display}. ${m.label}`;
 
                   return (
