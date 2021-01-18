@@ -27,8 +27,8 @@ type GoogleDoc = {
  * The ID's of the Google Drive folders. Maybe move this into some
  * configuration file?
  */
-const rootFolder = "1Hu0Bi5yMBk-NSzsoTMV42ldA-d0ji2vA";
-const companiesFolder = "1aByjKhv9N9nNQBRNK1GVdraU0qorv7dX";
+const rootFolder = "1utj9lW171_bANdksQsExR4ObqhDXT-eZ";
+const companiesFolder = "1ynbMjZEfM8yPJNSlV63_VvvXrbMTzMYo";
 
 // The scopes we require to have the right permissions.
 const SCOPES = ["https://www.googleapis.com/auth/drive.readonly"];
