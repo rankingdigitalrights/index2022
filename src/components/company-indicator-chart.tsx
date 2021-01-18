@@ -1,5 +1,5 @@
 import c from "clsx";
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import ChevronDown from "../../static/chevron-down.svg";
 import ChevronUp from "../../static/chevron-up.svg";
@@ -10,7 +10,6 @@ import PercentageBar from "./percentage-bar";
 interface CompanyIndicatorChartProps {
   indicators: IndicatorNested[];
   onClick: (id: string) => void;
-  width?: number;
 }
 
 type CollapseableIndicator = Map<string, boolean>;
@@ -18,8 +17,17 @@ type CollapseableIndicator = Map<string, boolean>;
 const CompanyIndicatorChart = ({
   indicators,
   onClick,
-  width = 250,
 }: CompanyIndicatorChartProps) => {
+  // eslint-disable-next-line unicorn/no-null
+  const chartRef = useRef<HTMLDivElement>(null);
+
+  // Set the default width of the indicator chart to 0 to avoid a visible
+  // rerender when the page loads the first time. React needs to render the
+  // chart once in order to figure out the width of the surrounding div
+  // element. Better not to show any graph than a graph with the wrong width
+  // before resizing it to the appropriate width.
+  const [chartWidth, setChartWidth] = useState(0);
+
   const [collapsedIndicators, setCollapsedIndicators] = useState<
     CollapseableIndicator
   >(
@@ -33,6 +41,22 @@ const CompanyIndicatorChart = ({
     string | undefined
   >();
 
+  useEffect(() => {
+    const resize = () => {
+      if (!chartRef?.current?.offsetWidth) return;
+      const width = chartRef.current.offsetWidth;
+      setChartWidth(width < 0 ? 0 : width - 45);
+    };
+
+    window.addEventListener("resize", resize);
+
+    resize();
+
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, [chartRef]);
+
   const handleCollapse = (indicator: string) => {
     setCollapsedIndicators(
       new Map(
@@ -41,12 +65,8 @@ const CompanyIndicatorChart = ({
     );
   };
 
-  // FIXME: I make sure that I don't attempt to render rects that have a
-  // negative width. There might be a nicer way to make sure of this.
-  const chartWidth = width - 40 < 0 ? 0 : width - 40;
-
   return (
-    <div>
+    <div ref={chartRef}>
       {indicators.map(
         ({indicator, display, label, category, score, familyMembers}, idx) => {
           const isHighlightedIndicator = indicator === highlightedIndicator;

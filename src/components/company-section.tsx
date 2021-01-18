@@ -1,5 +1,5 @@
 import c from "clsx";
-import React, {useEffect, useRef, useState} from "react";
+import React from "react";
 
 import {IndicatorCategory, IndicatorNested} from "../types";
 import CompanyIndicatorChart from "./company-indicator-chart";
@@ -17,32 +17,6 @@ const CompanySection = ({
   indicators,
   onClick,
 }: CompanySectionProps) => {
-  // eslint-disable-next-line unicorn/no-null
-  const chartRef = useRef<HTMLDivElement>(null);
-
-  // Set the default width of the indicator chart to 0 to avoid a visible
-  // rerender when the page loads the first time. React needs to render the
-  // chart once in order to figure out the width of the surrounding div
-  // element. Better not to show any graph than a graph with the wrong width
-  // before resizing it to the appropriate width.
-  const [chartWidth, setChartWidth] = useState(0);
-
-  useEffect(() => {
-    const resize = () => {
-      if (!chartRef?.current?.offsetWidth) return;
-      const width = chartRef.current.offsetWidth;
-      setChartWidth(width < 0 ? 0 : width);
-    };
-
-    window.addEventListener("resize", resize);
-
-    resize();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, [chartRef]);
-
   let title;
   if (category === "governance") {
     title = "Governance";
@@ -72,16 +46,12 @@ const CompanySection = ({
           <div dangerouslySetInnerHTML={{__html: text}} />
         </div>
 
-        <div ref={chartRef} className="md:w-2/6 md:ml-3">
+        <div className="md:w-2/6 md:ml-3">
           <div className="flex flex-col justify-end md:h-16 mb-12 mt-4 md:mt-0">
             <h3 className="text-lg font-circular">Indicators</h3>
           </div>
 
-          <CompanyIndicatorChart
-            indicators={indicators}
-            width={chartWidth}
-            onClick={onClick}
-          />
+          <CompanyIndicatorChart indicators={indicators} onClick={onClick} />
         </div>
       </div>
     </section>
