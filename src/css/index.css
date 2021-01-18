@@ -1,9 +1,13 @@
 @import "swiper/swiper.min.css";
+@import "swiper/components/pagination/pagination.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --swiper-theme-color: #1c5275;
+  }
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Black.otf);

@@ -2,6 +2,9 @@ import "../css/index.css";
 
 import {AppProps} from "next/app";
 import React, {useEffect, useState} from "react";
+import SwiperCore, {Pagination} from "swiper";
+
+SwiperCore.use([Pagination]);
 
 const MyApp = ({Component, pageProps}: AppProps) => {
   const [firstTabHandled, setFirstTabHandled] = useState(false);
