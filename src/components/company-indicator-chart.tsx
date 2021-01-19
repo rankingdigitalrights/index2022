@@ -135,7 +135,7 @@ const CompanyIndicatorChart = ({
               {isOpen &&
                 familyMembers.map((m) => {
                   const mChartWidth =
-                    chartWidth - 9 < 0 ? chartWidth : chartWidth - 9;
+                    chartWidth - 18 < 0 ? chartWidth : chartWidth - 18;
 
                   const mIndicatorPretty = `${m.display}. ${m.label}`;
                   const isHighlightedMIndicator =
@@ -144,7 +144,7 @@ const CompanyIndicatorChart = ({
                   return (
                     <div
                       key={`company-indicator-chart-${m.indicator}`}
-                      className="pl-2 flex flex-col mt-2"
+                      className="pl-4 flex flex-col mt-2"
                       onMouseEnter={() => setHighlightedIndicator(m.indicator)}
                       onMouseLeave={() => setHighlightedIndicator(undefined)}
                     >
