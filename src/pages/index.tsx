@@ -1,3 +1,4 @@
+import {useRouter} from "next/router";
 import React, {useState} from "react";
 import {Swiper as SwiperType} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
@@ -57,6 +58,7 @@ const Home = ({
   freedomRanking,
   privacyRanking,
 }: HomeProps) => {
+  const router = useRouter();
   const [swiper, setSwiper] = useState<SwiperType>();
   const [selectedCategory, setSelectedCategory] = useState<
     IndicatorCategoryExt
@@ -100,6 +102,10 @@ const Home = ({
     }
   };
 
+  const handleCompanyClick = (id: string) => {
+    router.push(`/companies/${id}`);
+  };
+
   return (
     <Layout>
       <div className="relative">
@@ -128,13 +134,13 @@ const Home = ({
             <HomeRankChart
               className="w-full md:w-1/2 px-3"
               ranking={platformRankings}
-              onClick={(id: string) => console.log(id)}
+              onClick={handleCompanyClick}
             />
 
             <HomeRankChart
               className="w-full md:w-1/2 mt-6 md:mt-0 px-3"
               ranking={telecomRankings}
-              onClick={(id: string) => console.log(id)}
+              onClick={handleCompanyClick}
             />
           </div>
         </div>
