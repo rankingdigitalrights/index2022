@@ -42,7 +42,7 @@ const CompanyIndicatorChart = ({
     );
   };
 
-  const chartWidth = divWidth < 0 ? 0 : divWidth;
+  const chartWidth = divWidth < 0 ? 0 : divWidth - 52;
 
   return (
     <div ref={chartRef}>

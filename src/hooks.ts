@@ -15,7 +15,7 @@ export const useChartResize = (): [React.RefObject<HTMLDivElement>, number] => {
     const resize = (): void => {
       if (!chartRef?.current?.offsetWidth) return;
       const width = chartRef.current.offsetWidth;
-      setChartWidth(width < 0 ? 0 : width - 45);
+      setChartWidth(width < 0 ? 0 : width);
     };
 
     window.addEventListener("resize", resize);
