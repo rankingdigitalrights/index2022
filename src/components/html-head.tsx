@@ -24,19 +24,19 @@ const HtmlHead = () => {
 
       <>
         {twitterTags.map((name) => (
-          <meta name={name} content={metaTags[name]} />
+          <meta key={name} name={name} content={metaTags[name]} />
         ))}
       </>
 
       <>
-        {ogTags.map((property) => (
-          <meta property={property} content={metaTags[property]} />
+        {ogTags.map((name) => (
+          <meta key={name} property={name} content={metaTags[name]} />
         ))}
       </>
 
       <>
         {otherTags.map((name) => (
-          <meta name={name} content={metaTags[name]} />
+          <meta key={name} name={name} content={metaTags[name]} />
         ))}
       </>
 
