@@ -19,7 +19,7 @@ import {
 } from "../src/csv";
 import {companyDetails, policyRecommendations} from "../src/google";
 import generateNav from "../src/navigation";
-import {CompanyKind, IndicatorCategory} from "../src/types";
+import {CompanyKind, IndicatorCategoryExt} from "../src/types";
 
 const dataDir = "data";
 
@@ -181,13 +181,21 @@ const writeHtmlFile = (
       await Promise.all(
         (["telecom", "internet"] as CompanyKind[]).map(async (kind) => {
           await Promise.all(
-            (["total", "governance", "freedom", "privacy"] as Array<
-              IndicatorCategory | "total"
-            >).map(async (category: IndicatorCategory | "total") => {
-              const target = path.join(rankingsDir, `${kind}-${category}.json`);
-              const ranking = await companyRanking(kind, category);
-              return writeJsonFile(target)(ranking);
-            }),
+            ([
+              "total",
+              "governance",
+              "freedom",
+              "privacy",
+            ] as IndicatorCategoryExt[]).map(
+              async (category: IndicatorCategoryExt) => {
+                const target = path.join(
+                  rankingsDir,
+                  `${kind}-${category}.json`,
+                );
+                const ranking = await companyRanking(kind, category);
+                return writeJsonFile(target)(ranking);
+              },
+            ),
           );
         }),
       );

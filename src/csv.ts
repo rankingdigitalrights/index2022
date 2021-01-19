@@ -16,6 +16,7 @@ import {
   IndicatorAverage,
   IndicatorAverages,
   IndicatorCategory,
+  IndicatorCategoryExt,
   IndicatorCompanyScore,
   IndicatorDetails,
   IndicatorElement,
@@ -955,7 +956,7 @@ export const indicatorIndices = memoizeAsync(
  */
 export const companyRanking = async (
   companyKind: CompanyKind,
-  category: IndicatorCategory | "total" = "total",
+  category: IndicatorCategoryExt,
 ): Promise<CompanyRank[]> => {
   const [companyData, csvCompanyRanks] = await Promise.all([
     companyIndices(),

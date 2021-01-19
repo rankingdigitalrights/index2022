@@ -4,6 +4,8 @@ export type NA = "NA";
 
 export type IndicatorCategory = "governance" | "freedom" | "privacy";
 
+export type IndicatorCategoryExt = IndicatorCategory | "total";
+
 export type IndicatorScore = number | NA;
 
 export type IndicatorNested = {
@@ -55,7 +57,7 @@ export type Indicator = {
   exclude?: CompanyKind;
 };
 
-export type Scores = Record<IndicatorCategory | "total", number>;
+export type Scores = Record<IndicatorCategoryExt, number>;
 
 export type CategoryScores = Record<IndicatorCategory, number>;
 
@@ -71,7 +73,7 @@ export type CompanyRank = {
   companyPretty: string;
   score: number;
   kind: CompanyKind;
-  category: IndicatorCategory | "total";
+  category: IndicatorCategoryExt;
   rank: number;
 };
 
