@@ -1,5 +1,10 @@
 import React from "react";
 
+import LogoEmail from "../images/icons/logo-email.svg";
+import LogoFacebook from "../images/icons/logo-facebook.svg";
+import LogoRss from "../images/icons/logo-rss.svg";
+import LogoTwitter from "../images/icons/logo-twitter.svg";
+
 const Footer = () => {
   return (
     <footer className="bg-black font-circular font-bold text-white text-sm">
@@ -76,29 +81,40 @@ const Footer = () => {
 
           <div className="md:w-1/3 py-6 px-6 md:px-6 md:py-3 md:pl-6">
             <ul className="list-none">
-              <li className="pb-1">RankingRights</li>
               <li className="pb-1">
                 <a
-                  className="text-white"
+                  className="text-white flex items-center"
+                  href="https://facebook.com/rankingrights"
+                >
+                  <LogoFacebook className="w-3 h-3" />
+                  <span className="ml-2">RankingRights</span>
+                </a>
+              </li>
+              <li className="pb-1">
+                <a
+                  className="text-white flex items-center"
                   href="https://twitter.com/rankingrights"
                 >
-                  RankingRights
+                  <LogoTwitter className="w-3 h-3" />
+                  <span className="ml-2">RankingRights</span>
                 </a>
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white"
+                  className="text-white flex items-center"
                   href="https://rankingdigitalrights.org/feed/"
                 >
-                  RSS
+                  <LogoRss className="w-3 h-3" />
+                  <span className="ml-2">RSS</span>
                 </a>
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white"
+                  className="text-white flex items-center"
                   href="mailto:info@rankingdigitalrights.org"
                 >
-                  info@rankingdigitalrights.org
+                  <LogoEmail className="w-3 h-3" />
+                  <span className="ml-2">info@rankingdigitalrights.org</span>
                 </a>
               </li>
             </ul>
