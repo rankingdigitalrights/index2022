@@ -57,6 +57,10 @@ module.exports = {
           default: "#E5DCD2",
           light: "#F7F4F2",
         },
+
+        light: {
+          freedom: "#BCEBE8",
+        },
       },
     },
   },
