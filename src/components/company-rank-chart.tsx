@@ -19,13 +19,11 @@ const CompanyRankChart = ({
   onClick,
   height = 10,
 }: CompanyRankChartProps) => {
-  const [chartRef, divWidth] = useChartResize();
+  const [chartRef, chartWidth] = useChartResize();
 
   const [highlightedCompany, setHighlightedCompany] = useState<
     string | undefined
   >();
-
-  const chartWidth = divWidth - 130 < 0 ? 0 : divWidth - 130;
 
   return (
     <div className="flex flex-col">
@@ -51,38 +49,38 @@ const CompanyRankChart = ({
 
         return (
           <div
-            ref={ref}
             key={id}
             className={className}
             onMouseEnter={() => setHighlightedCompany(id)}
             onMouseLeave={() => setHighlightedCompany(undefined)}
           >
             <button
-              className="font-circular w-20 select-none text-left"
+              className="flex-none font-circular w-20 select-none text-left"
               onClick={() => onClick(id)}
             >
               {companyPretty}
             </button>
 
-            <svg
-              className=""
-              version="1"
-              xmlns="http://www.w3.org/2000/svg"
-              width={chartWidth}
-              height={height}
-              transform="translate(0, 0)"
-            >
-              <PercentageBar
-                value={score}
-                width={chartWidth}
+            <div ref={ref} className="flex-grow ml-1">
+              <svg
+                version="1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="100%"
                 height={height}
-                className={barClassName}
-              />
-            </svg>
+                transform="translate(0, 0)"
+              >
+                <PercentageBar
+                  value={score}
+                  width={chartWidth}
+                  height={height}
+                  className={barClassName}
+                />
+              </svg>
+            </div>
 
             <div
               className={c(
-                "relative w-4",
+                "relative flex-none ml-auto",
                 isActiveCompany ? "score-label" : undefined,
               )}
             >
@@ -92,27 +90,29 @@ const CompanyRankChart = ({
         );
       })}
       <div className="flex">
-        <div className="w-20">&nbsp;</div>
-        <svg
-          version="1"
-          xmlns="http://www.w3.org/2000/svg"
-          width={chartWidth}
-          height={height}
-          transform="translate(0, 0)"
-        >
-          <GraphLabel
-            value="0%"
-            size="extra-small"
-            transform="translate(0,10)"
-          />
+        <div className="flex-none w-20">&nbsp;</div>
+        <div className="flex-grow ml-2">
+          <svg
+            version="1"
+            xmlns="http://www.w3.org/2000/svg"
+            width="100%"
+            height={height}
+            transform="translate(0, 0)"
+          >
+            <GraphLabel
+              value="0%"
+              size="extra-small"
+              transform="translate(0,10)"
+            />
 
-          <GraphLabel
-            value="100%"
-            size="extra-small"
-            transform={`translate(${chartWidth},10)`}
-            textAnchor="end"
-          />
-        </svg>
+            <GraphLabel
+              value="100%"
+              size="extra-small"
+              transform={`translate(${chartWidth - 3},10)`}
+              textAnchor="end"
+            />
+          </svg>
+        </div>
       </div>
     </div>
   );

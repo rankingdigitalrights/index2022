@@ -13,20 +13,19 @@ interface HomeRankChartProps {
 }
 
 const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
-  const [chartRef, divWidth] = useChartResize();
+  const [chartRef, chartWidth] = useChartResize();
 
   const [highlightedCompany, setHighlightedCompany] = useState<
     string | undefined
   >();
 
-  const chartWidth = divWidth - 200 < 0 ? 0 : divWidth - 200;
   const chartHeight = 10;
   const companyKind: CompanyKind = ranking[0]?.kind || "telecom";
 
   return (
     <div className={c("flex flex-col", className)}>
       <div className="flex items-center font-circular text-xs mb-6">
-        <div className="w-24">
+        <div className="flex-none w-24">
           <CompanyKindLabel
             className="text-xs"
             kind={companyKind}
@@ -35,11 +34,11 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
           />
         </div>
 
-        <div className="w-3 md:mr-2">&nbsp;</div>
+        <div className="flex-none w-3 mr-2">&nbsp;</div>
 
-        <div className="w-8 text-center">Rank</div>
+        <div className="flex-none w-8 text-center">Rank</div>
 
-        <div className="w-8 ml-auto">
+        <div className="flex-none w-8 ml-auto">
           <span className="float-right">Score</span>
         </div>
       </div>
@@ -61,7 +60,6 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
 
         return (
           <div
-            ref={ref}
             key={id}
             className={c(
               "flex items-center font-circular text-xs mb-1",
@@ -70,11 +68,11 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
             onMouseEnter={() => setHighlightedCompany(id)}
             onMouseLeave={() => setHighlightedCompany(undefined)}
           >
-            <div className="w-3 mr-2">&nbsp;</div>
+            <div className="flex-none w-3 mr-2">&nbsp;</div>
 
             <button
               className={c(
-                "font-circular w-24 select-none text-left pr-1",
+                "flex-none font-circular w-24 select-none text-left",
                 highlightedClassName,
               )}
               onClick={() => onClick(id)}
@@ -82,32 +80,35 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
               {companyPretty}
             </button>
 
-            <div
-              className={c(
-                "rounded-full h-4 w-4 text-white flex items-center justify-center mx-2",
-                highlightedRankClassName,
-              )}
-            >
-              {rank}
+            <div className="flex-none w-8 flex justify-center">
+              <div
+                className={c(
+                  "rounded-full h-4 w-4 text-white flex items-center justify-center",
+                  highlightedRankClassName,
+                )}
+              >
+                {rank}
+              </div>
             </div>
 
-            <svg
-              className=""
-              version="1"
-              xmlns="http://www.w3.org/2000/svg"
-              width={chartWidth}
-              height={chartHeight}
-              transform="translate(0, 0)"
-            >
-              <PercentageBar
-                value={score}
-                width={chartWidth}
+            <div ref={ref} className="flex-grow mr-1">
+              <svg
+                version="1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="100%"
                 height={chartHeight}
-                className="text-prissian"
-              />
-            </svg>
+                transform="translate(0, 0)"
+              >
+                <PercentageBar
+                  value={score}
+                  width={chartWidth}
+                  height={chartHeight}
+                  className="text-prissian"
+                />
+              </svg>
+            </div>
 
-            <div className="w-4 ml-auto">
+            <div className="flex-none ml-auto">
               <span className="float-right pl-1 pr-1 select-none">
                 {score}%
               </span>
