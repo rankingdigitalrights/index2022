@@ -37,7 +37,7 @@ const extractSection = (
 
 export const normalizeHtml = (src: string): string => {
   // scrub escaped spaces
-  const html = src.replace(/&nbsp;/g, "");
+  const html = src.replace(/&nbsp;/g, " ");
 
   const $ = cheerio.load(html);
 
