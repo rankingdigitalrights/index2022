@@ -71,6 +71,8 @@ export type CompanyRank = {
   companyPretty: string;
   score: number;
   kind: CompanyKind;
+  category: IndicatorCategory | "total";
+  rank: number;
 };
 
 export type ServiceKind =

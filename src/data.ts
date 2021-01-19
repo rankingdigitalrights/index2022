@@ -11,6 +11,7 @@ import {
   Element,
   Indicator,
   IndicatorAverages,
+  IndicatorCategory,
   IndicatorCompanyScore,
   IndicatorDetails,
   IndicatorElements,
@@ -190,9 +191,10 @@ export const indicatorAverages = async (
  * Load the company rankings, sorted descending by the total score.
  */
 export const companyRankingData = async (
-  companyKind: CompanyKind,
+  kind: CompanyKind,
+  category: IndicatorCategory | "total",
 ): Promise<CompanyRank[]> => {
-  return loadJson<CompanyRank[]>(`data/ranking-${companyKind}.json`)();
+  return loadJson<CompanyRank[]>(`data/rankings/${kind}-${category}.json`)();
 };
 
 /*

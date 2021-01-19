@@ -19,7 +19,7 @@ import {
 } from "../src/csv";
 import {companyDetails, policyRecommendations} from "../src/google";
 import generateNav from "../src/navigation";
-import {CompanyKind} from "../src/types";
+import {CompanyKind, IndicatorCategory} from "../src/types";
 
 const dataDir = "data";
 
@@ -42,6 +42,7 @@ const writeHtmlFile = (
     .command("data", "generate data structures.", async () => {
       const companiesDir = "data/companies";
       const indicatorsDir = "data/indicators";
+      const rankingsDir = "data/rankings";
 
       const [
         allCompanies,
@@ -173,14 +174,22 @@ const writeHtmlFile = (
 
       console.log("Generating ranking scores data.");
 
+      await fs.mkdir(path.join(process.cwd(), rankingsDir), {
+        recursive: true,
+      });
+
       await Promise.all(
-        (["telecom", "internet"] as CompanyKind[]).map(
-          async (kind: CompanyKind) => {
-            const target = path.join(dataDir, `ranking-${kind}.json`);
-            const ranking = await companyRanking(kind);
-            return writeJsonFile(target)(ranking);
-          },
-        ),
+        (["telecom", "internet"] as CompanyKind[]).map(async (kind) => {
+          await Promise.all(
+            (["total", "governance", "freedom", "privacy"] as Array<
+              IndicatorCategory | "total"
+            >).map(async (category: IndicatorCategory | "total") => {
+              const target = path.join(rankingsDir, `${kind}-${category}.json`);
+              const ranking = await companyRanking(kind, category);
+              return writeJsonFile(target)(ranking);
+            }),
+          );
+        }),
       );
     })
     .command("fixtures", "generate test fixtures.", async () => {

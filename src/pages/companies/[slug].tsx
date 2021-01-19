@@ -42,7 +42,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params: {slug}}: Params) => {
   const [index, details] = await companyData(slug);
-  const ranking = await companyRankingData(index.kind);
+  const ranking = await companyRankingData(index.kind, "total");
   const services = await companyServices(slug);
 
   // Map from the input format to the internal type.

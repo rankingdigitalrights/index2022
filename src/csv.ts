@@ -949,19 +949,72 @@ export const indicatorIndices = memoizeAsync(
   },
 );
 
+/*
+ * Generate the sorted list of company rankings by company kind and indicator
+ * category.
+ */
 export const companyRanking = async (
   companyKind: CompanyKind,
+  category: IndicatorCategory | "total" = "total",
 ): Promise<CompanyRank[]> => {
-  const index = await companyIndices();
+  const [companyData, csvCompanyRanks] = await Promise.all([
+    companyIndices(),
+    loadcompanyRanksCsv("csv/2020-rankings.csv"),
+  ]);
 
-  return index
-    .filter(({kind}) => kind === companyKind)
-    .map(({id, companyPretty, kind, scores}) => {
-      return {id, companyPretty, kind, score: scores.total};
+  return csvCompanyRanks
+    .map((row) => {
+      const {id, companyPretty, kind, scores} =
+        companyData.find((r) => r.id === row.company) ||
+        unreachable(`Company ${row.company} not found in company specs.`);
+
+      let rank = -1;
+      let score = -1;
+
+      switch (category) {
+        case "total": {
+          rank = row.rank;
+          score = scores.total;
+          break;
+        }
+        case "governance": {
+          rank = row.governanceRank;
+          score = scores.governance;
+          break;
+        }
+        case "freedom": {
+          rank = row.freedomRank;
+          score = scores.freedom;
+          break;
+        }
+        case "privacy": {
+          rank = row.privacyRank;
+          score = scores.privacy;
+          break;
+        }
+        default:
+          return unreachable(`Category ${category} is unmappable.`);
+      }
+
+      return {
+        id,
+        companyPretty,
+        score,
+        rank,
+        kind,
+        category,
+      };
     })
+    .filter(({kind}) => kind === companyKind)
     .sort((a, b) => {
-      if (a.score < b.score) return 1;
-      if (a.score > b.score) return -1;
+      // First we sort the ranking by the actual rank.
+      if (a.rank < b.rank) return -1;
+      if (a.rank > b.rank) return 1;
+
+      // If two companies have the same rank we sort alphabetically.
+      if (a.companyPretty < b.companyPretty) return -1;
+      if (a.companyPretty > b.companyPretty) return 1;
+
       return 0;
     });
 };
