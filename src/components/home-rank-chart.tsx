@@ -19,7 +19,7 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
     string | undefined
   >();
 
-  const chartWidth = divWidth - 170 < 0 ? 0 : divWidth - 170;
+  const chartWidth = divWidth - 200 < 0 ? 0 : divWidth - 200;
   const chartHeight = 10;
   const companyKind: CompanyKind = ranking[0]?.kind || "telecom";
 
