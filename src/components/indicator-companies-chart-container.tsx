@@ -34,7 +34,7 @@ const IndicatorCompaniesChartContainer = ({
           />
         </div>
 
-        <div className="flex flex-col w-full lg:w-1/2  md:pl-3 lg:pl-6 mt-6 lg:mt-0">
+        <div className="flex flex-col w-full lg:w-1/2 md:pl-3 lg:pl-6 mt-6 md:mt-0">
           <CompanyKindLabel kind="internet" theme="dark" />
 
           <IndicatorCompaniesChart
