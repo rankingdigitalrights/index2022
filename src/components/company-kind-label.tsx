@@ -27,7 +27,7 @@ const CompanyKindLabel = ({
     text = kind === "telecom" ? telecomTextHome : platformsTextHome;
   }
 
-  const textSize = home ? "text-xs" : "text-sm";
+  const textSize = home ? "text-sm" : "text-sm";
 
   const labelClassName = {
     "text-white": theme === "light",

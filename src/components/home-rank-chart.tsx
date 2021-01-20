@@ -24,14 +24,9 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
 
   return (
     <div className={c("flex flex-col", className)}>
-      <div className="flex items-center font-circular text-xs mb-6">
-        <div className="flex-none w-24">
-          <CompanyKindLabel
-            className="text-xs"
-            kind={companyKind}
-            theme="dark"
-            home
-          />
+      <div className="flex items-center font-circular text-sm mb-6">
+        <div className="flex-none w-28">
+          <CompanyKindLabel kind={companyKind} theme="dark" home />
         </div>
 
         <div className="flex-none w-3 mr-2">&nbsp;</div>
@@ -62,7 +57,7 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
           <div
             key={id}
             className={c(
-              "flex items-center font-circular text-xs mb-1",
+              "flex items-center font-circular text-sm mb-1",
               highlightedClassName,
             )}
             onMouseEnter={() => setHighlightedCompany(id)}
@@ -72,7 +67,7 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
 
             <button
               className={c(
-                "flex-none font-circular w-24 select-none text-left",
+                "flex-none font-circular w-28 select-none text-left",
                 highlightedClassName,
               )}
               onClick={() => onClick(id)}
