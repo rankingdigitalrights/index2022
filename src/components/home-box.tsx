@@ -23,7 +23,7 @@ const HomeBox = ({title, href, theme = "light", children}: HomeBoxProps) => {
     >
       <div className="flex flex-col h-full w-4/5 justify-between">
         <Link href={href}>
-          <h3 className="cursor-pointer font-platform font-bold text-xl mb-3">
+          <h3 className="cursor-pointer font-platform font-bold text-lg xl:text-xl mb-3">
             {title}
           </h3>
         </Link>

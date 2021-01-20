@@ -8,6 +8,7 @@ import HomeCategorySelector from "../components/home-category-selector";
 import HomeRankChart from "../components/home-rank-chart";
 import Layout from "../components/layout";
 import {companyRankingData} from "../data";
+import {useBreakpointSize} from "../hooks";
 import ChevronLeft from "../images/icons/chevron-left.svg";
 import ChevronRight from "../images/icons/chevron-right.svg";
 import HomeDocument from "../images/icons/home-document.svg";
@@ -62,6 +63,7 @@ const Home = ({
   privacyRanking,
 }: HomeProps) => {
   const router = useRouter();
+  const screenSize = useBreakpointSize();
   const [swiper, setSwiper] = useState<SwiperType>();
   const [selectedCategory, setSelectedCategory] = useState<
     IndicatorCategoryExt
@@ -109,16 +111,24 @@ const Home = ({
     router.push(`/companies/${id}`);
   };
 
+  let slidesCount = 3;
+  if (screenSize <= 1024) {
+    slidesCount = 2;
+  }
+  if (screenSize <= 640) {
+    slidesCount = 1;
+  }
+
   return (
     <Layout>
       <div className="relative">
         <div className="absolute flex flex-row w-full h-full top-0">
-          <div className="md:w-1/2 w-full md:bg-accent-red" />
-          <div className="md:w-1/2 w-full md:bg-light-freedom" />
+          <div className="lg:w-1/2 w-full lg:bg-accent-red" />
+          <div className="lg:w-1/2 w-full lg:bg-light-freedom" />
         </div>
 
-        <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between">
-          <div className="md:w-1/3 flex-grow items-center bg-accent-red z-10">
+        <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between">
+          <div className="lg:w-1/3 lg:flex-grow items-center bg-accent-red z-10">
             <HomeBox title="2020 RDR Corporate Accountability Index" href="">
               <div className="flex flex-col h-full justify-end">
                 <p>
@@ -130,58 +140,64 @@ const Home = ({
               </div>
             </HomeBox>
           </div>
-          <div className="md:w-1/3 flex-grow items-center bg-diff-add z-10">
-            <HomeBox title="Key Findings" href="key-findings">
-              <div className="flex flex-col h-full justify-between">
-                <p>
-                  Soluta omnis exercitationem dolorem qui eos. At libero alias
-                  aut. Voluptas sint omnis ullam velit eius.
-                </p>
 
-                <HomeSearch />
-              </div>
-            </HomeBox>
-          </div>
-          <div className="md:w-1/3 flex-grow items-center bg-light-freedom z-10">
-            <HomeBox
-              title="Recommendations"
-              href="policy-recommendations"
-              theme="dark"
-            >
-              <div className="flex flex-col h-full justify-end">
-                <HomeDocument />
-              </div>
-            </HomeBox>
-          </div>
-        </div>
-      </div>
+          <div className="flex flex-col sm:flex-row lg:w-2/3 bg-diff-add z-10">
+            <div className="w-full sm:w-1/2 sm:flex-grow items-center bg-diff-add z-10 h-full">
+              <HomeBox title="Key Findings" href="key-findings">
+                <div className="flex flex-col h-full justify-between">
+                  <p>
+                    Soluta omnis exercitationem dolorem qui eos. At libero alias
+                    aut. Voluptas sint omnis ullam velit eius.
+                  </p>
 
-      <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between my-6">
-        <div className="md:w-1/3 border">AAA</div>
-        <div className="flex flex-col md:w-2/3">
-          <HomeCategorySelector
-            selected={selectedCategory}
-            onClick={handleSelectCategory}
-            className="px-3"
-          />
-
-          <div className="flex flex-col md:flex-row mt-3">
-            <HomeRankChart
-              className="w-full md:w-1/2 px-3"
-              ranking={platformRankings}
-              onClick={handleCompanyClick}
-            />
-
-            <HomeRankChart
-              className="w-full md:w-1/2 mt-6 md:mt-0 px-3"
-              ranking={telecomRankings}
-              onClick={handleCompanyClick}
-            />
+                  <HomeSearch />
+                </div>
+              </HomeBox>
+            </div>
+            <div className="w-full sm:w-1/2 sm:flex-grow md:items-center bg-light-freedom z-10">
+              <HomeBox
+                title="Recommendations"
+                href="policy-recommendations"
+                theme="dark"
+              >
+                <div className="flex flex-col h-full justify-end">
+                  <HomeDocument />
+                </div>
+              </HomeBox>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between">
+      <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between  my-6">
+        <div className="lg:flex-grow w-full lg:w-1/3 border">AAA</div>
+
+        <div className="flex flex-col sm:flex-row lg:w-2/3">
+          <div className="flex flex-col w-full">
+            <HomeCategorySelector
+              selected={selectedCategory}
+              onClick={handleSelectCategory}
+              className="px-3"
+            />
+
+            <div className="flex flex-col sm:flex-row mt-3">
+              <HomeRankChart
+                className="w-full sm:w-1/2 px-3"
+                ranking={platformRankings}
+                onClick={handleCompanyClick}
+              />
+
+              <HomeRankChart
+                className="w-full sm:w-1/2 mt-6 sm:mt-0 px-3"
+                ranking={telecomRankings}
+                onClick={handleCompanyClick}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="lg:container lg:mx-auto flex flex-col md:flex-row md:justify-between">
         <div className="md:w-1/3 h-64 border">AAA</div>
         <div className="md:w-1/3 h-64 border">AAA</div>
         <div className="md:w-1/3 h-64 border">AAA</div>
@@ -192,7 +208,7 @@ const Home = ({
           <div className="w-full">
             <Swiper
               spaceBetween={50}
-              slidesPerView={3}
+              slidesPerView={slidesCount}
               onSwiper={(s) => setSwiper(s)}
               pagination={{clickable: true}}
               loop
