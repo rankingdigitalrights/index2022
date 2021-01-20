@@ -244,14 +244,14 @@ const IndicatorPage = ({
               <p className="mt-1">{details.guidance}</p>
             </ExpandableDescription>
           </section>
-
-          <div className="mt-10">
-            <IndicatorCompaniesChartContainer
-              category={details.category}
-              scores={scores}
-            />
-          </div>
         </div>
+      </div>
+
+      <div className="container mx-auto mt-10 flex justify-around p-2">
+        <IndicatorCompaniesChartContainer
+          category={details.category}
+          scores={scores}
+        />
       </div>
 
       <div className="bg-beige pt-6 pb-6 mt-6">

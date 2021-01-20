@@ -17,7 +17,7 @@ const IndicatorCompaniesChart = ({
   className,
 }: IndicatorCompaniesChartProps) => {
   return (
-    <div className={c("flex font-circular text-xxs", className)}>
+    <div className={c("flex w-full font-circular text-xxs", className)}>
       <div className="flex flex-col items-center">
         <span>&nbsp;</span>
         <svg
@@ -53,14 +53,14 @@ const IndicatorCompaniesChart = ({
         </svg>
       </div>
 
-      <div className="flex justify-between w-full">
+      <div className="flex">
         {scores.map(({id, score}) => {
           return (
             <div
               key={`companies-chart-bar-${id}`}
-              className="flex flex-col items-center"
+              className="w-6 md:w-6 flex flex-col items-center"
             >
-              <span className="select-none text-center">
+              <span className="w-5 md:w-6 select-none text-center">
                 {score === "NA" ? "NA" : `${score}%`}
               </span>
               <div>
@@ -69,13 +69,13 @@ const IndicatorCompaniesChart = ({
                   version="1"
                   xmlns="http://www.w3.org/2000/svg"
                   width={10}
-                  height={290}
+                  height={292}
                   transform="translate(0, 0)"
                 >
                   <PercentageBar
                     key={id}
                     value={score}
-                    width={8}
+                    width={10}
                     height={180}
                     orientation="vertical"
                     className={`text-cat-${category}`}
