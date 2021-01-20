@@ -6,28 +6,18 @@ import {CompanyKind} from "../types";
 interface CompanyKindLabelProps {
   kind: CompanyKind;
   theme?: "light" | "dark";
-  home?: boolean;
   className?: string;
 }
 
 const telecomText = "Telecommunications company";
 const platformsText = "Digital platform";
-const telecomTextHome = "Telecoms";
-const platformsTextHome = "Platforms";
 
 const CompanyKindLabel = ({
   kind,
   className,
   theme = "light",
-  home = false,
 }: CompanyKindLabelProps) => {
-  let text = kind === "telecom" ? telecomText : platformsText;
-
-  if (home) {
-    text = kind === "telecom" ? telecomTextHome : platformsTextHome;
-  }
-
-  const textSize = home ? "text-sm" : "text-sm";
+  const text = kind === "telecom" ? telecomText : platformsText;
 
   const labelClassName = {
     "text-white": theme === "light",
@@ -41,8 +31,7 @@ const CompanyKindLabel = ({
   return (
     <div
       className={c(
-        "font-circular flex items-center",
-        textSize,
+        "font-circular text-sm flex items-center",
         labelClassName,
         className,
       )}

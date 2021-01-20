@@ -24,10 +24,10 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
 
   return (
     <div className={c("flex flex-col", className)}>
-      <div className="flex items-center font-circular text-sm mb-6">
-        <div className="flex-none w-28">
-          <CompanyKindLabel kind={companyKind} theme="dark" home />
-        </div>
+      <CompanyKindLabel kind={companyKind} theme="dark" />
+
+      <div className="flex items-center font-circular text-sm mb-6 mt-2">
+        <div className="flex-none w-28">&nbsp;</div>
 
         <div className="flex-none w-3 mr-2">&nbsp;</div>
 
