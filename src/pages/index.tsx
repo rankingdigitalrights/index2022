@@ -184,12 +184,14 @@ const Home = ({
               <HomeRankChart
                 className="w-full sm:w-1/2 px-3"
                 ranking={platformRankings}
+                category={selectedCategory}
                 onClick={handleCompanyClick}
               />
 
               <HomeRankChart
                 className="w-full sm:w-1/2 mt-6 sm:mt-0 px-3"
                 ranking={telecomRankings}
+                category={selectedCategory}
                 onClick={handleCompanyClick}
               />
             </div>

@@ -2,22 +2,35 @@ import c from "clsx";
 import React, {useState} from "react";
 
 import {useChartResize} from "../hooks";
-import {CompanyKind, CompanyRank} from "../types";
+import {CompanyKind, CompanyRank, IndicatorCategoryExt} from "../types";
 import CompanyKindLabel from "./company-kind-label";
 import PercentageBar from "./percentage-bar";
 
 interface HomeRankChartProps {
   ranking: CompanyRank[];
+  category: IndicatorCategoryExt;
   onClick: (id: string) => void;
   className?: string;
 }
 
-const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
+const HomeRankChart = ({
+  ranking,
+  category,
+  onClick,
+  className,
+}: HomeRankChartProps) => {
   const [chartRef, chartWidth] = useChartResize();
 
   const [highlightedCompany, setHighlightedCompany] = useState<
     string | undefined
   >();
+
+  const categoryClassName = {
+    "text-cat-governance": category === "governance",
+    "text-cat-freedom": category === "freedom",
+    "text-cat-privacy": category === "privacy",
+    "text-prissian": category === "total",
+  };
 
   const chartHeight = 10;
   const companyKind: CompanyKind = ranking[0]?.kind || "telecom";
@@ -52,6 +65,10 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
           "bg-accent-orange":
             !isHighlightedCompany && companyKind === "telecom",
         };
+
+        const barClassName = isHighlightedCompany
+          ? "text-prissian"
+          : categoryClassName;
 
         return (
           <div
@@ -98,7 +115,7 @@ const HomeRankChart = ({ranking, onClick, className}: HomeRankChartProps) => {
                   value={score}
                   width={chartWidth}
                   height={chartHeight}
-                  className="text-prissian"
+                  className={barClassName}
                 />
               </svg>
             </div>
