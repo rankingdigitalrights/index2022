@@ -287,7 +287,9 @@ const IndicatorPage = ({
               </div>
             </div>
           </div>
+        </div>
 
+        <div className="xl:container xl:mx-auto w-full p-2">
           {dataGrids.map(({value: companyId, label}) => {
             const {score} = scores.find(({id}) => id === companyId) || {
               score: "NA",

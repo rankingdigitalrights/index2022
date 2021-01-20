@@ -47,7 +47,7 @@ const IndicatorTableDesktop = ({
   const legend = legendRow.map((item, idx) => {
     const className = {
       "w-40 p-2 leading-tight": idx === 0,
-      "w-36 p-6": idx > 0,
+      "w-32 p-6": idx > 0,
     };
 
     const innerClassName = {
@@ -57,7 +57,7 @@ const IndicatorTableDesktop = ({
     return (
       <div
         className={c(
-          "flex flex-col items-center justify-center border border-disabled-dark",
+          "flex-none flex flex-col items-center justify-center border border-disabled-dark",
           className,
         )}
         key={item}
@@ -77,7 +77,7 @@ const IndicatorTableDesktop = ({
   const footer = averagesRow.map((item, idx) => {
     const className = {
       "w-40 font-bold": idx === 0,
-      "w-36 px-6": idx > 0,
+      "w-32 px-6": idx > 0,
     };
 
     const innerClassName = {
@@ -90,7 +90,7 @@ const IndicatorTableDesktop = ({
     return (
       <div
         className={c(
-          "flex flex-col items-center justify-center border border-disabled-dark",
+          "flex-none flex flex-col items-center justify-center border border-disabled-dark",
           className,
         )}
         key={`${company}-averages-${serviceName}-${item}`}
@@ -113,7 +113,7 @@ const IndicatorTableDesktop = ({
             if (idx === 0)
               return (
                 <div
-                  className="flex flex-col items-center justify-center border border-disabled-dark w-40 p-2"
+                  className="flex-none flex flex-col items-center justify-center border border-disabled-dark w-40 p-2"
                   key={`legend-element-${element.id}`}
                 >
                   <span>
@@ -123,7 +123,7 @@ const IndicatorTableDesktop = ({
               );
             return (
               <div
-                className="flex flex-col items-center justify-center border border-disabled-dark w-36 p-6 text-sm flex flex-col items-center"
+                className="flex-none flex flex-col items-center justify-center border border-disabled-dark w-32 p-6 text-sm flex flex-col items-center"
                 key={`${element.id}`}
               >
                 <IndicatorElementTag
@@ -140,7 +140,7 @@ const IndicatorTableDesktop = ({
   });
 
   return (
-    <div className="flex flex-col font-circular">
+    <div className="flex flex-col font-circular overflow-x-scroll">
       <div className="flex flex-row">{legend}</div>
 
       {grid}
