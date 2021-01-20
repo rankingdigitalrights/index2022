@@ -24,7 +24,7 @@ const IndicatorTableMobile = ({
 
   return (
     <div className="flex flex-col font-circular">
-      <div className="w-full pl-1 pr-1 border border-disabled-dark">
+      <div className="w-full px-1 py-4 border border-disabled-dark leading-tight">
         <span>{indicatorLabel}</span>
       </div>
 
@@ -59,10 +59,10 @@ const IndicatorTableMobile = ({
                   return (
                     <div
                       key={`slide-${service}-${element.id}`}
-                      className="flex flex-col"
+                      className="flex flex-col text-sm"
                     >
-                      <div className={c("pl-1 pr-1", elementClassName)}>
-                        {elementDescription}
+                      <div className={c("px-1 py-2", elementClassName)}>
+                        {eIdx + 1}. {elementDescription}
                       </div>
 
                       <div className="flex items-center justify-between mt-3 mb-3">
@@ -77,7 +77,7 @@ const IndicatorTableMobile = ({
                         </div>
 
                         <div className="flex justify-around items-center w-10/12">
-                          <span className="text-center w-5/12">{service}</span>
+                          <span className="text-center  w-5/12">{service}</span>
 
                           <div className="w-5/12">
                             <IndicatorElementTag
