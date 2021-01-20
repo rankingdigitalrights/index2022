@@ -29,3 +29,24 @@ export const useChartResize = (): [React.RefObject<HTMLDivElement>, number] => {
 
   return [chartRef, chartWidth];
 };
+
+export const useBreakpointSize = (): number => {
+  const [size, setSize] = useState<number>(0);
+
+  useEffect(() => {
+    const resize = (): void => {
+      if (!window?.innerWidth) return;
+      setSize(window.innerWidth);
+    };
+
+    window.addEventListener("resize", resize);
+
+    resize();
+
+    return (): void => {
+      window.removeEventListener("resize", resize);
+    };
+  });
+
+  return size;
+};

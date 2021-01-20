@@ -1,5 +1,6 @@
 import React from "react";
 
+import {useBreakpointSize} from "../hooks";
 import {Element, IndicatorElement, IndicatorScore} from "../types";
 import IndicatorTableDesktop from "./indicator-table-desktop";
 import IndicatorTableMobile from "./indicator-table-mobile";
@@ -27,6 +28,7 @@ const CompanyElements = ({
   elementDescriptions,
   services,
 }: CompanyElementsProps) => {
+  const breakpointSize = useBreakpointSize();
   const templateService = services[0] && companyElements[services[0]];
 
   if (!templateService) return <div />;
@@ -42,31 +44,33 @@ const CompanyElements = ({
         <h3 className="text-lg font-platform">{company}</h3>
       </div>
 
-      <div className="hidden md:block mt-3">
-        <IndicatorTableDesktop
-          key={indicator}
-          indicatorLabel={`${indicator}. ${label}`}
-          company={company}
-          averages={averages}
-          companyElements={companyElements}
-          literalValues={literalValues}
-          elementDescriptions={elementDescriptions}
-          services={services}
-        />
-      </div>
-
-      <div className="md:hidden mt-3">
-        <IndicatorTableMobile
-          key={indicator}
-          indicatorLabel={`${indicator}. ${label}`}
-          company={company}
-          averages={averages}
-          companyElements={companyElements}
-          literalValues={literalValues}
-          elementDescriptions={elementDescriptions}
-          services={services}
-        />
-      </div>
+      {breakpointSize < 768 ? (
+        <div className="mt-3">
+          <IndicatorTableMobile
+            key={indicator}
+            indicatorLabel={`${indicator}. ${label}`}
+            company={company}
+            averages={averages}
+            companyElements={companyElements}
+            literalValues={literalValues}
+            elementDescriptions={elementDescriptions}
+            services={services}
+          />
+        </div>
+      ) : (
+        <div className="mt-3">
+          <IndicatorTableDesktop
+            key={indicator}
+            indicatorLabel={`${indicator}. ${label}`}
+            company={company}
+            averages={averages}
+            companyElements={companyElements}
+            literalValues={literalValues}
+            elementDescriptions={elementDescriptions}
+            services={services}
+          />
+        </div>
+      )}
     </div>
   );
 };
