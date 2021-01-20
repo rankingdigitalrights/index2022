@@ -4,9 +4,10 @@ import React, {useState} from "react";
 interface ToggleSwitchProps {
   label: string;
   onChange: (toggle: boolean) => void;
+  className?: string;
 }
 
-const ToggleSwitch = ({label, onChange}: ToggleSwitchProps) => {
+const ToggleSwitch = ({label, onChange, className}: ToggleSwitchProps) => {
   const [toggle, setToggle] = useState(false);
 
   const handleToggle = () => {
@@ -16,22 +17,21 @@ const ToggleSwitch = ({label, onChange}: ToggleSwitchProps) => {
   };
 
   return (
-    <>
-      <label htmlFor="toggle" className="font-circular text-xs mr-3">
+    <div className={c("flex items-center", className)}>
+      <label htmlFor="toggle" className="font-circular text-xs mr-2">
         {label}
       </label>
       <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
         <label
           htmlFor="toggle"
           className={c(
-            "toggle-label block overflow-hidden h-5 rounded-full border-2 border-prissian cursor-pointer flex items-center",
+            "overflow-hidden h-5 rounded-full border-2 border-prissian cursor-pointer flex items-center",
             toggle ? "bg-prissian" : "bg-beige",
           )}
         >
           <input
             type="checkbox"
             name="toggle"
-            id="toggle"
             defaultChecked={toggle}
             className={c(
               "toggle-checkbox absolute block w-3 h-3 rounded-full appearance-none cursor-pointer",
@@ -41,7 +41,7 @@ const ToggleSwitch = ({label, onChange}: ToggleSwitchProps) => {
           />
         </label>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -214,14 +214,14 @@ const IndicatorPage = ({
   return (
     <Layout>
       <div className="container mx-auto">
-        <div className="flex flex-col mx-auto md:w-3/5 w-11/12">
+        <div className="flex flex-col mx-auto w-11/12 md:w-4/5 lg:w-3/5">
           <IndicatorSelector
             indicators={indicators}
             selected={activeSelector}
             onSelect={handleSelectIndicator}
           />
 
-          <section className="w-full mt-6 mx-auto  text-sm font-circular">
+          <section className="w-full mt-6 mx-auto text-sm font-circular">
             {details.description}
           </section>
 
@@ -255,35 +255,37 @@ const IndicatorPage = ({
       </div>
 
       <div className="bg-beige pt-6 pb-6 mt-6">
-        <div className="container mx-auto md:w-8/12 w-11/12">
-          <div className="flex flex-col md:flex-row md:w-9/12 md:mx-auto md:justify-between items-center">
-            <div className="w-full md:w-1/2 flex flex-col justify-between h-14">
-              <span className="text-sm font-circular">Select companies:</span>
+        <div className="container mx-auto px-2">
+          <div className="flex justify-around">
+            <div className="flex flex-col md:flex-row justify-between items-center w-full md:ml-8 lg:ml-12 lg:w-4/5 xl:w-3/5">
+              <div className="w-full md:w-6/12 flex flex-col justify-between h-14">
+                <span className="text-sm font-circular">Select companies:</span>
 
-              <CompanySelector
-                companies={companySortStrategyFn(
-                  companies.map((obj) => ({...obj})),
-                )}
-                selected={selectedCompanies}
-                onSelect={handleSelectCompany}
-              />
-            </div>
+                <CompanySelector
+                  companies={companySortStrategyFn(
+                    companies.map((obj) => ({...obj})),
+                  )}
+                  selected={selectedCompanies}
+                  onSelect={handleSelectCompany}
+                />
+              </div>
 
-            <div className="w-full mt-2 md:mt-0 md:w-1/4 flex flex-col justify-between h-14 mx-6">
-              <span className="text-sm font-circular">Sort:</span>
+              <div className="flex-grow w-full mt-2 md:mt-0 md:w-4/12 flex flex-col justify-between h-14 mx-6">
+                <span className="text-sm font-circular">Sort:</span>
 
-              <SortSelector
-                strategies={sortOptions}
-                selected={sortStrategy}
-                onSelect={handleSelectSortStrategy}
-              />
-            </div>
+                <SortSelector
+                  strategies={sortOptions}
+                  selected={sortStrategy}
+                  onSelect={handleSelectSortStrategy}
+                />
+              </div>
 
-            <div className="w-full md:w-1/4 flex flex-col lg:flex-row lg:justify-between h-14">
-              <span className="text-xs font-circular">&nbsp;</span>
-
-              <div>
-                <ToggleSwitch label="Points" onChange={handleToggleSwitch} />
+              <div className="w-full md:w-2/12 md:flex-none sm:float-right sm:ml-auto flex flex-col justify-end h-10 sm:h-14">
+                <ToggleSwitch
+                  className="mb-1"
+                  label="Points"
+                  onChange={handleToggleSwitch}
+                />
               </div>
             </div>
           </div>
