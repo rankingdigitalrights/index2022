@@ -19,7 +19,7 @@ interface EvaluatedServiceProps {
 }
 
 const mapIcon = (kind: ServiceKind) => {
-  const className = "ml-2";
+  const className = "mr-2";
 
   switch (kind) {
     case "broadband":
@@ -50,12 +50,11 @@ const mapIcon = (kind: ServiceKind) => {
 };
 
 const EvaluatedService = ({name, kind}: EvaluatedServiceProps) => {
-  // FIXME: I'm waiting for a final decision where this should be positioned.
-  const icon = mapIcon(kind); // eslint-disable-line @typescript-eslint/no-unused-vars
+  const icon = mapIcon(kind);
 
   return (
-    <span>
-      {name} [{kind}]
+    <span className="flex items-center h-8">
+      {icon} {name}
     </span>
   );
 };

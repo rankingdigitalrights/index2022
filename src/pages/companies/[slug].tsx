@@ -118,11 +118,11 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
               />
             </div>
 
-            <div className="w-full md:w-2/6 pl-3">
-              <h3 className="pb-3 md:mb-6 mt-6 md:mt-16">
+            <div className="flex flex-col items-start w-full md:w-2/6 pl-3">
+              <h3 className="pb-3 mt-3 md:mb-6 md:mt-6 md:mt-16">
                 Services evaluated:
               </h3>
-              <ul className="list-inside">
+              <ul className="list-none list-outside pl-0">
                 {services
                   .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
                   .map(({id, name, kind}) => (
