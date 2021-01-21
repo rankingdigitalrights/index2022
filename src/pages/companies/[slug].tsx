@@ -71,12 +71,12 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
     <Layout>
       <div className="relative">
         <div className="absolute flex flex-row w-full h-full top-0">
-          <div className="md:w-3/5 xl:w-7/12 w-full md:bg-prissian" />
-          <div className="md:w-2/5 xl:w-5/12 w-full md:bg-beige" />
+          <div className="md:w-7/12 lg:w-3/5 xl:w-7/12 w-full md:bg-prissian" />
+          <div className="md:w-5/12 lg:w-2/5 xl:w-5/12 w-full md:bg-beige" />
         </div>
 
-        <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between md:w-10/12 lg:w-8/12">
-          <div className="flex flex-col bg-prissian w-full md:w-7/12 p-3 md:mt-6 md:mb-6 z-10">
+        <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between lg:w-10/12 xl:w-8/12">
+          <div className="flex flex-col bg-prissian w-full md:w-7/12 lg:w-7/12 p-3 md:mt-6 md:mb-6 md:mr-6 lg:mr-0 z-10">
             <CompanyKindLabel kind={index.kind} />
 
             <CompanyRankCard
@@ -90,7 +90,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             />
           </div>
 
-          <div className="w-full md:w-4/12 bg-beige p-3 md:mt-6 md:mb-3 z-10">
+          <div className="w-full md:w-5/12 lg:w-4/12 bg-beige p-3 md:mt-6 md:mb-3 md:ml-12 lg:ml-0 z-10">
             <CompanyRankChart
               activeCompany={index.id}
               ranking={ranking}
