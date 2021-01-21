@@ -5,11 +5,13 @@ import CompanyKindLabel from "./company-kind-label";
 import IndicatorCompaniesChart from "./indicator-companies-chart";
 
 interface IndicatorCompaniesChartContainerProps {
+  indicator: string;
   category: IndicatorCategory;
   scores: IndicatorCompanyScore[];
 }
 
 const IndicatorCompaniesChartContainer = ({
+  indicator,
   scores,
   category,
 }: IndicatorCompaniesChartContainerProps) => {
@@ -28,6 +30,7 @@ const IndicatorCompaniesChartContainer = ({
           <CompanyKindLabel kind="telecom" theme="dark" />
 
           <IndicatorCompaniesChart
+            indicator={indicator}
             category={category}
             scores={telecomScores}
             className="mt-3"
@@ -38,6 +41,7 @@ const IndicatorCompaniesChartContainer = ({
           <CompanyKindLabel kind="internet" theme="dark" />
 
           <IndicatorCompaniesChart
+            indicator={indicator}
             category={category}
             scores={platformScores}
             className="mt-3"
@@ -60,6 +64,7 @@ const IndicatorCompaniesChartContainer = ({
         />
 
         <IndicatorCompaniesChart
+          indicator={indicator}
           category={category}
           scores={singleScores}
           className="mt-3"

@@ -249,6 +249,7 @@ const IndicatorPage = ({
 
       <div className="container mx-auto mt-10 flex justify-around p-2">
         <IndicatorCompaniesChartContainer
+          indicator={details.id}
           category={details.category}
           scores={scores}
         />

@@ -6,12 +6,14 @@ import GraphLabel from "./graph-label";
 import PercentageBar from "./percentage-bar";
 
 interface IndicatorCompaniesChartProps {
+  indicator: string;
   category: string;
   scores: IndicatorCompanyScore[];
   className?: string;
 }
 
 const IndicatorCompaniesChart = ({
+  indicator,
   category,
   scores,
   className,
@@ -67,7 +69,7 @@ const IndicatorCompaniesChart = ({
 
           return (
             <div
-              key={`companies-chart-bar-${id}`}
+              key={`companies-chart-bar-${indicator}-${id}`}
               className="w-6 md:w-6 flex flex-col items-center"
               onMouseEnter={() => setHighlightedCompany(id)}
               onMouseLeave={() => setHighlightedCompany(undefined)}
