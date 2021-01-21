@@ -1,3 +1,4 @@
+/* eslint react/no-danger: off */
 import c from "clsx";
 import React from "react";
 
@@ -10,6 +11,7 @@ interface CompanyRankCardProps {
   rank: number;
   kind: CompanyKind;
   counts: number;
+  basicInformation: string;
   className?: string;
 }
 
@@ -19,6 +21,7 @@ const CompanyRankCard = ({
   rank,
   kind,
   counts,
+  basicInformation,
   className,
 }: CompanyRankCardProps) => {
   const rankLabel =
@@ -29,7 +32,7 @@ const CompanyRankCard = ({
   const classNameLabel = "border border-white rounded ml-3 p-1";
 
   return (
-    <div className={c("flex flex-col", className)}>
+    <div className={c("rank-card flex flex-col", className)}>
       <h1 className="font-platform text-white bold text-xl">{company}</h1>
 
       <div className="flex flex-wrap ">
@@ -54,12 +57,12 @@ const CompanyRankCard = ({
         </div>
       </div>
 
-      <p className="font-circular text-sm text-white mt-6">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Arcu cursus vitae
-        congue mauris rhoncus aenean. Odio pellentesque diam volutpat commodo
-        sed egestas egestas fringilla phasellus.
-      </p>
+      <div
+        className="font-circular text-sm text-white mt-6"
+        dangerouslySetInnerHTML={{
+          __html: basicInformation,
+        }}
+      />
     </div>
   );
 };

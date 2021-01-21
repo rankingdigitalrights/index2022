@@ -85,6 +85,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
               score={index.scores.total}
               kind={index.kind}
               counts={ranking.length}
+              basicInformation={details.basicInformation}
               className="mt-2"
             />
           </div>

@@ -126,6 +126,10 @@
     @apply text-prissian;
   }
 
+  div.rank-card a {
+    @apply text-white underline;
+  }
+
   a:hover {
     @apply underline;
   }
