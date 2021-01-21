@@ -84,7 +84,7 @@ const HomeRankChart = ({
 
             <button
               className={c(
-                "flex-none font-circular w-28 select-none text-left",
+                "flex-none font-circular w-28 select-none text-left whitespace-nowrap",
                 highlightedClassName,
               )}
               onClick={() => onClick(id)}

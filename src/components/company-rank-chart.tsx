@@ -55,7 +55,7 @@ const CompanyRankChart = ({
             onMouseLeave={() => setHighlightedCompany(undefined)}
           >
             <button
-              className="flex-none font-circular w-20 select-none text-left"
+              className="flex-none font-circular w-24 select-none text-left whitespace-nowrap"
               onClick={() => onClick(id)}
             >
               {companyPretty}
@@ -90,7 +90,7 @@ const CompanyRankChart = ({
         );
       })}
       <div className="flex">
-        <div className="flex-none w-20">&nbsp;</div>
+        <div className="flex-none w-24">&nbsp;</div>
         <div className="flex-grow ml-2">
           <svg
             version="1"
