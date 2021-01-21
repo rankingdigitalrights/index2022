@@ -1,6 +1,7 @@
 import c from "clsx";
 import {scaleLinear} from "d3-scale";
 import React from "react";
+import {useTween} from "react-use";
 
 import {IndicatorScore} from "../types";
 import {isNA} from "../utils";
@@ -28,6 +29,7 @@ const PercentageBar = ({
   orientation = "horizontal",
   roundedCorners = true,
 }: PercentageBarProps) => {
+  const t = useTween("inOutQuad", 800);
   const rx = roundedCorners ? 5 : 0;
 
   if (isNA(value))
@@ -47,7 +49,7 @@ const PercentageBar = ({
     .domain([0, 100])
     .range([0, orientation === "horizontal" ? width : height]);
 
-  const percentage = valueScale(value) || 0;
+  const percentage = (valueScale(value) || 0) * t;
 
   return (
     <g
