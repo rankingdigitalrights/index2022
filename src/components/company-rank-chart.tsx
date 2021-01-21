@@ -49,7 +49,7 @@ const CompanyRankChart = ({
 
         return (
           <div
-            key={id}
+            key={`company-rank-${activeCompany}-${id}`}
             className={className}
             onMouseEnter={() => setHighlightedCompany(id)}
             onMouseLeave={() => setHighlightedCompany(undefined)}
