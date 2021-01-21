@@ -1,5 +1,5 @@
 import c from "clsx";
-import React from "react";
+import React, {useState} from "react";
 
 import {IndicatorCompanyScore} from "../types";
 import GraphLabel from "./graph-label";
@@ -16,6 +16,10 @@ const IndicatorCompaniesChart = ({
   scores,
   className,
 }: IndicatorCompaniesChartProps) => {
+  const [highlightedCompany, setHighlightedCompany] = useState<
+    string | undefined
+  >();
+
   return (
     <div className={c("flex w-full font-circular text-xxs", className)}>
       <div className="flex flex-col items-center">
@@ -55,10 +59,18 @@ const IndicatorCompaniesChart = ({
 
       <div className="flex">
         {scores.map(({id, score}) => {
+          const isHighlightedCompany = id === highlightedCompany;
+
+          const barClassName = c(
+            isHighlightedCompany ? "text-prissian" : `text-cat-${category}`,
+          );
+
           return (
             <div
               key={`companies-chart-bar-${id}`}
               className="w-6 md:w-6 flex flex-col items-center"
+              onMouseEnter={() => setHighlightedCompany(id)}
+              onMouseLeave={() => setHighlightedCompany(undefined)}
             >
               <span className="w-5 md:w-6 select-none text-center">
                 {score === "NA" ? "NA" : `${score}%`}
@@ -78,7 +90,7 @@ const IndicatorCompaniesChart = ({
                     width={10}
                     height={180}
                     orientation="vertical"
-                    className={`text-cat-${category}`}
+                    className={barClassName}
                   />
                   <GraphLabel
                     value={id}
