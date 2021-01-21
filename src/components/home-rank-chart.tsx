@@ -72,7 +72,7 @@ const HomeRankChart = ({
 
         return (
           <div
-            key={id}
+            key={`home-rank-${category}-${id}`}
             className={c(
               "flex items-center font-circular text-sm mb-1",
               highlightedClassName,
@@ -103,7 +103,7 @@ const HomeRankChart = ({
               </div>
             </div>
 
-            <div ref={ref} className="flex-grow mr-1">
+            <div ref={ref} className="flex-grow">
               <svg
                 version="1"
                 xmlns="http://www.w3.org/2000/svg"
