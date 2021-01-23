@@ -2,7 +2,7 @@ import React from "react";
 
 import Footer from "./footer";
 // import HtmlHead from "./html-head";
-import Navigation from "./navigation";
+import HeaderBar from "./header-bar";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,9 +13,7 @@ const Layout = ({children}: LayoutProps) => {
     <div>
       {/* <HtmlHead /> */}
 
-      <header className="spotlight">
-        <Navigation />
-      </header>
+      <HeaderBar />
 
       {children}
 

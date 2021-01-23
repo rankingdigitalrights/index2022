@@ -1,8 +1,8 @@
 import React from "react";
 
 import Footer from "./footer";
+import HeaderBar from "./header-bar";
 import HtmlHead from "./html-head";
-import Navigation from "./navigation";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,9 +13,7 @@ const Layout = ({children}: LayoutProps) => {
     <div>
       <HtmlHead />
 
-      <header className="container mx-auto pt-4 mb-8 hidden sm:block">
-        <Navigation />
-      </header>
+      <HeaderBar />
 
       {children}
 

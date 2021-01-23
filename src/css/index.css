@@ -164,61 +164,6 @@
 
   /* Spotlights Start */
 
-  header.spotlight {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: white;
-    z-index: 999;
-    height: 60px;
-    padding: 1rem;
-    display: flex;
-    align-items: baseline;
-  }
-
-  footer.spotlight {
-    height: 400px;
-    color: white;
-    margin-top: 1rem;
-    padding: 1rem 2rem;
-  }
-
-  footer.spotlight ul {
-    @apply text-base font-circular;
-    margin-top: 0.6rem;
-    margin-bottom: 1rem;
-    margin-left: 2rem;
-  }
-
-  footer.spotlight ul li {
-    padding: 0.3rem;
-  }
-
-  footer.spotlight h2.annot {
-    position: absolute;
-    right: 2rem;
-  }
-
-  /* TODO: remove upon prod progress */
-  @media only screen and (max-width: 900px) {
-    header.spotlight {
-      overflow: clip;
-    }
-  }
-
-  header.spotlight nav {
-    display: inline-flex;
-    margin: 0 auto;
-  }
-
-  header.spotlight button a,
-  header.spotlight button span {
-    font-family: Platform, sans-serif;
-    font-size: 1rem;
-    text-transform: uppercase;
-  }
-
   main.spotlight {
     max-width: 100%;
     margin-top: 60px;
