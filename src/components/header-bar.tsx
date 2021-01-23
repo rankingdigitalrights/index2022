@@ -1,4 +1,5 @@
 import c from "clsx";
+import Link from "next/link";
 import React, {useState} from "react";
 
 import companies from "../../data/companies.json";
@@ -25,21 +26,11 @@ interface CompanyLinkProps {
   kind: CompanyKind;
 }
 
-const CompanyLink = ({href, name, kind}: CompanyLinkProps) => {
-  const dotClassName = {
-    "bg-accent-orange": kind === "telecom",
-    "bg-diff-del": kind === "internet",
-  };
-
-  return (
-    <a className="flex items-center text-black whitespace-nowrap" href={href}>
-      <div
-        className={c("rounded-full border border-white w-3 h-3", dotClassName)}
-      />
-      <span className="ml-2">{name}</span>
-    </a>
-  );
-};
+interface IconLinkProps {
+  href: string;
+  name: string;
+  icon: React.ReactNode;
+}
 
 const HeaderBar = ({className}: HeaderBarProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -47,8 +38,6 @@ const HeaderBar = ({className}: HeaderBarProps) => {
   const handleClickHamburger = () => {
     setIsExpanded(!isExpanded);
   };
-
-  const basePath = process.env.BASE_PATH;
 
   const telecomCompanies = companies.filter(
     (company) => company.kind === "telecom",
@@ -64,19 +53,50 @@ const HeaderBar = ({className}: HeaderBarProps) => {
     },
   );
 
+  const CompanyLink = ({href, name, kind}: CompanyLinkProps) => {
+    const dotClassName = {
+      "bg-accent-orange": kind === "telecom",
+      "bg-diff-del": kind === "internet",
+    };
+
+    return (
+      <Link passHref href={href} as={href}>
+        <a className="flex items-center text-black whitespace-nowrap">
+          <span
+            className={c(
+              "rounded-full border border-white w-3 h-3",
+              dotClassName,
+            )}
+          />
+          <span className="ml-2">{name}</span>
+        </a>
+      </Link>
+    );
+  };
+
+  const IconLink = ({href, name, icon}: IconLinkProps) => {
+    return (
+      <Link passHref href={href}>
+        <a className="flex items-center font-bold text-black pointer-cursor">
+          {icon}
+          <span className="ml-3">{name}</span>
+        </a>
+      </Link>
+    );
+  };
+
   return (
     <header className={c(className)}>
       <div className="relative bg-beige shadow-md py-4 z-50">
         <div className="container mx-auto flex justify-between items-center relative px-6">
-          <a
-            href={`${basePath}`}
-            className="flex items-center text-black hover:no-underline"
-          >
-            <Logo className="flex-none" />
-            <span className="flex-none font-platform font-bold text-lg ml-4 whitespace-nowrap">
-              Ranking Digital Rights
-            </span>
-          </a>
+          <Link href="/">
+            <div className="flex items-center text-black hover:no-underline">
+              <Logo className="flex-none" />
+              <span className="flex-none font-platform font-bold text-lg ml-4 whitespace-nowrap">
+                Ranking Digital Rights
+              </span>
+            </div>
+          </Link>
 
           <button
             className="float-right h-12 relative"
@@ -98,22 +118,18 @@ const HeaderBar = ({className}: HeaderBarProps) => {
               <div className="flex flex-col py-3">
                 <ul className="list-inside list-none">
                   <li>
-                    <a
-                      className="flex items-center font-bold text-black"
-                      href={`${basePath}/intro`}
-                    >
-                      <IntroEssay className="mr-3" />
-                      Intro essay
-                    </a>
+                    <IconLink
+                      name="Intro essay"
+                      href="/intro"
+                      icon={<IntroEssay />}
+                    />
                   </li>
                   <li>
-                    <a
-                      className="flex items-center font-bold text-black"
-                      href={`${basePath}/key-findings`}
-                    >
-                      <KeyFindings className="mr-3" />
-                      Key Findings: Flying Blind
-                    </a>
+                    <IconLink
+                      name="Key Findings: Flying Blind"
+                      href="/key-findings"
+                      icon={<KeyFindings />}
+                    />
                   </li>
                 </ul>
               </div>
@@ -123,47 +139,39 @@ const HeaderBar = ({className}: HeaderBarProps) => {
 
                 <ul className="list-inside list-none ml-0">
                   <li>
-                    <a
-                      className="text-black"
-                      href={`${basePath}/spotlights/spotlight-one`}
-                    >
-                      Context before code: How companies should protect human
-                      rights in crisis essay
-                    </a>
+                    <Link passHref href="/spotlights/spotlight-one">
+                      <a className="text-black">
+                        Context before code: How companies should protect human
+                        rights in crisis essay
+                      </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      className="text-black"
-                      href={`${basePath}/spotlights/spotlight-two`}
-                    >
-                      Unaccountable Algorithms
-                    </a>
+                    <Link passHref href="/spotlights/spotlight-two">
+                      <a className="text-black">Unaccountable Algorithms</a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      className="text-black"
-                      href={`${basePath}/spotlights/spotlight-three`}
-                    >
-                      Digital rights in China
-                    </a>
+                    <Link passHref href="/spotlights/spotlight-three">
+                      <a className="text-black">Digital rights in China</a>
+                    </Link>
                   </li>
                 </ul>
               </div>
 
-              <a
-                className="flex items-center font-bold text-black pl-4 pr-3 py-6"
-                href={`${basePath}/policy-recommendations`}
-              >
-                <PolicyRecommendations className="mr-3" />
-                Policy Recommendations
-              </a>
+              <div className="pl-4 pr-3 py-6">
+                <IconLink
+                  href="/policy-recommendations"
+                  icon={<PolicyRecommendations />}
+                  name="Policy Recommendations"
+                />
+              </div>
 
-              <a
-                className="font-bold text-black pr-3 py-3"
-                href={`${basePath}/about-us`}
-              >
-                About Us
-              </a>
+              <div className="font-bold pr-3 py-3">
+                <Link passHref href="/about-us">
+                  <a className="text-black">About us</a>
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -177,7 +185,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 {internetCompanies.map(({id, name, kind}) => (
                   <li key={`nav-company-${id}`} className="py-1">
                     <CompanyLink
-                      href={`${basePath}/companies/${id}`}
+                      href={`/companies/${id}`}
                       name={name}
                       kind={kind as CompanyKind}
                     />
@@ -189,7 +197,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 {telecomCompanies.map(({id, name, kind}) => (
                   <li key={`nav-company-${id}`} className="py-1">
                     <CompanyLink
-                      href={`${basePath}/companies/${id}`}
+                      href={`/companies/${id}`}
                       name={name}
                       kind={kind as CompanyKind}
                     />
@@ -208,42 +216,36 @@ const HeaderBar = ({className}: HeaderBarProps) => {
               <div className="flex flex-col py-3">
                 <ul className="list-inside list-none">
                   <li className="py-6">
-                    <a
-                      className="flex items-center font-bold text-black"
-                      href={`${basePath}/indicators/G1`}
-                    >
-                      <ScoresByIndicator className="mr-3" />
-                      Scores by indicator
-                    </a>
+                    <IconLink
+                      href="/indicators/G1"
+                      icon={<ScoresByIndicator />}
+                      name="Scores by indicator"
+                    />
                   </li>
                   <li className="py-6">
-                    <a
-                      className="flex items-center font-bold text-black"
-                      href={`${basePath}/key-findings`}
-                    >
-                      <ExploreTheData className="mr-3" />
-                      Explore the data
-                    </a>
+                    <IconLink
+                      href="/key-findings"
+                      icon={<ExploreTheData />}
+                      name="Explore the data"
+                    />
                   </li>
                   <li className="py-6">
-                    <a
-                      className="flex items-center font-bold text-black"
+                    <IconLink
                       href="/methodology-development"
-                    >
-                      <Methodology className="mr-3" />
-                      Methodology
-                    </a>
+                      icon={<Methodology />}
+                      name="Methodology"
+                    />
                   </li>
                 </ul>
               </div>
 
-              <a
-                className="flex items-center font-bold text-black pl-4 pr-3 py-6"
-                href={`${basePath}/policy-recommendations`}
-              >
-                <ScoresOverTime className="mr-3" />
-                RDR scores over time
-              </a>
+              <div className="pl-4 pr-3 py-6">
+                <IconLink
+                  href="/policy-recommendations"
+                  icon={<ScoresOverTime />}
+                  name="RDR scores over time"
+                />
+              </div>
 
               <div className="flex justify-around py-6">
                 <button
