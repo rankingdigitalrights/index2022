@@ -18,7 +18,6 @@ import {
   indicatorScores,
 } from "../src/csv";
 import {companyDetails, policyRecommendations} from "../src/google";
-import generateNav from "../src/navigation";
 import {CompanyKind, IndicatorCategoryExt} from "../src/types";
 
 const dataDir = "data";
@@ -216,11 +215,6 @@ const writeHtmlFile = (
         writeJsonFile(scoresTarget)(scores),
         writeJsonFile(indicatorsTarget)(indicatorIndexScores),
       ]);
-    })
-    .command("navigation", "generate navigation structure.", async () => {
-      const data = await generateNav();
-      const outTarget = path.join(dataDir, "navigation.json");
-      await writeJsonFile(outTarget)(data);
     })
     .demandCommand(1)
     .help()
