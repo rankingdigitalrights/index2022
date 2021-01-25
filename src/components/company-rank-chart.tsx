@@ -2,7 +2,7 @@ import c from "clsx";
 import React, {useState} from "react";
 
 import {useChartResize} from "../hooks";
-import {CompanyRank} from "../types";
+import {CompanyKind, CompanyRank} from "../types";
 import GraphLabel from "./graph-label";
 import PercentageBar from "./percentage-bar";
 
@@ -25,17 +25,26 @@ const CompanyRankChart = ({
     string | undefined
   >();
 
+  const companyKind: CompanyKind = ranking[0]?.kind || "telecom";
+
   return (
     <div className="flex flex-col">
-      {ranking.map(({id, companyPretty, score}, idx) => {
+      {ranking.map(({id, companyPretty, score, rank}, idx) => {
         // eslint-disable-next-line unicorn/no-null
         const ref = idx === 0 ? chartRef : null;
         const isActiveCompany = id === activeCompany;
         const isHighlightedCompany = id === highlightedCompany;
 
-        const className = c("flex items-center m-0.5 font-circular text-xs", {
+        const className = c("flex items-center m-0.5 font-circular text-sm", {
           "text-prissian": isActiveCompany || isHighlightedCompany,
         });
+
+        const rankClassName = {
+          "bg-prissian": isHighlightedCompany,
+          "bg-diff-del": !isHighlightedCompany && companyKind === "internet",
+          "bg-accent-orange":
+            !isHighlightedCompany && companyKind === "telecom",
+        };
 
         const barClassName = c(
           isActiveCompany || isHighlightedCompany
@@ -55,11 +64,22 @@ const CompanyRankChart = ({
             onMouseLeave={() => setHighlightedCompany(undefined)}
           >
             <button
-              className="flex-none font-circular w-24 select-none text-left whitespace-nowrap"
+              className="flex-none font-circular w-28 select-none text-left whitespace-nowrap"
               onClick={() => onClick(id)}
             >
               {companyPretty}
             </button>
+
+            <div className="flex-none w-8 flex justify-center">
+              <div
+                className={c(
+                  "rounded-full h-4 w-4 text-white flex items-center justify-center",
+                  rankClassName,
+                )}
+              >
+                {rank}
+              </div>
+            </div>
 
             <div ref={ref} className="flex-grow ml-1">
               <svg
@@ -90,7 +110,10 @@ const CompanyRankChart = ({
         );
       })}
       <div className="flex">
-        <div className="flex-none w-24">&nbsp;</div>
+        <div className="flex-none w-28">&nbsp;</div>
+
+        <div className="flex-none w-8">&nbsp;</div>
+
         <div className="flex-grow ml-2">
           <svg
             version="1"

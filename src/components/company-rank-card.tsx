@@ -38,7 +38,7 @@ const CompanyRankCard = ({
       <div className="flex flex-wrap ">
         <div className="flex flex-col md:mr-2 lg:mr-8 mt-4">
           <div className="flex items-center font-circular text-white text-md bold">
-            <span className="mr-3">Ranked:</span>{" "}
+            <span className="mr-3">Ranke:</span>{" "}
             <span className={classNameLabel}>{enumerate(rank)}</span>
           </div>
           <span className="font-circular text-sm text-disabled-dark mt-3">
@@ -48,12 +48,9 @@ const CompanyRankCard = ({
 
         <div className="flex flex-col mt-4">
           <div className="flex items-center font-circular text-white text-md bold">
-            <span className="mr-3">Scored:</span>{" "}
+            <span className="mr-3">Score:</span>{" "}
             <span className={classNameLabel}>{score}%</span>
           </div>
-          <span className="font-circular text-sm text-disabled-dark mt-3">
-            Out of 100 possible points.
-          </span>
         </div>
       </div>
 
