@@ -38,7 +38,7 @@ const CompanyRankCard = ({
       <div className="flex flex-wrap ">
         <div className="flex flex-col md:mr-2 lg:mr-8 mt-4">
           <div className="flex items-center font-circular text-white text-md bold">
-            <span className="mr-3">Ranke:</span>{" "}
+            <span className="mr-3">Rank:</span>{" "}
             <span className={classNameLabel}>{enumerate(rank)}</span>
           </div>
           <span className="font-circular text-sm text-disabled-dark mt-3">
