@@ -187,7 +187,7 @@ const CompanyIndicatorChart = ({
                         >
                           <span className="float-right">
                             {m.score}
-                            {score === "NA" ? "" : "%"}
+                            {m.score === "NA" ? "" : "%"}
                           </span>
                         </div>
                       </div>
