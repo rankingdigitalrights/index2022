@@ -32,12 +32,13 @@ export type CompanyDetails = {
   id: string;
   basicInformation: string;
   keyFindings: string;
-  analysis: string;
+  changes: string;
   keyRecommendation: string;
+  keyTakeaways: string;
   governance: string;
   freedom: string;
   privacy: string;
-  footnotes: string;
+  footnotes?: string;
 };
 
 export type CompanyKind = "telecom" | "internet";

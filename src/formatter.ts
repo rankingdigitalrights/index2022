@@ -126,13 +126,13 @@ export const processHtml = (src: string): string => {
 export const emptyCompany = (id: string): CompanyDetails => ({
   id,
   basicInformation: "basic information missing",
+  keyTakeaways: "key takeaways missing",
   keyFindings: "key findings missing",
-  analysis: "analysis missing",
+  changes: "analysis missing",
   keyRecommendation: "key recommendations missing",
   governance: "governance missing",
   freedom: "freedom of expression missing",
   privacy: "privacy missing",
-  footnotes: "footnotes missing",
 });
 
 export const companyDetails = (id: string, src: string): CompanyDetails => {
@@ -155,17 +155,18 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
     "key-findings",
     $,
   ).html();
-  const keyFindings = extractSection(
-    "key-findings",
+  const keyFindings = extractSection("key-findings", "key-takeaways", $).html();
+  const keyTakeaways = extractSection(
+    "key-takeaways",
     "key-recommendations",
     $,
   ).html();
   const keyRecommendation = extractSection(
     "key-recommendations",
-    "analysis",
+    "changes-since-2019",
     $,
   ).html();
-  const analysis = extractSection("analysis", "governance", $).html();
+  const changes = extractSection("changes-since-2019", "governance", $).html();
   const governance = extractSection(
     "governance",
     "freedom-of-expression",
@@ -178,8 +179,9 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
     ...scaffold,
     ...(basicInformation ? {basicInformation} : undefined),
     ...(keyFindings ? {keyFindings} : undefined),
+    ...(keyTakeaways ? {keyTakeaways} : undefined),
     ...(keyRecommendation ? {keyRecommendation} : undefined),
-    ...(analysis ? {analysis} : undefined),
+    ...(changes ? {changes} : undefined),
     ...(governance ? {governance} : undefined),
     ...(freedom ? {freedom} : undefined),
     ...(privacy ? {privacy} : undefined),
