@@ -7,12 +7,14 @@ import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
 import EvaluatedService from "../../components/evaluated-service";
 import Layout from "../../components/layout";
+import YearOverYearLabel from "../../components/year-over-year-label";
 import {
   allCompanies,
   companyData,
   companyRankingData,
   companyServices,
 } from "../../data";
+import Download from "../../images/icons/download.svg";
 import {CompanyDetails, CompanyIndex, CompanyRank, Service} from "../../types";
 
 type Params = {
@@ -104,13 +106,20 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
         <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
           <section className="flex flex-col md:flex-row pt-3">
             <div className="w-full md:w-4/6 pr-3">
-              <h2 className="text-prissian mb-6">Highlights:</h2>
               <div
-                className="mt-6"
+                className="mt-6 border-b border-disabled-light"
                 dangerouslySetInnerHTML={{__html: details.keyFindings}}
               />
 
-              <h2 className="text-prissian mt-8 mb-6">Recommendations:</h2>
+              <h2 className="text-prissian mt-8 mb-6">Key Takeaways:</h2>
+              <div
+                className="mt-6"
+                dangerouslySetInnerHTML={{
+                  __html: details.keyTakeaways,
+                }}
+              />
+
+              <h2 className="text-prissian mt-8 mb-6">Key Recommendations:</h2>
               <div
                 className="mt-6"
                 dangerouslySetInnerHTML={{
@@ -119,37 +128,70 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
               />
             </div>
 
-            <div className="flex flex-col items-start w-full md:w-2/6 pl-3">
-              <h3 className="pb-3 mt-3 md:mb-6 md:mt-6 md:mt-16">
+            <div className="flex flex-col items-start w-full md:w-2/6 px-3 font-circular text-sm">
+              <h3 className="font-bold pb-3 mt-3 md:mb-6 md:mt-6">
                 Services evaluated:
               </h3>
-              <ul className="list-none list-outside pl-0">
-                {services
-                  .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
-                  .map(({id, name, kind}) => (
-                    <li key={id} className="font-circular text-sm pb-0">
-                      <EvaluatedService name={name} kind={kind} />
-                    </li>
-                  ))}
-              </ul>
+
+              <div className=" border-b border-disabled-light w-full pb-6">
+                <ul className="list-none list-outside pl-0">
+                  {services
+                    .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
+                    .map(({id, name, kind}) => (
+                      <li key={id} className="pb-0">
+                        <EvaluatedService name={name} kind={kind} />
+                      </li>
+                    ))}
+                </ul>
+              </div>
+
+              <div className="border-b border-disabled-light w-full py-6">
+                <p>
+                  The 2020 RDR Index covers policies that were active between
+                  February 8, 2019 and September 15, 2020. Policies that came
+                  into effect after September 15, 2020 were not evaluated for
+                  this Index.
+                </p>
+
+                <p className="pb-0">
+                  Scores reflect the average score across the services we
+                  evaluated, with each service weighted equally.
+                </p>
+              </div>
+
+              <div className="mt-6">
+                <button
+                  className="flex border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm text-center"
+                  onClick={() => {}}
+                >
+                  <Download className="mr-2" />
+                  Download data and sources
+                </button>
+              </div>
             </div>
           </section>
 
-          <section className="flex flex-col mt-6 md:mt-4">
-            <h2 className="text-prissian mb-6">Changes since 2019:</h2>
+          {index.totalDiffs.diff2020 !== "NA" && (
+            <section className="flex flex-col md:flex-row pt-3">
+              <div className="w-full md:w-4/6 pr-3 border-t border-disabled-light">
+                <h2 className="text-prissian mt-8 mb-6">Changes since 2019:</h2>
 
-            <div className="flex flex-col md:flex-row pt-3">
-              <div className="w-full md:w-4/6 pr-3">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: details.analysis,
+                    __html: details.changes,
                   }}
                 />
               </div>
 
-              <div className="md:w-2/6 pl-3" />
-            </div>
-          </section>
+              <div className="flex flex-col items-start w-full md:w-2/6 px-3 font-circular text-sm">
+                <YearOverYearLabel
+                  className="mt-8"
+                  value={index.totalDiffs.diff2020}
+                  year="2020"
+                />
+              </div>
+            </section>
+          )}
         </div>
       </div>
 
