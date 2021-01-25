@@ -38,6 +38,7 @@ import {
   mapCompanyKind,
   mapCompanyKindOrNil,
   mapElementValue,
+  mapExtCategory,
   mapServiceKind,
   memoizeAsync,
   stringOrNil,
@@ -147,6 +148,15 @@ type CsvCompanyRank = {
   governanceRank: number;
   freedomRank: number;
   privacyRank: number;
+};
+
+type CsvYearOverYear = {
+  company: string;
+  category: IndicatorCategoryExt;
+  diff2017: IndicatorScore;
+  diff2018: IndicatorScore;
+  diff2019: IndicatorScore;
+  diff2020: IndicatorScore;
 };
 
 /*
@@ -362,13 +372,26 @@ const loadIndicatorExcludesCsv = loadCsv<CsvIndicatorExclude>((record) => ({
 /*
  * Load the rankings for each company.
  */
-export const loadcompanyRanksCsv = loadCsv<CsvCompanyRank>((record) => ({
+export const loadCompanyRanksCsv = loadCsv<CsvCompanyRank>((record) => ({
   company: record.Company,
   rank: Number.parseInt(record.Rank, 10),
   governanceRank: Number.parseInt(record.GovernanceRank, 10),
   freedomRank: Number.parseInt(record.FreedomRank, 10),
   privacyRank: Number.parseInt(record.PrivacyRank, 10),
 }));
+
+/*
+ * Load the year over year score diffs.
+ */
+export const loadScoreDiffsCsv = loadCsv<CsvYearOverYear>((record) => ({
+  company: record.Company,
+  category: mapExtCategory(record.Scope),
+  diff2017: floatOrNA(record["2017DiffAdjusted"]),
+  diff2018: floatOrNA(record["2018DiffAdjusted"]),
+  diff2019: floatOrNA(record["2019DiffAdjusted"]),
+  diff2020: floatOrNA(record["2020DiffAdjusted"]),
+}));
+
 /*
  * Generate a complete list of all available companies.
  */
@@ -674,13 +697,15 @@ export const companyIndices = memoizeAsync(
       csvCompanySpecs,
       csvIndicatorSpecs,
       csvCompanyRanks,
+      csvYearOverYear,
     ] = await Promise.all([
       loadTotalsCsv("csv/2020-totals.csv"),
       loadCategoriesCsv("csv/2020-categories.csv"),
       loadIndicatorsCsv("csv/2020-indicators.csv"),
       loadCompanySpecsCsv("csv/2020-company-specs.csv"),
       loadIndicatorSpecsCsv("csv/2020-indicator-specs.csv"),
-      loadcompanyRanksCsv("csv/2020-rankings.csv"),
+      loadCompanyRanksCsv("csv/2020-rankings.csv"),
+      loadScoreDiffsCsv("csv/2020-year-over-year.csv"),
     ]);
 
     return (
@@ -701,6 +726,20 @@ export const companyIndices = memoizeAsync(
               indicator.company === total.company &&
               indexYears.has(indicator.index),
           );
+          const diffs = csvYearOverYear.filter(
+            (diff) => diff.company === total.company,
+          );
+
+          const totalDiffs = {
+            diff2017:
+              diffs.find((d) => d.category === "total")?.diff2017 || "NA",
+            diff2018:
+              diffs.find((d) => d.category === "total")?.diff2018 || "NA",
+            diff2019:
+              diffs.find((d) => d.category === "total")?.diff2019 || "NA",
+            diff2020:
+              diffs.find((d) => d.category === "total")?.diff2020 || "NA",
+          };
 
           const scores: Scores = companyCategories.reduce(
             (memo, category) =>
@@ -750,6 +789,7 @@ export const companyIndices = memoizeAsync(
               freedom: freedomIndicators,
               privacy: privacyIndicators,
             },
+            totalDiffs,
           };
         })
         // Set the real rank of the company after we sorted the
@@ -960,7 +1000,7 @@ export const companyRanking = async (
 ): Promise<CompanyRank[]> => {
   const [companyData, csvCompanyRanks] = await Promise.all([
     companyIndices(),
-    loadcompanyRanksCsv("csv/2020-rankings.csv"),
+    loadCompanyRanksCsv("csv/2020-rankings.csv"),
   ]);
 
   return csvCompanyRanks

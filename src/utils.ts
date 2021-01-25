@@ -2,6 +2,7 @@ import {
   CompanyKind,
   ElementValue,
   IndicatorCategory,
+  IndicatorCategoryExt,
   IndicatorScore,
   NA,
   ServiceKind,
@@ -86,6 +87,25 @@ export const mapCategory = (value: string): IndicatorCategory => {
       return "freedom";
     case "P":
       return "privacy";
+    default: {
+      throw new Error("Unknown score category.");
+    }
+  }
+};
+
+export const mapExtCategory = (value: string): IndicatorCategoryExt => {
+  switch (value) {
+    case "G":
+    case "Governance":
+      return "governance";
+    case "F":
+    case "Freedom":
+      return "freedom";
+    case "P":
+    case "Privacy":
+      return "privacy";
+    case "Total":
+      return "total";
     default: {
       throw new Error("Unknown score category.");
     }

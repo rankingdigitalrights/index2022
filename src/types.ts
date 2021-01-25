@@ -8,6 +8,13 @@ export type IndicatorCategoryExt = IndicatorCategory | "total";
 
 export type IndicatorScore = number | NA;
 
+export type ScoreDiffs = {
+  diff2017: IndicatorScore;
+  diff2018: IndicatorScore;
+  diff2019: IndicatorScore;
+  diff2020: IndicatorScore;
+};
+
 export type IndicatorNested = {
   category: IndicatorCategory;
   indicator: string;
@@ -106,6 +113,7 @@ export type CompanyIndex = {
   kind: CompanyKind;
   scores: Scores;
   indicators: Indicators;
+  totalDiffs: ScoreDiffs;
 };
 
 export type ElementValue =
