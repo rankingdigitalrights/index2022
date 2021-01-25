@@ -211,9 +211,15 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
               score={index.scores.privacy}
             />
           </div>
+          <p className="font-circular text-xs text-center">
+            We rank companies on their approach to governance, and their
+            policies and practices that affect freedom of expression and
+            privacy.
+          </p>
 
           <CompanySection
             category="governance"
+            score={index.scores.governance}
             text={details.governance}
             indicators={index.indicators.governance}
             onClick={handleIndicatorClick}
@@ -221,6 +227,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
 
           <CompanySection
             category="freedom"
+            score={index.scores.governance}
             text={details.freedom}
             indicators={index.indicators.freedom}
             onClick={handleIndicatorClick}
@@ -228,6 +235,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
 
           <CompanySection
             category="privacy"
+            score={index.scores.governance}
             text={details.privacy}
             indicators={index.indicators.privacy}
             onClick={handleIndicatorClick}

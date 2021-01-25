@@ -6,6 +6,7 @@ import CompanyIndicatorChart from "./company-indicator-chart";
 
 interface CompanySectionProps {
   category: IndicatorCategory;
+  score: number;
   text: string;
   indicators: IndicatorNested[];
   onClick: (id: string) => void;
@@ -13,6 +14,7 @@ interface CompanySectionProps {
 
 const CompanySection = ({
   category,
+  score,
   text,
   indicators,
   onClick,
@@ -28,19 +30,39 @@ const CompanySection = ({
     title = "UNKNOWN CATEGORY!!!";
   }
 
-  const titleClassName = c("font-platform text-xl", {
+  const titleClassName = {
     "text-cat-governance": category === "governance",
     "text-cat-freedom": category === "freedom",
     "text-cat-privacy": category === "privacy",
+  };
+
+  const scoreClassName = c("border rounded-md", {
+    "border-cat-governance": category === "governance",
+    "border-cat-freedom": category === "freedom",
+    "border-cat-privacy": category === "privacy",
   });
 
   return (
     <section className="mt-6 pb-6 border-t border-disabled-dark m-2">
       <div className="flex flex-col md:flex-row mt-8 md:mt-16">
         <div className="md:w-4/6 md:mr-3">
-          <div className="flex flex-col justify-end mb-12 md:h-16">
-            <div className="font-circular text-md text-prissian">Category</div>
-            <h2 className={titleClassName}>{title}</h2>
+          <div className="flex items-center mb-12 md:h-16">
+            <h2
+              className={c(
+                "font-platform text-xl whitespace-nowrap",
+                titleClassName,
+              )}
+            >
+              {title}
+            </h2>
+            <span
+              className={c(
+                "font-circular font-bold text-md ml-3 px-2 py-1",
+                scoreClassName,
+              )}
+            >
+              {score}%
+            </span>
           </div>
 
           <div dangerouslySetInnerHTML={{__html: text}} />
