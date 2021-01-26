@@ -227,7 +227,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
 
           <CompanySection
             category="freedom"
-            score={index.scores.governance}
+            score={index.scores.freedom}
             text={details.freedom}
             indicators={index.indicators.freedom}
             onClick={handleIndicatorClick}
@@ -235,7 +235,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
 
           <CompanySection
             category="privacy"
-            score={index.scores.governance}
+            score={index.scores.privacy}
             text={details.privacy}
             indicators={index.indicators.privacy}
             onClick={handleIndicatorClick}
