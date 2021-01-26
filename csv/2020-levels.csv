@@ -6389,7 +6389,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2020,Etisalat,F,F01a,1,a,Services,Services,broadband,Fixed-line broadband,83
 2020,Etisalat,F,F01a,1,a,Services,Mobile Services,mobile,Prepaid mobile,83
 2020,Etisalat,F,F01a,1,a,Services,Mobile Services,mobile,Postpaid mobile,83
-2020,Etisalat,F,F01b,1,b,Services,Services,broadband,Fixed-line broadband,67
+2020,Etisalat,F,F01b,1,b,Services,Services,broadband,Fixed-line broadband,0
 2020,Etisalat,F,F01b,1,b,Services,Mobile Services,mobile,Prepaid mobile,67
 2020,Etisalat,F,F01b,1,b,Services,Mobile Services,mobile,Postpaid mobile,67
 2020,Etisalat,F,F01c,1,c,Services,Services,broadband,Fixed-line broadband,0
@@ -7067,7 +7067,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2020,Google,P,P18,18,NA,Services,Services,photoVideo,YouTube,100
 2020,Google,P,P18,18,NA,Services,Services,mobileEcosystem,Android mobile ecosystem,100
 2020,Google,P,P18,18,NA,Services,Services,cloud,Google Drive,100
-2020,Kakao,G,G01,1,NA,Company,Group,Group,Group,67
+2020,Kakao,G,G01,1,NA,Company,Group,Group,Group,83
 2020,Kakao,G,G01,1,NA,Company,OpCom,OpCom,OpCom,NA
 2020,Kakao,G,G02,2,NA,Company,Group,Group,Group,33
 2020,Kakao,G,G02,2,NA,Company,OpCom,OpCom,OpCom,NA

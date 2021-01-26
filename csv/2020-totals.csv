@@ -10,7 +10,7 @@ Index,Company,Score
 2019,DeutscheTelekom,43
 2019,Etisalat,9
 2019,Facebook,55
-2019,Google,61
+2019,Google,60
 2019,Kakao,52
 2019,MailRu,22
 2019,Microsoft,61
@@ -34,10 +34,10 @@ Index,Company,Score
 2020,Baidu,25
 2020,BhartiAirtel,15
 2020,DeutscheTelekom,34
-2020,Etisalat,11
+2020,Etisalat,10
 2020,Facebook,45
 2020,Google,48
-2020,Kakao,41
+2020,Kakao,42
 2020,MailRu,27
 2020,Microsoft,50
 2020,MTN,23
@@ -50,4 +50,4 @@ Index,Company,Score
 2020,Twitter,53
 2020,VerizonMedia,52
 2020,Vodafone,42
-2020,Yandex,28
+2020,Yandex,27
