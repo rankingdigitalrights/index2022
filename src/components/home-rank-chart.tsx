@@ -95,7 +95,7 @@ const HomeRankChart = ({
             <div className="flex-none w-8 flex justify-center">
               <div
                 className={c(
-                  "rounded-full h-4 w-4 text-white flex items-center justify-center",
+                  "rounded-full h-5 w-5 text-white flex items-center justify-center",
                   highlightedRankClassName,
                 )}
               >
