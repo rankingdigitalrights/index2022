@@ -1,4 +1,3 @@
-import {useRouter} from "next/router";
 import React, {useState} from "react";
 import {Swiper as SwiperType} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
@@ -62,7 +61,6 @@ const Home = ({
   freedomRanking,
   privacyRanking,
 }: HomeProps) => {
-  const router = useRouter();
   const screenSize = useBreakpointSize();
   const [swiper, setSwiper] = useState<SwiperType>();
   const [selectedCategory, setSelectedCategory] = useState<
@@ -105,10 +103,6 @@ const Home = ({
         break;
       }
     }
-  };
-
-  const handleCompanyClick = (id: string) => {
-    router.push(`/companies/${id}`);
   };
 
   let slidesCount = 3;
@@ -185,14 +179,12 @@ const Home = ({
                 className="w-full sm:w-1/2 px-3"
                 ranking={platformRankings}
                 category={selectedCategory}
-                onClick={handleCompanyClick}
               />
 
               <HomeRankChart
                 className="w-full sm:w-1/2 mt-6 sm:mt-0 px-3"
                 ranking={telecomRankings}
                 category={selectedCategory}
-                onClick={handleCompanyClick}
               />
             </div>
           </div>

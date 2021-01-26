@@ -1,4 +1,5 @@
 import c from "clsx";
+import Link from "next/link";
 import React, {useState} from "react";
 
 import {useChartResize} from "../hooks";
@@ -9,14 +10,12 @@ import PercentageBar from "./percentage-bar";
 interface CompanyRankChartProps {
   activeCompany: string;
   ranking: CompanyRank[];
-  onClick: (id: string) => void;
   height?: number;
 }
 
 const CompanyRankChart = ({
   activeCompany,
   ranking,
-  onClick,
   height = 10,
 }: CompanyRankChartProps) => {
   const [chartRef, chartWidth] = useChartResize();
@@ -63,12 +62,11 @@ const CompanyRankChart = ({
             onMouseEnter={() => setHighlightedCompany(id)}
             onMouseLeave={() => setHighlightedCompany(undefined)}
           >
-            <button
-              className="flex-none font-circular w-28 select-none text-left whitespace-nowrap"
-              onClick={() => onClick(id)}
-            >
-              {companyPretty}
-            </button>
+            <Link passHref href={`/companies/${id}`}>
+              <a className="flex-none font-circular text-black w-28 select-none whitespace-nowrap">
+                {companyPretty}
+              </a>
+            </Link>
 
             <div className="flex-none w-8 flex justify-center">
               <div

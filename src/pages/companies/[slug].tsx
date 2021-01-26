@@ -61,10 +61,6 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
 const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
   const router = useRouter();
 
-  const handleCompanyClick = (id: string) => {
-    router.push(`/companies/${id}`);
-  };
-
   const handleIndicatorClick = (id: string) => {
     router.push(`/indicators/${id}`);
   };
@@ -93,11 +89,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
           </div>
 
           <div className="w-full md:w-5/12 lg:w-4/12 bg-beige p-3 md:mt-6 md:mb-3 md:ml-12 lg:ml-0 z-10">
-            <CompanyRankChart
-              activeCompany={index.id}
-              ranking={ranking}
-              onClick={handleCompanyClick}
-            />
+            <CompanyRankChart activeCompany={index.id} ranking={ranking} />
           </div>
         </div>
       </div>
