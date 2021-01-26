@@ -162,6 +162,11 @@
     padding-bottom: 1rem;
   }
 
+  .svg-shadow {
+    -webkit-filter: drop-shadow(-3px 3px 2px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(-3px 3px 2px rgba(0, 0, 0, 0.2));
+  }
+
   /* Spotlights Start */
 
   main.spotlight {

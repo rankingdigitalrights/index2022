@@ -19,7 +19,7 @@ interface EvaluatedServiceProps {
 }
 
 const mapIcon = (kind: ServiceKind) => {
-  const className = "mr-2";
+  const className = "mr-2 svg-shadow";
 
   switch (kind) {
     case "broadband":
