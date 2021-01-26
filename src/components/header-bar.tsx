@@ -89,13 +89,13 @@ const HeaderBar = ({className}: HeaderBarProps) => {
     <header className={c(className)}>
       <div className="relative bg-beige shadow-md py-4 z-50">
         <div className="container mx-auto flex justify-between items-center relative px-6">
-          <Link href="/">
-            <div className="flex items-center text-black hover:no-underline">
+          <Link passHref href="/">
+            <a className="flex items-center text-black hover:no-underline">
               <Logo className="flex-none" />
               <span className="flex-none font-platform font-bold text-lg ml-4 whitespace-nowrap">
                 Ranking Digital Rights
               </span>
-            </div>
+            </a>
           </Link>
 
           <button
