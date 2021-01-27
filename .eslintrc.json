@@ -89,7 +89,8 @@
           "test/test-setup.js",
           "scripts/**/*.js",
           "bin/**/*.ts",
-          "src/ts/__fixtures__/**/*.tsx"
+          "src/browser.ts",
+          "src/pdf.ts"
         ]
       }
     ],
