@@ -338,3 +338,27 @@
 
   /* Spotlights End */
 }
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0 0 10mm 0;
+  }
+
+  body {
+    background-size: 21cm 29.7cm;
+  }
+
+  section {
+    @apply p-8;
+  }
+
+  .page-break {
+    break-before: page;
+  }
+
+  .no-page-break {
+    display: inline-block;
+    break-inside: avoid;
+  }
+}

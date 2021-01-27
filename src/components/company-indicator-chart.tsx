@@ -1,4 +1,5 @@
 import c from "clsx";
+import {useRouter} from "next/router";
 import React, {useState} from "react";
 
 import ChevronDown from "../../static/chevron-down.svg";
@@ -19,6 +20,7 @@ const CompanyIndicatorChart = ({
   indicators,
   onClick,
 }: CompanyIndicatorChartProps) => {
+  const router = useRouter();
   const [chartRef, chartWidth] = useChartResize();
 
   const [collapsedIndicators, setCollapsedIndicators] = useState<
@@ -42,8 +44,10 @@ const CompanyIndicatorChart = ({
     );
   };
 
+  const isPrint = router.query?.print !== undefined;
+
   return (
-    <div>
+    <div className={c(isPrint ? "w-full" : undefined)}>
       {indicators.map(
         ({indicator, display, label, category, score, familyMembers}, idx) => {
           // eslint-disable-next-line unicorn/no-null
@@ -68,7 +72,10 @@ const CompanyIndicatorChart = ({
             "flex flex-grow items-center justify-between font-circular text-xs";
 
           return (
-            <div key={`company-indicator-chart-${indicator}`}>
+            <div
+              key={`company-indicator-chart-${indicator}`}
+              className={c("no-page-break", isPrint ? "w-full" : undefined)}
+            >
               <div
                 className={c("flex flex-col", {"mt-2": idx > 0})}
                 onMouseEnter={() => setHighlightedIndicator(indicator)}
@@ -107,7 +114,7 @@ const CompanyIndicatorChart = ({
                     >
                       <PercentageBar
                         value={mapScore(score)}
-                        width={chartWidth}
+                        width={isPrint ? "100%" : chartWidth}
                         height={9}
                         className={
                           isHighlightedIndicator

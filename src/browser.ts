@@ -34,7 +34,7 @@ export default async (headless = true): Promise<BrowserCtx> => {
 
   const browse: BrowserExecutor = async (f) => {
     const page = await instance.newPage();
-    await page.setViewport({width: 1024, height: 768});
+    await page.setViewport({width: 1279, height: 768});
 
     const goto: BrowserTask<string> = async (url) => {
       try {
@@ -46,22 +46,23 @@ export default async (headless = true): Promise<BrowserCtx> => {
     };
 
     const pdf: BrowserTask<string> = async (path) => {
-      // const headerTemplate = `<div class="flex justify-around">
+      // const headerTemplate = `<div style="background-color:#1c5275;height:100%">
       // <span class="title text-sm font-circular" />
       // </div>`;
-      //       const footerTemplate = `<div class="flex items-end">
+      // const footerTemplate = `<div class="flex items-end">
       // <span class="pageNumber" />/<span class="totalPages" />
       // </div>`;
 
-      await page.emulateMediaType("screen");
       await page.pdf({
         format: "A4",
+        printBackground: true,
+        preferCSSPageSize: true,
         // displayHeaderFooter: true,
         // margin: {
         //   bottom: 70, // minimum required for footer msg to display
-        //   left: 25,
-        //   right: 35,
-        //   top: 30,
+        //   left: 0,
+        //   right: 0,
+        //   top: 0,
         // },
         // footerTemplate,
         // headerTemplate,
@@ -70,7 +71,7 @@ export default async (headless = true): Promise<BrowserCtx> => {
     };
 
     const waitSeconds: BrowserTask<number> = async (seconds: number) => {
-      await page.waitFor(seconds * 1000);
+      await page.waitForTimeout(seconds * 1000);
     };
 
     await f({

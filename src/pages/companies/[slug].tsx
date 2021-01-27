@@ -73,8 +73,8 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
           <div className="md:w-5/12 lg:w-2/5 xl:w-5/12 w-full md:bg-beige" />
         </div>
 
-        <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between lg:w-10/12 xl:w-8/12">
-          <div className="flex flex-col bg-prissian w-full md:w-7/12 lg:w-7/12 p-3 md:mt-6 md:mb-6 md:mr-6 lg:mr-0 z-10">
+        <div className="md:container md:mx-auto flex flex-col print:flex-row md:flex-row md:justify-between lg:w-10/12 xl:w-8/12">
+          <div className="flex flex-col bg-prissian w-full md:w-7/12 lg:w-7/12 p-3 print:p-8 md:mt-6 md:mb-6 md:mr-6 lg:mr-0 z-10">
             <CompanyKindLabel kind={index.kind} />
 
             <CompanyRankCard
@@ -88,7 +88,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             />
           </div>
 
-          <div className="w-full md:w-5/12 lg:w-4/12 bg-beige p-3 md:mt-6 md:mb-3 md:ml-12 lg:ml-0 z-10">
+          <div className="w-full md:w-5/12 lg:w-4/12 bg-beige p-3 print:p-8 md:mt-6 md:mb-3 md:ml-12 lg:ml-0 z-10">
             <CompanyRankChart activeCompany={index.id} ranking={ranking} />
           </div>
         </div>
@@ -99,7 +99,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
           <section className="flex flex-col md:flex-row pt-3">
             <div className="w-full md:w-4/6 pr-3">
               <div
-                className="mt-6 border-b border-disabled-light"
+                className="mt-6 border-b border-disabled-light print:border-b-0"
                 dangerouslySetInnerHTML={{__html: details.keyFindings}}
               />
 
@@ -120,24 +120,26 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
               />
             </div>
 
-            <div className="flex flex-col items-start w-full md:w-2/6 px-3 font-circular text-sm">
-              <h3 className="font-bold pb-3 mt-3 md:mb-6 md:mt-6">
-                Services evaluated:
-              </h3>
+            <div className="flex flex-col print:flex-row items-start w-full md:w-2/6 px-3 font-circular text-sm">
+              <div className="print:w-1/3">
+                <h3 className="font-bold pb-3 mt-3 md:mb-6 md:mt-6 print:whitespace-nowrap">
+                  Services evaluated:
+                </h3>
 
-              <div className=" border-b border-disabled-light w-full pb-6">
-                <ul className="list-none list-outside pl-0">
-                  {services
-                    .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
-                    .map(({id, name, kind}) => (
-                      <li key={id} className="pb-0">
-                        <EvaluatedService name={name} kind={kind} />
-                      </li>
-                    ))}
-                </ul>
+                <div className=" border-b border-disabled-light print:border-b-0 w-full pb-6">
+                  <ul className="list-none list-outside pl-0">
+                    {services
+                      .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
+                      .map(({id, name, kind}) => (
+                        <li key={id} className="pb-0">
+                          <EvaluatedService name={name} kind={kind} />
+                        </li>
+                      ))}
+                  </ul>
+                </div>
               </div>
 
-              <div className="border-b border-disabled-light w-full py-6">
+              <div className="border-b border-disabled-light print:border-b-0 w-full print:w-2/3 py-6">
                 <p>
                   The 2020 RDR Index covers policies that were active between
                   February 8, 2019 and September 15, 2020. Policies that came
@@ -151,7 +153,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
                 </p>
               </div>
 
-              <div className="mt-6">
+              <div className="mt-6 print:hidden">
                 <button
                   className="flex border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm text-center"
                   onClick={() => {}}
@@ -164,7 +166,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
           </section>
 
           {index.totalDiffs.diff2020 !== "NA" && (
-            <section className="flex flex-col md:flex-row pt-3">
+            <section className="relative flex flex-col md:flex-row print:flex-row pt-3">
               <div className="w-full md:w-4/6 pr-3 border-t border-disabled-light">
                 <h2 className="text-prissian mt-8 mb-6">Changes since 2019:</h2>
 
@@ -189,7 +191,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
 
       <div className="border-t border-disabled-dark">
         <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
-          <div className="flex flex-col md:flex-row items-center">
+          <div className="flex flex-col print:flex-row md:flex-row items-center no-page-break">
             <CompanyScoreChart
               category="governance"
               score={index.scores.governance}
@@ -215,6 +217,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             text={details.governance}
             indicators={index.indicators.governance}
             onClick={handleIndicatorClick}
+            className="page-break"
           />
 
           <CompanySection
@@ -223,6 +226,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             text={details.freedom}
             indicators={index.indicators.freedom}
             onClick={handleIndicatorClick}
+            className="page-break"
           />
 
           <CompanySection
@@ -231,6 +235,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             text={details.privacy}
             indicators={index.indicators.privacy}
             onClick={handleIndicatorClick}
+            className="page-break"
           />
         </div>
 

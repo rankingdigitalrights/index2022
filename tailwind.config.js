@@ -11,6 +11,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        print: {raw: "print"},
+      },
+
       fontFamily: {
         circular: ["Circular", "sans-serif"],
         platform: ["Platform", "sans-serif"],

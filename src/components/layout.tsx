@@ -13,11 +13,11 @@ const Layout = ({children}: LayoutProps) => {
     <div>
       <HtmlHead />
 
-      <HeaderBar />
+      <HeaderBar className="print:hidden" />
 
       {children}
 
-      <Footer />
+      <Footer className="print:hidden" />
     </div>
   );
 };

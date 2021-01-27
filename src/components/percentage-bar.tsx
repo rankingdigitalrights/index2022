@@ -4,11 +4,11 @@ import React from "react";
 import {useTween} from "react-use";
 
 import {IndicatorScore} from "../types";
-import {isNA} from "../utils";
+import {isNA, isNumber} from "../utils";
 
 interface PercentageBarProps {
   value: IndicatorScore;
-  width: number;
+  width: number | "100%";
   height?: number;
   transform?: string;
   className?: string | Record<string, boolean>;
@@ -45,15 +45,26 @@ const PercentageBar = ({
       </g>
     );
 
-  const valueScale = scaleLinear()
-    .domain([0, 100])
-    .range([0, orientation === "horizontal" ? width : height]);
+  // Some percentage bars have to render as well when generating a PDF. Printing
+  // to PDF using Puppeteer doesn't trigger the resize event handler and the bars
+  // render too short. In those case I supply 100% as width and render the value
+  // on a scale of 0-100.
+  let percentage: string | number = 0;
 
-  const percentage = (valueScale(value) || 0) * t;
+  if (isNumber(width)) {
+    const valueScale = scaleLinear()
+      .domain([0, 100])
+      .range([0, orientation === "horizontal" ? width : height]);
+    percentage = (valueScale(value) || 0) * t;
+  } else if (width === "100%") {
+    const valueScale = scaleLinear().domain([0, 100]).range([0, 100]);
+    const scaledValue = valueScale(value) || 0;
+    percentage = `${scaledValue}%`;
+  }
 
   return (
     <g
-      width={width}
+      width={`${percentage}%`}
       transform={
         orientation === "horizontal"
           ? transform
@@ -64,7 +75,7 @@ const PercentageBar = ({
         className="text-cat-negative fill-current"
         x={0}
         rx={rx}
-        width={width}
+        width="100%"
         height={height}
       />
       <rect

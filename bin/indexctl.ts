@@ -253,7 +253,7 @@ const writeHtmlFile = (
             restartBrowser = false;
           }
 
-          const href = `http://localhost:3000/index2020/companies/${companyId}`;
+          const href = `http://localhost:3000/index2020/companies/${companyId}?print`;
           const target = path.join(process.cwd(), pdfDir, `${companyId}.pdf`);
 
           console.log(`Generate company PDF for: ${companyId}.`);

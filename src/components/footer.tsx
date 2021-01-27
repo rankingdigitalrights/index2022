@@ -1,3 +1,4 @@
+import c from "clsx";
 import React from "react";
 
 import LogoEmail from "../images/icons/logo-email.svg";
@@ -5,9 +6,18 @@ import LogoFacebook from "../images/icons/logo-facebook.svg";
 import LogoRss from "../images/icons/logo-rss.svg";
 import LogoTwitter from "../images/icons/logo-twitter.svg";
 
-const Footer = () => {
+interface FooterProps {
+  className?: string;
+}
+
+const Footer = ({className}: FooterProps) => {
   return (
-    <footer className="bg-black font-circular font-bold text-white text-sm">
+    <footer
+      className={c(
+        "bg-black font-circular font-bold text-white text-sm",
+        className,
+      )}
+    >
       <div className="md:container md:mx-auto flex flex-col justify-center md:h-48">
         <div className="flex flex-col md:flex-row md:justify-between divide-y-2 md:divide-y-0 md:divide-x-2 divide-solid divide-white">
           <div className="md:w-1/3 py-6 px-6 md:px-6 md:py-3">

@@ -10,6 +10,7 @@ interface CompanySectionProps {
   text: string;
   indicators: IndicatorNested[];
   onClick: (id: string) => void;
+  className?: string;
 }
 
 const CompanySection = ({
@@ -18,6 +19,7 @@ const CompanySection = ({
   text,
   indicators,
   onClick,
+  className,
 }: CompanySectionProps) => {
   let title;
   if (category === "governance") {
@@ -43,7 +45,12 @@ const CompanySection = ({
   });
 
   return (
-    <section className="mt-6 pb-6 border-t border-disabled-dark m-2">
+    <section
+      className={c(
+        "mt-6 pb-6 border-t border-disabled-dark print:border-t-0 m-2",
+        className,
+      )}
+    >
       <div className="flex flex-col md:flex-row mt-8 md:mt-16">
         <div className="md:w-4/6 md:mr-3">
           <div className="flex items-center mb-12 md:h-16">
