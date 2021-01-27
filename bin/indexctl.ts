@@ -40,7 +40,7 @@ const writeHtmlFile = (
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   yargs
     .scriptName("indexctl")
-    .command("data", "generate data structures.", async () => {
+    .command("csv", "generate data structures from CSV sources.", async () => {
       const companiesDir = "data/companies";
       const indicatorsDir = "data/indicators";
       const rankingsDir = "data/rankings";
@@ -50,33 +50,27 @@ const writeHtmlFile = (
         allIndicators,
         allElements,
         scores,
-        details,
       ] = await Promise.all([
         companies(),
         indicators(),
         elements(),
         companyIndices(),
-        companyDetails(),
       ]);
 
-      await fs.mkdir(path.join(process.cwd(), dataDir), {recursive: true});
+      await fs.mkdir(path.join(process.cwd(), companiesDir), {recursive: true});
+      await fs.mkdir(path.join(process.cwd(), indicatorsDir), {
+        recursive: true,
+      });
+      await fs.mkdir(path.join(process.cwd(), rankingsDir), {
+        recursive: true,
+      });
 
       const companiesTarget = path.join(dataDir, "companies.json");
       const indicatorsTarget = path.join(dataDir, "indicators.json");
       const elementsTarget = path.join(dataDir, "elements.json");
-      const policyRecommendationsTarget = path.join(
-        dataDir,
-        "policy-recommendations.html",
-      );
-
-      console.log(`Generating ${policyRecommendationsTarget}`);
-
-      await policyRecommendations().then(
-        writeHtmlFile(policyRecommendationsTarget),
-      );
 
       console.log(
-        `Generating ${companiesTarget}, ${indicatorsTarget} and ${elementsTarget}`,
+        `Generating spec data: ${companiesTarget}, ${indicatorsTarget} and ${elementsTarget}`,
       );
 
       await Promise.all([
@@ -85,32 +79,26 @@ const writeHtmlFile = (
         writeJsonFile(elementsTarget)(allElements),
       ]);
 
-      console.log("Generating company details.");
-
-      await Promise.all(
-        details.map(async (company) => {
-          const companyDir = path.join(companiesDir, company.id);
-          await fs.mkdir(path.join(process.cwd(), companyDir), {
-            recursive: true,
-          });
-
-          const target = path.join(companyDir, "details.json");
-          return writeJsonFile(target)(company);
-        }),
-      );
-
-      console.log("Generating company scores data");
+      /*
+       * Company scores, e.g. ./data/companies/Amazon.scores.json
+       */
       await Promise.all(
         scores.map(async (score) => {
           const companyDir = path.join(companiesDir, score.id);
           await fs.mkdir(path.join(process.cwd(), companyDir), {
             recursive: true,
           });
+
+          console.log(`Generating company scores for: ${score.id}`);
+
           const target = path.join(companyDir, "scores.json");
           return writeJsonFile(target)(score);
         }),
       );
 
+      /*
+       * Company services, e.g. ./data/companies/services,json
+       */
       await allCompanies.reduce(async (memo, company) => {
         await memo;
 
@@ -120,14 +108,16 @@ const writeHtmlFile = (
           recursive: true,
         });
 
-        console.log(`Generating company data for ${company.name}`);
+        console.log(`Generating company services for: ${company.name}`);
 
         const target = path.join(companyDir, "services.json");
         const validCompanyServices = await companyServices(company.id);
         return writeJsonFile(target)(validCompanyServices);
       }, Promise.resolve());
 
-      // Generate companies for every indicator.
+      /*
+       * Indicator data structures, e.g. ./data/indicators/G1/averages.json
+       */
       await allIndicators.reduce(async (memo, indicator) => {
         await memo;
 
@@ -154,7 +144,7 @@ const writeHtmlFile = (
           "averages.json",
         );
 
-        console.log(`Generating indicator data for ${indicator.name}`);
+        console.log(`Generating indicator data for: ${indicator.name}`);
 
         await indicatorDetails(indicator.id).then(
           writeJsonFile(indicatorDetailsTarget),
@@ -173,12 +163,9 @@ const writeHtmlFile = (
         );
       }, Promise.resolve());
 
-      console.log("Generating ranking scores data.");
-
-      await fs.mkdir(path.join(process.cwd(), rankingsDir), {
-        recursive: true,
-      });
-
+      /*
+       * Ranking scores, e.g. ./data/rankings/internet-freedom.json
+       */
       await Promise.all(
         (["telecom", "internet"] as CompanyKind[]).map(async (kind) => {
           await Promise.all(
@@ -193,11 +180,46 @@ const writeHtmlFile = (
                   rankingsDir,
                   `${kind}-${category}.json`,
                 );
+
+                console.log(`Generating ranking scores for: ${category}`);
+
                 const ranking = await companyRanking(kind, category);
                 return writeJsonFile(target)(ranking);
               },
             ),
           );
+        }),
+      );
+    })
+    .command("google", "pull content from Google docs.", async () => {
+      const companiesDir = "data/companies";
+
+      const details = await companyDetails();
+
+      await fs.mkdir(path.join(process.cwd(), dataDir), {recursive: true});
+
+      const policyRecommendationsTarget = path.join(
+        dataDir,
+        "policy-recommendations.html",
+      );
+
+      console.log(`Pull content for: ${policyRecommendationsTarget}`);
+
+      await policyRecommendations().then(
+        writeHtmlFile(policyRecommendationsTarget),
+      );
+
+      await Promise.all(
+        details.map(async (company) => {
+          const companyDir = path.join(companiesDir, company.id);
+          await fs.mkdir(path.join(process.cwd(), companyDir), {
+            recursive: true,
+          });
+
+          console.log(`Pull company details for: ${company.id}.`);
+
+          const target = path.join(companyDir, "details.json");
+          return writeJsonFile(target)(company);
         }),
       );
     })
@@ -211,7 +233,7 @@ const writeHtmlFile = (
         },
       },
       async (argv) => {
-        const pdfDir = "public/pdf";
+        const pdfDir = "public/pdf/companies";
 
         const allCompanies = await companies();
 
@@ -234,7 +256,7 @@ const writeHtmlFile = (
           const href = `http://localhost:3000/index2020/companies/${companyId}`;
           const target = path.join(process.cwd(), pdfDir, `${companyId}.pdf`);
 
-          console.log(`Generating company PDF for ${companyId}.`);
+          console.log(`Generate company PDF for: ${companyId}.`);
 
           try {
             await browse(
