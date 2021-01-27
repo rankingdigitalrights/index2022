@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {useRouter} from "next/router";
 
 import CompanyKindLabel from "../../components/company-kind-label";
@@ -154,13 +155,12 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
               </div>
 
               <div className="mt-6 print:hidden">
-                <button
-                  className="flex border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm text-center"
-                  onClick={() => {}}
-                >
-                  <Download className="mr-2" />
-                  Download data and sources
-                </button>
+                <Link passHref href={`/pdf/companies/${index.id}.pdf`}>
+                  <a className="flex border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm text-center">
+                    <Download className="mr-2" />
+                    Download data and sources
+                  </a>
+                </Link>
               </div>
             </div>
           </section>
