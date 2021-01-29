@@ -82,6 +82,7 @@
       "error",
       {
         "devDependencies": [
+          "next.*.js",
           "webpack.*.js",
           "postcss*.js",
           "tailwind*.js",

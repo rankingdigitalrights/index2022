@@ -1,4 +1,4 @@
-/* eslint @typescript-eslint/no-var-requires: off */
+/* eslint @typescript-eslint/no-var-requires: off, global-require: off */
 const withPlugins = require("next-compose-plugins");
 const withSvgr = require("next-svgr");
 const withImages = require("next-optimized-images");
@@ -14,6 +14,10 @@ module.exports = withPlugins(
         optimizeImages: true,
         optimizeImagesInDev: true,
         handleImages: ["jpeg", "png", "webp"],
+        responsive: {
+          // eslint-disable-next-line import/no-extraneous-dependencies
+          adapter: require("responsive-loader/sharp"),
+        },
       },
     ],
   ],
