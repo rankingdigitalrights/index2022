@@ -18,7 +18,7 @@ import {
   indicators,
   indicatorScores,
 } from "../src/csv";
-import {companyDetails, policyRecommendations} from "../src/google";
+import {companyDetails, narrativeContent} from "../src/google";
 import {companyPdf} from "../src/pdf";
 import {CompanyKind, IndicatorCategoryExt} from "../src/types";
 
@@ -30,9 +30,9 @@ const writeJsonFile = (
   await fs.writeFile(path.join(process.cwd(), target), JSON.stringify(data));
 };
 
-const writeHtmlFile = (
-  target: string,
-): ((d: string) => Promise<void>) => async (d: string): Promise<void> => {
+const writeFile = (target: string): ((d: string) => Promise<void>) => async (
+  d: string,
+): Promise<void> => {
   await fs.writeFile(path.join(process.cwd(), target), d);
 };
 
@@ -193,20 +193,24 @@ const writeHtmlFile = (
     })
     .command("google", "pull content from Google docs.", async () => {
       const companiesDir = "data/companies";
+      const narrativesDir = "data/narratives";
 
       const details = await companyDetails();
 
       await fs.mkdir(path.join(process.cwd(), dataDir), {recursive: true});
+      await fs.mkdir(path.join(process.cwd(), narrativesDir), {
+        recursive: true,
+      });
 
       const policyRecommendationsTarget = path.join(
-        dataDir,
-        "policy-recommendations.html",
+        narrativesDir,
+        "policy-recommendations.mdx",
       );
 
       console.log(`Pull content for: ${policyRecommendationsTarget}`);
 
-      await policyRecommendations().then(
-        writeHtmlFile(policyRecommendationsTarget),
+      await narrativeContent("Policy Recommendations").then(
+        writeFile(policyRecommendationsTarget),
       );
 
       await Promise.all(

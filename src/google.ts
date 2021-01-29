@@ -1,12 +1,15 @@
+import slugify from "@sindresorhus/slugify";
 import fs, {promises as fsP} from "fs";
 import {GoogleAuth} from "google-auth-library";
 import {drive_v3, google} from "googleapis";
 import os from "os";
 import path from "path";
+import unzipper from "unzipper";
 
 import {
   companyDetails as companyDetails2,
   emptyCompany,
+  narrativeMdx,
   processHtml,
 } from "./formatter";
 import {CompanyDetails} from "./types";
@@ -15,6 +18,7 @@ import {memoize, unreachable} from "./utils";
 type GoogleDownload = {
   target: string;
   mimeType: "text/html" | "application/zip";
+  images?: string[];
 };
 
 type GoogleDoc = {
@@ -38,6 +42,14 @@ process.env.GOOGLE_APPLICATION_CREDENTIALS = path.join(
   process.cwd(),
   ".auth.json",
 );
+
+// Move a file locally.
+const moveFile = async (file: string, dir: string): Promise<void> => {
+  const f = path.basename(file);
+  const dest = path.resolve(dir, f);
+
+  await fsP.rename(file, dest);
+};
 
 export const getAuth = memoize<() => GoogleAuth>(() => {
   const credentialPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
@@ -101,9 +113,9 @@ export const fetchDocumentZip = async (
   targetDir: string,
   {id, name}: GoogleDoc,
 ): Promise<GoogleDoc> => {
-  const target = path.join(targetDir, `${name}.zip`);
-  const dest = fs.createWriteStream(target);
+  let target: string;
   const drive = google.drive({version: "v3", auth});
+  const images: string[] = [];
 
   const res = await drive.files.export(
     {
@@ -116,10 +128,37 @@ export const fetchDocumentZip = async (
   return new Promise((resolve, reject) => {
     res.data
       .on("error", reject)
-      .pipe(dest)
+      .pipe(unzipper.Parse())
+      .on("entry", (entry) => {
+        const entryName = entry.path;
+        const targetFile = path.join(targetDir, entryName);
+
+        fs.mkdirSync(path.dirname(targetFile), {recursive: true});
+
+        // We register any downloaded images.
+        if (entryName.startsWith("images")) {
+          images.push(targetFile);
+        }
+
+        // We assume there is only one HTML file per zip file. In our case this
+        // is true.
+        if (path.extname(entryName) === ".html") {
+          target = targetFile;
+        }
+
+        // Write out the file to the temporary location.
+        entry.pipe(fs.createWriteStream(targetFile));
+      })
       .on("error", reject)
       .on("finish", () => {
-        const download: GoogleDownload = {target, mimeType: "text/html"};
+        if (!target)
+          throw new Error(`No HTML file downloaded for ${id}/${name}`);
+
+        const download: GoogleDownload = {
+          target,
+          images,
+          mimeType: "text/html",
+        };
         resolve({id, name, download});
       });
   });
@@ -179,24 +218,33 @@ export const companyDetails = async (): Promise<CompanyDetails[]> => {
 };
 
 /*
- * Load the policy recommendations from Google Docs.
+ * Load the narrative page from Google Docs.
  */
-export const policyRecommendations = async (): Promise<string> => {
+export const narrativeContent = async (name: string): Promise<string> => {
   const auth = getAuth();
   const googleDocs = await listFiles(auth, rootFolder);
   const downloadsDir = await fsP.mkdtemp(path.join(os.tmpdir(), "index2020-"));
 
-  const googleDoc = googleDocs.find(
-    ({name}) => name === "Policy Recommendations",
+  const googleDoc = googleDocs.find(({name: n}) => n === name);
+  if (!googleDoc) return unreachable(`unable to fetch ${name}`);
+  const doc = await fetchDocumentZip(auth, downloadsDir, googleDoc);
+  if (!doc.download) return unreachable(`unable to find ${name} download`);
+  const slug = slugify(name);
+
+  const imageDir = path.join(process.cwd(), "src/images", slug);
+
+  await fsP.mkdir(imageDir, {recursive: true});
+  await Promise.all(
+    (doc.download.images || []).map((file) => {
+      return moveFile(file, imageDir);
+    }),
   );
-  if (!googleDoc) return unreachable("unable to fetch policy recommendations");
-  const doc = await fetchDocumentHtml(auth, downloadsDir, googleDoc);
-  if (!doc.download)
-    return unreachable("unable to find policy recommendations download");
   const src = await fsP.readFile(doc.download.target, "utf-8");
   const html = processHtml(src);
 
-  return html;
+  const mdx = narrativeMdx(slug, html);
+
+  return mdx;
 };
 
 // FIXME: I keep this code in case I might need it in the future. Create

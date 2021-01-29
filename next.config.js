@@ -6,7 +6,17 @@ const withImages = require("next-optimized-images");
 const ensureSlash = (path) => (path.startsWith("/") ? path : `/${path}`);
 
 module.exports = withPlugins(
-  [withSvgr, [withImages, {handleImages: ["jpeg", "png"]}]],
+  [
+    withSvgr,
+    [
+      withImages,
+      {
+        optimizeImages: true,
+        optimizeImagesInDev: true,
+        handleImages: ["jpeg", "png", "webp"],
+      },
+    ],
+  ],
   {
     basePath: ensureSlash(process.env.BASE_PATH || "/index2020"),
     assetPrefix: ensureSlash(process.env.BASE_PATH || "/index2020"),

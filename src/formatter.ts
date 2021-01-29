@@ -1,15 +1,21 @@
 import slugify from "@sindresorhus/slugify";
 import cheerio from "cheerio";
+import path from "path";
 import pretty from "pretty";
 
 import {CompanyDetails} from "./types";
+import {isString, unreachable} from "./utils";
 
 type CheerioTag = string | cheerio.Element | cheerio.Cheerio;
+
+const hasChildTag = (tag: string, $: cheerio.Cheerio): boolean => {
+  return $.has(tag).get().length > 0;
+};
 
 const removeEmptyTag = (tag: CheerioTag, $: cheerio.Root): void => {
   $(tag).each((_idx, el) => {
     const $el = $(el);
-    if ($el.text().trim() === "") $el.remove();
+    if ($el.text().trim() === "" && !hasChildTag("img", $el)) $el.remove();
   });
 };
 
@@ -47,8 +53,9 @@ export const normalizeHtml = (src: string): string => {
   // as well as inline comment references
   removeTag("sup", "a[id^=cmnt]", $);
 
-  // empty paragraphs can sneak in, lets get rid of them
+  // empty paragraphs and div's can sneak in, lets get rid of them
   removeEmptyTag("p", $);
+  removeEmptyTag("div", $);
 
   // rewrite the id's to something more friendly.
   $("h2").each((_idx, el) => {
@@ -73,6 +80,9 @@ export const normalizeHtml = (src: string): string => {
       elStyle
         .split(";")
         .filter((styleRule) => {
+          if (["img"].includes(el.tagName) && /width/.test(styleRule)) {
+            return true;
+          }
           return /font-style:italic|font-weight:700|text-decoration:underline/.test(
             styleRule,
           );
@@ -103,6 +113,11 @@ export const normalizeHtml = (src: string): string => {
       if (!isRedirected) return el;
 
       $el.attr("href", decodeURI(redirectUrl));
+    }
+
+    // Unnest images
+    if (el.tagName === "p" && $el.has("img").get().length > 0) {
+      $el.replaceWith(el.children);
     }
 
     return el;
@@ -187,4 +202,43 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
     ...(privacy ? {privacy} : undefined),
     ...(footnotes ? {footnotes} : undefined),
   };
+};
+
+export const narrativeMdx = (imgPath: string, src: string): string => {
+  const $ = cheerio.load(src);
+
+  $("body *").each((_idx, el) => {
+    const $el = $(el);
+    const className = $el.attr("class");
+
+    if (isString(className)) {
+      $el.attr("className", className);
+      $el.removeAttr("class");
+    }
+  });
+
+  return $("body > *")
+    .toArray()
+    .map((el) => {
+      const $el = $(el);
+
+      if (el.tagName === "img") {
+        const imageSrc = $el.attr("src");
+        const title = $el.attr("title");
+        const alt = $el.attr("alt");
+        const width = $el.attr("width") || 676;
+        const height = $el.attr("height") || 468;
+
+        if (!imageSrc) return unreachable(`Image lacks a source.`);
+
+        const href = path.join(imgPath, path.basename(imageSrc));
+
+        // Google doesn't properly terminate <img> tags and this trips up the
+        // MDXProvider. Rewrite the <img> to have a proper closing tag.
+        return `<img src="${href}" width="${width}" height="${height}" title="${title}" alt="${alt}" />`;
+      }
+
+      return $.html(el);
+    })
+    .join("\n");
 };

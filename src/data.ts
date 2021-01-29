@@ -18,7 +18,7 @@ import {
   Service,
 } from "./types";
 
-const loadHtml = (file: string): (() => Promise<string>) => async (): Promise<
+const loadFile = (file: string): (() => Promise<string>) => async (): Promise<
   string
 > => {
   const data = await fsP.readFile(path.join(process.cwd(), file));
@@ -200,6 +200,6 @@ export const companyRankingData = async (
 /*
  * Load the policy recommendations HTML.
  */
-export const policyRecommendations = loadHtml(
-  "data/policy-recommendations.html",
+export const policyRecommendations = loadFile(
+  "data/narratives/policy-recommendations.mdx",
 );
