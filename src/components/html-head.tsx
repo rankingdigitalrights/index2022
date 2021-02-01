@@ -2,6 +2,9 @@ import Head from "next/head";
 import React from "react";
 
 import htmlMeta from "../../data/html-meta.json";
+import RdrIconSmall from "../images/cropped-rdr_icon_black-32x32.png";
+import RdrTouchIcon from "../images/cropped-rdr_icon_black-180x180.png";
+import RdrIconLarge from "../images/cropped-rdr_icon_black-192x192.png";
 
 const HtmlHead = () => {
   const {title, description, ...metaTags} = htmlMeta as Record<string, string>;
@@ -40,7 +43,6 @@ const HtmlHead = () => {
         ))}
       </>
 
-      <link rel="icon" href="/favicon.ico" />
       <link
         rel="alternate"
         type="application/rss+xml"
@@ -54,20 +56,9 @@ const HtmlHead = () => {
         href="https://rankingdigitalrights.org/comments/feed/"
       />
 
-      <link
-        rel="icon"
-        href="/index2020/cropped-rdr_icon_black-32x32.png"
-        sizes="32x32"
-      />
-      <link
-        rel="icon"
-        href="/index2020/cropped-rdr_icon_black-192x192.png"
-        sizes="192x192"
-      />
-      <link
-        rel="apple-touch-icon-precomposed"
-        href="/index2020/cropped-rdr_icon_black-180x180.png"
-      />
+      <link rel="icon" href={RdrIconSmall} sizes="32x32" />
+      <link rel="icon" href={RdrIconLarge} sizes="192x192" />
+      <link rel="apple-touch-icon-precomposed" href={RdrTouchIcon} />
     </Head>
   );
 };

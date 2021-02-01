@@ -8,3 +8,8 @@ declare module "*.svg" {
   export {ReactComponent};
   export default content;
 }
+
+declare module "*.png" {
+  const value: any;
+  export = value;
+}
