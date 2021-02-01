@@ -121,14 +121,14 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                     <IconLink
                       name="Intro essay"
                       href="/intro"
-                      icon={<IntroEssay />}
+                      icon={<IntroEssay className="flex-none w-6 h-6" />}
                     />
                   </li>
                   <li>
                     <IconLink
                       name="Key Findings: Flying Blind"
                       href="/key-findings"
-                      icon={<KeyFindings />}
+                      icon={<KeyFindings className="flex-none w-6 h-6" />}
                     />
                   </li>
                 </ul>
@@ -162,7 +162,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
               <div className="pl-4 pr-3 py-6">
                 <IconLink
                   href="/policy-recommendations"
-                  icon={<PolicyRecommendations />}
+                  icon={<PolicyRecommendations className="flex-none w-6 h-6" />}
                   name="Policy Recommendations"
                 />
               </div>
@@ -218,21 +218,21 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   <li className="py-6">
                     <IconLink
                       href="/indicators/G1"
-                      icon={<ScoresByIndicator />}
+                      icon={<ScoresByIndicator className="flex-none w-6 h-6" />}
                       name="Scores by indicator"
                     />
                   </li>
                   <li className="py-6">
                     <IconLink
                       href="/key-findings"
-                      icon={<ExploreTheData />}
+                      icon={<ExploreTheData className="flex-none w-6 h-6" />}
                       name="Explore the data"
                     />
                   </li>
                   <li className="py-6">
                     <IconLink
                       href="/methodology-development"
-                      icon={<Methodology />}
+                      icon={<Methodology className="flex-none w-6 h-6" />}
                       name="Methodology"
                     />
                   </li>
@@ -242,7 +242,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
               <div className="pl-4 pr-3 py-6">
                 <IconLink
                   href="/policy-recommendations"
-                  icon={<ScoresOverTime />}
+                  icon={<ScoresOverTime className="flex-none w-6 h-6" />}
                   name="RDR scores over time"
                 />
               </div>
