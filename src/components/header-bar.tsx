@@ -1,6 +1,7 @@
 import c from "clsx";
 import Link from "next/link";
-import React, {useState} from "react";
+import {useRouter} from "next/router";
+import React, {useEffect, useState} from "react";
 
 import companies from "../../data/companies.json";
 import Cancel from "../images/icons/cancel.svg";
@@ -33,7 +34,21 @@ interface IconLinkProps {
 }
 
 const HeaderBar = ({className}: HeaderBarProps) => {
+  const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Ensure the menu collapses if we route to a page.
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setIsExpanded(false);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, []);
 
   const handleClickHamburger = () => {
     setIsExpanded(!isExpanded);
