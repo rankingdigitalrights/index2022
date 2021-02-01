@@ -268,7 +268,10 @@ const HeaderBar = ({className}: HeaderBarProps) => {
 
           <div className="absolute right-12 top-1 cursor-pointer">
             <button tabIndex={0} onClick={handleClickHamburger}>
-              <Cancel aria-label="Close menu" />
+              <Cancel
+                className="w-3 h-3 text-prissian fill-current"
+                aria-label="Close menu"
+              />
             </button>
           </div>
         </div>

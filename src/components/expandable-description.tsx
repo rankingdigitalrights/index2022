@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
-import ChevronDown from "../../static/chevron-down.svg";
-import ChevronRight from "../../static/chevron-right.svg";
+import ChevronDown from "../images/icons/chevron-down.svg";
+import ChevronRight from "../images/icons/chevron-right.svg";
 
 interface ExpandableDescriptionProps {
   label: string;

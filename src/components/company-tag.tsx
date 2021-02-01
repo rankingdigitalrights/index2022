@@ -1,7 +1,7 @@
 import c from "clsx";
 import React from "react";
 
-import CancelX from "../../static/cancel-x.svg";
+import CancelX from "../images/icons/cancel.svg";
 
 export interface CompanyTagProps {
   company: string;
@@ -23,7 +23,8 @@ const CompanyTag = ({
 
   return (
     <button className={className2} onClick={onClick}>
-      <span>{company}</span> {active && <CancelX className="ml-2" />}
+      <span>{company}</span>{" "}
+      {active && <CancelX className="ml-2 w-2 h-2 text-white fill-current" />}
     </button>
   );
 };

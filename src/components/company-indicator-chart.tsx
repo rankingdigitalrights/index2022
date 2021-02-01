@@ -2,9 +2,9 @@ import c from "clsx";
 import {useRouter} from "next/router";
 import React, {useState} from "react";
 
-import ChevronDown from "../../static/chevron-down.svg";
-import ChevronUp from "../../static/chevron-up.svg";
 import {useChartResize} from "../hooks";
+import ChevronDown from "../images/icons/chevron-down.svg";
+import ChevronUp from "../images/icons/chevron-up.svg";
 import {IndicatorNested} from "../types";
 import {mapScore} from "../utils";
 import PercentageBar from "./percentage-bar";
