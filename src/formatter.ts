@@ -207,6 +207,9 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
 export const narrativeMdx = (imgPath: string, src: string): string => {
   const $ = cheerio.load(src);
 
+  // Headlines are set manually
+  removeTag("h1", undefined, $);
+
   $("body *").each((_idx, el) => {
     const $el = $(el);
     const className = $el.attr("class");
