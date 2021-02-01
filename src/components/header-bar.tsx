@@ -77,7 +77,10 @@ const HeaderBar = ({className}: HeaderBarProps) => {
   const IconLink = ({href, name, icon}: IconLinkProps) => {
     return (
       <Link passHref href={href}>
-        <a className="flex items-center font-bold text-black pointer-cursor">
+        <a
+          role="menuitem"
+          className="flex items-center font-bold text-black pointer-cursor"
+        >
           {icon}
           <span className="ml-3">{name}</span>
         </a>
@@ -91,7 +94,10 @@ const HeaderBar = ({className}: HeaderBarProps) => {
         <div className="container mx-auto flex justify-between items-center relative px-6">
           <Link passHref href="/">
             <a className="flex items-center text-black hover:no-underline">
-              <Logo className="flex-none" />
+              <Logo
+                aria-label="Ranking Digital Rights Logo"
+                className="flex-none"
+              />
               <span className="flex-none font-platform font-bold text-lg ml-4 whitespace-nowrap">
                 Ranking Digital Rights
               </span>
@@ -99,10 +105,11 @@ const HeaderBar = ({className}: HeaderBarProps) => {
           </Link>
 
           <button
+            aria-label="Open the navigation menu"
             className="float-right h-12 relative"
             onClick={handleClickHamburger}
           >
-            <Hamburger />
+            <Hamburger aria-label="Open the navigation menu" />
           </button>
         </div>
       </div>
@@ -116,8 +123,8 @@ const HeaderBar = ({className}: HeaderBarProps) => {
 
             <div className="flex flex-col divide-y divide-disabled">
               <div className="flex flex-col py-3">
-                <ul className="list-inside list-none">
-                  <li>
+                <ul role="menubar" className="list-inside list-none">
+                  <li role="none">
                     <IconLink
                       name="Intro essay"
                       href="/intro"
@@ -137,7 +144,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
               <div className="flex flex-col pl-4 pr-3">
                 <span className="font-bold pt-6 pb-3">Spotlights:</span>
 
-                <ul className="list-inside list-none ml-0">
+                <ul role="menubar" className="list-inside list-none ml-0">
                   <li>
                     <Link passHref href="/spotlights/spotlight-one">
                       <a className="text-black">
@@ -260,7 +267,9 @@ const HeaderBar = ({className}: HeaderBarProps) => {
           </div>
 
           <div className="absolute right-12 top-1 cursor-pointer">
-            <Cancel onClick={handleClickHamburger} />
+            <button tabIndex={0} onClick={handleClickHamburger}>
+              <Cancel aria-label="Close menu" />
+            </button>
           </div>
         </div>
       </nav>
