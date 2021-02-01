@@ -281,12 +281,16 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </ul>
               </div>
 
-              <div className="pl-4 pr-3 py-6">
-                <IconLink
-                  href="/policy-recommendations"
-                  icon={<ScoresOverTime className="flex-none w-6 h-6" />}
-                  name="RDR scores over time"
-                />
+              <div className="flex flex-col py-3">
+                <ul className="list-inside list-none">
+                  <li className="py-3">
+                    <IconLink
+                      href="/policy-recommendations"
+                      icon={<ScoresOverTime className="flex-none w-6 h-6" />}
+                      name="RDR scores over time"
+                    />
+                  </li>
+                </ul>
               </div>
 
               <div className="flex justify-around py-6">
