@@ -4,8 +4,10 @@ import {MdxRemote} from "next-mdx-remote/types";
 import React from "react";
 
 import Layout from "../components/layout";
+import NarrativeContainer from "../components/narrative-container";
 import NarrativeImage from "../components/narrative-image";
 import {policyRecommendations} from "../data";
+import PolicyRecommendationsLogo from "../images/icons/policy-recommendations.svg";
 
 interface PolicyRecommendationsProps {
   source: MdxRemote.Source;
@@ -27,9 +29,20 @@ const PolicyRecommendations = ({source}: PolicyRecommendationsProps) => {
 
   return (
     <Layout>
-      <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
-        {content}
-      </div>
+      <NarrativeContainer>
+        <>
+          <div className="flex mb-12 border-b border-prissian py-12">
+            <h1 className="flex items-start font-platform bold text-xl leading-none ml-6">
+              <PolicyRecommendationsLogo className="flex-none h-8 w-8 mt-1" />
+              <span className="ml-6">
+                Policy Recommendations for Governments
+              </span>
+            </h1>
+          </div>
+
+          {content}
+        </>
+      </NarrativeContainer>
     </Layout>
   );
 };
