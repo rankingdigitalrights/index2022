@@ -30,7 +30,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
   // Initialize site tracking
   useEffect(() => {
     initMatomo({
-      siteId: 3,
+      siteId: "3",
       piwikUrl: "https://piwik.opentechinstitute.org",
     });
   }, []);
