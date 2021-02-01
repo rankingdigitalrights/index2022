@@ -123,7 +123,7 @@ const Home = ({
 
         <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between">
           <div className="lg:w-1/3 lg:flex-grow items-center bg-accent-red z-10">
-            <HomeBox title="2020 RDR Corporate Accountability Index" href="">
+            <HomeBox title="2020 RDR Corporate Accountability Index" href="/">
               <div className="flex flex-col h-full justify-end">
                 <p>
                   Soluta omnis exercitationem dolorem qui eos. At libero alias
@@ -137,7 +137,7 @@ const Home = ({
 
           <div className="flex flex-col sm:flex-row lg:w-2/3 bg-diff-add z-10">
             <div className="w-full sm:w-1/2 sm:flex-grow items-center bg-diff-add z-10 h-full">
-              <HomeBox title="Key Findings" href="key-findings">
+              <HomeBox title="Key Findings" href="/key-findings">
                 <div className="flex flex-col h-full justify-between">
                   <p>
                     Soluta omnis exercitationem dolorem qui eos. At libero alias
@@ -151,7 +151,7 @@ const Home = ({
             <div className="w-full sm:w-1/2 sm:flex-grow md:items-center bg-light-freedom z-10">
               <HomeBox
                 title="Recommendations"
-                href="policy-recommendations"
+                href="/policy-recommendations"
                 theme="dark"
               >
                 <div className="flex flex-col h-full justify-end">
