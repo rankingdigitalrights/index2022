@@ -4,6 +4,8 @@ import {AppProps} from "next/app";
 import React, {useEffect, useState} from "react";
 import SwiperCore, {Pagination} from "swiper";
 
+import {initMatomo} from "../matomo";
+
 SwiperCore.use([Pagination]);
 
 const MyApp = ({Component, pageProps}: AppProps) => {
@@ -24,6 +26,14 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     window.addEventListener("keydown", handleFirstTab);
     setFirstTabHandled(true);
   }, [firstTabHandled]);
+
+  // Initialize site tracking
+  useEffect(() => {
+    initMatomo({
+      siteId: 3,
+      piwikUrl: "https://piwik.opentechinstitute.org",
+    });
+  }, []);
 
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <Component {...pageProps} />;
