@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
 
 import companies from "../../data/companies.json";
+import {useMobileSize} from "../hooks";
 import Cancel from "../images/icons/cancel.svg";
 import Download from "../images/icons/download.svg";
 import ExploreTheData from "../images/icons/explore-the-data.svg";
@@ -16,6 +17,7 @@ import ScoresByIndicator from "../images/icons/scores-by-indicator.svg";
 import ScoresOverTime from "../images/icons/scores-over-time.svg";
 import Logo from "../images/logo.svg";
 import {CompanyKind} from "../types";
+import MenuBarColumn from "./menu-bar-column";
 
 interface HeaderBarProps {
   className?: string;
@@ -35,6 +37,7 @@ interface IconLinkProps {
 
 const HeaderBar = ({className}: HeaderBarProps) => {
   const router = useRouter();
+  const isMobile = useMobileSize(768);
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Ensure the menu collapses if we route to a page.
@@ -48,7 +51,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
     return () => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
-  }, []);
+  }, [router]);
 
   const handleClickHamburger = () => {
     setIsExpanded(!isExpanded);
@@ -106,7 +109,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
   return (
     <header className={c(className)}>
       <div className="relative bg-beige shadow-md py-4 z-50">
-        <div className="container mx-auto flex justify-between items-center relative px-6">
+        <div className="lg:container lg:mx-auto flex justify-between items-center relative px-6">
           <Link passHref href="/">
             <a className="flex items-center text-black hover:no-underline">
               <Logo
@@ -119,23 +122,40 @@ const HeaderBar = ({className}: HeaderBarProps) => {
             </a>
           </Link>
 
-          <button
-            aria-label="Open the navigation menu"
-            className="float-right h-12 relative"
-            onClick={handleClickHamburger}
-          >
-            <Hamburger aria-label="Open the navigation menu" />
-          </button>
+          {isExpanded ? (
+            <button
+              tabIndex={0}
+              className="float-right w-6 h-12 relative"
+              onClick={handleClickHamburger}
+            >
+              <span className="flex justify-around w-full">
+                <Cancel
+                  className="w-4 h-4 text-black fill-current"
+                  aria-label="Close menu"
+                />
+              </span>
+            </button>
+          ) : (
+            <button
+              tabIndex={0}
+              className="float-right w-6 h-12 relative"
+              onClick={handleClickHamburger}
+            >
+              <span className="flex justify-around w-full">
+                <Hamburger aria-label="Open the navigation menu" />
+              </span>
+            </button>
+          )}
         </div>
       </div>
 
       <nav className={navClassName}>
-        <div className="relative container mx-auto mt-6 px-32 pb-6 h-full flex justify-between items-start">
-          <div className="flex flex-col w-1/3 px-8">
-            <div className="uppercase font-bold border-b-2 border-disabled-dark w-full pb-1">
-              Stories + Insights
-            </div>
-
+        <div className="relative lg:container lg:mx-auto mt-6 px-3 lg:px-4 pb-6 h-full flex flex-col md:flex-row justify-between items-start  overflow-y-scroll">
+          <MenuBarColumn
+            className="w-full md:w-3/12 md:px-4"
+            title="Stories + Insights"
+            isExpandable={isMobile}
+          >
             <div className="flex flex-col divide-y divide-disabled">
               <div className="flex flex-col py-3">
                 <ul role="menubar" className="list-inside list-none">
@@ -195,13 +215,13 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </Link>
               </div>
             </div>
-          </div>
+          </MenuBarColumn>
 
-          <div className="w-1/3 px-8">
-            <div className="uppercase font-bold border-b-2 border-disabled-dark w-full pb-1">
-              Companies
-            </div>
-
+          <MenuBarColumn
+            className="w-full md:w-6/12 md:px-4 lg:px-12"
+            title="Companies"
+            isExpandable={isMobile}
+          >
             <div className="flex justify-between">
               <ul className="w-1/2 list-inside list-none">
                 {internetCompanies.map(({id, name, kind}) => (
@@ -227,13 +247,13 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 ))}
               </ul>
             </div>
-          </div>
+          </MenuBarColumn>
 
-          <div className="w-1/3 px-8">
-            <div className="uppercase font-bold border-b-2 border-disabled-dark w-full pb-1">
-              Data + Methods
-            </div>
-
+          <MenuBarColumn
+            className="w-full md:w-3/12 md:px-4"
+            title="Data + Methods"
+            isExpandable={isMobile}
+          >
             <div className="flex flex-col divide-y divide-disabled">
               <div className="flex flex-col py-3">
                 <ul className="list-inside list-none">
@@ -279,16 +299,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </button>
               </div>
             </div>
-          </div>
-
-          <div className="absolute right-12 top-1 cursor-pointer">
-            <button tabIndex={0} onClick={handleClickHamburger}>
-              <Cancel
-                className="w-3 h-3 text-prissian fill-current"
-                aria-label="Close menu"
-              />
-            </button>
-          </div>
+          </MenuBarColumn>
         </div>
       </nav>
     </header>

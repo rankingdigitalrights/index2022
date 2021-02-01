@@ -36,6 +36,8 @@ export const memoizeAsync = <T extends (...args: any[]) => any>(
   return memoizedFn;
 };
 
+export const identity = (): void => {};
+
 export const isString = (x: unknown): x is string => {
   return typeof x === "string";
 };

@@ -50,3 +50,10 @@ export const useBreakpointSize = (): number => {
 
   return size;
 };
+
+export const useMobileSize = (breakpoint = 640): boolean => {
+  const size = useBreakpointSize();
+
+  // We are on mobile if we are below 640px.
+  return size < breakpoint;
+};
