@@ -247,3 +247,10 @@ export const companyHighlights = async (): Promise<CompanyHighlight[]> => {
 export const policyRecommendations = loadFile(
   "data/narratives/policy-recommendations.mdx",
 );
+
+/*
+ * Load the china tech giants HTML.
+ */
+export const chinaTechGiants = loadFile(
+  "data/narratives/china-tech-giants.mdx",
+);

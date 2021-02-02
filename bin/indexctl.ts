@@ -207,10 +207,21 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
         "policy-recommendations.mdx",
       );
 
+      const chinaTechGiantsTarget = path.join(
+        narrativesDir,
+        "china-tech-giants.mdx",
+      );
+
       console.log(`Pull content for: ${policyRecommendationsTarget}`);
 
       await narrativeContent("Policy Recommendations").then(
         writeFile(policyRecommendationsTarget),
+      );
+
+      console.log(`Pull content for: ${chinaTechGiantsTarget}`);
+
+      await narrativeContent("China Tech Giants").then(
+        writeFile(chinaTechGiantsTarget),
       );
 
       await Promise.all(
