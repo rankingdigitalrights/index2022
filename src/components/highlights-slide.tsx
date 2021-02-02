@@ -1,4 +1,5 @@
 import c from "clsx";
+import Link from "next/link";
 import React from "react";
 
 import {CompanyHighlight, HighlightedCompany} from "../types";
@@ -14,7 +15,7 @@ interface CompanySlideProps {
 }
 
 const CompanySlide = ({
-  company: {companyPretty, text, score, kind},
+  company: {company: id, companyPretty, text, score, kind},
   className,
 }: CompanySlideProps) => {
   const scoreClassName = {
@@ -25,20 +26,24 @@ const CompanySlide = ({
     <div className={c("flex flex-col", className)}>
       <CompanyKindLabel kind={kind} theme="dark" />
 
-      <div className="flex mt-4">
-        <span
-          className={c(
-            "w-12 font-circular text-center border rounded p-1",
-            scoreClassName,
-          )}
-        >
-          {score}%
-        </span>
-        <span className="ml-3 font-platform font-bold text-lg">
-          {companyPretty}
-        </span>
-      </div>
-      <p className="font-circular text-sm mt-4">{text}</p>
+      <Link passHref href={`/companies/${id}`}>
+        <a className="text-black no-underline hover:no-underline">
+          <div className="flex mt-4">
+            <span
+              className={c(
+                "w-12 font-circular text-center border rounded p-1",
+                scoreClassName,
+              )}
+            >
+              {score}%
+            </span>
+            <span className="ml-3 font-platform font-bold text-lg">
+              {companyPretty}
+            </span>
+          </div>
+          <p className="font-circular text-sm mt-4">{text}</p>
+        </a>
+      </Link>
     </div>
   );
 };
