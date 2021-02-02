@@ -123,13 +123,14 @@ const Home = ({
 
         <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between">
           <div className="lg:w-1/3 lg:flex-grow items-center bg-accent-red z-10">
-            <HomeBox title="2020 RDR Corporate Accountability Index" href="/">
+            <HomeBox
+              title="How do internet companies treat human rights?"
+              href="/"
+            >
               <div className="flex flex-col h-full justify-end">
                 <p>
-                  Soluta omnis exercitationem dolorem qui eos. At libero alias
-                  aut. Voluptas sint omnis ullam velit eius. Soluta omnis
-                  exercitationem dolorem qui eos. At libero alias aut. Voluptas
-                  sint omnis ullam velit eius.
+                  RDR Director Jessica Dheere on our fifth index and the path
+                  forward.
                 </p>
               </div>
             </HomeBox>
@@ -144,8 +145,8 @@ const Home = ({
               >
                 <div className="flex flex-col h-full justify-between">
                   <p>
-                    Soluta omnis exercitationem dolorem qui eos. At libero alias
-                    aut. Voluptas sint omnis ullam velit eius.
+                    Companies are improving in principle, but failing in
+                    practice.
                   </p>
 
                   <HomeSearch />
@@ -158,7 +159,9 @@ const Home = ({
                 href="/policy-recommendations"
                 theme="dark"
               >
-                <div className="flex flex-col h-full justify-end">
+                <div className="flex flex-col h-full justify-between">
+                  <p>What policymakers and companies need to know for 2021.</p>
+
                   <HomeDocument />
                 </div>
               </HomeBox>
