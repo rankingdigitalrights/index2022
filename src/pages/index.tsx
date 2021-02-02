@@ -137,7 +137,11 @@ const Home = ({
 
           <div className="flex flex-col sm:flex-row lg:w-2/3 bg-diff-add z-10">
             <div className="w-full sm:w-1/2 sm:flex-grow items-center bg-diff-add z-10 h-full">
-              <HomeBox title="Key Findings" href="/key-findings">
+              <HomeBox
+                className="bg-key-findings"
+                title="Key Findings"
+                href="/key-findings"
+              >
                 <div className="flex flex-col h-full justify-between">
                   <p>
                     Soluta omnis exercitationem dolorem qui eos. At libero alias
@@ -192,9 +196,11 @@ const Home = ({
       </div>
 
       <div className="lg:container lg:mx-auto flex flex-col md:flex-row md:justify-between">
-        <div className="md:w-1/3 h-64 border">AAA</div>
-        <div className="md:w-1/3 h-64 border">AAA</div>
-        <div className="md:w-1/3 h-64 border">AAA</div>
+        <div className="md:w-1/3 h-64 text-white bg-context-over-code">AAA</div>
+        <div className="md:w-1/3 h-64 text-white bg-unaccountable-algorithms">
+          AAA
+        </div>
+        <div className="md:w-1/3 h-64 text-white bg-china-tech-giants">AAA</div>
       </div>
 
       <div className="md:container md:mx-auto flex flex-row md:justify-between items-center my-6">

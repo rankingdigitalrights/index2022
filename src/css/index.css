@@ -81,6 +81,26 @@
     font-style: italic;
   }
 
+  .bg-key-findings {
+    @apply bg-cover;
+    background-image: url("../images/bg-key-findings.jpg");
+  }
+
+  .bg-context-over-code {
+    @apply bg-cover;
+    background-image: url("../images/bg-kashmir.jpg");
+  }
+
+  .bg-unaccountable-algorithms {
+    @apply bg-cover;
+    background-image: url("../images/bg-faces.jpg");
+  }
+
+  .bg-china-tech-giants {
+    @apply bg-cover;
+    background-image: url("../images/bg-shenzen.jpg");
+  }
+
   /* Get rid of the border outlines on button unless user is actually tabbing. */
   body:not(.user-is-tabbing) button:focus,
   body:not(.user-is-tabbing) input:focus,

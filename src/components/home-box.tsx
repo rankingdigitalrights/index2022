@@ -9,9 +9,16 @@ interface HomeBoxProps {
   href: string;
   theme?: "light" | "dark";
   children?: React.ReactNode;
+  className?: string;
 }
 
-const HomeBox = ({title, href, theme = "light", children}: HomeBoxProps) => {
+const HomeBox = ({
+  title,
+  href,
+  theme = "light",
+  children,
+  className,
+}: HomeBoxProps) => {
   const textColor = theme === "light" ? "text-white" : "text-prissian";
 
   return (
@@ -19,6 +26,7 @@ const HomeBox = ({title, href, theme = "light", children}: HomeBoxProps) => {
       className={c(
         "relative h-full px-12 pt-20 pb-8 leading-none font-circular",
         textColor,
+        className,
       )}
     >
       <div className="flex flex-col h-full w-4/5 justify-between">
