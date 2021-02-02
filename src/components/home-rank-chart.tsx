@@ -41,7 +41,7 @@ const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
 
         <div className="flex-none w-8 text-center">Rank</div>
 
-        <div className="flex-none w-8 ml-auto">
+        <div className="flex-none w-9 ml-auto">
           <span className="float-right">Score</span>
         </div>
       </div>
@@ -116,7 +116,7 @@ const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
               </svg>
             </div>
 
-            <div className="flex-none ml-auto">
+            <div className="flex-none w-9 ml-auto">
               <span className="float-right pl-1 pr-1 select-none">
                 {score}%
               </span>
