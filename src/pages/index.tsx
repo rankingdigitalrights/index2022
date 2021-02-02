@@ -209,7 +209,7 @@ const Home = ({
         />
       </div>
 
-      <div className="md:container md:mx-auto flex flex-row md:justify-between items-center my-6">
+      <div className="lg:container lg:mx-auto flex flex-row md:justify-between items-center my-6">
         <HomeHighlightsSlider highlights={highlights} />
       </div>
     </Layout>
