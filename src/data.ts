@@ -242,11 +242,31 @@ export const companyHighlights = async (): Promise<CompanyHighlight[]> => {
 };
 
 /*
+ * Load the intro essay HTML.
+ */
+export const introEssay = loadFile("data/narratives/intro-essay.mdx");
+
+/*
+ * Load the about us HTML.
+ */
+export const aboutUs = loadFile("data/narratives/about-us.mdx");
+
+/*
+ * Load the intro essay HTML.
+ */
+export const keyFindings = loadFile("data/narratives/key-findings.mdx");
+
+/*
  * Load the policy recommendations HTML.
  */
 export const policyRecommendations = loadFile(
   "data/narratives/policy-recommendations.mdx",
 );
+
+/*
+ * Load the methodology HTML.
+ */
+export const methodology = loadFile("data/narratives/methodology.mdx");
 
 /*
  * Load the china tech giants HTML.

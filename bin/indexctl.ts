@@ -202,6 +202,14 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
         recursive: true,
       });
 
+      const introEssayTarget = path.join(narrativesDir, "intro-essay.mdx");
+
+      const aboutUsTarget = path.join(narrativesDir, "about-us.mdx");
+
+      const keyFindingsTarget = path.join(narrativesDir, "key-findings.mdx");
+
+      const methodologyTarget = path.join(narrativesDir, "methodology.mdx");
+
       const policyRecommendationsTarget = path.join(
         narrativesDir,
         "policy-recommendations.mdx",
@@ -211,6 +219,22 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
         narrativesDir,
         "china-tech-giants.mdx",
       );
+
+      console.log(`Pull content for: ${introEssayTarget}`);
+
+      await narrativeContent("Intro Essay").then(writeFile(introEssayTarget));
+
+      console.log(`Pull content for: ${aboutUsTarget}`);
+
+      await narrativeContent("About Us").then(writeFile(aboutUsTarget));
+
+      console.log(`Pull content for: ${keyFindingsTarget}`);
+
+      await narrativeContent("Key Findings").then(writeFile(keyFindingsTarget));
+
+      console.log(`Pull content for: ${methodologyTarget}`);
+
+      await narrativeContent("Methodology").then(writeFile(methodologyTarget));
 
       console.log(`Pull content for: ${policyRecommendationsTarget}`);
 
