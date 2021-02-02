@@ -5,6 +5,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import HomeBox from "../components/home-box";
 import HomeCategorySelector from "../components/home-category-selector";
 import HomeRankChart from "../components/home-rank-chart";
+import HomeSpotlightBox from "../components/home-spotlight-box";
 import Layout from "../components/layout";
 import {companyRankingData} from "../data";
 import {useBreakpointSize} from "../hooks";
@@ -146,7 +147,7 @@ const Home = ({
                 <div className="flex flex-col h-full justify-between">
                   <p>
                     Companies are improving in principle, but failing in
-                    practice.
+                    practice
                   </p>
 
                   <HomeSearch />
@@ -160,7 +161,7 @@ const Home = ({
                 theme="dark"
               >
                 <div className="flex flex-col h-full justify-between">
-                  <p>What policymakers and companies need to know for 2021.</p>
+                  <p>What policymakers and companies need to know for 2021</p>
 
                   <HomeDocument />
                 </div>
@@ -171,7 +172,9 @@ const Home = ({
       </div>
 
       <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between  my-6">
-        <div className="lg:flex-grow w-full lg:w-1/3 border">AAA</div>
+        <div className="font-circular font-bold text-xl leading-10 lg:flex-grow w-full lg:w-1/3 p-3">
+          2020 RDR Index
+        </div>
 
         <div className="flex flex-col sm:flex-row lg:w-2/3">
           <div className="flex flex-col w-full">
@@ -199,11 +202,21 @@ const Home = ({
       </div>
 
       <div className="lg:container lg:mx-auto flex flex-col md:flex-row md:justify-between">
-        <div className="md:w-1/3 h-64 text-white bg-context-over-code">AAA</div>
-        <div className="md:w-1/3 h-64 text-white bg-unaccountable-algorithms">
-          AAA
-        </div>
-        <div className="md:w-1/3 h-64 text-white bg-china-tech-giants">AAA</div>
+        <HomeSpotlightBox
+          className="md:w-1/3 h-64 bg-context-over-code"
+          title="Context over code"
+          text="Protecting human rights in times of crisis"
+        />
+        <HomeSpotlightBox
+          className="md:w-1/3 h-64 bg-unaccountable-algorithms"
+          title="Unaccountable algorithms"
+          text="Will company policies ever see the light of day?"
+        />
+        <HomeSpotlightBox
+          className="md:w-1/3 h-64 bg-china-tech-giants"
+          title="China’s tech giants have proven they can change."
+          text="But the state is still their number one stakeholder."
+        />
       </div>
 
       <div className="md:container md:mx-auto flex flex-row md:justify-between items-center my-6">
