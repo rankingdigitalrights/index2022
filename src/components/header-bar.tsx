@@ -189,7 +189,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   <li role="none">
                     <IconLink
                       name="Intro essay"
-                      href="/intro"
+                      href="/intro-essay"
                       icon={<IntroEssay className="flex-none w-6 h-6" />}
                     />
                   </li>
@@ -299,14 +299,14 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   </li>
                   <li className="py-6">
                     <IconLink
-                      href="/key-findings"
+                      href="/"
                       icon={<ExploreTheData className="flex-none w-6 h-6" />}
                       name="Explore the data"
                     />
                   </li>
                   <li className="py-6">
                     <IconLink
-                      href="/methodology-development"
+                      href="/methodology"
                       icon={<Methodology className="flex-none w-6 h-6" />}
                       name="Methodology"
                     />
@@ -318,7 +318,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 <ul className="list-inside list-none">
                   <li className="py-3">
                     <IconLink
-                      href="/policy-recommendations"
+                      href="/"
                       icon={<ScoresOverTime className="flex-none w-6 h-6" />}
                       name="RDR scores over time"
                     />

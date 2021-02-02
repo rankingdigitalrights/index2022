@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 import KeyFindings from "../images/icons/key-findings.svg";
@@ -12,6 +13,7 @@ const NarrativeBox = ({kind}: NarrativeBoxProps) => {
   let title;
   let text;
   let icon;
+  let href;
 
   switch (kind) {
     case "scores": {
@@ -19,6 +21,7 @@ const NarrativeBox = ({kind}: NarrativeBoxProps) => {
       icon = <ScoresByIndicator className="flex-none w-6 h-6" />;
       text =
         "Since the mid-1990s, more than 200 people have been sentenced to more than 1,100 years in prison in six Western Balkans countries for terrorist acts, or for leaving to fight in a foreign war, according to BIRN analysis.";
+      href = "/indicators/G1";
       break;
     }
     case "findings": {
@@ -26,6 +29,7 @@ const NarrativeBox = ({kind}: NarrativeBoxProps) => {
       icon = <KeyFindings className="flex-none w-6 h-6" />;
       text =
         "Since the mid-1990s, more than 200 people have been sentenced to more than 1,100 years in prison in six Western Balkans countries for terrorist acts, or for leaving to fight in a foreign war, according to BIRN analysis.";
+      href = "/key-findings";
       break;
     }
     case "methodology": {
@@ -33,6 +37,7 @@ const NarrativeBox = ({kind}: NarrativeBoxProps) => {
       icon = <Methodology className="flex-none w-6 h-6" />;
       text =
         "Since the mid-1990s, more than 200 people have been sentenced to more than 1,100 years in prison in six Western Balkans countries for terrorist acts, or for leaving to fight in a foreign war, according to BIRN analysis.";
+      href = "/methodology";
       break;
     }
     default:
@@ -41,10 +46,12 @@ const NarrativeBox = ({kind}: NarrativeBoxProps) => {
 
   return (
     <div className="flex flex-col h-48 w-128 md:w-60 bg-white shadow-md m-3 p-3">
-      <div className="border-b mb-3 pb-2 flex items-center">
-        {icon}
-        <span className="font-circular font-bold text-md ml-2">{title}</span>
-      </div>
+      <Link passHref href={href}>
+        <a className="border-b mb-3 pb-2 flex items-center text-black">
+          {icon}
+          <span className="font-circular font-bold text-md ml-2">{title}</span>
+        </a>
+      </Link>
       <p className="font-circular text-sm leading-3">{text}</p>
     </div>
   );

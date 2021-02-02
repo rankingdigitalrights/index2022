@@ -5,7 +5,7 @@ import React from "react";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeImage from "../components/narrative-image";
-import {keyFindings} from "../data";
+import {introEssay} from "../data";
 import {NarrativeProps} from "../types";
 
 const components = {
@@ -13,13 +13,13 @@ const components = {
 };
 
 export const getStaticProps = async () => {
-  const source = await keyFindings();
+  const source = await introEssay();
   const mdxSource = await renderToString(source, {components});
 
   return {props: {source: mdxSource}};
 };
 
-const KeyFindings = ({source}: NarrativeProps) => {
+const IntroEssay = ({source}: NarrativeProps) => {
   const content = hydrate(source, {components});
 
   return (
@@ -28,7 +28,7 @@ const KeyFindings = ({source}: NarrativeProps) => {
         <>
           <div className="flex mb-12 border-b border-prissian py-12">
             <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none">
-              <span className="mt-3 md:mt-0">KeyFindings</span>
+              <span className="mt-3 md:mt-0">Intro Essay</span>
             </h1>
           </div>
 
@@ -39,4 +39,4 @@ const KeyFindings = ({source}: NarrativeProps) => {
   );
 };
 
-export default KeyFindings;
+export default IntroEssay;
