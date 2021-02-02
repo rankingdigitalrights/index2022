@@ -83,22 +83,22 @@
 
   .bg-key-findings {
     @apply bg-cover;
-    background-image: url("../images/bg-key-findings.jpg");
+    background-image: url("../images/bg-key-findings.jpg?size=600");
   }
 
   .bg-context-over-code {
     @apply bg-cover;
-    background-image: url("../images/bg-kashmir.jpg");
+    background-image: url("../images/bg-kashmir.jpg?size=600");
   }
 
   .bg-unaccountable-algorithms {
     @apply bg-cover;
-    background-image: url("../images/bg-faces.jpg");
+    background-image: url("../images/bg-faces.jpg?size=600");
   }
 
   .bg-china-tech-giants {
     @apply bg-cover;
-    background-image: url("../images/bg-shenzen.jpg");
+    background-image: url("../images/bg-shenzen.jpg?size=600");
   }
 
   /* Get rid of the border outlines on button unless user is actually tabbing. */
