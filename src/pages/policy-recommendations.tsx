@@ -1,6 +1,5 @@
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
-import {MdxRemote} from "next-mdx-remote/types";
 import React from "react";
 
 import Layout from "../components/layout";
@@ -8,10 +7,7 @@ import NarrativeContainer from "../components/narrative-container";
 import NarrativeImage from "../components/narrative-image";
 import {policyRecommendations} from "../data";
 import PolicyRecommendationsLogo from "../images/icons/policy-recommendations.svg";
-
-interface PolicyRecommendationsProps {
-  source: MdxRemote.Source;
-}
+import {NarrativeProps} from "../types";
 
 const components = {
   img: NarrativeImage,
@@ -24,7 +20,7 @@ export const getStaticProps = async () => {
   return {props: {source: mdxSource}};
 };
 
-const PolicyRecommendations = ({source}: PolicyRecommendationsProps) => {
+const PolicyRecommendations = ({source}: NarrativeProps) => {
   const content = hydrate(source, {components});
 
   return (

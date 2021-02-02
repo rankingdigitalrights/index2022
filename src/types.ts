@@ -1,3 +1,5 @@
+import {MdxRemote} from "next-mdx-remote/types";
+
 export type IndexYear = "2019" | "2020";
 
 export type NA = "NA";
@@ -241,3 +243,7 @@ export type CompanyHighlight = {
   text: string;
   highlights: [HighlightedCompany, HighlightedCompany];
 };
+
+export interface NarrativeProps {
+  source: MdxRemote.Source;
+}

@@ -195,16 +195,19 @@ const Home = ({
         <HomeSpotlightBox
           className="md:w-1/3 h-64 bg-context-over-code"
           title="Context over code"
+          href="/spotlights/spotlight-one"
           text="Protecting human rights in times of crisis"
         />
         <HomeSpotlightBox
           className="md:w-1/3 h-64 bg-unaccountable-algorithms"
           title="Unaccountable algorithms"
+          href="/spotlights/spotlight-two"
           text="Will company policies ever see the light of day?"
         />
         <HomeSpotlightBox
           className="md:w-1/3 h-64 bg-china-tech-giants"
           title="China’s tech giants have proven they can change."
+          href="/spotlights/china-tech-giants"
           text="But the state is still their number one stakeholder."
         />
       </div>
