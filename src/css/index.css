@@ -97,8 +97,23 @@
   }
 
   .bg-china-tech-giants {
-    @apply bg-cover;
+    /* @apply relative w-full h-full inset-0 relative; */
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .bg-china-tech-giants::before {
+    /* @apply bg-cover absolute; */
+    content: "";
     background-image: url("../images/bg-shenzen.jpg?size=600");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.6;
   }
 
   /* Get rid of the border outlines on button unless user is actually tabbing. */

@@ -14,7 +14,6 @@ interface HomeHighlightsSliderProps {
 
 const HomeHighlightsSlider = ({highlights}: HomeHighlightsSliderProps) => {
   const [swiper, setSwiper] = useState<SwiperType>();
-  console.log(highlights);
 
   return (
     <div className="relative w-full flex items-center">
