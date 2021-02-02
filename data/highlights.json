@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Who’s on top?",
+    "text": "Twitter and Telefonica were the top-scoring companies in the 2020 RDR Index.",
+    "highlights": [
+      {
+        "company": "Twitter",
+        "text": "For the first time, Twitter earned the top spot among digital platforms, thanks to improved clarity around policy enforcement."
+      },
+      {
+        "company": "Telefonica",
+        "text": "Telefónica improved its transparency across many areas, including how it handles government censorship and network shutdown demands."
+      }
+    ]
+  },
+  {
+    "title": "Who’s at the bottom?",
+    "text": "Amazon and Ooredoo were the lowest-scoring companies in the 2020 RDR Index.",
+    "highlights": [
+      {
+        "company": "Amazon",
+        "text": "Amazon earned record profits, but fell short on respect for human rights, and scored significantly lower than other U.S. platforms."
+      },
+      {
+        "company": "Ooredoo",
+        "text": "The Qatari company failed to disclose key details about how it handles user information and online speech."
+      }
+    ]
+  },
+  {
+    "title": "Most improved companies",
+    "text": "Mail.Ru and MTN were the most improved companies in the 2020 RDR Index.",
+    "highlights": [
+      {
+        "company": "MailRu",
+        "text": "For the first time, the Russian social media giant published a commitment to respect users’ freedom of expression and privacy rights."
+      },
+      {
+        "company": "MTN",
+        "text": "The South African telco issued new statements reinforcing its commitment to human rights and released a transparency report for the first time."
+      }
+    ]
+  }
+]

@@ -1,21 +1,18 @@
 import React, {useState} from "react";
-import {Swiper as SwiperType} from "swiper";
-import {Swiper, SwiperSlide} from "swiper/react";
 
 import HomeBox from "../components/home-box";
 import HomeCategorySelector from "../components/home-category-selector";
+import HomeHighlightsSlider from "../components/home-highlights-slider";
 import HomeRankChart from "../components/home-rank-chart";
 import HomeSpotlightBox from "../components/home-spotlight-box";
 import Layout from "../components/layout";
-import {companyRankingData} from "../data";
-import {useBreakpointSize} from "../hooks";
-import ChevronLeft from "../images/icons/chevron-left.svg";
-import ChevronRight from "../images/icons/chevron-right.svg";
+import {companyHighlights, companyRankingData} from "../data";
 import HomeDocument from "../images/icons/home-document.svg";
 import HomeSearch from "../images/icons/home-search.svg";
-import {CompanyRank, IndicatorCategoryExt} from "../types";
+import {CompanyHighlight, CompanyRank, IndicatorCategoryExt} from "../types";
 
 interface HomeProps {
+  highlights: CompanyHighlight[];
   // First element are telecom rankings, second are platform rankings.
   totalRanking: [CompanyRank[], CompanyRank[]];
   // First element are telecom rankings, second are platform rankings.
@@ -45,9 +42,11 @@ export const getStaticProps = async () => {
       ];
     }),
   );
+  const highlights = await companyHighlights();
 
   return {
     props: {
+      highlights,
       totalRanking,
       governanceRanking,
       freedomRanking,
@@ -57,13 +56,12 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({
+  highlights,
   totalRanking,
   governanceRanking,
   freedomRanking,
   privacyRanking,
 }: HomeProps) => {
-  const screenSize = useBreakpointSize();
-  const [swiper, setSwiper] = useState<SwiperType>();
   const [selectedCategory, setSelectedCategory] = useState<
     IndicatorCategoryExt
   >("total");
@@ -105,14 +103,6 @@ const Home = ({
       }
     }
   };
-
-  let slidesCount = 3;
-  if (screenSize <= 1024) {
-    slidesCount = 2;
-  }
-  if (screenSize <= 640) {
-    slidesCount = 1;
-  }
 
   return (
     <Layout>
@@ -220,50 +210,7 @@ const Home = ({
       </div>
 
       <div className="md:container md:mx-auto flex flex-row md:justify-between items-center my-6">
-        <div className="relative w-full flex items-center">
-          <div className="w-full">
-            <Swiper
-              spaceBetween={50}
-              slidesPerView={slidesCount}
-              onSwiper={(s) => setSwiper(s)}
-              pagination={{clickable: true}}
-              loop
-            >
-              <SwiperSlide>
-                <div className="h-64 border">A</div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="h-64 border">B</div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="h-64 border">C</div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="h-64 border">D</div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="h-64 border">E</div>
-              </SwiperSlide>
-            </Swiper>
-          </div>
-
-          <div className="cursor-pointer absolute z-10">
-            <ChevronLeft
-              onClick={() => {
-                if (swiper) swiper.slidePrev();
-              }}
-            />
-          </div>
-
-          <div className="cursor-pointer absolute right-0 z-10">
-            <ChevronRight
-              className="float-right"
-              onClick={() => {
-                if (swiper) swiper.slideNext();
-              }}
-            />
-          </div>
-        </div>
+        <HomeHighlightsSlider highlights={highlights} />
       </div>
     </Layout>
   );

@@ -5,6 +5,7 @@ import {emptyCompany} from "./formatter";
 import {
   Company,
   CompanyDetails,
+  CompanyHighlight,
   CompanyIndex,
   CompanyKind,
   CompanyRank,
@@ -17,6 +18,7 @@ import {
   IndicatorElements,
   Service,
 } from "./types";
+import {unreachable} from "./utils";
 
 const loadFile = (file: string): (() => Promise<string>) => async (): Promise<
   string
@@ -195,6 +197,48 @@ export const companyRankingData = async (
   category: IndicatorCategoryExt,
 ): Promise<CompanyRank[]> => {
   return loadJson<CompanyRank[]>(`data/rankings/${kind}-${category}.json`)();
+};
+
+/*
+ * Load the company highlights.
+ */
+export const companyHighlights = async (): Promise<CompanyHighlight[]> => {
+  const [indices, highlights] = await Promise.all([
+    companyIndices(),
+    loadJson<CompanyHighlight[]>("data/highlights.json")(),
+  ]);
+
+  return highlights.map(({highlights: hs, ...meta}) => {
+    const [h1, h2] = hs;
+    if (!h1 || !h2)
+      return unreachable(
+        "Company highlights must always have two highlighted companies.",
+      );
+    const c1 = indices.find(({id}) => id === h1.company);
+    const c2 = indices.find(({id}) => id === h2.company);
+    if (!c1)
+      return unreachable(`Failed to load company details for ${h1.company}.`);
+    if (!c2)
+      return unreachable(`Failed to load company details for ${h2.company}.`);
+
+    return {
+      ...meta,
+      highlights: [
+        {
+          ...h1,
+          companyPretty: c1.companyPretty,
+          kind: c1.kind,
+          score: c1.scores.total,
+        },
+        {
+          ...h2,
+          companyPretty: c2.companyPretty,
+          kind: c2.kind,
+          score: c2.scores.total,
+        },
+      ],
+    };
+  });
 };
 
 /*

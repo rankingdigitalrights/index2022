@@ -227,3 +227,17 @@ export type SortStrategies<T extends SelectOption = SelectOption> = Map<
   string,
   SortStrategy<T>
 >;
+
+export type HighlightedCompany = {
+  company: string;
+  companyPretty: string;
+  text: string;
+  score: IndicatorScore;
+  kind: CompanyKind;
+};
+
+export type CompanyHighlight = {
+  title: string;
+  text: string;
+  highlights: [HighlightedCompany, HighlightedCompany];
+};
