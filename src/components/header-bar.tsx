@@ -1,7 +1,7 @@
 import c from "clsx";
 import Link from "next/link";
 import {useRouter} from "next/router";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import companies from "../../data/companies.json";
 import {useMobileSize} from "../hooks";
@@ -35,10 +35,33 @@ interface IconLinkProps {
   icon: React.ReactNode;
 }
 
+// Due to the behavior of the --strictFunctionTypes compiler flag added in
+// TypeScript v2.6. A function of type (e: CustomEvent) => void is no longer
+// considered to be a valid instance of EventListener, which takes an Event
+// parameter, not a CustomEvent.
+// So one way to fix it is to turn off --strictFunctionTypes. Another way is to
+// pass in a function that takes an Event and then narrows to CustomEvent via a
+// type guard:
+const isMouseEvent = (event: Event): event is MouseEvent => {
+  return "detail" in event;
+};
+
 const HeaderBar = ({className}: HeaderBarProps) => {
   const router = useRouter();
   const isMobile = useMobileSize(768);
   const [isExpanded, setIsExpanded] = useState(false);
+  // eslint-disable-next-line unicorn/no-null
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleClickHamburger = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const handleClickOutside = (ev: Event) => {
+    if (isMouseEvent(ev) && !ref.current?.contains(ev.target as Node)) {
+      setIsExpanded(false);
+    }
+  };
 
   // Ensure the menu collapses if we route to a page.
   useEffect(() => {
@@ -53,9 +76,13 @@ const HeaderBar = ({className}: HeaderBarProps) => {
     };
   }, [router]);
 
-  const handleClickHamburger = () => {
-    setIsExpanded(!isExpanded);
-  };
+  // Collapse the menu when we click outside the menu.
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  });
 
   const telecomCompanies = companies.filter(
     (company) => company.kind === "telecom",
@@ -107,7 +134,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
   };
 
   return (
-    <header className={c(className)}>
+    <header ref={ref} className={c(className)}>
       <div className="relative bg-beige shadow-md py-4 z-50">
         <div className="lg:container lg:mx-auto flex justify-between items-center relative px-6">
           <Link passHref href="/">
