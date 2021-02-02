@@ -24,7 +24,7 @@ const HomeBox = ({
   return (
     <div
       className={c(
-        "relative h-full px-12 pt-20 pb-8 leading-none font-circular",
+        "relative h-full px-6 md:px-10 lg:px-12 py-10 md:py-16 lg:py-0 lg:pt-20 lg:pb-8 leading-none font-circular",
         textColor,
         className,
       )}
