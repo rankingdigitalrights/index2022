@@ -4,13 +4,9 @@ import React from "react";
 
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
-import NarrativeImage from "../components/narrative-image";
 import {methodology} from "../data";
+import {components} from "../mdx";
 import {NarrativeProps} from "../types";
-
-const components = {
-  img: NarrativeImage,
-};
 
 export const getStaticProps = async () => {
   const source = await methodology();
