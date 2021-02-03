@@ -170,9 +170,9 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
   const scaffold = emptyCompany(id);
   const $ = cheerio.load(src);
 
-  const footnotes =
-    $("<div></div>").append($("p").has("a[href^=#ftnt_ref]")).html() ||
-    "footnotes missing";
+  const footnotes = $("<div></div>")
+    .append($("p").has("a[href^=#ftnt_ref]"))
+    .html();
 
   // Since we extracted the footnotes already, remove them.
   removeTag("p", "a[href^=#ftnt_ref]", $);
