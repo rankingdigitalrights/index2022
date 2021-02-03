@@ -47,12 +47,12 @@ const CompanySection = ({
   return (
     <section
       className={c(
-        "mt-6 pb-6 border-t border-disabled-dark print:border-t-0 m-2",
+        "mt-6 pb-6 print:pb-0 print:mt-8 border-t border-disabled-dark print:border-t-0",
         className,
       )}
     >
-      <div className="flex flex-col md:flex-row mt-8 md:mt-16">
-        <div className="md:w-4/6 md:mr-3">
+      <div className="flex flex-col md:flex-row mt-8 md:mt-16 print:mt-0">
+        <div className="md:w-4/6 md:mr-3 print:w-full print:m-0">
           <div className="flex items-center mb-12 md:h-16">
             <h2
               className={c(
@@ -72,10 +72,10 @@ const CompanySection = ({
             </span>
           </div>
 
-          <div dangerouslySetInnerHTML={{__html: text}} />
+          <div className="printer" dangerouslySetInnerHTML={{__html: text}} />
         </div>
 
-        <div className="md:w-2/6 md:ml-3">
+        <div className="md:w-2/6 md:ml-3 print:hidden">
           <div className="flex flex-col justify-end md:h-16 mb-12 mt-4 md:mt-0">
             <h3 className="text-lg font-circular">Indicators</h3>
           </div>

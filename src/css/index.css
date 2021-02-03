@@ -496,17 +496,43 @@
 }
 
 @media print {
-  @page {
+  @page :first {
     size: A4 portrait;
     margin: 0 0 10mm 0;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 10mm 0 10mm 0;
+  }
+
+  html {
+    @apply font-lyon text-base;
+    font-size: 12px;
   }
 
   body {
     background-size: 21cm 29.7cm;
   }
 
-  section {
-    @apply p-8;
+  li {
+    padding: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  p {
+    padding: 0;
+  }
+
+  .printer {
+    /* width: auto; */
+    border: 0;
+    margin: 0 5%;
+    padding: 0;
+    float: none;
+    position: static;
+    overflow: visible;
   }
 
   .page-break {
@@ -514,7 +540,21 @@
   }
 
   .no-page-break {
-    display: inline-block;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
     break-inside: avoid;
+    break-inside: avoid-column;
+  }
+
+  .score-label:before {
+    @apply absolute;
+
+    content: "";
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #1c5275;
+    transform: rotate(-90deg);
+    left: 3px;
+    top: 4px;
   }
 }

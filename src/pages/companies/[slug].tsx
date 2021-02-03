@@ -68,14 +68,14 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
 
   return (
     <Layout>
-      <div className="relative">
-        <div className="absolute flex flex-row w-full h-full top-0">
+      <div className="relative print:static">
+        <div className="absolute flex flex-row w-full h-full top-0 print:hidden">
           <div className="md:w-7/12 lg:w-3/5 xl:w-7/12 w-full md:bg-prissian" />
           <div className="md:w-5/12 lg:w-2/5 xl:w-5/12 w-full md:bg-beige" />
         </div>
 
         <div className="md:container md:mx-auto flex flex-col print:flex-row md:flex-row md:justify-between lg:w-10/12 xl:w-8/12">
-          <div className="flex flex-col bg-prissian w-full md:w-7/12 lg:w-7/12 p-3 print:p-8 md:mt-6 md:mb-6 md:mr-6 lg:mr-0 z-10">
+          <div className="flex flex-col bg-prissian w-full md:w-7/12 lg:w-7/12 p-3 print:py-8 print:pr-10 print:pl-8 md:mt-6 md:mb-6 md:mr-6 lg:mr-0 z-10">
             <CompanyKindLabel kind={index.kind} />
 
             <CompanyRankCard
@@ -89,7 +89,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             />
           </div>
 
-          <div className="w-full md:w-5/12 lg:w-4/12 bg-beige p-3 print:p-8 md:mt-6 md:mb-3 md:ml-12 lg:ml-0 z-10">
+          <div className="w-full md:w-5/12 lg:w-4/12 bg-beige p-3 print:py-8 print:pl-8 print:pr-10 md:mt-6 md:mb-3 md:ml-12 lg:ml-0 z-10">
             <CompanyRankChart activeCompany={index.id} ranking={ranking} />
           </div>
         </div>
@@ -97,7 +97,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
 
       <div className="pt-6 pb-6 mt-6">
         <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
-          <section className="flex flex-col md:flex-row pt-3">
+          <section className="flex flex-col md:flex-row print:flex-col pt-3">
             <div className="w-full md:w-4/6 pr-3">
               <div
                 className="mt-6 border-b border-disabled-light print:border-b-0"
@@ -121,8 +121,8 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
               />
             </div>
 
-            <div className="flex flex-col print:flex-row items-start w-full md:w-2/6 px-3 font-circular text-sm">
-              <div className="print:w-1/3">
+            <div className="flex flex-col print:flex-row items-start w-full md:w-2/6 print:w-full px-3 font-circular text-sm printer print:my-3">
+              <div>
                 <h3 className="font-bold pb-3 mt-3 md:mb-6 md:mt-6 print:whitespace-nowrap">
                   Services evaluated:
                 </h3>
@@ -132,7 +132,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
                     {services
                       .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
                       .map(({id, name, kind}) => (
-                        <li key={id} className="pb-0">
+                        <li key={id} className="pb-0 print:py-3">
                           <EvaluatedService name={name} kind={kind} />
                         </li>
                       ))}
@@ -140,7 +140,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
                 </div>
               </div>
 
-              <div className="border-b border-disabled-light print:border-b-0 w-full print:w-2/3 py-6">
+              <div className="border-b border-disabled-light print:border-b-0 w-full py-6 print:ml-6 print:w-2/3">
                 <p>
                   The 2020 RDR Index covers policies that were active between
                   February 8, 2019 and September 15, 2020. Policies that came
@@ -167,7 +167,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
 
           {index.totalDiffs.diff2020 !== "NA" && (
             <section className="relative flex flex-col md:flex-row print:flex-row pt-3">
-              <div className="w-full md:w-4/6 pr-3 border-t border-disabled-light">
+              <div className="w-full md:w-4/6 pr-3 border-t border-disabled-light print:border-t-0">
                 <h2 className="text-prissian mt-8 mb-6">Changes since 2019:</h2>
 
                 <div
@@ -189,9 +189,9 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
         </div>
       </div>
 
-      <div className="border-t border-disabled-dark">
+      <div className="border-t border-disabled-dark print:border-t-0">
         <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
-          <div className="flex flex-col print:flex-row md:flex-row items-center no-page-break">
+          <div className="flex flex-col print:flex-row md:flex-row items-center print:justify-center no-page-break">
             <CompanyScoreChart
               category="governance"
               score={index.scores.governance}
@@ -217,7 +217,6 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             text={details.governance}
             indicators={index.indicators.governance}
             onClick={handleIndicatorClick}
-            className="page-break"
           />
 
           <CompanySection
@@ -226,7 +225,6 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             text={details.freedom}
             indicators={index.indicators.freedom}
             onClick={handleIndicatorClick}
-            className="page-break"
           />
 
           <CompanySection
@@ -235,17 +233,18 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             text={details.privacy}
             indicators={index.indicators.privacy}
             onClick={handleIndicatorClick}
-            className="page-break"
           />
         </div>
-
-        {details.footnotes && (
-          <footer className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
-            <h3>Footnotes</h3>
-            <div dangerouslySetInnerHTML={{__html: details.footnotes}} />
-          </footer>
-        )}
       </div>
+
+      {details.footnotes && (
+        <div className="container mx-auto w-11/12 lg:w-8/12 md:w-10/12">
+          <section className="flex flex-col pt-3">
+            <h3 className="print:hidden">Footnotes</h3>
+            <div dangerouslySetInnerHTML={{__html: details.footnotes}} />
+          </section>
+        </div>
+      )}
     </Layout>
   );
 };
