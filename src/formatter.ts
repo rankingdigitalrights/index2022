@@ -53,6 +53,9 @@ export const normalizeHtml = (src: string): string => {
   // as well as inline comment references
   removeTag("sup", "a[id^=cmnt]", $);
 
+  // We don't need break lines and Google Docs formats them non closing anyways
+  removeTag("br", undefined, $);
+
   // empty paragraphs and div's can sneak in, lets get rid of them
   removeEmptyTag("p", $);
   removeEmptyTag("div", $);
@@ -61,6 +64,24 @@ export const normalizeHtml = (src: string): string => {
   $("h2").each((_idx, el) => {
     const id = slugify($(el).text());
     $(el).attr("id", id);
+  });
+
+  // We make two passes over the Google Doc HTML. The first pass trasnforms the
+  // HTML tree itself. In the second pass we transform attributes of HTML tags.
+  $("body *").map((_idx, el) => {
+    const $el = $(el);
+
+    // Extract pull quotes.
+    if (el.tagName === "p" && $el.hasClass("subtitle")) {
+      const quote = $el.html();
+      $el.replaceWith(`<blockquote><p>${quote}</p></blockquote>`);
+    }
+
+    // Unnest images
+    if (el.tagName === "p" && $el.has("img").get().length > 0) {
+      $el.replaceWith(el.children);
+    }
+    return el;
   });
 
   $("body *").map((_idx, el) => {
@@ -113,11 +134,6 @@ export const normalizeHtml = (src: string): string => {
       if (!isRedirected) return el;
 
       $el.attr("href", decodeURI(redirectUrl));
-    }
-
-    // Unnest images
-    if (el.tagName === "p" && $el.has("img").get().length > 0) {
-      $el.replaceWith(el.children);
     }
 
     return el;
