@@ -1,15 +1,40 @@
+import c from "clsx";
 import React from "react";
 
 import NarrativeBox from "./narrative-box";
 
 interface NarrativeContainerProps {
+  heroClassName?: string;
+  heroCaption?: string;
+  backgroundClassName?: string;
   children: React.ReactNode;
 }
 
-const NarrativeContainer = ({children}: NarrativeContainerProps) => {
+const NarrativeContainer = ({
+  heroClassName,
+  heroCaption = "",
+  backgroundClassName,
+  children,
+}: NarrativeContainerProps) => {
   return (
     <div>
-      <div className="narrative flex justify-around bg-light-freedom py-12">
+      {heroClassName && (
+        <figure>
+          <div className={c("w-full h-80", heroClassName)} />
+          <figcaption
+            className={c("font-circular text-xxs py-1", backgroundClassName)}
+          >
+            {heroCaption}
+          </figcaption>
+        </figure>
+      )}
+
+      <div
+        className={c(
+          "narrative flex justify-around py-12",
+          backgroundClassName,
+        )}
+      >
         <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12 max-w-screen-lg bg-white px-4 md:px-12 py-3 shadow-md">
           {children}
         </div>

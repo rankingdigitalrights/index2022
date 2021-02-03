@@ -20,7 +20,10 @@ const ChinaTechGiants = ({source}: NarrativeProps) => {
 
   return (
     <Layout>
-      <NarrativeContainer>
+      <NarrativeContainer
+        heroClassName="bg-tech-giants"
+        backgroundClassName="bg-rdr bg-opacity-20"
+      >
         <>
           <div className="flex mb-12 border-b border-prissian py-12">
             <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none">

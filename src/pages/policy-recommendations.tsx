@@ -21,7 +21,7 @@ const PolicyRecommendations = ({source}: NarrativeProps) => {
 
   return (
     <Layout>
-      <NarrativeContainer>
+      <NarrativeContainer backgroundClassName="bg-light-freedom">
         <>
           <div className="flex mb-12 border-b border-prissian py-12">
             <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none ml-6">
