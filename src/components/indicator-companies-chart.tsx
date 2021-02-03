@@ -60,7 +60,7 @@ const IndicatorCompaniesChart = ({
       </div>
 
       <div className="flex">
-        {scores.map(({id, score}) => {
+        {scores.map(({id, companyPretty, score}) => {
           const isHighlightedCompany = id === highlightedCompany;
 
           const barClassName = c(
@@ -95,7 +95,7 @@ const IndicatorCompaniesChart = ({
                     className={barClassName}
                   />
                   <GraphLabel
-                    value={id}
+                    value={companyPretty}
                     size="small"
                     textAnchor="end"
                     transform="translate(14,185) rotate(270,0,5)"

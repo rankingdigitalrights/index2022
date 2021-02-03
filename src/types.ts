@@ -152,6 +152,7 @@ export type Element = {
 
 export type IndicatorCompanyScore = {
   id: string;
+  companyPretty: string;
   kind: CompanyKind;
   score: IndicatorScore;
 };

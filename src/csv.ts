@@ -552,7 +552,7 @@ export const indicatorScores = memoizeAsync(
     ]);
 
     return allCompanies
-      .map(({id, kind}) => {
+      .map(({id, name: companyPretty, kind}) => {
         const indicator = csvIndicators
           .filter((i) => indexYears.has(i.index))
           .find((i) => i.company === id && i.indicator === indicatorId);
@@ -563,7 +563,7 @@ export const indicatorScores = memoizeAsync(
           );
         }
 
-        return {id, kind, score: indicator.score};
+        return {id, companyPretty, kind, score: indicator.score};
       })
       .sort(byScore("desc"));
   },
