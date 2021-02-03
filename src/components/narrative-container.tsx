@@ -20,7 +20,7 @@ const NarrativeContainer = ({
     <div>
       {heroClassName && (
         <figure>
-          <div className={c("w-full h-80", heroClassName)} />
+          <div className={c("w-full h-96", heroClassName)} />
           <figcaption
             className={c("font-circular text-xxs py-1", backgroundClassName)}
           >

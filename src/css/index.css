@@ -83,7 +83,7 @@
   }
 
   .bg-tech-giants {
-    @apply bg-cover;
+    @apply bg-contain bg-no-repeat bg-center;
     background-image: url("../images/bg-tech-giants.jpg?size=600");
   }
 
