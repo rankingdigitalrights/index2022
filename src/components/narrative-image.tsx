@@ -12,7 +12,7 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
   const imageWebp = require(`../images/${src}?resize&webp&sizes[]=300&sizes[]=600&sizes[]=1000`);
 
   return (
-    <figure className="flex flex-col justify-around">
+    <figure className="flex flex-col justify-around my-6">
       <picture>
         <source srcSet={imageWebp.srcSet} type="image/webp" />
         <source srcSet={image.srcSet} type="image/png" />
