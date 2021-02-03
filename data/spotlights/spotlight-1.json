@@ -1,33 +1,33 @@
 {
   "steps": [{
       "title": "Substep 1",
-      "company": 1,
       "content": "Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.\n\nProw scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.",
       "color": "bg-cat-governance"
     },
     {
       "title": "Substep 2 - A",
-      "company": 3,
-      "content": "Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.\n\nProw scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.",
-      "color": "bg-cat-freedom"
+      "content": "Two cases stand out:",
+      "color": "bg-cat-freedom",
+      "queries": "#India-Country, #Myanmar-Country, #Label-India, #Label-Myanmar"
     },
-        {
+    {
       "title": "Substep 2 - B",
-      "company": 3,
-      "content": "Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.\n\nProw scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.",
-      "color": "bg-cat-freedom"
+      "content": "Telenor, a dominant provider in Myanmar, cut off internet access for more than a <a href='https://www.hrw.org/news/2020/06/19/myanmar-end-worlds-longest-internet-shutdown' target='_blank'>million people in Myanmar’s Rakhine and Chin states</a>, and kept it off at the Burmese government’s behest.",
+      "color": "bg-cat-freedom",
+      "queries": "#Myanmar-States"
     },
     {
       "title": "Substep 3",
-      "company": 2,
-      "content": "Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.\n\nProw scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.",
-      "color": "bg-cat-privacy"
+      "content": "In India, <a href='https://news.un.org/en/story/2019/08/1044741' target='_blank'>millions of residents of Kashmir</a> have lived under digital siege since mid-2019, thanks in part to a shutdown executed by Bharti Airtel and its peers at the order of the Modi government.",
+      "color": "bg-cat-privacy",
+      "queries": "#India-States, #Annotation-Kashmir, #Kashmir-Focus"
     },
     {
       "title": "Substep 4",
-      "company": 4,
-      "content": "Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.\n\nProw scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.",
-      "color": "bg-cat-governance"
+      "content": "Marginalized people in both conflict zones have suffered doubly from COVID-19 and communication disruptions. But the companies carried these orders out in different ways that had measurable differences for customers.",
+      "color": "bg-cat-governance",
+      "queries": "#Annotation-Kashmir, #Kashmir-Focus, #India-States, #Myanmar-States"
+
     }
   ]
 }

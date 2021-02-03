@@ -8,11 +8,11 @@
   :root {
     --swiper-theme-color: #1c5275;
   }
+
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Black.otf);
-    src: url(../../public/fonts/CircularStd-Black.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Black.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Black.woff) format("woff");
     font-weight: 700;
@@ -22,8 +22,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Book.ttf);
-    src: url(../../public/fonts/CircularStd-Book.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Book.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Book.woff) format("woff");
     font-weight: 400;
@@ -42,8 +41,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-Regular.otf);
-    src: url(../../public/fonts/LyonText-Regular.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-Regular.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
       url(../../public/fonts/LyonText-Regular.woff) format("woff");
     font-weight: 400;
@@ -63,8 +61,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-RegularItalic.otf);
-    src: url(../../public/fonts/LyonText-RegularItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-RegularItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
       url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
     font-weight: 400;
@@ -74,8 +71,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-BoldItalic.otf);
-    src: url(../../public/fonts/LyonText-BoldItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-BoldItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
     font-weight: 700;
     font-style: italic;
@@ -208,14 +204,50 @@
 
   /* Spotlights Start */
 
-  main.spotlight {
-    max-width: 100%;
-    margin-top: 60px;
+  main.spotlight h1 {
+    max-width: 900px;
+    margin: 2rem auto;
   }
 
-  main.spotlight p {
+  main.spotlight {
+    max-width: 100%;
+  }
+
+  main.spotlight .hero {
+    height: 100vh;
+    width: 100%;
+    margin-top: -60px;
+  }
+
+  main.spotlight .fade-in {
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
+  }
+
+  main.spotlight .fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  main.spotlight p,
+  main.spotlight blockquote {
     max-width: 720px;
     margin: 1rem auto;
+  }
+
+  main.spotlight blockquote {
+    font-style: italic;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  main.spotlight blockquote:before {
+    content: "”";
+    padding-right: 1rem;
+    margin-right: 1rem;
+    font-size: 3rem;
+    border-right: 4px solid orange;
   }
 
   main.spotlight section {
@@ -237,11 +269,16 @@
   }
 
   main.spotlight section h2 {
-    @apply sticky;
-    top: 60px;
-    width: 100%;
-    background-color: white;
+    /* width: 100%; */
     text-transform: uppercase;
+  }
+
+  main.spotlight section h2.sticky-h {
+    @apply sticky;
+    top: 30px;
+    /* width: 100%; */
+    display: inline;
+    background-color: white;
   }
 
   main.spotlight section.scrolly h2 {
@@ -252,6 +289,16 @@
     padding-left: 1rem;
     background-color: unset;
     z-index: 10;
+  }
+
+  main.spotlight a {
+    font-weight: 700;
+  }
+
+  main.spotlight ol,
+  main.spotlight ul {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   main.spotlight iframe {
@@ -266,31 +313,60 @@
     margin: 2rem auto 3rem auto;
   }
 
-  main.spotlight figure img {
-    margin: 1rem auto;
-  }
-
   main.spotlight figure figcaption {
     @apply font-platform;
     text-align: right;
     margin: 1rem auto;
   }
 
+  main.spotlight figure img {
+    margin: 1rem auto;
+  }
+
+  figure svg {
+    margin: 0 auto;
+  }
+
+  .scrolly-canvas figure.figure-svg {
+    margin: 0 auto;
+    overflow: clip;
+  }
+
+  .scrolly-canvas figure.figure-svg svg {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    position: absolute;
+    min-width: 100%;
+    left: 50%;
+    max-height: 100%;
+  }
+
+  .scrolly-canvas figure figcaption {
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+  }
+
+
   div.scrolly-canvas {
     @apply sticky w-full m-0 left-0;
     left: 0;
-    top: 60px;
+    top: 0;
+    /* top: 60px; */
     width: 100%;
-    height: calc(100vh - 60px);
+    /* height: calc(100vh - 60px); */
+    height: 100vh;
     margin: 0;
     z-index: 0;
   }
 
   div.scrolly-canvas figure.scrolly-figure {
+    overflow: clip;
     width: 100%;
     height: 100%;
     max-width: unset;
-    margin-bottom: 3rem;
+    margin: 0;
+    /* margin-bottom: 3rem; */
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -311,6 +387,7 @@
     transform: translateY(-50%);
     font-size: 4rem;
     font-weight: 900;
+    color: lightgrey;
   }
 
   div.scrolly-canvas figure.scrolly-figure p#index-counter {
@@ -342,6 +419,21 @@
     @apply bg-white mx-auto;
     margin-top: 133vh;
     margin-bottom: 133vh;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  main.spotlight section.scrolly .step h2 {
+    padding-left: 0;
+    display: block;
+  }
+
+  .step div {
+    margin-top: 1rem;
+  }
+
+  .step p {
+    padding-bottom: 0;
   }
 
   .step:last-child {
@@ -352,12 +444,14 @@
     @apply bg-yellow-500 text-gray-200;
   }
 
+  .step h1,
+  .step h2,
   .step h3 {
-    @apply text-center p-4 bg-gray-200;
+    @apply text-center;
   }
 
-  .step p {
-    @apply p-4;
+  .step h3 {
+    @apply p-4 bg-gray-200;
   }
 
   div.scrolly-chart {

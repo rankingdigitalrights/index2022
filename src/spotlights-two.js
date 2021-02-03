@@ -31,8 +31,7 @@ const handleStepEnter = (figure, steps, {index, direction, element}) => {
   updateBGColor(figure, element.dataset.color);
 };
 
-const handleStepExit = (figure, steps, {index, direction}) => {
-  // console.log("Generic handleStepExit");
+const handleStepExit = (figure, {index, direction}) => {
   if (
     (index === 0 && direction === "up") ||
     (index === figure.maxStep && direction === "down")
@@ -45,12 +44,13 @@ export const setupSpotlight = (
   ref,
   scroller,
   stepSelector,
-  localOnStepEnter,
-  localOnStepExit,
+  localOnStepEnter = () => {},
+  localOnStepExit = () => {},
 ) => {
   const {current: scrolly} = ref;
 
-  const figure = scrolly.querySelector("figure");
+  const figure = scrolly.querySelector("figure.scrolly-figure");
+  console.log(figure);
   const steps = scrolly.querySelectorAll(".step");
   figure.maxStep = steps.length - 1;
 
@@ -58,16 +58,14 @@ export const setupSpotlight = (
     .setup({
       step: stepSelector,
       offset: 0.8,
-      debug: true,
+      debug: false,
     })
     .onStepEnter((...args) => {
       handleStepEnter(figure, steps, ...args);
       localOnStepEnter(...args);
     })
     .onStepExit((...args) => {
-      // console.log("args:");
-      // console.log(args);
-      handleStepExit(figure, steps, ...args);
+      handleStepExit(figure, ...args);
       localOnStepExit(...args);
     });
 
