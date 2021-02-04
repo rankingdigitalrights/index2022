@@ -24,7 +24,7 @@ const IndicatorTableMobile = ({
 
   return (
     <div className="flex flex-col font-circular">
-      <div className="w-full px-1 py-4 border border-disabled-dark leading-tight">
+      <div className="w-full px-1 py-4 bg-white border border-disabled-dark leading-tight">
         <span>{indicatorLabel}</span>
       </div>
 

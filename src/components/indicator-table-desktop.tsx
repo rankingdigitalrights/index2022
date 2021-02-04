@@ -57,7 +57,7 @@ const IndicatorTableDesktop = ({
     return (
       <div
         className={c(
-          "flex-none flex flex-col items-center justify-center border border-disabled-dark",
+          "flex-none flex flex-col items-center justify-center bg-white border border-disabled-dark",
           className,
         )}
         key={item}
