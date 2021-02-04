@@ -9,8 +9,8 @@ interface CompanyKindLabelProps {
   className?: string;
 }
 
-const telecomText = "Telecommunications company";
-const platformsText = "Digital platform";
+const telecomText = "Telecommunications companies";
+const platformsText = "Digital platforms";
 
 const CompanyKindLabel = ({
   kind,
