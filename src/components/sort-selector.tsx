@@ -81,7 +81,7 @@ const SortSelector = ({
   const selectedOption = strategies.find(({value}) => selected === value);
 
   return (
-    <div className={c("flex flex-col justify-between h-14", className)}>
+    <div className={c("flex flex-col justify-between h-16", className)}>
       <span className="text-sm font-circular">Sort:</span>
       <Select
         id="indicator-select"

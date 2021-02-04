@@ -46,7 +46,7 @@ const IndicatorTableDesktop = ({
 
   const legend = legendRow.map((item, idx) => {
     const className = {
-      "w-40 p-2 leading-tight": idx === 0,
+      "w-52 p-2 leading-tight": idx === 0,
       "w-32 p-6": idx > 0,
     };
 
@@ -76,7 +76,7 @@ const IndicatorTableDesktop = ({
 
   const footer = averagesRow.map((item, idx) => {
     const className = {
-      "w-40 font-bold": idx === 0,
+      "w-52 font-bold": idx === 0,
       "w-32 px-6": idx > 0,
     };
 
@@ -113,7 +113,7 @@ const IndicatorTableDesktop = ({
             if (idx === 0)
               return (
                 <div
-                  className="flex-none flex flex-col items-center justify-center border border-disabled-dark w-40 p-2"
+                  className="flex-none flex flex-col items-center justify-center border border-disabled-dark w-52 p-2"
                   key={`legend-element-${element.id}`}
                 >
                   <span>
@@ -140,7 +140,7 @@ const IndicatorTableDesktop = ({
   });
 
   return (
-    <div className="flex flex-col font-circular overflow-x-scroll">
+    <div className="flex flex-col font-circular company-table overflow-x-auto">
       <div className="flex flex-row">{legend}</div>
 
       {grid}

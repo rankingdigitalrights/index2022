@@ -226,6 +226,18 @@
     @apply p-0;
   }
 
+  .company-table::-webkit-scrollbar {
+    height: 9px;
+  }
+
+  .company-table::-webkit-scrollbar-track {
+    @apply bg-beige;
+  }
+
+  .company-table::-webkit-scrollbar-thumb {
+    @apply bg-prissian rounded-md;
+  }
+
   /* Spotlights Start */
 
   main.spotlight h1 {

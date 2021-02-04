@@ -212,11 +212,11 @@ const IndicatorPage = ({
           companies.filter(({value}) => selectedCompanies.includes(value)),
         );
 
-  const widthClassName = "lg:w-7/12 px-2 lg:px-0";
+  const widthClassName = "lg:w-9/12 xl:w-7/12 px-2 lg:px-0";
 
   return (
     <Layout>
-      <section className={c("container mx-auto mt-8", widthClassName)}>
+      <section className={c("lg:container lg:mx-auto mt-8", widthClassName)}>
         <IndicatorSelector
           indicators={indicators}
           selected={activeSelector}
@@ -245,7 +245,7 @@ const IndicatorPage = ({
         </ExpandableDescription>
       </section>
 
-      <section className="container mx-auto lg:w-9/12 xl:w-7/12 px-2 lg:px-0">
+      <section className="lg:container lg:mx-auto lg:flex xl:justify-start lg:w-9/12 xl:w-7/12 px-2 lg:px-0">
         <IndicatorCompaniesChartContainer
           className="flex-none mt-6"
           indicator={details.id}
@@ -255,7 +255,7 @@ const IndicatorPage = ({
       </section>
 
       <div className="bg-beige pt-6 pb-6 mt-6">
-        <section className={c("container mx-auto", widthClassName)}>
+        <section className={c("lg:container lg:mx-auto", widthClassName)}>
           <div className="flex flex-col md:flex-row justify-between items-center w-full">
             <CompanySelector
               className="flex-none w-full md:w-6/12"
@@ -281,7 +281,7 @@ const IndicatorPage = ({
           </div>
         </section>
 
-        <section className="container mx-auto lg:w-9/12 px-2 sm:px-0 mt-10">
+        <section className="lg:container lg:mx-auto lg:w-10/12 xl:w-9/12 2xl:w-9/12 px-2 lg:px-0 2xl:pl-10 mt-10">
           {dataGrids.map(({value: companyId, label}) => {
             const {score} = scores.find(({id}) => id === companyId) || {
               score: "NA",

@@ -144,7 +144,7 @@ const CompanySelector = ({
   };
 
   return (
-    <div className={c("w-full flex flex-col justify-between h-14", className)}>
+    <div className={c("w-full flex flex-col justify-between h-16", className)}>
       <span className="text-sm font-circular">Select companies:</span>
 
       <Select
