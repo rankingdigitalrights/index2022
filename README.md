@@ -66,7 +66,7 @@ git commit -m "update website data"
 git push
 ```
 
-### Commit data changes
+### Commit image changes
 
 ```sh
 git add src/images
