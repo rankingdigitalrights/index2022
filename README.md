@@ -22,7 +22,6 @@ There are a few common tasks that developers and administrators of this website 
 - [Update HTML meta tags](#update-html-meta-tags)
 - [Fetch the latest version](#fetch-the-latest-version)
 - [Commit data changes](#commit-data-changes)
-- [Commit image changes](#commit-image-changes)
 - [Deploy website](#deploy-website)
 - [Run the local development server](#run-the-local-development-server)
 - [Verify code quality](#verify-code-quality)
@@ -31,7 +30,7 @@ There are a few common tasks that developers and administrators of this website 
 
 1. [Fetch the latest version](#fetch-the-latest-version).
 2. Run `yarn data` to regenerate the complete data structures for the website. See below for more information.
-3. [Commit data changes](#commit-data-changes) and [Commit image changes](#commit-image-changes). If both data and images change consider tunring this into a single commit.
+3. [Commit data changes](#commit-data-changes).
 4. _Optionally:_ [Run the local development server](#run-the-local-development-server) to verify the changes are working as expected.
 5. [Deploy website](#deploy-website).
 
@@ -63,14 +62,6 @@ yarn install
 ```sh
 git add data
 git commit -m "update website data"
-git push
-```
-
-### Commit image changes
-
-```sh
-git add src/images
-git commit -m "update narrative images"
 git push
 ```
 

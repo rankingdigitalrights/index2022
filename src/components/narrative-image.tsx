@@ -8,8 +8,8 @@ interface NarrativeImageProps {
 }
 
 const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
-  const image = require(`../images/${src}?resize&sizes[]=300&sizes[]=600&sizes[]=1000`);
-  const imageWebp = require(`../images/${src}?resize&webp&sizes[]=300&sizes[]=600&sizes[]=1000`);
+  const image = require(`../../data/images/${src}?resize&sizes[]=300&sizes[]=600&sizes[]=1000`);
+  const imageWebp = require(`../../data/images/${src}?resize&webp&sizes[]=300&sizes[]=600&sizes[]=1000`);
 
   return (
     <figure className="flex flex-col justify-around my-6">

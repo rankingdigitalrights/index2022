@@ -231,14 +231,17 @@ export const narrativeContent = async (name: string): Promise<string> => {
   if (!doc.download) return unreachable(`unable to find ${name} download`);
   const slug = slugify(name);
 
-  const imageDir = path.join(process.cwd(), "src/images", slug);
+  const imageDir = path.join(process.cwd(), "data/images", slug);
 
-  await fsP.mkdir(imageDir, {recursive: true});
-  await Promise.all(
-    (doc.download.images || []).map((file) => {
-      return moveFile(file, imageDir);
-    }),
-  );
+  if (Array.isArray(doc.download?.images)) {
+    await fsP.mkdir(imageDir, {recursive: true});
+    await Promise.all(
+      doc.download.images.map((file) => {
+        return moveFile(file, imageDir);
+      }),
+    );
+  }
+
   const src = await fsP.readFile(doc.download.target, "utf-8");
   const html = processHtml(src);
 
