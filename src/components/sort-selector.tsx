@@ -19,7 +19,7 @@ interface SortSelectorProps {
 }
 
 const Input = (props: InputProps) => {
-  return <components.Input {...props} className="text-xxs" />;
+  return <components.Input {...props} className="text-sm" />;
 };
 
 const IndicatorSeparator = () => {
@@ -43,7 +43,7 @@ const ControlComponent = ({
 };
 
 const SingleValue = (props: SingleValueProps<SelectOption>) => {
-  return <components.SingleValue {...props} className="text-xs" />;
+  return <components.SingleValue {...props} className="text-sm" />;
 };
 
 const Option = ({
@@ -53,7 +53,7 @@ const Option = ({
   innerProps,
   data,
 }: OptionProps<SelectOption, false>) => {
-  const className = c("text-xs pl-2 pr-2 p-1", {
+  const className = c("text-sm pl-2 pr-2 p-1", {
     "bg-prissian text-white": isSelected,
     "bg-beige text-prissian": isFocused && !isSelected,
     "cursor-pointer": !isSelected,
@@ -80,7 +80,7 @@ const SortSelector = ({strategies, selected, onSelect}: SortSelectorProps) => {
         id="indicator-select"
         options={strategies}
         value={selectedOption}
-        className="font-circular"
+        className="font-circular text-sm"
         openMenuOnFocus
         components={{
           Input,

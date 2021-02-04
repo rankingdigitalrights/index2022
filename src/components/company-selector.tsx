@@ -23,7 +23,7 @@ interface CompanySelectorProps {
 }
 
 const Input = (props: InputProps) => {
-  return <components.Input {...props} className="text-xxs" />;
+  return <components.Input {...props} className="text-sm" />;
 };
 
 const MenuList = ({
@@ -56,7 +56,7 @@ const Placeholder = ({
   innerProps,
 }: PlaceholderProps<SelectOption, true>) => {
   return (
-    <div className="text-xs text-black" {...innerProps}>
+    <div className="text-sm text-black" {...innerProps}>
       {children}
     </div>
   );
