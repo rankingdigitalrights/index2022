@@ -22,7 +22,7 @@ There are a few common tasks that developers and administrators of this website 
 - [Update HTML meta tags](#update-html-meta-tags)
 - [Fetch the latest version](#fetch-the-latest-version)
 - [Commit data changes](#commit-data-changes)
-- [Commit image changes](#commit-image-chages)
+- [Commit image changes](#commit-image-changes)
 - [Deploy website](#deploy-website)
 - [Run the local development server](#run-the-local-development-server)
 - [Verify code quality](#verify-code-quality)
