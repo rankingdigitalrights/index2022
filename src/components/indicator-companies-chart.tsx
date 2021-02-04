@@ -2,7 +2,6 @@ import c from "clsx";
 import React, {useState} from "react";
 
 import {IndicatorCompanyScore} from "../types";
-import GraphLabel from "./graph-label";
 import PercentageBar from "./percentage-bar";
 
 interface IndicatorCompaniesChartProps {
@@ -23,40 +22,34 @@ const IndicatorCompaniesChart = ({
   >();
 
   return (
-    <div className={c("flex w-full font-circular text-xxs", className)}>
-      <div className="flex flex-col items-center">
-        <span>&nbsp;</span>
-        <svg
-          version="1"
-          xmlns="http://www.w3.org/2000/svg"
-          width={44}
-          height={200}
-          transform="translate(0, 0)"
-          className="mt-3"
-        >
-          <line
-            x1={35}
-            y1={0}
-            x2={35}
-            y2={180}
-            strokeWidth={2}
-            className="text-disabled-dark stroke-current"
-          />
+    <div className={c("flex w-full font-circular text-sm h-72", className)}>
+      <div className="flex flex-col w-12">
+        <span className="flex-none text-sm">&nbsp;</span>
 
-          <GraphLabel
-            value="100%"
-            size="extra-small"
-            transform="translate(25,10)"
-            textAnchor="end"
-          />
+        <div className="flex mt-2">
+          <div className="flex flex-col justify-between">
+            <span className="text-right">100%</span>
 
-          <GraphLabel
-            value="0%"
-            size="extra-small"
-            transform="translate(25,180)"
-            textAnchor="end"
-          />
-        </svg>
+            <span className="text-right">0%</span>
+          </div>
+          <svg
+            version="1"
+            xmlns="http://www.w3.org/2000/svg"
+            width={4}
+            height={180}
+            transform="translate(0, 0)"
+            className="ml-2"
+          >
+            <line
+              x1={1}
+              y1={0}
+              x2={1}
+              y2={180}
+              strokeWidth={2}
+              className="text-disabled-dark stroke-current"
+            />
+          </svg>
+        </div>
       </div>
 
       <div className="flex">
@@ -74,12 +67,12 @@ const IndicatorCompaniesChart = ({
               onMouseEnter={() => setHighlightedCompany(id)}
               onMouseLeave={() => setHighlightedCompany(undefined)}
             >
-              <span className="w-5 md:w-6 select-none text-xs text-center">
+              <span className="w-5 md:w-6 select-none text-sm text-center">
                 {score === "NA" ? "NA" : `${score}`}
               </span>
               <div>
                 <svg
-                  className="mt-3"
+                  className="mt-2"
                   version="1"
                   xmlns="http://www.w3.org/2000/svg"
                   width={10}
@@ -96,7 +89,7 @@ const IndicatorCompaniesChart = ({
                   />
                 </svg>
               </div>
-              <span className="transform -rotate-45 -translate-x-8 text-xs text-right w-24 cursor-default">
+              <span className="mt-2 transform -rotate-45 -translate-x-10 text-sm text-right w-28 cursor-default">
                 {companyPretty}
               </span>
             </div>
