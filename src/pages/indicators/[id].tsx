@@ -135,7 +135,7 @@ const strategies: SortStrategies<CompanySelectOption> = new Map<
   SortStrategy<CompanySelectOption>
 >();
 strategies.set(
-  "Company",
+  "Alphabetically",
   (options: CompanySelectOption[]): CompanySelectOption[] => {
     return options.sort((a, b) => {
       if (a.label < b.label) return -1;
@@ -145,7 +145,7 @@ strategies.set(
   },
 );
 strategies.set(
-  "Score",
+  "By Score",
   (options: CompanySelectOption[]): CompanySelectOption[] => {
     return options.sort((a, b) => {
       if (a.score < b.score) return 1;
@@ -168,7 +168,7 @@ const IndicatorPage = ({
   services,
 }: IndicatorPageProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
-  const [sortStrategy, setSortStrategy] = useState<string>("Company");
+  const [sortStrategy, setSortStrategy] = useState<string>("Alphabetically");
   const [literalValues, setLiteralValues] = useState(false);
 
   const router = useRouter();
