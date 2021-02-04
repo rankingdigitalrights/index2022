@@ -19,9 +19,9 @@ const ExpandableDescription = ({
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col font-circular text-sm">
       <button className="flex items-center" onClick={toggleExpanded}>
-        <span className="text-prissian text-sm font-circular">{label}</span>
+        <span className="text-prissian font-circular text-sm">{label}</span>
 
         {isExpanded ? (
           <ChevronDown className="ml-2 text-prissian stroke-current" />

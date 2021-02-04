@@ -227,10 +227,10 @@ const IndicatorPage = ({
 
           <section className="w-full mt-6 mx-auto">
             <ExpandableDescription label="Elements">
-              <ol className="list-none list-decimal mt-1">
+              <ol className="list-inside list-decimal mt-1">
                 {elementDescriptions.map(({description, id}) => {
                   return (
-                    <li key={`element-description-${id}`} className="ml-4">
+                    <li key={`element-description-${id}`} className="pb-2">
                       {description}
                     </li>
                   );
@@ -241,7 +241,10 @@ const IndicatorPage = ({
 
           <section className="w-full mt-2 mx-auto">
             <ExpandableDescription label="Research guidance">
-              <p className="mt-1">{details.guidance}</p>
+              <p
+                className="mt-1"
+                dangerouslySetInnerHTML={{__html: details.guidance}}
+              />
             </ExpandableDescription>
           </section>
         </div>
