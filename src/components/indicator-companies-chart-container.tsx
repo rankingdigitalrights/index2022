@@ -1,3 +1,4 @@
+import c from "clsx";
 import React from "react";
 
 import {IndicatorCategory, IndicatorCompanyScore} from "../types";
@@ -8,12 +9,14 @@ interface IndicatorCompaniesChartContainerProps {
   indicator: string;
   category: IndicatorCategory;
   scores: IndicatorCompanyScore[];
+  className?: string;
 }
 
 const IndicatorCompaniesChartContainer = ({
   indicator,
   scores,
   category,
+  className,
 }: IndicatorCompaniesChartContainerProps) => {
   const telecomScores = scores.filter(({kind}) => kind === "telecom");
   const platformScores = scores.filter(({kind}) => kind === "internet");
@@ -25,8 +28,13 @@ const IndicatorCompaniesChartContainer = ({
   // other.
   if (hasTelecomScores && hasPlatformScores)
     return (
-      <div className="flex flex-col md:flex-row md:justify-between overflow-x-scroll sm:overflow-x-visible">
-        <div className="flex flex-col w-full lg:w-1/2">
+      <div
+        className={c(
+          "flex flex-col md:flex-row overflow-x-scroll lg:overflow-x-visible",
+          className,
+        )}
+      >
+        <div className="flex flex-col">
           <CompanyKindLabel kind="telecom" theme="dark" />
 
           <IndicatorCompaniesChart
@@ -37,7 +45,7 @@ const IndicatorCompaniesChartContainer = ({
           />
         </div>
 
-        <div className="flex flex-col w-full lg:w-1/2 md:pl-3 lg:pl-6 mt-6 md:mt-0">
+        <div className="flex flex-col mt-6 md:ml-3 lg:ml-8 md:mt-0">
           <CompanyKindLabel kind="internet" theme="dark" />
 
           <IndicatorCompaniesChart

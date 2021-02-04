@@ -1,3 +1,4 @@
+import c from "clsx";
 import {useRouter} from "next/router";
 import React, {useState} from "react";
 
@@ -211,91 +212,76 @@ const IndicatorPage = ({
           companies.filter(({value}) => selectedCompanies.includes(value)),
         );
 
+  const widthClassName = "lg:w-7/12 px-2 lg:px-0";
+
   return (
     <Layout>
-      <div className="container mx-auto mt-8">
-        <div className="flex flex-col mx-auto w-11/12 md:w-4/5 lg:w-3/5">
-          <IndicatorSelector
-            indicators={indicators}
-            selected={activeSelector}
-            onSelect={handleSelectIndicator}
+      <section className={c("container mx-auto mt-8", widthClassName)}>
+        <IndicatorSelector
+          indicators={indicators}
+          selected={activeSelector}
+          onSelect={handleSelectIndicator}
+        />
+
+        <p className="mt-6 pb-0 text-sm font-circular">{details.description}</p>
+
+        <ExpandableDescription className="mt-6" label="Elements">
+          <ol className="list-inside list-decimal">
+            {elementDescriptions.map(({description, id}) => {
+              return (
+                <li key={`element-description-${id}`} className="pb-2">
+                  {description}
+                </li>
+              );
+            })}
+          </ol>
+        </ExpandableDescription>
+
+        <ExpandableDescription className="mt-2" label="Research guidance">
+          <p
+            className="mt-1"
+            dangerouslySetInnerHTML={{__html: details.guidance}}
           />
+        </ExpandableDescription>
+      </section>
 
-          <section className="w-full mt-6 mx-auto text-sm font-circular">
-            {details.description}
-          </section>
-
-          <section className="w-full mt-6 mx-auto">
-            <ExpandableDescription label="Elements">
-              <ol className="list-inside list-decimal mt-1">
-                {elementDescriptions.map(({description, id}) => {
-                  return (
-                    <li key={`element-description-${id}`} className="pb-2">
-                      {description}
-                    </li>
-                  );
-                })}
-              </ol>
-            </ExpandableDescription>
-          </section>
-
-          <section className="w-full mt-2 mx-auto">
-            <ExpandableDescription label="Research guidance">
-              <p
-                className="mt-1"
-                dangerouslySetInnerHTML={{__html: details.guidance}}
-              />
-            </ExpandableDescription>
-          </section>
-        </div>
-      </div>
-
-      <div className="container mx-auto mt-10 flex justify-around p-2">
+      <section className="container mx-auto lg:w-9/12 xl:w-7/12 px-2 lg:px-0">
         <IndicatorCompaniesChartContainer
+          className="flex-none mt-6"
           indicator={details.id}
           category={details.category}
           scores={scores}
         />
-      </div>
+      </section>
 
       <div className="bg-beige pt-6 pb-6 mt-6">
-        <div className="container mx-auto px-2">
-          <div className="flex justify-around">
-            <div className="flex flex-col md:flex-row justify-between items-center w-full md:ml-8 lg:ml-12 lg:w-4/5 xl:w-3/5">
-              <div className="w-full md:w-6/12 flex flex-col justify-between h-14">
-                <span className="text-sm font-circular">Select companies:</span>
+        <section className={c("container mx-auto", widthClassName)}>
+          <div className="flex flex-col md:flex-row justify-between items-center w-full">
+            <CompanySelector
+              className="flex-none w-full md:w-6/12"
+              companies={companySortStrategyFn(
+                companies.map((obj) => ({...obj})),
+              )}
+              selected={selectedCompanies}
+              onSelect={handleSelectCompany}
+            />
 
-                <CompanySelector
-                  companies={companySortStrategyFn(
-                    companies.map((obj) => ({...obj})),
-                  )}
-                  selected={selectedCompanies}
-                  onSelect={handleSelectCompany}
-                />
-              </div>
+            <SortSelector
+              className="flex-grow w-full mt-2 md:mt-0 mx-6"
+              strategies={sortOptions}
+              selected={sortStrategy}
+              onSelect={handleSelectSortStrategy}
+            />
 
-              <div className="flex-grow w-full mt-2 md:mt-0 md:w-4/12 flex flex-col justify-between h-14 mx-6">
-                <span className="text-sm font-circular">Sort:</span>
-
-                <SortSelector
-                  strategies={sortOptions}
-                  selected={sortStrategy}
-                  onSelect={handleSelectSortStrategy}
-                />
-              </div>
-
-              <div className="w-full md:w-2/12 md:flex-none sm:float-right sm:ml-auto flex flex-col justify-end h-10 sm:h-14">
-                <ToggleSwitch
-                  className="mb-1"
-                  label="Points"
-                  onChange={handleToggleSwitch}
-                />
-              </div>
-            </div>
+            <ToggleSwitch
+              className="flex-none self-end w-full md:w-max sm:float-right my-3 md:mb-1"
+              label="Points"
+              onChange={handleToggleSwitch}
+            />
           </div>
-        </div>
+        </section>
 
-        <div className="xl:container xl:mx-auto w-full p-2">
+        <section className="container mx-auto lg:w-9/12 px-2 sm:px-0 mt-10">
           {dataGrids.map(({value: companyId, label}) => {
             const {score} = scores.find(({id}) => id === companyId) || {
               score: "NA",
@@ -304,6 +290,7 @@ const IndicatorPage = ({
             return (
               <CompanyElements
                 key={`company-element-${companyId}`}
+                className="mt-10"
                 indicator={details.name}
                 label={details.label}
                 company={label}
@@ -318,7 +305,7 @@ const IndicatorPage = ({
               />
             );
           })}
-        </div>
+        </section>
       </div>
     </Layout>
   );

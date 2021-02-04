@@ -15,6 +15,7 @@ interface CompanyElementsProps {
   literalValues: boolean;
   elementDescriptions: Element[];
   services: string[];
+  className?: string;
 }
 
 const CompanyElements = ({
@@ -27,6 +28,7 @@ const CompanyElements = ({
   literalValues,
   elementDescriptions,
   services,
+  className,
 }: CompanyElementsProps) => {
   const breakpointSize = useBreakpointSize();
   const templateService = services[0] && companyElements[services[0]];
@@ -34,7 +36,7 @@ const CompanyElements = ({
   if (!templateService) return <div />;
 
   return (
-    <div className="mt-10">
+    <div className={className}>
       <div className="flex items-center">
         {score !== "NA" && (
           <span className="font-circular text-md text-white bg-prissian rounded px-2 py-1 text-center mr-3">

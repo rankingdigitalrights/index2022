@@ -1,3 +1,4 @@
+import c from "clsx";
 import React, {useState} from "react";
 
 import ChevronDown from "../images/icons/chevron-down.svg";
@@ -6,11 +7,13 @@ import ChevronRight from "../images/icons/chevron-right.svg";
 interface ExpandableDescriptionProps {
   label: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 const ExpandableDescription = ({
   label,
   children,
+  className,
 }: ExpandableDescriptionProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -19,7 +22,7 @@ const ExpandableDescription = ({
   };
 
   return (
-    <div className="flex flex-col font-circular text-sm">
+    <div className={c("flex flex-col font-circular text-sm", className)}>
       <button className="flex items-center" onClick={toggleExpanded}>
         <span className="text-prissian font-circular text-sm">{label}</span>
 

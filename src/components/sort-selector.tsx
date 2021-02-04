@@ -16,6 +16,7 @@ interface SortSelectorProps {
   strategies: SelectOption[];
   selected: string;
   onSelect: (strategy: string) => void;
+  className?: string;
 }
 
 const Input = (props: InputProps) => {
@@ -67,7 +68,12 @@ const Option = ({
   );
 };
 
-const SortSelector = ({strategies, selected, onSelect}: SortSelectorProps) => {
+const SortSelector = ({
+  strategies,
+  selected,
+  onSelect,
+  className,
+}: SortSelectorProps) => {
   const handleChange = (value: ValueType<SelectOption, false>) => {
     if (value) onSelect(value.value);
   };
@@ -75,7 +81,8 @@ const SortSelector = ({strategies, selected, onSelect}: SortSelectorProps) => {
   const selectedOption = strategies.find(({value}) => selected === value);
 
   return (
-    <div className="w-full">
+    <div className={c("flex flex-col justify-between h-14", className)}>
+      <span className="text-sm font-circular">Sort:</span>
       <Select
         id="indicator-select"
         options={strategies}

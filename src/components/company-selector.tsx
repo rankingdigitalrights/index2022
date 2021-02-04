@@ -20,6 +20,7 @@ interface CompanySelectorProps {
   companies: SelectOption[];
   selected: string[];
   onSelect: (companies: string[]) => void;
+  className?: string;
 }
 
 const Input = (props: InputProps) => {
@@ -107,6 +108,7 @@ const CompanySelector = ({
   companies,
   selected,
   onSelect,
+  className,
 }: CompanySelectorProps) => {
   const handleSelectCompany = (
     value: ValueType<SelectOption, true>,
@@ -142,7 +144,9 @@ const CompanySelector = ({
   };
 
   return (
-    <div className="w-full">
+    <div className={c("w-full flex flex-col justify-between h-14", className)}>
+      <span className="text-sm font-circular">Select companies:</span>
+
       <Select
         id="company-select"
         className="font-circular"
