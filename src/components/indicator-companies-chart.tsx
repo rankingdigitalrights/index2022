@@ -74,8 +74,8 @@ const IndicatorCompaniesChart = ({
               onMouseEnter={() => setHighlightedCompany(id)}
               onMouseLeave={() => setHighlightedCompany(undefined)}
             >
-              <span className="w-5 md:w-6 select-none text-center">
-                {score === "NA" ? "NA" : `${score}%`}
+              <span className="w-5 md:w-6 select-none text-xs text-center">
+                {score === "NA" ? "NA" : `${score}`}
               </span>
               <div>
                 <svg
@@ -83,7 +83,7 @@ const IndicatorCompaniesChart = ({
                   version="1"
                   xmlns="http://www.w3.org/2000/svg"
                   width={10}
-                  height={292}
+                  height={221}
                   transform="translate(0, 0)"
                 >
                   <PercentageBar
@@ -94,14 +94,11 @@ const IndicatorCompaniesChart = ({
                     orientation="vertical"
                     className={barClassName}
                   />
-                  <GraphLabel
-                    value={companyPretty}
-                    size="small"
-                    textAnchor="end"
-                    transform="translate(14,185) rotate(270,0,5)"
-                  />
                 </svg>
               </div>
+              <span className="transform -rotate-45 -translate-x-8 text-xs text-right w-24 cursor-default">
+                {companyPretty}
+              </span>
             </div>
           );
         })}
