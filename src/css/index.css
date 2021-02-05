@@ -84,7 +84,7 @@
 
   .bg-tech-giants {
     @apply bg-contain bg-no-repeat bg-center;
-    background-image: url("../images/bg-tech-giants.jpg?size=600");
+    background-image: url("../images/bg-tech-giants.jpg?size=1024");
   }
 
   .bg-key-findings {
@@ -112,7 +112,7 @@
   .bg-china-tech-giants::before {
     /* @apply bg-cover absolute; */
     content: "";
-    background-image: url("../images/bg-shenzen.jpg?size=600");
+    background-image: url("../images/bg-shenzen.jpg?size=1024");
     background-size: cover;
     position: absolute;
     top: 0px;
