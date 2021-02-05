@@ -24,6 +24,7 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
             srcSet={image.srcSet}
             alt={alt}
             title={title}
+            sizes="(min-width: 640px) 400w, (min-width: 768px) 400w, (min-width: 1024px) 800w, (min-width: 1440px) 1024w, 100vw"
             loading="lazy"
           />
         </picture>
