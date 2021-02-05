@@ -35,7 +35,7 @@ const NarrativeContainer = ({
           backgroundClassName,
         )}
       >
-        <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12 max-w-screen-lg bg-white px-4 md:px-12 py-3 shadow-md">
+        <div className="container mx-auto w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 bg-white px-4 md:px-20 xl:px-32 2xl:px-36 py-3 shadow-md">
           {children}
         </div>
       </div>
