@@ -34,9 +34,13 @@ export type CompanyDetails = {
   id: string;
   printName: string;
   basicInformation: string;
+  keyFindingsTitle: string;
   keyFindings: string;
+  changesTitle: string;
   changes: string;
+  keyRecommendationTitle: string;
   keyRecommendation: string;
+  keyTakeawaysTitle: string;
   keyTakeaways: string;
   governance: string;
   freedom: string;

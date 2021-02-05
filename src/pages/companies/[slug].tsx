@@ -104,7 +104,9 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
                 dangerouslySetInnerHTML={{__html: details.keyFindings}}
               />
 
-              <h2 className="text-prissian mt-8 mb-6">Key Takeaways:</h2>
+              <h2 className="text-prissian mt-8 mb-6">
+                {details.keyTakeawaysTitle}
+              </h2>
               <div
                 className="mt-6"
                 dangerouslySetInnerHTML={{
@@ -112,7 +114,9 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
                 }}
               />
 
-              <h2 className="text-prissian mt-8 mb-6">Key Recommendations:</h2>
+              <h2 className="text-prissian mt-8 mb-6">
+                {details.keyRecommendationTitle}
+              </h2>
               <div
                 className="mt-6"
                 dangerouslySetInnerHTML={{
@@ -168,7 +172,9 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
           {index.totalDiffs.diff2020 !== "NA" && (
             <section className="relative flex flex-col md:flex-row print:flex-row pt-3">
               <div className="w-full md:w-4/6 pr-3 border-t border-disabled-light print:border-t-0">
-                <h2 className="text-prissian mt-8 mb-6">Changes since 2019:</h2>
+                <h2 className="text-prissian mt-8 mb-6">
+                  {details.changesTitle}
+                </h2>
 
                 <div
                   dangerouslySetInnerHTML={{

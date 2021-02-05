@@ -41,6 +41,11 @@ const extractSection = (
   return $("<div></div>").append($(fromSelector).nextUntil(untilSelector));
 };
 
+const extractSectionTitle = (id: string, $: cheerio.Root): string => {
+  const selector = `h1[id="${id}"], h2[id="${id}"], h3[id="${id}"], h4[id="${id}"], h5[id="${id}"], h6[id="${id}"]`;
+  return $(selector).text();
+};
+
 export const normalizeHtml = (src: string): string => {
   // scrub escaped spaces
   const html = src.replace(/&nbsp;/g, " ");
@@ -158,9 +163,13 @@ export const emptyCompany = (id: string): CompanyDetails => ({
   id,
   printName: "print name missing",
   basicInformation: "basic information missing",
+  keyTakeawaysTitle: "Key takeaways",
   keyTakeaways: "key takeaways missing",
+  keyFindingsTitle: "Key findings",
   keyFindings: "key findings missing",
+  changesTitle: "Changes since 2019",
   changes: "analysis missing",
+  keyRecommendationTitle: "Key recommendations",
   keyRecommendation: "key recommendations missing",
   governance: "governance missing",
   freedom: "freedom of expression missing",
@@ -189,17 +198,21 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
     "key-findings",
     $,
   ).html();
+  const keyFindingsTitle = extractSectionTitle("key-findings", $);
   const keyFindings = extractSection("key-findings", "key-takeaways", $).html();
+  const keyTakeawaysTitle = extractSectionTitle("key-takeaways", $);
   const keyTakeaways = extractSection(
     "key-takeaways",
     "key-recommendations",
     $,
   ).html();
+  const keyRecommendationTitle = extractSectionTitle("key-recommendations", $);
   const keyRecommendation = extractSection(
     "key-recommendations",
     "changes-since-2019",
     $,
   ).html();
+  const changesTitle = extractSectionTitle("changes-since-2019", $);
   const changes = extractSection("changes-since-2019", "governance", $).html();
   const governance = extractSection(
     "governance",
@@ -213,9 +226,13 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
     ...scaffold,
     ...(printName ? {printName} : undefined),
     ...(basicInformation ? {basicInformation} : undefined),
+    ...(keyFindingsTitle ? {keyFindingsTitle} : undefined),
     ...(keyFindings ? {keyFindings} : undefined),
+    ...(keyTakeawaysTitle ? {keyTakeawaysTitle} : undefined),
     ...(keyTakeaways ? {keyTakeaways} : undefined),
+    ...(keyRecommendationTitle ? {keyRecommendationTitle} : undefined),
     ...(keyRecommendation ? {keyRecommendation} : undefined),
+    ...(changesTitle ? {changesTitle} : undefined),
     ...(changes ? {changes} : undefined),
     ...(governance ? {governance} : undefined),
     ...(freedom ? {freedom} : undefined),
