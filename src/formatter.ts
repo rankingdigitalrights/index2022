@@ -156,6 +156,7 @@ export const processHtml = (src: string): string => {
 
 export const emptyCompany = (id: string): CompanyDetails => ({
   id,
+  printName: "print name missing",
   basicInformation: "basic information missing",
   keyTakeaways: "key takeaways missing",
   keyFindings: "key findings missing",
@@ -180,6 +181,8 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
   removeTag("hr", undefined, $);
   // By extracting the footnotes we leave a whole bunch of empty div's behind.
   removeEmptyTag("div", $);
+
+  const printName = $("h1").text();
 
   const basicInformation = extractSection(
     "basic-information",
@@ -208,6 +211,7 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
 
   return {
     ...scaffold,
+    ...(printName ? {printName} : undefined),
     ...(basicInformation ? {basicInformation} : undefined),
     ...(keyFindings ? {keyFindings} : undefined),
     ...(keyTakeaways ? {keyTakeaways} : undefined),

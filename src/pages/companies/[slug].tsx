@@ -79,7 +79,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             <CompanyKindLabel kind={index.kind} />
 
             <CompanyRankCard
-              company={index.companyPretty}
+              company={details.printName}
               rank={index.rank}
               score={index.scores.total}
               kind={index.kind}

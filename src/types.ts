@@ -32,6 +32,7 @@ export type IndicatorNested = {
 
 export type CompanyDetails = {
   id: string;
+  printName: string;
   basicInformation: string;
   keyFindings: string;
   changes: string;
