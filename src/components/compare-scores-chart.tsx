@@ -14,6 +14,7 @@ interface CompareScoresChartProps {
 }
 
 interface CompareScoreBarProps {
+  id: string;
   company: string;
   score: IndicatorScore;
   maxValue: number;
@@ -23,6 +24,7 @@ interface CompareScoreBarProps {
 }
 
 const PositiveScoreBar = ({
+  id,
   company,
   score,
   maxValue,
@@ -77,7 +79,7 @@ const PositiveScoreBar = ({
           className="text-black stroke-current"
         />
       </svg>
-      <Link passHref href={`/companies/${company}`}>
+      <Link passHref href={`/companies/${id}`}>
         <a
           className={c(
             "absolute transform -rotate-45 -translate-x-8 translate-y-44 mt-2 w-28 text-right",
@@ -92,6 +94,7 @@ const PositiveScoreBar = ({
 };
 
 const NegativeScoreBar = ({
+  id,
   company,
   score,
   maxValue,
@@ -116,7 +119,7 @@ const NegativeScoreBar = ({
 
   return (
     <div className="relative h-full flex flex-col items-center font-circular text-sm">
-      <Link passHref href={`/companies/${company}`}>
+      <Link passHref href={`/companies/${id}`}>
         <a
           className={c(
             "absolute transform -rotate-45 translate-x-7 translate-y-20 mt-1 w-28 z-10",
@@ -201,6 +204,7 @@ const CompareScoresChart = ({scores, className}: CompareScoresChartProps) => {
               {isPositive ? (
                 <div className="h-full">
                   <PositiveScoreBar
+                    id={id}
                     company={company}
                     score={score}
                     maxValue={maxScore}
@@ -212,6 +216,7 @@ const CompareScoresChart = ({scores, className}: CompareScoresChartProps) => {
               ) : (
                 <div className="h-full">
                   <NegativeScoreBar
+                    id={id}
                     company={company}
                     score={score}
                     maxValue={maxScore * -1}
