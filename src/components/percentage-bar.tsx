@@ -1,10 +1,9 @@
 import c from "clsx";
-import {scaleLinear} from "d3-scale";
 import React from "react";
 import {useTween} from "react-use";
 
 import {IndicatorScore} from "../types";
-import {isNA, isNumber} from "../utils";
+import {isNA, isNumber, scaleLinear} from "../utils";
 
 interface PercentageBarProps {
   value: IndicatorScore;
@@ -34,15 +33,14 @@ const PercentageBar = ({
 
   if (isNA(value))
     return (
-      <g width={width} transform={transform}>
-        <rect
-          className="text-disabled-light fill-current"
-          x={0}
-          rx={rx}
-          width={width}
-          height={height}
-        />
-      </g>
+      <rect
+        className="text-disabled-light fill-current"
+        x={0}
+        rx={rx}
+        width={width}
+        height={height}
+        transform={transform}
+      />
     );
 
   // Some percentage bars have to render as well when generating a PDF. Printing
@@ -52,14 +50,14 @@ const PercentageBar = ({
   let percentage: string | number = 0;
 
   if (isNumber(width)) {
-    const valueScale = scaleLinear()
-      .domain([0, 100])
-      .range([0, orientation === "horizontal" ? width : height]);
-    percentage = (valueScale(value) || 0) * t;
+    percentage =
+      scaleLinear(
+        [0, 100],
+        [0, orientation === "horizontal" ? width : height],
+      )(value) * t;
   } else if (width === "100%") {
-    const valueScale = scaleLinear().domain([0, 100]).range([0, 100]);
-    const scaledValue = valueScale(value) || 0;
-    percentage = `${scaledValue}%`;
+    const percentageRaw = scaleLinear([0, 100], [0, 100])(value);
+    percentage = `${percentageRaw}%`;
   }
 
   return (

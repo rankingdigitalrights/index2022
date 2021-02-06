@@ -1,6 +1,7 @@
 import c from "clsx";
-import {scaleLinear} from "d3-scale";
 import React from "react";
+
+import {scaleLinear} from "../utils";
 
 interface PercentageCircleProps {
   value: number;
@@ -21,9 +22,7 @@ const PercentageCircle = ({
   transform = "translate(0,0)",
   className,
 }: PercentageCircleProps) => {
-  const valueWidth = scaleLinear().domain([0, 100]).range([0, width]);
-
-  const percentage = valueWidth(value) || 0;
+  const percentage = scaleLinear([0, 100], [0, width])(value);
 
   return (
     <g transform={transform}>

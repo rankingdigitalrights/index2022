@@ -62,6 +62,22 @@ export const unreachable = (message?: string): never => {
 };
 
 /*
+ * Inspired by D3 scaleLinear.
+ */
+export const scaleLinear = (
+  domain: [number, number],
+  range: [number, number],
+): ((v: number) => number) => {
+  const [minValue, maxValue] = domain;
+  const [minScale, maxScale] = range;
+
+  return (value: number): number => {
+    const ratio = (maxScale - minScale) / (maxValue - minValue);
+    return minScale + ratio * (value - minValue);
+  };
+};
+
+/*
  * Some utility functions to parse the CSV data.
  */
 export const floatOrNA = (value: string): number | NA =>

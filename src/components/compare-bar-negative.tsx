@@ -1,9 +1,8 @@
 import c from "clsx";
-import {scaleLinear} from "d3-scale";
 import Link from "next/link";
 import React from "react";
 
-import {isNA} from "../utils";
+import {isNA, scaleLinear} from "../utils";
 import {CompareBarProps} from "./compare-bar-positive";
 
 const CompareBarNegative = ({
@@ -18,8 +17,7 @@ const CompareBarNegative = ({
 }: CompareBarProps) => {
   const value = isNA(score) ? 0 : score;
   const barHeight = height / 2;
-  const valueScale = scaleLinear().domain([0, maxValue]).range([0, barHeight]);
-  const percentage = valueScale(value) || 0;
+  const percentage = scaleLinear([0, maxValue], [0, barHeight])(value);
 
   const barClassName = {
     "text-prissian": isHighlighted,
