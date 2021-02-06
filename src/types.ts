@@ -30,6 +30,15 @@ export type IndicatorNested = {
   familyMembers: IndicatorNested[];
 };
 
+export type CompanyYear = "2020";
+
+export type CompanyScoreDiff = {
+  id: string;
+  company: string;
+  kind: CompanyKind;
+  score: IndicatorScore;
+};
+
 export type CompanyDetails = {
   id: string;
   printName: string;

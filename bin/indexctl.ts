@@ -6,6 +6,7 @@ import yargs from "yargs";
 import browser, {BrowserApi} from "../src/browser";
 import {
   companies,
+  companyDiffs,
   companyIndices,
   companyRanking,
   companyServices,
@@ -20,7 +21,7 @@ import {
 } from "../src/csv";
 import {companyDetails, narrativeContent} from "../src/google";
 import {companyPdf} from "../src/pdf";
-import {CompanyKind, IndicatorCategoryExt} from "../src/types";
+import {CompanyKind, CompanyYear, IndicatorCategoryExt} from "../src/types";
 
 const dataDir = "data";
 
@@ -44,6 +45,7 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
       const companiesDir = "data/companies";
       const indicatorsDir = "data/indicators";
       const rankingsDir = "data/rankings";
+      const diffScoresDir = "data/diffs";
 
       const [
         allCompanies,
@@ -62,6 +64,9 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
         recursive: true,
       });
       await fs.mkdir(path.join(process.cwd(), rankingsDir), {
+        recursive: true,
+      });
+      await fs.mkdir(path.join(process.cwd(), diffScoresDir), {
         recursive: true,
       });
 
@@ -185,6 +190,26 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
 
                 const ranking = await companyRanking(kind, category);
                 return writeJsonFile(target)(ranking);
+              },
+            ),
+          );
+        }),
+      );
+
+      /*
+       * Year over year diff scores, e.g. ./data/2020-diff.json
+       */
+      await Promise.all(
+        (["2020"] as CompanyYear[]).map(async (year) => {
+          await Promise.all(
+            (["total"] as IndicatorCategoryExt[]).map(
+              async (category: IndicatorCategoryExt) => {
+                const target = path.join(
+                  diffScoresDir,
+                  `${category}-${year}.json`,
+                );
+                const diffScores = await companyDiffs(year, category);
+                return writeJsonFile(target)(diffScores);
               },
             ),
           );

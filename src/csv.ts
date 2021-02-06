@@ -8,6 +8,8 @@ import {
   CompanyIndex,
   CompanyKind,
   CompanyRank,
+  CompanyScoreDiff,
+  CompanyYear,
   CsvRecord,
   Element,
   ElementValue,
@@ -1058,4 +1060,43 @@ export const companyRanking = async (
 
       return 0;
     });
+};
+
+/*
+ * Generate the list of company diff scores for a year.
+ */
+export const companyDiffs = async (
+  year: CompanyYear,
+  category: IndicatorCategoryExt,
+): Promise<CompanyScoreDiff[]> => {
+  const [companyData, csvScoreDiffs] = await Promise.all([
+    companies(),
+    loadScoreDiffsCsv("csv/2020-year-over-year.csv"),
+  ]);
+
+  return (
+    companyData
+      .map(({id, name: company, kind}) => {
+        const diff =
+          csvScoreDiffs.find(
+            (d) => d.company === id && d.category === category,
+          ) ||
+          unreachable(
+            `Failed to load diff score for ${company}/${year}/${category}`,
+          );
+
+        return {
+          id,
+          company,
+          kind,
+          score: diff.diff2020,
+        };
+      })
+      // sort descending
+      .sort((a, b) => {
+        if (a.score < b.score) return 1;
+        if (a.score > b.score) return -1;
+        return 0;
+      })
+  );
 };

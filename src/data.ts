@@ -9,6 +9,8 @@ import {
   CompanyIndex,
   CompanyKind,
   CompanyRank,
+  CompanyScoreDiff,
+  CompanyYear,
   Element,
   Indicator,
   IndicatorAverages,
@@ -239,6 +241,16 @@ export const companyHighlights = async (): Promise<CompanyHighlight[]> => {
       ],
     };
   });
+};
+
+/*
+ * Load the company diff scores.
+ */
+export const companyDiffScoresData = async (
+  year: CompanyYear,
+  category: IndicatorCategoryExt,
+): Promise<CompanyScoreDiff[]> => {
+  return loadJson<CompanyScoreDiff[]>(`data/diffs/${category}-${year}.json`)();
 };
 
 /*
