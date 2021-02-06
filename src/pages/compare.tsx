@@ -1,5 +1,6 @@
 import React from "react";
 
+import CompanyKindLabel from "../components/company-kind-label";
 import CompareScoresChart from "../components/compare-scores-chart";
 import Layout from "../components/layout";
 import {companyDiffScoresData} from "../data";
@@ -23,16 +24,23 @@ const ScoresOverTime = ({diffScores}: ScoresOverTimeProps) => {
           <span className="mt-3 md:mt-0">Scores Over Time</span>
         </h1>
 
-        <div className="flex flex-col lg:flex-row">
-          <CompareScoresChart
-            className="flex-none w-full lg:w-1/2"
-            scores={diffScores.filter(({kind}) => kind === "internet")}
-          />
+        <div className="flex flex-col lg:flex-row mt-6">
+          <div className="flex flex-col">
+            <CompanyKindLabel kind="internet" theme="dark" />
+            <CompareScoresChart
+              className="flex-none w-full lg:w-1/2 mt-3"
+              scores={diffScores.filter(({kind}) => kind === "internet")}
+            />
+          </div>
 
-          <CompareScoresChart
-            className="flex-none w-full lg:w-1/2 lg:ml-3"
-            scores={diffScores.filter(({kind}) => kind === "telecom")}
-          />
+          <div className="flex flex-col">
+            <CompanyKindLabel kind="telecom" theme="dark" />
+
+            <CompareScoresChart
+              className="flex-none w-full lg:w-1/2 lg:ml-3 mt-3"
+              scores={diffScores.filter(({kind}) => kind === "telecom")}
+            />
+          </div>
         </div>
       </div>
     </Layout>
