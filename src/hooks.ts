@@ -1,6 +1,10 @@
 import React, {useEffect, useRef, useState} from "react";
 
-export const useChartResize = (): [React.RefObject<HTMLDivElement>, number] => {
+export const useChartResize = (): [
+  React.RefObject<HTMLDivElement>,
+  number,
+  number,
+] => {
   // eslint-disable-next-line unicorn/no-null
   const chartRef = useRef<HTMLDivElement>(null);
 
@@ -10,12 +14,15 @@ export const useChartResize = (): [React.RefObject<HTMLDivElement>, number] => {
   // element. Better not to show any graph than a graph with the wrong width
   // before resizing it to the appropriate width.
   const [chartWidth, setChartWidth] = useState(0);
+  const [chartHeight, setChartHeight] = useState(0);
 
   useEffect(() => {
     const resize = (): void => {
       if (!chartRef?.current?.offsetWidth) return;
       const width = chartRef.current.offsetWidth;
+      const height = chartRef.current.offsetHeight;
       setChartWidth(width < 0 ? 0 : width);
+      setChartHeight(height < 0 ? 0 : height);
     };
 
     window.addEventListener("resize", resize);
@@ -27,7 +34,7 @@ export const useChartResize = (): [React.RefObject<HTMLDivElement>, number] => {
     };
   }, [chartRef]);
 
-  return [chartRef, chartWidth];
+  return [chartRef, chartWidth, chartHeight];
 };
 
 export const useBreakpointSize = (): number => {

@@ -318,7 +318,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 <ul className="list-inside list-none">
                   <li className="py-3">
                     <IconLink
-                      href="/"
+                      href="/compare"
                       icon={<ScoresOverTime className="flex-none w-6 h-6" />}
                       name="RDR scores over time"
                     />

@@ -28,7 +28,10 @@ const ChinaTechGiants = ({source}: NarrativeProps) => {
         <>
           <div className="flex mb-12 border-b border-prissian py-12">
             <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none">
-              <span className="mt-3 md:mt-0">Chinese tech giants have proven they can change. But the state is still their number one stakeholder.</span>
+              <span className="mt-3 md:mt-0">
+                Chinese tech giants have proven they can change. But the state
+                is still their number one stakeholder.
+              </span>
             </h1>
           </div>
 
