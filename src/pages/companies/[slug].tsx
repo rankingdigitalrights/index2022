@@ -3,11 +3,11 @@ import {useRouter} from "next/router";
 
 import CompanyKindLabel from "../../components/company-kind-label";
 import CompanyRankCard from "../../components/company-rank-card";
-import CompanyRankChart from "../../components/company-rank-chart";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
 import EvaluatedService from "../../components/evaluated-service";
 import Layout from "../../components/layout";
+import RankChart from "../../components/rank-chart";
 import YearOverYearLabel from "../../components/year-over-year-label";
 import {
   allCompanies,
@@ -66,6 +66,8 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
     router.push(`/indicators/${id}`);
   };
 
+  const isPrint = router.query?.print !== undefined;
+
   return (
     <Layout>
       <div className="relative print:static">
@@ -90,7 +92,11 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
           </div>
 
           <div className="w-full md:w-5/12 lg:w-4/12 bg-beige p-3 print:py-8 print:pl-8 print:pr-10 md:mt-6 md:mb-3 md:ml-12 lg:ml-0 z-10">
-            <CompanyRankChart activeCompany={index.id} ranking={ranking} />
+            <RankChart
+              ranking={ranking}
+              activeCompany={index.id}
+              isPrint={isPrint}
+            />
           </div>
         </div>
       </div>

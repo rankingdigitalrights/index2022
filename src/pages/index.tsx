@@ -3,9 +3,9 @@ import React, {useState} from "react";
 import HomeBox from "../components/home-box";
 import HomeCategorySelector from "../components/home-category-selector";
 import HomeHighlightsSlider from "../components/home-highlights-slider";
-import HomeRankChart from "../components/home-rank-chart";
 import HomeSpotlightBox from "../components/home-spotlight-box";
 import Layout from "../components/layout";
+import RankChart from "../components/rank-chart";
 import {companyHighlights, companyRankingData} from "../data";
 import HomeDocument from "../images/icons/home-document.svg";
 import HomeSearch from "../images/icons/home-search.svg";
@@ -175,16 +175,18 @@ const Home = ({
             />
 
             <div className="flex flex-col sm:flex-row mt-3">
-              <HomeRankChart
+              <RankChart
                 className="w-full sm:w-1/2 px-3"
                 ranking={platformRankings}
                 category={selectedCategory}
+                hasHeader
               />
 
-              <HomeRankChart
+              <RankChart
                 className="w-full sm:w-1/2 mt-6 sm:mt-0 px-3"
                 ranking={telecomRankings}
                 category={selectedCategory}
+                hasHeader
               />
             </div>
           </div>

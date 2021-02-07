@@ -7,13 +7,25 @@ import {CompanyKind, CompanyRank, IndicatorCategoryExt} from "../types";
 import CompanyKindLabel from "./company-kind-label";
 import PercentageBar from "./percentage-bar";
 
-interface HomeRankChartProps {
+interface RankChartProps {
   ranking: CompanyRank[];
-  category: IndicatorCategoryExt;
   className?: string;
+  activeCompany?: string;
+  category?: IndicatorCategoryExt;
+  chartHeight?: number;
+  hasHeader?: boolean;
+  isPrint?: boolean;
 }
 
-const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
+const RankChart = ({
+  ranking,
+  className,
+  activeCompany,
+  category = "total",
+  chartHeight = 10,
+  hasHeader = true,
+  isPrint = false,
+}: RankChartProps) => {
   const [chartRef, chartWidth] = useChartResize();
 
   const [highlightedCompany, setHighlightedCompany] = useState<
@@ -27,43 +39,75 @@ const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
     "text-prissian": category === "total",
   };
 
-  const chartHeight = 10;
   const companyKind: CompanyKind = ranking[0]?.kind || "telecom";
 
   return (
     <div className={c("flex flex-col", className)}>
-      <CompanyKindLabel kind={companyKind} theme="dark" />
+      {hasHeader && (
+        <>
+          <CompanyKindLabel kind={companyKind} theme="dark" />
 
-      <div className="flex items-center font-circular text-sm mb-6 mt-2">
-        <div className="flex-none w-28">&nbsp;</div>
+          <div className="flex items-center font-circular text-sm mb-6 mt-2">
+            <div className="flex-none w-28">&nbsp;</div>
 
-        <div className="flex-none w-3 mr-2">&nbsp;</div>
+            <div className="flex-none w-3 mr-2">&nbsp;</div>
 
-        <div className="flex-none w-8 text-center">Rank</div>
+            <div className="flex-none w-8 text-center">Rank</div>
 
-        <div className="flex-none w-9 ml-auto">
-          <span className="float-right">Score</span>
-        </div>
-      </div>
+            <div className="flex-none w-9 ml-auto">
+              <span className="float-right">Score</span>
+            </div>
+          </div>
+        </>
+      )}
+
       {ranking.map(({id, companyPretty, score, rank}, idx) => {
         // eslint-disable-next-line unicorn/no-null
         const ref = idx === 0 ? chartRef : null;
+        const isActiveCompany = id === activeCompany;
         const isHighlightedCompany = id === highlightedCompany;
 
         const highlightedClassName = {
-          "text-prissian": isHighlightedCompany,
+          "text-prissian": isActiveCompany || isHighlightedCompany,
         };
 
-        const highlightedRankClassName = {
+        const rankClassName = {
           "bg-prissian": isHighlightedCompany,
           "bg-diff-del": !isHighlightedCompany && companyKind === "internet",
           "bg-accent-orange":
             !isHighlightedCompany && companyKind === "telecom",
         };
 
-        const barClassName = isHighlightedCompany
-          ? "text-prissian"
-          : categoryClassName;
+        const barClassName =
+          isActiveCompany || isHighlightedCompany
+            ? "text-prissian"
+            : categoryClassName;
+
+        const scoreClassName = {
+          "text-white bg-prissian score-label": isActiveCompany,
+        };
+
+        const companyLabel = isPrint ? (
+          <span
+            className={c(
+              "flex-none font-circular w-28 select-none whitespace-nowrap",
+              highlightedClassName,
+            )}
+          >
+            {companyPretty}
+          </span>
+        ) : (
+          <Link passHref href={`/companies/${id}`}>
+            <a
+              className={c(
+                "flex-none font-circular text-black w-28 select-none whitespace-nowrap",
+                highlightedClassName,
+              )}
+            >
+              {companyPretty}
+            </a>
+          </Link>
+        );
 
         return (
           <div
@@ -75,24 +119,15 @@ const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
             onMouseEnter={() => setHighlightedCompany(id)}
             onMouseLeave={() => setHighlightedCompany(undefined)}
           >
-            <div className="flex-none w-3 mr-2">&nbsp;</div>
+            {hasHeader && <div className="flex-none w-3 mr-2">&nbsp;</div>}
 
-            <Link passHref href={`/companies/${id}`}>
-              <a
-                className={c(
-                  "flex-none font-circular text-black w-28 select-none whitespace-nowrap",
-                  highlightedClassName,
-                )}
-              >
-                {companyPretty}
-              </a>
-            </Link>
+            {companyLabel}
 
             <div className="flex-none w-8 flex justify-center">
               <div
                 className={c(
                   "rounded-full h-5 w-5 text-white flex items-center justify-center",
-                  highlightedRankClassName,
+                  rankClassName,
                 )}
               >
                 {rank}
@@ -116,8 +151,13 @@ const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
               </svg>
             </div>
 
-            <div className="flex-none w-9 ml-auto">
-              <span className="float-right pl-1 pr-1 select-none">
+            <div
+              className={c(
+                "relative flex-none w-9 float-right ml-2",
+                scoreClassName,
+              )}
+            >
+              <span className="pl-1 pr-1 select-none float-right">
                 {score}%
               </span>
             </div>
@@ -128,4 +168,4 @@ const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
   );
 };
 
-export default HomeRankChart;
+export default RankChart;
