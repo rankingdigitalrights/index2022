@@ -207,14 +207,17 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             <CompanyScoreChart
               category="governance"
               score={index.scores.governance}
+              isPrint={isPrint}
             />
             <CompanyScoreChart
               category="freedom"
               score={index.scores.freedom}
+              isPrint={isPrint}
             />
             <CompanyScoreChart
               category="privacy"
               score={index.scores.privacy}
+              isPrint={isPrint}
             />
           </div>
           <p className="font-circular text-xs text-center">
