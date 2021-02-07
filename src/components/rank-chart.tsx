@@ -41,6 +41,8 @@ const RankChart = ({
 
   const companyKind: CompanyKind = ranking[0]?.kind || "telecom";
 
+  const companyWidth = companyKind === "internet" ? "w-24" : "w-28";
+
   return (
     <div className={c("flex flex-col", className)}>
       {hasHeader && (
@@ -48,7 +50,7 @@ const RankChart = ({
           <CompanyKindLabel kind={companyKind} theme="dark" />
 
           <div className="flex items-center font-circular text-sm mb-6 mt-2">
-            <div className="flex-none w-28">&nbsp;</div>
+            <div className={c("flex-none", companyWidth)}>&nbsp;</div>
 
             <div className="flex-none w-3 mr-2">&nbsp;</div>
 
@@ -90,8 +92,9 @@ const RankChart = ({
         const companyLabel = isPrint ? (
           <span
             className={c(
-              "flex-none font-circular w-28 select-none whitespace-nowrap",
+              "flex-none font-circular select-none whitespace-nowrap",
               highlightedClassName,
+              companyWidth,
             )}
           >
             {companyPretty}
@@ -100,8 +103,9 @@ const RankChart = ({
           <Link passHref href={`/companies/${id}`}>
             <a
               className={c(
-                "flex-none font-circular text-black w-28 select-none whitespace-nowrap",
+                "flex-none font-circular text-black select-none whitespace-nowrap",
                 highlightedClassName,
+                companyWidth,
               )}
             >
               {companyPretty}
@@ -134,7 +138,7 @@ const RankChart = ({
               </div>
             </div>
 
-            <div ref={ref} className="flex-grow">
+            <div ref={ref} className="flex-grow ml-2">
               <svg
                 version="1"
                 xmlns="http://www.w3.org/2000/svg"
