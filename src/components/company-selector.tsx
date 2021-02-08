@@ -5,6 +5,7 @@ import Select, {
   ActionMeta,
   components,
   ControlProps,
+  GroupProps,
   InputProps,
   MenuListComponentProps,
   MultiValueProps,
@@ -13,11 +14,12 @@ import Select, {
   ValueType,
 } from "react-select";
 
-import {SelectOption} from "../types";
+import {CompanySelectOption} from "../types";
+import CompanyKindLabel from "./company-kind-label";
 import CompanyTag from "./company-tag";
 
 interface CompanySelectorProps {
-  companies: SelectOption[];
+  companies: CompanySelectOption[];
   selected: string[];
   onSelect: (companies: string[]) => void;
   className?: string;
@@ -30,32 +32,36 @@ const Input = (props: InputProps) => {
 const MenuList = ({
   children,
   ...props
-}: MenuListComponentProps<SelectOption, true>) => {
+}: MenuListComponentProps<CompanySelectOption, true>) => {
   return (
-    <div className="flex flex-wrap bg-white p-2" {...props}>
+    <div
+      className="flex flex-wrap bg-white px-2 divide-y divide-light-disabled"
+      {...props}
+    >
       {children}
     </div>
   );
 };
 
 const MultiValue = ({
-  data: {value, label},
+  data: {value, label, score, kind},
   setValue,
-}: MultiValueProps<SelectOption>) => {
+}: MultiValueProps<CompanySelectOption>) => {
   return (
     <CompanyTag
       key={value}
       active
       className="m-1 bg-prissian text-white"
       company={label}
-      onClick={() => setValue([{label, value}], "deselect-option")}
+      onClick={() => setValue([{label, value, score, kind}], "deselect-option")}
     />
   );
 };
+
 const Placeholder = ({
   children,
   innerProps,
-}: PlaceholderProps<SelectOption, true>) => {
+}: PlaceholderProps<CompanySelectOption, true>) => {
   return (
     <div className="text-sm text-black" {...innerProps}>
       {children}
@@ -67,7 +73,7 @@ const ControlComponent = ({
   children,
   innerRef,
   innerProps,
-}: ControlProps<SelectOption, true>) => {
+}: ControlProps<CompanySelectOption, true>) => {
   return (
     <div
       className="bg-beige border-b-2 border-prissian flex flex-row justify-between items-start w-full"
@@ -89,7 +95,7 @@ const Option = ({
   innerRef,
   innerProps,
   data,
-}: OptionProps<SelectOption, true>) => {
+}: OptionProps<CompanySelectOption, true>) => {
   const {value, label} = data;
 
   const className = c("m-1", {
@@ -104,6 +110,31 @@ const Option = ({
   );
 };
 
+const GroupHeading = (props: {data: CompanySelectOption}) => {
+  const {
+    data: {kind},
+  } = props;
+
+  return (
+    <CompanyKindLabel kind={kind} theme="dark" className="ml-1" {...props} />
+  );
+};
+
+const Group = ({
+  Heading,
+  children,
+  ...props
+}: GroupProps<CompanySelectOption, true>) => {
+  return (
+    <div className="py-2 bg-white" {...props}>
+      <Heading {...props} />
+      <div className="flex flex-wrap bg-white px-2 mt-1" {...props}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
 const CompanySelector = ({
   companies,
   selected,
@@ -111,8 +142,8 @@ const CompanySelector = ({
   className,
 }: CompanySelectorProps) => {
   const handleSelectCompany = (
-    value: ValueType<SelectOption, true>,
-    {action}: ActionMeta<SelectOption>,
+    value: ValueType<CompanySelectOption, true>,
+    {action}: ActionMeta<CompanySelectOption>,
   ) => {
     // eslint-disable-next-line default-case
     switch (action) {
@@ -143,15 +174,25 @@ const CompanySelector = ({
     }
   };
 
+  const internetCompanies = companies.filter(({kind}) => kind === "internet");
+  const telecomCompanies = companies.filter(({kind}) => kind === "telecom");
+
+  const options = [
+    {label: "internet", options: internetCompanies},
+    {label: "telecom", options: telecomCompanies},
+  ];
+
   return (
-    <div className={c("w-full flex flex-col justify-between h-16", className)}>
+    <div
+      className={c("w-full flex flex-col justify-between h-16 z-10", className)}
+    >
       <span className="text-sm font-circular">Select companies:</span>
 
       <Select
         id="company-select"
         className="font-circular"
         placeholder="All companies"
-        options={companies}
+        options={options}
         value={companies.filter((obj) => selected.includes(obj.value))}
         isMulti
         isClearable
@@ -163,6 +204,8 @@ const CompanySelector = ({
           Placeholder,
           IndicatorSeparator,
           Option,
+          Group,
+          GroupHeading,
           Control: ControlComponent,
         }}
         onChange={handleSelectCompany}

@@ -236,6 +236,11 @@ export interface SelectOption {
   label: string;
 }
 
+export interface CompanySelectOption extends SelectOption {
+  score: number;
+  kind: CompanyKind;
+}
+
 export interface SortStrategy<T extends SelectOption = SelectOption> {
   (xs: T[]): T[];
 }

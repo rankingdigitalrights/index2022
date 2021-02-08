@@ -23,6 +23,7 @@ import {
   indicatorScores,
 } from "../../data";
 import {
+  CompanySelectOption,
   Element,
   IndicatorAverages,
   IndicatorCompanyScore,
@@ -39,10 +40,6 @@ type Params = {
     id: string;
   };
 };
-
-interface CompanySelectOption extends SelectOption {
-  score: number;
-}
 
 interface IndicatorPageProps {
   details: IndicatorDetails;
@@ -80,13 +77,14 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
 
   const details = await indicatorDetails(indicatorId);
   const scores = await indicatorScores(indicatorId);
-  const companies = allCompanies.map(({id: companyId, name}) => {
+  const companies = allCompanies.map(({id: companyId, name, kind}) => {
     const score = scores.find(({id}) => id === companyId);
 
     return {
       value: companyId,
       label: name,
       score: score ? score.score : "NA",
+      kind,
     };
   });
   const averages = await indicatorAverages(indicatorId);
@@ -156,7 +154,7 @@ strategies.set(
   },
 );
 
-const identitySortFn: SortStrategy = (xs) => xs;
+const identitySortFn: SortStrategy<CompanySelectOption> = (xs) => xs;
 
 const IndicatorPage = ({
   details,
