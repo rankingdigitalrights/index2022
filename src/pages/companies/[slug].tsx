@@ -95,6 +95,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             <RankChart
               ranking={ranking}
               activeCompany={index.id}
+              hasHeader={false}
               isPrint={isPrint}
             />
           </div>
