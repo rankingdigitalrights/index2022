@@ -7,6 +7,7 @@ interface NarrativeContainerProps {
   heroClassName?: string;
   heroCaption?: string;
   backgroundClassName?: string;
+  transparent?: boolean;
   children: React.ReactNode;
 }
 
@@ -14,8 +15,14 @@ const NarrativeContainer = ({
   heroClassName,
   heroCaption = "",
   backgroundClassName,
+  transparent = false,
   children,
 }: NarrativeContainerProps) => {
+  const containerClassName = {
+    "bg-white shadow-md": !transparent,
+    "bg-transparent": transparent,
+  };
+
   return (
     <div>
       {heroClassName && (
@@ -35,7 +42,12 @@ const NarrativeContainer = ({
           backgroundClassName,
         )}
       >
-        <div className="container mx-auto w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 bg-white px-4 md:px-20 xl:px-32 2xl:px-36 py-3 shadow-md">
+        <div
+          className={c(
+            "container mx-auto w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-4 md:px-20 xl:px-32 2xl:px-36 py-3",
+            containerClassName,
+          )}
+        >
           {children}
         </div>
       </div>

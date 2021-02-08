@@ -24,6 +24,7 @@ const ChinaTechGiants = ({source}: NarrativeProps) => {
         heroClassName="bg-tech-giants"
         heroCaption="People queue for milk during the pandemic in Srinagar, Kashmir. Photo by Abid Bhat, used with permission."
         backgroundClassName="bg-rdr bg-opacity-20"
+        transparent
       >
         <>
           <div className="flex mb-12 border-b border-prissian py-12">
