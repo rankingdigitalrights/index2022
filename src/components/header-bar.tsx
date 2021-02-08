@@ -296,7 +296,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   </li>
                   <li className="py-6">
                     <IconLink
-                      href="/"
+                      href="/explore"
                       icon={<ExploreTheData className="flex-none w-6 h-6" />}
                       name="Explore the data"
                     />

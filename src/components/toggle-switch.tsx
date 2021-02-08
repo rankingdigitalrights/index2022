@@ -26,7 +26,7 @@ const ToggleSwitch = ({label, onChange, className}: ToggleSwitchProps) => {
           htmlFor="toggle"
           className={c(
             "overflow-hidden h-5 rounded-full border-2 border-prissian cursor-pointer flex items-center",
-            toggle ? "bg-prissian" : "bg-beige",
+            toggle ? "bg-prissian" : undefined,
           )}
         >
           <input
