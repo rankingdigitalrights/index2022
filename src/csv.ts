@@ -1013,7 +1013,7 @@ export const companyRanking = async (
 
   return csvCompanyRanks
     .map((row) => {
-      const {id, companyPretty, kind, scores} =
+      const {id, companyPretty, kind, scores, region} =
         companyData.find((r) => r.id === row.company) ||
         unreachable(`Company ${row.company} not found in company specs.`);
 
@@ -1052,6 +1052,7 @@ export const companyRanking = async (
         rank,
         kind,
         category,
+        region,
       };
     })
     .filter(({kind}) => kind === companyKind)

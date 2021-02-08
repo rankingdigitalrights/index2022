@@ -100,6 +100,7 @@ export type CompanyRank = {
   kind: CompanyKind;
   category: IndicatorCategoryExt;
   rank: number;
+  region: string;
 };
 
 export type ServiceKind =
