@@ -18,9 +18,9 @@ const Footer = ({className}: FooterProps) => {
         className,
       )}
     >
-      <div className="md:container md:mx-auto flex flex-col justify-center md:h-48">
+      <div className="lg:container lg:mx-auto flex flex-col justify-center md:h-48">
         <div className="flex flex-col md:flex-row md:justify-between divide-y-2 md:divide-y-0 md:divide-x-2 divide-solid divide-white">
-          <div className="md:w-1/3 py-6 px-6 md:px-6 md:py-3">
+          <div className="md:w-1/3 py-3 md:px-3 lg:py-6 lg:pl-6">
             <ul className="list-none">
               <li className="pb-1">
                 <a
@@ -57,7 +57,7 @@ const Footer = ({className}: FooterProps) => {
             </ul>
           </div>
 
-          <div className="md:w-1/3 py-6 px-6 md:px-6 md:py-3 md:pl-6">
+          <div className="md:w-1/3 py-3 md:px-3 lg:py-6 lg:pl-6">
             <ul className="list-none">
               <li className="pb-1">
                 <a
@@ -89,7 +89,7 @@ const Footer = ({className}: FooterProps) => {
             </ul>
           </div>
 
-          <div className="md:w-1/3 py-6 px-6 md:px-6 md:py-3 md:pl-6">
+          <div className="md:w-1/3 py-3 md:px-3 lg:py-6 lg:pl-6">
             <ul className="list-none">
               <li className="pb-1">
                 <a
