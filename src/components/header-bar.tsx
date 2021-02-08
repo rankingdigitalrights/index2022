@@ -107,12 +107,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
     return (
       <Link passHref href={href} as={href}>
         <a className="flex items-center text-black whitespace-nowrap">
-          <span
-            className={c(
-              "rounded-full border border-white w-3 h-3",
-              dotClassName,
-            )}
-          />
+          <span className={c("rounded-full w-2.5 h-2.5", dotClassName)} />
           <span className="ml-2">{name}</span>
         </a>
       </Link>

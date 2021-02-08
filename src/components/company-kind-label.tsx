@@ -36,9 +36,7 @@ const CompanyKindLabel = ({
         className,
       )}
     >
-      <div
-        className={c("rounded-full border border-white w-3 h-3", dotClassName)}
-      />
+      <div className={c("rounded-full w-2.5 h-2.5", dotClassName)} />
 
       <div className="ml-2">{text}</div>
     </div>
