@@ -241,6 +241,12 @@ export interface CompanySelectOption extends SelectOption {
   kind: CompanyKind;
 }
 
+export interface IndicatorSelectOption extends SelectOption {
+  isParent: boolean;
+  hasParent: boolean;
+  category: IndicatorCategory;
+}
+
 export interface SortStrategy<T extends SelectOption = SelectOption> {
   (xs: T[]): T[];
 }

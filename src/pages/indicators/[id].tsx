@@ -6,9 +6,7 @@ import CompanyElements from "../../components/company-elements";
 import CompanySelector from "../../components/company-selector";
 import ExpandableDescription from "../../components/expandable-description";
 import IndicatorCompaniesChartContainer from "../../components/indicator-companies-chart-container";
-import IndicatorSelector, {
-  IndicatorSelectOption,
-} from "../../components/indicator-selector";
+import IndicatorSelector from "../../components/indicator-selector";
 import Layout from "../../components/layout";
 import SortSelector from "../../components/sort-selector";
 import ToggleSwitch from "../../components/toggle-switch";
@@ -29,6 +27,7 @@ import {
   IndicatorCompanyScore,
   IndicatorDetails,
   IndicatorElements,
+  IndicatorSelectOption,
   SelectOption,
   SortStrategies,
   SortStrategy,
@@ -93,9 +92,10 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
     (e) => e.indicatorId === indicator.id,
   );
   const indicators = (await allIndicators()).map(
-    ({name: value, label, isParent, parent}) => ({
+    ({name: value, label, isParent, parent, category}) => ({
       value,
       isParent,
+      category,
       hasParent: !!parent,
       label: `${value}. ${label}`,
     }),
@@ -195,6 +195,7 @@ const IndicatorPage = ({
     value: details.name,
     isParent: details.isParent,
     hasParent: details.hasParent,
+    category: details.category,
     label: `${details.name}. ${details.label}`,
   };
 
