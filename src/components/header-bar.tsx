@@ -139,7 +139,9 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 className="flex-none"
               />
               <span className="flex-none font-platform font-bold text-lg ml-4 whitespace-nowrap">
-                Ranking Digital Rights
+                {isMobile
+                  ? "2020 RDR Index"
+                  : "2020 RDR Corporate Accountability Index"}
               </span>
             </a>
           </Link>
