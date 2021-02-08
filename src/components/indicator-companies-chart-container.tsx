@@ -35,23 +35,23 @@ const IndicatorCompaniesChartContainer = ({
         )}
       >
         <div className="flex flex-col">
-          <CompanyKindLabel kind="telecom" theme="dark" />
-
-          <IndicatorCompaniesChart
-            indicator={indicator}
-            category={category}
-            scores={telecomScores}
-            className="mt-3"
-          />
-        </div>
-
-        <div className="flex flex-col mt-6 md:ml-3 lg:ml-8 md:mt-0">
           <CompanyKindLabel kind="internet" theme="dark" />
 
           <IndicatorCompaniesChart
             indicator={indicator}
             category={category}
             scores={platformScores}
+            className="mt-3"
+          />
+        </div>
+
+        <div className="flex flex-col mt-6 md:ml-3 lg:ml-8 md:mt-0">
+          <CompanyKindLabel kind="telecom" theme="dark" />
+
+          <IndicatorCompaniesChart
+            indicator={indicator}
+            category={category}
+            scores={telecomScores}
             className="mt-3"
           />
         </div>
