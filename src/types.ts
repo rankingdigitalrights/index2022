@@ -64,6 +64,7 @@ export type Company = {
   id: string;
   // The display name of the company, e.g. América Móvil.
   name: string;
+  region: string;
   kind: CompanyKind;
 };
 
@@ -127,6 +128,7 @@ export type CompanyIndex = {
   companyPretty: string;
   index: string;
   rank: number;
+  region: string;
   kind: CompanyKind;
   scores: Scores;
   indicators: Indicators;

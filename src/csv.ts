@@ -106,6 +106,7 @@ type CsvCompanySpec = {
   companyPretty: string;
   kind: CompanyKind;
   country: string;
+  region: string;
 };
 
 type CsvServiceSpec = {
@@ -321,6 +322,7 @@ const loadCompanySpecsCsv = loadCsv<CsvCompanySpec>((record) => ({
   companyPretty: record.company,
   kind: record.maintype === "platforms" ? "internet" : "telecom",
   country: record.country,
+  region: record.region,
 }));
 
 /*
@@ -402,11 +404,14 @@ export const companies = memoizeAsync(
     const csvCompanySpecs = await loadCompanySpecsCsv(
       "csv/2020-company-specs.csv",
     );
-    return csvCompanySpecs.map(({company: id, companyPretty: name, kind}) => ({
-      id,
-      name,
-      kind,
-    }));
+    return csvCompanySpecs.map(
+      ({company: id, companyPretty: name, kind, region}) => ({
+        id,
+        name,
+        kind,
+        region,
+      }),
+    );
   },
 );
 
@@ -784,6 +789,7 @@ export const companyIndices = memoizeAsync(
             index: total.index,
             companyPretty: spec.companyPretty,
             kind: spec.kind,
+            region: spec.region,
             rank,
             scores,
             indicators: {
