@@ -1,4 +1,5 @@
 import c from "clsx";
+import Link from "next/link";
 import {useRouter} from "next/router";
 import React, {useState} from "react";
 
@@ -11,15 +12,11 @@ import PercentageBar from "./percentage-bar";
 
 interface CompanyIndicatorChartProps {
   indicators: IndicatorNested[];
-  onClick: (id: string) => void;
 }
 
 type CollapseableIndicator = Map<string, boolean>;
 
-const CompanyIndicatorChart = ({
-  indicators,
-  onClick,
-}: CompanyIndicatorChartProps) => {
+const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
   const router = useRouter();
   const [chartRef, chartWidth] = useChartResize();
 
@@ -81,27 +78,28 @@ const CompanyIndicatorChart = ({
                 onMouseEnter={() => setHighlightedIndicator(indicator)}
                 onMouseLeave={() => setHighlightedIndicator(undefined)}
               >
-                <button
-                  className="flex justify-between items-center text-xs font-circular cursor-pointer"
-                  onClick={
-                    hasCollapse
-                      ? () => handleCollapse(indicator)
-                      : () => onClick(display)
-                  }
-                >
-                  <div className="flex flex-grow justify-between items-center text-left">
-                    <span className="flex-grow">{indicatorPretty}</span>
-                    {hasCollapse && isOpen && (
-                      <ChevronUp className="flex-none ml-auto ml-1" />
-                    )}
-                    {hasCollapse && !isOpen && (
-                      <ChevronDown className="flex-none ml-auto ml-1" />
-                    )}
-                  </div>
-                  {hasCollapse && (
+                {hasCollapse ? (
+                  <button
+                    className="flex justify-between items-center text-xs font-circular cursor-pointer"
+                    onClick={() => handleCollapse(indicator)}
+                  >
+                    <div className="flex flex-grow justify-between items-center text-left">
+                      <span className="flex-grow">{indicatorPretty}</span>
+                      {isOpen ? (
+                        <ChevronUp className="flex-none ml-auto ml-1" />
+                      ) : (
+                        <ChevronDown className="flex-none ml-auto ml-1" />
+                      )}
+                    </div>
                     <div className="flex-none ml-auto w-8">&nbsp;</div>
-                  )}
-                </button>
+                  </button>
+                ) : (
+                  <Link passHref href={`/indicators/${display}`}>
+                    <a className="font-circular text-xs text-black hover:text-prissian">
+                      {indicatorPretty}
+                    </a>
+                  </Link>
+                )}
 
                 <div className={classNameBarRow}>
                   <div ref={ref} className="flex-grow">
@@ -155,12 +153,11 @@ const CompanyIndicatorChart = ({
                       onMouseEnter={() => setHighlightedIndicator(m.indicator)}
                       onMouseLeave={() => setHighlightedIndicator(undefined)}
                     >
-                      <button
-                        className="text-left text-xs font-circular cursor-pointer"
-                        onClick={() => onClick(m.display)}
-                      >
-                        {mIndicatorPretty}
-                      </button>
+                      <Link passHref href={`/indicators/${m.display}`}>
+                        <a className="font-circular text-xs text-black hover:text-prissian">
+                          {mIndicatorPretty}
+                        </a>
+                      </Link>
 
                       <div className={classNameBarRow}>
                         <div className="flex-grow">

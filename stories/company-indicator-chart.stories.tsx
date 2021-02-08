@@ -45,7 +45,7 @@ const Template: Story<CompanyIndicatorChartStoryProps> = ({
     category
   ] as IndicatorNested[];
 
-  return <CompanyIndicatorChart indicators={indicators} onClick={() => {}} />;
+  return <CompanyIndicatorChart indicators={indicators} />;
 };
 
 export const Chart = Template.bind({});

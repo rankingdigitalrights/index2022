@@ -62,10 +62,6 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
 const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
   const router = useRouter();
 
-  const handleIndicatorClick = (id: string) => {
-    router.push(`/indicators/${id}`);
-  };
-
   const isPrint = router.query?.print !== undefined;
 
   return (
@@ -232,7 +228,6 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             score={index.scores.governance}
             text={details.governance}
             indicators={index.indicators.governance}
-            onClick={handleIndicatorClick}
           />
 
           <CompanySection
@@ -240,7 +235,6 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             score={index.scores.freedom}
             text={details.freedom}
             indicators={index.indicators.freedom}
-            onClick={handleIndicatorClick}
           />
 
           <CompanySection
@@ -248,7 +242,6 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
             score={index.scores.privacy}
             text={details.privacy}
             indicators={index.indicators.privacy}
-            onClick={handleIndicatorClick}
           />
         </div>
       </div>

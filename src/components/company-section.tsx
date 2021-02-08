@@ -9,7 +9,6 @@ interface CompanySectionProps {
   score: number;
   text: string;
   indicators: IndicatorNested[];
-  onClick: (id: string) => void;
   className?: string;
 }
 
@@ -18,7 +17,6 @@ const CompanySection = ({
   score,
   text,
   indicators,
-  onClick,
   className,
 }: CompanySectionProps) => {
   let title;
@@ -80,7 +78,7 @@ const CompanySection = ({
             <h3 className="text-lg font-circular">Indicators</h3>
           </div>
 
-          <CompanyIndicatorChart indicators={indicators} onClick={onClick} />
+          <CompanyIndicatorChart indicators={indicators} />
         </div>
       </div>
     </section>
