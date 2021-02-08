@@ -93,13 +93,40 @@
   }
 
   .bg-context-over-code {
-    @apply bg-cover;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .bg-context-over-code::before {
+    /* @apply bg-cover absolute; */
+    content: "";
     background-image: url("../images/bg-kashmir.jpg?size=600");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
   }
 
   .bg-unaccountable-algorithms {
-    @apply bg-cover;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .bg-unaccountable-algorithms:before {
+    content: "";
     background-image: url("../images/bg-faces.jpg?size=600");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
   }
 
   .bg-china-tech-giants {
@@ -119,7 +146,7 @@
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   /* Get rid of the border outlines on button unless user is actually tabbing. */

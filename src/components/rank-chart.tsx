@@ -49,10 +49,8 @@ const RankChart = ({
         <>
           <CompanyKindLabel kind={companyKind} theme="dark" />
 
-          <div className="flex items-center font-circular text-sm mb-6 mt-2">
+          <div className="flex items-center font-circular text-sm mb-2 mt-3">
             <div className={c("flex-none", companyWidth)}>&nbsp;</div>
-
-            <div className="flex-none w-3 mr-2">&nbsp;</div>
 
             <div className="flex-none w-8 text-center">Rank</div>
 
@@ -123,8 +121,6 @@ const RankChart = ({
             onMouseEnter={() => setHighlightedCompany(id)}
             onMouseLeave={() => setHighlightedCompany(undefined)}
           >
-            {hasHeader && <div className="flex-none w-3 mr-2">&nbsp;</div>}
-
             {companyLabel}
 
             <div className="flex-none w-8 flex justify-center">

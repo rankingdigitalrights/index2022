@@ -15,7 +15,7 @@ const HomeCategorySelector = ({
   className,
 }: HomeCategorySelectorProps) => {
   const buttonClassName =
-    "font-circular p-2 mr-2 md:mr-4 lg:mr-6 border rounded-md";
+    "font-circular px-4 py-2 mr-2 md:mr-4 border rounded-md";
 
   const totalClassName = c(buttonClassName, "my-2 text-prissian", {
     "border-prissian": selected !== "total",

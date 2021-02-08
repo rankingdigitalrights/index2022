@@ -31,7 +31,7 @@ const MenuBarColumn = ({
     <div className={c("flex flex-col", className)}>
       <button
         className={c(
-          "flex items-center justify-between uppercase font-circular font-bold border-b-2 border-disabled-dark w-full py-6 md:py-0 md:pb-1",
+          "flex items-center justify-between uppercase mb-6 font-circular font-bold border-b-2 border-disabled-dark w-full py-6 md:py-0 md:pb-1",
           columnHeaderClassName,
         )}
         onClick={() => (isExpandable ? handleExpandColumn() : identity())}

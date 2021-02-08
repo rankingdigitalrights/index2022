@@ -117,6 +117,7 @@ const Home = ({
             <HomeBox
               title="How do internet companies treat human rights?"
               href="/intro-essay"
+              className="md:h-48 lg:h-72"
             >
               <div className="flex flex-col h-full justify-end">
                 <p>
@@ -130,7 +131,7 @@ const Home = ({
           <div className="flex flex-col sm:flex-row lg:w-2/3 bg-diff-add z-10">
             <div className="w-full sm:w-1/2 sm:flex-grow items-center bg-diff-add z-10 h-full">
               <HomeBox
-                className="bg-key-findings"
+                className="h-72 bg-key-findings"
                 title="Key Findings"
                 href="/key-findings"
               >
@@ -149,6 +150,7 @@ const Home = ({
                 title="Recommendations"
                 href="/policy-recommendations"
                 theme="dark"
+                className="h-72"
               >
                 <div className="flex flex-col h-full justify-between">
                   <p>What policymakers and companies need to know for 2021</p>
@@ -161,7 +163,7 @@ const Home = ({
         </div>
       </div>
 
-      <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between  my-6">
+      <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between my-10">
         <div className="font-circular font-bold text-xl leading-10 lg:flex-grow w-full lg:w-1/3 p-3">
           2020 RDR Index
         </div>
@@ -193,7 +195,7 @@ const Home = ({
         </div>
       </div>
 
-      <div className="lg:container lg:mx-auto flex flex-col md:flex-row md:justify-between">
+      <div className="lg:container lg:mx-auto flex flex-col md:flex-row md:justify-between bg-black">
         <HomeSpotlightBox
           className="md:w-1/3 h-64 bg-context-over-code"
           title="Context over code"
@@ -214,7 +216,7 @@ const Home = ({
         />
       </div>
 
-      <div className="lg:container lg:mx-auto flex flex-row md:justify-between items-center my-6">
+      <div className="lg:container lg:mx-auto flex flex-row md:justify-between items-center my-10">
         <HomeHighlightsSlider highlights={highlights} />
       </div>
     </Layout>

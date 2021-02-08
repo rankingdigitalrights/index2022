@@ -135,7 +135,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
 
   return (
     <header ref={ref} className={c(className)}>
-      <div className="relative bg-beige shadow-md py-4 z-50">
+      <div className="relative bg-beige shadow-md py-2 z-50">
         <div className="lg:container lg:mx-auto flex justify-between items-center relative px-6">
           <Link passHref href="/">
             <a className="flex items-center text-black hover:no-underline">
@@ -184,7 +184,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
             isExpandable={isMobile}
           >
             <div className="flex flex-col divide-y divide-disabled">
-              <div className="flex flex-col py-3">
+              <div className="flex flex-col">
                 <ul role="menubar" className="list-inside list-none">
                   <li role="none">
                     <IconLink
@@ -288,9 +288,9 @@ const HeaderBar = ({className}: HeaderBarProps) => {
             isExpandable={isMobile}
           >
             <div className="flex flex-col divide-y divide-disabled">
-              <div className="flex flex-col py-3">
+              <div className="flex flex-col">
                 <ul className="list-inside list-none">
-                  <li className="py-6">
+                  <li className="">
                     <IconLink
                       href="/indicators/G1"
                       icon={<ScoresByIndicator className="flex-none w-6 h-6" />}
