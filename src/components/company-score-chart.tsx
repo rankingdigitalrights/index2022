@@ -1,6 +1,6 @@
 import c from "clsx";
 import {arc, pie, PieArcDatum} from "d3-shape";
-import React, {useRef, useState} from "react";
+import React, {useRef} from "react";
 
 import {IndicatorCategory} from "../types";
 import {mapCategoryName} from "../utils";
@@ -21,7 +21,6 @@ const CompanyScoreChart = ({
 }: CompanyScoreChartProps) => {
   // eslint-disable-next-line unicorn/no-null
   const sliceRef = useRef<SVGGElement>(null);
-  const [isHighlighted, setIsHighlighted] = useState(false);
 
   // eslint-disable-next-line unicorn/no-null
   const [datum] = pie().sort(null)([score, 100 - score]);
@@ -38,18 +37,13 @@ const CompanyScoreChart = ({
     .endAngle(datum.endAngle)(datum);
 
   const sliceClassName = c("fill-current", {
-    "text-cat-governance": category === "governance" && !isHighlighted,
-    "text-cat-freedom": category === "freedom" && !isHighlighted,
-    "text-cat-privacy": category === "privacy" && !isHighlighted,
-    "text-prissian": isHighlighted,
+    "text-cat-governance": category === "governance",
+    "text-cat-freedom": category === "freedom",
+    "text-cat-privacy": category === "privacy",
   });
 
   return (
-    <div
-      className="p-4 m-4 print:m-2 flex flex-col items-center w-64 print:w-48 no-page-break"
-      onMouseEnter={() => setIsHighlighted(true)}
-      onMouseLeave={() => setIsHighlighted(false)}
-    >
+    <div className="p-4 m-4 print:m-2 flex flex-col items-center w-64 print:w-48 no-page-break">
       <span
         className={c(
           "font-circular font-black text-center",
