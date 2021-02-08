@@ -31,12 +31,12 @@ const Input = (props: InputProps) => {
 
 const MenuList = ({
   children,
-  ...props
+  innerRef,
 }: MenuListComponentProps<CompanySelectOption, true>) => {
   return (
     <div
-      className="flex flex-wrap bg-white px-2 divide-y divide-light-disabled"
-      {...props}
+      className="flex flex-wrap bg-white divide-y divide-light-disabled"
+      ref={innerRef}
     >
       {children}
     </div>
@@ -51,7 +51,7 @@ const MultiValue = ({
     <CompanyTag
       key={value}
       active
-      className="m-1 bg-prissian text-white"
+      className="bg-prissian text-white m-1"
       company={label}
       onClick={() => setValue([{label, value, score, kind}], "deselect-option")}
     />
@@ -115,9 +115,7 @@ const GroupHeading = (props: {data: CompanySelectOption}) => {
     data: {kind},
   } = props;
 
-  return (
-    <CompanyKindLabel kind={kind} theme="dark" className="ml-1" {...props} />
-  );
+  return <CompanyKindLabel kind={kind} theme="dark" className="px-2 ml-1" />;
 };
 
 const Group = ({
@@ -126,11 +124,9 @@ const Group = ({
   ...props
 }: GroupProps<CompanySelectOption, true>) => {
   return (
-    <div className="py-2 bg-white" {...props}>
+    <div className="py-2 bg-white">
       <Heading {...props} />
-      <div className="flex flex-wrap bg-white px-2 mt-1" {...props}>
-        {children}
-      </div>
+      <div className="flex flex-wrap bg-white px-2 mt-1">{children}</div>
     </div>
   );
 };
@@ -178,8 +174,8 @@ const CompanySelector = ({
   const telecomCompanies = companies.filter(({kind}) => kind === "telecom");
 
   const options = [
-    {label: "internet", options: internetCompanies},
-    {label: "telecom", options: telecomCompanies},
+    {kind: "internet", options: internetCompanies},
+    {kind: "telecom", options: telecomCompanies},
   ];
 
   return (
