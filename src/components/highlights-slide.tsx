@@ -60,12 +60,16 @@ const HighlightsSlide = ({
         <span className="font-circular text-sm text-center mt-3">{text}</span>
       </div>
 
-      <div className="flex flex-col sm:flex-row w-full lg:w-2/3 sm:mt-6 lg:mt-0">
-        {highlights.map((h) => {
+      <div className="flex flex-col sm:flex-row w-full lg:w-2/3 sm:mt-6 lg:mt-0 pl-9 pr-9">
+        {highlights.map((h, idx) => {
+          const innerClassName = {
+            "pr-3": idx === 0,
+            "pl-3": idx === 1,
+          };
           return (
             <CompanySlide
               key={h.company}
-              className="md:h-64 md:w-1/2 px-8 py-4"
+              className={c("md:h-64 md:w-1/2 py-4", innerClassName)}
               company={h}
             />
           );

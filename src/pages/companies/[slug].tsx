@@ -73,7 +73,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
         </div>
 
         <div className="md:container md:mx-auto flex flex-col print:flex-row md:flex-row md:justify-between lg:w-10/12 xl:w-8/12">
-          <div className="flex flex-col bg-prissian w-full md:w-7/12 lg:w-7/12 p-3 print:py-8 print:pr-10 print:pl-8 md:mt-6 md:mb-6 md:mr-6 lg:mr-0 z-10">
+          <div className="flex flex-col bg-prissian w-full md:w-7/12 lg:w-7/12 pt-3 print:py-8 print:pr-10 print:pl-8 md:mt-6 md:mb-6 md:mr-6 lg:mr-0 z-10">
             <CompanyKindLabel kind={index.kind} />
 
             <CompanyRankCard
@@ -99,9 +99,9 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
       </div>
 
       <div className="pt-6 pb-6 mt-6">
-        <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
+        <div className="container mx-auto lg:w-10/12 xl:w-8/12">
           <section className="flex flex-col md:flex-row print:flex-col pt-3">
-            <div className="w-full md:w-4/6 pr-3">
+            <div className="w-full md:w-4/6 pr-12">
               <div
                 className="mt-6 border-b border-disabled-light print:border-b-0"
                 dangerouslySetInnerHTML={{__html: details.keyFindings}}
@@ -174,7 +174,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
 
           {index.totalDiffs.diff2020 !== "NA" && (
             <section className="relative flex flex-col md:flex-row print:flex-row pt-3">
-              <div className="w-full md:w-4/6 pr-3 border-t border-disabled-light print:border-t-0">
+              <div className="w-full md:w-4/6 pr-12 border-t border-disabled-light print:border-t-0">
                 <h2 className="text-prissian mt-8 mb-6">
                   {details.changesTitle}
                 </h2>

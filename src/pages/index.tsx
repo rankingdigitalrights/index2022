@@ -118,7 +118,7 @@ const Home = ({
             <HomeBox
               title="How do internet companies treat human rights?"
               href="/intro-essay"
-              className="md:h-48 lg:h-72"
+              className="md:h-56 lg:h-80"
             >
               <div className="flex flex-col h-full justify-end">
                 <p>
@@ -132,7 +132,7 @@ const Home = ({
           <div className="flex flex-col sm:flex-row lg:w-2/3 bg-diff-add z-10">
             <div className="w-full sm:w-1/2 sm:flex-grow items-center bg-diff-add z-10 h-full">
               <HomeBox
-                className="h-72 bg-key-findings"
+                className="h-60 lg:h-80 bg-key-findings"
                 title="Key Findings"
                 href="/key-findings"
               >
@@ -151,7 +151,7 @@ const Home = ({
                 title="Recommendations"
                 href="/policy-recommendations"
                 theme="dark"
-                className="h-72"
+                className="md:h-60 lg:h-80"
               >
                 <div className="flex flex-col h-full justify-between">
                   <p>What policymakers and companies need to know for 2021</p>
@@ -165,7 +165,7 @@ const Home = ({
       </div>
 
       <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between my-10">
-        <div className="font-circular lg:flex-grow w-full lg:w-1/3 p-3">
+        <div className="font-circular lg:flex-grow w-full lg:w-1/3 pl-6 pr-10 mb-10">
           <h2 className="font-bold text-xl leading-10">2020 RDR Index</h2>
 
           <p className="mt-4">
@@ -183,24 +183,23 @@ const Home = ({
           </Link>
         </div>
 
-        <div className="flex flex-col sm:flex-row lg:w-2/3">
+        <div className="flex flex-col sm:flex-row lg:w-2/3 px-6">
           <div className="flex flex-col w-full">
             <HomeCategorySelector
               selected={selectedCategory}
               onClick={handleSelectCategory}
-              className="px-3"
             />
 
-            <div className="flex flex-col sm:flex-row mt-3">
+            <div className="flex flex-col sm:flex-row mt-10">
               <RankChart
-                className="w-full sm:w-1/2 px-3"
+                className="w-full sm:w-1/2 mr-3"
                 ranking={platformRankings}
                 category={selectedCategory}
                 hasHeader
               />
 
               <RankChart
-                className="w-full sm:w-1/2 mt-6 sm:mt-0 px-3"
+                className="w-full sm:w-1/2 mt-6 sm:mt-0 md:ml-3"
                 ranking={telecomRankings}
                 category={selectedCategory}
                 hasHeader
@@ -231,7 +230,7 @@ const Home = ({
         />
       </div>
 
-      <div className="lg:container lg:mx-auto flex flex-row md:justify-between items-center my-10">
+      <div className="lg:container lg:mx-auto flex flex-row md:justify-between items-center my-10 px-6">
         <HomeHighlightsSlider highlights={highlights} />
       </div>
     </Layout>

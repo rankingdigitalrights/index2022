@@ -24,14 +24,14 @@ const HomeBox = ({
   return (
     <div
       className={c(
-        "relative px-6 md:px-10 lg:px-12 py-10 md:py-16 lg:py-0 lg:pt-10 lg:pb-8 leading-none font-circular",
+        "relative pt-10 pb-6 px-6 md:p-6 lg:py-0 lg:pt-10 lg:pb-8 leading-none font-circular",
         textColor,
         className,
       )}
     >
       <div className="flex flex-col h-full w-4/5 justify-between">
         <Link href={href}>
-          <h3 className="cursor-pointer font-platform font-bold text-lg xl:text-xl mb-3">
+          <h3 className="cursor-pointer font-platform font-bold text-xl mb-3">
             {title}
           </h3>
         </Link>
