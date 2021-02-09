@@ -122,6 +122,7 @@ export type Service = {
   id: string;
   name: string;
   kind: ServiceKind;
+  label: string;
 };
 
 export type CompanyIndex = {

@@ -1,1 +1,1 @@
-[{"id":"Group","name":"América Móvil","kind":"Group"},{"id":"OpCom","name":"OpCom","kind":"OpCom"},{"id":"Prepaid mobile","name":"Prepaid mobile","kind":"mobile"},{"id":"Postpaid mobile","name":"Postpaid mobile","kind":"mobile"}]
+[{"id":"Group","label":"Group","name":"América Móvil","kind":"Group"},{"id":"OpCom","name":"OpCom","label":"OpCom","kind":"OpCom"},{"id":"Prepaid mobile","name":"Prepaid mobile","kind":"mobile","label":"Prepaid and postpaid mobile"},{"id":"Postpaid mobile","name":"Postpaid mobile","kind":"mobile","label":"Prepaid and postpaid mobile"}]

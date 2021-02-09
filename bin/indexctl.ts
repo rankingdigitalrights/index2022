@@ -18,6 +18,7 @@ import {
   indicatorIndices,
   indicators,
   indicatorScores,
+  services,
 } from "../src/csv";
 import {companyDetails, narrativeContent} from "../src/google";
 import {companyPdf} from "../src/pdf";
@@ -51,11 +52,13 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
         allCompanies,
         allIndicators,
         allElements,
+        allServices,
         scores,
       ] = await Promise.all([
         companies(),
         indicators(),
         elements(),
+        services(),
         companyIndices(),
       ]);
 
@@ -73,15 +76,17 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
       const companiesTarget = path.join(dataDir, "companies.json");
       const indicatorsTarget = path.join(dataDir, "indicators.json");
       const elementsTarget = path.join(dataDir, "elements.json");
+      const servicesTarget = path.join(dataDir, "services.json");
 
       console.log(
-        `Generating spec data: ${companiesTarget}, ${indicatorsTarget} and ${elementsTarget}`,
+        `Generating spec data: ${companiesTarget}, ${indicatorsTarget}, ${elementsTarget} and ${servicesTarget}`,
       );
 
       await Promise.all([
         writeJsonFile(companiesTarget)(allCompanies),
         writeJsonFile(indicatorsTarget)(allIndicators),
         writeJsonFile(elementsTarget)(allElements),
+        writeJsonFile(servicesTarget)(allServices),
       ]);
 
       /*

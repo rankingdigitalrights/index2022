@@ -117,6 +117,11 @@ type CsvServiceSpec = {
   label: string;
 };
 
+type CsvServiceKind = {
+  kind: ServiceKind;
+  service: string;
+};
+
 type CsvIndicatorSpec = {
   category: IndicatorCategory;
   indicator: string;
@@ -337,6 +342,14 @@ const loadServiceSpecsCsv = loadCsv<CsvServiceSpec>((record) => ({
 }));
 
 /*
+ * Load the service kind mapping.
+ */
+const loadServiceKindsCsv = loadCsv<CsvServiceKind>((record) => ({
+  kind: mapServiceKind(record.ServiceType),
+  service: record.ServiceLabel,
+}));
+
+/*
  * Load the indicator specs.
  */
 const loadIndicatorSpecsCsv = loadCsv<CsvIndicatorSpec>((record) => ({
@@ -416,20 +429,49 @@ export const companies = memoizeAsync(
 );
 
 /*
+ * Generate a list of services.
+ */
+export const services = memoizeAsync(
+  async (): Promise<Service[]> => {
+    const [csvServiceSpecs, csvServiceKinds] = await Promise.all([
+      loadServiceSpecsCsv("csv/2020-service-specs.csv"),
+      loadServiceKindsCsv("csv/2020-service-kinds.csv"),
+    ]);
+
+    return csvServiceSpecs.map(({kind, service: id, label: name}) => {
+      if (kind === "OpCom")
+        return {id: "OpCom", name: "OpCom", label: "OpCom", kind};
+      if (kind === "Group") return {id: "Group", label: "Group", name, kind};
+      const {service} =
+        csvServiceKinds.find((row) => row.kind === kind) ||
+        unreachable(`Failed to find service kind ${kind}`);
+
+      return {id, name, kind, label: service};
+    });
+  },
+);
+
+/*
  * Generate a list of services for a company.
  */
 export const companyServices = memoizeAsync(
   async (companyId: string): Promise<Service[]> => {
-    const csvServiceSpecs = await loadServiceSpecsCsv(
-      "csv/2020-service-specs.csv",
-    );
+    const [csvServiceSpecs, csvServiceKinds] = await Promise.all([
+      loadServiceSpecsCsv("csv/2020-service-specs.csv"),
+      loadServiceKindsCsv("csv/2020-service-kinds.csv"),
+    ]);
 
     return csvServiceSpecs
       .filter(({company}) => company === companyId)
       .map(({kind, service: id, label: name}) => {
-        if (kind === "OpCom") return {id: "OpCom", name: "OpCom", kind};
-        if (kind === "Group") return {id: "Group", name, kind};
-        return {id, name, kind};
+        if (kind === "OpCom")
+          return {id: "OpCom", name: "OpCom", label: "OpCom", kind};
+        if (kind === "Group") return {id: "Group", label: "Group", name, kind};
+        const {service} =
+          csvServiceKinds.find((row) => row.kind === kind) ||
+          unreachable(`Failed to find service kind ${kind}`);
+
+        return {id, name, kind, label: service};
       });
   },
 );
@@ -920,7 +962,7 @@ export const indicatorIndices = memoizeAsync(
         return {[company]: indicator ? indicator.score : "NA", ...memo};
       }, {} as Record<string, IndicatorScore>);
 
-      const services = companyIds.reduce(
+      const allServices = companyIds.reduce(
         (memo, company) => ({
           [company]: [
             ...indexElements
@@ -958,7 +1000,7 @@ export const indicatorIndices = memoizeAsync(
         if (!services[company]) return memo;
 
         return {
-          [company]: services[company].reduce(
+          [company]: allServices[company].reduce(
             (agg, service) => ({
               [service]: indexElements
                 .filter(
@@ -989,7 +1031,7 @@ export const indicatorIndices = memoizeAsync(
         isParent: spec.isParent,
         hasParent: /[a-z]+$/.test(spec.indicator),
         companies: companyIds,
-        services,
+        services: allServices,
         scores,
         averages,
         elements: sortedElements,
