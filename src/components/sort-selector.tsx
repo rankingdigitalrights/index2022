@@ -84,7 +84,7 @@ const SortSelector = ({
     <div className={c("flex flex-col justify-between h-16", className)}>
       <span className="text-sm font-circular">Sort:</span>
       <Select
-        id="indicator-select"
+        instanceId="sort-select"
         options={strategies}
         value={selectedOption}
         className="font-circular text-sm"

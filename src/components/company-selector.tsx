@@ -185,7 +185,7 @@ const CompanySelector = ({
       <span className="text-sm font-circular">Select companies:</span>
 
       <Select
-        id="company-select"
+        instanceId="company-select"
         className="font-circular"
         placeholder="All companies"
         options={options}

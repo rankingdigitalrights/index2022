@@ -156,7 +156,7 @@ const IndicatorSelector = ({
   return (
     <div className="w-full">
       <Select
-        id="indicator-select"
+        instanceId="indicator-select"
         className="text-xs font-platform text-prissian"
         options={options}
         value={selected}
