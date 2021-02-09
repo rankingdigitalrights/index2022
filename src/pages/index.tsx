@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, {useState} from "react";
 
 import HomeBox from "../components/home-box";
@@ -164,8 +165,22 @@ const Home = ({
       </div>
 
       <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between my-10">
-        <div className="font-circular font-bold text-xl leading-10 lg:flex-grow w-full lg:w-1/3 p-3">
-          2020 RDR Index
+        <div className="font-circular lg:flex-grow w-full lg:w-1/3 p-3">
+          <h2 className="font-bold text-xl leading-10">2020 RDR Index</h2>
+
+          <p className="mt-4">
+            We evaluated 26 of the world’s most powerful digital platforms and
+            telecommunications companies on their disclosed policies and
+            practices affecting people’s rights to freedom of expression and
+            privacy. Select the categories above to see how companies scored in
+            different areas.
+          </p>
+
+          <Link passHref href="/methodology">
+            <a>
+              How did we calculate these scores? Read about our methodology.
+            </a>
+          </Link>
         </div>
 
         <div className="flex flex-col sm:flex-row lg:w-2/3">
@@ -204,12 +219,12 @@ const Home = ({
         />
         <HomeSpotlightBox
           className="md:w-1/3 h-64 bg-unaccountable-algorithms"
-          title="Unaccountable algorithms"
+          title="Moving fast and breaking us all"
           href="/spotlights/spotlight-two"
-          text="Will company policies ever see the light of day?"
+          text="Big Tech’s unaccountable algorithms"
         />
         <HomeSpotlightBox
-          className="md:w-1/3 h-64 bg-china-tech-giants"
+          className="md:w-1/3 h-64 bg-tech-giants"
           title="China’s tech giants have proven they can change."
           href="/spotlights/china-tech-giants"
           text="But the state is still their number one stakeholder."

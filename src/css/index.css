@@ -82,9 +82,9 @@
     font-style: italic;
   }
 
-  .bg-tech-giants {
+  .hero-tech-giants {
     @apply bg-contain bg-no-repeat bg-center;
-    background-image: url("../images/bg-tech-giants.jpg?size=1024");
+    background-image: url("../images/hero-tech-giants.jpg?size=1024");
   }
 
   .bg-key-findings {
@@ -119,7 +119,7 @@
 
   .bg-unaccountable-algorithms:before {
     content: "";
-    background-image: url("../images/bg-faces.jpg?size=600");
+    background-image: url("../images/bg-unaccountable-algorithms.jpg?size=600");
     background-size: cover;
     position: absolute;
     top: 0px;
@@ -129,17 +129,17 @@
     opacity: 0.5;
   }
 
-  .bg-china-tech-giants {
+  .bg-tech-giants {
     /* @apply relative w-full h-full inset-0 relative; */
     position: relative;
     height: 100vh;
     width: 100%;
   }
 
-  .bg-china-tech-giants::before {
+  .bg-tech-giants::before {
     /* @apply bg-cover absolute; */
     content: "";
-    background-image: url("../images/bg-shenzen.jpg?size=1024");
+    background-image: url("../images/bg-tech-giants.jpg?size=1024");
     background-size: cover;
     position: absolute;
     top: 0px;
