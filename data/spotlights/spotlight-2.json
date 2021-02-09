@@ -1,51 +1,60 @@
 {
   "steps": [{
+      "id": 1,
       "content": "<h1>Content Moderation</h1><h2>Youtube vs Facebook",
       "color": "bg-cat-freedom"
     },
     {
-      "title": "Substep 1",
+      "id": 2,
+      "title": "Intro",
       "content": "<p>[Background]: When COVID-19 hit, both Facebook and Google (YouTube’s parent company) sent content moderation workers home, and deployed algorithms to review content instead. Facebook almost completely shut off its appeals option. YouTube kept it enabled, and put extra resources into reviewing appeals and restoring content where necessary.</p>",
       "color": "bg-cat-freedom",
       "queries": "#label-yt, #label-fb,#labels-q"
     },
     {
+      "id": 3,
       "title": "2019 Q4 - YouTube",
       "content": "<ul><li>YouTube:<ul><li>Appeals</li><li>Restored:</li></ul></li></ul>",
       "color": "bg-cat-freedom",
       "queries": "#grid, #_2019-q4 #q4-split-yt"
     },
     {
+      "id": 4,
       "title": "2019 Q4 - B - Facebook",
       "content": "<ul><li>Facebook:<ul><li>Appeals</li><li>Restored:</li></ul></li></ul>",
       "color": "bg-cat-freedom",
       "queries": "#_2019-q4 #q4-split-fb"
     },
     {
+      "id": 5,
       "title": "2020 Q1 - Both",
       "content": "Same in Q1 2020<br/><br/>But...",
       "color": "bg-cat-freedom",
       "queries": "#_2020-q1"
     },
     {
+      "id": 6,
       "title": "COVID",
       "content": "<p>When the COVID-19 pandemic struck, Facebook sent home workers who review millions of posts each day for rule violations.</p><p>The company decided to put its algorithms in charge instead, hoping the technology would keep content moderation processes moving.</p>",
       "color": "bg-cat-privacy",
       "queries": "#label-human, #area-covid, #label-algo"
     },
     {
+      "id": 7,
       "title": "COVID Facebook Q2",
       "content": "But the solution had at least one critical flaw: it was unable to address appeals.",
       "color": "bg-cat-privacy",
       "queries": "#_2020-q2 #q2-split-fb"
     },
     {
+      "id": 8,
       "title": "COVID Facebook Q3",
       "content": "<p>In an August 2020 press call, Facebook explained that it had <href='https://about.fb.com/wp-content/uploads/2020/08/Press-Call-Transcript.pdf' target='_blank'>severely scaled back</a> the processing of new appeals sent by disgruntled users, indicating that the company’s experiments with algorithmic moderation had not worked out so well. The system’s apparent collapse left millions of users unable to appeal moderation decisions at all.</p><p>The system seemed to have collapsed, leaving millions of users unable to appeal moderation decisions at all.</p><p>In Q2 and Q3 of 2020, [...Facebok...] less than 25k appeals were filed.</p>",
       "color": "bg-cat-privacy",
       "queries": "#_2020-q3 #q3-split-fb"
     },
     {
+      "id": 9,
       "title": "COVID - YouTube",
       "content": "<p>The <a href='https://www.cnet.com/news/youtube-automation-removes-11m-videos-in-3-months/' target='_blank'>story at YouTube</a> was different. Like Facebook, Google (YouTube’s parent company) was forced to send workers home, instead “relying more on technology” to carry out content moderation. The company even offered a statement saying that the change might result in the company “removing more content that may not be violative of our policies.”</p><p>Google also thought ahead and <a href='https://www.protocol.com/youtube-content-moderation-covid-19' target='_blank'>ramped up its appeals systems</a>, rightly anticipating that algorithmic content moderation would lead to more wrongful removals and more appeals from users. Indeed, <a href='https://transparencyreport.google.com/youtube-policy/appeals' target='_blank'>appeals doubled</a> in the same period— but because the company took measures to prepare, the number of videos restored on appeal quadrupled.</p>",
       "color": "bg-cat-freedom",

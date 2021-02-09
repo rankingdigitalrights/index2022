@@ -8,7 +8,7 @@ const updateBGColor = (figure, color = "bg-gray-200") => {
 
 const toggleActiveStep = (index, steps) => {
   // Make current step active and de-activate all others..
-  console.log(`toggling ${index}`);
+  console.log(`Active step ${index}`);
   steps.forEach((el, i) =>
     i === index
       ? el.classList.add("is-active")
@@ -23,8 +23,8 @@ const resetScene = (figure) => {
 };
 
 const handleStepEnter = (figure, steps, {index, direction, element}) => {
-  console.log("Generic handleStepEnter");
   console.log(`Generic enter: ${index} - ${direction}`);
+  console.log("payload", element);
   toggleActiveStep(index, steps);
   figure.querySelector("p#scene-counter").textContent = "On";
   figure.querySelector("p#index-counter").textContent = index;

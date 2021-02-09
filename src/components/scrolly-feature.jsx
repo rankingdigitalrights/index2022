@@ -3,7 +3,7 @@ import React, {useEffect, useMemo, useRef} from "react";
 import {useInView} from "react-intersection-observer";
 import scrollama from "scrollama";
 
-import {setupSpotlight} from "../spotlights-two";
+import {setupSpotlight} from "../scrollama-generic";
 import ScrollySteps from "./scrolly-steps";
 
 const ScrollyFeature = ({

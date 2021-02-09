@@ -5,23 +5,25 @@ const toggleFade = (inView) => {
   return inView ? "fade-in" : "fade-out";
 };
 
-const FigureSvg = ({id, alt, svg, caption}) => {
+const FigureImg = ({img, id, extraClass = "", alt, caption}) => {
   const [ioHook, inView] = useInView({
     threshold: 0.5,
     triggerOnce: true,
   });
-
   return (
     <figure
       id={id}
-      aria-label={alt}
       ref={ioHook}
-      className={`figure-svg spot-figure ${toggleFade(inView)}`}
-      dangerouslySetInnerHTML={{
-        __html: [`${svg}<figcaption>${caption}</figcaption>`],
-      }}
-    />
+      className={`spot-figure ${toggleFade(inView)} ${extraClass}`}
+    >
+      <img src={img} alt={alt} />
+      <figcaption
+        dangerouslySetInnerHTML={{
+          __html: caption,
+        }}
+      />
+    </figure>
   );
 };
 
-export default FigureSvg;
+export default FigureImg;

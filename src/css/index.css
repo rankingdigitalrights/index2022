@@ -12,8 +12,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Black.otf);
-    src: url(../../public/fonts/CircularStd-Black.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Black.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Black.woff) format("woff");
     font-weight: 700;
@@ -23,8 +22,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Book.ttf);
-    src: url(../../public/fonts/CircularStd-Book.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Book.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Book.woff) format("woff");
     font-weight: 400;
@@ -43,8 +41,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-Regular.otf);
-    src: url(../../public/fonts/LyonText-Regular.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-Regular.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
       url(../../public/fonts/LyonText-Regular.woff) format("woff");
     font-weight: 400;
@@ -64,8 +61,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-RegularItalic.otf);
-    src: url(../../public/fonts/LyonText-RegularItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-RegularItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
       url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
     font-weight: 400;
@@ -75,8 +71,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-BoldItalic.otf);
-    src: url(../../public/fonts/LyonText-BoldItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-BoldItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
     font-weight: 700;
     font-style: italic;
@@ -248,7 +243,7 @@
     content: " ";
   }
 
-  .pullquote > p {
+  .pullquote>p {
     @apply p-0;
   }
 
@@ -291,7 +286,9 @@
     transition: opacity 1s ease-in-out;
   }
 
-  main.spotlight p,
+  main.spotlight section p,
+  main.spotlight section ol,
+  main.spotlight section ul,
   main.spotlight blockquote {
     max-width: 720px;
     margin: 1rem auto;
@@ -331,14 +328,13 @@
   }
 
   main.spotlight section h2 {
-    /* width: 100%; */
     text-transform: uppercase;
   }
 
   main.spotlight section h2.sticky-h {
     @apply sticky;
+    margin-left: -1rem;
     top: 30px;
-    /* width: 100%; */
     display: inline;
     background-color: white;
   }
@@ -353,14 +349,25 @@
     z-index: 10;
   }
 
+  main.spotlight h3 {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
   main.spotlight a {
     font-weight: 700;
   }
 
   main.spotlight ol,
-  main.spotlight ul {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  main.spotlight ul {}
+
+  main.spotlight ol {
+    list-style-type: decimal;
+  }
+
+  main.spotlight ol li {
+    font-family: Circular, sans-serif;
+    font-size: 1rem;
   }
 
   main.spotlight iframe {
@@ -375,6 +382,10 @@
     margin: 2rem auto 3rem auto;
   }
 
+  main.spotlight figure.contained {
+    max-width: 720px;
+  }
+
   main.spotlight figure figcaption {
     @apply font-platform;
     text-align: right;
@@ -383,6 +394,7 @@
 
   main.spotlight figure img {
     margin: 1rem auto;
+    width: 100%;
   }
 
   figure svg {
@@ -528,6 +540,32 @@
   div.scrolly-chart .label {
     color: black;
     font-weight: 700;
+  }
+
+  main.spotlight .box-prompt {
+    background: gold;
+    border-radius: 50px;
+    text-align: right;
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 0.3rem 0.6rem;
+  }
+
+  main.spotlight .box-placeholder {
+    border: 2px solid lightgrey;
+    text-align: right;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0.3rem 0.6rem;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main.spotlight .box-placeholder:hover {
+    background-color: lightgrey;
+    transition: background-color 0.6s;
   }
 
   /* Spotlights End */

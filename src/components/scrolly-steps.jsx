@@ -11,6 +11,7 @@ const ScrollySteps = (props) => {
       />
       {props.story.steps.map(
         ({
+          id,
           title,
           company,
           content,
@@ -22,7 +23,7 @@ const ScrollySteps = (props) => {
           // Not sure if the title is right as a identifier but it works for now.
           return (
             <div
-              key={title}
+              key={id}
               className="step shadow"
               data-step={company}
               data-color={color}

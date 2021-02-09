@@ -6,21 +6,21 @@ import {useInView} from "react-intersection-observer";
 
 import story1 from "../../../data/spotlights/spotlight-1.json";
 import story2 from "../../../data/spotlights/spotlight-2.json";
+import FigureImg from "../../components/figure-img";
 import FigureSvg from "../../components/figure-svg";
 // import Layout from "../../components/layout-spotlights";
 import Layout from "../../components/layout";
 import ScrollyFeature from "../../components/scrolly-feature";
-import DummyPNG from "../../images/spotlights/datawrapper-map-dummy.png";
-// import SpotlightChart from "../../components/spotlight-chart";
-// import ChartG4 from "../../images/spotlights/soe-table-g4.png";
+import ImgChartF4 from "../../images/spotlights/soe-f4-barchart.png";
 import ImgProtest from "../../images/spotlights/soe-myanmar-protest.jpeg";
+// import DummyPNG from "../../images/spotlights/datawrapper-map-dummy.png";
+// import SpotlightChart from "../../components/spotlight-chart";
+import imgTableG4 from "../../images/spotlights/soe-table-g4.png";
+import ImgTweetFB from "../../images/spotlights/soe-tweet-fb.png";
+import ImgWhiteFlags from "../../images/spotlights/soe-white-flags.jpeg";
 import {toggleSVGclass} from "../../spotlights-one";
 
 // TODO: refactor into spotlight-components
-
-const toggleFade = (inView) => {
-  return inView ? "fade-in" : "fade-out";
-};
 
 // const ExternalLink = ({href, text}) => {
 //   return (
@@ -41,28 +41,35 @@ const HeroImg = ({heroClass = "bg-context-over-code"}) => {
   return <div className={`hero ${heroClass}`} />;
 };
 
-const FigureImg = ({img, id, alt, caption}) => {
-  const [ioHook, inView] = useInView({
-    threshold: 0.5,
-    triggerOnce: false,
-  });
-  return (
-    <figure
-      id={id}
-      ref={ioHook}
-      className={`spot-figure ${toggleFade(inView)}`}
-    >
-      <img src={img} alt={alt} />
-      <figcaption
-        dangerouslySetInnerHTML={{
-          __html: caption,
-        }}
-      />
-    </figure>
-  );
+const InnerCounter = (
+  <div>
+    <p id="scene-counter">Off</p>
+    <p id="index-counter">Off</p>
+  </div>
+);
+
+export const getStaticProps = async () => {
+  const svgFbYt = (
+    await fsP.readFile(
+      path.join(process.cwd(), "public/svg/soe-fb-youtube-2.svg"),
+    )
+  ).toString();
+
+  const svgWorldMap = (
+    await fsP.readFile(path.join(process.cwd(), "public/svg/soe-worldmap.svg"))
+  ).toString();
+
+  return {
+    props: {
+      svgFbYt,
+      svgWorldMap,
+    },
+  };
 };
 
-const para1 = (
+// CONTENT
+
+const section1 = (
   <section className="max-w-6xl">
     <p>
       The COVID-19 pandemic has brought about a multitude of crises that stretch
@@ -99,11 +106,16 @@ const para1 = (
     <p>
       The year 2020 could not have given us a better set of case studies in just
       how dangerous it is for these companies to be so unprepared for crisis.
+    </p>
+    <blockquote>
       Our perpetual state of emergency has exposed the holes in corporate
       policies and practices that can amplify conspiracies, deprive silenced
-      voices of remedy, and further exclude the marginalized. And yet tech
-      juggernauts are expanding their monopolies as custodians of user data and
-      gatekeepers of access to content with no more accountability than before.
+      voices of remedy, and further exclude the marginalized.
+    </blockquote>
+    <p>
+      And yet tech juggernauts are expanding their monopolies as custodians of
+      user data and gatekeepers of access to content with no more accountability
+      than before.
     </p>
     <p>
       In moments of crisis, companies can enable human rights violations, or
@@ -120,13 +132,9 @@ const para1 = (
   </section>
 );
 
-const para2 = (
+const section2a = (
   <section className="max-w-6xl">
-    <h2 className="sticky-h">
-      No network,
-      <br />
-      no peace
-    </h2>
+    <h2 className="sticky-h">No network, no peace</h2>
     <p>
       From{" "}
       <a href="https://globalvoices.org/2020/09/29/azerbaijani-authorities-disrupt-internet-nationwide-amid-nagorno-karabakh-clashes/">
@@ -139,7 +147,7 @@ const para2 = (
       to{" "}
       <a href="https://netblocks.org/reports/zimbabwe-internet-disruption-limits-coverage-of-protests-7yNV70yq">
         Zimbabwe
-      </a>{" "}
+      </a>
       , network shutdowns have become a knee-jerk government response to
       conflict and political upheaval. In 2019 alone, governments around the
       world{" "}
@@ -155,14 +163,14 @@ const para2 = (
       People are rendered unable to communicate with loved ones, obtain vital{" "}
       <a href="https://globalvoices.org/2018/09/07/south-asian-governments-keep-ordering-mobile-shutdowns-and-leaving-users-in-the-dark/">
         news and health information
-      </a>{" "}
+      </a>
       , or call for help in emergencies, putting their right to life in danger.
       Shutdowns can also{" "}
       <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3330413">
         foment violence
-      </a>{" "}
+      </a>
       , hide evidence of{" "}
-      <a href="https://iran-shutdown.amnesty.org/">killings</a> , or even send
+      <a href="https://iran-shutdown.amnesty.org/">killings</a>, or even send
       the disconnected{" "}
       <a href="https://www.premiumtimesng.com/news/145640-borno-residents-want-phone-network-restored-boko-haram-gets-deadlier.html">
         directly into the line of fire
@@ -224,8 +232,8 @@ const para2 = (
   </section>
 );
 
-const para3 = (
-  <section className="max-w-6xl">
+const section2b = (
+  <section>
     <p>
       By contrast, India&rsquo;s Bharti Airtel has exercised an apparent policy
       of silence, reporting no information about the order, or data on
@@ -244,13 +252,20 @@ const para3 = (
       against network shutdowns. When they receive a shutdown order, we urge
       companies to make this information public. But they must also take a stand
       and create friction. Every excessive order should be met with pushback,
-      and companies should alert users about impending blackouts instead of
-      abruptly thrusting them into digital darkness.
+      and{" "}
+      <span className="pull-quote">
+        companies should alert users about impending blackouts instead of
+        abruptly thrusting them into digital darkness.
+      </span>
     </p>
+    <div className="box-prompt">
+      [WEB ELEMENT: SMALL TEXT POINTING TO F10, ENCOURAGING PEOPLE TO DO
+      SOMETHING LIKE “See our data on network shutdowns →”]
+    </div>
   </section>
 );
 
-const para4 = (
+const section3 = (
   <section className="max-w-6xl">
     <h2 className="sticky-h">Incitement gone viral</h2>
     <p>
@@ -260,6 +275,9 @@ const para4 = (
       can drive the reach of a message by targeting it to people who are most
       likely to share it, influencing the viewpoints of thousands or even
       millions of people.
+      <sup data-footnote="Siva Vaidhyanathan, Antisocial Media: How Facebook Disconnects Us and Undermines Democracy (New York: Oxford University Press, 2018).">
+        1
+      </sup>
     </p>
     <p>
       Facebook itself has{" "}
@@ -270,6 +288,9 @@ const para4 = (
       people join an extremist Facebook Group, they do so because the platform
       recommended it.
     </p>
+    <div className="box-placeholder">
+      [PLACEHOLDER: DEPLATFORMING TRUMP, TWITTER, ET AL ETC]
+    </div>
     <p>
       Structured human rights impact assessments are rapidly gaining acceptance
       as a{" "}
@@ -291,15 +312,37 @@ const para4 = (
       conduct these assessments before they launch new products or services, or
       enter new markets, to mitigate harms before they happen.
     </p>
+    <FigureImg
+      img={imgTableG4}
+      extraClass="contained"
+      // caption="TBA; Currently no caption by decision"
+      alt="TODO - Caption: Example PNG Image"
+    />
+    {/* <FigureSvg
+      img={svgTableG4}
+      caption="TBA; Currently no caption"
+      alt="TODO - Caption: Example PNG Image"
+      id="map-dw-1"
+    /> */}
+    <div className="box-prompt">
+      PROMPT: How did we calculate these scores? Read the elements and research
+      guidance →[LINK TO G4]
+    </div>
     <p>
       Companies are erratic and opaque about how they implement their human
       rights commitments in ordinary times, but these things can become even
       murkier in volatile situations, and the consequences are often most severe
-      for marginalized communities. When a social media-driven crisis unfolds,
-      companies often fail to respond unless they perceive a risk to their
-      reputation. This encourages the proliferation of
-      &ldquo;scandal-driven&rdquo; human rights due diligence that, at most,
-      helps to survey or contain the damage rather than prevent it.
+      for marginalized communities.{" "}
+      <span className="pull-quote">
+        When a social media-driven crisis unfolds, companies often fail to
+        respond unless they perceive a risk to their reputation.
+      </span>{" "}
+      This encourages the proliferation of &ldquo;scandal-driven&rdquo; human
+      rights due diligence that, at most, helps to survey or contain the damage
+      rather than prevent it.
+      <sup data-footnote="See Kendyl Salcito, &ldquo;Company-commissioned HRIA: Concepts, Practice, Limitations and Opportunities,&rdquo; in Handbook on Human Rights Impact Assessment, ed. Nora G&ouml;tzmann (Northhampton, MA: Edward Elgar Publishing, 2019), 32&ndash;48.">
+        2
+      </sup>
     </p>
     <p>
       In Sri Lanka in 2018, rampant hate speech on Facebook helped instigate a
@@ -320,6 +363,11 @@ const para4 = (
       </a>
       , alongside two others it had commissioned two years prior.
     </p>
+    <FigureImg
+      img={ImgWhiteFlags}
+      caption="Mourners hang white flags in Sri Lanka, following the 2019 bombings of churches around the country. Photo by Groundviews (CC BY-ND 3.0)"
+      alt="Mourners hang white flags in Sri Lanka, following the 2019 bombings of churches around the country. Photo by Groundviews (CC BY-ND 3.0)"
+    />
     <p>
       While this marked a step in the right direction, the public documentation
       showed little evidence that the assessors had investigated how
@@ -349,6 +397,11 @@ const para4 = (
       algorithms and targeted advertising as the basis for their transparency
       reporting and corporate due diligence.
     </p>
+  </section>
+);
+
+const section4 = (
+  <section className="max-w-6xl">
     <h2 className="sticky-h">More algorithms, more appeals</h2>
     <p>
       When it comes to content moderation, companies will always make mistakes.
@@ -389,78 +442,203 @@ const para4 = (
       the company&rsquo;s experiments with algorithmic moderation had not worked
       out so well. The system&rsquo;s apparent collapse left millions of users
       unable to appeal moderation decisions at all.&nbsp;
+      <sup data-footnote="Appeals on Instagram were turned off completely, according to the same report. The figures are based on Facebook&rsquo;s disclosed categories of enforcement data. Facebook did not explicitly state whether the sum of these categories represents all of the enforcement actions it takes on its platform.">
+        3
+      </sup>
+    </p>
+    <FigureImg
+      img={ImgTweetFB}
+      extraClass="contained"
+      caption="Embed FB “SORRY YOU CAN’T APPEAL THAT” [<a href='https://twitter.com/timsamoff/status/1265374113901604865/photo/1'>Tweet Link</a>]"
+      alt="Embed FB “SORRY YOU CAN’T APPEAL THAT”"
+    />
+
+    <figure>
+      <div className="box-placeholder">PLACEHOLDER / UNCLEAR</div>
+      <figcaption>
+        <p>
+          Content appealed and restored on appeal on Facebook vs. videos
+          appealed and restored on YouTube between October 2019 and September
+          2020. Data for Facebook does not include the &ldquo;Fake
+          Accounts&rdquo; category, for which appeals are not reported. Sources:{" "}
+          <a href="https://transparency.facebook.com/community-standards-enforcement">
+            Community Standards Enforcement Report (Facebook)
+          </a>{" "}
+          and{" "}
+          <a href="https://transparencyreport.google.com/youtube-policy/appeals">
+            Google Transparency Report (YouTube)
+          </a>
+          .
+        </p>
+      </figcaption>
+    </figure>
+
+    <p>
+      The{" "}
+      <a href="https://www.cnet.com/news/youtube-automation-removes-11m-videos-in-3-months/">
+        story at YouTube
+      </a>{" "}
+      was different. Like Facebook, Google (YouTube&rsquo;s parent company) was
+      forced to send workers home, also &ldquo;relying more on technology&rdquo;
+      to carry out content moderation. Google even offered a statement saying
+      that the change might result in the company &ldquo;removing more content
+      that may not be violative of our policies.&rdquo; But Google also thought
+      ahead and{" "}
+      <a href="https://www.protocol.com/youtube-content-moderation-covid-19">
+        ramped up its appeals systems
+      </a>
+      , anticipating that algorithmic content moderation would lead to more
+      wrongful removals and more appeals from users. Indeed, appeals{" "}
+      <a href="https://transparencyreport.google.com/youtube-policy/appeals">
+        doubled
+      </a>{" "}
+      in the same period. But because the company took measures to prepare, the
+      number of videos restored on appeal quadrupled.
     </p>
   </section>
 );
 
-const lorem = (
+const section5 = (
   <section className="max-w-6xl">
-    <h2 className="sticky-h">Lorem Ipsum 1</h2>
+    <h2 className="sticky-h">How can companies prepare for crisis?</h2>
     <p>
-      Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast
-      yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog
-      yardarm hempen halter furl. Swab barque interloper chantey doubloon
-      starboard grog black jack gangway rutters.
+      No person or company can anticipate every harm that will arise in an
+      emergency. But there is a significant distance between this zone of
+      impossibility and the lack of preparedness that many companies exhibited
+      in 2020. Our indicators, which draw extensively from international human
+      rights doctrine and the expertise of human rights advocates around the
+      world, offer a path forward.&nbsp;
     </p>
-
     <p>
-      Deadlights jack lad schooner scallywag dance the hempen jig carouser
-      broadside cable strike colors. Bring a spring upon her cable holystone
-      blow the man down spanker Shiver me timbers to go on account lookout
-      wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm
-      spyglass sheet transom heave to.
+      Whether circumstances are ordinary or extraordinary, companies should
+      pursue three objectives (among many others) if they seek to improve.
     </p>
-
+    <h3>1. Publicly commit to human rights</h3>
     <p>
-      Trysail Sail ho Corsair red ensign hulk smartly boom jib rum gangway. Case
-      shot Shiver me timbers gangplank crack Jennys tea cup ballast Blimey lee
-      snow crows nest rutters. Fluke jib scourge of the seven seas boatswain
-      schooner gaff booty Jack Tar transom spirits.
+      Companies must make a public commitment to respect human rights standards
+      across their operations.
+      <sup data-footnote="See Lucy Amis and Ashleigh Owens, A Guide for Business: How to Develop a Human Rights Policy, 2nd ed. (New York: UN Global Compact and Office of the United Nations High Commissioner for Human Rights, 2015), available at <a href='https://d306pr3pise04h.cloudfront.net/docs/issues_doc%2Fhuman_rights%2FResources%2FHR_Policy_Guide_2nd_Edition.pdf'>FHR_Policy_Guide_2nd_Edition.pdf</a>">
+        4
+      </sup>{" "}
+      Of course, a policy alone will not improve performance. As our 2020 data
+      showed, many companies in the RDR Index committed to human rights in
+      principle, but failed to demonstrate these commitments through the
+      practices that actually affect users&rsquo; rights. These kinds of
+      commitments can serve as a tool for a company to measure and document
+      violations, and for advocates to push for better policies at the product
+      and service level.
+    </p>
+    <p>
+      Take Apple, which was one of the most improved companies in the 2020
+      Index, largely due to a new{" "}
+      <a href="https://s2.q4cdn.com/470004039/files/doc_downloads/gov_docs/Apple-Human-Rights-Policy.pdf">
+        human rights policy
+      </a>{" "}
+      that the company published after years of{" "}
+      <a href="https://rankingdigitalrights.org/2020/10/09/the-radar-weve-got-our-eyes-on-apple/">
+        sustained pressure by RDR
+      </a>{" "}
+      and others. When Apple delayed the rollout of pro-privacy, anti-tracking
+      features in iOS 14, advocates (including RDR) were able to{" "}
+      <a href="https://9to5mac.com/2020/11/19/apple-privacy-letter-ios-14-facebook/">
+        use the new policy
+      </a>{" "}
+      to hold the company to account.
+    </p>
+    <h3>2. Double down on due diligence</h3>
+    <p>
+      <span className="pull-quote">
+        Large multinational companies like the ones in our index can no longer
+        plead ignorance.
+      </span>{" "}
+      They must reinforce their policy commitments by putting human rights at
+      the center of their practices, and carrying out robust human rights due
+      diligence.&nbsp;
+    </p>
+    <p>
+      Companies that conduct human rights impact assessments should see early
+      warning signs when political or social conflict is on the horizon, and
+      they can act on this by enhancing scrutiny of online activity, stanching
+      the spread of inciting or hateful content, or even notifying authorities,
+      where appropriate. When chaos erupts, a company with strong due diligence
+      processes in place can quickly identify how its platform may be used to
+      cause harm and activate protocols to protect potential victims.
+    </p>
+    <h3>3. Pull back the curtain and report data</h3>
+    <p>
+      Companies can and do report some data on their enforcement of their own
+      policies, along with compliance with government censorship and
+      surveillance demands, in the form of transparency reports.&nbsp;
+    </p>
+    <p>
+      While 16 companies in the RDR Index offer some kind of transparency report
+      (and two others have begun doing so since our research cutoff date), none
+      of these companies does nearly enough to show users, civil society, or
+      policymakers what&rsquo;s really happening behind the curtain.&nbsp;
+    </p>
+    <FigureImg
+      img={ImgChartF4}
+      extraClass="contained"
+      caption="What information do companies&rsquo; transparency reports include?"
+      alt="TODO - What information do companies&rsquo; transparency reports include?"
+    />
+    <p>
+      Only five companies in the 2020 RDR Index published data about enforcement
+      of their own policies and only six revealed data on government censorship
+      demands. Even existing transparency reports suffer from major blind spots.
+      Facebook&rsquo;s{" "}
+      <a href="https://transparency.facebook.com/community-standards-enforcement">
+        Community Standards Enforcement Report
+      </a>
+      , for example, does not include the total volume of restricted content or
+      accounts, enforcement by restriction type, or country-specific
+      information.
+    </p>
+    <p>
+      Together, such gaps can deprive users and researchers of the ability to
+      map enforcement surges to specific events, especially as companies expand
+      their arsenal of enforcement actions. Greater clarity here would brighten
+      what remains a grim landscape.
     </p>
   </section>
 );
 
-const InnerCounter = (
-  <div>
-    <p id="scene-counter">Off</p>
-    <p id="index-counter">Off</p>
-  </div>
+const section6 = (
+  <section className="max-w-6xl">
+    <h2 className="sticky-h">Better late than never</h2>
+    <p>
+      Without preparedness, crises spin out of control. Understaffed hospitals
+      and truncated national pandemic response teams fail to harness the
+      outbreaks of diseases, security forces{" "}
+      <a href="https://www.theatlantic.com/international/archive/2021/01/us-big-tech-capitol-hill/617636/">
+        fail to protect
+      </a>{" "}
+      core institutions overwhelmed by frenzied mobs, and social media companies
+      fail to quash online threats of violence before they lead to real-life
+      harm.
+    </p>
+    <p>
+      Companies can address these harms by anchoring all of their actions in
+      international human rights standards. Companies that build respect for
+      human rights into their policies and products from the start will always
+      be better prepared to face uncertainty than those that do not.
+    </p>
+    <p>
+      As we continue to grapple with a global crisis that has kindled
+      innumerable local fires, companies continue to make ad hoc decisions that
+      affect millions. They are late to embrace these standards. But late is
+      better than never.
+    </p>
+  </section>
 );
 
-export const getStaticProps = async () => {
-  const svg1 = (
-    await fsP.readFile(path.join(process.cwd(), "public/svg/asia.svg"))
-  ).toString();
+// MAIN
 
-  const svg2 = (
-    await fsP.readFile(
-      path.join(process.cwd(), "public/svg/soe-fb-youtube-2.svg"),
-    )
-  ).toString();
-
-  const svg3 = (
-    await fsP.readFile(path.join(process.cwd(), "public/svg/soe-worldmap.svg"))
-  ).toString();
-
-  const svg4 = (
-    await fsP.readFile(path.join(process.cwd(), "public/svg/matrix-mock.svg"))
-  ).toString();
-
-  return {
-    props: {
-      svg1,
-      svg2,
-      svg3,
-      svg4,
-    },
-  };
-};
-
-const SpotlightOne = ({svg1, svg2, svg3, svg4}) => {
+const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
   // const [currentStep, setCurrentStep] = useState();
   const [ioHook2] = useInView({
     threshold: [0.5],
-    triggerOnce: false,
+    triggerOnce: true,
   });
 
   return (
@@ -477,14 +655,13 @@ const SpotlightOne = ({svg1, svg2, svg3, svg4}) => {
         <h1>
           Context before code: Protecting human rights in a state of emergency
         </h1>
-        {/* // TODO */}
-        {para1}
-        {para2}
+        {section1}
+        {section2a}
         <ScrollyFeature
           id="scrolly-map"
           ref={ioHook2}
           story={story1}
-          stepEnter={({element}) => {
+          stepEnter={({index, element, direction}) => {
             if (element.dataset.queries) {
               toggleSVGclass({
                 objId: "map-asia-1",
@@ -492,15 +669,40 @@ const SpotlightOne = ({svg1, svg2, svg3, svg4}) => {
                 toggleClassName: element.dataset.toggle,
               });
             }
+            if (index === 3 && direction === "down") {
+              const mySVG = document.querySelector("#map-asia-1 svg");
+              const initialbox = mySVG.getBBox();
+              const shutdownbox = mySVG.querySelector("#Shutdowns").getBBox();
+              const oldView = `${initialbox.x} ${initialbox.y} ${initialbox.width} ${initialbox.height}`;
+              const newView = `${shutdownbox.x * 0.9} ${shutdownbox.y * 0.9} ${
+                shutdownbox.width * 1.2
+              } ${shutdownbox.height * 1.1}`;
+
+              /* target syntax */
+              // <animate attributeName="viewBox" values="0 0 600 400; 250 180 300 200" begin="indefinite" dur="1s" fill="freeze"/>
+
+              const anim = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "animate",
+              );
+              anim.setAttribute("id", "zoom-1");
+              anim.setAttribute("attributeName", "viewBox");
+              anim.setAttribute("begin", "indefinite");
+              anim.setAttribute("values", `${oldView}; ${newView}`);
+              anim.setAttribute("fill", "freeze");
+              anim.setAttribute("dur", "1s");
+              mySVG.append(anim);
+              mySVG.querySelector("animate#zoom-1").beginElement();
+            }
           }}
           stepExit={({index, direction}) => {
-            console.log(`Local Exit 1: ${index} - ${direction}`);
+            console.log(`Local Exit 1: ${index} - ${direction}`); // TODO
           }}
         >
           <figure className="scrolly-figure bg-gray-200">
             <FigureSvg
               className="scrolly-figure bg-gray-200"
-              svg={svg1}
+              svg={svgWorldMap}
               caption="Caption As Props 1"
               alt="TODO: Alternative description"
               id="map-asia-1"
@@ -508,15 +710,9 @@ const SpotlightOne = ({svg1, svg2, svg3, svg4}) => {
             {InnerCounter}
           </figure>
         </ScrollyFeature>
-        {para3}
-        <FigureSvg
-          className="bg-gray-200"
-          svg={svg3}
-          caption="World Map / RDR Coverage / Shutdowns"
-          alt="TODO: Alternative description"
-          id=""
-        />
-        {para4}
+        {section2b}
+        {section3}
+        {section4}
         <ScrollyFeature
           id="scrolly-graph"
           story={story2}
@@ -537,8 +733,8 @@ const SpotlightOne = ({svg1, svg2, svg3, svg4}) => {
           <figure className="scrolly-figure bg-gray-200">
             <FigureSvg
               className="scrolly-figure bg-gray-200"
-              svg={svg2}
-              caption="Caption As Props 2"
+              svg={svgFbYt}
+              caption="Optional Caption"
               alt="TODO: Alternative description"
               id="chart-q1"
             />
@@ -548,77 +744,8 @@ const SpotlightOne = ({svg1, svg2, svg3, svg4}) => {
             </div>
           </figure>
         </ScrollyFeature>
-        {lorem}
-        <FigureSvg
-          className="bg-gray-200"
-          svg={svg4}
-          caption="World Map / RDR Coverage / Shutdowns"
-          alt="TODO: Alternative description"
-          id=""
-        />
-        {lorem}
-        <section id="analysis-3" className="max-w-6xl">
-          <h2 className="sticky-h">Analysis 3</h2>
-
-          <p>
-            Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast
-            yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin
-            grog yardarm hempen halter furl. Swab barque interloper chantey
-            doubloon starboard grog black jack gangway rutters.
-          </p>
-
-          {/* <figure ref={ioHook} className={inView ? "fade-in" : "fade-out"}>
-            <img src={DummyPNG} alt="Some other data stuff" />
-            <figcaption>{`Caption: Example PNG Image`}</figcaption>
-          </figure> */}
-
-          <FigureImg
-            img={DummyPNG}
-            caption="Caption: Example PNG Image"
-            alt="TODO - Caption: Example PNG Image"
-            id="map-dw-1"
-          />
-
-          <p>
-            Deadlights jack lad schooner scallywag dance the hempen jig carouser
-            broadside cable strike colors. Bring a spring upon her cable
-            holystone blow the man down spanker Shiver me timbers to go on
-            account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul
-            squiffy black spot yardarm spyglass sheet transom heave to.
-          </p>
-
-          <p>
-            Trysail Sail ho Corsair red ensign hulk smartly boom jib rum
-            gangway. Case shot Shiver me timbers gangplank crack Jennys tea cup
-            ballast Blimey lee snow crows nest rutters. Fluke jib scourge of the
-            seven seas boatswain schooner gaff booty Jack Tar transom spirits.
-          </p>
-        </section>
-        <section id="outro" className="max-w-6xl">
-          <h2 className="sticky-h">Outro</h2>
-
-          <p>
-            Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast
-            yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin
-            grog yardarm hempen halter furl. Swab barque interloper chantey
-            doubloon starboard grog black jack gangway rutters.
-          </p>
-
-          <p>
-            Deadlights jack lad schooner scallywag dance the hempen jig carouser
-            broadside cable strike colors. Bring a spring upon her cable
-            holystone blow the man down spanker Shiver me timbers to go on
-            account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul
-            squiffy black spot yardarm spyglass sheet transom heave to.
-          </p>
-
-          <p>
-            Trysail Sail ho Corsair red ensign hulk smartly boom jib rum
-            gangway. Case shot Shiver me timbers gangplank crack Jennys tea cup
-            ballast Blimey lee snow crows nest rutters. Fluke jib scourge of the
-            seven seas boatswain schooner gaff booty Jack Tar transom spirits.
-          </p>
-        </section>
+        {section5}
+        {section6}
       </main>
     </Layout>
   );
