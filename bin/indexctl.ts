@@ -222,6 +222,14 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
                   "privacy",
                 ] as IndicatorCategoryExt[]).map(
                   async (category: IndicatorCategoryExt) => {
+                    const ranking = await companyServiceRanking(
+                      serviceKind,
+                      kind,
+                      category,
+                    );
+
+                    if (ranking.length === 0) return;
+
                     const serviceRankingsDir = path.join(
                       rankingsDir,
                       serviceKind,
@@ -242,12 +250,7 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
                       `Generating service ranking scores for: ${serviceKind}/${category}`,
                     );
 
-                    const ranking = await companyServiceRanking(
-                      serviceKind,
-                      kind,
-                      category,
-                    );
-                    return writeJsonFile(target)(ranking);
+                    await writeJsonFile(target)(ranking);
                   },
                 ),
               );
