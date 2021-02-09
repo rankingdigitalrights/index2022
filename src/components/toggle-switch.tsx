@@ -21,7 +21,10 @@ const ToggleSwitch = ({label, onChange, className}: ToggleSwitchProps) => {
       <label htmlFor="toggle" className="font-circular text-sm mr-2">
         {label}
       </label>
-      <div className="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+      <button
+        className="relative inline-block w-10 align-middle select-none transition duration-200 ease-in"
+        onClick={handleToggle}
+      >
         <label
           htmlFor="toggle"
           className={c(
@@ -32,15 +35,14 @@ const ToggleSwitch = ({label, onChange, className}: ToggleSwitchProps) => {
           <input
             type="checkbox"
             name="toggle"
-            defaultChecked={toggle}
+            checked={toggle}
             className={c(
               "toggle-checkbox absolute block w-3 h-3 rounded-full appearance-none cursor-pointer",
               toggle ? "bg-beige" : "bg-prissian",
             )}
-            onChange={handleToggle}
           />
         </label>
-      </div>
+      </button>
     </div>
   );
 };
