@@ -1,12 +1,12 @@
 import c from "clsx";
 import React, {useState} from "react";
 
-import {IndicatorCompanyScore} from "../types";
+import {IndicatorCategory, IndicatorCompanyScore} from "../types";
 import PercentageBar from "./percentage-bar";
 
 interface IndicatorCompaniesChartProps {
   indicator: string;
-  category: string;
+  category: IndicatorCategory;
   scores: IndicatorCompanyScore[];
   className?: string;
 }
@@ -20,6 +20,12 @@ const IndicatorCompaniesChart = ({
   const [highlightedCompany, setHighlightedCompany] = useState<
     string | undefined
   >();
+
+  const categoryClassName = {
+    "text-cat-governance": category === "governance",
+    "text-cat-freedom": category === "freedom",
+    "text-cat-privacy": category === "privacy",
+  };
 
   return (
     <div className={c("flex w-full font-circular text-sm h-72", className)}>
@@ -56,9 +62,13 @@ const IndicatorCompaniesChart = ({
         {scores.map(({id, companyPretty, score}) => {
           const isHighlightedCompany = id === highlightedCompany;
 
-          const barClassName = c(
-            isHighlightedCompany ? "text-prissian" : `text-cat-${category}`,
-          );
+          const highlightedClassName = {
+            "text-prissian": isHighlightedCompany,
+          };
+
+          const barClassName = isHighlightedCompany
+            ? "text-prissian"
+            : categoryClassName;
 
           return (
             <div
@@ -67,7 +77,12 @@ const IndicatorCompaniesChart = ({
               onMouseEnter={() => setHighlightedCompany(id)}
               onMouseLeave={() => setHighlightedCompany(undefined)}
             >
-              <span className="w-5 md:w-6 select-none text-sm text-center">
+              <span
+                className={c(
+                  "w-5 md:w-6 select-none text-sm text-center",
+                  highlightedClassName,
+                )}
+              >
                 {score === "NA" ? "NA" : `${score}`}
               </span>
               <div>
@@ -85,11 +100,16 @@ const IndicatorCompaniesChart = ({
                     width={10}
                     height={180}
                     orientation="vertical"
-                    className={barClassName}
+                    className={c(barClassName)}
                   />
                 </svg>
               </div>
-              <span className="mt-2 transform -rotate-45 -translate-x-10 text-sm text-right w-28 cursor-default">
+              <span
+                className={c(
+                  "mt-2 transform -rotate-45 -translate-x-10 text-sm text-right w-28 cursor-default",
+                  highlightedClassName,
+                )}
+              >
                 {companyPretty}
               </span>
             </div>
