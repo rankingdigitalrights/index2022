@@ -3,20 +3,22 @@ import c from "clsx";
 import React from "react";
 import Select, {
   ActionMeta,
-  components,
-  ControlProps,
-  GroupProps,
-  InputProps,
   MenuListComponentProps,
   MultiValueProps,
   OptionProps,
-  PlaceholderProps,
   ValueType,
 } from "react-select";
 
 import {CompanySelectOption} from "../types";
 import CompanyKindLabel from "./company-kind-label";
 import CompanyTag from "./company-tag";
+import {
+  Control,
+  Group,
+  IndicatorSeparator,
+  Input,
+  Placeholder,
+} from "./selector";
 
 interface CompanySelectorProps {
   companies: CompanySelectOption[];
@@ -24,10 +26,6 @@ interface CompanySelectorProps {
   onSelect: (companies: string[]) => void;
   className?: string;
 }
-
-const Input = (props: InputProps) => {
-  return <components.Input {...props} className="text-sm" />;
-};
 
 const MenuList = ({
   children,
@@ -58,37 +56,6 @@ const MultiValue = ({
   );
 };
 
-const Placeholder = ({
-  children,
-  innerProps,
-}: PlaceholderProps<CompanySelectOption, true>) => {
-  return (
-    <div className="text-sm text-black" {...innerProps}>
-      {children}
-    </div>
-  );
-};
-
-const ControlComponent = ({
-  children,
-  innerRef,
-  innerProps,
-}: ControlProps<CompanySelectOption, true>) => {
-  return (
-    <div
-      className="bg-beige border-b-2 border-prissian flex flex-row justify-between items-start w-full"
-      ref={innerRef}
-      {...innerProps}
-    >
-      {children}
-    </div>
-  );
-};
-
-const IndicatorSeparator = () => {
-  return <span />;
-};
-
 const Option = ({
   isSelected,
   isFocused,
@@ -115,20 +82,7 @@ const GroupHeading = (props: {data: CompanySelectOption}) => {
     data: {kind},
   } = props;
 
-  return <CompanyKindLabel kind={kind} theme="dark" className="px-2 ml-1" />;
-};
-
-const Group = ({
-  Heading,
-  children,
-  ...props
-}: GroupProps<CompanySelectOption, true>) => {
-  return (
-    <div className="py-2 bg-white">
-      <Heading {...props} />
-      <div className="flex flex-wrap bg-white px-2 mt-1">{children}</div>
-    </div>
-  );
+  return <CompanyKindLabel kind={kind} theme="dark" className="ml-1" />;
 };
 
 const CompanySelector = ({
@@ -202,7 +156,7 @@ const CompanySelector = ({
           Option,
           Group,
           GroupHeading,
-          Control: ControlComponent,
+          Control,
         }}
         onChange={handleSelectCompany}
       />

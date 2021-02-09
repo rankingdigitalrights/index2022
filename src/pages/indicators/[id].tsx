@@ -8,7 +8,7 @@ import ExpandableDescription from "../../components/expandable-description";
 import IndicatorCompaniesChartContainer from "../../components/indicator-companies-chart-container";
 import IndicatorSelector from "../../components/indicator-selector";
 import Layout from "../../components/layout";
-import SortSelector from "../../components/sort-selector";
+import Selector from "../../components/selector";
 import ToggleSwitch from "../../components/toggle-switch";
 import {
   allElements,
@@ -180,8 +180,8 @@ const IndicatorPage = ({
     setSelectedCompanies(ids);
   };
 
-  const handleSelectSortStrategy = (strategy: string) => {
-    setSortStrategy(strategy);
+  const handleSelectSortStrategy = (strategy: SelectOption) => {
+    setSortStrategy(strategy.value);
   };
 
   const handleToggleSwitch = (toggle: boolean) => {
@@ -265,10 +265,9 @@ const IndicatorPage = ({
               onSelect={handleSelectCompany}
             />
 
-            <SortSelector
+            <Selector<SelectOption>
               className="flex-grow w-full mt-2 md:mt-0 mx-6"
-              strategies={sortOptions}
-              selected={sortStrategy}
+              options={sortOptions}
               onSelect={handleSelectSortStrategy}
             />
 

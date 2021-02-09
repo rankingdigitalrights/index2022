@@ -1,63 +1,22 @@
 /* eslint react/jsx-props-no-spreading: off */
 import c from "clsx";
 import React from "react";
-import Select, {
-  components,
-  ControlProps,
-  GroupProps,
-  InputProps,
-  OptionProps,
-  SingleValueProps,
-  ValueType,
-} from "react-select";
+import Select, {OptionProps, ValueType} from "react-select";
 
 import {IndicatorSelectOption} from "../types";
+import {
+  Control,
+  Group,
+  IndicatorSeparator,
+  LargeInput as Input,
+  LargeSingleValue as SingleValue,
+} from "./selector";
 
 interface IndicatorSelectorProps {
   indicators: IndicatorSelectOption[];
   selected: IndicatorSelectOption;
   onSelect: (indicator: string) => void;
 }
-
-const Input = (props: InputProps) => {
-  return (
-    <components.Input
-      {...props}
-      className="text-lg leading-none text-prissian"
-    />
-  );
-};
-
-const IndicatorSeparator = () => {
-  return <span />;
-};
-
-const ControlComponent = ({
-  children,
-  innerRef,
-  innerProps,
-}: ControlProps<IndicatorSelectOption, false>) => {
-  return (
-    <div
-      className="border-b-2 border-prissian flex flex-row justify-between items-start w-full"
-      ref={innerRef}
-      {...innerProps}
-    >
-      {children}
-    </div>
-  );
-};
-
-const SingleValue = ({
-  children,
-  innerProps,
-}: SingleValueProps<IndicatorSelectOption>) => {
-  return (
-    <div className="text-lg flex-1 leading-none" {...innerProps}>
-      {children}
-    </div>
-  );
-};
 
 const Option = ({
   isSelected,
@@ -104,19 +63,6 @@ const GroupHeading = (props: {data: IndicatorSelectOption}) => {
     <span className={c("font-circular font-bold text-md ml-2", className)}>
       {label}
     </span>
-  );
-};
-
-const Group = ({
-  Heading,
-  children,
-  ...props
-}: GroupProps<IndicatorSelectOption, false>) => {
-  return (
-    <div className="p-2 bg-white">
-      <Heading {...props} />
-      <div className="bg-white mt-1">{children}</div>
-    </div>
   );
 };
 
@@ -168,7 +114,7 @@ const IndicatorSelector = ({
           Input,
           Option,
           SingleValue,
-          Control: ControlComponent,
+          Control,
         }}
         onChange={handleChange}
       />
