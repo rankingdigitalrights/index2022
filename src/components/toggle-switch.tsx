@@ -40,6 +40,7 @@ const ToggleSwitch = ({label, onChange, className}: ToggleSwitchProps) => {
               "toggle-checkbox absolute block w-3 h-3 rounded-full appearance-none cursor-pointer",
               toggle ? "bg-beige" : "bg-prissian",
             )}
+            onChange={handleToggle}
           />
         </label>
       </button>
