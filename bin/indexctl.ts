@@ -9,6 +9,7 @@ import {
   companyDiffs,
   companyIndices,
   companyRanking,
+  companyServiceRanking,
   companyServices,
   elements,
   indicatorAverages,
@@ -23,6 +24,7 @@ import {
 import {companyDetails, narrativeContent} from "../src/google";
 import {companyPdf} from "../src/pdf";
 import {CompanyKind, CompanyYear, IndicatorCategoryExt} from "../src/types";
+import {uniqueBy} from "../src/utils";
 
 const dataDir = "data";
 
@@ -197,6 +199,59 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
                 return writeJsonFile(target)(ranking);
               },
             ),
+          );
+        }),
+      );
+
+      /*
+       * Service ranking scores, e.g. ./data/rankings/email/internet-freedom.json
+       */
+      const serviceKinds = uniqueBy("kind", allServices)
+        .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
+        .map(({kind}) => kind);
+
+      await Promise.all(
+        serviceKinds.map(async (serviceKind) => {
+          await Promise.all(
+            (["telecom", "internet"] as CompanyKind[]).map(async (kind) => {
+              await Promise.all(
+                ([
+                  "total",
+                  "governance",
+                  "freedom",
+                  "privacy",
+                ] as IndicatorCategoryExt[]).map(
+                  async (category: IndicatorCategoryExt) => {
+                    const serviceRankingsDir = path.join(
+                      rankingsDir,
+                      serviceKind,
+                    );
+                    await fs.mkdir(
+                      path.join(process.cwd(), serviceRankingsDir),
+                      {
+                        recursive: true,
+                      },
+                    );
+
+                    const target = path.join(
+                      serviceRankingsDir,
+                      `${kind}-${category}.json`,
+                    );
+
+                    console.log(
+                      `Generating service ranking scores for: ${serviceKind}/${category}`,
+                    );
+
+                    const ranking = await companyServiceRanking(
+                      serviceKind,
+                      kind,
+                      category,
+                    );
+                    return writeJsonFile(target)(ranking);
+                  },
+                ),
+              );
+            }),
           );
         }),
       );

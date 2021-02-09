@@ -2,7 +2,7 @@ import parse from "csv-parse";
 import fs from "fs";
 import path from "path";
 
-import {byScore} from "./sort";
+import {byRankAndName, byScore} from "./sort";
 import {
   Company,
   CompanyIndex,
@@ -165,6 +165,20 @@ type CsvYearOverYear = {
   diff2018: IndicatorScore;
   diff2019: IndicatorScore;
   diff2020: IndicatorScore;
+};
+
+type CsvCompanyServiceRank = {
+  company: string;
+  kind: ServiceKind;
+  service: string;
+  total: IndicatorScore;
+  governance: IndicatorScore;
+  freedom: IndicatorScore;
+  privacy: IndicatorScore;
+  totalRank: number;
+  governanceRank: number;
+  freedomRank: number;
+  privacyRank: number;
 };
 
 /*
@@ -407,6 +421,23 @@ export const loadScoreDiffsCsv = loadCsv<CsvYearOverYear>((record) => ({
   diff2018: floatOrNA(record["2018DiffAdjusted"]),
   diff2019: floatOrNA(record["2019DiffAdjusted"]),
   diff2020: floatOrNA(record["2020DiffAdjusted"]),
+}));
+
+/*
+ * Load the service specs.
+ */
+const loadCompanyServiceRanksCsv = loadCsv<CsvCompanyServiceRank>((record) => ({
+  company: record.Company,
+  kind: mapServiceKind(record.ServiceType),
+  service: record.Scope,
+  total: floatOrNA(record.Total),
+  governance: floatOrNA(record.Governance),
+  freedom: floatOrNA(record.Freedom),
+  privacy: floatOrNA(record.Privacy),
+  totalRank: Number.parseInt(record.TotalRank, 10),
+  governanceRank: Number.parseInt(record.GovernanceRank, 10),
+  freedomRank: Number.parseInt(record.FreedomRank, 10),
+  privacyRank: Number.parseInt(record.PrivacyRank, 10),
 }));
 
 /*
@@ -975,7 +1006,7 @@ export const indicatorIndices = memoizeAsync(
       );
 
       const averages = companyIds.reduce((memo, company) => {
-        const companyAverages = (services[company] || []).reduce(
+        const companyAverages = (allServices[company] || []).reduce(
           (agg, service) => {
             const levels = csvLevels.find(
               (l) =>
@@ -997,7 +1028,7 @@ export const indicatorIndices = memoizeAsync(
       }, {} as Record<string, Record<string, IndicatorScore>>);
 
       const sortedElements = companyIds.reduce((memo, company) => {
-        if (!services[company]) return memo;
+        if (!allServices[company]) return memo;
 
         return {
           [company]: allServices[company].reduce(
@@ -1098,17 +1129,69 @@ export const companyRanking = async (
       };
     })
     .filter(({kind}) => kind === companyKind)
-    .sort((a, b) => {
-      // First we sort the ranking by the actual rank.
-      if (a.rank < b.rank) return -1;
-      if (a.rank > b.rank) return 1;
+    .sort(byRankAndName("asc"));
+};
 
-      // If two companies have the same rank we sort alphabetically.
-      if (a.companyPretty < b.companyPretty) return -1;
-      if (a.companyPretty > b.companyPretty) return 1;
+/*
+ * Generate a list of service rankings for each company kind, service kind and category.
+ */
+export const companyServiceRanking = async (
+  serviceKind: ServiceKind,
+  companyKind: CompanyKind,
+  category: IndicatorCategoryExt,
+): Promise<CompanyRank[]> => {
+  const [companyData, csvCompanyServiceRanks] = await Promise.all([
+    companyIndices(),
+    loadCompanyServiceRanksCsv("csv/2020-service-rankings.csv"),
+  ]);
 
-      return 0;
-    });
+  return csvCompanyServiceRanks
+    .filter(({kind}) => kind === serviceKind)
+    .map((row) => {
+      const {id, companyPretty, region, kind} =
+        companyData.find((r) => r.id === row.company) ||
+        unreachable(`Company ${row.company} not found in company specs.`);
+
+      let rank = -1;
+      let score: IndicatorScore = -1;
+
+      switch (category) {
+        case "total": {
+          rank = row.totalRank;
+          score = row.total;
+          break;
+        }
+        case "governance": {
+          rank = row.governanceRank;
+          score = row.governance;
+          break;
+        }
+        case "freedom": {
+          rank = row.freedomRank;
+          score = row.freedom;
+          break;
+        }
+        case "privacy": {
+          rank = row.privacyRank;
+          score = row.privacy;
+          break;
+        }
+        default:
+          return unreachable(`Category ${category} is unmappable.`);
+      }
+
+      return {
+        id,
+        companyPretty,
+        score,
+        rank,
+        kind,
+        category,
+        region,
+      };
+    })
+    .filter(({kind}) => kind === companyKind)
+    .sort(byRankAndName("asc"));
 };
 
 /*

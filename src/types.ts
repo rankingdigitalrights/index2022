@@ -96,7 +96,7 @@ export type Indicators = Record<IndicatorCategory, IndicatorNested[]>;
 export type CompanyRank = {
   id: string;
   companyPretty: string;
-  score: number;
+  score: IndicatorScore;
   kind: CompanyKind;
   category: IndicatorCategoryExt;
   rank: number;

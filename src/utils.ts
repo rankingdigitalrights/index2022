@@ -50,6 +50,27 @@ export const isNA = (x: unknown): x is NA => {
   return x === "NA";
 };
 
+export const uniqueBy = <
+  T extends Record<string, string | number | symbol>,
+  K extends keyof T
+>(
+  prop: K,
+  arr: T[],
+): T[] => {
+  const record = [];
+  const seen: Record<string | number | symbol, number> = {};
+  for (let i = 0, len = arr.length; i < len; i += 1) {
+    // Notice the len = arr.length, cache it.
+    const item = arr[i];
+    const val = item[prop];
+    if (!seen[val]) {
+      seen[val] = 1;
+      record.push(item);
+    }
+  }
+  return record;
+};
+
 /*
  * Denote code paths that won't be reached under normal circumstances.
  */

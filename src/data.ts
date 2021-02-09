@@ -19,6 +19,7 @@ import {
   IndicatorDetails,
   IndicatorElements,
   Service,
+  ServiceKind,
 } from "./types";
 import {unreachable} from "./utils";
 
@@ -199,6 +200,19 @@ export const companyRankingData = async (
   category: IndicatorCategoryExt,
 ): Promise<CompanyRank[]> => {
   return loadJson<CompanyRank[]>(`data/rankings/${kind}-${category}.json`)();
+};
+
+/*
+ * Load the company service rankings, sorted descending by the total score.
+ */
+export const companyServiceRankingData = async (
+  service: ServiceKind,
+  kind: CompanyKind,
+  category: IndicatorCategoryExt,
+): Promise<CompanyRank[]> => {
+  return loadJson<CompanyRank[]>(
+    `data/rankings/${service}/${kind}-${category}.json`,
+  )();
 };
 
 /*
