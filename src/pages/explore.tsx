@@ -3,11 +3,14 @@ import React, {useState} from "react";
 import HomeCategorySelector from "../components/home-category-selector";
 import Layout from "../components/layout";
 import RankChart from "../components/rank-chart";
+import ServiceSelector from "../components/service-selector";
 import ToggleSwitch from "../components/toggle-switch";
-import {companyRankingData} from "../data";
-import {CompanyRank, IndicatorCategoryExt} from "../types";
+import {allServices, companyRankingData} from "../data";
+import {CompanyRank, IndicatorCategoryExt, ServiceOption} from "../types";
+import {uniqueBy} from "../utils";
 
 interface ExploreProps {
+  services: ServiceOption[];
   // First element are telecom rankings, second are platform rankings.
   totalRanking: [CompanyRank[], CompanyRank[]];
   governanceRanking: [CompanyRank[], CompanyRank[]];
@@ -16,6 +19,11 @@ interface ExploreProps {
 }
 
 export const getStaticProps = async () => {
+  const services = await allServices();
+  const serviceOptions = uniqueBy("kind", services)
+    .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
+    .map(({kind, label}) => ({kind, label, value: kind}));
+
   const [
     totalRanking,
     governanceRanking,
@@ -36,11 +44,18 @@ export const getStaticProps = async () => {
   );
 
   return {
-    props: {totalRanking, governanceRanking, freedomRanking, privacyRanking},
+    props: {
+      services: serviceOptions,
+      totalRanking,
+      governanceRanking,
+      freedomRanking,
+      privacyRanking,
+    },
   };
 };
 
 const Explore = ({
+  services,
   totalRanking,
   governanceRanking,
   freedomRanking,
@@ -49,6 +64,7 @@ const Explore = ({
   const [selectedCategory, setSelectedCategory] = useState<
     IndicatorCategoryExt
   >("total");
+  const [, setSelectedService] = useState<ServiceOption>();
   const [telecomRankings, setTelecomRankings] = useState<CompanyRank[]>(
     totalRanking[0],
   );
@@ -89,13 +105,17 @@ const Explore = ({
     }
   };
 
+  const handleServiceSelect = (service?: ServiceOption) => {
+    setSelectedService(service);
+  };
+
   const handleRegionSwitch = (toggle: boolean) => {
     setByRegion(toggle);
   };
 
   return (
     <Layout>
-      <div className="lg:container lg:mx-auto flex flex-col flex-row lg:justify-between py-6">
+      <div className="lg:container lg:mx-auto flex flex-col flex-row lg:justify-between py-6 px-6">
         <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none">
           <span className="mt-3 md:mt-0">Explore the data</span>
         </h1>
@@ -109,22 +129,30 @@ const Explore = ({
           categories.
         </p>
 
-        <HomeCategorySelector
-          selected={selectedCategory}
-          onClick={handleSelectCategory}
-          className="mx-auto mt-12"
-        />
-        <div className="flex my-6">
-          <ToggleSwitch
-            className="flex-none self-end w-full md:w-max sm:float-right my-3 md:mb-1"
-            label="By Regions"
-            onChange={handleRegionSwitch}
+        <div className="flex flex-col mt-12 md:mx-auto lg:w-3/5">
+          <HomeCategorySelector
+            selected={selectedCategory}
+            onClick={handleSelectCategory}
           />
+
+          <div className="flex flex-col w-full my-6 sm:flex-row">
+            <ServiceSelector
+              services={services}
+              onSelect={handleServiceSelect}
+              className="flex-grow w-full md:w-2/3 lg:w-3/5"
+            />
+
+            <ToggleSwitch
+              className="flex-none w-full sm:w-max my-3 ml-3 md:mb-1"
+              label="By Regions"
+              onChange={handleRegionSwitch}
+            />
+          </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row mt-12">
+        <div className="flex flex-col mt-12 sm:flex-row">
           <RankChart
-            className="w-full sm:w-1/2 px-3"
+            className="w-full sm:w-1/2 sm:pr-3"
             ranking={platformRankings}
             category={selectedCategory}
             byRegion={byRegion}
@@ -132,7 +160,7 @@ const Explore = ({
           />
 
           <RankChart
-            className="w-full sm:w-1/2 mt-6 sm:mt-0 px-3"
+            className="w-full mt-6 sm:w-1/2 sm:pl-3 sm:mt-0"
             ranking={telecomRankings}
             category={selectedCategory}
             byRegion={byRegion}

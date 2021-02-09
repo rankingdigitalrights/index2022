@@ -251,6 +251,10 @@ export interface IndicatorSelectOption extends SelectOption {
   category: IndicatorCategory;
 }
 
+export interface ServiceOption extends SelectOption {
+  kind: ServiceKind;
+}
+
 export interface SortStrategy<T extends SelectOption = SelectOption> {
   (xs: T[]): T[];
 }
