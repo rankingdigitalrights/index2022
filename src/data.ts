@@ -56,6 +56,7 @@ export const loadJsonDir = <T extends unknown>(
 export const allCompanies = loadJson<Company[]>("data/companies.json");
 export const allIndicators = loadJson<Indicator[]>("data/indicators.json");
 export const allElements = loadJson<Element[]>("data/elements.json");
+export const allServices = loadJson<Service[]>("data/services.json");
 
 export const companyIndices = loadJsonDir<CompanyIndex>(
   "data/companies",
