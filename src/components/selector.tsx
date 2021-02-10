@@ -118,6 +118,7 @@ interface SelectorProps<T extends SelectOption> {
   title: string;
   options: T[];
   onSelect: (value: T) => void;
+  isSearchable?: boolean;
   className?: string;
 }
 
@@ -125,6 +126,7 @@ const Selector = <T extends SelectOption>({
   title,
   options,
   onSelect,
+  isSearchable = false,
   className,
 }: SelectorProps<T>) => {
   const handleChange = (value: ValueType<T, false>) => {
@@ -139,6 +141,7 @@ const Selector = <T extends SelectOption>({
         options={options}
         className="font-circular text-sm"
         openMenuOnFocus
+        isSearchable={isSearchable}
         components={{
           Input,
           IndicatorSeparator,

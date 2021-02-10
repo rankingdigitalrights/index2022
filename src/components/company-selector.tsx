@@ -146,6 +146,7 @@ const CompanySelector = ({
         value={companies.filter((obj) => selected.includes(obj.value))}
         isMulti
         isClearable
+        isSearchable={false}
         closeMenuOnSelect={false}
         components={{
           Input,

@@ -107,6 +107,7 @@ const IndicatorSelector = ({
         options={options}
         value={selected}
         openMenuOnFocus
+        isSearchable={false}
         components={{
           Group,
           GroupHeading,
