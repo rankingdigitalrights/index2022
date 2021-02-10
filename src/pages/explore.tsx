@@ -208,6 +208,7 @@ const Explore = ({
               id="service-selector"
               title="Select service"
               options={serviceOptions}
+              isClearable
               onSelect={handleServiceSelect}
               className="flex-grow w-full md:w-2/3 lg:w-3/5"
             />

@@ -180,8 +180,8 @@ const IndicatorPage = ({
     setSelectedCompanies(ids);
   };
 
-  const handleSelectSortStrategy = (strategy: SelectOption) => {
-    setSortStrategy(strategy.value);
+  const handleSelectSortStrategy = (strategy?: SelectOption) => {
+    if (strategy) setSortStrategy(strategy.value);
   };
 
   const handleToggleSwitch = (toggle: boolean) => {
