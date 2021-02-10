@@ -3,7 +3,7 @@ import cheerio from "cheerio";
 import path from "path";
 import pretty from "pretty";
 
-import {CompanyDetails} from "./types";
+import {CompanyDetails, ComparePage} from "./types";
 import {isString, unreachable} from "./utils";
 
 type CheerioTag = string | cheerio.Element | cheerio.Cheerio;
@@ -39,6 +39,19 @@ const extractSection = (
   const fromSelector = `h1[id="${fromId}"], h2[id="${fromId}"], h3[id="${fromId}"], h4[id="${fromId}"], h5[id="${fromId}"], h6[id="${fromId}"]`;
   const untilSelector = `h1[id="${untilId}"], h2[id="${untilId}"], h3[id="${untilId}"], h4[id="${untilId}"], h5[id="${untilId}"], h6[id="${untilId}"]`;
   return $("<div></div>").append($(fromSelector).nextUntil(untilSelector));
+};
+
+const extractSectionOuter = (
+  fromId: string,
+  untilId: string,
+  $: cheerio.Root,
+): cheerio.Cheerio => {
+  const fromSelector = `h1[id="${fromId}"], h2[id="${fromId}"], h3[id="${fromId}"], h4[id="${fromId}"], h5[id="${fromId}"], h6[id="${fromId}"]`;
+  const untilSelector = `h1[id="${untilId}"], h2[id="${untilId}"], h3[id="${untilId}"], h4[id="${untilId}"], h5[id="${untilId}"], h6[id="${untilId}"]`;
+
+  return $("<div></div>")
+    .append($(fromSelector).clone())
+    .append($(fromSelector).nextUntil(untilSelector));
 };
 
 const extractSectionTitle = (id: string, $: cheerio.Root): string => {
@@ -244,8 +257,6 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
 export const narrativeMdx = (imgPath: string, src: string): string => {
   const $ = cheerio.load(src);
 
-  // Headlines are set manually
-  removeTag("h1", undefined, $);
   // The footnotes were separated by a divider, we don't need it anymore.
   removeTag("hr", undefined, $);
 
@@ -283,4 +294,41 @@ export const narrativeMdx = (imgPath: string, src: string): string => {
       return $.html(el);
     })
     .join("\n");
+};
+
+export const compareDetails = (src: string): ComparePage => {
+  const $ = cheerio.load(src);
+
+  const footnotes = $("<div></div>")
+    .append($("p").has("a[href^=#ftnt_ref]"))
+    .html();
+
+  // Since we extracted the footnotes already, remove them.
+  removeTag("p", "a[href^=#ftnt_ref]", $);
+  // The footnotes were separated by a divider, we don't need it anymore.
+  removeTag("hr", undefined, $);
+  // By extracting the footnotes we leave a whole bunch of empty div's behind.
+  removeEmptyTag("div", $);
+
+  const pageTitle = $("h1").text() || "MISSING";
+
+  const introduction =
+    extractSection(
+      "introduction",
+      "how-did-we-calculate-the-year-on-year-result-for-each-company",
+      $,
+    ).html() || "MISSING";
+  const body =
+    extractSectionOuter(
+      "how-did-we-calculate-the-year-on-year-result-for-each-company",
+      "",
+      $,
+    ).html() || "MISSING";
+
+  return {
+    pageTitle,
+    introduction,
+    body,
+    ...(footnotes ? {footnotes} : undefined),
+  };
 };

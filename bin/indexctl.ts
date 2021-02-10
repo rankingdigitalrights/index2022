@@ -21,7 +21,7 @@ import {
   indicatorScores,
   services,
 } from "../src/csv";
-import {companyDetails, narrativeContent} from "../src/google";
+import {companyDetails, comparePage, narrativeContent} from "../src/google";
 import {companyPdf} from "../src/pdf";
 import {CompanyKind, CompanyYear, IndicatorCategoryExt} from "../src/types";
 import {uniqueBy} from "../src/utils";
@@ -308,6 +308,8 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
         "china-tech-giants.mdx",
       );
 
+      const compareTarget = path.join(narrativesDir, "compare.json");
+
       console.log(`Pull content for: ${introEssayTarget}`);
 
       await narrativeContent("Intro Essay").then(writeFile(introEssayTarget));
@@ -335,6 +337,10 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
       await narrativeContent("China Tech Giants").then(
         writeFile(chinaTechGiantsTarget),
       );
+
+      console.log(`Pull content for: ${compareTarget}`);
+
+      await comparePage("Compare").then(writeJsonFile(compareTarget));
 
       await Promise.all(
         details.map(async (company) => {

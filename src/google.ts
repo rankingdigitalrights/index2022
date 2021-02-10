@@ -8,11 +8,12 @@ import unzipper from "unzipper";
 
 import {
   companyDetails as companyDetails2,
+  compareDetails,
   emptyCompany,
   narrativeMdx,
   processHtml,
 } from "./formatter";
-import {CompanyDetails} from "./types";
+import {CompanyDetails, ComparePage} from "./types";
 import {memoize, unreachable} from "./utils";
 
 type GoogleDownload = {
@@ -248,6 +249,11 @@ export const narrativeContent = async (name: string): Promise<string> => {
   const mdx = narrativeMdx(slug, html);
 
   return mdx;
+};
+
+export const comparePage = async (name: string): Promise<ComparePage> => {
+  const page = await narrativeContent(name);
+  return compareDetails(page);
 };
 
 // FIXME: I keep this code in case I might need it in the future. Create

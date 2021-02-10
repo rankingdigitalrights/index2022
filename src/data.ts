@@ -11,6 +11,7 @@ import {
   CompanyRank,
   CompanyScoreDiff,
   CompanyYear,
+  ComparePage,
   Element,
   Indicator,
   IndicatorAverages,
@@ -301,4 +302,11 @@ export const methodology = loadFile("data/narratives/methodology.mdx");
  */
 export const chinaTechGiants = loadFile(
   "data/narratives/china-tech-giants.mdx",
+);
+
+/*
+ * Load the compare page details.
+ */
+export const compareDetails = loadJson<ComparePage>(
+  `data/narratives/compare.json`,
 );

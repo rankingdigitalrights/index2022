@@ -283,3 +283,10 @@ export type CompanyHighlight = {
 export interface NarrativeProps {
   source: MdxRemote.Source;
 }
+
+export interface ComparePage {
+  pageTitle: string;
+  introduction: string;
+  body: string;
+  footnotes?: string;
+}
