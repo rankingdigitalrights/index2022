@@ -103,6 +103,8 @@ export type CompanyRank = {
   region: string;
 };
 
+export type ServiceCompanyRank = CompanyRank & {service: string};
+
 export type ServiceKind =
   | "Group"
   | "OpCom"

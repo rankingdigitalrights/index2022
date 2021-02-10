@@ -1,1 +1,1 @@
-[{"id":"Alibaba","companyPretty":"Alibaba","score":32,"rank":1,"kind":"internet","category":"total","region":"Asia"},{"id":"Amazon","companyPretty":"Amazon","score":20,"rank":2,"kind":"internet","category":"total","region":"United States"}]
+[{"id":"Alibaba","companyPretty":"Alibaba","service":"Taobao.com","score":32,"rank":1,"kind":"internet","category":"total","region":"Asia"},{"id":"Amazon","companyPretty":"Amazon","service":"Amazon.com","score":20,"rank":2,"kind":"internet","category":"total","region":"United States"}]

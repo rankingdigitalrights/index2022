@@ -1,1 +1,1 @@
-[{"id":"Alibaba","companyPretty":"Alibaba","score":10,"rank":1,"kind":"internet","category":"governance","region":"Asia"},{"id":"Amazon","companyPretty":"Amazon","score":6,"rank":2,"kind":"internet","category":"governance","region":"United States"}]
+[{"id":"Alibaba","companyPretty":"Alibaba","service":"Taobao.com","score":10,"rank":1,"kind":"internet","category":"governance","region":"Asia"},{"id":"Amazon","companyPretty":"Amazon","service":"Amazon.com","score":6,"rank":2,"kind":"internet","category":"governance","region":"United States"}]

@@ -29,6 +29,7 @@ import {
   IndicatorScore,
   Scores,
   Service,
+  ServiceCompanyRank,
   ServiceKind,
 } from "./types";
 import {
@@ -1139,7 +1140,7 @@ export const companyServiceRanking = async (
   serviceKind: ServiceKind,
   companyKind: CompanyKind,
   category: IndicatorCategoryExt,
-): Promise<CompanyRank[]> => {
+): Promise<ServiceCompanyRank[]> => {
   const [companyData, csvCompanyServiceRanks] = await Promise.all([
     companyIndices(),
     loadCompanyServiceRanksCsv("csv/2020-service-rankings.csv"),
@@ -1183,6 +1184,7 @@ export const companyServiceRanking = async (
       return {
         id,
         companyPretty,
+        service: row.service,
         score,
         rank,
         kind,

@@ -19,6 +19,7 @@ import {
   IndicatorDetails,
   IndicatorElements,
   Service,
+  ServiceCompanyRank,
   ServiceKind,
 } from "./types";
 import {unreachable} from "./utils";
@@ -210,8 +211,8 @@ export const companyServiceRankingData = async (
   service: ServiceKind,
   kind: CompanyKind,
   category: IndicatorCategoryExt,
-): Promise<CompanyRank[]> => {
-  return loadJson<CompanyRank[]>(
+): Promise<ServiceCompanyRank[]> => {
+  return loadJson<ServiceCompanyRank[]>(
     `data/rankings/${service}/${kind}-${category}.json`,
   )();
 };
