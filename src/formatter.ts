@@ -3,8 +3,8 @@ import cheerio from "cheerio";
 import path from "path";
 import pretty from "pretty";
 
-import {CompanyDetails, ComparePage} from "./types";
-import {isString, unreachable} from "./utils";
+import {CompanyDetails, ComparePage, NarrativePage} from "./types";
+import {unreachable} from "./utils";
 
 type CheerioTag = string | cheerio.Element | cheerio.Cheerio;
 
@@ -260,27 +260,22 @@ export const narrativeMdx = (imgPath: string, src: string): string => {
   // The footnotes were separated by a divider, we don't need it anymore.
   removeTag("hr", undefined, $);
 
-  $("body *").each((_idx, el) => {
-    const $el = $(el);
-    const className = $el.attr("class");
-
-    if (isString(className)) {
-      $el.attr("className", className);
-      $el.removeAttr("class");
-    }
-  });
-
   return $("body > *")
     .toArray()
     .map((el) => {
       const $el = $(el);
 
       if (el.tagName === "img") {
+        const attrs = [];
+
         const imageSrc = $el.attr("src");
-        const title = $el.attr("title");
-        const alt = $el.attr("alt");
-        const width = $el.attr("width") || 676;
-        const height = $el.attr("height") || 468;
+
+        if ($el.attr("title") !== "") {
+          attrs.push(`title="${$el.attr("title")}"`);
+        }
+        if ($el.attr("alt") !== "") {
+          attrs.push(`alt="${$el.attr("alt")}"`);
+        }
 
         if (!imageSrc) return unreachable(`Image lacks a source.`);
 
@@ -288,7 +283,7 @@ export const narrativeMdx = (imgPath: string, src: string): string => {
 
         // Google doesn't properly terminate <img> tags and this trips up the
         // MDXProvider. Rewrite the <img> to have a proper closing tag.
-        return `<img src="${href}" width="${width}" height="${height}" title="${title}" alt="${alt}" />`;
+        return `<img src="${href}" ${attrs.join(" ")} />`;
       }
 
       return $.html(el);
@@ -296,8 +291,33 @@ export const narrativeMdx = (imgPath: string, src: string): string => {
     .join("\n");
 };
 
+export const narrativeDetails = (src: string): NarrativePage => {
+  const $ = cheerio.load(src, {xmlMode: true});
+
+  const footnotes = $("<div></div>")
+    .append($("p").has("a[href^=#ftnt_ref]"))
+    .html();
+
+  // Since we extracted the footnotes already, remove them.
+  removeTag("p", "a[href^=#ftnt_ref]", $);
+  // The footnotes were separated by a divider, we don't need it anymore.
+  removeTag("hr", undefined, $);
+  // By extracting the footnotes we leave a whole bunch of empty div's behind.
+  removeEmptyTag("div", $);
+
+  const pageTitle = $("h1").text();
+  const body =
+    extractSection($("h1").attr("id") || "", "", $).html() || "MISSING";
+
+  return {
+    pageTitle,
+    body,
+    ...(footnotes ? {footnotes} : undefined),
+  };
+};
+
 export const compareDetails = (src: string): ComparePage => {
-  const $ = cheerio.load(src);
+  const $ = cheerio.load(src, {xmlMode: true});
 
   const footnotes = $("<div></div>")
     .append($("p").has("a[href^=#ftnt_ref]"))

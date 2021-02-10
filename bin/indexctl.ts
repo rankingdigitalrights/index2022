@@ -21,7 +21,7 @@ import {
   indicatorScores,
   services,
 } from "../src/csv";
-import {companyDetails, comparePage, narrativeContent} from "../src/google";
+import {companyDetails, comparePage, narrativePage} from "../src/google";
 import {companyPdf} from "../src/pdf";
 import {CompanyKind, CompanyYear, IndicatorCategoryExt} from "../src/types";
 import {uniqueBy} from "../src/utils";
@@ -32,12 +32,6 @@ const writeJsonFile = (
   target: string,
 ): ((d: unknown) => Promise<void>) => async (data: unknown): Promise<void> => {
   await fs.writeFile(path.join(process.cwd(), target), JSON.stringify(data));
-};
-
-const writeFile = (target: string): ((d: string) => Promise<void>) => async (
-  d: string,
-): Promise<void> => {
-  await fs.writeFile(path.join(process.cwd(), target), d);
 };
 
 (async (): Promise<void> => {
@@ -290,52 +284,54 @@ const writeFile = (target: string): ((d: string) => Promise<void>) => async (
         recursive: true,
       });
 
-      const introEssayTarget = path.join(narrativesDir, "intro-essay.mdx");
+      const introEssayTarget = path.join(narrativesDir, "intro-essay.json");
 
-      const aboutUsTarget = path.join(narrativesDir, "about-us.mdx");
+      const aboutUsTarget = path.join(narrativesDir, "about-us.json");
 
-      const keyFindingsTarget = path.join(narrativesDir, "key-findings.mdx");
+      const keyFindingsTarget = path.join(narrativesDir, "key-findings.json");
 
-      const methodologyTarget = path.join(narrativesDir, "methodology.mdx");
+      const methodologyTarget = path.join(narrativesDir, "methodology.json");
 
       const policyRecommendationsTarget = path.join(
         narrativesDir,
-        "policy-recommendations.mdx",
+        "policy-recommendations.json",
       );
 
       const chinaTechGiantsTarget = path.join(
         narrativesDir,
-        "china-tech-giants.mdx",
+        "china-tech-giants.json",
       );
 
       const compareTarget = path.join(narrativesDir, "compare.json");
 
       console.log(`Pull content for: ${introEssayTarget}`);
 
-      await narrativeContent("Intro Essay").then(writeFile(introEssayTarget));
+      await narrativePage("Intro Essay").then(writeJsonFile(introEssayTarget));
 
       console.log(`Pull content for: ${aboutUsTarget}`);
 
-      await narrativeContent("About Us").then(writeFile(aboutUsTarget));
+      await narrativePage("About Us").then(writeJsonFile(aboutUsTarget));
 
       console.log(`Pull content for: ${keyFindingsTarget}`);
 
-      await narrativeContent("Key Findings").then(writeFile(keyFindingsTarget));
+      await narrativePage("Key Findings").then(
+        writeJsonFile(keyFindingsTarget),
+      );
 
       console.log(`Pull content for: ${methodologyTarget}`);
 
-      await narrativeContent("Methodology").then(writeFile(methodologyTarget));
+      await narrativePage("Methodology").then(writeJsonFile(methodologyTarget));
 
       console.log(`Pull content for: ${policyRecommendationsTarget}`);
 
-      await narrativeContent("Policy Recommendations").then(
-        writeFile(policyRecommendationsTarget),
+      await narrativePage("Policy Recommendations").then(
+        writeJsonFile(policyRecommendationsTarget),
       );
 
       console.log(`Pull content for: ${chinaTechGiantsTarget}`);
 
-      await narrativeContent("China Tech Giants").then(
-        writeFile(chinaTechGiantsTarget),
+      await narrativePage("China Tech Giants").then(
+        writeJsonFile(chinaTechGiantsTarget),
       );
 
       console.log(`Pull content for: ${compareTarget}`);

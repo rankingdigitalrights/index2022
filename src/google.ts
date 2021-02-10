@@ -10,10 +10,11 @@ import {
   companyDetails as companyDetails2,
   compareDetails,
   emptyCompany,
+  narrativeDetails,
   narrativeMdx,
   processHtml,
 } from "./formatter";
-import {CompanyDetails, ComparePage} from "./types";
+import {CompanyDetails, ComparePage, NarrativePage} from "./types";
 import {memoize, unreachable} from "./utils";
 
 type GoogleDownload = {
@@ -249,6 +250,11 @@ export const narrativeContent = async (name: string): Promise<string> => {
   const mdx = narrativeMdx(slug, html);
 
   return mdx;
+};
+
+export const narrativePage = async (name: string): Promise<NarrativePage> => {
+  const page = await narrativeContent(name);
+  return narrativeDetails(page);
 };
 
 export const comparePage = async (name: string): Promise<ComparePage> => {
