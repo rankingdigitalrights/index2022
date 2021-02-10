@@ -115,12 +115,14 @@ export const Option = <T extends SelectOption, K extends boolean>({
 };
 
 interface SelectorProps<T extends SelectOption> {
+  title: string;
   options: T[];
   onSelect: (value: T) => void;
   className?: string;
 }
 
 const Selector = <T extends SelectOption>({
+  title,
   options,
   onSelect,
   className,
@@ -131,7 +133,7 @@ const Selector = <T extends SelectOption>({
 
   return (
     <div className={c("flex flex-col justify-between h-16", className)}>
-      <span className="text-sm font-circular">Sort:</span>
+      <span className="text-sm font-circular">{title}:</span>
       <Select
         instanceId="sort-select"
         options={options}

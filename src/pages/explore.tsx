@@ -6,8 +6,8 @@ import React, {useState} from "react";
 import HomeCategorySelector from "../components/home-category-selector";
 import Layout from "../components/layout";
 import RankChart from "../components/rank-chart";
+import Selector from "../components/selector";
 import ServiceRankChart from "../components/service-rank-chart";
-import ServiceSelector from "../components/service-selector";
 import ToggleSwitch from "../components/toggle-switch";
 import {
   allServices,
@@ -204,8 +204,9 @@ const Explore = ({
           />
 
           <div className="flex flex-col w-full my-6 sm:flex-row">
-            <ServiceSelector
-              services={serviceOptions}
+            <Selector<ServiceOption>
+              title="Select service"
+              options={serviceOptions}
               onSelect={handleServiceSelect}
               className="flex-grow w-full md:w-2/3 lg:w-3/5"
             />
