@@ -205,6 +205,7 @@ const Explore = ({
 
           <div className="flex flex-col w-full my-6 sm:flex-row">
             <Selector<ServiceOption>
+              id="service-selector"
               title="Select service"
               options={serviceOptions}
               onSelect={handleServiceSelect}

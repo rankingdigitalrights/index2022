@@ -115,6 +115,7 @@ export const Option = <T extends SelectOption, K extends boolean>({
 };
 
 interface SelectorProps<T extends SelectOption> {
+  id: string;
   title: string;
   options: T[];
   onSelect: (value: T) => void;
@@ -123,6 +124,7 @@ interface SelectorProps<T extends SelectOption> {
 }
 
 const Selector = <T extends SelectOption>({
+  id,
   title,
   options,
   onSelect,
@@ -137,7 +139,7 @@ const Selector = <T extends SelectOption>({
     <div className={c("flex flex-col justify-between h-16", className)}>
       <span className="text-sm font-circular">{title}:</span>
       <Select
-        instanceId="sort-select"
+        instanceId={id}
         options={options}
         className="font-circular text-sm"
         openMenuOnFocus
