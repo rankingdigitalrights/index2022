@@ -4,7 +4,7 @@ import React from "react";
 import NarrativeBox from "./narrative-box";
 
 const containerWidth =
-  "w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-4 md:px-20 xl:px-32 2xl:px-36";
+  "w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-4 md:px-16 xl:px-28 2xl:px-24";
 
 interface ContainerProps {
   children: React.ReactNode;
