@@ -21,19 +21,23 @@ const PolicyRecommendations = ({source}: NarrativeProps) => {
 
   return (
     <Layout>
-      <NarrativeContainer backgroundClassName="bg-light-freedom">
-        <>
-          <div className="flex mb-12 border-b border-prissian py-12">
-            <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none ml-6">
-              <PolicyRecommendationsLogo className="flex-none h-8 w-8 mt-1" />
-              <span className="mt-3 md:mt-0 md:ml-6">
-                Policy Recommendations for Governments
-              </span>
-            </h1>
-          </div>
+      <NarrativeContainer backgroundClassName="bg-cat-freedom bg-opacity-30">
+        {({Container}) => {
+          return (
+            <Container>
+              <div className="flex mb-12 border-b border-prissian py-12">
+                <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none ml-6">
+                  <PolicyRecommendationsLogo className="flex-none h-8 w-8 mt-1" />
+                  <span className="mt-3 md:mt-0 md:ml-6">
+                    Policy Recommendations for Governments
+                  </span>
+                </h1>
+              </div>
 
-          {content}
-        </>
+              {content}
+            </Container>
+          );
+        }}
       </NarrativeContainer>
     </Layout>
   );

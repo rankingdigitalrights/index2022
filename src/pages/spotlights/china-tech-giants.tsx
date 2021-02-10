@@ -23,21 +23,25 @@ const ChinaTechGiants = ({source}: NarrativeProps) => {
       <NarrativeContainer
         heroClassName="hero-tech-giants"
         heroCaption="People queue for milk during the pandemic in Srinagar, Kashmir. Photo by Abid Bhat, used with permission."
-        backgroundClassName="bg-rdr bg-opacity-20"
+        backgroundClassName="bg-rdr bg-opacity-30"
         transparent
       >
-        <>
-          <div className="flex mb-12 border-b border-prissian py-12">
-            <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none">
-              <span className="mt-3 md:mt-0">
-                Chinese tech giants have proven they can change. But the state
-                is still their number one stakeholder.
-              </span>
-            </h1>
-          </div>
+        {({Container}) => {
+          return (
+            <Container>
+              <div className="flex mb-12 border-b border-prissian py-12">
+                <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none">
+                  <span className="mt-3 md:mt-0">
+                    Chinese tech giants have proven they can change. But the
+                    state is still their number one stakeholder.
+                  </span>
+                </h1>
+              </div>
 
-          {content}
-        </>
+              {content}
+            </Container>
+          );
+        }}
       </NarrativeContainer>
     </Layout>
   );

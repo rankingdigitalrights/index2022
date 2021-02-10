@@ -3,12 +3,25 @@ import React from "react";
 
 import NarrativeBox from "./narrative-box";
 
+const containerWidth =
+  "w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-4 md:px-20 xl:px-32 2xl:px-36";
+
+interface ContainerProps {
+  children: React.ReactNode;
+}
+
+const Container = ({children: contents}: ContainerProps) => {
+  return (
+    <div className={c("container mx-auto", containerWidth)}>{contents}</div>
+  );
+};
+
 interface NarrativeContainerProps {
   heroClassName?: string;
   heroCaption?: string;
   backgroundClassName?: string;
   transparent?: boolean;
-  children: React.ReactNode;
+  children: (props: {Container: typeof Container}) => React.ReactNode;
 }
 
 const NarrativeContainer = ({
@@ -42,13 +55,20 @@ const NarrativeContainer = ({
           backgroundClassName,
         )}
       >
-        <div
-          className={c(
-            "container mx-auto w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-4 md:px-20 xl:px-32 2xl:px-36 py-3",
-            containerClassName,
-          )}
-        >
-          {children}
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className={c(
+                "container mx-auto h-full top-0",
+                containerClassName,
+                containerWidth,
+              )}
+            />
+          </div>
+
+          <div className="relative flex items-center py-3">
+            {children({Container})}
+          </div>
         </div>
       </div>
 
