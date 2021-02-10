@@ -246,6 +246,8 @@ export const narrativeMdx = (imgPath: string, src: string): string => {
 
   // Headlines are set manually
   removeTag("h1", undefined, $);
+  // The footnotes were separated by a divider, we don't need it anymore.
+  removeTag("hr", undefined, $);
 
   $("body *").each((_idx, el) => {
     const $el = $(el);
