@@ -1,6 +1,7 @@
 import c from "clsx";
 import React from "react";
 
+import Donate from "./donate";
 import NarrativeBox from "./narrative-box";
 
 const containerWidth =
@@ -21,6 +22,7 @@ interface NarrativeContainerProps {
   heroCaption?: string;
   backgroundClassName?: string;
   transparent?: boolean;
+  hasDonate?: boolean;
   children: (props: {Container: typeof Container}) => React.ReactNode;
 }
 
@@ -29,6 +31,7 @@ const NarrativeContainer = ({
   heroCaption = "",
   backgroundClassName,
   transparent = false,
+  hasDonate = true,
   children,
 }: NarrativeContainerProps) => {
   const containerClassName = {
@@ -51,7 +54,7 @@ const NarrativeContainer = ({
 
       <div
         className={c(
-          "narrative flex justify-around py-12",
+          "narrative flex flex-col justify-around py-12",
           backgroundClassName,
         )}
       >
@@ -70,6 +73,10 @@ const NarrativeContainer = ({
             {children({Container})}
           </div>
         </div>
+
+        {hasDonate && (
+          <Donate className={c("relative mx-auto mt-12", containerWidth)} />
+        )}
       </div>
 
       <div className="bg-beige flex justify-around py-3 md:py-16">

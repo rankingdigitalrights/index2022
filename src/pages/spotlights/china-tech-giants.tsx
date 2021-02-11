@@ -36,6 +36,7 @@ const ChinaTechGiants = ({details}: NarrativeProps) => {
         heroCaption="People queue for milk during the pandemic in Srinagar, Kashmir. Photo by Abid Bhat, used with permission."
         backgroundClassName="bg-rdr bg-opacity-30"
         transparent
+        hasDonate={false}
       >
         {({Container}) => {
           return (
