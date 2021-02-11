@@ -88,8 +88,8 @@ const CompanyPage = ({
           <div className="md:w-5/12 lg:w-2/5 xl:w-5/12 w-full md:bg-beige" />
         </div>
 
-        <div className="md:container md:mx-auto flex flex-col print:flex-row md:flex-row md:justify-between lg:w-10/12 xl:w-8/12">
-          <div className="flex flex-col bg-prissian w-full md:w-7/12 lg:w-7/12 pt-3 print:py-8 print:pr-10 print:pl-8 md:mt-6 md:mb-6 md:mr-6 lg:mr-0 z-10">
+        <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between lg:w-10/12 xl:w-8/12 print:flex-row">
+          <div className="flex flex-col bg-prissian w-full p-3 z-10 md:w-7/12 md:p-0 md:mt-6 md:mb-6 md:mr-6 lg:w-7/12 lg:mr-0 print:pt-20 print:pb-8 print:pr-10 print:pl-32">
             <CompanyKindLabel kind={index.kind} />
 
             <CompanyRankCard
@@ -103,7 +103,7 @@ const CompanyPage = ({
             />
           </div>
 
-          <div className="w-full md:w-5/12 lg:w-4/12 bg-beige p-3 print:py-8 print:pl-8 print:pr-10 md:mt-6 md:mb-3 md:ml-12 lg:ml-0 z-10">
+          <div className="w-full bg-beige p-3 z-10 md:w-5/12 md:p-0 md:mt-6 md:mb-3 md:ml-12 lg:w-4/12 lg:ml-0 print:pt-20 print:pb-8 print:pl-8 print:pr-32">
             <RankChart
               ranking={ranking}
               activeCompany={index.id}
@@ -114,54 +114,50 @@ const CompanyPage = ({
         </div>
       </div>
 
-      <div className="pt-6 pb-6 mt-6">
-        <div className="container mx-auto lg:w-10/12 xl:w-8/12">
-          <section className="flex flex-col md:flex-row print:flex-col pt-3">
-            <div className="w-full md:w-4/6 pr-12">
-              <div
-                className="mt-6 border-b border-disabled-light print:border-b-0"
-                dangerouslySetInnerHTML={{__html: details.keyFindings}}
-              />
+      <div className="md:container md:mx-auto px-3 mt-6 md:py-6 md:mt-12 md:px-0 lg:w-10/12 xl:w-8/12">
+        <section className="flex flex-col md:flex-row print:flex-col">
+          <div className="md:w-4/6 md:pr-20 printer print:px-20">
+            <div
+              className="border-b border-disabled-light print:border-b-0"
+              dangerouslySetInnerHTML={{__html: details.keyFindings}}
+            />
 
-              <h2 className="text-prissian mt-8 mb-6">
-                {details.keyTakeawaysTitle}
-              </h2>
-              <div
-                className="mt-6"
-                dangerouslySetInnerHTML={{
-                  __html: details.keyTakeaways,
-                }}
-              />
+            <h2 className="text-prissian mt-8 mb-6">
+              {details.keyTakeawaysTitle}
+            </h2>
+            <div
+              className="mt-6"
+              dangerouslySetInnerHTML={{
+                __html: details.keyTakeaways,
+              }}
+            />
 
-              <h2 className="text-prissian mt-8 mb-6">
-                {details.keyRecommendationTitle}
-              </h2>
-              <div
-                className="mt-6"
-                dangerouslySetInnerHTML={{
-                  __html: details.keyRecommendation,
-                }}
-              />
-            </div>
+            <h2 className="text-prissian mt-8 mb-6">
+              {details.keyRecommendationTitle}
+            </h2>
+            <div
+              className="mt-6"
+              dangerouslySetInnerHTML={{
+                __html: details.keyRecommendation,
+              }}
+            />
+          </div>
 
-            <div className="flex flex-col print:flex-row items-start w-full md:w-2/6 print:w-full px-3 font-circular text-sm printer print:my-3">
-              <div>
-                <h3 className="font-bold pb-3 mt-3 md:mb-6 md:mt-6 print:whitespace-nowrap">
-                  Services evaluated:
-                </h3>
+          <div className="flex flex-col items-start w-full md:w-2/6 font-circular text-sm printer print:flex-row printer print:w-full print:px-20 print:pt-8 print:pb-3">
+            <div>
+              <h3 className="font-bold pb-3 print:whitespace-nowrap">
+                Services evaluated:
+              </h3>
 
-                <div className=" border-b border-disabled-light print:border-b-0 w-full pb-6">
-                  <ul className="list-none list-outside ml-0 pl-0">
-                    {services
-                      .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
-                      .map(({id, name, kind}) => (
-                        <li key={id} className="pb-0 print:py-3">
-                          <EvaluatedService name={name} kind={kind} />
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              </div>
+              <ul className="list-none list-inside ml-0 pl-0 border-b border-disabled-light print:border-b-0 w-full pb-6">
+                {services
+                  .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
+                  .map(({id, name, kind}) => (
+                    <li key={id} className="pb-0 print:py-3">
+                      <EvaluatedService name={name} kind={kind} />
+                    </li>
+                  ))}
+              </ul>
 
               <ul className="list-none list-outside ml-0 pl-0 border-b border-disabled-light print:border-b-0 w-full py-6">
                 {meta.operatingCompany && (
@@ -188,63 +184,63 @@ const CompanyPage = ({
                   <a href={meta.website}>{meta.website}</a>
                 </li>
               </ul>
+            </div>
 
-              <div className="border-b border-disabled-light print:border-b-0 w-full py-6 print:ml-6 print:w-2/3">
-                <p>
-                  The 2020 RDR Index covers policies that were active between
-                  February 8, 2019 and September 15, 2020. Policies that came
-                  into effect after September 15, 2020 were not evaluated for
-                  this Index.
-                </p>
+            <div className="border-b border-disabled-light print:border-b-0 w-full py-6 print:pt-8 print:pr-20">
+              <p>
+                The 2020 RDR Index covers policies that were active between
+                February 8, 2019 and September 15, 2020. Policies that came into
+                effect after September 15, 2020 were not evaluated for this
+                Index.
+              </p>
 
-                <p className="pb-0">
-                  Scores reflect the average score across the services we
-                  evaluated, with each service weighted equally.
-                </p>
-              </div>
+              <p className="pb-0">
+                Scores reflect the average score across the services we
+                evaluated, with each service weighted equally.
+              </p>
 
-              <ul className="list-none list-outside ml-0 pl-0 border-b border-disabled-light print:border-b-0 w-full py-6">
+              <ul className="list-none list-outside ml-0 pl-0 print:border-b-0 w-full pt-6">
                 <li className="pb-0 print:py-3">
                   <span className="font-bold">Lead researchers:</span>{" "}
                   {meta.researchers.join(", ")}
                 </li>
               </ul>
+            </div>
 
-              <div className="mt-6 print:hidden">
-                <Link passHref href={`/pdf/companies/${index.id}.pdf`}>
-                  <a className="flex border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm text-center">
-                    <Download className="mr-2" />
-                    Download data and sources
-                  </a>
-                </Link>
-              </div>
+            <div className="mt-6 print:hidden">
+              <Link passHref href={`/pdf/companies/${index.id}.pdf`}>
+                <a className="flex border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm text-center">
+                  <Download className="mr-2" />
+                  Download data and sources
+                </a>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {index.totalDiffs.diff2020 !== "NA" && (
+          <section className="relative flex flex-col md:flex-row print:flex-row pt-3 printer print:px-20">
+            <div className="w-full md:w-4/6 pr-12 border-t border-disabled-light print:border-t-0">
+              <h2 className="text-prissian mt-8 mb-6">
+                {details.changesTitle}
+              </h2>
+
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: details.changes,
+                }}
+              />
+            </div>
+
+            <div className="flex flex-col items-start w-full md:w-2/6 px-3 font-circular text-sm">
+              <YearOverYearLabel
+                className="mt-8"
+                value={index.totalDiffs.diff2020}
+                year="2020"
+              />
             </div>
           </section>
-
-          {index.totalDiffs.diff2020 !== "NA" && (
-            <section className="relative flex flex-col md:flex-row print:flex-row pt-3">
-              <div className="w-full md:w-4/6 pr-12 border-t border-disabled-light print:border-t-0">
-                <h2 className="text-prissian mt-8 mb-6">
-                  {details.changesTitle}
-                </h2>
-
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: details.changes,
-                  }}
-                />
-              </div>
-
-              <div className="flex flex-col items-start w-full md:w-2/6 px-3 font-circular text-sm">
-                <YearOverYearLabel
-                  className="mt-8"
-                  value={index.totalDiffs.diff2020}
-                  year="2020"
-                />
-              </div>
-            </section>
-          )}
-        </div>
+        )}
       </div>
 
       <div className="border-t border-disabled-dark print:border-t-0">
@@ -266,6 +262,7 @@ const CompanyPage = ({
               isPrint={isPrint}
             />
           </div>
+
           <p className="font-circular text-xs text-center">
             We rank companies on their approach to governance, and their
             policies and practices that affect freedom of expression and
@@ -296,9 +293,9 @@ const CompanyPage = ({
       </div>
 
       {details.footnotes && (
-        <div className="container mx-auto w-11/12 lg:w-8/12 md:w-10/12">
+        <div className="container mx-auto w-11/12 lg:w-8/12 md:w-10/12 printer print:px-20">
           <section className="flex flex-col pt-3">
-            <h3 className="print:hidden">Footnotes</h3>
+            <h3>Footnotes</h3>
             <div dangerouslySetInnerHTML={{__html: details.footnotes}} />
           </section>
         </div>

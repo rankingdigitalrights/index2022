@@ -45,13 +45,13 @@ const CompanySection = ({
   return (
     <section
       className={c(
-        "mt-6 pb-6 print:pb-0 print:mt-8 border-t border-disabled-dark print:border-t-0",
+        "mt-6 pb-6 border-t border-disabled-dark print:border-t-0 printer print:px-20 print:pb-0 print:pt-8",
         className,
       )}
     >
       <div className="flex flex-col md:flex-row mt-8 md:mt-16 print:mt-0">
         <div className="md:w-4/6 md:mr-3 print:w-full print:m-0">
-          <div className="flex items-center mb-12 md:h-16">
+          <div className="flex items-center mb-12 md:h-16 no-page-break">
             <h2
               className={c(
                 "font-platform text-xl whitespace-nowrap",
@@ -70,7 +70,7 @@ const CompanySection = ({
             </span>
           </div>
 
-          <div className="printer" dangerouslySetInnerHTML={{__html: text}} />
+          <div dangerouslySetInnerHTML={{__html: text}} />
         </div>
 
         <div className="md:w-2/6 md:ml-3 print:hidden">
