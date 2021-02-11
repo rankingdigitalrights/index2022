@@ -30,7 +30,10 @@ const KeyFindings = ({details}: NarrativeProps) => {
 
   return (
     <Layout>
-      <NarrativeContainer backgroundClassName="bg-accent-gold bg-opacity-30">
+      <NarrativeContainer
+        heroClassName="hero-key-findings"
+        backgroundClassName="bg-accent-gold bg-opacity-30"
+      >
         {({Container}) => {
           return (
             <Container>
