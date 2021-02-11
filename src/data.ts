@@ -8,6 +8,7 @@ import {
   CompanyHighlight,
   CompanyIndex,
   CompanyKind,
+  CompanyMeta,
   CompanyRank,
   CompanyScoreDiff,
   CompanyYear,
@@ -92,6 +93,19 @@ export const companyServices = async (
   return loadJson<Service[]>(path.join(companyDir, "services.json"))().catch(
     () => {
       throw new Error(`Couldn't extract company services for "${companyId}."`);
+    },
+  );
+};
+
+/*
+ * Load the company meta.
+ */
+export const companyMeta = async (companyId: string): Promise<CompanyMeta> => {
+  const companyDir = path.join("data/companies", companyId);
+
+  return loadJson<CompanyMeta>(path.join(companyDir, "meta.json"))().catch(
+    () => {
+      throw new Error(`Couldn't extract company meta for "${companyId}."`);
     },
   );
 };

@@ -1,0 +1,27 @@
+Company,LeadResearchers,OperatingCompanyEvaluated,Website,MarketCap,MarketCapDate,Exchange,StockSymbol
+Alibaba,"Jie Zhang, Veszna Wessenauer",NA,https://www.alibabagroup.com/,$713.1 billion,"As of Feburary 4, 2021",NYSE,BABA
+Amazon,"Veszna Wessenauer, Jie Zhang",NA,https://www.amazon.com/,$1.67 trillion,"As of Feburary 4, 2021",NasdaqGS,AMZN
+Apple,"Veszna Wessenauer, Afef Abrougui",NA,https://www.apple.com ,$2.35 trillion,"As of Feburary 4, 2021",NasdaqGS,AAPL
+Baidu,Jie Zhang and Zak Rogoff,NA,www.baidu.com,$88.95 billion,"As of Feburary 4, 2021",NasdaqGS,BIDU
+Facebook,"Jan Rydzak, Veszna Wessenauer",NA,https://www.facebook.com/,$759.3 billion,"As of Feburary 4, 2021",NasdaqGS,FB
+Google,"Veszna Wessenauer, Jan Rydzak",NA,https://www.google.com/,$1.4 trillion,"As of Feburary 4, 2021",NasdaqGS,GOOGL
+Kakao,"Jie Zhang, Afef Abrougui",NA,https://www.kakaocorp.com/,$36 billion,"As of Feburary 4, 2021",KOSE,A035720
+MailRu,"Afef Abrougui, Jie Zhang",NA,https://corp.mail.ru/,$6.4 billion,"As of Feburary 4, 2021",LSE,MAIL
+Microsoft,"Jan Rydzak, Veszna Wessenauer",NA,https://www.microsoft.com/,$1.833 trillion,"As of Feburary 4, 2021",NasdaqGS,MSFT
+Samsung,"Jie Zhang, Afef Abrougui",NA,www.samsung.com,$490 billion,"As of Feburary 4, 2021",KOSE,A005930
+Tencent,"Jie Zhang, Zak Rogoff",NA,https://tencent.com/,$910.16 billion,"As of Feburary 4, 2021",HKEX,700
+Twitter,"Zak Rogoff, Veszna Wessenauer",NA,https://www.twitter.com,$44.02 billion,"As of Feburary 4, 2021",NYSE,TWTR
+Vodafone,"Veszna Wessenauer, Jan Rydzak",Vodafone UK,https://www.vodafone.com/,$228.08 billion,"As of Feburary 4, 2021",LSE,VOD
+Yandex,Afef Abrougui and Veszna Wessenauer,NA,https://yandex.com/,$22.796 billion,"As of Feburary 4, 2021",NasdaqGS,YNDX
+AmericaMovil,"Zak Rogoff, Jan Rydzak",Telcel (Mexico),https://www.americamovil.com/,$44.7 billion,"As of Feburary 4, 2021",BMV,AMXL
+ATT,"Zak Rogoff, Veszna Wessenauer",NA,https://www.att.com,$203.16 billion,"As of Feburary 4, 2021",NYSE,T
+Axiata,"Zak Rogoff, Jie Zhang",Celcom (Malaysia),https://www.axiata.com/,$7.68 billion,"As of Feburary 4, 2021",KLSE,AXIATA
+BhartiAirtel,"Jan Rydzak, Jie Zhang",Airtel India,https://www.airtel.in/,$45.51 billion,"As of Feburary 4, 2021",BSE,532454
+DeutscheTelekom,"Veszna Wessenauer, Afef Abrougui",Deutsche Telekom Germany,https://www.telekom.com/,$86.42 billion,"As of Feburary 4, 2021",Xetra,DTE
+Etisalat,"Afef Abrougui, Zak Rogoff",Etisalat UAE,https://www.etisalat.ae/,$46.93 billion,"As of Feburary 4, 2021",ADX,ETISALAT
+MTN,"Zak Rogoff, Afef Abrougui",MTN South Africa,https://www.mtn.com,$7.93 billion,"As of Feburary 4, 2021",JSE,MTN
+Ooredoo,"Afef Abrougui, Zak Rogoff",Ooredoo Qatar,https://www.ooredoo.qa/,$6.58 billion,"As of Feburary 4, 2021",QSE,ORDS
+Orange,"Jan Rydzak, Veszna Wessenauer",Orange France,https://www.orange.fr/,$31.30 billion,"As of Feburary 4, 2021",ENXTPA,ORA
+Telefonica,"Zak Rogoff, Veszna Wessenauer",Telefónica Spain,https://www.telefonica.com/,$24.83 billion,"As of Feburary 4, 2021",BME,TEF
+Telenor,"Veszna Wessenauer, Jan Rydzak",Telenor Norway,https://www.telenor.com,$23.51 billion,"As of Feburary 4, 2021",OSE,TEL
+VerizonMedia,"Jan Rydzak, Veszna Wessenauer",NA,https://www.verizonmedia.com/,$49.80 billion,"As of Feburary 4, 2021",NasdaqGS,VZ

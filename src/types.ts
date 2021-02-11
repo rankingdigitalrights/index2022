@@ -39,6 +39,17 @@ export type CompanyScoreDiff = {
   score: IndicatorScore;
 };
 
+export type CompanyMeta = {
+  company: string;
+  researchers: string[];
+  website: string;
+  marketCap: string;
+  marketCapDate: string;
+  exchange: string;
+  stockSymbol: string;
+  operatingCompany?: string;
+};
+
 export type CompanyDetails = {
   id: string;
   printName: string;

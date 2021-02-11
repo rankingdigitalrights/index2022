@@ -8,6 +8,7 @@ import {
   companies,
   companyDiffs,
   companyIndices,
+  companyMeta,
   companyRanking,
   companyServiceRanking,
   companyServices,
@@ -86,7 +87,7 @@ const writeJsonFile = (
       ]);
 
       /*
-       * Company scores, e.g. ./data/companies/Amazon.scores.json
+       * Company scores, e.g. ./data/companies/Amazon/scores.json
        */
       await Promise.all(
         scores.map(async (score) => {
@@ -119,6 +120,25 @@ const writeJsonFile = (
         const target = path.join(companyDir, "services.json");
         const validCompanyServices = await companyServices(company.id);
         return writeJsonFile(target)(validCompanyServices);
+      }, Promise.resolve());
+
+      /*
+       * Company meta, e.g. ./data/companies/meta,json
+       */
+      await allCompanies.reduce(async (memo, company) => {
+        await memo;
+
+        // Ensure company data directory.
+        const companyDir = path.join(companiesDir, company.id);
+        await fs.mkdir(path.join(process.cwd(), companyDir), {
+          recursive: true,
+        });
+
+        console.log(`Generating company meta for: ${company.name}`);
+
+        const target = path.join(companyDir, "meta.json");
+        const meta = await companyMeta(company.id);
+        return writeJsonFile(target)(meta);
       }, Promise.resolve());
 
       /*
@@ -187,7 +207,9 @@ const writeJsonFile = (
                   `${kind}-${category}.json`,
                 );
 
-                console.log(`Generating ranking scores for: ${category}`);
+                console.log(
+                  `Generating ranking scores for: ${kind}/${category}`,
+                );
 
                 const ranking = await companyRanking(kind, category);
                 return writeJsonFile(target)(ranking);

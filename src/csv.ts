@@ -7,6 +7,7 @@ import {
   Company,
   CompanyIndex,
   CompanyKind,
+  CompanyMeta,
   CompanyRank,
   CompanyScoreDiff,
   CompanyYear,
@@ -108,6 +109,17 @@ type CsvCompanySpec = {
   kind: CompanyKind;
   country: string;
   region: string;
+};
+
+type CsvCompanyMeta = {
+  company: string;
+  researchers: string;
+  website: string;
+  marketCap: string;
+  marketCapDate: string;
+  exchange: string;
+  stockSymbol: string;
+  operatingCompany?: string;
 };
 
 type CsvServiceSpec = {
@@ -346,6 +358,20 @@ const loadCompanySpecsCsv = loadCsv<CsvCompanySpec>((record) => ({
 }));
 
 /*
+ * Load the company meta data.
+ */
+const loadCompanyMetaCsv = loadCsv<CsvCompanyMeta>((record) => ({
+  company: record.Company,
+  researchers: record.LeadResearchers,
+  operatingCompany: stringOrNil(record.OperatingCompanyEvaluated),
+  website: record.Website,
+  marketCap: record.MarketCap,
+  marketCapDate: record.MarketCapDate,
+  exchange: record.Exchange,
+  stockSymbol: record.StockSymbol,
+}));
+
+/*
  * Load the service specs.
  */
 const loadServiceSpecsCsv = loadCsv<CsvServiceSpec>((record) => ({
@@ -457,6 +483,27 @@ export const companies = memoizeAsync(
         region,
       }),
     );
+  },
+);
+
+/*
+ * Generate the meta data about companies..
+ */
+export const companyMeta = memoizeAsync(
+  async (company: string): Promise<CompanyMeta> => {
+    const csvCompanyMeta = await loadCompanyMetaCsv(
+      "csv/2020-company-meta.csv",
+    );
+
+    const {researchers, website, ...meta} =
+      csvCompanyMeta.find((m) => m.company === company) ||
+      unreachable(`Not meta data found for ${company}`);
+
+    return {
+      ...meta,
+      website: website.replace(/\/$/, ""),
+      researchers: researchers.split(",").map((s) => s.trim()),
+    };
   },
 );
 
