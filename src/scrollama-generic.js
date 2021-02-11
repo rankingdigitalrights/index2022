@@ -73,3 +73,73 @@ export const setupSpotlight = (
     scroller.destroy();
   };
 };
+
+export const toggleSVGclass = ({objId, query, toggleClassName}) => {
+  console.log(toggleClassName); // TODO
+  const Obj = document.querySelector(`#${objId} svg`);
+  [...Obj.querySelectorAll(query)].forEach((item) => {
+    item.classList.toggle("fade-out");
+    item.classList.toggle("fade-in");
+  });
+};
+
+export const resetSVGviewBox = function (svgID, oldRegion, newRegion) {
+  const mySVG = document.querySelector(svgID);
+  const initialbox = mySVG.getBBox();
+  const shutdownbox = mySVG.querySelector(newRegion).getBBox();
+  const oldView = `${initialbox.x} ${initialbox.y} ${initialbox.width} ${initialbox.height}`;
+  const newView = `${shutdownbox.x} ${shutdownbox.y} ${shutdownbox.width} ${shutdownbox.height}`;
+
+  /* target syntax */
+  // <animate attributeName="viewBox" values="0 0 600 400; 250 180 300 200" begin="indefinite" dur="1s" fill="freeze"/>
+
+  const anim = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "animate",
+  );
+  anim.setAttribute("id", "zoom-1");
+  anim.setAttribute("attributeName", "viewBox");
+  anim.setAttribute("begin", "indefinite");
+  anim.setAttribute("values", `${oldView}; ${newView}`);
+  anim.setAttribute("fill", "freeze");
+  anim.setAttribute("dur", "1s");
+  mySVG.append(anim);
+  mySVG.querySelector("animate#zoom-1").beginElement();
+};
+
+export const animateSVGviewBox = function (
+  SVG,
+  oldRegion,
+  newRegion,
+  animName,
+) {
+  console.log("ZOOMINg");
+  let oldBBox;
+  if (oldRegion) {
+    oldBBox = SVG.querySelector(oldRegion).getBBox();
+  } else {
+    oldBBox = SVG.getBBox();
+  }
+
+  const newBBox = SVG.querySelector(newRegion).getBBox();
+  const oldView = `${oldBBox.x} ${oldBBox.y} ${oldBBox.width} ${oldBBox.height}`;
+  const newView = `${newBBox.x * 0.9} ${newBBox.y * 0.9} ${
+    newBBox.width * 1.2
+  } ${newBBox.height * 1.1}`;
+
+  /* target syntax */
+  // <animate attributeName="viewBox" values="0 0 600 400; 250 180 300 200" begin="indefinite" dur="1s" fill="freeze"/>
+
+  const anim = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "animate",
+  );
+  anim.setAttribute("id", animName);
+  anim.setAttribute("attributeName", "viewBox");
+  anim.setAttribute("begin", "indefinite");
+  anim.setAttribute("values", `${oldView}; ${newView}`);
+  anim.setAttribute("fill", "freeze");
+  anim.setAttribute("dur", "1s");
+  SVG.append(anim);
+  SVG.querySelector(`animate#${animName}`).beginElement();
+};

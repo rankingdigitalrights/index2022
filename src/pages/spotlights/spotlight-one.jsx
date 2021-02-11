@@ -4,42 +4,19 @@ import path from "path";
 import React from "react";
 import {useInView} from "react-intersection-observer";
 
-import story1 from "../../../data/spotlights/spotlight-1.json";
-import story2 from "../../../data/spotlights/spotlight-2.json";
+import story2 from "../../../data/spotlights/soe-fb-vs-youtube.json";
+import story1 from "../../../data/spotlights/soe-map-shutdowns.json";
 import FigureImg from "../../components/figure-img";
 import FigureSvg from "../../components/figure-svg";
-// import Layout from "../../components/layout-spotlights";
 import Layout from "../../components/layout";
+import NarrativeContainer from "../../components/narrative-container-full-feature";
 import ScrollyFeature from "../../components/scrolly-feature";
 import ImgChartF4 from "../../images/spotlights/soe-f4-barchart.png";
 import ImgProtest from "../../images/spotlights/soe-myanmar-protest.jpeg";
-// import DummyPNG from "../../images/spotlights/datawrapper-map-dummy.png";
-// import SpotlightChart from "../../components/spotlight-chart";
 import imgTableG4 from "../../images/spotlights/soe-table-g4.png";
 import ImgTweetFB from "../../images/spotlights/soe-tweet-fb.png";
 import ImgWhiteFlags from "../../images/spotlights/soe-white-flags.jpeg";
-import {toggleSVGclass} from "../../spotlights-one";
-
-// TODO: refactor into spotlight-components
-
-// const ExternalLink = ({href, text}) => {
-//   return (
-//     <a href={href} target="_blank">
-//       {text}
-//     </a>
-//   );
-// };
-
-// const updateSVGattr = ({objId, query, attr, value}) => {
-//   const Obj = document.querySelector(`#${objId}`).contentDocument;
-//   [...Obj.querySelectorAll(query)].map((item) =>
-//     item.setAttribute(attr, value),
-//   );
-// };
-
-const HeroImg = ({heroClass = "bg-context-over-code"}) => {
-  return <div className={`hero ${heroClass}`} />;
-};
+import {animateSVGviewBox, toggleSVGclass} from "../../scrollama-generic";
 
 const InnerCounter = (
   <div>
@@ -51,7 +28,7 @@ const InnerCounter = (
 export const getStaticProps = async () => {
   const svgFbYt = (
     await fsP.readFile(
-      path.join(process.cwd(), "public/svg/soe-fb-youtube-2.svg"),
+      path.join(process.cwd(), "public/svg/soe-fb-youtube.svg"),
     )
   ).toString();
 
@@ -134,7 +111,7 @@ const section1 = (
 
 const section2a = (
   <section className="max-w-6xl">
-    <h2 className="sticky-h">No network, no peace</h2>
+    <h2>No network, no peace</h2>
     <p>
       From{" "}
       <a href="https://globalvoices.org/2020/09/29/azerbaijani-authorities-disrupt-internet-nationwide-amid-nagorno-karabakh-clashes/">
@@ -259,15 +236,18 @@ const section2b = (
       </span>
     </p>
     <div className="box-prompt">
-      [WEB ELEMENT: SMALL TEXT POINTING TO F10, ENCOURAGING PEOPLE TO DO
-      SOMETHING LIKE “See our data on network shutdowns →”]
+      <div className="box-prompt-content">
+        <a href="/index2020/indicators/F10">
+          See our data on network shutdowns → [F10]
+        </a>
+      </div>
     </div>
   </section>
 );
 
 const section3 = (
   <section className="max-w-6xl">
-    <h2 className="sticky-h">Incitement gone viral</h2>
+    <h2>Incitement gone viral</h2>
     <p>
       When social media posts inciting political violence go viral, the
       consequences can be fatal. There will always be bad actors on the
@@ -325,8 +305,12 @@ const section3 = (
       id="map-dw-1"
     /> */}
     <div className="box-prompt">
-      PROMPT: How did we calculate these scores? Read the elements and research
-      guidance →[LINK TO G4]
+      <div className="box-prompt-content">
+        <a href="/index2020/indicators/G4">
+          How did we calculate these scores? Read the elements and research
+          guidance →[G4]
+        </a>
+      </div>
     </div>
     <p>
       Companies are erratic and opaque about how they implement their human
@@ -402,7 +386,7 @@ const section3 = (
 
 const section4 = (
   <section className="max-w-6xl">
-    <h2 className="sticky-h">More algorithms, more appeals</h2>
+    <h2>More algorithms, more appeals</h2>
     <p>
       When it comes to content moderation, companies will always make mistakes.
       Given the scale at which digital platforms operate, there is simply no way
@@ -453,26 +437,6 @@ const section4 = (
       alt="Embed FB “SORRY YOU CAN’T APPEAL THAT”"
     />
 
-    <figure>
-      <div className="box-placeholder">PLACEHOLDER / UNCLEAR</div>
-      <figcaption>
-        <p>
-          Content appealed and restored on appeal on Facebook vs. videos
-          appealed and restored on YouTube between October 2019 and September
-          2020. Data for Facebook does not include the &ldquo;Fake
-          Accounts&rdquo; category, for which appeals are not reported. Sources:{" "}
-          <a href="https://transparency.facebook.com/community-standards-enforcement">
-            Community Standards Enforcement Report (Facebook)
-          </a>{" "}
-          and{" "}
-          <a href="https://transparencyreport.google.com/youtube-policy/appeals">
-            Google Transparency Report (YouTube)
-          </a>
-          .
-        </p>
-      </figcaption>
-    </figure>
-
     <p>
       The{" "}
       <a href="https://www.cnet.com/news/youtube-automation-removes-11m-videos-in-3-months/">
@@ -500,7 +464,7 @@ const section4 = (
 
 const section5 = (
   <section className="max-w-6xl">
-    <h2 className="sticky-h">How can companies prepare for crisis?</h2>
+    <h2>How can companies prepare for crisis?</h2>
     <p>
       No person or company can anticipate every harm that will arise in an
       emergency. But there is a significant distance between this zone of
@@ -605,7 +569,7 @@ const section5 = (
 
 const section6 = (
   <section className="max-w-6xl">
-    <h2 className="sticky-h">Better late than never</h2>
+    <h2>Better late than never</h2>
     <p>
       Without preparedness, crises spin out of control. Understaffed hospitals
       and truncated national pandemic response teams fail to harness the
@@ -632,31 +596,43 @@ const section6 = (
   </section>
 );
 
+/* helper functions */
+
 // MAIN
 
 const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
   // const [currentStep, setCurrentStep] = useState();
   const [ioHook2] = useInView({
-    threshold: [0.5],
+    threshold: [0.6],
     triggerOnce: true,
   });
 
   return (
     <Layout>
-      <main className="container mx-auto spotlight">
-        {/* <HeroImage /> */}
-        {/* <FigureImg
-          img={HeroImage}
-          // caption="Caption: Example PNG Image"
-          alt="TODO - Caption: Example PNG Image"
-          // id="map-dw-1"
-        /> */}
-        <HeroImg />
-        <h1>
-          Context before code: Protecting human rights in a state of emergency
-        </h1>
-        {section1}
-        {section2a}
+      <main className="spotlight">
+        <NarrativeContainer
+          hasHero
+          heroClassName="hero-full hero-state-of-emergency"
+          heroCaption="Context before code: Protecting human rights in a state of emergency"
+          backgroundClassName="bg-rdr bg-opacity-20"
+          transparent
+        >
+          <div className="flex mb-9 border-b border-prissian">
+            <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xxl leading-none">
+              <span className="mt-3 md:mt-0">
+                Context before code: Protecting human rights in a state of
+                emergency.
+              </span>
+            </h1>
+          </div>
+
+          <div className="author-byline mb-9">
+            By: Jan Rydzak, Elizabeth Renieris
+          </div>
+
+          {section1}
+          {section2a}
+        </NarrativeContainer>
         <ScrollyFeature
           id="scrolly-map"
           ref={ioHook2}
@@ -670,29 +646,18 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               });
             }
             if (index === 3 && direction === "down") {
-              const mySVG = document.querySelector("#map-asia-1 svg");
-              const initialbox = mySVG.getBBox();
-              const shutdownbox = mySVG.querySelector("#Shutdowns").getBBox();
-              const oldView = `${initialbox.x} ${initialbox.y} ${initialbox.width} ${initialbox.height}`;
-              const newView = `${shutdownbox.x * 0.9} ${shutdownbox.y * 0.9} ${
-                shutdownbox.width * 1.2
-              } ${shutdownbox.height * 1.1}`;
-
-              /* target syntax */
-              // <animate attributeName="viewBox" values="0 0 600 400; 250 180 300 200" begin="indefinite" dur="1s" fill="freeze"/>
-
-              const anim = document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "animate",
+              const SVG = document.querySelector("#map-asia-1 svg");
+              animateSVGviewBox(
+                SVG,
+                "#Full-Map",
+                "#Shutdowns",
+                "zoom-shutdowns",
               );
-              anim.setAttribute("id", "zoom-1");
-              anim.setAttribute("attributeName", "viewBox");
-              anim.setAttribute("begin", "indefinite");
-              anim.setAttribute("values", `${oldView}; ${newView}`);
-              anim.setAttribute("fill", "freeze");
-              anim.setAttribute("dur", "1s");
-              mySVG.append(anim);
-              mySVG.querySelector("animate#zoom-1").beginElement();
+            }
+
+            if (index === 4 && direction === "down") {
+              const SVG = document.querySelector("#map-asia-1 svg");
+              animateSVGviewBox(SVG, "#Shutdowns", "#Asia-States", "zoom-asia");
             }
           }}
           stepExit={({index, direction}) => {
@@ -710,14 +675,19 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             {InnerCounter}
           </figure>
         </ScrollyFeature>
-        {section2b}
-        {section3}
-        {section4}
+        <NarrativeContainer
+          backgroundClassName="bg-rdr bg-opacity-20"
+          transparent
+        >
+          {section2b}
+          {section3}
+          {section4}
+        </NarrativeContainer>
         <ScrollyFeature
           id="scrolly-graph"
           story={story2}
-          stepEnter={({index, element}) => {
-            console.log(index, element.dataset);
+          stepEnter={({element}) => {
+            // console.log(index, element.dataset);
             if (element.dataset.queries) {
               toggleSVGclass({
                 objId: "chart-q1",
@@ -734,7 +704,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             <FigureSvg
               className="scrolly-figure bg-gray-200"
               svg={svgFbYt}
-              caption="Optional Caption"
+              caption="Content appealed and restored on appeal on Facebook vs. videos appealed and restored on YouTube between October 2019 and September 2020. Data for Facebook does not include the &ldquo;Fake Accounts&rdquo; category, for which appeals are not reported. Sources: <a href='https://transparency.facebook.com/community-standards-enforcement'>Community Standards Enforcement Report (Facebook)</a> and <a href='https://transparencyreport.google.com/youtube-policy/appeals'>Google Transparency Report (YouTube)</a>."
               alt="TODO: Alternative description"
               id="chart-q1"
             />
@@ -744,8 +714,13 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             </div>
           </figure>
         </ScrollyFeature>
-        {section5}
-        {section6}
+        <NarrativeContainer
+          backgroundClassName="bg-rdr bg-opacity-20"
+          transparent
+        >
+          {section5}
+          {section6}
+        </NarrativeContainer>
       </main>
     </Layout>
   );

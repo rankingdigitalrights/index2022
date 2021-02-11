@@ -43,8 +43,6 @@ const ScrollyFeature = ({
 
   return (
     <section id={id} ref={scrollyEl} className="scrolly">
-      <h2 className="sticky-h">{`${id} ${inView}`}</h2>
-
       <div ref={ioHook} id={`canvas-${id}`} className={className}>
         {children}
       </div>

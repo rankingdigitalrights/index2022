@@ -3,7 +3,7 @@ import React, {useEffect, useMemo, useRef, useState} from "react";
 import {useInView} from "react-intersection-observer";
 import scrollama from "scrollama";
 
-import story from "../../../data/spotlights/spotlight-1.json";
+import story from "../../../data/spotlights/soe-map-shutdowns.json";
 import Iframe from "../../components/datawrapper";
 import Layout from "../../components/layout-spotlights";
 import ScrollySteps from "../../components/scrolly-steps";

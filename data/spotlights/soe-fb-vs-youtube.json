@@ -16,7 +16,7 @@
       "title": "2019 Q4 - YouTube",
       "content": "<ul><li>YouTube:<ul><li>Appeals</li><li>Restored:</li></ul></li></ul>",
       "color": "bg-cat-freedom",
-      "queries": "#grid, #_2019-q4 #q4-split-yt"
+      "queries": "#grid, #_2019-q4 #q4-split-yt, #legend"
     },
     {
       "id": 4,

@@ -87,6 +87,11 @@
     background-image: url("../images/hero-tech-giants.jpg?size=1024");
   }
 
+  .hero-state-of-emergency {
+    @apply bg-contain bg-no-repeat bg-center;
+    background-image: url("../images/bg-kashmir.jpg?size=1024");
+  }
+
   .hero-key-findings {
     @apply bg-cover bg-center;
     background-image: url("../images/bg-key-findings.jpg?size=1024");
@@ -280,11 +285,11 @@
     max-width: 100%;
   }
 
-  main.spotlight .hero {
+  /* main.spotlight .hero {
     height: 100vh;
     width: 100%;
     margin-top: -60px;
-  }
+  } */
 
   main.spotlight .fade-in {
     opacity: 1;
@@ -300,23 +305,42 @@
   main.spotlight section ol,
   main.spotlight section ul,
   main.spotlight blockquote {
-    max-width: 720px;
+    max-width: 900px;
     margin: 1rem auto;
   }
 
+  main.spotlight .hero-full {
+    /* height: calc(100vh - 72px); */
+    height: 66vh;
+    background-size: cover;
+  }
+
+  main.spotlight .author-byline {
+    @apply text-lg font-platform;
+  }
+
   main.spotlight blockquote {
-    font-style: italic;
+    @apply font-platform text-rdr text-lg;
     margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
+    border-left: 6px solid;
+    padding-left: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
   }
 
-  main.spotlight blockquote:before {
+  /* main.spotlight blockquote:before {
     content: "”";
     padding-right: 1rem;
     margin-right: 1rem;
     font-size: 3rem;
     border-right: 4px solid orange;
+  } */
+
+  /* 
+  main.spotlight section h2 {
+    text-transform: uppercase;
   }
 
   main.spotlight section {
@@ -328,40 +352,33 @@
 
   main.spotlight section:first-of-type {
     padding-top: 30px;
-  }
+  } */
 
   main.spotlight section.scrolly {
     @apply relative;
-    padding: 1rem 0;
-    margin-left: 0;
-    margin-right: 0;
+    padding: 0;
+    margin: 0;
   }
 
-  main.spotlight section h2 {
-    text-transform: uppercase;
-  }
-
-  main.spotlight section h2.sticky-h {
+  main.spotlight h2.sticky-h {
     @apply sticky;
-    margin-left: -1rem;
     top: 30px;
     display: inline;
-    background-color: white;
   }
 
-  main.spotlight section.scrolly h2 {
-    @apply max-w-6xl;
+  main.spotlight h2.scrolly-title {
+    /* @apply max-w-6xl; */
+    position: absolute;
+    top: 30px;
+    left: 1rem;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1rem;
-    padding-left: 1rem;
-    background-color: unset;
     z-index: 10;
   }
 
   main.spotlight h3 {
-    max-width: 720px;
-    margin: 0 auto;
+    @apply text-lg;
   }
 
   main.spotlight a {
@@ -387,24 +404,28 @@
     border-radius: 5px;
   }
 
-  main.spotlight figure {
+  main.spotlight figure:not(.hero-figure) {
     width: 100%;
     max-width: 900px;
-    margin: 2rem auto 3rem auto;
+    margin: 1.5rem auto 2rem auto;
   }
 
   main.spotlight figure.contained {
-    max-width: 720px;
+    max-width: 900px;
   }
 
-  main.spotlight figure figcaption {
+  /* main.spotlight figure:not(.hero-figure) figcaption {
     @apply font-platform;
     text-align: right;
     margin: 1rem auto;
+  } */
+
+  main.spotlight figcaption {
+    @apply font-circular text-xxs py-1;
   }
 
-  main.spotlight figure img {
-    margin: 1rem auto;
+  main.spotlight figure:not(.hero-figure) img {
+    margin: 0 auto;
     width: 100%;
   }
 
@@ -429,6 +450,7 @@
   .scrolly-canvas figure figcaption {
     position: absolute;
     bottom: 0;
+    padding-left: 1rem;
     right: 1rem;
   }
 
@@ -491,6 +513,7 @@
     margin-top: 150vh;
     margin-bottom: 0;
     padding: 0 1rem;
+    z-index: +1;
   }
 
   .step.invisible {
@@ -554,18 +577,31 @@
   }
 
   main.spotlight .box-prompt {
-    background: gold;
-    border-radius: 50px;
+    margin-bottom: 2rem;
     text-align: right;
-    max-width: 50%;
-    margin: 0 auto;
-    padding: 0.3rem 0.6rem;
+    min-height: 65px;
+  }
+
+  main.spotlight .box-prompt .box-prompt-content {
+    @apply bg-accent-gold text-base text-black font-bold font-circular;
+    margin: 0 0 0 auto;
+    border-radius: 24px;
+    height: 100%;
+    text-align: right;
+    /* max-width: 360px; */
+    width: 66%;
+    padding: 1rem;
+    line-height: 1.1rem;
+  }
+
+  main.spotlight .box-prompt .box-prompt-content a {
+    @apply text-black;
   }
 
   main.spotlight .box-placeholder {
     border: 2px solid lightgrey;
     text-align: right;
-    max-width: 720px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0.3rem 0.6rem;
     min-height: 50vh;

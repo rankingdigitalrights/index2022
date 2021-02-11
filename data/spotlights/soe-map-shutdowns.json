@@ -1,21 +1,24 @@
 {
   "steps": [{
       "id": "a1",
-      "title": "World",
-      "content": "Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.\n\nProw scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.",
-      "color": "bg-cat-freedom"
+      "title": "World - Basemap",
+      "content": "[Toggle Basemap]",
+      "color": "bg-cat-freedom",
+      "queries": "#Basemap"
     },
     {
       "id": "a2",
       "title": "World RDR",
-      "content": "Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.\n\nProw scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.",
-      "color": "bg-cat-freedom"
+      "content": "[Where RDR-ranked Companies provide services.<br>Maybe some stats...]",
+      "color": "bg-cat-freedom",
+      "queries": "#RDRScope"
     },
     {
       "id": "b1",
       "title": "World RDR Shutdowns",
       "content": "Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.\n\nProw scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crows nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.",
-      "color": "bg-cat-freedom"
+      "color": "bg-cat-freedom",
+      "queries": "#Shutdowns, #Labels"
     }, {
       "id": "c1",
       "title": "Pivot to Asia",
