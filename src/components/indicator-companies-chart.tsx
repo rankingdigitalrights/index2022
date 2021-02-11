@@ -1,6 +1,7 @@
 import c from "clsx";
 import React, {useState} from "react";
 
+import {useMobileSize} from "../hooks";
 import {IndicatorCategory, IndicatorCompanyScore} from "../types";
 import PercentageBar from "./percentage-bar";
 
@@ -17,19 +18,35 @@ const IndicatorCompaniesChart = ({
   scores,
   className,
 }: IndicatorCompaniesChartProps) => {
+  const isMobile = useMobileSize(768);
   const [highlightedCompany, setHighlightedCompany] = useState<
     string | undefined
   >();
 
+  const containerClassName = {
+    "h-80": isMobile,
+    "h-72": !isMobile,
+  };
   const categoryClassName = {
     "text-cat-governance": category === "governance",
     "text-cat-freedom": category === "freedom",
     "text-cat-privacy": category === "privacy",
   };
 
+  const labelClassName = {
+    "transform -rotate-90 translate-y-8 w-32": isMobile,
+    "transform -rotate-45 -translate-x-10 mt-2 w-28": !isMobile,
+  };
+
   return (
-    <div className={c("flex w-full font-circular text-sm h-72", className)}>
-      <div className="flex flex-col w-12">
+    <div
+      className={c(
+        "flex w-full font-circular text-sm",
+        className,
+        containerClassName,
+      )}
+    >
+      <div className="flex flex-col w-12 mr-1">
         <span className="flex-none text-sm">&nbsp;</span>
 
         <div className="flex mt-2">
@@ -106,7 +123,8 @@ const IndicatorCompaniesChart = ({
               </div>
               <span
                 className={c(
-                  "mt-2 transform -rotate-45 -translate-x-10 text-sm text-right w-28 cursor-default",
+                  "text-sm text-right cursor-default",
+                  labelClassName,
                   highlightedClassName,
                 )}
               >
