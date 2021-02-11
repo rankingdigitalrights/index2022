@@ -266,15 +266,17 @@ export const narrativeMdx = (imgPath: string, src: string): string => {
       const $el = $(el);
 
       if (el.tagName === "img") {
+        const title = $el.attr("title");
+        const alt = $el.attr("alt");
         const attrs = [];
 
         const imageSrc = $el.attr("src");
 
-        if ($el.attr("title") !== "") {
-          attrs.push(`title="${$el.attr("title")}"`);
+        if (title && title !== "") {
+          attrs.push(`title="${title}}"`);
         }
-        if ($el.attr("alt") !== "") {
-          attrs.push(`alt="${$el.attr("alt")}"`);
+        if (alt && alt !== "") {
+          attrs.push(`alt="${alt.replace(/\r?\n|\r/g, " ")}"`);
         }
 
         if (!imageSrc) return unreachable(`Image lacks a source.`);
