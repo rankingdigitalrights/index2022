@@ -212,14 +212,14 @@ const Home = ({
       <div className="lg:container lg:mx-auto flex flex-col md:flex-row md:justify-between bg-black">
         <HomeSpotlightBox
           className="md:w-1/3 h-64 bg-context-over-code"
-          title="Context over code"
-          href="/spotlights/spotlight-one"
-          text="Protecting human rights in times of crisis"
+          title="Context before code"
+          href="/spotlights/context-before-code"
+          text="Protecting human rights in a state of emergency"
         />
         <HomeSpotlightBox
           className="md:w-1/3 h-64 bg-unaccountable-algorithms"
           title="Moving fast and breaking us all"
-          href="/spotlights/spotlight-two"
+          href="/spotlights/unaccountable-algorithms"
           text="Big Tech’s unaccountable algorithms"
         />
         <HomeSpotlightBox

@@ -205,18 +205,18 @@ const HeaderBar = ({className}: HeaderBarProps) => {
 
                 <ul role="menubar" className="list-inside list-none ml-0">
                   <li>
-                    <Link passHref href="/spotlights/spotlight-one">
+                    <Link passHref href="/spotlights/context-before-code">
                       <a className="text-black">
-                        Context over code: Protecting human rights in times of
-                        crisis
+                        Context before code: Protecting human rights in a state
+                        of emergency
                       </a>
                     </Link>
                   </li>
                   <li>
-                    <Link passHref href="/spotlights/spotlight-two">
+                    <Link passHref href="/spotlights/unaccountable-algorithms">
                       <a className="text-black">
-                        Unaccountable Algorithms: Will company policies ever see
-                        the light of day?
+                        Moving fast and breaking us all: Big Tech’s
+                        unaccountable algorithms
                       </a>
                     </Link>
                   </li>

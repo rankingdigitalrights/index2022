@@ -12,8 +12,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Black.otf);
-    src: url(../../public/fonts/CircularStd-Black.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Black.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Black.woff) format("woff");
     font-weight: 700;
@@ -23,8 +22,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Book.ttf);
-    src: url(../../public/fonts/CircularStd-Book.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Book.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Book.woff) format("woff");
     font-weight: 400;
@@ -43,8 +41,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-Regular.otf);
-    src: url(../../public/fonts/LyonText-Regular.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-Regular.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
       url(../../public/fonts/LyonText-Regular.woff) format("woff");
     font-weight: 400;
@@ -64,8 +61,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-RegularItalic.otf);
-    src: url(../../public/fonts/LyonText-RegularItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-RegularItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
       url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
     font-weight: 400;
@@ -75,8 +71,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-BoldItalic.otf);
-    src: url(../../public/fonts/LyonText-BoldItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-BoldItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
     font-weight: 700;
     font-style: italic;
@@ -90,6 +85,11 @@
   .hero-state-of-emergency {
     @apply bg-contain bg-no-repeat bg-center;
     background-image: url("../images/bg-kashmir.jpg?size=1024");
+  }
+
+  .hero-algorithms {
+    @apply bg-contain bg-no-repeat bg-center;
+    background-image: url("../images/hero-robots-by-pawel-kuczynski.jpg?size=1024");
   }
 
   .hero-key-findings {
@@ -258,7 +258,7 @@
     content: " ";
   }
 
-  .pullquote > p {
+  .pullquote>p {
     @apply p-0;
   }
 
@@ -309,13 +309,13 @@
     margin: 1rem auto;
   }
 
-  main.spotlight .hero-full {
+  .hero-full {
     /* height: calc(100vh - 72px); */
     height: 66vh;
     background-size: cover;
   }
 
-  main.spotlight .author-byline {
+  .author-byline {
     @apply text-lg font-platform;
   }
 
@@ -386,8 +386,7 @@
   }
 
   main.spotlight ol,
-  main.spotlight ul {
-  }
+  main.spotlight ul {}
 
   main.spotlight ol {
     list-style-type: decimal;
