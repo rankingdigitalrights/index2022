@@ -4,11 +4,11 @@ const ScrollySteps = (props) => {
   // console.dir(props);
   return (
     <div className="scrolly-steps">
-      <div
+      {/* <div
         className="step invisible"
         data-step="-99"
         data-color="bg-gray-400"
-      />
+      /> */}
       {props.story.steps.map(
         ({
           id,
@@ -16,19 +16,17 @@ const ScrollySteps = (props) => {
           company,
           content,
           color,
-          queries = "",
-          toggle = "fade-out",
+          showLayers = "",
+          hideLayers = "",
         }) => {
-          // FIXME: I needed to use something else than the index as the unique key.
-          // Not sure if the title is right as a identifier but it works for now.
           return (
             <div
               key={id}
               className="step shadow"
               data-step={company}
               data-color={color}
-              data-queries={queries}
-              data-toggle={toggle}
+              data-show={showLayers}
+              data-hide={hideLayers}
             >
               <h2 className="bg-white-100">{title}</h2>
               <div

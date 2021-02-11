@@ -46,7 +46,6 @@ const ScrollyFeature = ({
       <div ref={ioHook} id={`canvas-${id}`} className={className}>
         {children}
       </div>
-
       <ScrollySteps story={story} />
     </section>
   );

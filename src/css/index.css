@@ -303,7 +303,7 @@
 
   main.spotlight .fade-out {
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.6s ease-in-out;
   }
 
   main.spotlight section p,
@@ -360,7 +360,7 @@
   } */
 
   main.spotlight section.scrolly {
-    @apply relative;
+    /* @apply relative; */
     padding: 0;
     margin: 0;
   }
@@ -436,6 +436,11 @@
 
   figure svg {
     margin: 0 auto;
+  }
+
+  main.spotlight figure.spot-figure,
+  main.spotlight figure.scrolly-figure {
+    margin: 0;
   }
 
   .scrolly-canvas figure.figure-svg {
@@ -515,10 +520,12 @@
 
   div.scrolly-steps {
     @apply relative p-0 max-w-md mx-auto z-10;
-    margin-top: 150vh;
+    margin-top: 0;
     margin-bottom: 0;
     padding: 0 1rem;
     z-index: +1;
+    overflow-y: hidden;
+    /* unclear why, but solves white space problem for now */
   }
 
   .step.invisible {
@@ -548,9 +555,13 @@
     padding-bottom: 0;
   }
 
-  .step:last-child {
-    margin-bottom: 133vh;
+  .step:first-child {
+    margin-top: 0;
   }
+
+  /* .step:last-child {
+    margin-bottom: 133vh;
+  } */
 
   .step.is-active h3 {
     @apply bg-yellow-500 text-gray-200;

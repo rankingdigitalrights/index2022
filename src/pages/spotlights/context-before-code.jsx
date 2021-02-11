@@ -18,13 +18,6 @@ import ImgTweetFB from "../../images/spotlights/soe-tweet-fb.png";
 import ImgWhiteFlags from "../../images/spotlights/soe-white-flags.jpeg";
 import {animateSVGviewBox, toggleSVGclass} from "../../scrollama-generic";
 
-const InnerCounter = (
-  <div>
-    <p id="scene-counter">Off</p>
-    <p id="index-counter">Off</p>
-  </div>
-);
-
 export const getStaticProps = async () => {
   const svgFbYt = (
     await fsP.readFile(
@@ -296,14 +289,8 @@ const section3 = (
       img={imgTableG4}
       extraClass="contained"
       // caption="TBA; Currently no caption by decision"
-      alt="TODO - Caption: Example PNG Image"
+      alt="TODO - Caption | Description"
     />
-    {/* <FigureSvg
-      img={svgTableG4}
-      caption="TBA; Currently no caption"
-      alt="TODO - Caption: Example PNG Image"
-      id="map-dw-1"
-    /> */}
     <div className="box-prompt">
       <div className="box-prompt-content">
         <a href="/index2020/indicators/G4">
@@ -610,117 +597,109 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
   return (
     <Layout>
       <main className="spotlight">
-        <NarrativeContainer
-          hasHero
-          heroClassName="hero-full hero-state-of-emergency"
-          heroCaption="Context before code: Protecting human rights in a state of emergency"
-          backgroundClassName="bg-rdr bg-opacity-20"
-          transparent
-        >
-          <div className="flex mb-9 border-b border-prissian">
-            <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xxl leading-none">
-              <span className="mt-3 md:mt-0">
-                Context before code: Protecting human rights in a state of
-                emergency.
-              </span>
-            </h1>
-          </div>
-
-          <div className="author-byline mb-9">
-            By: Jan Rydzak, Elizabeth Renieris
-          </div>
-
-          {section1}
-          {section2a}
-        </NarrativeContainer>
-        <ScrollyFeature
-          id="scrolly-map"
-          ref={ioHook2}
-          story={story1}
-          stepEnter={({index, element, direction}) => {
-            if (element.dataset.queries) {
-              toggleSVGclass({
-                objId: "map-asia-1",
-                query: element.dataset.queries,
-                toggleClassName: element.dataset.toggle,
-              });
-            }
-            if (index === 3 && direction === "down") {
-              const SVG = document.querySelector("#map-asia-1 svg");
-              animateSVGviewBox(
-                SVG,
-                "#Full-Map",
-                "#Shutdowns",
-                "zoom-shutdowns",
-              );
-            }
-
-            if (index === 4 && direction === "down") {
-              const SVG = document.querySelector("#map-asia-1 svg");
-              animateSVGviewBox(SVG, "#Shutdowns", "#Asia-States", "zoom-asia");
-            }
-          }}
-          stepExit={({index, direction}) => {
-            console.log(`Local Exit 1: ${index} - ${direction}`); // TODO
-          }}
-        >
-          <figure className="scrolly-figure bg-gray-200">
-            <FigureSvg
-              className="scrolly-figure bg-gray-200"
-              svg={svgWorldMap}
-              caption="Caption As Props 1"
-              alt="TODO: Alternative description"
-              id="map-asia-1"
-            />
-            {InnerCounter}
-          </figure>
-        </ScrollyFeature>
-        <NarrativeContainer
-          backgroundClassName="bg-rdr bg-opacity-20"
-          transparent
-        >
-          {section2b}
-          {section3}
-          {section4}
-        </NarrativeContainer>
-        <ScrollyFeature
-          id="scrolly-graph"
-          story={story2}
-          stepEnter={({element}) => {
-            // console.log(index, element.dataset);
-            if (element.dataset.queries) {
-              toggleSVGclass({
-                objId: "chart-q1",
-                query: element.dataset.queries,
-                toggleClassName: element.dataset.toggle,
-              });
-            }
-          }}
-          stepExit={({index, direction}) => {
-            console.log(`Local Exit 1: ${index} - ${direction}`);
-          }}
-        >
-          <figure className="scrolly-figure bg-gray-200">
-            <FigureSvg
-              className="scrolly-figure bg-gray-200"
-              svg={svgFbYt}
-              caption="Content appealed and restored on appeal on Facebook vs. videos appealed and restored on YouTube between October 2019 and September 2020. Data for Facebook does not include the &ldquo;Fake Accounts&rdquo; category, for which appeals are not reported. Sources: <a href='https://transparency.facebook.com/community-standards-enforcement'>Community Standards Enforcement Report (Facebook)</a> and <a href='https://transparencyreport.google.com/youtube-policy/appeals'>Google Transparency Report (YouTube)</a>."
-              alt="TODO: Alternative description"
-              id="chart-q1"
-            />
-            <div>
-              <p id="scene-counter">Off</p>
-              <p id="index-counter">Off</p>
+        <>
+          <NarrativeContainer
+            hasHero
+            heroClassName="hero-full hero-state-of-emergency"
+            heroCaption="Context before code: Protecting human rights in a state of emergency"
+            backgroundClassName="bg-rdr bg-opacity-20"
+            transparent
+          >
+            <div className="flex mb-9 border-b border-prissian">
+              <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xxl leading-none">
+                <span className="mt-3 md:mt-0">
+                  Context before code: Protecting human rights in a state of
+                  emergency.
+                </span>
+              </h1>
             </div>
-          </figure>
-        </ScrollyFeature>
-        <NarrativeContainer
-          backgroundClassName="bg-rdr bg-opacity-20"
-          transparent
-        >
-          {section5}
-          {section6}
-        </NarrativeContainer>
+            <div className="author-byline mb-9">
+              By: Jan Rydzak, Elizabeth Renieris
+            </div>
+            {section1}
+            {section2a}
+          </NarrativeContainer>
+          <ScrollyFeature
+            id="scrolly-map"
+            ref={ioHook2}
+            story={story1}
+            stepEnter={({index, element, direction}) => {
+              if (element.dataset.show || element.dataset.hide) {
+                toggleSVGclass({
+                  objId: "map-asia-1",
+                  showLayers: element.dataset.show,
+                  hideLayers: element.dataset.hide,
+                  direction,
+                });
+              }
+              if (index === 2 && direction === "down") {
+                const SVG = document.querySelector("#map-asia-1 svg");
+                animateSVGviewBox(
+                  SVG,
+                  "#Full-Map",
+                  "#Shutdowns",
+                  "zoom-shutdowns",
+                );
+              }
+            }}
+            stepExit={({index, direction}) => {
+              console.log(`Local Exit 1: ${index} - ${direction}`); // TODO
+            }}
+          >
+            <figure className="scrolly-figure bg-gray-200">
+              <FigureSvg
+                className="scrolly-figure bg-gray-200"
+                svg={svgWorldMap}
+                caption="Caption As Props 1"
+                alt="TODO: Alternative description"
+                id="map-asia-1"
+              />
+            </figure>
+          </ScrollyFeature>
+          <NarrativeContainer
+            backgroundClassName="bg-rdr bg-opacity-20"
+            transparent
+          >
+            {section2b}
+            {section3}
+            {section4}
+          </NarrativeContainer>
+          <ScrollyFeature
+            id="scrolly-graph"
+            story={story2}
+            stepEnter={({element, direction}) => {
+              // console.log(index, element.dataset);
+              if (element.dataset.show || element.dataset.hide) {
+                toggleSVGclass({
+                  objId: "chart-q1",
+                  showLayers: element.dataset.show,
+                  hideLayers: element.dataset.hide,
+                  direction,
+                });
+              }
+            }}
+            stepExit={({index, direction}) => {
+              console.log(`Local Exit 1: ${index} - ${direction}`);
+            }}
+          >
+            <figure className="scrolly-figure bg-gray-200">
+              <FigureSvg
+                className="scrolly-figure bg-gray-200"
+                svg={svgFbYt}
+                caption="Content appealed and restored on appeal on Facebook vs. videos appealed and restored on YouTube between October 2019 and September 2020. Data for Facebook does not include the &ldquo;Fake Accounts&rdquo; category, for which appeals are not reported. Sources: <a href='https://transparency.facebook.com/community-standards-enforcement'>Community Standards Enforcement Report (Facebook)</a> and <a href='https://transparencyreport.google.com/youtube-policy/appeals'>Google Transparency Report (YouTube)</a>."
+                alt="TODO: Alternative description"
+                id="chart-q1"
+              />
+            </figure>
+          </ScrollyFeature>
+          <NarrativeContainer
+            backgroundClassName="bg-rdr bg-opacity-20"
+            transparent
+          >
+            {section5}
+            {section6}
+          </NarrativeContainer>
+        </>
       </main>
     </Layout>
   );
