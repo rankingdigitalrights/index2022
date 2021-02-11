@@ -12,11 +12,18 @@ import YearOverYearLabel from "../../components/year-over-year-label";
 import {
   allCompanies,
   companyData,
+  companyMeta,
   companyRankingData,
   companyServices,
 } from "../../data";
 import Download from "../../images/icons/download.svg";
-import {CompanyDetails, CompanyIndex, CompanyRank, Service} from "../../types";
+import {
+  CompanyDetails,
+  CompanyIndex,
+  CompanyMeta,
+  CompanyRank,
+  Service,
+} from "../../types";
 
 type Params = {
   params: {
@@ -27,6 +34,7 @@ type Params = {
 interface CompanyProps {
   index: CompanyIndex;
   details: CompanyDetails;
+  meta: CompanyMeta;
   ranking: CompanyRank[];
   services: Service[];
 }
@@ -45,6 +53,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params: {slug}}: Params) => {
   const [index, details] = await companyData(slug);
+  const meta = await companyMeta(slug);
   const ranking = await companyRankingData(index.kind, "total");
   const services = await companyServices(slug);
 
@@ -53,13 +62,20 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
     props: {
       index,
       details,
+      meta,
       ranking,
       services,
     },
   };
 };
 
-const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
+const CompanyPage = ({
+  index,
+  details,
+  meta,
+  ranking,
+  services,
+}: CompanyProps) => {
   const router = useRouter();
 
   const isPrint = router.query?.print !== undefined;
@@ -135,7 +151,7 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
                 </h3>
 
                 <div className=" border-b border-disabled-light print:border-b-0 w-full pb-6">
-                  <ul className="list-none list-outside pl-0">
+                  <ul className="list-none list-outside ml-0 pl-0">
                     {services
                       .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
                       .map(({id, name, kind}) => (
@@ -146,6 +162,32 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
                   </ul>
                 </div>
               </div>
+
+              <ul className="list-none list-outside ml-0 pl-0 border-b border-disabled-light print:border-b-0 w-full py-6">
+                {meta.operatingCompany && (
+                  <li className="pt-0 pb-3 print:py-3">
+                    <span className="font-bold">
+                      Operating company evaluated:
+                    </span>{" "}
+                    {meta.operatingCompany}
+                  </li>
+                )}
+
+                <li className="pb-0 print:py-3">
+                  <span className="font-bold">Market cap:</span>{" "}
+                  {meta.marketCap} ({meta.marketCapDate})
+                </li>
+
+                <li className="pt-3 pb-0 print:py-3">
+                  <span className="font-bold">{meta.exchange}:</span>{" "}
+                  {meta.stockSymbol}
+                </li>
+
+                <li className="pt-3 pb-0 print:py-3">
+                  <span className="font-bold">Website:</span>{" "}
+                  <a href={meta.website}>{meta.website}</a>
+                </li>
+              </ul>
 
               <div className="border-b border-disabled-light print:border-b-0 w-full py-6 print:ml-6 print:w-2/3">
                 <p>
@@ -160,6 +202,13 @@ const CompanyPage = ({index, details, ranking, services}: CompanyProps) => {
                   evaluated, with each service weighted equally.
                 </p>
               </div>
+
+              <ul className="list-none list-outside ml-0 pl-0 border-b border-disabled-light print:border-b-0 w-full py-6">
+                <li className="pb-0 print:py-3">
+                  <span className="font-bold">Lead researchers:</span>{" "}
+                  {meta.researchers.join(", ")}
+                </li>
+              </ul>
 
               <div className="mt-6 print:hidden">
                 <Link passHref href={`/pdf/companies/${index.id}.pdf`}>
