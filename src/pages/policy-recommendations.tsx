@@ -2,6 +2,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import React from "react";
 
+import Footnotes from "../components/footnotes";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import {policyRecommendations} from "../data";
@@ -44,7 +45,7 @@ const PolicyRecommendations = ({details}: NarrativeProps) => {
 
               {body}
 
-              {footnotes}
+              {footnotes && <Footnotes source={footnotes} />}
             </Container>
           );
         }}
