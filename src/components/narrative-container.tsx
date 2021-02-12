@@ -9,11 +9,14 @@ const containerWidth =
 
 interface ContainerProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-const Container = ({children: contents}: ContainerProps) => {
+const Container = ({children: contents, className}: ContainerProps) => {
   return (
-    <div className={c("container mx-auto", containerWidth)}>{contents}</div>
+    <div className={c("container mx-auto", containerWidth, className)}>
+      {contents}
+    </div>
   );
 };
 
@@ -69,7 +72,7 @@ const NarrativeContainer = ({
             />
           </div>
 
-          <div className="relative flex items-center py-3">
+          <div className="relative flex items-center justify-around py-3">
             {children({Container})}
           </div>
         </div>

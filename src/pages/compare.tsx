@@ -68,22 +68,26 @@ const ScoresOverTime = ({diffScores, details}: ScoresOverTimeProps) => {
                 {introduction}
               </Container>
 
-              <div className="flex flex-col mx-auto items-center lg:justify-center my-6 lg:flex-row">
-                <div className="flex flex-col">
-                  <CompanyKindLabel kind="internet" theme="dark" />
-                  <CompareScoresChart
-                    className="flex-none w-full lg:w-1/2 mt-3"
-                    scores={diffScores.filter(({kind}) => kind === "internet")}
-                  />
-                </div>
+              <div className="container mx-auto">
+                <div className="flex flex-col items-center lg:justify-center my-6 lg:flex-row">
+                  <div className="flex flex-col">
+                    <CompanyKindLabel kind="internet" theme="dark" />
+                    <CompareScoresChart
+                      className="flex-none w-full lg:w-1/2 mt-3"
+                      scores={diffScores.filter(
+                        ({kind}) => kind === "internet",
+                      )}
+                    />
+                  </div>
 
-                <div className="flex flex-col lg:ml-10">
-                  <CompanyKindLabel kind="telecom" theme="dark" />
+                  <div className="flex flex-col lg:ml-10">
+                    <CompanyKindLabel kind="telecom" theme="dark" />
 
-                  <CompareScoresChart
-                    className="flex-none w-full lg:w-1/2 mt-3"
-                    scores={diffScores.filter(({kind}) => kind === "telecom")}
-                  />
+                    <CompareScoresChart
+                      className="flex-none w-full lg:w-1/2 mt-3"
+                      scores={diffScores.filter(({kind}) => kind === "telecom")}
+                    />
+                  </div>
                 </div>
               </div>
 
