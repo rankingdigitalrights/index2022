@@ -34,7 +34,7 @@ const ChinaTechGiants = ({details}: NarrativeProps) => {
     <Layout>
       <NarrativeContainer
         heroClassName="hero-tech-giants"
-        heroCaption="People queue for milk during the pandemic in Srinagar, Kashmir. Photo by Abid Bhat, used with permission."
+        heroCaption="Speech in the Age of COVID, by Rafat Alkhatib. Used with permission."
         backgroundClassName="bg-rdr bg-opacity-30"
         transparent
         hasDonate={false}
@@ -42,7 +42,7 @@ const ChinaTechGiants = ({details}: NarrativeProps) => {
         {({Container}) => {
           return (
             <Container>
-              <NarrativeTitle title={pageTitle} byLine="XXX" />
+              <NarrativeTitle title={pageTitle} byLine="Rebecca MacKinnon" />
 
               {body}
 
