@@ -6,12 +6,12 @@ import Footnotes from "../components/footnotes";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
-import {aboutUs} from "../data";
+import {acknowledgements} from "../data";
 import {components} from "../mdx";
 import {NarrativeProps} from "../types";
 
 export const getStaticProps = async () => {
-  const details = await aboutUs();
+  const details = await acknowledgements();
 
   const pageTitle = await renderToString(details.pageTitle, {components});
   const body = await renderToString(details.body, {components});
@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
   return {props: {details: {pageTitle, body, footnotes}}};
 };
 
-const AboutUs = ({details}: NarrativeProps) => {
+const Acknowledgements = ({details}: NarrativeProps) => {
   const pageTitle = hydrate(details.pageTitle, {components});
   const body = hydrate(details.body, {components});
   const footnotes = details.footnotes
@@ -49,4 +49,4 @@ const AboutUs = ({details}: NarrativeProps) => {
   );
 };
 
-export default AboutUs;
+export default Acknowledgements;

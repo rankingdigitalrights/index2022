@@ -306,33 +306,42 @@ const writeJsonFile = (
         recursive: true,
       });
 
+      const executiveSummaryTarget = path.join(
+        narrativesDir,
+        "executive-summary.json",
+      );
       const introEssayTarget = path.join(narrativesDir, "intro-essay.json");
-
-      const aboutUsTarget = path.join(narrativesDir, "about-us.json");
-
+      const acknowledgementsTarget = path.join(
+        narrativesDir,
+        "acknowledgements.json",
+      );
       const keyFindingsTarget = path.join(narrativesDir, "key-findings.json");
-
       const methodologyTarget = path.join(narrativesDir, "methodology.json");
-
       const policyRecommendationsTarget = path.join(
         narrativesDir,
         "policy-recommendations.json",
       );
-
       const chinaTechGiantsTarget = path.join(
         narrativesDir,
         "china-tech-giants.json",
       );
-
       const compareTarget = path.join(narrativesDir, "compare.json");
+
+      console.log(`Pull content for: ${executiveSummaryTarget}`);
+
+      await narrativePage("Executive Summary").then(
+        writeJsonFile(executiveSummaryTarget),
+      );
 
       console.log(`Pull content for: ${introEssayTarget}`);
 
       await narrativePage("Intro Essay").then(writeJsonFile(introEssayTarget));
 
-      console.log(`Pull content for: ${aboutUsTarget}`);
+      console.log(`Pull content for: ${acknowledgementsTarget}`);
 
-      await narrativePage("About Us").then(writeJsonFile(aboutUsTarget));
+      await narrativePage("Acknowledgements").then(
+        writeJsonFile(acknowledgementsTarget),
+      );
 
       console.log(`Pull content for: ${keyFindingsTarget}`);
 

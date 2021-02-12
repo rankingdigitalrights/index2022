@@ -398,7 +398,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </li>
 
                 <li className="flex items-start pt-3">
-                  <Link passHref href="/about-us">
+                  <Link passHref href="/acknowledgements">
                     <a
                       role="menuitem"
                       className="flex items-start font-bold text-black pointer-cursor"

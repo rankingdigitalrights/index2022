@@ -279,6 +279,13 @@ export const companyDiffScoresData = async (
 };
 
 /*
+ * Load the executive summary HTML.
+ */
+export const executiveSummary = loadJson<NarrativePage>(
+  "data/narratives/executive-summary.json",
+);
+
+/*
  * Load the intro essay HTML.
  */
 export const introEssay = loadJson<NarrativePage>(
@@ -286,9 +293,11 @@ export const introEssay = loadJson<NarrativePage>(
 );
 
 /*
- * Load the about us HTML.
+ * Load the acknowledgements HTML.
  */
-export const aboutUs = loadJson<NarrativePage>("data/narratives/about-us.json");
+export const acknowledgements = loadJson<NarrativePage>(
+  "data/narratives/acknowledgements.json",
+);
 
 /*
  * Load the intro essay HTML.
