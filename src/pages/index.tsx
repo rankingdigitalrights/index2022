@@ -149,7 +149,7 @@ const Home = ({
             <div className="w-full sm:w-1/2 sm:flex-grow md:items-center bg-light-freedom z-10">
               <HomeBox
                 title="Recommendations"
-                href="/policy-recommendations"
+                href="/recommendations"
                 theme="dark"
                 className="md:h-60 lg:h-80"
               >
