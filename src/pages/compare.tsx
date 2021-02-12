@@ -10,7 +10,7 @@ import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import {companyDiffScoresData, compareDetails} from "../data";
 import ScoresOverTimeLogo from "../images/icons/scores-over-time.svg";
-import {components} from "../mdx";
+import {components, hydrateNarrativePage, renderNarrativePage} from "../mdx";
 import {CompanyScoreDiff} from "../types";
 
 interface ScoresOverTimeProps {
@@ -19,7 +19,7 @@ interface ScoresOverTimeProps {
     pageTitle: MdxRemote.Source;
     introduction: MdxRemote.Source;
     body: MdxRemote.Source;
-    footnotes?: MdxRemote.Source;
+    footnotes: MdxRemote.Source | null;
   };
 }
 
@@ -27,13 +27,8 @@ export const getStaticProps = async () => {
   const diffScores = await companyDiffScoresData("2020", "total");
   const details = await compareDetails();
 
-  const pageTitle = await renderToString(details.pageTitle, {components});
+  const {pageTitle, body, footnotes} = await renderNarrativePage(details);
   const introduction = await renderToString(details.introduction, {components});
-  const body = await renderToString(details.body, {components});
-  const footnotes = details.footnotes
-    ? await renderToString(details.footnotes, {components})
-    : // eslint-disable-next-line unicorn/no-null
-      null;
 
   return {
     props: {
@@ -49,12 +44,8 @@ export const getStaticProps = async () => {
 };
 
 const ScoresOverTime = ({diffScores, details}: ScoresOverTimeProps) => {
-  const pageTitle = hydrate(details.pageTitle, {components});
+  const {pageTitle, body, footnotes} = hydrateNarrativePage(details);
   const introduction = hydrate(details.introduction, {components});
-  const body = hydrate(details.body, {components});
-  const footnotes = details.footnotes
-    ? hydrate(details.footnotes, {components})
-    : undefined;
 
   return (
     <Layout>
