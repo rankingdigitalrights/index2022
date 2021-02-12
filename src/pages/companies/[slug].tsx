@@ -1,3 +1,6 @@
+import hydrate from "next-mdx-remote/hydrate";
+import renderToString from "next-mdx-remote/render-to-string";
+import {MdxRemote} from "next-mdx-remote/types";
 import Link from "next/link";
 import {useRouter} from "next/router";
 
@@ -6,6 +9,7 @@ import CompanyRankCard from "../../components/company-rank-card";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
 import EvaluatedService from "../../components/evaluated-service";
+import Footnotes from "../../components/footnotes";
 import Layout from "../../components/layout";
 import RankChart from "../../components/rank-chart";
 import YearOverYearLabel from "../../components/year-over-year-label";
@@ -17,6 +21,7 @@ import {
   companyServices,
 } from "../../data";
 import Download from "../../images/icons/download.svg";
+import {components} from "../../mdx";
 import {
   CompanyDetails,
   CompanyIndex,
@@ -37,6 +42,7 @@ interface CompanyProps {
   meta: CompanyMeta;
   ranking: CompanyRank[];
   services: Service[];
+  footnotes: MdxRemote.Source | null;
 }
 
 export const getStaticPaths = async () => {
@@ -56,6 +62,10 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
   const meta = await companyMeta(slug);
   const ranking = await companyRankingData(index.kind, "total");
   const services = await companyServices(slug);
+  const footnotes = details.footnotes
+    ? await renderToString(details.footnotes, {components})
+    : // eslint-disable-next-line unicorn/no-null
+      null;
 
   // Map from the input format to the internal type.
   return {
@@ -65,6 +75,7 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
       meta,
       ranking,
       services,
+      footnotes,
     },
   };
 };
@@ -75,8 +86,12 @@ const CompanyPage = ({
   meta,
   ranking,
   services,
+  footnotes: mdxFootnotes,
 }: CompanyProps) => {
   const router = useRouter();
+  const footnotes = mdxFootnotes
+    ? hydrate(mdxFootnotes, {components})
+    : undefined;
 
   const isPrint = router.query?.print !== undefined;
 
@@ -96,8 +111,6 @@ const CompanyPage = ({
               company={details.printName}
               rank={index.rank}
               score={index.scores.total}
-              kind={index.kind}
-              counts={ranking.length}
               basicInformation={details.basicInformation}
               className="mt-2"
             />
@@ -161,11 +174,16 @@ const CompanyPage = ({
 
               <ul className="list-none list-outside ml-0 pl-0 border-b border-disabled-light print:border-b-0 w-full py-6">
                 {meta.operatingCompany && (
-                  <li className="pt-0 pb-3 print:py-3">
+                  <li className="flex flex-col pt-0 pb-3 print:py-3">
                     <span className="font-bold">
                       Operating company evaluated:
                     </span>{" "}
                     {meta.operatingCompany}
+                    <span className="mt-2">
+                      For telecommunications companies, the RDR Index evaluates
+                      relevant policies of the parent company, the operating
+                      company, and selected services of that operating company.
+                    </span>
                   </li>
                 )}
 
@@ -263,7 +281,7 @@ const CompanyPage = ({
             />
           </div>
 
-          <p className="font-circular text-xs text-center">
+          <p className="font-circular text-sm text-center">
             We rank companies on their approach to governance, and their
             policies and practices that affect freedom of expression and
             privacy.
@@ -292,13 +310,11 @@ const CompanyPage = ({
         </div>
       </div>
 
-      {details.footnotes && (
-        <div className="container mx-auto w-11/12 lg:w-8/12 md:w-10/12 printer print:px-20">
-          <section className="flex flex-col pt-3">
-            <h3>Footnotes</h3>
-            <div dangerouslySetInnerHTML={{__html: details.footnotes}} />
-          </section>
-        </div>
+      {footnotes && (
+        <Footnotes
+          className="container mx-auto w-11/12 pt-6 lg:w-8/12 md:w-10/12 printer print:px-20"
+          source={footnotes}
+        />
       )}
     </Layout>
   );

@@ -1,4 +1,5 @@
 import c from "clsx";
+import Link from "next/link";
 import React from "react";
 
 import ArrowDown from "../images/icons/arrow-down.svg";
@@ -37,32 +38,35 @@ const YearOverYearLabel = ({
     numYear - 1
   } RDR Index.`;
   let numModifier = "";
-  let icon = <Dash />;
+  let icon = <Dash className="w-6 h-6" />;
   if (isIncrease) {
     desc = `Gained ${value} points on comparable indicators since the ${
       numYear - 1
     } RDR Index.`;
     numModifier = "+ ";
-    icon = <ArrowUp />;
+    icon = <ArrowUp className="w-6 h-6" />;
   }
   if (isDecrease) {
     desc = `Lost ${value} points on comparable indicators since the ${
       numYear - 1
     } RDR Index.`;
-    icon = <ArrowDown />;
+    icon = <ArrowDown className="w-6 h-6" />;
   }
 
   return (
     <div className={c("flex flex-col", className)}>
       <div className="flex">
-        <span
-          className={c(
-            "flex items-center justify-around rounded-md p-2 w-10",
-            iconClassName,
-          )}
-        >
-          {icon}
-        </span>
+        <Link href="/compare">
+          <span
+            className={c(
+              "flex items-center justify-around rounded-md p-2 w-10 cursor-pointer",
+              iconClassName,
+            )}
+          >
+            {icon}
+          </span>
+        </Link>
+
         <span
           className={c(
             "font-bold text-md border rounded-md ml-2 px-2 py-1",
@@ -74,7 +78,7 @@ const YearOverYearLabel = ({
         </span>
       </div>
 
-      <p className="text-xs mt-3">{desc}</p>
+      <p className="text-sm mt-3">{desc}</p>
     </div>
   );
 };
