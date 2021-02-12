@@ -1,6 +1,7 @@
 /* eslint @typescript-eslint/no-var-requires: off, import/no-dynamic-require: off, global-require: off */
 import React from "react";
 
+import {useBreakpointSize} from "../hooks";
 import BoxPrompt from "./box-prompt";
 
 interface NarrativeImageProps {
@@ -10,8 +11,17 @@ interface NarrativeImageProps {
 }
 
 const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
-  const image = require(`../../data/images/${src}?resize&sizes[]=400&sizes[]=800&sizes[]=1024&sizes[]=2048`);
-  const imageWebp = require(`../../data/images/${src}?resize&webp&sizes[]=400&sizes[]=800&sizes[]=1024&sizes[]=2048&format=webp`);
+  const screenWidth = useBreakpointSize();
+  let width = "100%";
+  if (screenWidth > 768 && screenWidth <= 2000) {
+    width = "80%";
+  }
+  if (screenWidth > 2000) {
+    width = "60%";
+  }
+
+  const image = require(`../../data/images/${src}?resize&sizes[]=400&sizes[]=800&sizes[]=1024`);
+  const imageWebp = require(`../../data/images/${src}?resize&webp&sizes[]=400&sizes[]=800&sizes[]=1024&format=webp`);
   let description = alt;
   let readmore;
 
@@ -34,12 +44,13 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
           <source srcSet={image.srcSet} type="image/jpg" />
 
           <img
+            className="mx-auto"
             src={image.src}
             srcSet={image.srcSet}
             alt={description}
             title={title}
-            width={image.width}
-            sizes="(min-width: 640px) 400w, (min-width: 768px) 400w, (min-width: 1024px) 800w, (min-width: 1440px) 1024w, 100vw"
+            width={width}
+            sizes="(min-width: 640px) 400w, (min-width: 1024px) 800w, 100vw"
             loading="lazy"
           />
         </picture>
