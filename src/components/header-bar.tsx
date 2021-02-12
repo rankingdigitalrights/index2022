@@ -246,7 +246,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 <li role="none" className="border-b border-disabled pt-3 pb-6">
                   <IconLink
                     name="Policy recommendations"
-                    href="/policy-recommendations"
+                    href="/recommendations"
                     Icon={PolicyRecommendations}
                   />
                 </li>
@@ -347,7 +347,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </li>
                 <li className="py-3">
                   <IconLink
-                    href="/explore"
+                    href="/explore-services"
                     Icon={ExploreTheData}
                     name="Platforms & services"
                   />
