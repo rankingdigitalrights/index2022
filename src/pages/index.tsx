@@ -117,7 +117,7 @@ const Home = ({
           <div className="lg:w-1/3 lg:flex-grow items-center bg-accent-red z-10">
             <HomeBox
               title="How do internet companies treat human rights?"
-              href="/intro-essay"
+              href="/executive-summary"
               className="md:h-56 lg:h-80"
             >
               <div className="flex flex-col h-full justify-end">
