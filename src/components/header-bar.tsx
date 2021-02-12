@@ -6,12 +6,16 @@ import React, {useEffect, useRef, useState} from "react";
 import companies from "../../data/companies.json";
 import {useMobileSize} from "../hooks";
 import Cancel from "../images/icons/cancel.svg";
-import Download from "../images/icons/download.svg";
+import ChinaTechGiants from "../images/icons/china-tech-giants.svg";
+import ContextBeforeCode from "../images/icons/context-before-code.svg";
+import DownloadTheData from "../images/icons/download-the-data.svg";
+import ExecutiveSummary from "../images/icons/executive-summary.svg";
 import ExploreTheData from "../images/icons/explore-the-data.svg";
 import Hamburger from "../images/icons/hamburger.svg";
 import IntroEssay from "../images/icons/intro-essay.svg";
 import KeyFindings from "../images/icons/key-findings.svg";
 import Methodology from "../images/icons/methodology.svg";
+import MovingFast from "../images/icons/moving-fast.svg";
 import PolicyRecommendations from "../images/icons/policy-recommendations.svg";
 import ScoresByIndicator from "../images/icons/scores-by-indicator.svg";
 import ScoresOverTime from "../images/icons/scores-over-time.svg";
@@ -32,7 +36,14 @@ interface CompanyLinkProps {
 interface IconLinkProps {
   href: string;
   name: string;
-  icon: React.ReactNode;
+  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+}
+
+interface SpotlightLinkProps {
+  href: string;
+  name: string;
+  desc: string;
+  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
 // Due to the behavior of the --strictFunctionTypes compiler flag added in
@@ -50,6 +61,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
   const router = useRouter();
   const isMobile = useMobileSize(768);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [expandedColumn, setExpandedColumn] = useState<string | undefined>();
   // eslint-disable-next-line unicorn/no-null
   const ref = useRef<HTMLDivElement>(null);
 
@@ -106,23 +118,45 @@ const HeaderBar = ({className}: HeaderBarProps) => {
 
     return (
       <Link passHref href={href} as={href}>
-        <a className="flex items-center text-black whitespace-nowrap">
-          <span className={c("rounded-full w-2.5 h-2.5", dotClassName)} />
+        <a className="flex items-start lg:items-center text-black">
+          <span
+            className={c(
+              "flex-none rounded-full w-2.5 h-2.5 mt-1 lg:mt-0",
+              dotClassName,
+            )}
+          />
           <span className="ml-2">{name}</span>
         </a>
       </Link>
     );
   };
 
-  const IconLink = ({href, name, icon}: IconLinkProps) => {
+  const IconLink = ({href, name, Icon}: IconLinkProps) => {
     return (
       <Link passHref href={href}>
         <a
           role="menuitem"
           className="flex items-center font-bold text-black pointer-cursor"
         >
-          {icon}
+          <Icon className="flex-none w-8 h-8" />
           <span className="ml-3">{name}</span>
+        </a>
+      </Link>
+    );
+  };
+
+  const SpotlightLink = ({href, name, desc, Icon}: SpotlightLinkProps) => {
+    return (
+      <Link passHref href={href}>
+        <a
+          role="menuitem"
+          className="flex items-start font-bold text-black pointer-cursor"
+        >
+          <Icon className="flex-none w-8 h-8" />
+          <div className="ml-3">
+            <span className="font-bold">{name}:</span>{" "}
+            <span className="font-normal">{desc}</span>
+          </div>
         </a>
       </Link>
     );
@@ -174,95 +208,111 @@ const HeaderBar = ({className}: HeaderBarProps) => {
       </div>
 
       <nav className={navClassName}>
-        <div className="relative lg:container lg:mx-auto mt-6 px-3 lg:px-4 pb-6 h-full flex flex-col md:flex-row justify-between items-start  overflow-y-scroll">
+        <div className="relative xl:container xl:mx-auto mt-6 px-3 lg:px-4 pb-6 h-full flex flex-col md:flex-row justify-between items-start overflow-y-scroll">
           <MenuBarColumn
-            className="w-full md:w-3/12 md:px-4"
+            className="w-full md:w-1/3 px-1 lg:px-4"
             title="Stories + Insights"
             isExpandable={isMobile}
+            onExpand={(toggle: boolean) =>
+              toggle
+                ? setExpandedColumn("Stories + Insight")
+                : setExpandedColumn(undefined)
+            }
+            isExpanded={expandedColumn === "Stories + Insight"}
           >
-            <div className="flex flex-col divide-y divide-disabled">
-              <div className="flex flex-col">
-                <ul role="menubar" className="list-inside list-none">
-                  <li role="none">
-                    <IconLink
-                      name="Intro essay"
-                      href="/intro-essay"
-                      icon={<IntroEssay className="flex-none w-6 h-6" />}
-                    />
-                  </li>
-                  <li>
-                    <IconLink
-                      name="Key Findings: Flying Blind"
-                      href="/key-findings"
-                      icon={<KeyFindings className="flex-none w-6 h-6" />}
-                    />
-                  </li>
-                </ul>
-              </div>
+            <div className="flex flex-col">
+              <ul role="menubar" className="list-inside list-none ml-0">
+                <li role="none" className="border-b border-disabled pt-6 pb-6">
+                  <IconLink
+                    name="Executive summary"
+                    href="/executive-summary"
+                    Icon={ExecutiveSummary}
+                  />
+                </li>
+                <li role="none" className="pt-6 pb-3">
+                  <IconLink
+                    name="Intro essay"
+                    href="/intro-essay"
+                    Icon={IntroEssay}
+                  />
+                </li>
+                <li role="none" className="py-3">
+                  <IconLink
+                    name="Key Findings: Flying Blind"
+                    href="/key-findings"
+                    Icon={KeyFindings}
+                  />
+                </li>
+                <li role="none" className="border-b border-disabled pt-3 pb-6">
+                  <IconLink
+                    name="Policy recommendations"
+                    href="/policy-recommendations"
+                    Icon={PolicyRecommendations}
+                  />
+                </li>
 
-              <div className="flex flex-col pl-4 pr-3">
-                <span className="font-bold pt-6 pb-3">Spotlights:</span>
-
-                <ul role="menubar" className="list-inside list-none ml-0">
-                  <li>
-                    <Link passHref href="/spotlights/context-before-code">
-                      <a className="text-black">
-                        Context before code: Protecting human rights in a state
-                        of emergency
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link passHref href="/spotlights/unaccountable-algorithms">
-                      <a className="text-black">
-                        Moving fast and breaking us all: Big Tech’s
-                        unaccountable algorithms
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link passHref href="/spotlights/china-tech-giants">
-                      <a className="text-black">
-                        China’s tech giants have proven they can change: But the
-                        state is still their number one stakeholder.
-                      </a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="pl-4 pr-3 py-6">
-                <IconLink
-                  href="/policy-recommendations"
-                  icon={<PolicyRecommendations className="flex-none w-6 h-6" />}
-                  name="Policy Recommendations"
-                />
-              </div>
-
-              <div className="font-bold pr-3 py-3">
-                <Link passHref href="/about-us">
-                  <a className="text-black">About us</a>
-                </Link>
-              </div>
+                <li role="none" className="pt-6 pb-0">
+                  <span className="font-bold">Spotlights:</span>
+                </li>
+                <li role="none" className="py-3">
+                  <SpotlightLink
+                    name="Context before code"
+                    desc="Protecting human rights in a state of emergency"
+                    href="/spotlights/context-before-code"
+                    Icon={ContextBeforeCode}
+                  />
+                </li>
+                <li role="none" className="py-3">
+                  <SpotlightLink
+                    name="Moving fast and breaking us all"
+                    desc="Big Tech’s unaccountable algorithms"
+                    href="/spotlights/unaccountable-algorithms"
+                    Icon={MovingFast}
+                  />
+                </li>
+                <li role="none" className="pt-3">
+                  <SpotlightLink
+                    name="China’s tech giants have proven they can change"
+                    desc="But the state is still their number one stakeholder."
+                    href="/spotlights/china-tech-giants"
+                    Icon={ChinaTechGiants}
+                  />
+                </li>
+              </ul>
             </div>
           </MenuBarColumn>
 
           <MenuBarColumn
-            className="w-full md:w-6/12 md:px-4 lg:px-12"
+            className="w-full md:w-1/3 px-1 lg:px-4"
             title="Companies"
             isExpandable={isMobile}
+            onExpand={(toggle: boolean) =>
+              toggle
+                ? setExpandedColumn("Companies")
+                : setExpandedColumn(undefined)
+            }
+            isExpanded={expandedColumn === "Companies"}
           >
-            <div className="flex justify-between">
-              <ul className="w-1/2 list-inside list-none">
-                {internetCompanies.map(({id, name, kind}) => (
-                  <li key={`nav-company-${id}`} className="py-1">
-                    <CompanyLink
-                      href={`/companies/${id}`}
-                      name={name}
-                      kind={kind as CompanyKind}
-                    />
-                  </li>
-                ))}
+            <div className="flex justify-between pt-6">
+              <ul className="w-1/2 list-inside list-none ml-0">
+                {internetCompanies.map(({id, name, kind}, idx) => {
+                  const companyClassName = {
+                    "pb-1": idx === 0,
+                    "py-1": idx !== 0,
+                  };
+                  return (
+                    <li
+                      key={`nav-company-${id}`}
+                      className={c(companyClassName)}
+                    >
+                      <CompanyLink
+                        href={`/companies/${id}`}
+                        name={name}
+                        kind={kind as CompanyKind}
+                      />
+                    </li>
+                  );
+                })}
               </ul>
 
               <ul className="w-1/2 list-inside list-none">
@@ -280,58 +330,84 @@ const HeaderBar = ({className}: HeaderBarProps) => {
           </MenuBarColumn>
 
           <MenuBarColumn
-            className="w-full md:w-3/12 md:px-4"
+            className="w-full md:w-1/3 px-1 md:px-4"
             title="Data + Methods"
             isExpandable={isMobile}
+            onExpand={(toggle: boolean) =>
+              toggle
+                ? setExpandedColumn("Data + Methods")
+                : setExpandedColumn(undefined)
+            }
+            isExpanded={expandedColumn === "Data + Methods"}
           >
-            <div className="flex flex-col divide-y divide-disabled">
-              <div className="flex flex-col">
-                <ul className="list-inside list-none">
-                  <li className="">
-                    <IconLink
-                      href="/indicators/G1"
-                      icon={<ScoresByIndicator className="flex-none w-6 h-6" />}
-                      name="Scores by indicator"
-                    />
-                  </li>
-                  <li className="py-6">
-                    <IconLink
-                      href="/explore"
-                      icon={<ExploreTheData className="flex-none w-6 h-6" />}
-                      name="Explore the data"
-                    />
-                  </li>
-                  <li className="py-6">
-                    <IconLink
-                      href="/methodology"
-                      icon={<Methodology className="flex-none w-6 h-6" />}
-                      name="Methodology"
-                    />
-                  </li>
-                </ul>
-              </div>
+            <div className="flex flex-col">
+              <ul className="list-inside list-none ml-0">
+                <li role="none" className="pt-6 pb-0">
+                  <span className="font-bold">Explore the data:</span>
+                </li>
+                <li className="py-3">
+                  <IconLink
+                    href="/explore"
+                    Icon={ExploreTheData}
+                    name="Platforms & services"
+                  />
+                </li>
 
-              <div className="flex flex-col py-3">
-                <ul className="list-inside list-none">
-                  <li className="py-3">
-                    <IconLink
-                      href="/compare"
-                      icon={<ScoresOverTime className="flex-none w-6 h-6" />}
-                      name="RDR scores over time"
-                    />
-                  </li>
-                </ul>
-              </div>
+                <li className="py-3">
+                  <IconLink
+                    href="/indicators/G1"
+                    Icon={ScoresByIndicator}
+                    name="Issue areas & indicators"
+                  />
+                </li>
+                <li className="border-b border-disabled pt-3 pb-6">
+                  <IconLink
+                    href="/compare"
+                    Icon={ScoresOverTime}
+                    name="RDR scores over time"
+                  />
+                </li>
 
-              <div className="flex justify-around py-6">
-                <button
-                  className="flex border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm text-center"
-                  onClick={() => {}}
-                >
-                  <Download className="mr-2" />
-                  Download raw data
-                </button>
-              </div>
+                <li className="border-b border-disabled py-6">
+                  <IconLink
+                    href="/methodology"
+                    Icon={Methodology}
+                    name="Methodology"
+                  />
+                </li>
+
+                <li className="flex items-start border-b border-disabled py-6">
+                  <DownloadTheData className="flex-none w-8 h-8" />
+                  <div className="flex flex-col ml-3">
+                    <span className="font-bold">Download the data</span>
+                    <span className="font-bold">Excel / CSV</span>
+                  </div>
+                </li>
+
+                <li className="flex flex-col border-b border-disabled py-3">
+                  <span className="font-bold mb-3">
+                    Support Ranking Digital Rights
+                  </span>
+                  <a
+                    href="https://newamerica.org"
+                    role="menuitem"
+                    className="w-28 bg-accent-red font-circular font-bold text-white text-sm text-center rounded-md px-4 py-2 uppercase"
+                  >
+                    Donate
+                  </a>
+                </li>
+
+                <li className="flex items-start pt-3">
+                  <Link passHref href="/about-us">
+                    <a
+                      role="menuitem"
+                      className="flex items-start font-bold text-black pointer-cursor"
+                    >
+                      Acknowledgements
+                    </a>
+                  </Link>
+                </li>
+              </ul>
             </div>
           </MenuBarColumn>
         </div>

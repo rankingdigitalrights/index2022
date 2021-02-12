@@ -1,5 +1,5 @@
 import c from "clsx";
-import React, {useState} from "react";
+import React from "react";
 
 import ChevronDown from "../images/icons/chevron-down.svg";
 import ChevronUp from "../images/icons/chevron-up.svg";
@@ -8,19 +8,23 @@ import {identity} from "../utils";
 interface MenuBarColumnProps {
   title: string;
   isExpandable?: boolean;
+  isExpanded?: boolean;
   className?: string;
   children?: React.ReactNode;
+  onExpand: (toggle: boolean) => void;
 }
 
 const MenuBarColumn = ({
   title,
   isExpandable = false,
+  isExpanded,
   className,
   children,
+  onExpand,
 }: MenuBarColumnProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const handleExpandColumn = () => setIsExpanded(!isExpanded);
+  const handleExpandColumn = () => {
+    onExpand(!isExpanded);
+  };
 
   const showChildren = !isExpandable || isExpanded;
   const columnHeaderClassName = {
@@ -31,7 +35,7 @@ const MenuBarColumn = ({
     <div className={c("flex flex-col", className)}>
       <button
         className={c(
-          "flex items-center justify-between uppercase mb-6 font-circular font-bold border-b-2 border-disabled-dark w-full py-6 md:py-0 md:pb-1",
+          "flex items-center justify-between uppercase font-circular font-bold border-b-2 border-disabled-dark w-full py-6 md:py-0 md:pb-1",
           columnHeaderClassName,
         )}
         onClick={() => (isExpandable ? handleExpandColumn() : identity())}

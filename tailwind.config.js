@@ -58,7 +58,7 @@ module.exports = {
 
         disabled: {
           dark: "#D6C9C9",
-          default: "#E5DCD2",
+          DEFAULT: "#E5DCD2",
           light: "#F7F4F2",
         },
 
