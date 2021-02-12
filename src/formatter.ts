@@ -273,7 +273,7 @@ export const narrativeMdx = (imgPath: string, src: string): string => {
         const imageSrc = $el.attr("src");
 
         if (title && title !== "") {
-          attrs.push(`title="${title}}"`);
+          attrs.push(`title="${title}"`);
         }
         if (alt && alt !== "") {
           attrs.push(`alt="${alt.replace(/\r?\n|\r/g, " ")}"`);
