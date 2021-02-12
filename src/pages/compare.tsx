@@ -7,6 +7,7 @@ import CompanyKindLabel from "../components/company-kind-label";
 import CompareScoresChart from "../components/compare-scores-chart";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
+import NarrativeTitle from "../components/narrative-title";
 import {companyDiffScoresData, compareDetails} from "../data";
 import ScoresOverTimeLogo from "../images/icons/scores-over-time.svg";
 import {components} from "../mdx";
@@ -62,12 +63,7 @@ const ScoresOverTime = ({diffScores, details}: ScoresOverTimeProps) => {
           return (
             <div>
               <Container>
-                <div className="flex mb-12 border-b border-prissian py-6 md:py-12">
-                  <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none">
-                    <ScoresOverTimeLogo className="flex-none h-14 w-14 mt-1 hidden md:block" />
-                    <span className="mt-3 md:mt-0 md:ml-6">{pageTitle}</span>
-                  </h1>
-                </div>
+                <NarrativeTitle title={pageTitle} Logo={ScoresOverTimeLogo} />
 
                 {introduction}
               </Container>

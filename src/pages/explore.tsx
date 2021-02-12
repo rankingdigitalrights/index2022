@@ -5,6 +5,7 @@ import React, {useState} from "react";
 
 import HomeCategorySelector from "../components/home-category-selector";
 import Layout from "../components/layout";
+import NarrativeTitle from "../components/narrative-title";
 import RankChart from "../components/rank-chart";
 import Selector from "../components/selector";
 import ServiceRankChart from "../components/service-rank-chart";
@@ -184,9 +185,7 @@ const Explore = ({
   return (
     <Layout>
       <div className="lg:container lg:mx-auto flex flex-col flex-row lg:justify-between py-6 px-6">
-        <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none">
-          <span className="mt-3 md:mt-0">Explore the data</span>
-        </h1>
+        <NarrativeTitle title="Explore the data" />
 
         <p className="font-circular mt-6">
           The 2019 Ranking Digital Rights Corporate Accountability Index

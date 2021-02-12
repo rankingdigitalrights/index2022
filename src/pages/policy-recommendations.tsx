@@ -5,6 +5,7 @@ import React from "react";
 import Footnotes from "../components/footnotes";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
+import NarrativeTitle from "../components/narrative-title";
 import {policyRecommendations} from "../data";
 import PolicyRecommendationsLogo from "../images/icons/policy-recommendations.svg";
 import {components} from "../mdx";
@@ -36,12 +37,10 @@ const PolicyRecommendations = ({details}: NarrativeProps) => {
         {({Container}) => {
           return (
             <Container>
-              <div className="flex mb-12 border-b border-prissian py-12">
-                <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none ml-6">
-                  <PolicyRecommendationsLogo className="flex-none h-8 w-8 mt-1" />
-                  <span className="mt-3 md:mt-0 md:ml-6">{pageTitle}</span>
-                </h1>
-              </div>
+              <NarrativeTitle
+                title={pageTitle}
+                Logo={PolicyRecommendationsLogo}
+              />
 
               {body}
 
