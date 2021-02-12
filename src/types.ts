@@ -295,7 +295,7 @@ export interface NarrativeProps {
   details: {
     pageTitle: MdxRemote.Source;
     body: MdxRemote.Source;
-    footnotes: MdxRemote.Source | null;
+    footnotes?: MdxRemote.Source;
   };
 }
 
