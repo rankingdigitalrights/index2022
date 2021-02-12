@@ -34,12 +34,13 @@ const KeyFindings = ({details}: NarrativeProps) => {
     <Layout>
       <NarrativeContainer
         heroClassName="hero-key-findings"
+        heroCaption="Photo by Amy Brouillette, used with permission"
         backgroundClassName="bg-accent-gold bg-opacity-30"
       >
         {({Container}) => {
           return (
             <Container>
-              <NarrativeTitle title={pageTitle} />
+              <NarrativeTitle title={pageTitle} byLine="Amy Brouillette" />
 
               {body}
 
