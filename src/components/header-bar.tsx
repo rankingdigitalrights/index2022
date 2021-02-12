@@ -141,7 +141,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
               <span className="flex-none font-platform font-bold text-lg ml-4 whitespace-nowrap">
                 {isMobile
                   ? "2020 RDR Index"
-                  : "2020 RDR Corporate Accountability Index"}
+                  : "2020 Ranking Digital Rights Corporate Accountability Index"}
               </span>
             </a>
           </Link>
