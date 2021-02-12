@@ -211,14 +211,14 @@ const HeaderBar = ({className}: HeaderBarProps) => {
         <div className="relative xl:container xl:mx-auto mt-6 px-3 lg:px-4 pb-6 h-full flex flex-col md:flex-row justify-between items-start overflow-y-scroll">
           <MenuBarColumn
             className="w-full md:w-1/3 px-1 lg:px-4"
-            title="Stories + Insights"
+            title="THE REPORT"
             isExpandable={isMobile}
             onExpand={(toggle: boolean) =>
               toggle
-                ? setExpandedColumn("Stories + Insight")
+                ? setExpandedColumn("THE REPORT")
                 : setExpandedColumn(undefined)
             }
-            isExpanded={expandedColumn === "Stories + Insight"}
+            isExpanded={expandedColumn === "THE REPORT"}
           >
             <div className="flex flex-col">
               <ul role="menubar" className="list-inside list-none ml-0">
@@ -252,7 +252,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </li>
 
                 <li role="none" className="pt-6 pb-0">
-                  <span className="font-bold">Spotlights:</span>
+                  <span className="font-bold">Featured Stories:</span>
                 </li>
                 <li role="none" className="py-3">
                   <SpotlightLink
@@ -372,7 +372,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   <IconLink
                     href="/methodology"
                     Icon={Methodology}
-                    name="Methodology"
+                    name="RDR Index Methodology"
                   />
                 </li>
 
@@ -385,9 +385,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </li>
 
                 <li className="flex flex-col border-b border-disabled py-3">
-                  <span className="font-bold mb-3">
-                    Support Ranking Digital Rights
-                  </span>
+                  <span className="font-bold mb-3">Support our work</span>
                   <a
                     href="https://newamerica.org"
                     role="menuitem"
