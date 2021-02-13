@@ -4,6 +4,7 @@ import React from "react";
 
 import {IndicatorScore} from "../types";
 import {isNA, scaleLinear} from "../utils";
+import GraphLabel from "./graph-label";
 
 export interface CompareBarProps {
   company: string;
@@ -29,7 +30,7 @@ const CompareBarPositive = ({
   const value = isNA(score) ? 0 : score;
   const barHeight = height / 2;
   const lineOffset = 2;
-  const percentage = scaleLinear([0, maxValue], [0, barHeight])(value);
+  const percentage = scaleLinear([0, maxValue], [0, barHeight - 20])(value);
 
   const barClassName = {
     "text-prissian": isHighlighted,
@@ -48,8 +49,6 @@ const CompareBarPositive = ({
         className,
       )}
     >
-      <span className={c("font-bold mb-1", textClassName)}>{value}</span>
-
       <svg
         version="1"
         xmlns="http://www.w3.org/2000/svg"
@@ -67,6 +66,13 @@ const CompareBarPositive = ({
           height={percentage * tween}
           transform={`scale(1,-1) translate(0,-${barHeight})`}
         />
+        <GraphLabel
+          className={c(textClassName)}
+          value={`${value}`}
+          textAnchor="middle"
+          transform={`translate(20,${barHeight - percentage - 10})`}
+        />
+
         <line
           x1={0}
           y1={0}
@@ -80,7 +86,7 @@ const CompareBarPositive = ({
       <Link passHref href={href}>
         <a
           className={c(
-            "absolute transform -rotate-45 -translate-x-8 translate-y-44 mt-2 w-28 text-right",
+            "absolute transform -rotate-45 -translate-x-8 translate-y-40 mt-1 w-28 text-right",
             textClassName,
           )}
         >

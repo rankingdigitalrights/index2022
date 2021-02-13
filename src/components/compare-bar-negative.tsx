@@ -17,7 +17,7 @@ const CompareBarNegative = ({
 }: CompareBarProps) => {
   const value = isNA(score) ? 0 : score;
   const barHeight = height / 2;
-  const percentage = scaleLinear([0, maxValue], [0, barHeight])(value);
+  const percentage = scaleLinear([0, maxValue], [0, barHeight - 20])(value);
 
   const barClassName = {
     "text-prissian": isHighlighted,
@@ -39,7 +39,7 @@ const CompareBarNegative = ({
       <Link passHref href={href}>
         <a
           className={c(
-            "absolute transform -rotate-45 translate-x-7 translate-y-20 mt-1 w-28 z-10",
+            "absolute transform -rotate-45 translate-x-7 translate-y-14 mt-1 w-28 z-10",
             textClassName,
           )}
         >
@@ -47,7 +47,6 @@ const CompareBarNegative = ({
         </a>
       </Link>
 
-      <span className="font-bold mb-1">&nbsp;</span>
       <svg
         version="1"
         xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +74,7 @@ const CompareBarNegative = ({
         />
       </svg>
 
-      <span className={c("font-bold", textClassName)}>{value}</span>
+      <span className={c(textClassName)}>{value}</span>
     </div>
   );
 };

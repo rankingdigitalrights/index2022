@@ -32,7 +32,7 @@ const CompareScoresChart = ({scores, className}: CompareScoresChartProps) => {
           version="1"
           xmlns="http://www.w3.org/2000/svg"
           width={0}
-          height={chartHeight / 2 + 15}
+          height={chartHeight / 2 - 11}
           transform="translate(0, 0)"
           className=""
         />
