@@ -116,9 +116,11 @@ const IndicatorTableDesktop = ({
                   className="flex-none flex flex-col items-center justify-center border border-disabled-dark w-52 p-2"
                   key={`legend-element-${element.id}`}
                 >
-                  <span>
-                    {itemPos + 1}. {elementDescription}
-                  </span>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: `${itemPos + 1}. ${elementDescription}`,
+                    }}
+                  />
                 </div>
               );
             return (

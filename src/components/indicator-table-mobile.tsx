@@ -61,9 +61,12 @@ const IndicatorTableMobile = ({
                       key={`slide-${service}-${element.id}`}
                       className="flex flex-col text-sm"
                     >
-                      <div className={c("px-1 py-2", elementClassName)}>
-                        {eIdx + 1}. {elementDescription}
-                      </div>
+                      <div
+                        className={c("px-1 py-2", elementClassName)}
+                        dangerouslySetInnerHTML={{
+                          __html: `${eIdx + 1}. ${elementDescription}`,
+                        }}
+                      />
 
                       <div className="flex items-center justify-between mt-3 mb-3">
                         <div className="cursor-pointer w-1/12">

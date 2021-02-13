@@ -222,14 +222,17 @@ const IndicatorPage = ({
           onSelect={handleSelectIndicator}
         />
 
-        <p className="mt-6 pb-0 text-sm font-circular">{details.description}</p>
+        <p
+          className="mt-6 pb-0 text-sm font-circular"
+          dangerouslySetInnerHTML={{__html: details.description}}
+        />
 
         <ExpandableDescription className="mt-6" label="Elements">
           <ol className="list-inside list-decimal">
             {elementDescriptions.map(({description, id}) => {
               return (
                 <li key={`element-description-${id}`} className="pb-2">
-                  {description}
+                  <span dangerouslySetInnerHTML={{__html: description}} />
                 </li>
               );
             })}
@@ -237,7 +240,7 @@ const IndicatorPage = ({
         </ExpandableDescription>
 
         <ExpandableDescription className="mt-2" label="Research guidance">
-          <p
+          <div
             className="mt-1"
             dangerouslySetInnerHTML={{__html: details.guidance}}
           />
