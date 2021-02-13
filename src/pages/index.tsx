@@ -142,7 +142,6 @@ const Home = ({
                     practice
                   </p>
 
-                  <HomeSearch />
                 </div>
               </HomeBox>
             </div>
@@ -156,7 +155,7 @@ const Home = ({
                 <div className="flex flex-col h-full justify-between">
                   <p>What policymakers and companies need to know for 2021</p>
 
-                  <HomeDocument />
+                  
                 </div>
               </HomeBox>
             </div>
