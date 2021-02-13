@@ -35,15 +35,15 @@ const Footer = ({className}: FooterProps) => {
                   className="text-white"
                   href="https://rankingdigitalrights.org/methodology-development/"
                 >
-                  2020 Methodology
+                  2020 RDR Index Methodology
                 </a>
               </li>
               <li className="pb-1">
                 <a
                   className="text-white"
-                  href="https://rankingdigitalrights.org/publications/"
+                  href="https://rankingdigitalrights.org/"
                 >
-                  Publications
+                  Ranking Digital Rights Homepage
                 </a>
               </li>
               <li className="pb-1">
@@ -64,7 +64,7 @@ const Footer = ({className}: FooterProps) => {
                   className="text-white"
                   href="https://rankingdigitalrights.org/privacypolicy"
                 >
-                  Privacy Policy
+                  Privacy policy
                 </a>
               </li>
               <li className="pb-1">
