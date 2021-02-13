@@ -8,8 +8,6 @@ import HomeSpotlightBox from "../components/home-spotlight-box";
 import Layout from "../components/layout";
 import RankChart from "../components/rank-chart";
 import {companyHighlights, companyRankingData} from "../data";
-import HomeDocument from "../images/icons/home-document.svg";
-import HomeSearch from "../images/icons/home-search.svg";
 import {CompanyHighlight, CompanyRank, IndicatorCategoryExt} from "../types";
 
 interface HomeProps {
@@ -141,7 +139,6 @@ const Home = ({
                     Companies are improving in principle, but failing in
                     practice
                   </p>
-
                 </div>
               </HomeBox>
             </div>
@@ -154,8 +151,6 @@ const Home = ({
               >
                 <div className="flex flex-col h-full justify-between">
                   <p>What policymakers and companies need to know for 2021</p>
-
-                  
                 </div>
               </HomeBox>
             </div>
