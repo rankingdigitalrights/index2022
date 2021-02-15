@@ -206,7 +206,7 @@
   }
 
   a {
-    @apply text-prissian underline;
+    @apply text-prissian font-bold;
   }
 
   div.rank-card a {

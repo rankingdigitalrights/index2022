@@ -90,7 +90,7 @@ const RankChart = ({
       <Link passHref href={`/companies/${id}`}>
         <a
           className={c(
-            "flex-none font-circular text-black no-underline select-none whitespace-nowrap",
+            "flex-none font-circular text-black font-normal select-none whitespace-nowrap",
             highlightedClassName,
             companyWidth,
           )}

@@ -95,7 +95,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
                   </button>
                 ) : (
                   <Link passHref href={`/indicators/${display}`}>
-                    <a className="font-circular text-xs text-black hover:text-prissian no-underline">
+                    <a className="font-circular text-xs text-black font-normal hover:text-prissian">
                       {indicatorPretty}
                     </a>
                   </Link>
@@ -154,7 +154,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
                       onMouseLeave={() => setHighlightedIndicator(undefined)}
                     >
                       <Link passHref href={`/indicators/${m.display}`}>
-                        <a className="font-circular text-xs text-black hover:text-prissian no-underline">
+                        <a className="font-circular text-xs text-black font-normal hover:text-prissian">
                           {mIndicatorPretty}
                         </a>
                       </Link>
