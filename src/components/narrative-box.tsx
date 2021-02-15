@@ -47,7 +47,7 @@ const NarrativeBox = ({kind}: NarrativeBoxProps) => {
   return (
     <div className="flex flex-col h-48 w-128 md:w-60 bg-white shadow-md m-3 p-3">
       <Link passHref href={href}>
-        <a className="border-b mb-3 pb-2 flex items-center text-black">
+        <a className="border-b mb-3 pb-2 flex items-center text-black no-underline">
           {icon}
           <span className="font-circular font-bold text-md ml-2">{title}</span>
         </a>

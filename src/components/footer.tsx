@@ -24,7 +24,7 @@ const Footer = ({className}: FooterProps) => {
             <ul className="list-none">
               <li className="pb-1">
                 <a
-                  className="text-white"
+                  className="text-white no-underline"
                   href="https://rankingdigitalrights.org/about/"
                 >
                   About
@@ -32,7 +32,7 @@ const Footer = ({className}: FooterProps) => {
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white"
+                  className="text-white no-underline"
                   href="https://rankingdigitalrights.org/methodology-development/"
                 >
                   2020 RDR Index Methodology
@@ -40,7 +40,7 @@ const Footer = ({className}: FooterProps) => {
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white"
+                  className="text-white no-underline"
                   href="https://rankingdigitalrights.org/"
                 >
                   Ranking Digital Rights Homepage
@@ -48,7 +48,7 @@ const Footer = ({className}: FooterProps) => {
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white"
+                  className="text-white no-underline"
                   href="https://rankingdigitalrights.org/index2020/"
                 >
                   2020 Corporate Accountability Index
@@ -61,7 +61,7 @@ const Footer = ({className}: FooterProps) => {
             <ul className="list-none">
               <li className="pb-1">
                 <a
-                  className="text-white"
+                  className="text-white no-underline"
                   href="https://rankingdigitalrights.org/privacypolicy"
                 >
                   Privacy policy
@@ -69,7 +69,7 @@ const Footer = ({className}: FooterProps) => {
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white"
+                  className="text-white no-underline"
                   href="https://rankingdigitalrights.org/who/partners/"
                 >
                   Funders and partners
@@ -93,7 +93,7 @@ const Footer = ({className}: FooterProps) => {
             <ul className="list-none">
               <li className="pb-1">
                 <a
-                  className="text-white flex items-center"
+                  className="text-white no-underline flex items-center"
                   href="https://facebook.com/rankingrights"
                 >
                   <LogoFacebook className="w-3 h-3" />
@@ -102,7 +102,7 @@ const Footer = ({className}: FooterProps) => {
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white flex items-center"
+                  className="text-white no-underline flex items-center"
                   href="https://twitter.com/rankingrights"
                 >
                   <LogoTwitter className="w-3 h-3" />
@@ -111,7 +111,7 @@ const Footer = ({className}: FooterProps) => {
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white flex items-center"
+                  className="text-white no-underline flex items-center"
                   href="https://rankingdigitalrights.org/feed/"
                 >
                   <LogoRss className="w-3 h-3" />
@@ -120,7 +120,7 @@ const Footer = ({className}: FooterProps) => {
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white flex items-center"
+                  className="text-white no-underline flex items-center"
                   href="mailto:info@rankingdigitalrights.org"
                 >
                   <LogoEmail className="w-3 h-3" />

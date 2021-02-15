@@ -206,11 +206,11 @@
   }
 
   a {
-    @apply text-prissian;
+    @apply text-prissian underline;
   }
 
   div.rank-card a {
-    @apply text-white underline;
+    @apply text-white;
   }
 
   a:hover {

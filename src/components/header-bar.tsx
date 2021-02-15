@@ -118,7 +118,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
 
     return (
       <Link passHref href={href} as={href}>
-        <a className="flex items-start lg:items-center text-black">
+        <a className="flex items-start lg:items-center text-black no-underline">
           <span
             className={c(
               "flex-none rounded-full w-2.5 h-2.5 mt-1 lg:mt-0",
@@ -136,7 +136,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
       <Link passHref href={href}>
         <a
           role="menuitem"
-          className="flex items-center font-bold text-black pointer-cursor"
+          className="flex items-center font-bold text-black no-underline"
         >
           <Icon className="flex-none w-8 h-8" />
           <span className="ml-3">{name}</span>
@@ -150,7 +150,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
       <Link passHref href={href}>
         <a
           role="menuitem"
-          className="flex items-start font-bold text-black pointer-cursor"
+          className="flex items-start font-bold text-black no-underline"
         >
           <Icon className="flex-none w-8 h-8" />
           <div className="ml-3">
@@ -167,7 +167,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
       <div className="relative bg-beige shadow-md py-2 z-50">
         <div className="lg:container lg:mx-auto flex justify-between items-center relative px-6">
           <Link passHref href="/">
-            <a className="flex items-center text-black hover:no-underline">
+            <a className="flex items-center text-black no-underline hover:no-underline">
               <Logo
                 aria-label="Ranking Digital Rights Logo"
                 className="flex-none"
@@ -389,7 +389,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   <a
                     href="https://newamerica.org"
                     role="menuitem"
-                    className="w-28 bg-accent-red font-circular font-bold text-white text-sm text-center rounded-md px-4 py-2 uppercase"
+                    className="w-28 bg-accent-red font-circular font-bold text-white no-underline text-sm text-center rounded-md px-4 py-2 uppercase"
                   >
                     Donate
                   </a>
@@ -399,7 +399,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   <Link passHref href="/acknowledgements">
                     <a
                       role="menuitem"
-                      className="flex items-start font-bold text-black pointer-cursor"
+                      className="flex items-start font-bold text-black no-underline"
                     >
                       Acknowledgements
                     </a>
