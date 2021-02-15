@@ -50,6 +50,15 @@ export const isNA = (x: unknown): x is NA => {
   return x === "NA";
 };
 
+export const isInternalLink = (x: string): boolean => {
+  const reFullUrl = /^https:\/\/[.w]?rankingdigitalrights.org\/index2020/;
+  const rePartialUrl = /^\/(companies|indicators)\/\w*\/?$/;
+
+  if (reFullUrl.test(x) || rePartialUrl.test(x)) return true;
+
+  return false;
+};
+
 export const uniqueBy = <
   T extends Record<string, string | number | symbol>,
   K extends keyof T

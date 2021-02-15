@@ -1,8 +1,8 @@
 import c from "clsx";
-import Link from "next/link";
 import React from "react";
 
 import ReadMore from "../images/icons/read-more.svg";
+import Link from "./link";
 
 interface BoxPromptProps {
   readmore: string;
@@ -20,11 +20,12 @@ const BoxPrompt = ({readmore, className}: BoxPromptProps) => {
         className,
       )}
     >
-      <Link passHref href={href}>
-        <a className="flex items-center font-circular text-black text-right">
-          {text}
-          <ReadMore className="w-6 h-6 ml-6" />
-        </a>
+      <Link
+        className="flex items-center font-circular text-black font-normal text-right"
+        href={href}
+      >
+        {text}
+        <ReadMore className="w-6 h-6 ml-6" />
       </Link>
     </div>
   );
