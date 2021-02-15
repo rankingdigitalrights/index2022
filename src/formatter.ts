@@ -297,7 +297,7 @@ export const narrativeDetails = (src: string): NarrativePage => {
   const $ = cheerio.load(src, {xmlMode: true});
 
   const footnotes = $("<div></div>")
-    .append($("p").has("a[href^=#ftnt_ref]"))
+    .append($("div").has("a[href^=#ftnt_ref]"))
     .html();
 
   // Since we extracted the footnotes already, remove them.
