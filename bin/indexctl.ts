@@ -321,6 +321,7 @@ const writeJsonFile = (
         narrativesDir,
         "policy-recommendations.json",
       );
+      const algorithmsTarget = path.join(narrativesDir, "algorithms.json");
       const chinaTechGiantsTarget = path.join(
         narrativesDir,
         "china-tech-giants.json",
@@ -358,6 +359,10 @@ const writeJsonFile = (
       await narrativePage("Policy Recommendations").then(
         writeJsonFile(policyRecommendationsTarget),
       );
+
+      console.log(`Pull content for: ${algorithmsTarget}`);
+
+      await narrativePage("Algorithms").then(writeJsonFile(algorithmsTarget));
 
       console.log(`Pull content for: ${chinaTechGiantsTarget}`);
 

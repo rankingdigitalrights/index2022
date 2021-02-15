@@ -93,7 +93,7 @@
   }
 
   .hero-algorithms {
-    @apply bg-contain bg-no-repeat bg-center;
+    @apply bg-cover bg-center;
     background-image: url("../images/hero-robots-by-pawel-kuczynski.jpg?size=1024");
   }
 
