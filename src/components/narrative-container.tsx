@@ -72,9 +72,7 @@ const NarrativeContainer = ({
             />
           </div>
 
-          <div className="relative flex items-center justify-around py-3">
-            {children({Container})}
-          </div>
+          <div className="relative py-3">{children({Container})}</div>
         </div>
 
         {hasDonate && (

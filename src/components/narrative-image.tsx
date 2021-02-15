@@ -1,7 +1,7 @@
 /* eslint @typescript-eslint/no-var-requires: off, import/no-dynamic-require: off, global-require: off */
 import React from "react";
 
-import {useBreakpointSize} from "../hooks";
+// import {useBreakpointSize} from "../hooks";
 import BoxPrompt from "./box-prompt";
 
 interface NarrativeImageProps {
@@ -11,14 +11,15 @@ interface NarrativeImageProps {
 }
 
 const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
-  const screenWidth = useBreakpointSize();
-  let width = "100%";
-  if (screenWidth > 768 && screenWidth <= 2000) {
-    width = "80%";
-  }
-  if (screenWidth > 2000) {
-    width = "60%";
-  }
+  // FIXME: Remove this code once we nailed the image widths
+  /* const screenWidth = useBreakpointSize();
+   * let width = "100%";
+   * if (screenWidth > 768 && screenWidth <= 2000) {
+   *   width = "80%";
+   * }
+   * if (screenWidth > 2000) {
+   *   width = "60%";
+   * } */
 
   const image = require(`../../data/images/${src}?resize&sizes[]=400&sizes[]=800&sizes[]=1024`);
   const imageWebp = require(`../../data/images/${src}?resize&webp&sizes[]=400&sizes[]=800&sizes[]=1024&format=webp`);
@@ -37,7 +38,7 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
 
   return (
     <div className="flex flex-col justify-around items-center">
-      <figure className="flex flex-col justify-around my-6">
+      <figure className="flex flex-col justify-around my-6 md:w-9/12">
         <picture>
           <source srcSet={imageWebp.srcSet} type="image/webp" />
           <source srcSet={image.srcSet} type="image/png" />
@@ -49,18 +50,17 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
             srcSet={image.srcSet}
             alt={description}
             title={title}
-            width={width}
             sizes="(min-width: 640px) 400w, (min-width: 1024px) 800w, 100vw"
             loading="lazy"
           />
         </picture>
-        <figcaption className="font-circular font-bold text-sm text-right mt-1">
+        <figcaption className="font-circular text-sm text-right mt-1">
           {title}
         </figcaption>
       </figure>
 
       {readmore && (
-        <div className="w-full mb-6">
+        <div className="w-full mt-6 mb-12">
           <BoxPrompt
             className="w-full md:w-10/12 md:ml-auto"
             readmore={readmore}

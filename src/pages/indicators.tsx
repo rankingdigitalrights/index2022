@@ -37,15 +37,15 @@ const IndicatorHeading = ({
   let title;
   switch (category) {
     case "governance": {
-      title = "Governance";
+      title = "G: Governance";
       break;
     }
     case "freedom": {
-      title = "Freedom";
+      title = "F: Freedom";
       break;
     }
     case "privacy": {
-      title = "Privacy";
+      title = "P: Privacy";
       break;
     }
     default: {
@@ -115,7 +115,7 @@ const Indicators = ({indicators}: IndicatorsProps) => {
                 />
               </Container>
 
-              <main className="container mx-auto">
+              <main className="mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 mt-6 pt-12">
                 <section className="flex flex-col mb-3 md:mb-12 md:flex-row">
                   <div className="flex flex-col md:w-1/2">
                     <IndicatorHeading category="governance" />

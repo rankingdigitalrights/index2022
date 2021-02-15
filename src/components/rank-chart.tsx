@@ -174,13 +174,8 @@ const RankChart = ({
         ? regions.map((region, i) => {
             const rows = ranking.filter((company) => company.region === region);
             return (
-              <div key={region}>
-                <span
-                  className={c(
-                    "font-circular font-bold pb-2",
-                    i === 0 ? "pt-1" : "pt-3",
-                  )}
-                >
+              <div key={region} className={c(i === 0 ? "pt-1" : "pt-6")}>
+                <span className={c("font-circular font-bold pb-2")}>
                   {region}
                 </span>
                 {rows.map((company, idx) => chartRow(company, idx))}

@@ -147,7 +147,7 @@ const Home = ({
                 title="Recommendations"
                 href="/recommendations"
                 theme="dark"
-                className="md:h-60 lg:h-80"
+                className="h-60 lg:h-80"
               >
                 <div className="flex flex-col h-full justify-between">
                   <p>What policymakers and companies need to know for 2021</p>

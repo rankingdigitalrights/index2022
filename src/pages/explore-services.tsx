@@ -5,6 +5,7 @@ import React, {useState} from "react";
 
 import HomeCategorySelector from "../components/home-category-selector";
 import Layout from "../components/layout";
+import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import RankChart from "../components/rank-chart";
 import Selector from "../components/selector";
@@ -178,95 +179,107 @@ const Explore = ({
   };
 
   const chartClassName = {
-    "sm:justify-between": telecomRankings && platformRankings,
+    "sm:justify-center": telecomRankings && platformRankings,
     "sm:justify-around": !telecomRankings || !platformRankings,
   };
 
   return (
     <Layout>
-      <div className="lg:container lg:mx-auto flex flex-col flex-row lg:justify-between py-6 px-6">
-        <NarrativeTitle title="Explore the data" />
+      <NarrativeContainer transparent>
+        {({Container}) => {
+          return (
+            <div>
+              <Container>
+                <NarrativeTitle title="Explore the data" />
 
-        <p className="font-circular mt-6">
-          The 2019 Ranking Digital Rights Corporate Accountability Index
-          evaluated 24 internet, mobile, and telecommunications companies on
-          their disclosed commitments and policies affecting freedom of
-          expression and privacy. RDR Index scores are based on company
-          disclosure of policies evaluated according to 35 indicators in three
-          categories.
-        </p>
+                <p className="font-circular mt-6">
+                  The 2019 Ranking Digital Rights Corporate Accountability Index
+                  evaluated 24 internet, mobile, and telecommunications
+                  companies on their disclosed commitments and policies
+                  affecting freedom of expression and privacy. RDR Index scores
+                  are based on company disclosure of policies evaluated
+                  according to 35 indicators in three categories.
+                </p>
 
-        <div className="flex flex-col mt-12 md:mx-auto lg:w-3/5">
-          <HomeCategorySelector
-            selected={selectedCategory}
-            onClick={handleSelectCategory}
-          />
+                <div className="flex flex-col mt-12">
+                  <HomeCategorySelector
+                    selected={selectedCategory}
+                    onClick={handleSelectCategory}
+                  />
 
-          <div className="flex flex-col w-full my-6 sm:flex-row">
-            <Selector<ServiceOption>
-              id="service-selector"
-              title="Select service"
-              options={serviceOptions}
-              isClearable
-              onSelect={handleServiceSelect}
-              className="flex-grow w-full md:w-2/3 lg:w-3/5"
-            />
+                  <div className="flex flex-col w-full my-6 sm:flex-row">
+                    <Selector<ServiceOption>
+                      id="service-selector"
+                      title="Select service"
+                      options={serviceOptions}
+                      isClearable
+                      onSelect={handleServiceSelect}
+                      className="flex-grow w-full md:w-2/3 lg:w-3/5"
+                    />
 
-            <ToggleSwitch
-              className="flex-none w-full sm:w-max my-3 ml-3 md:mb-1"
-              label="By Regions"
-              onChange={handleRegionSwitch}
-            />
-          </div>
-        </div>
+                    <ToggleSwitch
+                      className="flex-none w-full sm:w-max my-3 ml-3 md:mb-1"
+                      label="By Regions"
+                      onChange={handleRegionSwitch}
+                    />
+                  </div>
+                </div>
+              </Container>
 
-        <div
-          className={c(
-            "flex flex-col mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible",
-            chartClassName,
-          )}
-        >
-          {platformRankings &&
-            (selectedService ? (
-              <ServiceRankChart
-                className="w-full lg:w-1/2 sm:pr-3"
-                ranking={platformRankings as ServiceCompanyRank[]}
-                serviceKind={selectedService.kind}
-                category={selectedCategory}
-                byRegion={byRegion}
-                hasHeader
-              />
-            ) : (
-              <RankChart
-                className="w-full sm:w-1/2 sm:pr-3"
-                ranking={platformRankings}
-                category={selectedCategory}
-                byRegion={byRegion}
-                hasHeader
-              />
-            ))}
+              <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
+                <div
+                  style={{minHeight: "22rem"}}
+                  className={c(
+                    "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3",
 
-          {telecomRankings &&
-            (selectedService ? (
-              <ServiceRankChart
-                className="w-full mt-6 lg:w-1/2 sm:pl-3 sm:mt-0"
-                ranking={telecomRankings as ServiceCompanyRank[]}
-                serviceKind={selectedService.kind}
-                category={selectedCategory}
-                byRegion={byRegion}
-                hasHeader
-              />
-            ) : (
-              <RankChart
-                className="w-full mt-6 sm:w-1/2 sm:pl-3 sm:mt-0"
-                ranking={telecomRankings}
-                category={selectedCategory}
-                byRegion={byRegion}
-                hasHeader
-              />
-            ))}
-        </div>
-      </div>
+                    chartClassName,
+                  )}
+                >
+                  {platformRankings &&
+                    (selectedService ? (
+                      <ServiceRankChart
+                        className="w-full sm:pr-3"
+                        ranking={platformRankings as ServiceCompanyRank[]}
+                        serviceKind={selectedService.kind}
+                        category={selectedCategory}
+                        byRegion={byRegion}
+                        hasHeader
+                      />
+                    ) : (
+                      <RankChart
+                        className="w-full sm:w-1/2 sm:pr-3"
+                        ranking={platformRankings}
+                        category={selectedCategory}
+                        byRegion={byRegion}
+                        hasHeader
+                      />
+                    ))}
+
+                  {telecomRankings &&
+                    (selectedService ? (
+                      <ServiceRankChart
+                        className="w-full mt-6 sm:pl-3 sm:mt-0"
+                        ranking={telecomRankings as ServiceCompanyRank[]}
+                        serviceKind={selectedService.kind}
+                        category={selectedCategory}
+                        byRegion={byRegion}
+                        hasHeader
+                      />
+                    ) : (
+                      <RankChart
+                        className="w-full mt-6 sm:w-1/2 sm:pl-3 sm:mt-0"
+                        ranking={telecomRankings}
+                        category={selectedCategory}
+                        byRegion={byRegion}
+                        hasHeader
+                      />
+                    ))}
+                </div>
+              </div>
+            </div>
+          );
+        }}
+      </NarrativeContainer>
     </Layout>
   );
 };

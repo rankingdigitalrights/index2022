@@ -9,7 +9,7 @@ interface FootnotesProps {
 const Footnotes = ({source, className}: FootnotesProps) => {
   return (
     <div className={c("border-t-2 border-prissian text-sm", className)}>
-      <h2>Footnotes</h2>
+      <h2 className="mb-3">Footnotes</h2>
 
       {source}
     </div>

@@ -98,7 +98,7 @@ const ServiceRankChart = ({
       <Link passHref href={`/companies/${id}`}>
         <a
           className={c(
-            "flex-none font-circular text-black select-none whitespace-nowrap",
+            "flex-none font-circular text-black font-normal select-none whitespace-nowrap",
             highlightedClassName,
             companyWidth,
           )}
@@ -120,9 +120,7 @@ const ServiceRankChart = ({
       >
         {companyLabel}
 
-        <div className={c("flex-none font-bold ml-2", serviceWidth)}>
-          {service}
-        </div>
+        <div className={c("flex-none ml-2", serviceWidth)}>{service}</div>
 
         <div className="flex-none w-8 flex justify-center">
           <div
@@ -173,9 +171,7 @@ const ServiceRankChart = ({
           <div className="flex items-center font-circular text-sm mb-2 mt-3">
             <div className={c("flex-none", companyWidth)}>&nbsp;</div>
 
-            <div className={c("flex-none text-center ml-2", serviceWidth)}>
-              Service
-            </div>
+            <div className={c("flex-none ml-2", serviceWidth)}>Service</div>
 
             <div className="flex-none w-8 text-center">Rank</div>
 
@@ -191,13 +187,8 @@ const ServiceRankChart = ({
             const rows = ranking.filter((company) => company.region === region);
 
             return (
-              <div key={region}>
-                <span
-                  className={c(
-                    "font-circular font-bold pb-2",
-                    i === 0 ? "pt-1" : "pt-3",
-                  )}
-                >
+              <div key={region} className={c(i === 0 ? "pt-1" : "pt-6")}>
+                <span className={c("font-circular font-bold pb-2")}>
                   {region}
                 </span>
                 {rows.map((company, idx) => chartRow(company, idx))}

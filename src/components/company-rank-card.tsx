@@ -23,7 +23,7 @@ const CompanyRankCard = ({
 
   return (
     <div className={c("rank-card flex flex-col", className)}>
-      <h1 className="font-platform text-white bold text-xl">{company}</h1>
+      <h1 className="font-platform text-white bold text-xl py-4">{company}</h1>
 
       <div className="flex flex-wrap ">
         <div className="flex items-center font-circular text-white text-md font-bold mt-4 md:mr-2 lg:mr-8">
@@ -31,7 +31,7 @@ const CompanyRankCard = ({
           <span className={classNameLabel}>{enumerate(rank)}</span>
         </div>
 
-        <div className="flex items-center font-circular text-white text-md font-bold mt-4">
+        <div className="flex items-center font-circular text-white text-md font-bold mt-4 ml-6">
           <span className="mr-3">Score:</span>{" "}
           <span className={classNameLabel}>{score}%</span>
         </div>

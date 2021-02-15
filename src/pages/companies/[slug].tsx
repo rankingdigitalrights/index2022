@@ -105,7 +105,7 @@ const CompanyPage = ({
 
         <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between lg:w-10/12 xl:w-8/12 print:flex-row">
           <div className="flex flex-col bg-prissian w-full p-3 z-10 md:w-7/12 md:p-0 md:mt-6 md:mb-6 md:mr-6 lg:w-7/12 lg:mr-0 print:pt-20 print:pb-8 print:pr-10 print:pl-32">
-            <CompanyKindLabel kind={index.kind} />
+            <CompanyKindLabel className="mt-3 md:mt-0" kind={index.kind} />
 
             <CompanyRankCard
               company={details.printName}
@@ -312,7 +312,7 @@ const CompanyPage = ({
 
       {footnotes && (
         <Footnotes
-          className="container mx-auto w-11/12 pt-6 lg:w-8/12 md:w-10/12 printer print:px-20"
+          className="container mx-auto w-11/12 my-12 pt-12 lg:w-8/12 md:w-10/12 printer print:px-20"
           source={footnotes}
         />
       )}

@@ -182,11 +182,11 @@
   }
 
   h2 {
-    @apply text-lg font-platform;
+    @apply text-xl font-platform leading-none;
   }
 
   h3 {
-    @apply text-base font-circular;
+    @apply text-lg font-platform leading-none mb-3;
   }
 
   h4 {
@@ -258,7 +258,7 @@
   }
 
   .pullquote:before {
-    @apply relative -left-3 border-r-4 border-prissian;
+    @apply relative -left-5 border-r-4 border-prissian;
 
     content: " ";
   }

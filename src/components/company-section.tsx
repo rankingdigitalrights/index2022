@@ -51,30 +51,28 @@ const CompanySection = ({
     >
       <div className="flex flex-col md:flex-row mt-8 md:mt-16 print:mt-0">
         <div className="md:w-4/6 md:mr-3 print:w-full print:m-0">
-          <div className="flex items-center mb-12 md:h-16 no-page-break">
-            <h2
-              className={c(
-                "font-platform text-xl whitespace-nowrap",
-                titleClassName,
-              )}
-            >
-              {title}
-            </h2>
+          <h2
+            className={c(
+              "flex items-center font-platform text-xl mb-6",
+              titleClassName,
+            )}
+          >
+            {title}{" "}
             <span
               className={c(
-                "font-circular font-bold text-md ml-3 px-2 py-1",
+                "font-circular font-bold text-md ml-3 px-2 py-1 h-8",
                 scoreClassName,
               )}
             >
               {score}%
             </span>
-          </div>
+          </h2>
 
           <div dangerouslySetInnerHTML={{__html: text}} />
         </div>
 
         <div className="md:w-2/6 md:ml-3 print:hidden">
-          <div className="flex flex-col justify-end md:h-16 mb-12 mt-4 md:mt-0">
+          <div className="flex flex-col justify-end mb-6 md:mt-0">
             <h3 className="text-lg font-circular">Indicators</h3>
           </div>
 
