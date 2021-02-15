@@ -355,7 +355,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
 
                 <li className="py-3">
                   <IconLink
-                    href="/indicators/G1"
+                    href="/indicators"
                     Icon={ScoresByIndicator}
                     name="Issue areas & indicators"
                   />
