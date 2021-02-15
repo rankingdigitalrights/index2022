@@ -74,13 +74,10 @@ const IndicatorHeading = ({
 const IndicatorLink = ({option}: {option: IndicatorSelectOption}) => {
   const {isParent, hasParent, label, value} = option;
 
-  const className = c(
-    "text-sm text-black font-circular font-normal p-1 pl-2 pr-2",
-    {
-      "font-bold": isParent,
-      "pl-6": hasParent,
-    },
-  );
+  const className = c("text-sm text-black font-circular font-normal py-1", {
+    "font-bold": isParent,
+    "pl-5": hasParent,
+  });
 
   if (isParent) return <div className={c(className)}>{label}</div>;
 
