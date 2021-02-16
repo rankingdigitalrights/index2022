@@ -1,7 +1,8 @@
 import c from "clsx";
 import {promises as fsP} from "fs";
+import {useRouter} from "next/router";
 import path from "path";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import HomeCategorySelector from "../components/home-category-selector";
 import Layout from "../components/layout";
@@ -134,22 +135,78 @@ export const getStaticProps = async () => {
   };
 };
 
+const serviceQueryParam = (url: string): ServiceKind | undefined => {
+  const re = /[&?]s=(.*)(&|$)/;
+  const match = url.match(re);
+
+  if (!match) return undefined;
+  return match[1] as ServiceKind;
+};
+
 const Explore = ({
   serviceOptions,
   serviceRankings,
   companyRankings,
 }: ExploreProps) => {
+  const router = useRouter();
+  // The router query object isn't yet available on first render. We extract the
+  // service query parameter ourselves from the router path to have a preselected
+  // service on firts render.
+  // See: https://nextjs.org/docs/routing/dynamic-routes#caveats
+  const queryService = serviceQueryParam(router.asPath);
+
+  // We are only interested in the preselected query object on first render.
+  // After that we don't use routing anymore to preselect services. This is a
+  // simple flag that is used below to preselect a service.
+  const [firstRender, setFirstRender] = useState(true);
+
   const [selectedCategory, setSelectedCategory] = useState<
     IndicatorCategoryExt
   >("total");
-  const [selectedService, setSelectedService] = useState<ServiceOption>();
+  const [selectedService, setSelectedService] = useState<
+    ServiceOption | undefined
+  >();
   const [telecomRankings, setTelecomRankings] = useState<
     CompanyRank[] | ServiceCompanyRank[] | undefined
-  >(companyRankings?.total?.telecom);
+  >();
   const [platformRankings, setPlatformRankings] = useState<
     CompanyRank[] | ServiceCompanyRank[] | undefined
-  >(companyRankings?.total?.internet);
+  >();
   const [byRegion, setByRegion] = useState(false);
+
+  useEffect(() => {
+    // Ensure that we run this hook only once.
+    if (!firstRender) return;
+
+    // If we detected a queryService we preselect the rankings for that service.
+    // Otherwise we populate the rankings for all services.
+    if (queryService) {
+      setTelecomRankings(
+        serviceRankings[queryService]?.[selectedCategory]?.telecom,
+      );
+      setPlatformRankings(
+        serviceRankings[queryService]?.[selectedCategory]?.internet,
+      );
+      setSelectedService(
+        serviceOptions.find(({kind}) => kind === queryService),
+      );
+      // We reset the URL to remove the preselected service once we switch services.
+      router.push("/explore-services", undefined, {shallow: true});
+    } else {
+      setTelecomRankings(companyRankings[selectedCategory]?.telecom);
+      setPlatformRankings(companyRankings[selectedCategory]?.internet);
+    }
+
+    setFirstRender(false);
+  }, [
+    router,
+    firstRender,
+    queryService,
+    serviceOptions,
+    selectedCategory,
+    serviceRankings,
+    companyRankings,
+  ]);
 
   const updateRankings = (
     category: IndicatorCategoryExt,
@@ -212,6 +269,9 @@ const Explore = ({
                       id="service-selector"
                       title="Select service"
                       options={serviceOptions}
+                      defaultValue={serviceOptions.find(
+                        ({kind}) => kind === queryService,
+                      )}
                       isClearable
                       onSelect={handleServiceSelect}
                       className="flex-grow w-full md:w-2/3 lg:w-3/5"
