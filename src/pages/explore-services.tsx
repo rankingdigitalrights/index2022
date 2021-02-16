@@ -2,7 +2,7 @@ import c from "clsx";
 import {promises as fsP} from "fs";
 import {useRouter} from "next/router";
 import path from "path";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useReducer, useState} from "react";
 
 import HomeCategorySelector from "../components/home-category-selector";
 import Layout from "../components/layout";
@@ -40,6 +40,22 @@ type CompanyRanks = {
     [kind in CompanyKind]: CompanyRank[];
   };
 };
+
+type State = {
+  category: IndicatorCategoryExt;
+  service: ServiceOption | undefined;
+  byRegion: boolean;
+  telecomRankings: CompanyRank[] | ServiceCompanyRank[] | undefined;
+  platformRankings: CompanyRank[] | ServiceCompanyRank[] | undefined;
+  serviceRankings: ServiceCompanyRanks;
+  companyRankings: CompanyRanks;
+};
+
+type Action =
+  | {type: "setCategory"; category: IndicatorCategoryExt}
+  | {type: "setService"; service: ServiceOption | undefined}
+  | {type: "setRegion"; byRegion: boolean}
+  | {type: "updateRankings"};
 
 interface ExploreProps {
   serviceOptions: ServiceOption[];
@@ -143,6 +159,56 @@ const serviceQueryParam = (url: string): ServiceKind | undefined => {
   return match[1] as ServiceKind;
 };
 
+const initializeState = (state: State) => {
+  const telecomRankings = state.service
+    ? state.serviceRankings[state.service.kind]?.[state.category]?.telecom
+    : state.companyRankings[state.category]?.telecom;
+  const platformRankings = state.service
+    ? state.serviceRankings[state.service.kind]?.[state.category]?.internet
+    : state.companyRankings[state.category]?.internet;
+
+  return {
+    ...state,
+    telecomRankings,
+    platformRankings,
+  };
+};
+
+const reducer = (state: State, action: Action) => {
+  switch (action.type) {
+    case "setCategory":
+      return {
+        ...state,
+        category: action.category,
+        telecomRankings: state.service
+          ? state.serviceRankings[state.service.kind]?.[state.category]?.telecom
+          : state.companyRankings[state.category]?.telecom,
+        platformRankings: state.service
+          ? state.serviceRankings[state.service.kind]?.[state.category]
+              ?.internet
+          : state.companyRankings[state.category]?.internet,
+      };
+    case "setService":
+      return {
+        ...state,
+        service: action.service,
+        telecomRankings: action.service
+          ? state.serviceRankings[action.service.kind]?.[state.category]
+              ?.telecom
+          : state.companyRankings[state.category]?.telecom,
+        platformRankings: action.service
+          ? state.serviceRankings[action.service.kind]?.[state.category]
+              ?.internet
+          : state.companyRankings[state.category]?.internet,
+      };
+    case "setRegion": {
+      return {...state, byRegion: action.byRegion};
+    }
+    default:
+      throw new Error(`No match for action ${action.type}.`);
+  }
+};
+
 const Explore = ({
   serviceOptions,
   serviceRankings,
@@ -155,89 +221,47 @@ const Explore = ({
   // See: https://nextjs.org/docs/routing/dynamic-routes#caveats
   const queryService = serviceQueryParam(router.asPath);
 
+  const [state, dispatch] = useReducer(
+    reducer,
+    {
+      category: "total",
+      service: serviceOptions.find(({kind}) => kind === queryService),
+      byRegion: false,
+      telecomRankings: undefined,
+      platformRankings: undefined,
+      serviceRankings,
+      companyRankings,
+    },
+    initializeState,
+  );
+
   // We are only interested in the preselected query object on first render.
   // After that we don't use routing anymore to preselect services. This is a
   // simple flag that is used below to preselect a service.
   const [firstRender, setFirstRender] = useState(true);
-
-  const [selectedCategory, setSelectedCategory] = useState<
-    IndicatorCategoryExt
-  >("total");
-  const [selectedService, setSelectedService] = useState<
-    ServiceOption | undefined
-  >();
-  const [telecomRankings, setTelecomRankings] = useState<
-    CompanyRank[] | ServiceCompanyRank[] | undefined
-  >();
-  const [platformRankings, setPlatformRankings] = useState<
-    CompanyRank[] | ServiceCompanyRank[] | undefined
-  >();
-  const [byRegion, setByRegion] = useState(false);
-
   useEffect(() => {
     // Ensure that we run this hook only once.
     if (!firstRender) return;
 
-    // If we detected a queryService we preselect the rankings for that service.
-    // Otherwise we populate the rankings for all services.
-    if (queryService) {
-      setTelecomRankings(
-        serviceRankings[queryService]?.[selectedCategory]?.telecom,
-      );
-      setPlatformRankings(
-        serviceRankings[queryService]?.[selectedCategory]?.internet,
-      );
-      setSelectedService(
-        serviceOptions.find(({kind}) => kind === queryService),
-      );
-      // We reset the URL to remove the preselected service once we switch services.
-      router.push("/explore-services", undefined, {shallow: true});
-    } else {
-      setTelecomRankings(companyRankings[selectedCategory]?.telecom);
-      setPlatformRankings(companyRankings[selectedCategory]?.internet);
-    }
-
+    router.push("/explore-services", undefined, {shallow: true});
     setFirstRender(false);
-  }, [
-    router,
-    firstRender,
-    queryService,
-    serviceOptions,
-    selectedCategory,
-    serviceRankings,
-    companyRankings,
-  ]);
-
-  const updateRankings = (
-    category: IndicatorCategoryExt,
-    service?: ServiceKind,
-  ): void => {
-    if (service) {
-      setTelecomRankings(serviceRankings[service]?.[category]?.telecom);
-      setPlatformRankings(serviceRankings[service]?.[category]?.internet);
-    } else {
-      setTelecomRankings(companyRankings[category]?.telecom);
-      setPlatformRankings(companyRankings[category]?.internet);
-    }
-  };
+  }, [router, firstRender]);
 
   const handleSelectCategory = (category: IndicatorCategoryExt): void => {
-    setSelectedCategory(category);
-    updateRankings(category, selectedService?.kind);
+    dispatch({type: "setCategory", category});
   };
 
   const handleServiceSelect = (service?: ServiceOption) => {
-    setSelectedService(service);
-    updateRankings(selectedCategory, service?.kind);
+    dispatch({type: "setService", service});
   };
 
-  const handleRegionSwitch = (toggle: boolean) => {
-    setByRegion(toggle);
+  const handleRegionSwitch = (byRegion: boolean) => {
+    dispatch({type: "setRegion", byRegion});
   };
 
   const chartClassName = {
-    "sm:justify-center": telecomRankings && platformRankings,
-    "sm:justify-around": !telecomRankings || !platformRankings,
+    "sm:justify-center": state.telecomRankings && state.platformRankings,
+    "sm:justify-around": !state.telecomRankings || !state.platformRankings,
   };
 
   return (
@@ -260,7 +284,7 @@ const Explore = ({
 
                 <div className="flex flex-col mt-12">
                   <HomeCategorySelector
-                    selected={selectedCategory}
+                    selected={state.category}
                     onClick={handleSelectCategory}
                   />
 
@@ -269,9 +293,7 @@ const Explore = ({
                       id="service-selector"
                       title="Select service"
                       options={serviceOptions}
-                      defaultValue={serviceOptions.find(
-                        ({kind}) => kind === queryService,
-                      )}
+                      defaultValue={state.service}
                       isClearable
                       onSelect={handleServiceSelect}
                       className="flex-grow w-full md:w-2/3 lg:w-3/5"
@@ -295,42 +317,42 @@ const Explore = ({
                     chartClassName,
                   )}
                 >
-                  {platformRankings &&
-                    (selectedService ? (
+                  {state.platformRankings &&
+                    (state.service ? (
                       <ServiceRankChart
                         className="w-full sm:pr-3"
-                        ranking={platformRankings as ServiceCompanyRank[]}
-                        serviceKind={selectedService.kind}
-                        category={selectedCategory}
-                        byRegion={byRegion}
+                        ranking={state.platformRankings as ServiceCompanyRank[]}
+                        serviceKind={state.service.kind}
+                        category={state.category}
+                        byRegion={state.byRegion}
                         hasHeader
                       />
                     ) : (
                       <RankChart
                         className="w-full sm:w-1/2 sm:pr-3"
-                        ranking={platformRankings}
-                        category={selectedCategory}
-                        byRegion={byRegion}
+                        ranking={state.platformRankings}
+                        category={state.category}
+                        byRegion={state.byRegion}
                         hasHeader
                       />
                     ))}
 
-                  {telecomRankings &&
-                    (selectedService ? (
+                  {state.telecomRankings &&
+                    (state.service ? (
                       <ServiceRankChart
                         className="w-full mt-6 sm:pl-3 sm:mt-0"
-                        ranking={telecomRankings as ServiceCompanyRank[]}
-                        serviceKind={selectedService.kind}
-                        category={selectedCategory}
-                        byRegion={byRegion}
+                        ranking={state.telecomRankings as ServiceCompanyRank[]}
+                        serviceKind={state.service.kind}
+                        category={state.category}
+                        byRegion={state.byRegion}
                         hasHeader
                       />
                     ) : (
                       <RankChart
                         className="w-full mt-6 sm:w-1/2 sm:pl-3 sm:mt-0"
-                        ranking={telecomRankings}
-                        category={selectedCategory}
-                        byRegion={byRegion}
+                        ranking={state.telecomRankings}
+                        category={state.category}
+                        byRegion={state.byRegion}
                         hasHeader
                       />
                     ))}
