@@ -418,7 +418,7 @@ const writeJsonFile = (
             restartBrowser = false;
           }
 
-          const href = `http://localhost:3000/index2020/companies/${companyId}?print`;
+          const href = `http://localhost:3000/index2020/pdf/${companyId}`;
           const target = path.join(process.cwd(), pdfDir, `${companyId}.pdf`);
 
           console.log(`Generate company PDF for: ${companyId}.`);

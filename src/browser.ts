@@ -25,6 +25,7 @@ export interface BrowserCtx {
 }
 
 export default async (headless = true): Promise<BrowserCtx> => {
+  const viewport = {width: 1279, height: 768};
   const instance = await puppeteer.launch({
     args: ["--no-sandbox", "--disabled-setuid-sandbox"],
     headless,
@@ -34,7 +35,7 @@ export default async (headless = true): Promise<BrowserCtx> => {
 
   const browse: BrowserExecutor = async (f) => {
     const page = await instance.newPage();
-    await page.setViewport({width: 1279, height: 768});
+    await page.setViewport(viewport);
 
     const goto: BrowserTask<string> = async (url) => {
       try {
