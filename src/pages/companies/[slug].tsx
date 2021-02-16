@@ -282,8 +282,8 @@ const CompanyPage = ({
           </div>
 
           <p className="font-circular text-sm text-center">
-            We rank companies on their approach to governance, and their
-            policies and practices that affect freedom of expression and
+            We rank companies on their governance, and on their
+            policies and practices affecting freedom of expression and
             privacy.
           </p>
 
