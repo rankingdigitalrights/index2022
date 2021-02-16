@@ -3,12 +3,14 @@ import React from "react";
 import Footer from "./footer";
 import HeaderBar from "./header-bar";
 import HtmlHead from "./html-head";
+import ScrollArrow from "./scroll-arrow";
 
 interface LayoutProps {
+  hideScrollArrow?: boolean;
   children: React.ReactNode;
 }
 
-const Layout = ({children}: LayoutProps) => {
+const Layout = ({hideScrollArrow, children}: LayoutProps) => {
   return (
     <div>
       <HtmlHead />
@@ -16,6 +18,8 @@ const Layout = ({children}: LayoutProps) => {
       <HeaderBar className="print:hidden" />
 
       {children}
+
+      {!hideScrollArrow && <ScrollArrow />}
 
       <Footer className="print:hidden" />
     </div>

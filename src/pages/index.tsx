@@ -104,7 +104,7 @@ const Home = ({
   };
 
   return (
-    <Layout>
+    <Layout hideScrollArrow>
       <div className="relative">
         <div className="absolute flex flex-row w-full h-full top-0">
           <div className="lg:w-1/2 w-full lg:bg-accent-red" />

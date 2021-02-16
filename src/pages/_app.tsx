@@ -2,6 +2,7 @@ import "../css/index.css";
 
 import {AppProps} from "next/app";
 import React, {useEffect, useState} from "react";
+import smoothscroll from "smoothscroll-polyfill";
 import SwiperCore, {Pagination} from "swiper";
 
 import {initMatomo} from "../matomo";
@@ -26,6 +27,10 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     window.addEventListener("keydown", handleFirstTab);
     setFirstTabHandled(true);
   }, [firstTabHandled]);
+
+  useEffect(() => {
+    smoothscroll.polyfill();
+  }, []);
 
   // Initialize site tracking
   useEffect(() => {
