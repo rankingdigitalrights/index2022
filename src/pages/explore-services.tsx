@@ -271,7 +271,7 @@ const Explore = ({
           return (
             <div>
               <Container>
-                <NarrativeTitle title="Explore the data" />
+                <NarrativeTitle title="Explore the data: Platforms and Services" />
 
                 <p className="font-circular mt-6">
                   The 2019 Ranking Digital Rights Corporate Accountability Index
