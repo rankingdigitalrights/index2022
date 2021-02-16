@@ -273,6 +273,7 @@ const IndicatorPage = ({
               title="Sort"
               className="flex-grow w-full mt-2 md:mt-0 mx-6"
               options={sortOptions}
+              defaultValue={sortOptions[0]}
               onSelect={handleSelectSortStrategy}
             />
 
