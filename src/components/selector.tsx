@@ -119,6 +119,7 @@ interface SelectorProps<T extends SelectOption> {
   title: string;
   options: T[];
   onSelect: (value?: T) => void;
+  defaultValue?: T;
   isSearchable?: boolean;
   isClearable?: boolean;
   className?: string;
@@ -129,6 +130,7 @@ const Selector = <T extends SelectOption>({
   title,
   options,
   onSelect,
+  defaultValue,
   isSearchable = false,
   isClearable = false,
   className,
@@ -144,6 +146,7 @@ const Selector = <T extends SelectOption>({
         instanceId={id}
         options={options}
         className="font-circular text-sm"
+        defaultValue={defaultValue}
         openMenuOnFocus
         isSearchable={isSearchable}
         isClearable={isClearable}
