@@ -12,8 +12,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Black.otf);
-    src: url(../../public/fonts/CircularStd-Black.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Black.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Black.woff) format("woff");
     font-weight: 700;
@@ -23,8 +22,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Book.ttf);
-    src: url(../../public/fonts/CircularStd-Book.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Book.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Book.woff) format("woff");
     font-weight: 400;
@@ -43,8 +41,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-Regular.otf);
-    src: url(../../public/fonts/LyonText-Regular.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-Regular.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
       url(../../public/fonts/LyonText-Regular.woff) format("woff");
     font-weight: 400;
@@ -64,8 +61,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-RegularItalic.otf);
-    src: url(../../public/fonts/LyonText-RegularItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-RegularItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
       url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
     font-weight: 400;
@@ -75,8 +71,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-BoldItalic.otf);
-    src: url(../../public/fonts/LyonText-BoldItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-BoldItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
     font-weight: 700;
     font-style: italic;
@@ -263,7 +258,7 @@
     content: " ";
   }
 
-  .pullquote > p {
+  .pullquote>p {
     @apply p-0;
   }
 
@@ -390,10 +385,6 @@
     font-weight: 700;
   }
 
-  main.spotlight ol,
-  main.spotlight ul {
-  }
-
   main.spotlight ol {
     list-style-type: decimal;
   }
@@ -455,6 +446,10 @@
     min-width: 100%;
     left: 50%;
     max-height: 100%;
+  }
+
+  .scrolly-canvas figure#chart-q1 svg {
+    padding: 1rem;
   }
 
   .scrolly-canvas figure figcaption {
@@ -525,6 +520,7 @@
     padding: 0 1rem;
     z-index: +1;
     overflow-y: hidden;
+    width: 100%;
     /* unclear why, but solves white space problem for now */
   }
 
@@ -535,9 +531,13 @@
   }
 
   .step {
-    @apply bg-white mx-auto;
-    margin-top: 133vh;
-    margin-bottom: 133vh;
+    padding-bottom: 133vh;
+  }
+
+  .step .step-content {
+    @apply bg-white shadow;
+    /* margin-top: 133vh;
+    margin-bottom: 133vh; */
     padding: 1rem;
     border-radius: 10px;
   }
@@ -549,6 +549,7 @@
 
   .step div {
     margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .step p {
@@ -629,6 +630,24 @@
   main.spotlight .box-placeholder:hover {
     background-color: lightgrey;
     transition: background-color 0.6s;
+  }
+
+  @media screen and (min-width: 900px) {
+    div.scrolly-steps {
+      width: 33%;
+      margin-left: 0;
+    }
+
+    div.scrolly-canvas {
+      width: 66%;
+      margin-right: 0;
+      margin-left: auto;
+    }
+
+    div.scrolly-steps .step {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
   }
 
   /* Spotlights End */

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="svg794" clip-rule="evenodd" fill-rule="evenodd" version="1.1" viewBox="0 0 2111 843" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><metadata id="metadata800"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title/></cc:Work></rdf:RDF></metadata>
   <g id="Full-Map">
+        <rect id="Shutdowns-View" x="950" y="50" width="750" height="750" fill="none" stroke="none"/>
       <rect id="Asia-View" x="1425.6" y="242.51" width="270" height="270" fill="none" stroke="none"/>
-
     <g id="Basemap" class="fade-out" fill="#f2f2f2" stroke="#4d9ecf" stroke-width=".47px">
         <path id="path3" d="m1414.1 290.81 5.99 2.286 4.39-0.796 1.23-2.749 4.63-0.899 3.31-1.85 1.16-4.83 4.93-1.157 0.93-2.158 2.77 1.619 1.75 0.18 3.26 0.051 4.42 1.285 1.8 0.719 4.24-1.927 1.98 1.156 1.87-2.775 3.52 0.129 0.9-0.874 0.62-2.44 2.52-2.107 3.16 1.387-0.62 1.85 1.77 0.283-0.56 5.061 2.34 1.978 2.03-1.258 2.59-0.617 3.65-2.698 4.03 0.463h6.07l1.02 1.721-3.41 0.694-2.96 1.105-6.73 0.693-6.29 1.285-3.42 2.621 1.39 2.569 0.66 3.006-2.92 2.518 0.25 2.338-1.62 2.158-5.57-0.18 2.31 3.982-3.72 1.542-2.5 3.648 0.34 3.623-2.32 1.696-2.15-0.566-4.47 0.797-0.65 1.67h-4.36l-3.27 3.417-0.2 5.138-7.61 2.518-4.08-0.539-1.18 1.336-3.52-0.771-5.86 0.899-9.82-3.083 5.32-5.472-0.49-3.906-4.42-1.002-0.46-3.828-1.93-4.83 2.52-3.314-2.57-0.874 1.62-4.393 2.39-7.528z"/>
         <path id="path5" d="m1128.4 540.39-1.49 0.643-1.56-4.548 2.36-2.595 1.77-1.028 2.19 2.081-2.13 1.259-0.96 1.568-0.18 2.62z"/>

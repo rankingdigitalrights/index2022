@@ -22,18 +22,20 @@ const ScrollySteps = (props) => {
           return (
             <div
               key={id}
-              className="step shadow"
+              className="step"
               data-step={company}
               data-color={color}
               data-show={showLayers}
               data-hide={hideLayers}
             >
-              <h2 className="bg-white-100">{title}</h2>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: content,
-                }}
-              />
+              <div className="step-content">
+                <h2 className="bg-white-100">{title}</h2>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: content,
+                  }}
+                />
+              </div>
             </div>
           );
         },

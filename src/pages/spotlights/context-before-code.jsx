@@ -2,7 +2,6 @@
 import {promises as fsP} from "fs";
 import path from "path";
 import React from "react";
-import {useInView} from "react-intersection-observer";
 
 import story2 from "../../../data/spotlights/soe-fb-vs-youtube.json";
 import story1 from "../../../data/spotlights/soe-map-shutdowns.json";
@@ -400,12 +399,13 @@ const section4 = (
       .
     </p>
     <p>
-      When the COVID-19 pandemic struck, Facebook sent home workers who review
-      millions of posts each day for rule violations. The company decided to put
-      its algorithms in charge instead, hoping the technology would keep content
-      moderation processes moving. But the solution had at least one critical
-      flaw: it was unable to address appeals. In an August 2020 press call,
-      Facebook explained that it had{" "}
+      When the COVID-19 pandemic struck, Facebook{" "}
+      <a href="https://about.fb.com/news/2020/12/coronavirus/">sent home</a>{" "}
+      workers who review millions of posts each day for rule violations. The
+      company decided to put its algorithms in charge instead, hoping the
+      technology would keep content moderation processes moving. But the
+      solution had at least one critical flaw: it was unable to address appeals.
+      In an August 2020 press call, Facebook explained that it had{" "}
       <a href="https://about.fb.com/wp-content/uploads/2020/08/Press-Call-Transcript.pdf">
         severely scaled back
       </a>{" "}
@@ -589,10 +589,10 @@ const section6 = (
 
 const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
   // const [currentStep, setCurrentStep] = useState();
-  const [ioHook2] = useInView({
-    threshold: [0.6],
-    triggerOnce: true,
-  });
+  // const [ioHook2] = useInView({
+  //   threshold: [0.6],
+  //   triggerOnce: true,
+  // });
 
   return (
     <Layout>
@@ -621,7 +621,6 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
           </NarrativeContainer>
           <ScrollyFeature
             id="scrolly-map"
-            ref={ioHook2}
             story={story1}
             stepEnter={({index, element, direction}) => {
               if (element.dataset.show || element.dataset.hide) {
@@ -632,12 +631,23 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                   direction,
                 });
               }
+              if (index === 2) {
+                animateSVGviewBox("#map-asia-1 svg", "#Full-Map", "resetView");
+              }
               if (index === 2 && direction === "down") {
-                const SVG = document.querySelector("#map-asia-1 svg");
                 animateSVGviewBox(
-                  SVG,
-                  "#Full-Map",
-                  "#Shutdowns",
+                  "#map-asia-1 svg",
+                  "#Shutdowns-View",
+                  "zoom-shutdowns",
+                );
+              }
+              if (index === 3 && direction === "down") {
+                animateSVGviewBox("#map-asia-1 svg", "#Asia-View", "zoom-asia");
+              }
+              if (index === story1.steps.length - 1 && direction === "down") {
+                animateSVGviewBox(
+                  "#map-asia-1 svg",
+                  "#Shutdowns-View",
                   "zoom-shutdowns",
                 );
               }
@@ -650,7 +660,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               <FigureSvg
                 className="scrolly-figure bg-gray-200"
                 svg={svgWorldMap}
-                caption="Caption As Props 1"
+                caption="TODO: Caption As Props 1"
                 alt="TODO: Alternative description"
                 id="map-asia-1"
               />
@@ -682,9 +692,9 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               console.log(`Local Exit 1: ${index} - ${direction}`);
             }}
           >
-            <figure className="scrolly-figure bg-gray-200">
+            <figure className="scrolly-figure bg-gray-200 p-4">
               <FigureSvg
-                className="scrolly-figure bg-gray-200"
+                className="scrolly-figure bg-gray-200 p-4"
                 svg={svgFbYt}
                 caption="Content appealed and restored on appeal on Facebook vs. videos appealed and restored on YouTube between October 2019 and September 2020. Data for Facebook does not include the &ldquo;Fake Accounts&rdquo; category, for which appeals are not reported. Sources: <a href='https://transparency.facebook.com/community-standards-enforcement'>Community Standards Enforcement Report (Facebook)</a> and <a href='https://transparencyreport.google.com/youtube-policy/appeals'>Google Transparency Report (YouTube)</a>."
                 alt="TODO: Alternative description"
