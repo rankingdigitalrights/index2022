@@ -7,30 +7,34 @@ const ScrollArrow = () => {
   const [showScroll, setShowScroll] = useState(false);
 
   const className = {
-    flex: showScroll,
-    hidden: !showScroll,
+    "opacity-100 transition-opacity delay-300 ease-in-out cursor-pointer": showScroll,
+    "opacity-0 transition-opacity delay-300 ease-in-out": !showScroll,
   };
 
   useEffect(() => {
     const checkScrollTop = () => {
-      if (!showScroll && window.pageYOffset > 600) {
+      if (!showScroll && window.pageYOffset > 500) {
         setShowScroll(true);
-      } else if (showScroll && window.pageYOffset <= 600) {
+      } else if (showScroll && window.pageYOffset <= 500) {
         setShowScroll(false);
       }
     };
 
     window.addEventListener("scroll", checkScrollTop);
+
+    return (): void => {
+      window.removeEventListener("scroll", checkScrollTop);
+    };
   }, [showScroll]);
 
   return (
     <ScrollArrowIcon
       className={c(
-        "fixed bottom-10 right-10 w-14 h-14 svg-shadow z-50 ml-auto",
+        "fixed bottom-10 right-10 w-14 h-14 svg-shadow z-50",
         className,
       )}
       onClick={() => {
-        window.scrollTo({top: 0, behavior: "smooth"});
+        if (showScroll) window.scrollTo({top: 0, behavior: "smooth"});
       }}
     />
   );
