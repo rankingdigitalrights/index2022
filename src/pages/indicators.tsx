@@ -107,7 +107,7 @@ const Indicators = ({indicators}: IndicatorsProps) => {
             <div>
               <Container>
                 <NarrativeTitle
-                  title="Company scores by indicator"
+                  title="Explore the data: Issue areas & Indicators"
                   Logo={ScoresByIndicator}
                 />
               </Container>
