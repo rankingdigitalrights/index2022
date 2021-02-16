@@ -36,7 +36,7 @@ const ExecutiveSummary = ({details}: NarrativeProps) => {
         {({Container}) => {
           return (
             <Container>
-              <NarrativeTitle title={pageTitle} byLine="Jessica Dheere" />
+              <NarrativeTitle title={pageTitle} />
 
               {body}
 
