@@ -284,11 +284,11 @@ const HeaderBar = ({className}: HeaderBarProps) => {
 
           <MenuBarColumn
             className="w-full md:w-1/3 px-1 lg:px-4"
-            title="Companies"
+            title="Company Report Cards"
             isExpandable={isMobile}
             onExpand={(toggle: boolean) =>
               toggle
-                ? setExpandedColumn("Companies")
+                ? setExpandedColumn("Company Report Cards")
                 : setExpandedColumn(undefined)
             }
             isExpanded={expandedColumn === "Company Report Cards"}
@@ -331,11 +331,11 @@ const HeaderBar = ({className}: HeaderBarProps) => {
 
           <MenuBarColumn
             className="w-full md:w-1/3 px-1 md:px-4"
-            title="Data + Methods"
+            title="Our Data + Methods"
             isExpandable={isMobile}
             onExpand={(toggle: boolean) =>
               toggle
-                ? setExpandedColumn("Data + Methods")
+                ? setExpandedColumn("Our Data + Methods")
                 : setExpandedColumn(undefined)
             }
             isExpanded={expandedColumn === "Our Data + Methods"}
