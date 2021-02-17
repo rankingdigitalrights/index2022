@@ -54,9 +54,14 @@ export const isInternalLink = (x: string): boolean => {
   const reFullUrl = /^https:\/\/[.w]?rankingdigitalrights.org\/index2020/;
   const rePartialUrl = /^\/(companies|indicators)\/\w*\/?$/;
 
-  if (reFullUrl.test(x) || rePartialUrl.test(x)) return true;
+  return reFullUrl.test(x) || rePartialUrl.test(x);
+};
 
-  return false;
+export const isFootnoteLink = (x: string): boolean => {
+  const reFootnote = /#ftnt\d*$/;
+  const reReference = /#ftnt_ref\d*$/;
+
+  return reFootnote.test(x) || reReference.test(x);
 };
 
 export const uniqueBy = <

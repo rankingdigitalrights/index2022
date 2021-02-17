@@ -2,19 +2,28 @@ import c from "clsx";
 import Link from "next/link";
 import React from "react";
 
-import {isInternalLink} from "../utils";
+import {isFootnoteLink, isInternalLink} from "../utils";
 
 interface LinkProps {
   href: string;
   children: React.ReactNode;
+  id?: string;
   className?: string;
 }
 
-const NarrativeLink = ({href, children, className}: LinkProps) => {
+const NarrativeLink = ({id, href, children, className}: LinkProps) => {
+  if (isFootnoteLink(href)) {
+    return (
+      <a id={id} className={c(className)} href={decodeURIComponent(href)}>
+        {children}
+      </a>
+    );
+  }
+
   if (isInternalLink(href)) {
     const target = href
       .replace(/^https:\/\/[.w]?rankingdigitalrights.org\/index2020/, "")
-      .replace(/^\/index2020[gst-]?/, "");
+      .replace(/^\/(index2020|index2020-stg)/, "");
 
     return (
       <Link passHref href={decodeURIComponent(target)}>
@@ -28,7 +37,7 @@ const NarrativeLink = ({href, children, className}: LinkProps) => {
       className={c(className)}
       href={decodeURIComponent(href)}
       target="_blank"
-      rel="noreferrer"
+      rel="noopener noreferrer"
     >
       {children}
     </a>
