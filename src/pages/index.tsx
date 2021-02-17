@@ -150,7 +150,10 @@ const Home = ({
                 className="h-60 lg:h-80"
               >
                 <div className="flex flex-col h-full justify-between">
-                  <p>What policymakers and companies need to know for 2021</p>
+                  <p>
+                    Our guidance for companies and policymakers committed to
+                    protecting and promoting human rights online
+                  </p>
                 </div>
               </HomeBox>
             </div>
@@ -160,19 +163,18 @@ const Home = ({
 
       <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between my-10">
         <div className="font-circular lg:flex-grow w-full lg:w-1/3 pl-6 pr-10 mb-10">
-          <h2 className="font-bold text-xl leading-10">2020 RDR Index</h2>
+          <h2 className="font-bold text-xl leading-10">The 2020 RDR Index</h2>
 
           <p className="mt-4">
             We evaluated 26 of the world’s most powerful digital platforms and
             telecommunications companies on their disclosed policies and
             practices affecting people’s rights to freedom of expression and
-            privacy. Select the categories above to see how companies scored in
-            different areas.
+            privacy.
           </p>
 
           <Link passHref href="/methodology">
             <a>
-              How did we calculate these scores? Read about our methodology.
+              Learn more: Explore our data by issue area, service, and region.
             </a>
           </Link>
         </div>
@@ -218,9 +220,9 @@ const Home = ({
         />
         <HomeSpotlightBox
           className="md:w-1/3 h-64 bg-tech-giants"
-          title="China’s tech giants have proven they can change."
+          title="China’s tech giants can change:"
           href="/spotlights/china-tech-giants"
-          text="But the state is still their number one stakeholder."
+          text="But the state is still their number one stakeholder"
         />
       </div>
 
