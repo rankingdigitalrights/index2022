@@ -271,15 +271,13 @@ const Explore = ({
           return (
             <div>
               <Container>
-                <NarrativeTitle title="Explore the data: Platforms and Services" />
+                <NarrativeTitle title="Explore the data: Scores for platforms and services" />
 
                 <p className="font-circular mt-6">
-                  The 2019 Ranking Digital Rights Corporate Accountability Index
-                  evaluated 24 internet, mobile, and telecommunications
-                  companies on their disclosed commitments and policies
-                  affecting freedom of expression and privacy. RDR Index scores
-                  are based on company disclosure of policies evaluated
-                  according to 35 indicators in three categories.
+                  Which companies are strongest on privacy? How does WhatsApp
+                  compare to WeChat? How do companies in different geographic
+                  regions measure up against each other? Use the tools below to
+                  sort by category, service, or region.
                 </p>
 
                 <div className="flex flex-col mt-12">
