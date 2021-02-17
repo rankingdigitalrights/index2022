@@ -273,7 +273,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 <li role="none" className="pt-3">
                   <SpotlightLink
                     name="China’s tech giants can change"
-                    desc="But the state is still their number one stakeholder."
+                    desc="But the state is still their number one stakeholder"
                     href="/spotlights/china-tech-giants"
                     Icon={ChinaTechGiants}
                   />
@@ -401,7 +401,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                       role="menuitem"
                       className="flex items-start font-bold text-black no-underline"
                     >
-                      Acknowledgements
+                      Acknowledgments
                     </a>
                   </Link>
                 </li>
