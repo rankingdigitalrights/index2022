@@ -554,7 +554,7 @@ export const services = memoizeAsync(
           label: service,
           name:
             serviceMaps.has(name) && company.brand
-              ? `${name} (${company.brand})`
+              ? `${company.brand} (${name})`
               : name,
         };
       });
