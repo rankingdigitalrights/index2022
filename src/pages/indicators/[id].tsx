@@ -29,6 +29,7 @@ import {
   IndicatorElements,
   IndicatorSelectOption,
   SelectOption,
+  Service,
   SortStrategies,
   SortStrategy,
 } from "../../types";
@@ -48,7 +49,7 @@ interface IndicatorPageProps {
   averages: IndicatorAverages;
   elements: IndicatorElements;
   elementDescriptions: Element[];
-  services: Record<string, string[]>;
+  services: Record<string, Pick<Service, "id" | "name">[]>;
 }
 
 export const getStaticPaths = async () => {
@@ -107,7 +108,7 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
           .filter(({id: serviceId}) =>
             isValidService(serviceId, indicator.id, companyId, companyKind),
           )
-          .map(({id}) => id);
+          .map(({id, name}) => ({id, name}));
         return {
           [companyId]: localServices,
         };

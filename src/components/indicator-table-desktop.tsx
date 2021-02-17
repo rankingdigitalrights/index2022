@@ -1,7 +1,7 @@
 import c from "clsx";
 import React from "react";
 
-import {Element, IndicatorElement, IndicatorScore} from "../types";
+import {Element, IndicatorElement, IndicatorScore, Service} from "../types";
 import IndicatorElementTag from "./indicator-element-tag";
 
 export interface IndicatorTableProps {
@@ -11,7 +11,7 @@ export interface IndicatorTableProps {
   companyElements: Record<string, IndicatorElement[]>;
   literalValues: boolean;
   elementDescriptions: Element[];
-  services: string[];
+  services: Pick<Service, "id" | "name">[];
 }
 
 const IndicatorTableDesktop = ({
@@ -23,17 +23,17 @@ const IndicatorTableDesktop = ({
   elementDescriptions,
   services,
 }: IndicatorTableProps) => {
-  const templateService = services[0] && companyElements[services[0]];
+  const templateService = services[0] && companyElements[services[0].id];
 
   if (!templateService) return <div />;
 
-  const legendRow = [indicatorLabel].concat(services);
+  const legendRow = [indicatorLabel].concat(services.map(({name}) => name));
   const averagesRow = ["Averages"].concat(
-    services.map((service) => `${averages[service]}`),
+    services.map(({id}) => `${averages[id]}`),
   );
   const rows = templateService.reduce((memo, element) => {
-    const elements = services.reduce((agg, service) => {
-      const serviceElement = companyElements[service].find(
+    const elements = services.reduce((agg, {id}) => {
+      const serviceElement = companyElements[id].find(
         (e) => e.name === element.name,
       );
 
@@ -85,7 +85,7 @@ const IndicatorTableDesktop = ({
       "w-24 h-8 text-center": idx > 0,
     };
 
-    const serviceName = idx === 0 ? "averages-label" : services[idx - 1];
+    const serviceName = idx === 0 ? "averages-label" : services[idx - 1].name;
 
     return (
       <div

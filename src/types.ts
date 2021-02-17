@@ -77,6 +77,7 @@ export type Company = {
   name: string;
   region: string;
   kind: CompanyKind;
+  brand?: string;
 };
 
 export type Indicator = {

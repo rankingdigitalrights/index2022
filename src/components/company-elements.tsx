@@ -1,7 +1,7 @@
 import React from "react";
 
 import {useBreakpointSize} from "../hooks";
-import {Element, IndicatorElement, IndicatorScore} from "../types";
+import {Element, IndicatorElement, IndicatorScore, Service} from "../types";
 import IndicatorTableDesktop from "./indicator-table-desktop";
 import IndicatorTableMobile from "./indicator-table-mobile";
 
@@ -14,7 +14,7 @@ interface CompanyElementsProps {
   companyElements: Record<string, IndicatorElement[]>;
   literalValues: boolean;
   elementDescriptions: Element[];
-  services: string[];
+  services: Pick<Service, "id" | "name">[];
   className?: string;
 }
 
@@ -31,7 +31,8 @@ const CompanyElements = ({
   className,
 }: CompanyElementsProps) => {
   const breakpointSize = useBreakpointSize();
-  const templateService = services[0] && companyElements[services[0]];
+
+  const templateService = services[0] && companyElements[services[0].id];
 
   if (!templateService) return <div />;
 

@@ -18,7 +18,7 @@ const IndicatorTableMobile = ({
 }: IndicatorTableProps) => {
   const [swiper, setSwiper] = useState<SwiperType>();
 
-  const templateService = services[0] && companyElements[services[0]];
+  const templateService = services[0] && companyElements[services[0].id];
 
   if (!templateService) return <div />;
 
@@ -35,15 +35,15 @@ const IndicatorTableMobile = ({
           onSwiper={(s) => setSwiper(s)}
         >
           {services.map((service, idx) => {
-            const elements = companyElements[service];
-            const average = averages[service] || "NA";
-            if (!elements) return <div key={service} />;
+            const elements = companyElements[service.id];
+            const average = averages[service.id] || "NA";
+            if (!elements) return <div key={service.id} />;
 
             const isFirstService = idx === 0;
             const isLastService = idx + 1 === services.length;
 
             return (
-              <SwiperSlide key={`slide-${service}`}>
+              <SwiperSlide key={`slide-${service.id}`}>
                 {elements.map((element, eIdx) => {
                   const isFirstElement = eIdx === 0;
 
@@ -58,7 +58,7 @@ const IndicatorTableMobile = ({
 
                   return (
                     <div
-                      key={`slide-${service}-${element.id}`}
+                      key={`slide-${service.id}-${element.id}`}
                       className="flex flex-col text-sm"
                     >
                       <div
@@ -80,7 +80,9 @@ const IndicatorTableMobile = ({
                         </div>
 
                         <div className="flex justify-around items-center w-10/12">
-                          <span className="text-center  w-5/12">{service}</span>
+                          <span className="text-center  w-5/12">
+                            {service.name}
+                          </span>
 
                           <div className="w-5/12">
                             <IndicatorElementTag
