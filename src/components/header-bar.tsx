@@ -231,14 +231,14 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </li>
                 <li role="none" className="pt-6 pb-3">
                   <IconLink
-                    name="Intro essay"
+                    name="Introduction"
                     href="/intro-essay"
                     Icon={IntroEssay}
                   />
                 </li>
                 <li role="none" className="py-3">
                   <IconLink
-                    name="Key Findings: Flying Blind"
+                    name="Key findings"
                     href="/key-findings"
                     Icon={KeyFindings}
                   />
@@ -272,7 +272,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </li>
                 <li role="none" className="pt-3">
                   <SpotlightLink
-                    name="China’s tech giants have proven they can change"
+                    name="China’s tech giants can change"
                     desc="But the state is still their number one stakeholder."
                     href="/spotlights/china-tech-giants"
                     Icon={ChinaTechGiants}
@@ -291,7 +291,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 ? setExpandedColumn("Companies")
                 : setExpandedColumn(undefined)
             }
-            isExpanded={expandedColumn === "Companies"}
+            isExpanded={expandedColumn === "Company Report Cards"}
           >
             <div className="flex justify-between pt-6">
               <ul className="w-1/2 list-inside list-none ml-0">
@@ -338,7 +338,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 ? setExpandedColumn("Data + Methods")
                 : setExpandedColumn(undefined)
             }
-            isExpanded={expandedColumn === "Data + Methods"}
+            isExpanded={expandedColumn === "Our Data + Methods"}
           >
             <div className="flex flex-col">
               <ul className="list-inside list-none ml-0">
@@ -364,7 +364,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   <IconLink
                     href="/compare"
                     Icon={ScoresOverTime}
-                    name="RDR scores over time"
+                    name="Year-over-year trends"
                   />
                 </li>
 
@@ -372,7 +372,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   <IconLink
                     href="/methodology"
                     Icon={Methodology}
-                    name="RDR Index Methodology"
+                    name="RDR Index methodology"
                   />
                 </li>
 

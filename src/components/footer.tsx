@@ -27,7 +27,7 @@ const Footer = ({className}: FooterProps) => {
                   className="text-white no-underline"
                   href="https://rankingdigitalrights.org/about/"
                 >
-                  About
+                  About RDR
                 </a>
               </li>
               <li className="pb-1">
@@ -35,7 +35,7 @@ const Footer = ({className}: FooterProps) => {
                   className="text-white no-underline"
                   href="https://rankingdigitalrights.org/methodology-development/"
                 >
-                  2020 RDR Index Methodology
+                  2020 RDR Index methodology
                 </a>
               </li>
               <li className="pb-1">
@@ -43,7 +43,7 @@ const Footer = ({className}: FooterProps) => {
                   className="text-white no-underline"
                   href="https://rankingdigitalrights.org/"
                 >
-                  Ranking Digital Rights Homepage
+                  Ranking Digital Rights main site
                 </a>
               </li>
               <li className="pb-1">
@@ -51,7 +51,7 @@ const Footer = ({className}: FooterProps) => {
                   className="text-white no-underline"
                   href="https://rankingdigitalrights.org/index2020/"
                 >
-                  2020 Corporate Accountability Index
+                  2020 RDR Corporate Accountability Index
                 </a>
               </li>
             </ul>
