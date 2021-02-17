@@ -182,11 +182,11 @@
   }
 
   h2 {
-    @apply text-xl font-platform leading-none;
+    @apply text-lg font-platform leading-none;
   }
 
   h3 {
-    @apply text-lg font-platform leading-none mb-3;
+    @apply text-base font-platform leading-none mb-3;
   }
 
   h4 {
