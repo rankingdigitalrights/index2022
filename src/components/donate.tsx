@@ -17,9 +17,13 @@ const Donate = ({className}: DonateProps) => {
       </span>
 
       <p className="font-circular text-sm my-6">
-        Digital platforms and telecommunications companies are becoming more
-        powerful every day. Donate to Ranking Digital Rights and help us hold
-        them accountable to the public!
+        Tech companies wield unprecedented power in the digital age. Ranking
+        Digital Rights helps hold them accountable for their obligations to
+        protect and respect their users’ rights.
+        <br />
+        As a nonprofit initiative that <u>receives no corporate funding</u>, we
+        need your support. Help us guarantee future editions of the RDR Index by
+        making a donation. Do your part to help keep tech power in check!
       </p>
 
       <a
