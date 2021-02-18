@@ -279,40 +279,6 @@
     @apply bg-prissian rounded-md;
   }
 
-  .feature-box-wrapper {
-    @apply relative;
-  }
-
-  .feature-box-inner::before {
-    @apply bg-disabled-light;
-    content: "";
-    position: absolute;
-    width: 104%;
-    height: 100%;
-    left: -2%;
-    z-index: -1;
-  }
-
-  @media (min-width: 768px) {
-    .feature-box-inner::before {
-      @apply bg-disabled-light;
-      content: "";
-      position: absolute;
-      width: 116%;
-      height: 100%;
-      left: -8%;
-      z-index: -1;
-    }
-  }
-
-  .feature-box {
-    @apply relative pt-6 pb-1;
-  }
-
-  /* .narrative-container p { */
-  /*   z-index: 20; */
-  /* } */
-
   /* Spotlights Start */
 
   main.spotlight h1 {
@@ -755,4 +721,37 @@
     left: -6px;
     top: 5px;
   }
+}
+
+/* For some reason unknown to me those styles are being removed during build.
+ * Placing them here prevents that.
+ */
+.feature-box-wrapper {
+  @apply relative;
+}
+
+.feature-box-inner:before {
+  @apply bg-disabled-light;
+  content: "";
+  position: absolute;
+  width: 104%;
+  height: 100%;
+  left: -2%;
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  .feature-box-inner:before {
+    @apply bg-disabled-light;
+    content: "";
+    position: absolute;
+    width: 116%;
+    height: 100%;
+    left: -8%;
+    z-index: -1;
+  }
+}
+
+.feature-box {
+  @apply relative pt-6 pb-1;
 }
