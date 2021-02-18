@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React, {useState} from "react";
 
+import CategorySelector from "../components/category-selector";
 import HomeBox from "../components/home-box";
-import HomeCategorySelector from "../components/home-category-selector";
 import HomeHighlightsSlider from "../components/home-highlights-slider";
 import HomeSpotlightBox from "../components/home-spotlight-box";
 import Layout from "../components/layout";
@@ -179,7 +179,7 @@ const Home = ({
 
         <div className="flex flex-col sm:flex-row lg:w-2/3 px-6">
           <div className="flex flex-col w-full">
-            <HomeCategorySelector
+            <CategorySelector
               selected={selectedCategory}
               onClick={handleSelectCategory}
             />

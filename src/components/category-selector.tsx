@@ -3,17 +3,17 @@ import React from "react";
 
 import {IndicatorCategoryExt} from "../types";
 
-interface HomeCategorySelectorProps {
+interface CategorySelectorProps {
   selected: IndicatorCategoryExt;
   onClick: (category: IndicatorCategoryExt) => void;
   className?: string;
 }
 
-const HomeCategorySelector = ({
+const CategorySelector = ({
   selected,
   onClick,
   className,
-}: HomeCategorySelectorProps) => {
+}: CategorySelectorProps) => {
   const buttonClassName =
     "font-circular px-4 py-2 my-1 mr-2 md:mr-4 border rounded-md";
 
@@ -66,4 +66,4 @@ const HomeCategorySelector = ({
   );
 };
 
-export default HomeCategorySelector;
+export default CategorySelector;
