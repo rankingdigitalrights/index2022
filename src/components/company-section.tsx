@@ -60,7 +60,7 @@ const CompanySection = ({
             {title}{" "}
             <span
               className={c(
-                "font-circular font-bold text-md ml-3 px-2 py-1 h-8",
+                "font-circular font-bold text-md px-3 py-2 ml-3",
                 scoreClassName,
               )}
             >
