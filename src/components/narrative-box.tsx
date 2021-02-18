@@ -19,16 +19,14 @@ const NarrativeBox = ({kind}: NarrativeBoxProps) => {
     case "scores": {
       title = "Scores by indicator";
       icon = <ScoresByIndicator className="flex-none w-6 h-6" />;
-      text =
-        "Since the mid-1990s, more than 200 people have been sentenced to more than 1,100 years in prison in six Western Balkans countries for terrorist acts, or for leaving to fight in a foreign war, according to BIRN analysis.";
-      href = "/indicators/G1";
+      text = "Find out how companies did on specific issues in 2020";
+      href = "/explore-indicators";
       break;
     }
     case "findings": {
       title = "Key findings";
       icon = <KeyFindings className="flex-none w-6 h-6" />;
-      text =
-        "Since the mid-1990s, more than 200 people have been sentenced to more than 1,100 years in prison in six Western Balkans countries for terrorist acts, or for leaving to fight in a foreign war, according to BIRN analysis.";
+      text = "Companies are improving in principle, but failing in practice.";
       href = "/key-findings";
       break;
     }
@@ -36,7 +34,7 @@ const NarrativeBox = ({kind}: NarrativeBoxProps) => {
       title = "Methodology";
       icon = <Methodology className="flex-none w-6 h-6" />;
       text =
-        "Since the mid-1990s, more than 200 people have been sentenced to more than 1,100 years in prison in six Western Balkans countries for terrorist acts, or for leaving to fight in a foreign war, according to BIRN analysis.";
+        "Our methodology builds on more than a decade of work by the human rights, privacy, and security communities";
       href = "/methodology";
       break;
     }
@@ -45,14 +43,14 @@ const NarrativeBox = ({kind}: NarrativeBoxProps) => {
   }
 
   return (
-    <div className="flex flex-col h-48 w-128 md:w-60 bg-white shadow-md m-3 p-3">
+    <div className="flex flex-col h-44 w-128 md:w-60 bg-white shadow-md m-3 p-3.5">
       <Link passHref href={href}>
         <a className="border-b mb-3 pb-2 flex items-center text-black no-underline">
           {icon}
           <span className="font-circular font-bold text-md ml-2">{title}</span>
         </a>
       </Link>
-      <p className="font-circular text-sm leading-3">{text}</p>
+      <p className="font-circular text-sm">{text}</p>
     </div>
   );
 };

@@ -48,7 +48,10 @@ const NarrativeContainer = ({
         <figure>
           <div className={c("w-full h-96", heroClassName)} />
           <figcaption
-            className={c("font-circular text-xxs py-1", backgroundClassName)}
+            className={c(
+              "font-circular text-xxs py-1 pl-1",
+              backgroundClassName,
+            )}
           >
             {heroCaption}
           </figcaption>
@@ -61,7 +64,7 @@ const NarrativeContainer = ({
           backgroundClassName,
         )}
       >
-        <div className="relative">
+        <div className="relative pb-6">
           <div className="absolute inset-0 flex items-center justify-center">
             <div
               className={c(

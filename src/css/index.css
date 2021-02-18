@@ -178,7 +178,7 @@
   }
 
   h1 {
-    @apply text-xl font-platform;
+    @apply text-xl font-platform leading-none;
   }
 
   h2 {
@@ -202,7 +202,15 @@
   }
 
   ul {
-    @apply list-disc list-outside ml-3;
+    @apply list-disc list-outside ml-6;
+  }
+
+  li {
+    @apply mb-3;
+  }
+
+  p {
+    @apply mb-3;
   }
 
   a {
@@ -234,14 +242,6 @@
     border-bottom: 5px solid #1c5275;
     left: -6px;
     top: 9px;
-  }
-
-  p {
-    padding-bottom: 1rem;
-  }
-
-  li {
-    padding-bottom: 1rem;
   }
 
   .svg-shadow {
@@ -720,6 +720,12 @@
     transform: rotate(-90deg);
     left: -6px;
     top: 5px;
+  }
+}
+
+@layer utilities {
+  .h-hero {
+    height: 36rem;
   }
 }
 

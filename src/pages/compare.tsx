@@ -9,7 +9,6 @@ import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import {companyDiffScoresData, compareDetails} from "../data";
-import ScoresOverTimeLogo from "../images/icons/scores-over-time.svg";
 import {components} from "../mdx";
 import {CompanyScoreDiff} from "../types";
 
@@ -63,7 +62,7 @@ const ScoresOverTime = ({diffScores, details}: ScoresOverTimeProps) => {
           return (
             <div>
               <Container>
-                <NarrativeTitle title={pageTitle} Logo={ScoresOverTimeLogo} />
+                <NarrativeTitle title={pageTitle} />
 
                 {introduction}
               </Container>

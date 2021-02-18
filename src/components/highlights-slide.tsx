@@ -27,7 +27,7 @@ const CompanySlide = ({
       <CompanyKindLabel kind={kind} theme="dark" />
 
       <Link passHref href={`/companies/${id}`}>
-        <a className="text-black no-underline hover:no-underline">
+        <a className="text-black hover:no-underline">
           <div className="flex mt-4">
             <span
               className={c(
@@ -41,7 +41,7 @@ const CompanySlide = ({
               {companyPretty}
             </span>
           </div>
-          <p className="font-circular text-sm mt-4">{text}</p>
+          <p className="font-circular font-normal text-sm mt-4">{text}</p>
         </a>
       </Link>
     </div>

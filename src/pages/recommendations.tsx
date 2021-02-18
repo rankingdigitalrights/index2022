@@ -7,7 +7,6 @@ import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import {policyRecommendations} from "../data";
-import PolicyRecommendationsLogo from "../images/icons/policy-recommendations.svg";
 import {components} from "../mdx";
 import {NarrativeProps} from "../types";
 
@@ -37,10 +36,7 @@ const PolicyRecommendations = ({details}: NarrativeProps) => {
         {({Container}) => {
           return (
             <Container>
-              <NarrativeTitle
-                title={pageTitle}
-                Logo={PolicyRecommendationsLogo}
-              />
+              <NarrativeTitle title={pageTitle} />
 
               {body}
 

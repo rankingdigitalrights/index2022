@@ -6,7 +6,6 @@ import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import {allIndicators} from "../data";
-import ScoresByIndicator from "../images/icons/scores-by-indicator.svg";
 import {IndicatorCategory, IndicatorSelectOption} from "../types";
 
 interface IndicatorsProps {
@@ -106,10 +105,7 @@ const Indicators = ({indicators}: IndicatorsProps) => {
           return (
             <div>
               <Container>
-                <NarrativeTitle
-                  title="Explore the data: Indicators for the 2020 RDR Index"
-                  Logo={ScoresByIndicator}
-                />
+                <NarrativeTitle title="Explore the data: Indicators for the 2020 RDR Index" />
 
                 <p className="font-circular mt-6">
                   We conduct our research using human rights-based indicators
