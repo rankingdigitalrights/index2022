@@ -39,7 +39,7 @@ const CompareBarNegative = ({
       <Link passHref href={href}>
         <a
           className={c(
-            "absolute transform -rotate-45 translate-x-7 translate-y-14 mt-1 w-28 z-10",
+            "absolute font-normal transform -rotate-45 translate-x-7 translate-y-14 mt-1 w-28 z-10",
             textClassName,
           )}
         >
