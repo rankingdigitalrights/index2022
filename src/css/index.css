@@ -178,15 +178,17 @@
   }
 
   h1 {
-    @apply text-xl font-platform leading-none;
+    @apply text-xl font-platform leading-none break-words;
   }
 
   h2 {
-    @apply text-lg font-platform leading-none;
+    @apply font-platform leading-none break-words;
+    font-size: 1.6rem;
   }
 
   h3 {
-    @apply text-base font-platform leading-none mb-3;
+    @apply font-platform leading-none mb-3 break-words;
+    font-size: 1.2rem;
   }
 
   h4 {
@@ -209,8 +211,18 @@
     @apply mb-3;
   }
 
+  ul.menubar > li,
+  ul.footer > li {
+    @apply mb-0;
+  }
+
   p {
     @apply mb-3;
+  }
+
+  .narrative-container {
+    max-width: 900px;
+    scroll-behavior: smooth;
   }
 
   a {
@@ -254,17 +266,28 @@
   }
 
   .pullquote {
-    @apply flex font-platform text-lg text-prissian my-12;
+    @apply flex font-platform text-lg text-prissian my-6;
   }
 
-  .pullquote:before {
-    @apply relative -left-5 border-r-4 border-prissian;
+  @screen md {
+    .pullquote:before {
+      @apply relative -left-5 border-prissian;
 
-    content: " ";
+      content: " ";
+      border-right-width: 7px;
+    }
   }
 
   .pullquote > p {
-    @apply p-0;
+    @apply p-0 m-0 leading-tight;
+  }
+
+  .footnotes a {
+    @apply break-words;
+  }
+
+  .footnotes p {
+    @apply mb-2;
   }
 
   .company-table::-webkit-scrollbar {
@@ -733,7 +756,7 @@
  * Placing them here prevents that.
  */
 .feature-box-wrapper {
-  @apply relative;
+  @apply relative mb-3;
 }
 
 .feature-box-inner:before {

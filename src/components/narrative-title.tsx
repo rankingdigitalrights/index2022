@@ -10,7 +10,7 @@ const NarrativeTitle = ({title, byLine}: NarrativeTitleProps) => {
   return (
     <div
       className={c(
-        "mb-6 border-b border-prissian pt-12",
+        "mb-6 border-b border-prissian mt-3 md:mt-12",
         byLine ? "pb-4" : "pb-2",
       )}
     >

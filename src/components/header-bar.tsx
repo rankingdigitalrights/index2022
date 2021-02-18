@@ -221,7 +221,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
             isExpanded={expandedColumn === "THE REPORT"}
           >
             <div className="flex flex-col">
-              <ul role="menubar" className="list-inside list-none ml-0">
+              <ul role="menubar" className="menubar list-inside list-none ml-0">
                 <li role="none" className="border-b border-disabled pt-6 pb-6">
                   <IconLink
                     name="Executive summary"
@@ -294,7 +294,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
             isExpanded={expandedColumn === "Company Report Cards"}
           >
             <div className="flex justify-between pt-6">
-              <ul className="w-1/2 list-inside list-none ml-0">
+              <ul className="menubar w-1/2 list-inside list-none ml-0">
                 {internetCompanies.map(({id, name, kind}, idx) => {
                   const companyClassName = {
                     "pb-1": idx === 0,
@@ -315,7 +315,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 })}
               </ul>
 
-              <ul className="w-1/2 list-inside list-none">
+              <ul className="menubar w-1/2 list-inside list-none">
                 {telecomCompanies.map(({id, name, kind}) => (
                   <li key={`nav-company-${id}`} className="py-1">
                     <CompanyLink
@@ -341,7 +341,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
             isExpanded={expandedColumn === "Our Data + Methods"}
           >
             <div className="flex flex-col">
-              <ul className="list-inside list-none ml-0">
+              <ul className="menubar list-inside list-none ml-0">
                 <li role="none" className="pt-6 pb-0">
                   <span className="font-bold">Explore the data:</span>
                 </li>

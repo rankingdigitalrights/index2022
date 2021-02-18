@@ -32,7 +32,7 @@ const ExecutiveSummary = ({details}: NarrativeProps) => {
 
   return (
     <Layout>
-      <NarrativeContainer backgroundClassName="bg-prissian bg-opacity-30">
+      <NarrativeContainer backgroundClassName="bg-cat-freedom bg-opacity-20">
         {({Container}) => {
           return (
             <Container>

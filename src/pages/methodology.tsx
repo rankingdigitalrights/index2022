@@ -32,7 +32,7 @@ const Methodology = ({details}: NarrativeProps) => {
 
   return (
     <Layout>
-      <NarrativeContainer backgroundClassName="bg-prissian bg-opacity-30">
+      <NarrativeContainer backgroundClassName="bg-accent-red bg-opacity-30">
         {({Container}) => {
           return (
             <Container>

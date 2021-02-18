@@ -5,7 +5,7 @@ import Donate from "./donate";
 import NarrativeBox from "./narrative-box";
 
 const containerWidth =
-  "w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-4 md:px-16 xl:px-28 2xl:px-24";
+  "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-6 md:px-16 xl:px-28 2xl:px-24";
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -14,7 +14,9 @@ interface ContainerProps {
 
 const Container = ({children: contents, className}: ContainerProps) => {
   return (
-    <div className={c("container mx-auto", containerWidth, className)}>
+    <div
+      className={c("narrative-container mx-auto", containerWidth, className)}
+    >
       {contents}
     </div>
   );
@@ -60,7 +62,7 @@ const NarrativeContainer = ({
 
       <div
         className={c(
-          "narrative flex flex-col justify-around py-12",
+          "narrative flex flex-col justify-around py-3 md:py-12",
           backgroundClassName,
         )}
       >
@@ -68,26 +70,31 @@ const NarrativeContainer = ({
           <div className="absolute inset-0 flex items-center justify-center">
             <div
               className={c(
-                "container mx-auto h-full top-0 z-10",
+                "narrative-container w-full h-full top-0 z-10 mx-3 md:mx-auto",
                 containerClassName,
                 containerWidth,
               )}
             />
           </div>
 
-          <div className="relative py-3 z-10">{children({Container})}</div>
+          <div className="relative pb-3 z-10">{children({Container})}</div>
         </div>
 
         {hasDonate && (
-          <Donate className={c("relative mx-auto mt-12", containerWidth)} />
+          <Donate
+            className={c(
+              "narrative-container relative mx-3 md:mx-auto mt-3 md:mt-12",
+              containerWidth,
+            )}
+          />
         )}
       </div>
 
-      <div className="bg-beige flex justify-around py-3 md:py-16">
-        <div className="flex flex-col md:flex-row items-center">
-          <NarrativeBox kind="scores" />
-          <NarrativeBox kind="findings" />
-          <NarrativeBox kind="methodology" />
+      <div className="bg-beige flex py-3 md:py-16">
+        <div className="flex flex-col mx-3 md:mx-auto md:flex-row items-center">
+          <NarrativeBox className="w-full md:w-60" kind="scores" />
+          <NarrativeBox className="w-full md:w-60" kind="findings" />
+          <NarrativeBox className="w-full md:w-60" kind="methodology" />
         </div>
       </div>
     </div>

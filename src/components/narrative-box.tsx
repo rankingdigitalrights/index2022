@@ -1,3 +1,4 @@
+import c from "clsx";
 import Link from "next/link";
 import React from "react";
 
@@ -7,9 +8,10 @@ import ScoresByIndicator from "../images/icons/scores-by-indicator.svg";
 
 interface NarrativeBoxProps {
   kind: "methodology" | "scores" | "findings";
+  className?: string;
 }
 
-const NarrativeBox = ({kind}: NarrativeBoxProps) => {
+const NarrativeBox = ({kind, className}: NarrativeBoxProps) => {
   let title;
   let text;
   let icon;
@@ -43,7 +45,12 @@ const NarrativeBox = ({kind}: NarrativeBoxProps) => {
   }
 
   return (
-    <div className="flex flex-col h-44 w-128 md:w-60 bg-white shadow-md m-3 p-3.5">
+    <div
+      className={c(
+        "flex flex-col h-44 bg-white shadow-md m-3 p-3.5",
+        className,
+      )}
+    >
       <Link passHref href={href}>
         <a className="border-b mb-3 pb-2 flex items-center text-black no-underline">
           {icon}

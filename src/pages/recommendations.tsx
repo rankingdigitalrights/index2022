@@ -32,7 +32,7 @@ const PolicyRecommendations = ({details}: NarrativeProps) => {
 
   return (
     <Layout>
-      <NarrativeContainer backgroundClassName="bg-cat-freedom bg-opacity-30">
+      <NarrativeContainer backgroundClassName="bg-cat-freedom bg-opacity-20">
         {({Container}) => {
           return (
             <Container>

@@ -58,11 +58,8 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
       </figure>
 
       {readmore && (
-        <div className="w-full mt-6 mb-12">
-          <BoxPrompt
-            className="w-full md:w-10/12 md:ml-auto"
-            readmore={readmore}
-          />
+        <div className="mt-6 mb-12 ml-auto">
+          <BoxPrompt className="w-auto" readmore={readmore} />
         </div>
       )}
     </div>
