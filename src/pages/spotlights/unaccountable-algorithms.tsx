@@ -42,7 +42,10 @@ const Algorithms = ({details}: NarrativeProps) => {
         {({Container}) => {
           return (
             <Container>
-              <NarrativeTitle title={pageTitle} byLine="Nomen Nescio" />
+              <NarrativeTitle
+                title={pageTitle}
+                byLine="Ellery Roberts Biddle & Jie Zhang"
+              />
 
               {body}
 

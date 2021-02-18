@@ -36,7 +36,7 @@ const IntroEssay = ({details}: NarrativeProps) => {
         {({Container}) => {
           return (
             <Container>
-              <NarrativeTitle title={pageTitle} />
+              <NarrativeTitle title={pageTitle} byLine="Jessica Dheere" />
 
               {body}
 
