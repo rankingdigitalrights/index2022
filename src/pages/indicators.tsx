@@ -110,6 +110,12 @@ const Indicators = ({indicators}: IndicatorsProps) => {
                   title="Explore the data: Indicators for the 2020 RDR Index"
                   Logo={ScoresByIndicator}
                 />
+
+                <p className="font-circular mt-6">
+                  We conduct our research using human rights-based indicators
+                  organized under three top-level categories: governance,
+                  freedom of expression and information, and privacy.
+                </p>
               </Container>
 
               <main className="mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 mt-6 pt-12">
