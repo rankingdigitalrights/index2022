@@ -38,7 +38,7 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
 
   return (
     <div className="flex flex-col justify-around items-center">
-      <figure className="flex flex-col justify-around my-6 md:w-9/12">
+      <figure className="flex flex-col justify-around my-6">
         <picture>
           <source srcSet={imageWebp.srcSet} type="image/webp" />
           <source srcSet={image.srcSet} type="image/png" />
@@ -54,9 +54,7 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
             loading="lazy"
           />
         </picture>
-        <figcaption className="font-circular text-sm text-right mt-1">
-          {title}
-        </figcaption>
+        <figcaption className="font-circular text-sm mt-2">{title}</figcaption>
       </figure>
 
       {readmore && (
