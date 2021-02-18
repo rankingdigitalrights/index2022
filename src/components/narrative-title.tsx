@@ -23,7 +23,7 @@ const NarrativeTitle = ({title, byLine, Logo}: NarrativeTitleProps) => {
         </h1>
 
         {byLine && (
-          <span className="font-platform text-sm mb-6">By: {byLine}</span>
+          <span className="font-platform text-sm mb-6">By {byLine}</span>
         )}
       </div>
     </>
