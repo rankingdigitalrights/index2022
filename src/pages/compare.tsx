@@ -68,7 +68,7 @@ const ScoresOverTime = ({diffScores, details}: ScoresOverTimeProps) => {
               </Container>
 
               <div className="container mx-auto">
-                <div className="flex flex-col lg:justify-center my-6 lg:flex-row overflow-x-scroll lg:overflow-x-visible px-3">
+                <div className="flex flex-col items-center lg:justify-center my-6 lg:flex-row overflow-x-scroll lg:overflow-x-visible px-3">
                   <div className="flex flex-col">
                     <CompanyKindLabel kind="internet" theme="dark" />
                     <CompareScoresChart
