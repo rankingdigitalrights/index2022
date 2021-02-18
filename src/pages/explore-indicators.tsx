@@ -40,7 +40,7 @@ const IndicatorHeading = ({
       break;
     }
     case "freedom": {
-      title = "F: Freedom";
+      title = "F: Freedom of expression";
       break;
     }
     case "privacy": {
