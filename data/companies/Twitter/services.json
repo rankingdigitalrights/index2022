@@ -1,1 +1,1 @@
-[{"id":"Group","label":"Group","name":"Twitter","kind":"Group"},{"id":"OpCom","name":"Operating Company","label":"OpCom","kind":"OpCom"},{"id":"Twitter","kind":"socialNetworkBlogs","label":"Social networking & blog","name":"Twitter"}]
+[{"id":"Group","name":"Group","kindName":"Group","kind":"Group"},{"id":"Operating Company","name":"Operating Company","kindName":"Operating Company","kind":"Operating Company"},{"id":"Twitter","kind":"socialNetworkBlogs","kindName":"Social networking & blog","name":"Twitter"}]

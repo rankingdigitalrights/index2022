@@ -226,10 +226,12 @@ export const mapScore = (score: IndicatorScore): number => {
 };
 
 export const mapServiceKind = (value: string): ServiceKind => {
+  if (value === "Operating Company" || value === "OpCom")
+    return "Operating Company";
+
   if (
     [
       "Group",
-      "OpCom",
       "broadband",
       "cloud",
       "eCommerce",
@@ -275,7 +277,7 @@ export const isValidService = (
   if (["G01", "G05"].includes(indicatorId)) {
     if (serviceId === "Group") return true;
     if (
-      serviceId === "OpCom" &&
+      serviceId === "Operating Company" &&
       companyKind === "telecom" &&
       companyId !== "ATT"
     )
@@ -292,9 +294,9 @@ export const isValidService = (
     indicatorId.startsWith("G03") ||
     indicatorId.startsWith("G04")
   ) {
-    if (serviceId !== "OpCom") return true;
+    if (serviceId !== "Operating Company") return true;
     if (
-      serviceId === "OpCom" &&
+      serviceId === "Operating Company" &&
       companyId !== "ATT" &&
       companyKind === "telecom"
     )
@@ -303,7 +305,7 @@ export const isValidService = (
 
   // All F and P indicators, and G6x (the rest) only have service elements
   // (Services).
-  if (!["OpCom", "Group"].includes(serviceId)) return true;
+  if (!["Operating Company", "Group"].includes(serviceId)) return true;
 
   return false;
 };

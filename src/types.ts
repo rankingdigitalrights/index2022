@@ -119,7 +119,7 @@ export type ServiceCompanyRank = CompanyRank & {service: string};
 
 export type ServiceKind =
   | "Group"
-  | "OpCom"
+  | "Operating Company"
   | "broadband"
   | "cloud"
   | "eCommerce"
@@ -136,7 +136,7 @@ export type Service = {
   id: string;
   name: string;
   kind: ServiceKind;
-  label: string;
+  kindName: string;
 };
 
 export type CompanyIndex = {

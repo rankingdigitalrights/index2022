@@ -158,7 +158,9 @@ const CompanyPage = ({
 
             <ul className="list-none list-inside ml-0 pl-0 border-b border-disabled-light print:border-b-0 w-full pb-6">
               {services
-                .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
+                .filter(
+                  ({kind}) => kind !== "Group" && kind !== "Operating Company",
+                )
                 .map(({id, name, kind}) => (
                   <li key={id} className="pb-0 print:py-3">
                     <EvaluatedService name={name} kind={kind} />

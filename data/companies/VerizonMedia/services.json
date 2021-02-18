@@ -1,1 +1,1 @@
-[{"id":"Group","label":"Group","name":"Verizon Media","kind":"Group"},{"id":"OpCom","name":"Operating Company","label":"OpCom","kind":"OpCom"},{"id":"Yahoo Mail","kind":"email","label":"Email","name":"Yahoo Mail"}]
+[{"id":"Group","name":"Group","kindName":"Group","kind":"Group"},{"id":"Operating Company","name":"Operating Company","kindName":"Operating Company","kind":"Operating Company"},{"id":"Yahoo Mail","kind":"email","kindName":"Email","name":"Yahoo Mail"}]

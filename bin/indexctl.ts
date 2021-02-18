@@ -223,7 +223,7 @@ const writeJsonFile = (
        * Service ranking scores, e.g. ./data/rankings/email/internet-freedom.json
        */
       const serviceKinds = uniqueBy("kind", allServices)
-        .filter(({kind}) => kind !== "Group" && kind !== "OpCom")
+        .filter(({kind}) => kind !== "Group" && kind !== "Operating Company")
         .map(({kind}) => kind);
 
       await Promise.all(

@@ -65,11 +65,11 @@ interface ExploreProps {
 
 export const getStaticProps = async () => {
   const services = (await allServices()).filter(
-    ({kind}) => kind !== "Group" && kind !== "OpCom",
+    ({kind}) => kind !== "Group" && kind !== "Operating Company",
   );
-  const serviceOptions = uniqueBy("kind", services).map(({kind, label}) => ({
+  const serviceOptions = uniqueBy("kind", services).map(({kind, kindName}) => ({
     kind,
-    label,
+    label: kindName,
     value: kind,
   }));
 
