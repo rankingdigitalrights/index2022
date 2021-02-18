@@ -223,8 +223,8 @@ const CompanyPage = ({
 
             <div className="mt-6">
               <Link passHref href={`/pdf/companies/${index.id}.pdf`}>
-                <a className="flex border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm text-center">
-                  <Download className="mr-2" />
+                <a className="flex items-center border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm">
+                  <Download className="w-4 h-4 mr-2" />
                   Download data and sources
                 </a>
               </Link>
