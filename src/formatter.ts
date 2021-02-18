@@ -100,6 +100,10 @@ export const normalizeHtml = (src: string): string => {
   // empty paragraphs and div's can sneak in, lets get rid of them
   removeEmptyTag("p", $);
   removeEmptyTag("div", $);
+  removeEmptyTag("span", $);
+  removeEmptyTag("h2", $);
+  removeEmptyTag("h3", $);
+  removeEmptyTag("h4", $);
 
   // rewrite the id's to something more friendly.
   $("h2").each((_idx, el) => {
