@@ -44,7 +44,7 @@ const CompanyElements = ({
             {score}%
           </span>
         )}
-        <h3 className="text-lg font-platform">{company}</h3>
+        <h3 className="text-lg font-platform mb-0">{company}</h3>
       </div>
 
       {breakpointSize < 768 ? (
