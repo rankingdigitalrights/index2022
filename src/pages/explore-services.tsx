@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import path from "path";
 import React, {useEffect, useReducer, useState} from "react";
 
-import HomeCategorySelector from "../components/home-category-selector";
+import CategorySelector from "../components/category-selector";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
@@ -280,7 +280,7 @@ const Explore = ({
                 </p>
 
                 <div className="flex flex-col mt-12">
-                  <HomeCategorySelector
+                  <CategorySelector
                     selected={state.category}
                     onClick={handleSelectCategory}
                   />
