@@ -252,7 +252,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </li>
 
                 <li role="none" className="pt-6 pb-0">
-                  <span className="font-bold">Featured Stories:</span>
+                  <span className="font-bold">Featured essays:</span>
                 </li>
                 <li role="none" className="py-3">
                   <SpotlightLink

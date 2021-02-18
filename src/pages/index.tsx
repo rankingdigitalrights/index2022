@@ -114,14 +114,14 @@ const Home = ({
         <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between">
           <div className="lg:w-1/3 lg:flex-grow items-center bg-accent-red z-10">
             <HomeBox
-              title="How do internet companies treat human rights?"
-              href="/executive-summary"
+              title="Will we govern tech? Or will we let it govern us?"
+              href="/intro-essay"
               className="md:h-56 lg:h-80"
             >
               <div className="flex flex-col h-full justify-end">
                 <p>
                   RDR Director Jessica Dheere on our fifth index and the path
-                  forward.
+                  forward
                 </p>
               </div>
             </HomeBox>
