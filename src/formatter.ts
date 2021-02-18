@@ -168,9 +168,10 @@ export const normalizeHtml = (src: string): string => {
 
     // Google HTML wraps links in a google.com redirector, extract the original link at set this as an href
     if (el.tagName === "a" && $(el).attr("href")) {
+      // We haven't decoded HTML entities so therefore we have to match & as &amp;
       const [isRedirected, redirectUrl] =
         ($el.attr("href") || "").match(
-          "https://www.google.com/url\\?q=(.+)&sa=",
+          "https://www.google.com/url\\?q=(.+)&amp;sa=",
         ) || [];
       if (!isRedirected) return el;
 
