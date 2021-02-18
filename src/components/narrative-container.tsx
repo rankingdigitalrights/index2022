@@ -65,14 +65,14 @@ const NarrativeContainer = ({
           <div className="absolute inset-0 flex items-center justify-center">
             <div
               className={c(
-                "container mx-auto h-full top-0",
+                "container mx-auto h-full top-0 z-10",
                 containerClassName,
                 containerWidth,
               )}
             />
           </div>
 
-          <div className="relative py-3">{children({Container})}</div>
+          <div className="relative py-3 z-10">{children({Container})}</div>
         </div>
 
         {hasDonate && (

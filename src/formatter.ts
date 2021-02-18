@@ -31,6 +31,12 @@ const removeTag = (
   }
 };
 
+const removeFeature = (fromId: string, $: cheerio.Root): void => {
+  const fromSelector = `h4[id="${fromId}"]`;
+  const untilSelector = "h4";
+  $(fromSelector).nextUntil(untilSelector).remove();
+};
+
 const extractSection = (
   fromId: string,
   untilId: string,
@@ -39,6 +45,21 @@ const extractSection = (
   const fromSelector = `h1[id="${fromId}"], h2[id="${fromId}"], h3[id="${fromId}"], h4[id="${fromId}"], h5[id="${fromId}"], h6[id="${fromId}"]`;
   const untilSelector = `h1[id="${untilId}"], h2[id="${untilId}"], h3[id="${untilId}"], h4[id="${untilId}"], h5[id="${untilId}"], h6[id="${untilId}"]`;
   return $("<div></div>").append($(fromSelector).nextUntil(untilSelector));
+};
+
+const extractFeature = (fromId: string, $: cheerio.Root): cheerio.Cheerio => {
+  const fromSelector = `h4[id="${fromId}"]`;
+  const untilSelector = "h4";
+  // return $('<div class="feature-box" />')
+  //     .append($(fromSelector).nextUntil(untilSelector))
+
+  return $(
+    `<div class="feature-box-wrapper"><div class="feature-box-inner"><div class="feature-box">${$(
+      "<div />",
+    )
+      .append($(fromSelector).nextUntil(untilSelector))
+      .html()}</div></div></div>`,
+  );
 };
 
 const extractSectionOuter = (
@@ -61,9 +82,11 @@ const extractSectionTitle = (id: string, $: cheerio.Root): string => {
 
 export const normalizeHtml = (src: string): string => {
   // scrub escaped spaces
-  const html = src.replace(/&nbsp;/g, " ");
+  const html = src
+    .replace(/&nbsp;/g, " ")
+    .replace(/<img ([\s\w!",./=?]*)>/g, "<img $1 />");
 
-  const $ = cheerio.load(html);
+  const $ = cheerio.load(html, {xmlMode: true, decodeEntities: false});
 
   // remove comments container in footer
   removeTag("div", "a[href^=#cmnt_ref][id^=cmnt]", $);
@@ -255,46 +278,58 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
 };
 
 export const narrativeMdx = (imgPath: string, src: string): string => {
-  const $ = cheerio.load(src);
+  // scrub escaped spaces
+  const html = `<body>${src}</body>`;
 
-  // The footnotes were separated by a divider, we don't need it anymore.
-  removeTag("hr", undefined, $);
+  const $ = cheerio.load(html, {xmlMode: true, decodeEntities: false});
 
-  return $("body > *")
-    .toArray()
-    .map((el) => {
-      const $el = $(el);
+  // In the first pass we rewrite the feature boxes.
+  $("body > *").each((_idx, el) => {
+    const $el = $(el);
 
-      if (el.tagName === "img") {
-        const title = $el.attr("title");
-        const alt = $el.attr("alt");
-        const attrs = [];
+    if (
+      el.tagName === "h4" &&
+      $el.text().toLocaleLowerCase() === "feature box start"
+    ) {
+      const featureBox = extractFeature($el.attr("id") || "", $);
 
-        const imageSrc = $el.attr("src");
+      $(featureBox).insertBefore($el);
 
-        if (title && title !== "") {
-          attrs.push(`title="${title}"`);
-        }
-        if (alt && alt !== "") {
-          attrs.push(`alt="${alt.replace(/\r?\n|\r/g, " ")}"`);
-        }
+      removeFeature($el.attr("id") || "", $);
+    }
+  });
 
-        if (!imageSrc) return unreachable(`Image lacks a source.`);
+  // cleanup any h4 feature box demarcations.
+  removeTag("h4", undefined, $);
 
-        const href = path.join(imgPath, path.basename(imageSrc));
+  // The second pass fixes up images.
+  // eslint-disable-next-line consistent-return
+  $("img").each((_idx, el) => {
+    const $el = $(el);
 
-        // Google doesn't properly terminate <img> tags and this trips up the
-        // MDXProvider. Rewrite the <img> to have a proper closing tag.
-        return `<img src="${href}" ${attrs.join(" ")} />`;
-      }
+    if (el.tagName === "img") {
+      const alt = ($el.attr("alt") || "").replace(/\r?\n|\r/g, " ");
+      const imageSrc = $el.attr("src");
 
-      return $.html(el);
-    })
-    .join("\n");
+      if (!imageSrc) return unreachable(`Image lacks a source.`);
+
+      const href = path.join(imgPath, path.basename(imageSrc));
+
+      $el.attr("alt", alt);
+      $el.attr("src", href);
+    }
+  });
+
+  // Generating HTML might fail. In this case we simply crash.
+  const normalizedHtml = $("body").html();
+  if (!normalizedHtml) {
+    throw new Error("Failed to convert to HTML");
+  }
+  return normalizedHtml;
 };
 
 export const narrativeDetails = (src: string): NarrativePage => {
-  const $ = cheerio.load(src, {xmlMode: true});
+  const $ = cheerio.load(src, {xmlMode: true, decodeEntities: false});
 
   const footnotes = $("<div></div>")
     .append($("div").has("a[href^=#ftnt_ref]"))
@@ -319,7 +354,7 @@ export const narrativeDetails = (src: string): NarrativePage => {
 };
 
 export const compareDetails = (src: string): ComparePage => {
-  const $ = cheerio.load(src, {xmlMode: true});
+  const $ = cheerio.load(src, {xmlMode: true, decodeEntities: false});
 
   const footnotes = $("<div></div>")
     .append($("p").has("a[href^=#ftnt_ref]"))

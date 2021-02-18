@@ -246,7 +246,6 @@ export const narrativeContent = async (name: string): Promise<string> => {
 
   const src = await fsP.readFile(doc.download.target, "utf-8");
   const html = processHtml(src);
-
   const mdx = narrativeMdx(slug, html);
 
   return mdx;
