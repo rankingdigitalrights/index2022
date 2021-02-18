@@ -173,9 +173,7 @@ const Home = ({
           </p>
 
           <Link passHref href="/methodology">
-            <a>
-              Learn more: Explore our data by issue area, service, and region.
-            </a>
+            <a>Learn more: Explore our data by issue area and service.</a>
           </Link>
         </div>
 

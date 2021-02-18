@@ -275,9 +275,8 @@ const Explore = ({
 
                 <p className="font-circular mt-6">
                   Which companies are strongest on privacy? How does WhatsApp
-                  compare to WeChat? How do companies in different geographic
-                  regions measure up against each other? Use the tools below to
-                  sort by category, service, or region.
+                  compare to WeChat? Use the tools below to sort by category or
+                  service.
                 </p>
 
                 <div className="flex flex-col mt-12">
