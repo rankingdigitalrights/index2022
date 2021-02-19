@@ -2,8 +2,7 @@ import c from "clsx";
 import React from "react";
 
 import LogoEmail from "../images/icons/logo-email.svg";
-import LogoFacebook from "../images/icons/logo-facebook.svg";
-import LogoRss from "../images/icons/logo-rss.svg";
+import LogoLinkedin from "../images/icons/logo-linkedin.svg";
 import LogoTwitter from "../images/icons/logo-twitter.svg";
 
 interface FooterProps {
@@ -26,6 +25,8 @@ const Footer = ({className}: FooterProps) => {
                 <a
                   className="text-white no-underline"
                   href="https://rankingdigitalrights.org/about/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   About RDR
                 </a>
@@ -34,6 +35,8 @@ const Footer = ({className}: FooterProps) => {
                 <a
                   className="text-white no-underline"
                   href="https://rankingdigitalrights.org/methodology-development/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   2020 RDR Index methodology
                 </a>
@@ -42,6 +45,8 @@ const Footer = ({className}: FooterProps) => {
                 <a
                   className="text-white no-underline"
                   href="https://rankingdigitalrights.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Ranking Digital Rights main site
                 </a>
@@ -61,29 +66,35 @@ const Footer = ({className}: FooterProps) => {
             <ul className="footer list-none">
               <li className="pb-1">
                 <a
-                  className="text-white no-underline"
-                  href="https://rankingdigitalrights.org/privacypolicy"
+                  className="text-white no-underline flex items-center"
+                  href="https://twitter.com/rankingrights"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Privacy policy
+                  <LogoTwitter className="flex-none w-3 h-3" />
+                  <span className="ml-2">RankingRights</span>
                 </a>
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white no-underline"
-                  href="https://rankingdigitalrights.org/who/partners/"
+                  className="text-white no-underline flex items-center"
+                  href="https://www.linkedin.com/company/ranking-digital-rights"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Funders and partners
+                  <LogoLinkedin className="flex-none w-3 h-3" />
+                  <span className="ml-2">Linkedin</span>
                 </a>
               </li>
               <li className="pb-1">
                 <a
-                  rel="license"
-                  href="http://creativecommons.org/licenses/by/4.0/"
+                  className="text-white no-underline flex items-center"
+                  href="mailto:info@rankingdigitalrights.org"
                 >
-                  <img
-                    alt="Creative Commons License"
-                    src="https://i.creativecommons.org/l/by/4.0/88x31.png"
-                  />
+                  <LogoEmail className="flex-none w-3 h-3" />
+                  <span className="ml-2">
+                    Media inquiries: comms@rankingdigitalrights.org
+                  </span>
                 </a>
               </li>
             </ul>
@@ -93,38 +104,34 @@ const Footer = ({className}: FooterProps) => {
             <ul className="footer list-none">
               <li className="pb-1">
                 <a
-                  className="text-white no-underline flex items-center"
-                  href="https://facebook.com/rankingrights"
+                  className="text-white no-underline"
+                  href="https://rankingdigitalrights.org/privacypolicy"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <LogoFacebook className="w-3 h-3" />
-                  <span className="ml-2">RankingRights</span>
+                  Privacy policy
                 </a>
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white no-underline flex items-center"
-                  href="https://twitter.com/rankingrights"
+                  className="text-white no-underline"
+                  href="https://rankingdigitalrights.org/who/partners/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <LogoTwitter className="w-3 h-3" />
-                  <span className="ml-2">RankingRights</span>
+                  Funders and partners
                 </a>
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white no-underline flex items-center"
-                  href="https://rankingdigitalrights.org/feed/"
+                  href="http://creativecommons.org/licenses/by/4.0/"
+                  target="_blank"
+                  rel="license noopener noreferrer"
                 >
-                  <LogoRss className="w-3 h-3" />
-                  <span className="ml-2">RSS</span>
-                </a>
-              </li>
-              <li className="pb-1">
-                <a
-                  className="text-white no-underline flex items-center"
-                  href="mailto:info@rankingdigitalrights.org"
-                >
-                  <LogoEmail className="w-3 h-3" />
-                  <span className="ml-2">info@rankingdigitalrights.org</span>
+                  <img
+                    alt="Creative Commons License"
+                    src="https://i.creativecommons.org/l/by/4.0/88x31.png"
+                  />
                 </a>
               </li>
             </ul>
