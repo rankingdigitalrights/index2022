@@ -5,15 +5,10 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: {
-    content: [
-      "./src/components/**/*.{js,ts,jsx,tsx}",
-      "./src/pages/**/*.{js,ts,jsx,tsx}",
-    ],
-    options: {
-      safelist: ["bg-disabled-light", "italic", "font-bold"],
-    },
-  },
+  purge: [
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       screens: {
