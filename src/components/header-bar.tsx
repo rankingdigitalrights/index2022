@@ -387,7 +387,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 <li className="flex flex-col border-b border-disabled py-3">
                   <span className="font-bold mb-3">Support our work</span>
                   <a
-                    href="https://newamerica.org"
+                    href="https://www.classy.org/give/325264/#!/donation/checkout"
                     role="menuitem"
                     className="w-28 bg-accent-red font-circular font-bold text-white no-underline text-sm text-center rounded-md px-4 py-2 uppercase"
                   >
