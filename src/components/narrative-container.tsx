@@ -6,9 +6,9 @@ import {ReadmoreItem, ReadmoreKind} from "../types";
 import Donate from "./donate";
 import Readmore from "./readmore";
 
-const containerWidth = "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12";
+export const containerWidth = "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12";
 const containerPadding = "px-6 md:px-16 xl:px-28 2xl:px-24";
-const containerSize = `${containerWidth} ${containerPadding}`;
+const containerSize = c(containerWidth, containerPadding);
 
 interface ContainerProps {
   children: React.ReactNode;

@@ -3,7 +3,9 @@ import Link from "next/link";
 import React from "react";
 
 import Layout from "../components/layout";
-import NarrativeContainer from "../components/narrative-container";
+import NarrativeContainer, {
+  containerWidth,
+} from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import {allIndicators} from "../data";
 import {IndicatorCategory, IndicatorSelectOption} from "../types";
@@ -75,7 +77,7 @@ const IndicatorLink = ({option}: {option: IndicatorSelectOption}) => {
 
   const className = c("text-sm text-black font-circular font-normal py-1", {
     "font-bold": isParent,
-    "pl-5": hasParent,
+    "pl-6": hasParent,
   });
 
   if (isParent) return <div className={c(className)}>{label}</div>;
@@ -114,9 +116,14 @@ const Indicators = ({indicators}: IndicatorsProps) => {
                 </p>
               </Container>
 
-              <main className="mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 mt-6 pt-12">
-                <section className="flex flex-col mb-3 md:mb-12 md:flex-row">
-                  <div className="flex flex-col md:w-1/2">
+              <section className="flex justify-around">
+                <div
+                  className={c(
+                    "flex flex-col justify-between w-full md:mb-12 md:flex-row pt-12",
+                    containerWidth,
+                  )}
+                >
+                  <div className="flex flex-col w-full mx-3 md:w-1/2 md:mr-3 md:ml-0">
                     <IndicatorHeading category="governance" />
                     {governanceIndicators.map((option) => (
                       <IndicatorLink key={option.value} option={option} />
@@ -127,14 +134,14 @@ const Indicators = ({indicators}: IndicatorsProps) => {
                     ))}
                   </div>
 
-                  <div className="flex flex-col md:w-1/2">
+                  <div className="flex flex-col w-full mx-3 md:w-1/2 md:ml-3 md:mr-0">
                     <IndicatorHeading category="privacy" />
                     {privacyIndicators.map((option) => (
                       <IndicatorLink key={option.value} option={option} />
                     ))}
                   </div>
-                </section>
-              </main>
+                </div>
+              </section>
             </div>
           );
         }}
