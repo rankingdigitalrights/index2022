@@ -32,15 +32,20 @@ const NarrativeLink = ({id, href, children, className}: LinkProps) => {
     );
   }
 
+  // Spaces in front of links are sometimes swallowed therefore I enforce a
+  // space in any case.
   return (
-    <a
-      className={c(className)}
-      href={decodeURIComponent(href)}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {children}
-    </a>
+    <>
+      {" "}
+      <a
+        className={c(className)}
+        href={decodeURIComponent(href)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </a>
+    </>
   );
 };
 
