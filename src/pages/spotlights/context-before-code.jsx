@@ -134,20 +134,24 @@ const section1 = (
       wake of natural disasters. Digital platforms have grappled with government
       censorship orders in the face of political upheaval.
     </p>
-    <blockquote>
-      The way a company responds to a crisis does not just affect its bottom
-      line. It can have profound implications for the fundamental rights of
-      millions, if not billions, of people, whether or not they are
-      &ldquo;users&rdquo; of a product or service that the company provides.
+    <blockquote className="pullquote">
+      <p>
+        The way a company responds to a crisis does not just affect its bottom
+        line. It can have profound implications for the fundamental rights of
+        millions, if not billions, of people, whether or not they are
+        &ldquo;users&rdquo; of a product or service that the company provides.
+      </p>
     </blockquote>
     <p>
       The year 2020 could not have given us a better set of case studies in just
       how dangerous it is for these companies to be so unprepared for crisis.
     </p>
-    <blockquote>
-      Our perpetual state of emergency has exposed the holes in corporate
-      policies and practices that can amplify conspiracies, deprive silenced
-      voices of remedy, and further exclude the marginalized.
+    <blockquote className="pullquote">
+      <p>
+        Our perpetual state of emergency has exposed the holes in corporate
+        policies and practices that can amplify conspiracies, deprive silenced
+        voices of remedy, and further exclude the marginalized.
+      </p>
     </blockquote>
     <p>
       And yet tech juggernauts are expanding their monopolies as custodians of
@@ -214,11 +218,11 @@ const section2a = (
       </a>
       .
     </p>
-    <FigureImg
-      img={ImgProtest}
-      caption="Demonstrators protest a network shutdown in Myanmar. Photo by <a href='https://twitter.com/lwin051965' target='_blank'>Nyinyi Lwin</a>, used with permission."
-      alt="TODO - Demonstrators protest a network shutdown in Myanmar. Photo by Nyinyi Lwin, used with permission."
-    />
+  </section>
+);
+
+const section2b = (
+  <section>
     <p>
       The 12 telecommunications companies in the RDR Index operate in 125
       countries. In 2020,{" "}
@@ -269,7 +273,7 @@ const section2a = (
   </section>
 );
 
-const section2b = (
+const section2c = (
   <section>
     <p>
       By contrast, India&rsquo;s Bharti Airtel has exercised an apparent policy
@@ -303,7 +307,7 @@ const section2b = (
   </section>
 );
 
-const section3 = (
+const section3a = (
   <section className="max-w-6xl">
     <h2>Incitement gone viral</h2>
     <p>
@@ -351,13 +355,12 @@ const section3 = (
     </p>
     <FigureImg
       img={imgTableG4}
-      extraClass="contained"
       // caption="TBA; Currently no caption by decision"
       alt="TODO - Caption | Description"
     />
     <div className="flex flex-col justify-around items-center">
       <div className="mt-6 mb-12 ml-auto">
-        <BoxPrompt readmore="/indicators/G4" />
+        <BoxPrompt readmore="/indicators/G4b" />
       </div>
     </div>
     <p>
@@ -397,11 +400,11 @@ const section3 = (
       </a>
       , alongside two others it had commissioned two years prior.
     </p>
-    <FigureImg
-      img={ImgWhiteFlags}
-      caption="Mourners hang white flags in Sri Lanka, following the 2019 bombings of churches around the country. Photo by Groundviews (CC BY-ND 3.0)"
-      alt="Mourners hang white flags in Sri Lanka, following the 2019 bombings of churches around the country. Photo by Groundviews (CC BY-ND 3.0)"
-    />
+  </section>
+);
+
+const section3b = (
+  <section className="max-w-6xl">
     <p>
       While this marked a step in the right direction, the public documentation
       showed little evidence that the assessors had investigated how
@@ -485,7 +488,6 @@ const section4 = (
     </p>
     <FigureImg
       img={ImgTweetFB}
-      extraClass="contained"
       caption="Embed FB “SORRY YOU CAN’T APPEAL THAT” [<a href='https://twitter.com/timsamoff/status/1265374113901604865/photo/1'>Tweet Link</a>]"
       alt="Embed FB “SORRY YOU CAN’T APPEAL THAT”"
     />
@@ -597,7 +599,6 @@ const section5 = (
     </p>
     <FigureImg
       img={ImgChartF4}
-      extraClass="contained"
       caption="What information do companies&rsquo; transparency reports include?"
       alt="TODO - What information do companies&rsquo; transparency reports include?"
     />
@@ -687,6 +688,19 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             {section1}
             {section2a}
           </NarrativeContainer>
+          <div className="m-auto bg-rdr bg-opacity-20">
+            <FigureImg
+              img={ImgProtest}
+              caption="Demonstrators protest a network shutdown in Myanmar. Photo by <a href='https://twitter.com/lwin051965' target='_blank'>Nyinyi Lwin</a>, used with permission."
+              alt="TODO - Demonstrators protest a network shutdown in Myanmar. Photo by Nyinyi Lwin, used with permission."
+            />
+          </div>
+          <NarrativeContainer
+            backgroundClassName="bg-rdr bg-opacity-20"
+            transparent
+          >
+            {section2b}
+          </NarrativeContainer>
           <ScrollyFeature
             id="scrolly-map"
             story={story1}
@@ -728,7 +742,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               <FigureSvg
                 className="scrolly-figure bg-light-grey"
                 svg={svgWorldMap}
-                caption="TODO: Caption As Props 1"
+                caption="TODO: Caption ???"
                 alt="TODO: Alternative description"
                 id="map-world"
               />
@@ -738,8 +752,21 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             backgroundClassName="bg-rdr bg-opacity-20"
             transparent
           >
-            {section2b}
-            {section3}
+            {section2c}
+            {section3a}
+          </NarrativeContainer>
+          <div className="m-auto bg-rdr bg-opacity-20">
+            <FigureImg
+              img={ImgWhiteFlags}
+              caption="Mourners hang white flags in Sri Lanka, following the 2019 bombings of churches around the country. Photo by Groundviews (CC BY-ND 3.0)"
+              alt="Mourners hang white flags in Sri Lanka, following the 2019 bombings of churches around the country. Photo by Groundviews (CC BY-ND 3.0)"
+            />
+          </div>
+          <NarrativeContainer
+            backgroundClassName="bg-rdr bg-opacity-20"
+            transparent
+          >
+            {section3b}
             {section4}
           </NarrativeContainer>
           <ScrollyFeature
