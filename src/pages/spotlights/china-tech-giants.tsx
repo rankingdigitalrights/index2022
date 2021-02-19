@@ -37,7 +37,6 @@ const ChinaTechGiants = ({details}: NarrativeProps) => {
         heroCaption="Speech in the Age of COVID, by Rafat Alkhatib. Used with permission."
         backgroundClassName="bg-rdr bg-opacity-30"
         transparent
-        hasDonate={false}
       >
         {({Container}) => {
           return (

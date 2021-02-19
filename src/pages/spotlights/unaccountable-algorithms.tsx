@@ -37,7 +37,6 @@ const Algorithms = ({details}: NarrativeProps) => {
         heroCaption="Original art by Paweł Kuczyński."
         backgroundClassName="bg-rdr bg-opacity-30"
         transparent
-        hasDonate={false}
       >
         {({Container}) => {
           return (
