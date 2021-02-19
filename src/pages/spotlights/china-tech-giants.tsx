@@ -8,7 +8,7 @@ import NarrativeContainer from "../../components/narrative-container";
 import NarrativeTitle from "../../components/narrative-title";
 import {chinaTechGiants} from "../../data";
 import {components} from "../../mdx";
-import {NarrativeProps} from "../../types";
+import {NarrativeProps, ReadmoreKind} from "../../types";
 
 export const getStaticProps = async () => {
   const details = await chinaTechGiants();
@@ -30,6 +30,12 @@ const ChinaTechGiants = ({details}: NarrativeProps) => {
     ? hydrate(details.footnotes, {components})
     : undefined;
 
+  const readmore: ReadmoreKind[] = [
+    "key-findings",
+    "recommendations",
+    "context-before-code",
+  ];
+
   return (
     <Layout>
       <NarrativeContainer
@@ -37,6 +43,7 @@ const ChinaTechGiants = ({details}: NarrativeProps) => {
         heroCaption="Speech in the Age of COVID, by Rafat Alkhatib. Used with permission."
         backgroundClassName="bg-rdr bg-opacity-30"
         transparent
+        readmore={readmore}
       >
         {({Container}) => {
           return (

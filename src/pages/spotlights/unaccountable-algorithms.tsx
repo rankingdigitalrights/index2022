@@ -8,7 +8,7 @@ import NarrativeContainer from "../../components/narrative-container";
 import NarrativeTitle from "../../components/narrative-title";
 import {algorithms} from "../../data";
 import {components} from "../../mdx";
-import {NarrativeProps} from "../../types";
+import {NarrativeProps, ReadmoreKind} from "../../types";
 
 export const getStaticProps = async () => {
   const details = await algorithms();
@@ -30,6 +30,12 @@ const Algorithms = ({details}: NarrativeProps) => {
     ? hydrate(details.footnotes, {components})
     : undefined;
 
+  const readmore: ReadmoreKind[] = [
+    "key-findings",
+    "recommendations",
+    "china-tech-giants",
+  ];
+
   return (
     <Layout>
       <NarrativeContainer
@@ -37,6 +43,7 @@ const Algorithms = ({details}: NarrativeProps) => {
         heroCaption="Original art by Paweł Kuczyński."
         backgroundClassName="bg-rdr bg-opacity-30"
         transparent
+        readmore={readmore}
       >
         {({Container}) => {
           return (

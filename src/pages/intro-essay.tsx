@@ -8,7 +8,7 @@ import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import {introEssay} from "../data";
 import {components} from "../mdx";
-import {NarrativeProps} from "../types";
+import {NarrativeProps, ReadmoreKind} from "../types";
 
 export const getStaticProps = async () => {
   const details = await introEssay();
@@ -30,9 +30,18 @@ const IntroEssay = ({details}: NarrativeProps) => {
     ? hydrate(details.footnotes, {components})
     : undefined;
 
+  const readmore: ReadmoreKind[] = [
+    "key-findings",
+    "unaccountable-algorithms",
+    "recommendations",
+  ];
+
   return (
     <Layout>
-      <NarrativeContainer backgroundClassName="bg-accent-red bg-opacity-30">
+      <NarrativeContainer
+        backgroundClassName="bg-accent-red bg-opacity-30"
+        readmore={readmore}
+      >
         {({Container}) => {
           return (
             <Container>

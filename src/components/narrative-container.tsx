@@ -1,6 +1,8 @@
 import c from "clsx";
 import React from "react";
 
+import readmoreItems from "../../data/readmore.json";
+import {ReadmoreItem, ReadmoreKind} from "../types";
 import Donate from "./donate";
 import Readmore from "./readmore";
 
@@ -27,6 +29,7 @@ interface NarrativeContainerProps {
   backgroundClassName?: string;
   transparent?: boolean;
   hasDonate?: boolean;
+  readmore?: ReadmoreKind[];
   children: (props: {Container: typeof Container}) => React.ReactNode;
 }
 
@@ -36,12 +39,20 @@ const NarrativeContainer = ({
   backgroundClassName,
   transparent = false,
   hasDonate = true,
+  readmore = [],
   children,
 }: NarrativeContainerProps) => {
   const containerClassName = {
     "bg-white shadow-md": !transparent,
     "bg-transparent": transparent,
   };
+
+  const readmoreSelection: Array<ReadmoreItem | undefined> = readmore.map(
+    (kind) => {
+      const item = readmoreItems.find((i) => (i.kind as ReadmoreKind) === kind);
+      return item ? (item as ReadmoreItem) : undefined;
+    },
+  );
 
   return (
     <div>
@@ -89,21 +100,35 @@ const NarrativeContainer = ({
         )}
       </div>
 
-      <div className="bg-beige flex py-3 md:py-12">
-        <div
-          className={c(
-            "narrative-container relative flex flex-col mx-3 md:mx-auto lg:flex-row items-center",
-            "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
-          )}
-        >
-          <Readmore className="w-full lg:max-w-xs" kind="scores" />
-          <Readmore
-            className="w-full my-6 lg:my-0 lg:max-w-xs lg:mx-6"
-            kind="findings"
-          />
-          <Readmore className="w-full lg:max-w-xs" kind="methodology" />
+      {readmoreSelection.length > 0 && (
+        <div className="bg-beige flex py-3 md:py-12">
+          <div
+            className={c(
+              "narrative-container relative flex flex-col mx-3 md:mx-auto lg:flex-row items-center",
+              "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
+            )}
+          >
+            {readmoreSelection[0] && (
+              <Readmore
+                className="w-full lg:max-w-xs"
+                readmore={readmoreSelection[0]}
+              />
+            )}
+            {readmoreSelection[1] && (
+              <Readmore
+                className="w-full my-6 lg:my-0 lg:max-w-xs lg:mx-6"
+                readmore={readmoreSelection[1]}
+              />
+            )}
+            {readmoreSelection[2] && (
+              <Readmore
+                className="w-full lg:max-w-xs"
+                readmore={readmoreSelection[2]}
+              />
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

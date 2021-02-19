@@ -312,3 +312,23 @@ export interface ComparePage {
   body: string;
   footnotes?: string;
 }
+
+export type ReadmoreKind =
+  | "summary"
+  | "introduction"
+  | "key-findings"
+  | "recommendations"
+  | "methodology"
+  | "context-before-code"
+  | "unaccountable-algorithms"
+  | "china-tech-giants"
+  | "compare"
+  | "indicators"
+  | "services";
+
+export type ReadmoreItem = {
+  kind: ReadmoreKind;
+  url: string;
+  title: string;
+  excerpt: string;
+};

@@ -8,7 +8,7 @@ import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import {policyRecommendations} from "../data";
 import {components} from "../mdx";
-import {NarrativeProps} from "../types";
+import {NarrativeProps, ReadmoreKind} from "../types";
 
 export const getStaticProps = async () => {
   const details = await policyRecommendations();
@@ -30,9 +30,18 @@ const PolicyRecommendations = ({details}: NarrativeProps) => {
     ? hydrate(details.footnotes, {components})
     : undefined;
 
+  const readmore: ReadmoreKind[] = [
+    "summary",
+    "key-findings",
+    "china-tech-giants",
+  ];
+
   return (
     <Layout>
-      <NarrativeContainer backgroundClassName="bg-cat-freedom bg-opacity-20">
+      <NarrativeContainer
+        backgroundClassName="bg-cat-freedom bg-opacity-20"
+        readmore={readmore}
+      >
         {({Container}) => {
           return (
             <Container>

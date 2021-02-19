@@ -2,59 +2,91 @@ import c from "clsx";
 import Link from "next/link";
 import React from "react";
 
+import TechGiants from "../images/icons/china-tech-giants.svg";
+import ContextBeforeCode from "../images/icons/context-before-code.svg";
+import ExecutiveSummary from "../images/icons/executive-summary.svg";
+import Services from "../images/icons/explore-the-data.svg";
+import Introduction from "../images/icons/intro-essay.svg";
 import KeyFindings from "../images/icons/key-findings.svg";
 import Methodology from "../images/icons/methodology.svg";
-import ScoresByIndicator from "../images/icons/scores-by-indicator.svg";
+import Algorithms from "../images/icons/moving-fast.svg";
+import Recommendations from "../images/icons/policy-recommendations.svg";
+import Indicators from "../images/icons/scores-by-indicator.svg";
+import Compare from "../images/icons/scores-over-time.svg";
+import {ReadmoreItem} from "../types";
 
 interface ReadmoreProps {
-  kind: "methodology" | "scores" | "findings";
+  readmore: ReadmoreItem;
   className?: string;
 }
 
-const Readmore = ({kind, className}: ReadmoreProps) => {
-  let title;
-  let text;
+const Readmore = ({readmore, className}: ReadmoreProps) => {
+  const iconClassName = "flex-none w-6 h-6 place-self-start";
   let icon;
-  let href;
 
-  switch (kind) {
-    case "scores": {
-      title = "Scores by indicator";
-      icon = <ScoresByIndicator className="flex-none w-6 h-6" />;
-      text = "Find out how companies did on specific issues in 2020";
-      href = "/explore-indicators";
+  switch (readmore.kind) {
+    case "summary": {
+      icon = <ExecutiveSummary className={iconClassName} />;
       break;
     }
-    case "findings": {
-      title = "Key findings";
-      icon = <KeyFindings className="flex-none w-6 h-6" />;
-      text = "Companies are improving in principle, but failing in practice.";
-      href = "/key-findings";
+    case "introduction": {
+      icon = <Introduction className={iconClassName} />;
+      break;
+    }
+    case "key-findings": {
+      icon = <KeyFindings className={iconClassName} />;
+      break;
+    }
+    case "recommendations": {
+      icon = <Recommendations className={iconClassName} />;
       break;
     }
     case "methodology": {
-      title = "Methodology";
-      icon = <Methodology className="flex-none w-6 h-6" />;
-      text =
-        "Our methodology builds on more than a decade of work by the human rights, privacy, and security communities";
-      href = "/methodology";
+      icon = <Methodology className={iconClassName} />;
       break;
     }
-    default:
-      return <div />;
+    case "context-before-code": {
+      icon = <ContextBeforeCode className={iconClassName} />;
+      break;
+    }
+    case "unaccountable-algorithms": {
+      icon = <Algorithms className={iconClassName} />;
+      break;
+    }
+    case "china-tech-giants": {
+      icon = <TechGiants className={iconClassName} />;
+      break;
+    }
+    case "compare": {
+      icon = <Compare className={iconClassName} />;
+      break;
+    }
+    case "indicators": {
+      icon = <Services className={iconClassName} />;
+      break;
+    }
+    case "services": {
+      icon = <Indicators className={iconClassName} />;
+      break;
+    }
+    default: {
+      icon = <KeyFindings className={iconClassName} />;
+    }
   }
 
   return (
     <div
       className={c("flex flex-col h-44 bg-white shadow-md p-3.5", className)}
     >
-      <Link passHref href={href}>
+      <Link passHref href={readmore.url}>
         <a className="border-b mb-3 pb-2 flex items-center text-black no-underline">
           {icon}
-          <span className="font-circular font-bold text-md ml-2">{title}</span>
+          <span className="font-circular font-bold text-md ml-2 leading-none">
+            {readmore.title}
+          </span>
         </a>
       </Link>
-      <p className="font-circular text-sm">{text}</p>
+      <p className="font-circular text-sm">{readmore.excerpt}</p>
     </div>
   );
 };

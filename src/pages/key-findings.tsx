@@ -8,7 +8,7 @@ import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import {keyFindings} from "../data";
 import {components} from "../mdx";
-import {NarrativeProps} from "../types";
+import {NarrativeProps, ReadmoreKind} from "../types";
 
 export const getStaticProps = async () => {
   const details = await keyFindings();
@@ -30,12 +30,19 @@ const KeyFindings = ({details}: NarrativeProps) => {
     ? hydrate(details.footnotes, {components})
     : undefined;
 
+  const readmore: ReadmoreKind[] = [
+    "context-before-code",
+    "recommendations",
+    "services",
+  ];
+
   return (
     <Layout>
       <NarrativeContainer
         heroClassName="hero-key-findings"
         heroCaption="Photo by Amy Brouillette, used with permission"
         backgroundClassName="bg-cat-freedom bg-opacity-20"
+        readmore={readmore}
       >
         {({Container}) => {
           return (

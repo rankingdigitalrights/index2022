@@ -169,7 +169,7 @@ export const normalizeHtml = (src: string): string => {
     }
 
     // remove unnecessary <span> tags (whose styles were completely scrubbed)
-    if (!$el.attr("class") && el.tagName === "span") {
+    if (!$el.attr("className") && el.tagName === "span") {
       $el.replaceWith(el.children);
     }
 

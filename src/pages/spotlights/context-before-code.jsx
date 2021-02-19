@@ -4,6 +4,7 @@ import {promises as fsP} from "fs";
 import path from "path";
 import React from "react";
 
+import readmoreItems from "../../../data/readmore.json";
 import story2 from "../../../data/spotlights/soe-fb-vs-youtube.json";
 import story1 from "../../../data/spotlights/soe-map-shutdowns.json";
 import BoxPrompt from "../../components/box-prompt";
@@ -662,6 +663,19 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
   //   threshold: [0.6],
   //   triggerOnce: true,
   // });
+  const readmore = ["key-findings", "services", "unaccountable-algorithms"].map(
+    (kind) => {
+      const item = readmoreItems.find((i) => i.kind === kind);
+      return (
+        item || {
+          id: "empty",
+          url: "#",
+          title: "MISSING",
+          excerpt: "MISSING",
+        }
+      );
+    },
+  );
 
   return (
     <Layout>
@@ -823,12 +837,12 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
               )}
             >
-              <Readmore className="w-full lg:max-w-xs" kind="scores" />
+              <Readmore className="w-full lg:max-w-xs" readmore={readmore[0]} />
               <Readmore
                 className="w-full my-6 lg:my-0 lg:max-w-xs lg:mx-6"
-                kind="findings"
+                readmore={readmore[1]}
               />
-              <Readmore className="w-full lg:max-w-xs" kind="methodology" />
+              <Readmore className="w-full lg:max-w-xs" readmore={readmore[2]} />
             </div>
           </div>
         </>

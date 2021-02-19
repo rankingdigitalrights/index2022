@@ -10,7 +10,7 @@ import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import {companyDiffScoresData, compareDetails} from "../data";
 import {components} from "../mdx";
-import {CompanyScoreDiff} from "../types";
+import {CompanyScoreDiff, ReadmoreKind} from "../types";
 
 interface ScoresOverTimeProps {
   diffScores: CompanyScoreDiff[];
@@ -55,9 +55,15 @@ const ScoresOverTime = ({diffScores, details}: ScoresOverTimeProps) => {
     : undefined;
   const introduction = hydrate(details.introduction, {components});
 
+  const readmore: ReadmoreKind[] = [
+    "key-findings",
+    "indicators",
+    "methodology",
+  ];
+
   return (
     <Layout>
-      <NarrativeContainer transparent>
+      <NarrativeContainer transparent readmore={readmore}>
         {({Container}) => {
           return (
             <div>
