@@ -6,6 +6,7 @@ import React from "react";
 
 import story2 from "../../../data/spotlights/soe-fb-vs-youtube.json";
 import story1 from "../../../data/spotlights/soe-map-shutdowns.json";
+import BoxPrompt from "../../components/box-prompt";
 import FigureImg from "../../components/figure-img";
 import FigureSvg from "../../components/figure-svg";
 import Footnotes from "../../components/footnotes";
@@ -294,11 +295,9 @@ const section2b = (
         abruptly thrusting them into digital darkness.
       </span>
     </p>
-    <div className="box-prompt">
-      <div className="box-prompt-content">
-        <a href="/index2020/indicators/F10">
-          See our data on network shutdowns → [F10]
-        </a>
+    <div className="flex flex-col justify-around items-center">
+      <div className="mt-6 mb-12 ml-auto">
+        <BoxPrompt readmore="/indicators/F10" />
       </div>
     </div>
   </section>
@@ -356,12 +355,9 @@ const section3 = (
       // caption="TBA; Currently no caption by decision"
       alt="TODO - Caption | Description"
     />
-    <div className="box-prompt">
-      <div className="box-prompt-content">
-        <a href="/index2020/indicators/G4">
-          How did we calculate these scores? Read the elements and research
-          guidance →[G4]
-        </a>
+    <div className="flex flex-col justify-around items-center">
+      <div className="mt-6 mb-12 ml-auto">
+        <BoxPrompt readmore="/indicators/G4" />
       </div>
     </div>
     <p>

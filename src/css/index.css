@@ -445,7 +445,7 @@
     @apply text-lg;
   }
 
-  main.spotlight a {
+  main.spotlight a:not(.font-normal) {
     font-weight: 700;
   }
 
