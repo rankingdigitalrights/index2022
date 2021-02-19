@@ -36,6 +36,9 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
     }
   }
 
+  // FIXME: clashes with smooth scrolling: <img loading="lazy" />
+  //        Maybe set the height of an image to make sure the page renders with
+  //        the right total height.
   return (
     <div className="flex flex-col justify-around items-center">
       <figure className="flex flex-col justify-around my-6">
@@ -51,7 +54,6 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
             alt={description}
             title={title}
             sizes="(min-width: 640px) 400w, (min-width: 1024px) 800w, 100vw"
-            loading="lazy"
           />
         </picture>
         <figcaption className="font-circular text-sm mt-2">{title}</figcaption>
