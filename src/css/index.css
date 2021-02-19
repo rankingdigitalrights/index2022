@@ -442,6 +442,10 @@
     max-width: 900px;
   }
 
+  main.spotlight figure.spot-figure figcaption {
+    margin-left: 1rem;
+  }
+
   .scrolly-canvas figure.figure-svg {
     margin: 0 auto;
     overflow: clip;
