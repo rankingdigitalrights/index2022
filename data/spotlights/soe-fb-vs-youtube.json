@@ -2,12 +2,11 @@
   "steps": [{
       "id": 1,
       "content": "<h1 class='mb-6'>Appeals in Crisis:</h1><h2>Facebook vs. YouTube</h2>",
-      "color": "bg-mint-green"
+      "color": "bg-light-grey"
     },
     {
       "id": 0,
-      "title": "[Invisble Placholder]",
-      "content": "<h2>Background</h2><p>When COVID - 19 hit, both Facebook and Google (YouTube’ s parent company) sent their content moderators home, and deployed algorithms more extensively to review content.</p><p>Facebook almost completely shut off its appeals option.</p><p>YouTube kept it enabled, and put extra resources into reviewing appeals and restoring content.</p>",
+      "content": "[Invisible Step - toggle new 'Info-box']<br/><br/>[will fade in - needs styling]",
       "color": "bg-mint-green"
     },
     {

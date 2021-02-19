@@ -45,12 +45,39 @@ export const getStaticProps = async () => {
   };
 };
 
-const openModal = (query) => {
+const hideItem = (query) => {
+  const item = document.querySelector(query);
+  item.classList.add("fade-out");
+  item.classList.remove("fade-in");
+  setTimeout(function () {
+    item.style.display = "none";
+  }, 1000);
+};
+
+const unHideItem = (query) => {
+  const item = document.querySelector(query);
+  item.style.display = "flex";
+  setTimeout(function () {
+    item.classList.remove("fade-out");
+    item.classList.add("fade-in");
+  }, 100);
+};
+
+const toggleVisibility = (query) => {
   const modal = document.querySelector(query);
-  if (typeof modal.showModal === "function") {
-    modal.showModal();
+  console.log(modal);
+  if (modal.style.display !== "none") {
+    setTimeout(function () {
+      modal.style.display = "none";
+    }, 1000);
+    modal.classList.add("fade-out");
+    modal.classList.remove("fade-in");
   } else {
-    alert("The <dialog> API is not supported by this browser");
+    modal.style.display = "flex";
+    setTimeout(function () {
+      modal.classList.remove("fade-out");
+      modal.classList.add("fade-in");
+    }, 100);
   }
 };
 
@@ -786,8 +813,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
           <ScrollyFeature
             id="scrolly-graph"
             story={story2}
-            stepEnter={({element, direction}) => {
-              // console.log(index, element.dataset);
+            stepEnter={({index, element, direction}) => {
               if (element.dataset.show || element.dataset.hide) {
                 toggleSVGclass({
                   objId: "chart-q1",
@@ -796,26 +822,75 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                   direction,
                 });
               }
+
+              if (index === 0) {
+                hideItem("#fb-infobox");
+                hideItem("#fb-info");
+              }
+              if (index === 1) {
+                unHideItem("#fb-infobox");
+              }
+
+              if (index >= 2) {
+                hideItem("#fb-infobox");
+                unHideItem("#fb-info");
+              }
             }}
             stepExit={({index, direction}) => {
-              console.log(`Local Exit 1: ${index} - ${direction}`);
+              console.log(`Local Exit: ${index} - ${direction}`);
             }}
           >
             <figure className="scrolly-figure bg-light-grey p-4">
               <button
-                id="yt-info"
-                className="btn-info bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 z-10"
-                onClick={() => openModal("modal-fb")}
+                id="fb-info"
+                className="btn-info fade-out bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 z-10"
+                style={{display: "none"}}
+                onClick={() => toggleVisibility("#modal-fb")}
               >
                 (i)
               </button>
-              <div className="modal" id="modal-fb">
-                <p>Greetings, one and all!</p>
+              <div
+                className="modal fade-out fixed z-50 max-w-md overflow-auto bg-light-grey flex"
+                style={{display: "none"}}
+                id="modal-fb"
+              >
+                <p className="p-8 bg-white m-auto h-auto content-center align-middle">
+                  Content appealed and restored on appeal on Facebook vs. videos
+                  appealed and restored on YouTube between October 2019 and
+                  September 2020. Data for Facebook does not include the
+                  &ldquo;Fake Accounts&rdquo; category, for which appeals are
+                  not reported. Sources:{" "}
+                  <a href="https://transparency.facebook.com/community-standards-enforcement">
+                    Community Standards Enforcement Report (Facebook)
+                  </a>{" "}
+                  and{" "}
+                  <a href="https://transparencyreport.google.com/youtube-policy/appeals">
+                    {" "}
+                    Google Transparency Report (YouTube)
+                  </a>
+                  .
+                </p>
+              </div>
+              <div
+                id="fb-infobox"
+                className="flex-col hidden h-screen m-auto justify-center items-center"
+              >
+                <h2>Background</h2>
+                <p>
+                  When COVID - 19 hit, both Facebook and Google (YouTube’ s
+                  parent company) sent their content moderators home, and
+                  deployed algorithms more extensively to review content.
+                </p>
+                <p>Facebook almost completely shut off its appeals option.</p>
+                <p>
+                  YouTube kept it enabled, and put extra resources into
+                  reviewing appeals and restoring content.
+                </p>
               </div>
               <FigureSvg
                 className="scrolly-figure bg-light-grey p-4"
                 svg={svgFbYt}
-                caption="Content appealed and restored on appeal on Facebook vs. videos appealed and restored on YouTube between October 2019 and September 2020. Data for Facebook does not include the &ldquo;Fake Accounts&rdquo; category, for which appeals are not reported. Sources: <a href='https://transparency.facebook.com/community-standards-enforcement'>Community Standards Enforcement Report (Facebook)</a> and <a href='https://transparencyreport.google.com/youtube-policy/appeals'>Google Transparency Report (YouTube)</a>."
+                caption="TODO: Caption ???"
                 alt="TODO: Alternative description"
                 id="chart-q1"
               />
