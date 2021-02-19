@@ -28,7 +28,7 @@ const Donate = ({className}: DonateProps) => {
       </p>
 
       <a
-        href="https://newamerica.org"
+        href="https://www.classy.org/give/325264/#!/donation/checkout"
         className="w-28 bg-white font-circular font-bold text-sm text-center text-accent-red rounded-md px-4 py-2 uppercase"
       >
         Donate
