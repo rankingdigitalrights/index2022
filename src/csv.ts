@@ -478,11 +478,10 @@ export const companies = memoizeAsync(
       "csv/2020-company-specs.csv",
     );
     return csvCompanySpecs.map(
-      ({company: id, companyPretty: name, kind, region, brand}) => ({
+      ({company: id, companyPretty: name, kind, brand}) => ({
         id,
         name,
         kind,
-        region,
         brand,
       }),
     );
@@ -928,7 +927,6 @@ export const companyIndices = memoizeAsync(
             index: total.index,
             companyPretty: spec.companyPretty,
             kind: spec.kind,
-            region: spec.region,
             rank,
             scores,
             indicators: {
@@ -1152,7 +1150,7 @@ export const companyRanking = async (
 
   return csvCompanyRanks
     .map((row) => {
-      const {id, companyPretty, kind, scores, region} =
+      const {id, companyPretty, kind, scores} =
         companyData.find((r) => r.id === row.company) ||
         unreachable(`Company ${row.company} not found in company specs.`);
 
@@ -1191,7 +1189,6 @@ export const companyRanking = async (
         rank,
         kind,
         category,
-        region,
       };
     })
     .filter(({kind}) => kind === companyKind)
@@ -1214,7 +1211,7 @@ export const companyServiceRanking = async (
   return csvCompanyServiceRanks
     .filter(({kind}) => kind === serviceKind)
     .map((row) => {
-      const {id, companyPretty, region, kind} =
+      const {id, companyPretty, kind} =
         companyData.find((r) => r.id === row.company) ||
         unreachable(`Company ${row.company} not found in company specs.`);
 
@@ -1254,7 +1251,6 @@ export const companyServiceRanking = async (
         rank,
         kind,
         category,
-        region,
       };
     })
     .filter(({kind}) => kind === companyKind)

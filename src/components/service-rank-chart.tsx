@@ -21,7 +21,6 @@ interface ServiceRankChartProps {
   chartHeight?: number;
   hasHeader?: boolean;
   isPrint?: boolean;
-  byRegion?: boolean;
 }
 
 const ServiceRankChart = ({
@@ -33,7 +32,6 @@ const ServiceRankChart = ({
   chartHeight = 10,
   hasHeader = true,
   isPrint = false,
-  byRegion = false,
 }: ServiceRankChartProps) => {
   const [chartRef, chartWidth] = useChartResize();
 
@@ -51,10 +49,6 @@ const ServiceRankChart = ({
   const companyKind: CompanyKind = ranking[0]?.kind || "telecom";
   const companyWidth = companyKind === "internet" ? "w-24" : "w-28";
   const serviceWidth = serviceKind === "mobileEcosystem" ? "w-60" : "w-44";
-
-  const regions: string[] = [
-    ...ranking.reduce((memo, {region}) => memo.add(region), new Set<string>()),
-  ].sort();
 
   const chartRow = (
     {id, companyPretty, score, rank, service}: ServiceCompanyRank,
@@ -182,20 +176,7 @@ const ServiceRankChart = ({
         </>
       )}
 
-      {byRegion
-        ? regions.map((region, i) => {
-            const rows = ranking.filter((company) => company.region === region);
-
-            return (
-              <div key={region} className={c(i === 0 ? "pt-1" : "pt-6")}>
-                <span className={c("font-circular font-bold pb-2")}>
-                  {region}
-                </span>
-                {rows.map((company, idx) => chartRow(company, idx))}
-              </div>
-            );
-          })
-        : ranking.map((company, idx) => chartRow(company, idx))}
+      {ranking.map((company, idx) => chartRow(company, idx))}
     </div>
   );
 };

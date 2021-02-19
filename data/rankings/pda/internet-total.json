@@ -1,1 +1,1 @@
-[{"id":"Alibaba","companyPretty":"Alibaba","service":"AliGenie","score":19,"rank":1,"kind":"internet","category":"total","region":"China"},{"id":"Amazon","companyPretty":"Amazon","service":"Alexa","score":19,"rank":1,"kind":"internet","category":"total","region":"United States"}]
+[{"id":"Alibaba","companyPretty":"Alibaba","service":"AliGenie","score":19,"rank":1,"kind":"internet","category":"total"},{"id":"Amazon","companyPretty":"Amazon","service":"Alexa","score":19,"rank":1,"kind":"internet","category":"total"}]
