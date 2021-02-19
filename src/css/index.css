@@ -175,6 +175,10 @@
   html {
     @apply font-lyon text-base;
     font-size: 18px;
+    /* Smooth scroll behavior doesn't work across all browsers. Safari doesn't do it
+     * at all, Chromium scrolls to the wrong place, only Fifirefox scrolls correctly
+     * it seems. */
+    /* scroll-behavior: smooth; */
   }
 
   h1 {
