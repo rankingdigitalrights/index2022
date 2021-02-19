@@ -21,13 +21,7 @@ import {
 } from "../../data";
 import Download from "../../images/icons/download.svg";
 import {components} from "../../mdx";
-import {
-  CompanyDetails,
-  CompanyIndex,
-  CompanyMeta,
-  CompanyRank,
-  Service,
-} from "../../types";
+import {CompanyIndex, CompanyMeta, CompanyRank, Service} from "../../types";
 
 type Params = {
   params: {
@@ -35,13 +29,31 @@ type Params = {
   };
 };
 
+type CompanyDetailsMdx = {
+  id: string;
+  printName: string;
+  keyFindingsTitle: string;
+  changesTitle: string;
+  keyRecommendationTitle: string;
+  keyTakeawaysTitle: string;
+  basicInformation: MdxRemote.Source;
+  keyFindings: MdxRemote.Source;
+  changes: MdxRemote.Source;
+  keyTakeaways: MdxRemote.Source;
+  keyRecommendation: MdxRemote.Source;
+  governance: MdxRemote.Source;
+  freedom: MdxRemote.Source;
+  privacy: MdxRemote.Source;
+  footnotes: MdxRemote.Source;
+};
+
 interface CompanyProps {
   index: CompanyIndex;
-  details: CompanyDetails;
+  details: CompanyDetailsMdx;
   meta: CompanyMeta;
   ranking: CompanyRank[];
   services: Service[];
-  footnotes: MdxRemote.Source | null;
+  hasFootnotes: boolean;
 }
 
 export const getStaticPaths = async () => {
@@ -61,20 +73,43 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
   const meta = await companyMeta(slug);
   const ranking = await companyRankingData(index.kind, "total");
   const services = await companyServices(slug);
-  const footnotes = details.footnotes
-    ? await renderToString(details.footnotes, {components})
-    : // eslint-disable-next-line unicorn/no-null
-      null;
+
+  const mdxDetails = {
+    id: details.id,
+    printName: details.printName,
+    keyFindingsTitle: details.keyFindingsTitle,
+    changesTitle: details.changesTitle,
+    keyRecommendationTitle: details.keyRecommendationTitle,
+    keyTakeawaysTitle: details.keyTakeawaysTitle,
+    basicInformation: await renderToString(details.basicInformation, {
+      components,
+    }),
+    keyFindings: await renderToString(details.keyFindings, {components}),
+    keyRecommendation: await renderToString(details.keyRecommendation, {
+      components,
+    }),
+    changes: await renderToString(details.changes, {components}),
+    keyTakeaways: await renderToString(details.keyTakeaways, {components}),
+    governance: await renderToString(details.governance, {components}),
+    freedom: await renderToString(details.freedom, {components}),
+    privacy: await renderToString(details.privacy, {components}),
+    // To avoid conditional hook rendering (maybe hydrate) I make sure that
+    // footnotes are always a mdx source. I add an additional hasFootnotes field
+    // that indicates if this company has footnotes or note.
+    footnotes: details.footnotes
+      ? await renderToString(details.footnotes, {components})
+      : await renderToString("<div />", {components}),
+  };
 
   // Map from the input format to the internal type.
   return {
     props: {
       index,
-      details,
       meta,
       ranking,
       services,
-      footnotes,
+      details: mdxDetails,
+      hasFootnotes: !!details.footnotes,
     },
   };
 };
@@ -85,11 +120,19 @@ const CompanyPage = ({
   meta,
   ranking,
   services,
-  footnotes: mdxFootnotes,
+  hasFootnotes,
 }: CompanyProps) => {
-  const footnotes = mdxFootnotes
-    ? hydrate(mdxFootnotes, {components})
-    : undefined;
+  const basicInformation = hydrate(details.basicInformation, {components});
+  const keyFindings = hydrate(details.keyFindings, {components});
+  const changes = hydrate(details.changes, {components});
+  const keyRecommendation = hydrate(details.keyRecommendation, {components});
+  const keyTakeaways = hydrate(details.keyTakeaways, {components});
+  const governance = hydrate(details.governance, {components});
+  const freedom = hydrate(details.freedom, {components});
+  const privacy = hydrate(details.privacy, {components});
+  const footnotes = hydrate(details.footnotes, {
+    components,
+  });
 
   return (
     <Layout>
@@ -107,7 +150,7 @@ const CompanyPage = ({
               company={details.printName}
               rank={index.rank}
               score={index.scores.total}
-              basicInformation={details.basicInformation}
+              basicInformation={basicInformation}
               className="mt-2"
             />
           </div>
@@ -125,30 +168,17 @@ const CompanyPage = ({
       <div className="md:container md:mx-auto px-3 mt-6 md:py-6 md:mt-12 md:px-0 lg:w-10/12 xl:w-8/12">
         <section className="flex flex-col md:flex-row">
           <div className="md:w-4/6 md:pr-20">
-            <div
-              className="border-b border-disabled-light"
-              dangerouslySetInnerHTML={{__html: details.keyFindings}}
-            />
+            <div className="border-b border-disabled-light">{keyFindings}</div>
 
             <h2 className="text-prissian mt-8 mb-6">
               {details.keyTakeawaysTitle}
             </h2>
-            <div
-              className="mt-6"
-              dangerouslySetInnerHTML={{
-                __html: details.keyTakeaways,
-              }}
-            />
+            <div className="mt-6">{keyTakeaways}</div>
 
             <h2 className="text-prissian mt-8 mb-6">
               {details.keyRecommendationTitle}
             </h2>
-            <div
-              className="mt-6"
-              dangerouslySetInnerHTML={{
-                __html: details.keyRecommendation,
-              }}
-            />
+            <div className="mt-6">{keyRecommendation}</div>
           </div>
 
           <div className="flex flex-col items-start w-full md:w-2/6 font-circular text-sm">
@@ -239,11 +269,7 @@ const CompanyPage = ({
                 {details.changesTitle}
               </h2>
 
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: details.changes,
-                }}
-              />
+              {changes}
             </div>
 
             <div className="flex flex-col items-start w-full md:w-2/6 px-3 font-circular text-sm">
@@ -283,7 +309,7 @@ const CompanyPage = ({
             <CompanySection
               category="governance"
               score={index.scores.governance}
-              text={details.governance}
+              text={governance}
               indicators={index.indicators.governance}
             />
           </div>
@@ -291,20 +317,20 @@ const CompanyPage = ({
           <CompanySection
             category="freedom"
             score={index.scores.freedom}
-            text={details.freedom}
+            text={freedom}
             indicators={index.indicators.freedom}
           />
 
           <CompanySection
             category="privacy"
             score={index.scores.privacy}
-            text={details.privacy}
+            text={privacy}
             indicators={index.indicators.privacy}
           />
         </div>
       </div>
 
-      {footnotes && (
+      {hasFootnotes && (
         <Footnotes
           className="container mx-auto w-11/12 my-12 pt-12 lg:w-8/12 md:w-10/12"
           source={footnotes}

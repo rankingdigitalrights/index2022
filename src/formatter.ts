@@ -50,11 +50,9 @@ const extractSection = (
 const extractFeature = (fromId: string, $: cheerio.Root): cheerio.Cheerio => {
   const fromSelector = `h4[id="${fromId}"]`;
   const untilSelector = "h4";
-  // return $('<div class="feature-box" />')
-  //     .append($(fromSelector).nextUntil(untilSelector))
 
   return $(
-    `<div class="feature-box-wrapper"><div class="feature-box-inner"><div class="feature-box">${$(
+    `<div className="feature-box-wrapper"><div className="feature-box-inner"><div className="feature-box">${$(
       "<div />",
     )
       .append($(fromSelector).nextUntil(untilSelector))
@@ -163,6 +161,11 @@ export const normalizeHtml = (src: string): string => {
         });
 
       $el.removeAttr("style");
+    }
+
+    if ($el.attr("class")) {
+      $el.attr("className", $el.attr("class") || "");
+      $el.removeAttr("class");
     }
 
     // remove unnecessary <span> tags (whose styles were completely scrubbed)

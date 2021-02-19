@@ -7,7 +7,7 @@ import CompanyIndicatorChart from "./company-indicator-chart";
 interface CompanySectionProps {
   category: IndicatorCategory;
   score: number;
-  text: string;
+  text: React.ReactNode;
   indicators: IndicatorNested[];
   className?: string;
 }
@@ -68,7 +68,7 @@ const CompanySection = ({
             </span>
           </h2>
 
-          <div dangerouslySetInnerHTML={{__html: text}} />
+          {text}
         </div>
 
         <div className="md:w-2/6 md:ml-3 print:hidden">

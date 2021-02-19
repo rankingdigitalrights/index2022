@@ -8,7 +8,7 @@ interface CompanyRankCardProps {
   company: string;
   score: number;
   rank: number;
-  basicInformation: string;
+  basicInformation: React.ReactNode;
   className?: string;
 }
 
@@ -37,12 +37,9 @@ const CompanyRankCard = ({
         </div>
       </div>
 
-      <div
-        className="font-circular text-sm text-white mt-6"
-        dangerouslySetInnerHTML={{
-          __html: basicInformation,
-        }}
-      />
+      <div className="font-circular text-sm text-white mt-6">
+        {basicInformation}
+      </div>
     </div>
   );
 };
