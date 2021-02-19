@@ -331,7 +331,6 @@
 
   main.spotlight h1 {
     max-width: 900px;
-    margin: 2rem auto;
   }
 
   main.spotlight {
@@ -422,18 +421,7 @@
 
   main.spotlight figure:not(.hero-figure) {
     width: 100%;
-    /* max-width: 900px; */
     margin: 1.5rem auto 2rem auto;
-  }
-
-  /* main.spotlight figure:not(.hero-figure) figcaption {
-    @apply font-platform;
-    text-align: right;
-    margin: 1rem auto;
-  } */
-
-  main.spotlight figcaption {
-    @apply font-circular text-xxs py-1;
   }
 
   main.spotlight figure:not(.hero-figure) img {
@@ -644,6 +632,10 @@
     div.scrolly-steps .step {
       margin-left: 1rem;
       margin-right: 1rem;
+    }
+
+    main.spotlight figure.spot-figure figcaption {
+      margin-left: 0rem;
     }
   }
 

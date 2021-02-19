@@ -146,13 +146,13 @@ const section1 = (
       The year 2020 could not have given us a better set of case studies in just
       how dangerous it is for these companies to be so unprepared for crisis.
     </p>
-    <blockquote className="pullquote">
+    {/* <blockquote className="pullquote">
       <p>
         Our perpetual state of emergency has exposed the holes in corporate
         policies and practices that can amplify conspiracies, deprive silenced
         voices of remedy, and further exclude the marginalized.
       </p>
-    </blockquote>
+    </blockquote> */}
     <p>
       And yet tech juggernauts are expanding their monopolies as custodians of
       user data and gatekeepers of access to content with no more accountability
@@ -670,20 +670,20 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
           <NarrativeContainer
             hasHero
             heroClassName="hero-full hero-state-of-emergency"
-            heroCaption="Context before code: Protecting human rights in a state of emergency"
+            heroCaption="People queue for milk during the pandemic in Kashmir. Photo by Abid Bhat, used with permission"
             backgroundClassName="bg-rdr bg-opacity-20"
             transparent
           >
-            <div className="flex mb-9 border-b border-prissian">
-              <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xxl leading-none">
-                <span className="mt-3 md:mt-0">
+            <div className="mb-6 border-b border-prissian mt-3 md:mt-12 pb-4">
+              <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none">
+                <p>
                   Context before code: Protecting human rights in a state of
-                  emergency.
-                </span>
+                  emergency
+                </p>
               </h1>
-            </div>
-            <div className="author-byline mb-9">
-              By: Jan Rydzak, Elizabeth Renieris
+              <span className="font-platform text-sm">
+                By: Jan Rydzak, Elizabeth Renieris
+              </span>
             </div>
             {section1}
             {section2a}
