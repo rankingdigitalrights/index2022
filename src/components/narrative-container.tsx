@@ -2,7 +2,7 @@ import c from "clsx";
 import React from "react";
 
 import Donate from "./donate";
-import NarrativeBox from "./narrative-box";
+import Readmore from "./readmore";
 
 const containerWidth = "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12";
 const containerPadding = "px-6 md:px-16 xl:px-28 2xl:px-24";
@@ -96,12 +96,12 @@ const NarrativeContainer = ({
             "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
           )}
         >
-          <NarrativeBox className="w-full lg:max-w-xs" kind="scores" />
-          <NarrativeBox
+          <Readmore className="w-full lg:max-w-xs" kind="scores" />
+          <Readmore
             className="w-full my-6 lg:my-0 lg:max-w-xs lg:mx-6"
             kind="findings"
           />
-          <NarrativeBox className="w-full lg:max-w-xs" kind="methodology" />
+          <Readmore className="w-full lg:max-w-xs" kind="methodology" />
         </div>
       </div>
     </div>

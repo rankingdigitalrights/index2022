@@ -6,12 +6,12 @@ import KeyFindings from "../images/icons/key-findings.svg";
 import Methodology from "../images/icons/methodology.svg";
 import ScoresByIndicator from "../images/icons/scores-by-indicator.svg";
 
-interface NarrativeBoxProps {
+interface ReadmoreProps {
   kind: "methodology" | "scores" | "findings";
   className?: string;
 }
 
-const NarrativeBox = ({kind, className}: NarrativeBoxProps) => {
+const Readmore = ({kind, className}: ReadmoreProps) => {
   let title;
   let text;
   let icon;
@@ -59,4 +59,4 @@ const NarrativeBox = ({kind, className}: NarrativeBoxProps) => {
   );
 };
 
-export default NarrativeBox;
+export default Readmore;
