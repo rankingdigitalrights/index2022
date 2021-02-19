@@ -46,10 +46,7 @@ const NarrativeBox = ({kind, className}: NarrativeBoxProps) => {
 
   return (
     <div
-      className={c(
-        "flex flex-col h-44 bg-white shadow-md m-3 p-3.5",
-        className,
-      )}
+      className={c("flex flex-col h-44 bg-white shadow-md p-3.5", className)}
     >
       <Link passHref href={href}>
         <a className="border-b mb-3 pb-2 flex items-center text-black no-underline">

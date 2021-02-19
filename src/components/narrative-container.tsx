@@ -4,8 +4,9 @@ import React from "react";
 import Donate from "./donate";
 import NarrativeBox from "./narrative-box";
 
-const containerWidth =
-  "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-6 md:px-16 xl:px-28 2xl:px-24";
+const containerWidth = "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12";
+const containerPadding = "px-6 md:px-16 xl:px-28 2xl:px-24";
+const containerSize = `${containerWidth} ${containerPadding}`;
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -14,9 +15,7 @@ interface ContainerProps {
 
 const Container = ({children: contents, className}: ContainerProps) => {
   return (
-    <div
-      className={c("narrative-container mx-auto", containerWidth, className)}
-    >
+    <div className={c("narrative-container mx-auto", containerSize, className)}>
       {contents}
     </div>
   );
@@ -72,7 +71,7 @@ const NarrativeContainer = ({
               className={c(
                 "narrative-container w-full h-full top-0 z-10 mx-3 md:mx-auto",
                 containerClassName,
-                containerWidth,
+                containerSize,
               )}
             />
           </div>
@@ -90,11 +89,19 @@ const NarrativeContainer = ({
         )}
       </div>
 
-      <div className="bg-beige flex py-3 md:py-16">
-        <div className="flex flex-col mx-3 md:mx-auto md:flex-row items-center">
-          <NarrativeBox className="w-full md:w-60" kind="scores" />
-          <NarrativeBox className="w-full md:w-60" kind="findings" />
-          <NarrativeBox className="w-full md:w-60" kind="methodology" />
+      <div className="bg-beige flex py-3 md:py-12">
+        <div
+          className={c(
+            "narrative-container relative flex flex-col mx-3 md:mx-auto lg:flex-row items-center",
+            "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
+          )}
+        >
+          <NarrativeBox className="w-full lg:max-w-xs" kind="scores" />
+          <NarrativeBox
+            className="w-full my-6 lg:my-0 lg:max-w-xs lg:mx-6"
+            kind="findings"
+          />
+          <NarrativeBox className="w-full lg:max-w-xs" kind="methodology" />
         </div>
       </div>
     </div>
