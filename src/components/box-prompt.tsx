@@ -23,7 +23,7 @@ const BoxPrompt = ({readmore, className}: BoxPromptProps) => {
   return (
     <div
       className={c(
-        "flex justify-end bg-accent-gold rounded-full pl-6 pr-3 py-3 lg:py-4",
+        "flex justify-end bg-boxprompt rounded-full pl-6 pr-3 py-3 lg:py-4",
         className,
       )}
       onMouseEnter={() => setIsHover(true)}

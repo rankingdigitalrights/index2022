@@ -36,6 +36,7 @@ module.exports = {
         beige: "#F7F4F2",
         prissian: "#1C5275",
         rdr: "#4D9ECF",
+        boxprompt: "#E5E7EB",
 
         cat: {
           governance: "#57a8d5",
