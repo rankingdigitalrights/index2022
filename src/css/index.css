@@ -12,8 +12,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Black.otf);
-    src: url(../../public/fonts/CircularStd-Black.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Black.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Black.woff) format("woff");
     font-weight: 700;
@@ -23,8 +22,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Book.ttf);
-    src: url(../../public/fonts/CircularStd-Book.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Book.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Book.woff) format("woff");
     font-weight: 400;
@@ -43,8 +41,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-Regular.otf);
-    src: url(../../public/fonts/LyonText-Regular.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-Regular.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
       url(../../public/fonts/LyonText-Regular.woff) format("woff");
     font-weight: 400;
@@ -64,8 +61,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-RegularItalic.otf);
-    src: url(../../public/fonts/LyonText-RegularItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-RegularItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
       url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
     font-weight: 400;
@@ -75,8 +71,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-BoldItalic.otf);
-    src: url(../../public/fonts/LyonText-BoldItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-BoldItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
     font-weight: 700;
     font-style: italic;
@@ -221,8 +216,8 @@
     @apply mb-3;
   }
 
-  ul.menubar > li,
-  ul.footer > li {
+  ul.menubar>li,
+  ul.footer>li {
     @apply mb-0;
   }
 
@@ -288,7 +283,7 @@
     }
   }
 
-  .pullquote > p {
+  .pullquote>p {
     @apply p-0 m-0 leading-tight;
   }
 
@@ -314,6 +309,24 @@
 
   /* Spotlights Start */
 
+  .bg-mint-green {
+    background-color: #ABD9D7;
+  }
+
+  .bg-light-grey {
+    background-color: #F7F4F2;
+  }
+
+  .btn-info {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: crosshair;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
   main.spotlight h1 {
     max-width: 900px;
     margin: 2rem auto;
@@ -321,6 +334,12 @@
 
   main.spotlight {
     max-width: 100%;
+  }
+
+  main.spotlight .hidden {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
   }
 
   /* main.spotlight .hero {
@@ -519,36 +538,10 @@
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    -webkit-transition: background-color 0.5s ease-out;
-    -moz-transition: background-color 0.5s ease-out;
-    -o-transition: background-color 0.5s ease-out;
-    transition: background-color 0.5s ease-out, width 1s ease-in-out;
-  }
-
-  div.scrolly-canvas figure.scrolly-figure p#scene-counter {
-    @apply fixed m-0 p-4 text-right text-6xl font-black;
-    margin: 0;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    top: 60px;
-    right: 0;
-    transform: translateY(-50%);
-    font-size: 4rem;
-    font-weight: 900;
-    color: lightgrey;
-  }
-
-  div.scrolly-canvas figure.scrolly-figure p#index-counter {
-    @apply fixed m-0 p-4 text-left text-6xl font-black;
-    margin: 0;
-    text-align: center;
-    padding: 0 1rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    font-size: 4rem;
-    font-weight: 700;
+    -webkit-transition: background-color 1.2s ease-out;
+    -moz-transition: background-color 1.2s ease-out;
+    -o-transition: background-color 1.2s ease-out;
+    transition: background-color 1.2s ease-out;
   }
 
   div.scrolly-steps {
@@ -556,7 +549,7 @@
     margin-top: 0;
     margin-bottom: 0;
     padding: 0 1rem;
-    z-index: +1;
+    z-index: 3;
     overflow-y: hidden;
     width: 100%;
     /* unclear why, but solves white space problem for now */
@@ -672,8 +665,11 @@
 
   @media screen and (min-width: 900px) {
     div.scrolly-steps {
-      width: 33%;
+      width: 34%;
       margin-left: 0;
+      max-width: unset;
+      background-color: bg-light-grey;
+      transition: background-color 1s ease-in;
     }
 
     div.scrolly-canvas {

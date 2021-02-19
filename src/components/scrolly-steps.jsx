@@ -43,7 +43,7 @@ const ScrollySteps = (props) => {
       <div
         className="step invisible"
         data-step="-99"
-        data-color="bg-gray-400"
+        data-color="bg-light-grey"
       />
     </div>
   );

@@ -2,62 +2,62 @@
   "steps": [{
       "id": "a1",
       "content": "<h2>A Tale of Two Shutdowns</h2>",
-      "color": "bg-cat-freedom",
+      "color": "bg-mint-green",
       "showLayers": "#Basemap"
     },
     {
       "id": "a2",
       "content": "The 12 telecommunications companies in the RDR Index operate in 125 countries.",
-      "color": "bg-cat-freedom",
+      "color": "bg-mint-green",
       "showLayers": "#RDRScope"
     },
     {
       "id": "b1",
       "content": "<p>In 2020, seven of these companies were known to have executed government - ordered network shutdowns, either directly or through their subsidiaries.</p><p>They include Bharti Airtel (India, Chad, Tanzania), Orange (Guinea, Jordan), Telenor (Myanmar), Vodafone (Turkey, India via Vodafone Idea), MTN (Sudan, Syria, Guinea, Yemen), Etisalat (Tanzania via ZanTel), América Móvil (Belarus via A1 Belarus / A1 Telekom Austria Group).</p>",
-      "color": "bg-cat-freedom",
+      "color": "bg-mint-green",
       "showLayers": "#Shutdowns, #Labels, #Label-India, #Label-Myanmar, #Label-India"
     },
     {
       "id": "c2",
       "content": "Two cases stand out:",
-      "color": "bg-cat-privacy",
+      "color": "bg-cat-freedom",
       "hideLayers": "#Labels"
     },
     {
       "id": "c3",
       "content": "Telenor, a dominant provider in Myanmar, cut off internet access for more than a <a href='https://www.hrw.org/news/2020/06/19/myanmar-end-worlds-longest-internet-shutdown' target='_blank'>million people</a> in Myanmar’s Rakhine and Chin states, and kept it off at the government’s behest.",
-      "color": "bg-cat-privacy",
+      "color": "bg-cat-freedom",
       "showLayers": "#Rakhine, #Chin",
       "hideLayers": "#Label-India"
     },
     {
       "id": "c4",
       "content": "In India, <a href='https://news.un.org/en/story/2019/08/1044741' target='_blank'>millions of residents</a> of Kashmir lived under digital siege between mid-2019 and early 2021, thanks in part to a shutdown executed by Bharti Airtel and its peers at the order of the Modi government.",
-      "color": "bg-cat-privacy",
+      "color": "bg-cat-freedom",
       "showLayers": "#Label-India, #Kashmir",
       "hideLayers": "#Rakhine, #Chin, #Label-Myanmar"
     },
     {
       "id": "c5",
       "content": "Marginalized people in both conflict zones have suffered doubly from COVID-19 and communication disruptions. But the companies carried these orders out in starkly different ways that had measurable impacts for customers.",
-      "color": "bg-cat-freedom",
+      "color": "bg-mint-green",
       "showLayers": "#Label-Myanmar, #Rakhine, #Chin"
     },
     {
       "id": "c6",
       "content": "In Myanmar, while Telenor complied with government orders, the company publicly <a href='https://www.telenor.com/network-restrictions-in-myanmar-1-august-2020/' target='_blank'>opposed the blackout</a> and published <a href='https://www.telenor.com/internet-services-restricted-in-five-townships-in-myanmar-03-february-2020/' target='_blank'>detailed information</a> about it, identifying the order’s legal basis and responsible authorities. As the government repeatedly extended the blackout, the company continued to release updates.",
-      "color": "bg-cat-freedom",
+      "color": "bg-mint-green",
       "hideLayers": "#Label-India, #Kashmir"
     },
     {
       "id": "c7",
       "content": "Telenor also injected more transparency on shutdowns into its <a href='https://www.telenor.com/wp-content/uploads/2020/08/Telenor-Disclosure-report-2019_08.pdf' target='_blank'>annual report</a> on authority requests and mitigated the risk to lives and livelihoods by reducing international call rates, enabling people to more easily make calls in the absence of VoIP apps like WhatsApp.",
-      "color": "bg-cat-freedom"
+      "color": "bg-mint-green"
     },
     {
       "id": "c8",
       "content": "By contrast, India’s Bharti Airtel exercised an apparent policy of silence, reporting no information about the order, or data on shutdowns. In India, the world’s <a href='https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3330413' target='_blank'>most frequent purveyor</a> of this extreme form of digital repression, such corporate inertia can <a href='http://thebachchaoproject.org/wp-content/uploads/Of_Sieges_and_Shutdowns_The_Bachchao_Project_2018_12_22.pdf' target='_blank'>trigger hopelessness</a> among those who are perpetually disconnected.",
-      "color": "bg-cat-freedom",
+      "color": "bg-mint-green",
       "showLayers": "#Label-India, #Kashmir",
       "hideLayers": "#Label-Myanmar, #Rakhine, #Chin"
     },

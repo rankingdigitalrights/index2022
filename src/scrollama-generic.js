@@ -1,9 +1,16 @@
 /* eslint no-param-reassign: off */
 /* eslint no-unneeded-ternary: off */
 
-const updateBGColor = (figure, color = "bg-gray-200") => {
+const updateBGColor = (figure, color = "bg-light-grey") => {
   figure.classList.remove(
-    ...["bg-cat-governance", "bg-cat-freedom", "bg-cat-privacy", "bg-gray-400"],
+    ...[
+      "bg-cat-governance",
+      "bg-cat-freedom",
+      "bg-cat-privacy",
+      "bg-gray-200",
+      "bg-light-grey",
+      "bg-mint-green",
+    ],
   );
   figure.classList.add(color);
 };

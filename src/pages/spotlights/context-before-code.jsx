@@ -1,4 +1,5 @@
 /* eslint no-param-reassign: off */
+import c from "clsx";
 import {promises as fsP} from "fs";
 import path from "path";
 import React from "react";
@@ -7,8 +8,11 @@ import story2 from "../../../data/spotlights/soe-fb-vs-youtube.json";
 import story1 from "../../../data/spotlights/soe-map-shutdowns.json";
 import FigureImg from "../../components/figure-img";
 import FigureSvg from "../../components/figure-svg";
+import Footnotes from "../../components/footnotes";
 import Layout from "../../components/layout";
 import NarrativeContainer from "../../components/narrative-container-full-feature";
+// import Donate from "../../components/donate";
+import Readmore from "../../components/readmore";
 import ScrollyFeature from "../../components/scrolly-feature";
 import ImgChartF4 from "../../images/spotlights/soe-f4-barchart.png";
 import ImgProtest from "../../images/spotlights/soe-myanmar-protest.jpeg";
@@ -16,6 +20,9 @@ import imgTableG4 from "../../images/spotlights/soe-table-g4.png";
 import ImgTweetFB from "../../images/spotlights/soe-tweet-fb.png";
 import ImgWhiteFlags from "../../images/spotlights/soe-white-flags.jpeg";
 import {animateSVGviewBox, toggleSVGclass} from "../../scrollama-generic";
+
+// const containerWidth =
+//   "w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-4 md:px-16 xl:px-28 2xl:px-24";
 
 export const getStaticProps = async () => {
   const svgFbYt = (
@@ -36,6 +43,66 @@ export const getStaticProps = async () => {
   };
 };
 
+const openModal = (query) => {
+  const modal = document.querySelector(query);
+  if (typeof modal.showModal === "function") {
+    modal.showModal();
+  } else {
+    alert("The <dialog> API is not supported by this browser");
+  }
+};
+
+const footnotes = (
+  <>
+    <div>
+      <p>
+        <a href="#ftnt_ref1" id="ftnt1">
+          [1]
+        </a>{" "}
+        Siva Vaidhyanathan, Antisocial Media: How Facebook Disconnects Us and
+        Undermines Democracy(New York: Oxford University Press, 2018).
+      </p>
+    </div>
+
+    <div>
+      <p>
+        <a href="#ftnt_ref2" id="ftnt2">
+          [2]
+        </a>{" "}
+        See Kendyl Salcito, &ldquo;Company-commissioned HRIA: Concepts,
+        Practice, Limitations and Opportunities,&rdquo; in Handbook on Human
+        Rights Impact Assessment, ed. Nora G&ouml;tzmann (Northhampton, MA:
+        Edward Elgar Publishing, 2019), 32&ndash;48.
+      </p>
+    </div>
+    <div>
+      <p>
+        <a href="#ftnt_ref3" id="ftnt3">
+          [3]
+        </a>{" "}
+        Appeals on Instagram were turned off completely, according to the same
+        report. The figures are based on Facebook&rsquo;s disclosed categories
+        of enforcement data. Facebook did not explicitly state whether the sum
+        of these categories represents all of the enforcement actions it takes
+        on its platform.
+      </p>
+    </div>
+    <div>
+      <p>
+        <a href="#ftnt_ref4" id="ftnt4">
+          [4]
+        </a>{" "}
+        See Lucy Amis and Ashleigh Owens, A Guide for Business: How to Develop a
+        Human Rights Policy, 2nd ed. (New York: UN Global Compact and Office of
+        the United Nations High Commissioner for Human Rights, 2015), available
+        at{" "}
+        <a href="https://d306pr3pise04h.cloudfront.net/docs/issues_doc%2Fhuman_rights%2FResources%2FHR_Policy_Guide_2nd_Edition.pdf">
+          FHR_Policy_Guide_2nd_Edition.pdf
+        </a>
+      </p>
+    </div>
+  </>
+);
 // CONTENT
 
 const section1 = (
@@ -247,8 +314,10 @@ const section3 = (
       can drive the reach of a message by targeting it to people who are most
       likely to share it, influencing the viewpoints of thousands or even
       millions of people.
-      <sup data-footnote="Siva Vaidhyanathan, Antisocial Media: How Facebook Disconnects Us and Undermines Democracy (New York: Oxford University Press, 2018).">
-        1
+      <sup>
+        <a id="ftnt_ref1" href="#ftnt1">
+          [1]
+        </a>
       </sup>
     </p>
     <p>
@@ -260,9 +329,6 @@ const section3 = (
       people join an extremist Facebook Group, they do so because the platform
       recommended it.
     </p>
-    <div className="box-placeholder">
-      [PLACEHOLDER: DEPLATFORMING TRUMP, TWITTER, ET AL ETC]
-    </div>
     <p>
       Structured human rights impact assessments are rapidly gaining acceptance
       as a{" "}
@@ -310,8 +376,10 @@ const section3 = (
       This encourages the proliferation of &ldquo;scandal-driven&rdquo; human
       rights due diligence that, at most, helps to survey or contain the damage
       rather than prevent it.
-      <sup data-footnote="See Kendyl Salcito, &ldquo;Company-commissioned HRIA: Concepts, Practice, Limitations and Opportunities,&rdquo; in Handbook on Human Rights Impact Assessment, ed. Nora G&ouml;tzmann (Northhampton, MA: Edward Elgar Publishing, 2019), 32&ndash;48.">
-        2
+      <sup>
+        <a id="ftnt_ref2" href="#ftnt2">
+          [2]
+        </a>
       </sup>
     </p>
     <p>
@@ -413,8 +481,10 @@ const section4 = (
       the company&rsquo;s experiments with algorithmic moderation had not worked
       out so well. The system&rsquo;s apparent collapse left millions of users
       unable to appeal moderation decisions at all.&nbsp;
-      <sup data-footnote="Appeals on Instagram were turned off completely, according to the same report. The figures are based on Facebook&rsquo;s disclosed categories of enforcement data. Facebook did not explicitly state whether the sum of these categories represents all of the enforcement actions it takes on its platform.">
-        3
+      <sup>
+        <a id="ftnt_ref3" href="#ftnt3">
+          [3]
+        </a>
       </sup>
     </p>
     <FigureImg
@@ -468,8 +538,10 @@ const section5 = (
     <p>
       Companies must make a public commitment to respect human rights standards
       across their operations.
-      <sup data-footnote="See Lucy Amis and Ashleigh Owens, A Guide for Business: How to Develop a Human Rights Policy, 2nd ed. (New York: UN Global Compact and Office of the United Nations High Commissioner for Human Rights, 2015), available at <a href='https://d306pr3pise04h.cloudfront.net/docs/issues_doc%2Fhuman_rights%2FResources%2FHR_Policy_Guide_2nd_Edition.pdf'>FHR_Policy_Guide_2nd_Edition.pdf</a>">
-        4
+      <sup>
+        <a id="ftnt_ref4" href="#ftnt4">
+          [4]
+        </a>
       </sup>{" "}
       Of course, a policy alone will not improve performance. As our 2020 data
       showed, many companies in the RDR Index committed to human rights in
@@ -625,28 +697,28 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             stepEnter={({index, element, direction}) => {
               if (element.dataset.show || element.dataset.hide) {
                 toggleSVGclass({
-                  objId: "map-asia-1",
+                  objId: "map-world",
                   showLayers: element.dataset.show,
                   hideLayers: element.dataset.hide,
                   direction,
                 });
               }
               if (index === 2) {
-                animateSVGviewBox("#map-asia-1 svg", "#Full-Map", "resetView");
+                animateSVGviewBox("#map-world svg", "#Full-Map", "resetView");
               }
               if (index === 2 && direction === "down") {
                 animateSVGviewBox(
-                  "#map-asia-1 svg",
+                  "#map-world svg",
                   "#Shutdowns-View",
                   "zoom-shutdowns",
                 );
               }
               if (index === 3 && direction === "down") {
-                animateSVGviewBox("#map-asia-1 svg", "#Asia-View", "zoom-asia");
+                animateSVGviewBox("#map-world svg", "#Asia-View", "zoom-asia");
               }
               if (index === story1.steps.length - 1 && direction === "down") {
                 animateSVGviewBox(
-                  "#map-asia-1 svg",
+                  "#map-world svg",
                   "#Shutdowns-View",
                   "zoom-shutdowns",
                 );
@@ -656,13 +728,13 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               console.log(`Local Exit 1: ${index} - ${direction}`); // TODO
             }}
           >
-            <figure className="scrolly-figure bg-gray-200">
+            <figure className="scrolly-figure bg-light-grey">
               <FigureSvg
-                className="scrolly-figure bg-gray-200"
+                className="scrolly-figure bg-light-grey"
                 svg={svgWorldMap}
                 caption="TODO: Caption As Props 1"
                 alt="TODO: Alternative description"
-                id="map-asia-1"
+                id="map-world"
               />
             </figure>
           </ScrollyFeature>
@@ -692,9 +764,19 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               console.log(`Local Exit 1: ${index} - ${direction}`);
             }}
           >
-            <figure className="scrolly-figure bg-gray-200 p-4">
+            <figure className="scrolly-figure bg-light-grey p-4">
+              <button
+                id="yt-info"
+                className="btn-info bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 z-10"
+                onClick={() => openModal("modal-fb")}
+              >
+                (i)
+              </button>
+              <div className="modal" id="modal-fb">
+                <p>Greetings, one and all!</p>
+              </div>
               <FigureSvg
-                className="scrolly-figure bg-gray-200 p-4"
+                className="scrolly-figure bg-light-grey p-4"
                 svg={svgFbYt}
                 caption="Content appealed and restored on appeal on Facebook vs. videos appealed and restored on YouTube between October 2019 and September 2020. Data for Facebook does not include the &ldquo;Fake Accounts&rdquo; category, for which appeals are not reported. Sources: <a href='https://transparency.facebook.com/community-standards-enforcement'>Community Standards Enforcement Report (Facebook)</a> and <a href='https://transparencyreport.google.com/youtube-policy/appeals'>Google Transparency Report (YouTube)</a>."
                 alt="TODO: Alternative description"
@@ -708,7 +790,24 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
           >
             {section5}
             {section6}
+            {/* <Donate className={c("relative mx-auto mt-12", containerWidth)} /> */}
+            <Footnotes source={footnotes} />
           </NarrativeContainer>
+          <div className="bg-beige flex py-3 md:py-12">
+            <div
+              className={c(
+                "narrative-container relative flex flex-col mx-3 md:mx-auto lg:flex-row items-center",
+                "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
+              )}
+            >
+              <Readmore className="w-full lg:max-w-xs" kind="scores" />
+              <Readmore
+                className="w-full my-6 lg:my-0 lg:max-w-xs lg:mx-6"
+                kind="findings"
+              />
+              <Readmore className="w-full lg:max-w-xs" kind="methodology" />
+            </div>
+          </div>
         </>
       </main>
     </Layout>
