@@ -23,7 +23,7 @@ const CompanySection = ({
   if (category === "governance") {
     title = "Governance";
   } else if (category === "freedom") {
-    title = "Freedom of Expression";
+    title = "Freedom of expression";
   } else if (category === "privacy") {
     title = "Privacy";
   } else {
