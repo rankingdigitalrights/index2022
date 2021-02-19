@@ -14,23 +14,34 @@ const CategorySelector = ({
   onClick,
   className,
 }: CategorySelectorProps) => {
-  const buttonClassName =
-    "font-circular px-4 py-2 my-1 mr-2 md:mr-4 border rounded-md";
+  const buttonClassName = "font-circular px-4 py-2 my-1 border rounded-md";
 
-  const totalClassName = c(buttonClassName, "text-prissian", {
+  const spacerClassName = "mr-2 md:mr-4";
+
+  const totalClassName = c(buttonClassName, spacerClassName, "text-prissian", {
     "border-prissian": selected !== "total",
     "border-white bg-prissian bg-opacity-25": selected === "total",
   });
 
-  const governanceClassName = c(buttonClassName, "text-cat-governance", {
-    "border-cat-governance": selected !== "governance",
-    "border-white bg-cat-governance bg-opacity-25": selected === "governance",
-  });
+  const governanceClassName = c(
+    buttonClassName,
+    spacerClassName,
+    "text-cat-governance",
+    {
+      "border-cat-governance": selected !== "governance",
+      "border-white bg-cat-governance bg-opacity-25": selected === "governance",
+    },
+  );
 
-  const freedomClassName = c(buttonClassName, "text-cat-freedom", {
-    "border-cat-freedom": selected !== "freedom",
-    "border-white bg-cat-freedom bg-opacity-25": selected === "freedom",
-  });
+  const freedomClassName = c(
+    buttonClassName,
+    spacerClassName,
+    "text-cat-freedom",
+    {
+      "border-cat-freedom": selected !== "freedom",
+      "border-white bg-cat-freedom bg-opacity-25": selected === "freedom",
+    },
+  );
 
   const privacyClassName = c(buttonClassName, "text-cat-privacy", {
     "border-cat-privacy": selected !== "privacy",

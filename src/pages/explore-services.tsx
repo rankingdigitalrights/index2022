@@ -11,7 +11,6 @@ import NarrativeTitle from "../components/narrative-title";
 import RankChart from "../components/rank-chart";
 import Selector from "../components/selector";
 import ServiceRankChart from "../components/service-rank-chart";
-import ToggleSwitch from "../components/toggle-switch";
 import {
   allServices,
   companyRankingData,
@@ -44,7 +43,6 @@ type CompanyRanks = {
 type State = {
   category: IndicatorCategoryExt;
   service: ServiceOption | undefined;
-  byRegion: boolean;
   telecomRankings: CompanyRank[] | ServiceCompanyRank[] | undefined;
   platformRankings: CompanyRank[] | ServiceCompanyRank[] | undefined;
   serviceRankings: ServiceCompanyRanks;
@@ -54,7 +52,6 @@ type State = {
 type Action =
   | {type: "setCategory"; category: IndicatorCategoryExt}
   | {type: "setService"; service: ServiceOption | undefined}
-  | {type: "setRegion"; byRegion: boolean}
   | {type: "updateRankings"};
 
 interface ExploreProps {
@@ -202,9 +199,6 @@ const reducer = (state: State, action: Action) => {
               ?.internet
           : state.companyRankings[state.category]?.internet,
       };
-    case "setRegion": {
-      return {...state, byRegion: action.byRegion};
-    }
     default:
       throw new Error(`No match for action ${action.type}.`);
   }
@@ -227,7 +221,6 @@ const Explore = ({
     {
       category: "total",
       service: serviceOptions.find(({kind}) => kind === queryService),
-      byRegion: false,
       telecomRankings: undefined,
       platformRankings: undefined,
       serviceRankings,
@@ -256,10 +249,6 @@ const Explore = ({
     dispatch({type: "setService", service});
   };
 
-  const handleRegionSwitch = (byRegion: boolean) => {
-    dispatch({type: "setRegion", byRegion});
-  };
-
   const chartClassName = {
     "sm:justify-center": state.telecomRankings && state.platformRankings,
     "sm:justify-around": !state.telecomRankings || !state.platformRankings,
@@ -280,13 +269,13 @@ const Explore = ({
                   service.
                 </p>
 
-                <div className="flex flex-col mt-12">
-                  <CategorySelector
-                    selected={state.category}
-                    onClick={handleSelectCategory}
-                  />
+                <div className="flex flex-col items-center mt-12">
+                  <div>
+                    <CategorySelector
+                      selected={state.category}
+                      onClick={handleSelectCategory}
+                    />
 
-                  <div className="flex flex-col w-full my-6 sm:flex-row">
                     <Selector<ServiceOption>
                       id="service-selector"
                       title="Select service"
@@ -294,13 +283,7 @@ const Explore = ({
                       defaultValue={state.service}
                       isClearable
                       onSelect={handleServiceSelect}
-                      className="flex-grow w-full md:w-2/3 lg:w-3/5"
-                    />
-
-                    <ToggleSwitch
-                      className="flex-none w-full sm:w-max my-3 ml-3 md:mb-1"
-                      label="By Regions"
-                      onChange={handleRegionSwitch}
+                      className="my-6 self-stretch"
                     />
                   </div>
                 </div>
@@ -322,7 +305,6 @@ const Explore = ({
                         ranking={state.platformRankings as ServiceCompanyRank[]}
                         serviceKind={state.service.kind}
                         category={state.category}
-                        byRegion={state.byRegion}
                         hasHeader
                       />
                     ) : (
@@ -330,7 +312,6 @@ const Explore = ({
                         className="w-full sm:w-1/2 sm:pr-3"
                         ranking={state.platformRankings}
                         category={state.category}
-                        byRegion={state.byRegion}
                         hasHeader
                       />
                     ))}
@@ -342,7 +323,6 @@ const Explore = ({
                         ranking={state.telecomRankings as ServiceCompanyRank[]}
                         serviceKind={state.service.kind}
                         category={state.category}
-                        byRegion={state.byRegion}
                         hasHeader
                       />
                     ) : (
@@ -350,7 +330,6 @@ const Explore = ({
                         className="w-full mt-6 sm:w-1/2 sm:pl-3 sm:mt-0"
                         ranking={state.telecomRankings}
                         category={state.category}
-                        byRegion={state.byRegion}
                         hasHeader
                       />
                     ))}
