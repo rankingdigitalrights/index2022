@@ -316,15 +316,25 @@ const HeaderBar = ({className}: HeaderBarProps) => {
               </ul>
 
               <ul className="menubar w-1/2 list-inside list-none">
-                {telecomCompanies.map(({id, name, kind}) => (
-                  <li key={`nav-company-${id}`} className="py-1">
-                    <CompanyLink
-                      href={`/companies/${id}`}
-                      name={name}
-                      kind={kind as CompanyKind}
-                    />
-                  </li>
-                ))}
+                {telecomCompanies.map(({id, name, kind}, idx) => {
+                  const companyClassName = {
+                    "pb-1": idx === 0,
+                    "py-1": idx !== 0,
+                  };
+
+                  return (
+                    <li
+                      key={`nav-company-${id}`}
+                      className={c(companyClassName)}
+                    >
+                      <CompanyLink
+                        href={`/companies/${id}`}
+                        name={name}
+                        kind={kind as CompanyKind}
+                      />
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </MenuBarColumn>
