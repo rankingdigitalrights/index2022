@@ -1,7 +1,6 @@
 import slugify from "@sindresorhus/slugify";
 import cheerio from "cheerio";
 import path from "path";
-import pretty from "pretty";
 
 import {CompanyDetails, ComparePage, NarrativePage} from "./types";
 import {unreachable} from "./utils";
@@ -199,7 +198,6 @@ export const normalizeHtml = (src: string): string => {
 export const processHtml = (src: string): string => {
   let html = src;
   html = normalizeHtml(src);
-  html = pretty(html);
   return html;
 };
 
@@ -222,7 +220,7 @@ export const emptyCompany = (id: string): CompanyDetails => ({
 
 export const companyDetails = (id: string, src: string): CompanyDetails => {
   const scaffold = emptyCompany(id);
-  const $ = cheerio.load(src);
+  const $ = cheerio.load(src, {xmlMode: true, decodeEntities: false});
 
   const footnotes = $("<div></div>")
     .append($("p").has("a[href^=#ftnt_ref]"))
