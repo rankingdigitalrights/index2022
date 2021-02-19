@@ -1,8 +1,8 @@
 import c from "clsx";
+import Link from "next/link";
 import React, {useState} from "react";
 
 import ReadMore from "../images/icons/read-more.svg";
-import Link from "./link";
 
 interface BoxPromptProps {
   readmore: string;
@@ -17,8 +17,8 @@ const BoxPrompt = ({readmore, className}: BoxPromptProps) => {
     "transition duration-200 ease-in-out transform translate-x-0": !isHover,
   };
 
-  const match = readmore.match(/(.*)(\/indicators\/.*)$/);
-  const [text, href] = match ? [match[1], match[2]] : ["XXX", "YYY"];
+  const match = readmore.match(/(\/.*)$/);
+  const href = match ? match[1] : "#";
 
   return (
     <div
@@ -29,12 +29,11 @@ const BoxPrompt = ({readmore, className}: BoxPromptProps) => {
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <Link
-        className="flex items-center font-circular text-black font-normal text-right leading-none"
-        href={href}
-      >
-        {text}
-        <ReadMore className={c("w-6 h-6 ml-3 mr-3", animationClassName)} />
+      <Link passHref href={href}>
+        <a className="flex items-center font-circular text-black font-normal text-right leading-none">
+          How did we calculate these scores?
+          <ReadMore className={c("w-6 h-6 ml-3 mr-3", animationClassName)} />
+        </a>
       </Link>
     </div>
   );
