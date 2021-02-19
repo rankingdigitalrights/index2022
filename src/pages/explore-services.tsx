@@ -181,12 +181,13 @@ const reducer = (state: State, action: Action) => {
         ...state,
         category: action.category,
         telecomRankings: state.service
-          ? state.serviceRankings[state.service.kind]?.[state.category]?.telecom
-          : state.companyRankings[state.category]?.telecom,
+          ? state.serviceRankings[state.service.kind]?.[action.category]
+              ?.telecom
+          : state.companyRankings[action.category]?.telecom,
         platformRankings: state.service
-          ? state.serviceRankings[state.service.kind]?.[state.category]
+          ? state.serviceRankings[state.service.kind]?.[action.category]
               ?.internet
-          : state.companyRankings[state.category]?.internet,
+          : state.companyRankings[action.category]?.internet,
       };
     case "setService":
       return {
