@@ -1,3 +1,4 @@
+/* eslint react/no-danger: off */
 import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import {MdxRemote} from "next-mdx-remote/types";
