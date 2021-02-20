@@ -134,7 +134,7 @@ const Home = ({
                 title="Key Findings"
                 href="/key-findings"
               >
-                <div className="flex flex-col h-full justify-between">
+                <div className="flex flex-col h-full justify-end">
                   <p>
                     Companies are improving in principle, but failing in
                     practice
@@ -149,7 +149,7 @@ const Home = ({
                 theme="dark"
                 className="h-60 lg:h-80"
               >
-                <div className="flex flex-col h-full justify-between">
+                <div className="flex flex-col h-full justify-end">
                   <p>
                     Our guidance for companies and policymakers committed to
                     protecting and promoting human rights online
