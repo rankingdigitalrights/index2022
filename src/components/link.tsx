@@ -15,7 +15,7 @@ interface LinkProps {
 const NarrativeLink = ({id, href, children, className}: LinkProps) => {
   if (isGlossaryLink(href)) {
     const glossaryId = href.replace(/.*#glossary-(\w+)$/, "$1");
-    return <Glossary id={glossaryId}>{children}</Glossary>;
+    return <Glossary id={`glossary-${glossaryId}`}>{children}</Glossary>;
   }
 
   if (isFootnoteLink(href)) {
