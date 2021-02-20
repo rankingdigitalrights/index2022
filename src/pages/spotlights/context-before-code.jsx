@@ -159,14 +159,13 @@ const section1 = (
     <p>
       While the digital platforms we rank were all prepared to{" "}
       <a href="https://www.ft.com/content/dcd96d62-ffe5-414a-a392-018f4208d63a/">
-       seize the moment and profit
+        seize the moment and profit
       </a>{" "}
-      from the circumstances created by the pandemic, all the
-      companies were caught off guard by the impact of COVID-19 on their own
-      users. Yet they have all weathered crises before. Telcos have raced to
-      repair infrastructure in the wake of natural disasters. Platforms have
-      grappled with government censorship orders in the face of political
-      upheaval.
+      from the circumstances created by the pandemic, all the companies were
+      caught off guard by the impact of COVID-19 on their own users. Yet they
+      have all weathered crises before. Telcos have raced to repair
+      infrastructure in the wake of natural disasters. Platforms have grappled
+      with government censorship orders in the face of political upheaval.
     </p>
     <blockquote className="pullquote">
       <p>
