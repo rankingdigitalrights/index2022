@@ -1,3 +1,4 @@
+/* eslint react/no-danger: off */
 import React, {useEffect, useRef} from "react";
 
 import Cancel from "../images/icons/cancel.svg";
@@ -5,11 +6,17 @@ import {isMouseEvent} from "../utils";
 
 interface ModalProps {
   title: string;
+  hasHtmlTitle?: boolean;
   onCancel: () => void;
   children?: React.ReactNode;
 }
 
-const Modal = ({title, onCancel, children}: ModalProps) => {
+const Modal = ({
+  title,
+  hasHtmlTitle = false,
+  onCancel,
+  children,
+}: ModalProps) => {
   // eslint-disable-next-line unicorn/no-null
   const ref = useRef<HTMLDivElement>(null);
 
@@ -63,7 +70,15 @@ const Modal = ({title, onCancel, children}: ModalProps) => {
                     className="font-circular font-bold text-prissian w-10/12"
                     id="modal-headline"
                   >
-                    {title}
+                    {hasHtmlTitle ? (
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: title,
+                        }}
+                      />
+                    ) : (
+                      title
+                    )}
                   </h3>
 
                   <button tabIndex={0} onClick={onCancel}>
