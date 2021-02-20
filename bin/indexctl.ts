@@ -13,6 +13,7 @@ import {
   companyServiceRanking,
   companyServices,
   elements,
+  glossary,
   indicatorAverages,
   indicatorCompanies,
   indicatorDetails,
@@ -74,6 +75,11 @@ const writeJsonFile = (
       const indicatorsTarget = path.join(dataDir, "indicators.json");
       const elementsTarget = path.join(dataDir, "elements.json");
       const servicesTarget = path.join(dataDir, "services.json");
+      const glossaryTarget = path.join(dataDir, "glossary.json");
+
+      console.log(`Generating glossary at ${glossaryTarget}`);
+
+      await glossary().then(writeJsonFile(glossaryTarget));
 
       console.log(
         `Generating spec data: ${companiesTarget}, ${indicatorsTarget}, ${elementsTarget} and ${servicesTarget}`,

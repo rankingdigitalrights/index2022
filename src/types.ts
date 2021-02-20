@@ -331,3 +331,9 @@ export type ReadmoreItem = {
   title: string;
   excerpt: string;
 };
+
+export type Glossary = {
+  id: string;
+  title: string;
+  text: string;
+};

@@ -1,5 +1,6 @@
+import cheerio from "cheerio";
 import parse from "csv-parse";
-import fs from "fs";
+import fs, {promises as fsP} from "fs";
 import path from "path";
 
 import {byRankAndName, byScore} from "./sort";
@@ -14,6 +15,7 @@ import {
   CsvRecord,
   Element,
   ElementValue,
+  Glossary,
   IndexYear,
   Indicator,
   IndicatorAverage,
@@ -1294,4 +1296,41 @@ export const companyDiffs = async (
         return 0;
       })
   );
+};
+
+/*
+ * Parse out the Glossary from HTML.
+ */
+export const glossary = async (): Promise<Glossary[]> => {
+  const src = await fsP.readFile(
+    path.join(process.cwd(), "csv/2020-glossary.html"),
+  );
+  const $ = cheerio.load(src);
+
+  return $(".entry")
+    .toArray()
+    .map((el) => {
+      const $el = $(el);
+      const id =
+        $("a", el).attr("id") ||
+        unreachable(`Failed to extract id from glossary ${$el.html()}`);
+      const title =
+        $(".entry-tag", el).html() ||
+        unreachable(`Failed to extract title from glossary ${$el.html()}`);
+      const text =
+        $(".entry-text p", el).html() ||
+        unreachable(`Failed to extract text from glossary ${$el.html()}`);
+
+      return {
+        id,
+        title: title
+          .replace(/\r?\n|\r/g, "")
+          .replace(/\s+/g, " ")
+          .trim(),
+        text: text
+          .replace(/\r?\n|\r/g, "")
+          .replace(/\s+/g, " ")
+          .trim(),
+      };
+    });
 };
