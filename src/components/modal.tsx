@@ -27,6 +27,7 @@ const Modal = ({title, onCancel, children}: ModalProps) => {
     };
   });
 
+  // Disable background scrolling.
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
