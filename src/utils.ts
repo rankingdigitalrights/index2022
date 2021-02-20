@@ -309,3 +309,14 @@ export const isValidService = (
 
   return false;
 };
+
+// Due to the behavior of the --strictFunctionTypes compiler flag added in
+// TypeScript v2.6. A function of type (e: CustomEvent) => void is no longer
+// considered to be a valid instance of EventListener, which takes an Event
+// parameter, not a CustomEvent.
+// So one way to fix it is to turn off --strictFunctionTypes. Another way is to
+// pass in a function that takes an Event and then narrows to CustomEvent via a
+// type guard:
+export const isMouseEvent = (event: Event): event is MouseEvent => {
+  return "detail" in event;
+};

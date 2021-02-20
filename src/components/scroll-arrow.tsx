@@ -30,7 +30,7 @@ const ScrollArrow = () => {
   return (
     <ScrollArrowIcon
       className={c(
-        "fixed bottom-10 right-10 w-14 h-14 svg-shadow z-50",
+        "fixed bottom-10 right-10 w-14 h-14 svg-shadow z-40",
         className,
       )}
       onClick={() => {

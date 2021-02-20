@@ -6,16 +6,16 @@ import {ElementValue, NA} from "../types";
 interface IndicatorElementTagProps {
   score: number | NA;
   value: ElementValue;
-  activeTag: "score" | "value";
+  activeTag?: "score" | "value";
 }
 
 const IndicatorElementTag = ({
   score,
   value,
-  activeTag,
+  activeTag = "value",
 }: IndicatorElementTagProps) => {
   const className = c(
-    "flex flex-col items-center justify-center w-24 h-12",
+    "flex-none flex flex-col items-center justify-center w-24 h-12",
     "p-2 font-circular text-white text-sm text-center leading-none",
     {
       "bg-prissian": value === "Yes",
