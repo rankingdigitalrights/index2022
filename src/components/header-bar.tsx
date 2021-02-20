@@ -380,7 +380,15 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   <DownloadTheData className="flex-none w-8 h-8" />
                   <div className="flex flex-col ml-3">
                     <span className="font-bold">Download the data</span>
-                    <span className="font-bold">Excel / CSV</span>
+                    <div className="flex">
+                      <Link passHref href="/2020RDRIndexFullDataSet.xlsx">
+                        <a className="text-black font-bold">Excel</a>
+                      </Link>
+                      <span>/</span>
+                      <Link passHref href="/2020RDRIndexFullDataSet.csv.zip">
+                        <a className="text-black font-bold">CSV</a>
+                      </Link>
+                    </div>
                   </div>
                 </li>
 
