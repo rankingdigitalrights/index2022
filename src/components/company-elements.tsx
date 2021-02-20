@@ -1,12 +1,7 @@
 import React from "react";
 
 import {useBreakpointSize} from "../hooks";
-import {
-  ExpandedElement,
-  IndicatorElement,
-  IndicatorScore,
-  Service,
-} from "../types";
+import {IndicatorElement, IndicatorScore, MdxElement, Service} from "../types";
 import IndicatorTableDesktop from "./indicator-table-desktop";
 import IndicatorTableMobile from "./indicator-table-mobile";
 
@@ -18,7 +13,7 @@ interface CompanyElementsProps {
   averages: Record<string, IndicatorScore>;
   companyElements: Record<string, IndicatorElement[]>;
   literalValues: boolean;
-  elementDescriptions: ExpandedElement[];
+  elementDescriptions: MdxElement[];
   services: Pick<Service, "id" | "name">[];
   className?: string;
 }

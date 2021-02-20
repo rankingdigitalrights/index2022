@@ -5,6 +5,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 
 import ChevronLeft from "../images/icons/chevron-left.svg";
 import ChevronRight from "../images/icons/chevron-right.svg";
+import ElementDescription from "./element-description";
 import IndicatorElementTag from "./indicator-element-tag";
 import {IndicatorTableProps} from "./indicator-table-desktop";
 
@@ -49,7 +50,7 @@ const IndicatorTableMobile = ({
 
                   const elementDescription = elementDescriptions.find(
                     (e) => e.id === element.name,
-                  )?.description || <div />;
+                  )?.description;
 
                   const elementClassName = {
                     "border-l border-b border-r border-disabled-dark": isFirstElement,
@@ -62,9 +63,14 @@ const IndicatorTableMobile = ({
                       className="flex flex-col text-sm"
                     >
                       <div className={c("px-1 py-2", elementClassName)}>
-                        <span className="element">
-                          {eIdx + 1}. {elementDescription}
-                        </span>
+                        {elementDescription && (
+                          <span className="element">
+                            {eIdx + 1}.{" "}
+                            <ElementDescription
+                              description={elementDescription}
+                            />
+                          </span>
+                        )}
                       </div>
 
                       <div className="flex items-center justify-between mt-3 mb-3">

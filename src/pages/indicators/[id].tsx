@@ -7,6 +7,7 @@ import React, {useState} from "react";
 
 import CompanyElements from "../../components/company-elements";
 import CompanySelector from "../../components/company-selector";
+import ElementDescription from "../../components/element-description";
 import ExpandableDescription from "../../components/expandable-description";
 import IndicatorCompaniesChartContainer from "../../components/indicator-companies-chart-container";
 import IndicatorElementTag from "../../components/indicator-element-tag";
@@ -29,13 +30,12 @@ import Help from "../../images/icons/help.svg";
 import {components} from "../../mdx";
 import {
   CompanySelectOption,
-  Element,
-  ExpandedElement,
   IndicatorAverages,
   IndicatorCompanyScore,
   IndicatorDetails,
   IndicatorElements,
   IndicatorSelectOption,
+  MdxElement,
   SelectOption,
   Service,
   SortStrategies,
@@ -48,8 +48,6 @@ type Params = {
     id: string;
   };
 };
-
-type MdxElement = Element & {description: MdxRemote.Source};
 
 interface IndicatorPageProps {
   details: IndicatorDetails;
@@ -190,7 +188,7 @@ const IndicatorPage = ({
   scores,
   elements,
   averages,
-  elementDescriptions: es,
+  elementDescriptions,
   services,
   indicatorDescription,
   indicatorGuidance,
@@ -200,13 +198,6 @@ const IndicatorPage = ({
   const [literalValues, setLiteralValues] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
 
-  const elementDescriptions: ExpandedElement[] = es.map(
-    ({description, ...rest}) =>
-      ({
-        ...rest,
-        description: hydrate(description, {components}),
-      } as ExpandedElement),
-  );
   const description = hydrate(indicatorDescription, {components});
   const guidance = hydrate(indicatorGuidance, {components});
 
@@ -326,7 +317,7 @@ const IndicatorPage = ({
                   key={`element-description-${e.id}`}
                   className="element pb-2 font-circular text-sm"
                 >
-                  {e.description}
+                  <ElementDescription description={e.description} />
                 </li>
               );
             })}

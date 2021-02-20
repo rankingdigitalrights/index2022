@@ -179,7 +179,7 @@ export type Element = {
   isPlatform: boolean;
 };
 
-export type ExpandedElement = Element & {description: React.ReactNode};
+export type MdxElement = Element & {description: MdxRemote.Source};
 
 export type IndicatorCompanyScore = {
   id: string;
