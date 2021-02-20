@@ -179,6 +179,8 @@ export type Element = {
   isPlatform: boolean;
 };
 
+export type ExpandedElement = Element & {description: React.ReactNode};
+
 export type IndicatorCompanyScore = {
   id: string;
   companyPretty: string;

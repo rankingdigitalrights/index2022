@@ -1,7 +1,12 @@
 import c from "clsx";
 import React from "react";
 
-import {Element, IndicatorElement, IndicatorScore, Service} from "../types";
+import {
+  ExpandedElement,
+  IndicatorElement,
+  IndicatorScore,
+  Service,
+} from "../types";
 import IndicatorElementTag from "./indicator-element-tag";
 
 export interface IndicatorTableProps {
@@ -10,7 +15,7 @@ export interface IndicatorTableProps {
   averages: Record<string, IndicatorScore>;
   companyElements: Record<string, IndicatorElement[]>;
   literalValues: boolean;
-  elementDescriptions: Element[];
+  elementDescriptions: ExpandedElement[];
   services: Pick<Service, "id" | "name">[];
 }
 
@@ -116,11 +121,9 @@ const IndicatorTableDesktop = ({
                   className="flex-none flex flex-col items-center justify-center border border-disabled-dark w-52 p-2"
                   key={`legend-element-${element.id}`}
                 >
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: `${itemPos + 1}. ${elementDescription}`,
-                    }}
-                  />
+                  <span className="element">
+                    {itemPos + 1}. {elementDescription}
+                  </span>
                 </div>
               );
             return (

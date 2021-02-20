@@ -47,9 +47,9 @@ const IndicatorTableMobile = ({
                 {elements.map((element, eIdx) => {
                   const isFirstElement = eIdx === 0;
 
-                  const elementDescription =
-                    elementDescriptions.find((e) => e.id === element.name)
-                      ?.description || "";
+                  const elementDescription = elementDescriptions.find(
+                    (e) => e.id === element.name,
+                  )?.description || <div />;
 
                   const elementClassName = {
                     "border-l border-b border-r border-disabled-dark": isFirstElement,
@@ -61,12 +61,11 @@ const IndicatorTableMobile = ({
                       key={`slide-${service.id}-${element.id}`}
                       className="flex flex-col text-sm"
                     >
-                      <div
-                        className={c("px-1 py-2", elementClassName)}
-                        dangerouslySetInnerHTML={{
-                          __html: `${eIdx + 1}. ${elementDescription}`,
-                        }}
-                      />
+                      <div className={c("px-1 py-2", elementClassName)}>
+                        <span className="element">
+                          {eIdx + 1}. {elementDescription}
+                        </span>
+                      </div>
 
                       <div className="flex items-center justify-between mt-3 mb-3">
                         <div className="cursor-pointer w-1/12">

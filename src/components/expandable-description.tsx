@@ -22,7 +22,7 @@ const ExpandableDescription = ({
   };
 
   return (
-    <div className={c("flex flex-col font-circular text-sm", className)}>
+    <div className={c("flex flex-col", className)}>
       <button className="flex items-center" onClick={toggleExpanded}>
         <span className="text-prissian font-circular text-sm">{label}</span>
 

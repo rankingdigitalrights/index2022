@@ -1,4 +1,7 @@
 import c from "clsx";
+import hydrate from "next-mdx-remote/hydrate";
+import renderToString from "next-mdx-remote/render-to-string";
+import {MdxRemote} from "next-mdx-remote/types";
 import {useRouter} from "next/router";
 import React, {useState} from "react";
 
@@ -23,9 +26,11 @@ import {
   indicatorScores,
 } from "../../data";
 import Help from "../../images/icons/help.svg";
+import {components} from "../../mdx";
 import {
   CompanySelectOption,
   Element,
+  ExpandedElement,
   IndicatorAverages,
   IndicatorCompanyScore,
   IndicatorDetails,
@@ -44,6 +49,8 @@ type Params = {
   };
 };
 
+type MdxElement = Element & {description: MdxRemote.Source};
+
 interface IndicatorPageProps {
   details: IndicatorDetails;
   indicators: IndicatorSelectOption[];
@@ -51,8 +58,10 @@ interface IndicatorPageProps {
   scores: IndicatorCompanyScore[];
   averages: IndicatorAverages;
   elements: IndicatorElements;
-  elementDescriptions: Element[];
+  elementDescriptions: MdxElement[];
   services: Record<string, Pick<Service, "id" | "name">[]>;
+  indicatorDescription: MdxRemote.Source;
+  indicatorGuidance: MdxRemote.Source;
 }
 
 export const getStaticPaths = async () => {
@@ -92,8 +101,13 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
   });
   const averages = await indicatorAverages(indicatorId);
   const elements = await indicatorElements(indicatorId);
-  const elementDescriptions = (await allElements()).filter(
-    (e) => e.indicatorId === indicator.id,
+  const elementDescriptions = await Promise.all(
+    (await allElements())
+      .filter((e) => e.indicatorId === indicator.id)
+      .map(async ({description, ...rest}) => ({
+        ...rest,
+        description: await renderToString(description, {components}),
+      })),
   );
   const indicators = (await allIndicators()).map(
     ({name: value, label, isParent, parent, category}) => ({
@@ -119,6 +133,13 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
     )
   ).reduce((memo, localServices) => ({...localServices, ...memo}));
 
+  const indicatorDescription = await renderToString(details.description, {
+    components,
+  });
+  const indicatorGuidance = await renderToString(details.guidance, {
+    components,
+  });
+
   return {
     props: {
       details,
@@ -129,6 +150,8 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
       elements,
       elementDescriptions,
       services,
+      indicatorDescription,
+      indicatorGuidance,
     },
   };
 };
@@ -167,13 +190,25 @@ const IndicatorPage = ({
   scores,
   elements,
   averages,
-  elementDescriptions,
+  elementDescriptions: es,
   services,
+  indicatorDescription,
+  indicatorGuidance,
 }: IndicatorPageProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [sortStrategy, setSortStrategy] = useState<string>("Alphabetically");
   const [literalValues, setLiteralValues] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+
+  const elementDescriptions: ExpandedElement[] = es.map(
+    ({description, ...rest}) =>
+      ({
+        ...rest,
+        description: hydrate(description, {components}),
+      } as ExpandedElement),
+  );
+  const description = hydrate(indicatorDescription, {components});
+  const guidance = hydrate(indicatorGuidance, {components});
 
   const router = useRouter();
 
@@ -281,17 +316,17 @@ const IndicatorPage = ({
           onSelect={handleSelectIndicator}
         />
 
-        <p
-          className="mt-6 pb-0 text-sm font-circular"
-          dangerouslySetInnerHTML={{__html: details.description}}
-        />
+        <div className="mt-6 pb-0 text-sm font-circular">{description}</div>
 
         <ExpandableDescription className="mt-6" label="Elements">
           <ol className="list-inside list-decimal">
-            {elementDescriptions.map(({description, id}) => {
+            {elementDescriptions.map((e) => {
               return (
-                <li key={`element-description-${id}`} className="pb-2">
-                  <span dangerouslySetInnerHTML={{__html: description}} />
+                <li
+                  key={`element-description-${e.id}`}
+                  className="element pb-2 font-circular text-sm"
+                >
+                  {e.description}
                 </li>
               );
             })}
@@ -299,10 +334,7 @@ const IndicatorPage = ({
         </ExpandableDescription>
 
         <ExpandableDescription className="mt-2" label="Research guidance">
-          <div
-            className="mt-1"
-            dangerouslySetInnerHTML={{__html: details.guidance}}
-          />
+          <div className="mt-1 font-circular text-sm">{guidance}</div>
         </ExpandableDescription>
       </section>
 

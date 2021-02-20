@@ -232,6 +232,10 @@
     @apply mb-3;
   }
 
+  .element p {
+    @apply inline;
+  }
+
   .narrative-container {
     max-width: 900px;
     scroll-behavior: smooth;
