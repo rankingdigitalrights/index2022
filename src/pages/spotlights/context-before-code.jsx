@@ -100,7 +100,7 @@ const footnotes = (
         </a>{" "}
         See Kendyl Salcito, &ldquo;Company-commissioned HRIA: Concepts,
         Practice, Limitations and Opportunities,&rdquo; in Handbook on Human
-        Rights Impact Assessment, ed. Nora G&ouml;tzmann (Northhampton, MA:
+        Rights Impact Assessment, ed. Nora G&ouml;tzmann (Northampton, MA:
         Edward Elgar Publishing, 2019), 32&ndash;48.
       </p>
     </div>
@@ -157,9 +157,8 @@ const section1 = (
       has brought fatal consequences to people around the world.
     </p>
     <p>
-      The companies we rank were caught off guard by COVID-19, yet they all have
-      weathered crises before. Telcos have raced to repair infrastructure in the
-      wake of natural disasters. Digital platforms have grappled with government
+      While the digital platforms we rank were all prepared to seize the moment and profit from the circumstances created by the pandemic, all the companies were caught off guard by the impact of COVID-19 on their own users. Yet they have all weathered crises before. Telcos have raced to repair infrastructure in the
+      wake of natural disasters. Platforms have grappled with government
       censorship orders in the face of political upheaval.
     </p>
     <blockquote className="pullquote">
@@ -172,7 +171,7 @@ const section1 = (
     </blockquote>
     <p>
       The year 2020 could not have given us a better set of case studies in just
-      how dangerous it is for these companies to be so unprepared for crisis.
+      how dangerous it is for these companies to be so unprepared for the human impact of crisis.
     </p>
     {/* <blockquote className="pullquote">
       <p>
@@ -723,7 +722,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 </p>
               </h1>
               <span className="font-platform text-sm">
-                By: Jan Rydzak, Elizabeth Renieris
+                By: Elizabeth M. Renieris & Jan Rydzak
               </span>
             </div>
             {section1}
