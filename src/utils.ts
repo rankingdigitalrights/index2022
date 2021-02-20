@@ -64,6 +64,12 @@ export const isFootnoteLink = (x: string): boolean => {
   return reFootnote.test(x) || reReference.test(x);
 };
 
+export const isGlossaryLink = (x: string): boolean => {
+  const reGlossary = /#glossary-\w+$/;
+
+  return reGlossary.test(x);
+};
+
 export const uniqueBy = <
   T extends Record<string, string | number | symbol>,
   K extends keyof T

@@ -2,7 +2,8 @@ import c from "clsx";
 import Link from "next/link";
 import React from "react";
 
-import {isFootnoteLink, isInternalLink} from "../utils";
+import {isFootnoteLink, isGlossaryLink, isInternalLink} from "../utils";
+import Glossary from "./glossary";
 
 interface LinkProps {
   href: string;
@@ -12,6 +13,11 @@ interface LinkProps {
 }
 
 const NarrativeLink = ({id, href, children, className}: LinkProps) => {
+  if (isGlossaryLink(href)) {
+    const glossaryId = href.replace(/.*#glossary-(\w+)$/, "$1");
+    return <Glossary id={glossaryId}>{children}</Glossary>;
+  }
+
   if (isFootnoteLink(href)) {
     return (
       <a id={id} className={c(className)} href={decodeURIComponent(href)}>
