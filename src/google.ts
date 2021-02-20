@@ -227,7 +227,7 @@ export const narrativeContent = async (name: string): Promise<string> => {
   const googleDocs = await listFiles(auth, rootFolder);
   const downloadsDir = await fsP.mkdtemp(path.join(os.tmpdir(), "index2020-"));
 
-  const googleDoc = googleDocs.find(({name: n}) => n === name);
+  const googleDoc = googleDocs.find(({name: n}) => n.trim() === name);
   if (!googleDoc) return unreachable(`unable to fetch ${name}`);
   const doc = await fetchDocumentZip(auth, downloadsDir, googleDoc);
   if (!doc.download) return unreachable(`unable to find ${name} download`);
