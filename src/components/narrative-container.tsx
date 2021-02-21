@@ -7,18 +7,16 @@ import Donate from "./donate";
 import Readmore from "./readmore";
 
 export const containerWidth = "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12";
-const containerPadding = "px-6 md:px-16 xl:px-28 2xl:px-24";
-const containerSize = c(containerWidth, containerPadding);
 
 interface ContainerProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const Container = ({children: contents, className}: ContainerProps) => {
+const Container = ({children, className}: ContainerProps) => {
   return (
-    <div className={c("narrative-container mx-auto", containerSize, className)}>
-      {contents}
+    <div className={c("narrative-container mx-auto", className)}>
+      {children}
     </div>
   );
 };
@@ -42,9 +40,19 @@ const NarrativeContainer = ({
   readmore = [],
   children,
 }: NarrativeContainerProps) => {
+  const containerPadding = {
+    "px-6 md:px-16 xl:px-28 2xl:px-24": !transparent,
+    "px-3 md:px-16 xl:px-28 2xl:px-24": transparent,
+  };
+
   const containerClassName = {
     "bg-white shadow-md": !transparent,
     "bg-transparent": transparent,
+  };
+
+  const contentClassName = {
+    "pt-4 pb-6 md:pt-3 md:pb-10": !transparent,
+    "pb-0": transparent,
   };
 
   const readmoreSelection: Array<ReadmoreItem | undefined> = readmore.map(
@@ -54,10 +62,21 @@ const NarrativeContainer = ({
     },
   );
 
+  const ContainerWrapper = ({
+    children: contents,
+    className,
+  }: ContainerProps) => {
+    return (
+      <Container className={c(containerWidth, containerPadding, className)}>
+        {contents}
+      </Container>
+    );
+  };
+
   return (
-    <div>
+    <div className={backgroundClassName}>
       {heroClassName && (
-        <figure>
+        <figure className="bg-white">
           <div className={c("w-full h-96", heroClassName)} />
           <figcaption
             className={c(
@@ -70,24 +89,22 @@ const NarrativeContainer = ({
         </figure>
       )}
 
-      <div
-        className={c(
-          "narrative flex flex-col justify-around py-3 md:py-12",
-          backgroundClassName,
-        )}
-      >
-        <div className="relative pb-6">
+      <div className="narrative flex flex-col justify-around my-3 md:my-12">
+        <div className={c("relative", contentClassName)}>
           <div className="absolute inset-0 flex items-center justify-center">
             <div
               className={c(
                 "narrative-container w-full h-full top-0 z-10 mx-3 md:mx-auto",
                 containerClassName,
-                containerSize,
+                containerWidth,
+                containerPadding,
               )}
             />
           </div>
 
-          <div className="relative pb-3 z-10">{children({Container})}</div>
+          <div className="relative z-10">
+            {children({Container: ContainerWrapper})}
+          </div>
         </div>
 
         {hasDonate && (

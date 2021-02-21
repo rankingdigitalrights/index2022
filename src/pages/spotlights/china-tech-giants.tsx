@@ -48,7 +48,11 @@ const ChinaTechGiants = ({details}: NarrativeProps) => {
         {({Container}) => {
           return (
             <Container>
-              <NarrativeTitle title={pageTitle} byLine="Rebecca MacKinnon" />
+              <NarrativeTitle
+                title={pageTitle}
+                byLine="Rebecca MacKinnon"
+                transparent
+              />
 
               {body}
 

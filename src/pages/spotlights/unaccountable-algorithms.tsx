@@ -51,6 +51,7 @@ const Algorithms = ({details}: NarrativeProps) => {
               <NarrativeTitle
                 title={pageTitle}
                 byLine="Ellery Roberts Biddle & Jie Zhang"
+                transparent
               />
 
               {body}
