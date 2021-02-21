@@ -3,7 +3,7 @@ import hydrate from "next-mdx-remote/hydrate";
 import renderToString from "next-mdx-remote/render-to-string";
 import {MdxRemote} from "next-mdx-remote/types";
 import {useRouter} from "next/router";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 
 import CompanyElements from "../../components/company-elements";
 import CompanySelector from "../../components/company-selector";
@@ -13,9 +13,9 @@ import IndicatorCompaniesChartContainer from "../../components/indicator-compani
 import IndicatorElementTag from "../../components/indicator-element-tag";
 import IndicatorSelector from "../../components/indicator-selector";
 import Layout from "../../components/layout";
-import Modal from "../../components/modal";
 import Selector from "../../components/selector";
 import ToggleSwitch from "../../components/toggle-switch";
+import {ModalContext} from "../../context";
 import {
   allElements,
   allIndicators,
@@ -196,7 +196,7 @@ const IndicatorPage = ({
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [sortStrategy, setSortStrategy] = useState<string>("Alphabetically");
   const [literalValues, setLiteralValues] = useState(false);
-  const [showHelp, setShowHelp] = useState(false);
+  const {toggleModal} = useContext(ModalContext); // useModalCtx();
 
   const description = hydrate(indicatorDescription, {components});
   const guidance = hydrate(indicatorGuidance, {components});
@@ -217,10 +217,6 @@ const IndicatorPage = ({
 
   const handleToggleSwitch = (toggle: boolean) => {
     setLiteralValues(toggle);
-  };
-
-  const handleToggleHelp = () => {
-    setShowHelp(!showHelp);
   };
 
   const sortStrategyFn = strategies.get(sortStrategy) || identitySortFn;
@@ -248,58 +244,53 @@ const IndicatorPage = ({
 
   const widthClassName = "lg:w-9/12 xl:w-7/12 px-2 lg:px-0";
 
+  const helpText = (
+    <div className="flex flex-col">
+      <div className="flex items-center mt-6">
+        <IndicatorElementTag score={100} value="Yes" />
+        <span className="font-circular text-sm ml-12">
+          Yes (100 points): Full disclosure
+        </span>
+      </div>
+
+      <div className="flex items-center mt-6">
+        <IndicatorElementTag score={100} value="Partial" />
+        <span className="font-circular text-sm ml-12">
+          Partial (50 points): Company disclosure meets some but not all aspects
+          of the element, or the disclosure is not comprehensive enough to
+          satisfy the full scope of the element.
+        </span>
+      </div>
+
+      <div className="flex items-center mt-6">
+        <IndicatorElementTag score={100} value="No" />
+        <span className="font-circular text-sm ml-12">
+          No disclosure found (0 points): Researchers were unable to find
+          information provided by the company on its website that answers the
+          element question.
+        </span>
+      </div>
+
+      <div className="flex items-center mt-6">
+        <IndicatorElementTag score={100} value="No Disclosure Found" />
+        <span className="font-circular text-sm ml-12">
+          No (0 points): Company disclosure exists, but it does not answer the
+          question that the element asks.
+        </span>
+      </div>
+
+      <div className="flex items-center mt-6">
+        <IndicatorElementTag score={100} value="NA" />
+        <span className="font-circular text-sm ml-12">
+          N/A (excluded from score): Not applicable, excluded from score and
+          averages.
+        </span>
+      </div>
+    </div>
+  );
+
   return (
     <Layout>
-      {showHelp && (
-        <Modal
-          title="Each indicator is made of a set of elements. For each element, companies receive one of the following scores:"
-          onCancel={handleToggleHelp}
-        >
-          <div className="flex flex-col">
-            <div className="flex items-center mt-6">
-              <IndicatorElementTag score={100} value="Yes" />
-              <span className="font-circular text-sm ml-12">
-                Yes (100 points): Full disclosure
-              </span>
-            </div>
-
-            <div className="flex items-center mt-6">
-              <IndicatorElementTag score={100} value="Partial" />
-              <span className="font-circular text-sm ml-12">
-                Partial (50 points): Company disclosure meets some but not all
-                aspects of the element, or the disclosure is not comprehensive
-                enough to satisfy the full scope of the element.
-              </span>
-            </div>
-
-            <div className="flex items-center mt-6">
-              <IndicatorElementTag score={100} value="No" />
-              <span className="font-circular text-sm ml-12">
-                No disclosure found (0 points): Researchers were unable to find
-                information provided by the company on its website that answers
-                the element question.
-              </span>
-            </div>
-
-            <div className="flex items-center mt-6">
-              <IndicatorElementTag score={100} value="No Disclosure Found" />
-              <span className="font-circular text-sm ml-12">
-                No (0 points): Company disclosure exists, but it does not answer
-                the question that the element asks.
-              </span>
-            </div>
-
-            <div className="flex items-center mt-6">
-              <IndicatorElementTag score={100} value="NA" />
-              <span className="font-circular text-sm ml-12">
-                N/A (excluded from score): Not applicable, excluded from score
-                and averages.
-              </span>
-            </div>
-          </div>
-        </Modal>
-      )}
-
       <section className={c("lg:container lg:mx-auto mt-8", widthClassName)}>
         <IndicatorSelector
           indicators={indicators}
@@ -362,7 +353,15 @@ const IndicatorPage = ({
             <div className="flex-none self-end flex w-full my-3 sm:float-right md:w-max md:mb-1">
               <ToggleSwitch label="Points" onChange={handleToggleSwitch} />
 
-              <button onClick={handleToggleHelp}>
+              <button
+                onClick={() => {
+                  toggleModal({
+                    title:
+                      "Each indicator is made of a set of elements. For each element, companies receive one of the following scores:",
+                    content: helpText,
+                  });
+                }}
+              >
                 <Help className="w-5 h-5 ml-3" />
               </button>
             </div>

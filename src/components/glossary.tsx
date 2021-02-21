@@ -1,8 +1,8 @@
 /* eslint react/no-danger: off */
-import React, {useState} from "react";
+import React, {useContext} from "react";
 
 import glossary from "../../data/glossary.json";
-import Modal from "./modal";
+import {ModalContext} from "../context";
 
 interface GlossaryProps {
   id: string;
@@ -10,33 +10,31 @@ interface GlossaryProps {
 }
 
 const Glossary = ({id, children}: GlossaryProps) => {
-  const [hasModal, setHasModal] = useState(false);
-
-  const handleToggle = () => {
-    setHasModal(!hasModal);
-  };
+  const modal = useContext(ModalContext);
 
   const entry = glossary.find((item) => item.id === id);
 
   if (!entry) return <span>XXXX {id} XXXX</span>;
 
+  const handleClick = () => {
+    modal?.toggleModal({
+      title: entry.title,
+      content: entry.text,
+      hasHtmlTitle: true,
+    });
+  };
   return (
     <>
-      {hasModal && (
-        <Modal title={entry.title} hasHtmlTitle onCancel={handleToggle}>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: entry.text,
-            }}
-          />
-        </Modal>
-      )}{" "}
-      <button
-        className="font-circular text-prissian font-bold"
-        onClick={handleToggle}
+      {" "}
+      <span
+        className="inline font-circular text-prissian font-bold"
+        onClick={handleClick}
+        onKeyDown={handleClick}
+        role="button"
+        tabIndex={0}
       >
         {children}
-      </button>
+      </span>
     </>
   );
 };

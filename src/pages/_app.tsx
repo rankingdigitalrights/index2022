@@ -1,3 +1,4 @@
+/* eslint react/jsx-props-no-spreading: off */
 import "../css/index.css";
 
 import {AppProps} from "next/app";
@@ -5,9 +6,36 @@ import React, {useEffect, useState} from "react";
 import smoothscroll from "smoothscroll-polyfill";
 import SwiperCore, {Pagination} from "swiper";
 
+import {ModalContext, ModalEntry} from "../context";
 import {initMatomo} from "../matomo";
 
 SwiperCore.use([Pagination]);
+
+const ModalWrapper = ({children}: {children?: React.ReactNode}) => {
+  const [title, setTitle] = useState<string | undefined>();
+  const [content, setContent] = useState<React.ReactNode | undefined>();
+  const [hasHtmlTitle, setHasHtmlTitle] = useState<boolean | undefined>();
+
+  const toggleModal = (entry: ModalEntry) => {
+    setTitle(entry.title);
+    setContent(entry.content);
+    setHasHtmlTitle(entry.hasHtmlTitle);
+  };
+
+  const closeModal = () => {
+    setTitle(undefined);
+    setContent(undefined);
+    setHasHtmlTitle(undefined);
+  };
+
+  return (
+    <ModalContext.Provider
+      value={{title, content, hasHtmlTitle, toggleModal, closeModal}}
+    >
+      {children}
+    </ModalContext.Provider>
+  );
+};
 
 const MyApp = ({Component, pageProps}: AppProps) => {
   const [firstTabHandled, setFirstTabHandled] = useState(false);
@@ -40,8 +68,11 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     });
   }, []);
 
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  return <Component {...pageProps} />;
+  return (
+    <ModalWrapper>
+      <Component {...pageProps} />
+    </ModalWrapper>
+  );
 };
 
 export default MyApp;

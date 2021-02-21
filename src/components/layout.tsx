@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 
+import {ModalContext} from "../context";
 import Footer from "./footer";
 import HeaderBar from "./header-bar";
 import HtmlHead from "./html-head";
+import Modal from "./modal";
 import ScrollArrow from "./scroll-arrow";
 
 interface LayoutProps {
@@ -11,11 +13,24 @@ interface LayoutProps {
 }
 
 const Layout = ({hideScrollArrow, children}: LayoutProps) => {
+  /* const modal = useModalCtx(); */
+  const modal = useContext(ModalContext);
+
   return (
     <div>
       <HtmlHead />
 
       <HeaderBar className="print:hidden" />
+
+      {modal?.title && (
+        <Modal
+          title={modal.title}
+          hasHtmlTitle={modal.hasHtmlTitle}
+          onCancel={modal.closeModal}
+        >
+          {modal.content}
+        </Modal>
+      )}
 
       {children}
 

@@ -4,6 +4,12 @@ import React, {useEffect, useRef} from "react";
 import Cancel from "../images/icons/cancel.svg";
 import {isMouseEvent} from "../utils";
 
+export type ModalEntry = {
+  title: string;
+  content?: React.ReactNode;
+  hasHtmlTitle?: boolean;
+};
+
 interface ModalProps {
   title: string;
   hasHtmlTitle?: boolean;
@@ -44,7 +50,7 @@ const Modal = ({
 
   return (
     <div className="fixed z-50 inset-0 overflow-y-auto">
-      <div className="flex items-end justify-center min-h-screen py-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div className="flex max-h-screen py-6 px-4 text-center sm:block sm:p-0">
         <div className="fixed inset-0 transition-opacity" aria-hidden="true">
           <div className="absolute inset-0 bg-black opacity-25" />
         </div>
@@ -57,7 +63,7 @@ const Modal = ({
         </span>
         <div
           ref={ref}
-          className="inline-block align-bottom bg-white text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full"
+          className="inline-block align-bottom bg-white text-left overflow-y-scroll shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full"
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-headline"
