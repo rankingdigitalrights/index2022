@@ -1,7 +1,7 @@
 Company,ServiceType,Scope,Total,TotalRank,Governance,GovernanceRank,Freedom,FreedomRank,Privacy,PrivacyRank
 Alibaba,eCommerce,Taobao.com,32,1,10,1,25,1,43,1
 Alibaba,pda,AliGenie,19,1,6,1,11,2,28,1
-Amazon,cloud,Amazon Cloud,21,7,6,8,16,6,29,7
+Amazon,cloud,Amazon Drive,21,7,6,8,16,6,29,7
 Amazon,eCommerce,Amazon.com,20,2,6,2,11,2,29,2
 Amazon,pda,Alexa,19,1,6,1,13,1,27,2
 AmericaMovil,mobile,Mobile Service,22,8,51,6,7,10,22,7
@@ -36,7 +36,7 @@ Kakao,search,Daum Search,39,3,44,3,34,3,40,3
 MailRu,cloud,Mail.Ru Cloud Solutions,28,4,26,5,19,4,33,5
 MailRu,email,Mail.Ru email,33,5,26,5,34,5,34,5
 MailRu,messagingVoip,Mail.Ru Agent,27,6,23,6,22,4,32,8
-MailRu,socialNetworkBlogs,VKontakte,26,4,24,3,15,3,34,4
+MailRu,socialNetworkBlogs,VK,26,4,24,3,15,3,34,4
 Microsoft,cloud,OneDrive,53,1,67,1,47,1,52,1
 Microsoft,email,Outlook.com,53,1,67,1,37,4,54,1
 Microsoft,messagingVoip,Skype,45,1,65,1,25,3,49,3
