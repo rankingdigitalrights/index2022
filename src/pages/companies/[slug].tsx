@@ -233,8 +233,8 @@ const CompanyPage = ({
             <div className="border-b border-disabled-light w-full py-6">
               <p>
                 The 2020 RDR Index covers policies that were active between
-                February 8, 2019 and September 15, 2020. Policies that came into
-                effect after September 15, 2020 were not evaluated for this
+                February 8, 2019, and September 15, 2020. Policies that came
+                into effect after September 15, 2020 were not evaluated for this
                 Index.
               </p>
 

@@ -131,7 +131,7 @@ const Home = ({
             <div className="w-full sm:w-1/2 sm:flex-grow items-center bg-diff-add z-10 h-full">
               <HomeBox
                 className="h-60 lg:h-80 bg-key-findings"
-                title="Key Findings"
+                title="Key findings"
                 href="/key-findings"
               >
                 <div className="flex flex-col h-full justify-end">
