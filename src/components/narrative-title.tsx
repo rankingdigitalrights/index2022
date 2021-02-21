@@ -4,13 +4,24 @@ import React from "react";
 interface NarrativeTitleProps {
   title: React.ReactNode;
   byLine?: string;
+  transparent?: boolean;
 }
 
-const NarrativeTitle = ({title, byLine}: NarrativeTitleProps) => {
+const NarrativeTitle = ({
+  title,
+  byLine,
+  transparent = false,
+}: NarrativeTitleProps) => {
+  const spacingClassName = {
+    "mb-6 mt-3 md:mt-12": !transparent,
+    "mb-6 mt-3 md:mt-3": transparent,
+  };
+
   return (
     <div
       className={c(
-        "mb-6 border-b border-prissian mt-3 md:mt-12",
+        "border-b border-prissian",
+        spacingClassName,
         byLine ? "pb-4" : "pb-2",
       )}
     >

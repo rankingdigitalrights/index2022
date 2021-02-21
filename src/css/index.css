@@ -245,6 +245,10 @@
     scroll-behavior: smooth;
   }
 
+  .narrative-container p:last-child {
+    @apply mb-0;
+  }
+
   a {
     @apply text-prissian font-bold;
   }
