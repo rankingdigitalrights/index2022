@@ -178,16 +178,20 @@
     @apply font-lyon text-base;
     font-size: 18px;
     /* FIXME: Smooth scrolling clashes with lazy loaded images. I disabled lazy
-     * loaded images for now but would love to find a solution that works with both.
+     * loaded images for now but would love to find a solution that works with
+     * both.
+     *
+     * FIXME: Enabling smooth scrolling applied smooth scrolling also makes page
+     * navigation to scroll smooth. This is a weird effect.
      */
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
   }
 
-  @media screen and (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
+  /* @media screen and (prefers-reduced-motion: reduce) { */
+  /*   html { */
+  /*     scroll-behavior: auto; */
+  /*   } */
+  /* } */
 
   h1 {
     @apply text-xl font-platform leading-none break-words;
