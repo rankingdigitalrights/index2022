@@ -22,6 +22,7 @@ const CompanySlide = ({
     "border-accent-orange": kind === "telecom",
     "border-diff-del": kind === "internet",
   };
+
   return (
     <div className={c("flex flex-col", className)}>
       <CompanyKindLabel kind={kind} theme="dark" />
@@ -31,19 +32,23 @@ const CompanySlide = ({
           <div className="flex mt-4">
             <span
               className={c(
-                "w-12 font-circular text-center border rounded p-1",
+                "w-12 font-circular text-center border rounded p-1 hover:no-underline",
                 scoreClassName,
               )}
             >
               {score}%
             </span>
-            <span className="ml-3 font-platform font-bold text-lg">
+            <span
+              className={c(
+                "ml-3 font-platform font-bold text-lg hover:underline",
+              )}
+            >
               {companyPretty}
             </span>
           </div>
-          <p className="font-circular font-normal text-sm mt-4">{text}</p>
         </a>
       </Link>
+      <p className="font-circular font-normal text-sm mt-4">{text}</p>
     </div>
   );
 };

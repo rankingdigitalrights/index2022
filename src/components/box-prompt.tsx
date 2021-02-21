@@ -13,8 +13,8 @@ const BoxPrompt = ({readmore, className}: BoxPromptProps) => {
   const [isHover, setIsHover] = useState(false);
 
   const animationClassName = {
-    "transition duration-200 ease-in-out transform translate-x-2": isHover,
-    "transition duration-200 ease-in-out transform translate-x-0": !isHover,
+    "transition duration-200 ease-out transform translate-x-1": isHover,
+    "transition duration-200 ease-out transform translate-x-0": !isHover,
   };
 
   const match = readmore.match(/(\/.*)$/);

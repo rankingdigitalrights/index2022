@@ -1,6 +1,6 @@
 import c from "clsx";
 import Link from "next/link";
-import React from "react";
+import React, {useState} from "react";
 
 import ArrowRight from "../images/icons/arrow-right.svg";
 
@@ -19,7 +19,19 @@ const HomeBox = ({
   children,
   className,
 }: HomeBoxProps) => {
+  const [isHover, setIsHover] = useState(false);
+
   const textColor = theme === "light" ? "text-white" : "text-prissian";
+
+  const hoverClassName = {
+    underline: isHover,
+    "no-underline": !isHover,
+  };
+
+  const animationClassName = {
+    "transition duration-200 ease-out transform translate-x-1": isHover,
+    "transition duration-200 ease-out transform translate-x-0": !isHover,
+  };
 
   return (
     <div
@@ -31,7 +43,14 @@ const HomeBox = ({
     >
       <div className="flex flex-col h-full w-4/5 justify-between">
         <Link href={href}>
-          <h3 className="cursor-pointer font-platform font-bold text-xl mb-3">
+          <h3
+            className={c(
+              "cursor-pointer font-platform font-bold text-xl mb-3",
+              hoverClassName,
+            )}
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+          >
             {title}
           </h3>
         </Link>
@@ -40,8 +59,12 @@ const HomeBox = ({
       </div>
 
       <Link href={href}>
-        <span className="cursor-pointer absolute right-0 bottom-0 w-12 h-12 mb-6 mr-6 rounded-full flex items-center justify-center bg-white">
-          <ArrowRight />
+        <span
+          className="cursor-pointer absolute right-0 bottom-0 w-12 h-12 mb-6 mr-6 rounded-full flex items-center justify-center bg-white"
+          onMouseEnter={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
+        >
+          <ArrowRight className={c("w-6 h-6", animationClassName)} />
         </span>
       </Link>
     </div>
