@@ -116,32 +116,30 @@ const Indicators = ({indicators}: IndicatorsProps) => {
                 </p>
               </Container>
 
-              <section className="flex justify-around">
-                <div
-                  className={c(
-                    "flex flex-col justify-between w-full md:mb-12 md:flex-row pt-12",
-                    containerWidth,
-                  )}
-                >
-                  <div className="flex flex-col w-full mx-3 md:w-1/2 md:mr-3 md:ml-0">
-                    <IndicatorHeading category="governance" />
-                    {governanceIndicators.map((option) => (
-                      <IndicatorLink key={option.value} option={option} />
-                    ))}
-                    <IndicatorHeading className="mt-6" category="freedom" />
-                    {freedomIndicators.map((option) => (
-                      <IndicatorLink key={option.value} option={option} />
-                    ))}
-                  </div>
-
-                  <div className="flex flex-col w-full mx-3 md:w-1/2 md:ml-3 md:mr-0">
-                    <IndicatorHeading category="privacy" />
-                    {privacyIndicators.map((option) => (
-                      <IndicatorLink key={option.value} option={option} />
-                    ))}
-                  </div>
+              <div
+                className={c(
+                  "flex flex-col self-center mx-auto xl:justify-center w-full md:flex-row mt-12 max-w-6xl",
+                  containerWidth,
+                )}
+              >
+                <div className="flex flex-col w-full mx-3 md:w-1/2 xl:w-2/5 md:mr-3 md:ml-0 lg:mr-6">
+                  <IndicatorHeading category="governance" />
+                  {governanceIndicators.map((option) => (
+                    <IndicatorLink key={option.value} option={option} />
+                  ))}
+                  <IndicatorHeading className="mt-6" category="freedom" />
+                  {freedomIndicators.map((option) => (
+                    <IndicatorLink key={option.value} option={option} />
+                  ))}
                 </div>
-              </section>
+
+                <div className="flex flex-col w-full mx-3 md:w-1/2 xl:w-2/5 md:ml-3 md:mr-0 lg:ml-6">
+                  <IndicatorHeading category="privacy" />
+                  {privacyIndicators.map((option) => (
+                    <IndicatorLink key={option.value} option={option} />
+                  ))}
+                </div>
+              </div>
             </div>
           );
         }}
