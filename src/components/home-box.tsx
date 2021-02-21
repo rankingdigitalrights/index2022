@@ -55,7 +55,7 @@ const HomeBox = ({
           </h3>
         </Link>
 
-        <div className="flex-grow h-full text-sm">{children}</div>
+        <div className="flex-grow h-full">{children}</div>
       </div>
 
       <Link href={href}>
