@@ -58,10 +58,15 @@ export const isInternalLink = (x: string): boolean => {
 };
 
 export const isFootnoteLink = (x: string): boolean => {
-  const reFootnote = /#ftnt\d*$/;
-  const reReference = /#ftnt_ref\d*$/;
+  const reFootnote = /#ftnt_ref\d*$/;
 
-  return reFootnote.test(x) || reReference.test(x);
+  return reFootnote.test(x);
+};
+
+export const isFootnoteReferenceLink = (x: string): boolean => {
+  const reReference = /#ftnt\d*$/;
+
+  return reReference.test(x);
 };
 
 export const isGlossaryLink = (x: string): boolean => {

@@ -2,7 +2,14 @@ import c from "clsx";
 import Link from "next/link";
 import React from "react";
 
-import {isFootnoteLink, isGlossaryLink, isInternalLink} from "../utils";
+import {
+  isFootnoteLink,
+  isFootnoteReferenceLink,
+  isGlossaryLink,
+  isInternalLink,
+} from "../utils";
+import FootnoteBacklink from "./footnote-backlink";
+import FootnoteReference from "./footnote-reference";
 import Glossary from "./glossary";
 
 interface LinkProps {
@@ -18,12 +25,16 @@ const NarrativeLink = ({id, href, children, className}: LinkProps) => {
     return <Glossary id={`glossary-${glossaryId}`}>{children}</Glossary>;
   }
 
-  if (isFootnoteLink(href)) {
-    return (
-      <a id={id} className={c(className)} href={decodeURIComponent(href)}>
-        {children}
-      </a>
-    );
+  if (isFootnoteReferenceLink(href) && id) {
+    const footnoteId = id.replace(/ftnt_ref(\d)*$/, "$1");
+
+    return <FootnoteReference className={className} id={footnoteId} />;
+  }
+
+  if (isFootnoteLink(href) && id) {
+    const footnoteId = id.replace(/ftnt(\d)*$/, "$1");
+
+    return <FootnoteBacklink className={className} id={footnoteId} />;
   }
 
   if (isInternalLink(href)) {
