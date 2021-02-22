@@ -69,6 +69,7 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
             alt={description}
             title={title}
             sizes="(min-width: 640px) 400w, (min-width: 1024px) 800w, 100vw"
+            loading="lazy"
           />
         </picture>
         <figcaption className="font-circular text-sm mt-2">{title}</figcaption>
