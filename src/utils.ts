@@ -224,7 +224,7 @@ export const mapCategoryName = (category: IndicatorCategory): string => {
     case "governance":
       return "Governance";
     case "freedom":
-      return "Freedom of Expression";
+      return "Freedom of expression";
     case "privacy":
       return "Privacy";
     default:
