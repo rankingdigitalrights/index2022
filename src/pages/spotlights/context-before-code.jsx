@@ -17,6 +17,7 @@ import NarrativeLink from "../../components/link";
 import NarrativeContainer from "../../components/narrative-container-full-feature";
 import Readmore from "../../components/readmore";
 import ScrollyFeature from "../../components/scrolly-feature";
+import Cancel from "../../images/icons/cancel.svg";
 import Help from "../../images/icons/help.svg";
 import ImgChartF4 from "../../images/spotlights/soe-f4-barchart.png";
 import ImgProtest from "../../images/spotlights/soe-myanmar-protest.jpeg";
@@ -848,33 +849,47 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             <figure className="scrolly-figure bg-light-grey p-4">
               <button
                 id="fb-info"
-                className="btn-info fade-out focus:outline-none z-10"
+                className="btn-info fade-out focus:outline-none z-20"
                 style={{display: "none"}}
                 onClick={() => toggleVisibility("#modal-fb")}
               >
                 <Help className="w-5 h-5 ml-3" />
               </button>
               <div
-                className="modal fade-out fixed z-50 overflow-auto bg-light-grey flex"
+                className="modal relative fade-out z-10 w-full h-full items-center justify-center"
                 style={{display: "none"}}
                 id="modal-fb"
               >
-                <p className="p-8 bg-white m-auto h-auto content-center">
-                  Content appealed and restored on appeal on Facebook vs. videos
-                  appealed and restored on YouTube between October 2019 and
-                  September 2020. Data for Facebook does not include the
-                  &ldquo;Fake Accounts&rdquo; category, for which appeals are
-                  not reported. Sources:{" "}
-                  <NarrativeLink href="https://transparency.facebook.com/community-standards-enforcement">
-                    Community Standards Enforcement Report (Facebook)
-                  </NarrativeLink>{" "}
-                  and{" "}
-                  <NarrativeLink href="https://transparencyreport.google.com/youtube-policy/appeals">
-                    {" "}
-                    Google Transparency Report (YouTube)
-                  </NarrativeLink>
-                  .
-                </p>
+                <div className="relative max-w-screen-md overflow-auto bg-light-grey">
+                  <button
+                    className="absolute mt-6 right-4"
+                    tabIndex={0}
+                    onClick={() => toggleVisibility("#modal-fb")}
+                  >
+                    <span>
+                      <Cancel
+                        className="w-3 h-3 text-black fill-current"
+                        aria-label="Close modal"
+                      />
+                    </span>
+                  </button>
+                  <p className="p-8 bg-white m-auto h-auto content-center">
+                    Content appealed and restored on appeal on Facebook vs.
+                    videos appealed and restored on YouTube between October 2019
+                    and September 2020. Data for Facebook does not include the
+                    &ldquo;Fake Accounts&rdquo; category, for which appeals are
+                    not reported. Sources:{" "}
+                    <NarrativeLink href="https://transparency.facebook.com/community-standards-enforcement">
+                      Community Standards Enforcement Report (Facebook)
+                    </NarrativeLink>{" "}
+                    and{" "}
+                    <NarrativeLink href="https://transparencyreport.google.com/youtube-policy/appeals">
+                      {" "}
+                      Google Transparency Report (YouTube)
+                    </NarrativeLink>
+                    .
+                  </p>
+                </div>
               </div>
               <div
                 id="fb-infobox"

@@ -339,21 +339,9 @@
     max-width: 100%;
   }
 
-  main.spotlight div.modal {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
   main.spotlight .hidden {
     display: none;
   }
-
-  /* main.spotlight .hero {
-    height: 100vh;
-    width: 100%;
-    margin-top: -60px;
-  } */
 
   main.spotlight .fade-in {
     opacity: 1;
@@ -370,7 +358,6 @@
   }
 
   .hero-full {
-    /* height: calc(100vh - 72px); */
     height: 66vh;
     background-size: cover;
   }
@@ -481,9 +468,7 @@
     @apply sticky w-full m-0 left-0;
     left: 0;
     top: 0;
-    /* top: 60px; */
     width: 100%;
-    /* height: calc(100vh - 60px); */
     height: 100vh;
     margin: 0;
     z-index: 0;
@@ -495,7 +480,6 @@
     height: 100%;
     max-width: unset;
     margin: 0;
-    /* margin-bottom: 3rem; */
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -513,7 +497,6 @@
     z-index: 99;
     overflow-y: hidden;
     width: 100%;
-    /* unclear why, but solves white space problem for now */
   }
 
   .step.invisible {
@@ -565,37 +548,8 @@
     margin-bottom: 0;
   }
 
-  main.spotlight .box-prompt .box-prompt-content {
-    @apply bg-accent-gold text-base text-black font-bold font-circular;
-    margin: 0 0 0 auto;
-    border-radius: 24px;
-    height: 100%;
-    text-align: right;
-    /* max-width: 360px; */
-    width: 66%;
-    padding: 1rem;
-    line-height: 1.1rem;
-  }
-
   main.spotlight .box-prompt .box-prompt-content a {
     @apply text-black;
-  }
-
-  main.spotlight .box-placeholder {
-    border: 2px solid lightgrey;
-    text-align: right;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0.3rem 0.6rem;
-    min-height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  main.spotlight .box-placeholder:hover {
-    background-color: lightgrey;
-    transition: background-color 0.6s;
   }
 
   @media screen and (min-width: 900px) {
