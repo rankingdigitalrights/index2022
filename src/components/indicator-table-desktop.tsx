@@ -105,7 +105,7 @@ const IndicatorTableDesktop = ({
 
   const grid = rows.map((row, itemPos) => {
     return (
-      <div className="flex w-full text-sm">
+      <div key={`row-${row?.[0].id}`} className="flex w-full text-sm">
         <div className="flex flex-row w-full">
           {row.map((element, idx) => {
             const elementDescription = elementDescriptions.find(
