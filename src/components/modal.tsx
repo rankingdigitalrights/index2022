@@ -38,7 +38,7 @@ const Modal = ({
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  }, []);
+  }, [onCancel]);
 
   // Collapse the modal when we press the escape key.
   useEffect(() => {
@@ -53,7 +53,7 @@ const Modal = ({
     return () => {
       document.removeEventListener("keydown", handleEscapeKey, false);
     };
-  }, []);
+  }, [onCancel]);
 
   // Disable background scrolling.
   useEffect(() => {
