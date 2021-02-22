@@ -20,6 +20,10 @@ module.exports = {
         print: {raw: "print"},
       },
 
+      transitionDuration: {
+        600: "600ms",
+      },
+
       fontFamily: {
         circular: ["Circular", "sans-serif"],
         platform: ["Platform", "sans-serif"],

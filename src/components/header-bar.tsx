@@ -198,7 +198,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
       </div>
 
       <nav className={navClassName}>
-        <div className="relative xl:container xl:mx-auto mt-6 px-3 lg:px-4 pb-6 h-full flex flex-col md:flex-row justify-between items-start overflow-y-scroll">
+        <div className="relative xl:container xl:mx-auto mt-6 px-3 lg:px-4 pb-6 h-full flex flex-col md:flex-row justify-between items-start overflow-y-auto">
           <MenuBarColumn
             className="w-full md:w-1/3 px-1 lg:px-4"
             title="THE REPORT"

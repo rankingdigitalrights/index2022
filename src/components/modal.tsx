@@ -78,7 +78,7 @@ const Modal = ({
         </span>
         <div
           ref={ref}
-          className="inline-block align-bottom bg-white text-left overflow-y-scroll shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full"
+          className="inline-block align-bottom bg-white text-left overflow-y-auto shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full"
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-headline"
