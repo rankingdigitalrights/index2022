@@ -18,7 +18,6 @@ import {
   indicatorCompanies,
   indicatorDetails,
   indicatorElements,
-  indicatorIndices,
   indicators,
   indicatorScores,
   services,
@@ -445,23 +444,6 @@ const writeJsonFile = (
         await dispose();
       },
     )
-    .command("fixtures", "generate test fixtures.", async () => {
-      const fixturesDir = "fixtures";
-      await fs.mkdir(path.join(process.cwd(), fixturesDir), {recursive: true});
-
-      const [scores, indicatorIndexScores] = await Promise.all([
-        companyIndices(),
-        indicatorIndices(),
-      ]);
-
-      const scoresTarget = path.join(fixturesDir, "scores.json");
-      const indicatorsTarget = path.join(fixturesDir, "indicators.json");
-
-      await Promise.all([
-        writeJsonFile(scoresTarget)(scores),
-        writeJsonFile(indicatorsTarget)(indicatorIndexScores),
-      ]);
-    })
     .demandCommand(1)
     .help()
     .alias("help", "h")
