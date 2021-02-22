@@ -89,7 +89,7 @@ const NarrativeContainer = ({
         </figure>
       )}
 
-      <div className="narrative flex flex-col justify-around my-3 md:my-12">
+      <div className="narrative flex flex-col justify-around py-3 md:py-12">
         <div className={c("relative", contentClassName)}>
           <div className="absolute inset-0 flex items-center justify-center">
             <div
