@@ -333,11 +333,6 @@ const section2c = (
         abruptly thrusting them into digital darkness.
       </span>
     </p>
-    <div className="flex flex-col justify-around items-center">
-      <div className="mt-6 mb-12 ml-auto">
-        <BoxPrompt readmore="/indicators/F10" />
-      </div>
-    </div>
   </section>
 );
 
@@ -633,7 +628,6 @@ const section5 = (
     </p>
     <FigureImg
       img={ImgChartF4}
-      caption="What information do companies&rsquo; transparency reports include?"
       alt="TODO - What information do companies&rsquo; transparency reports include?"
     />
     <p>

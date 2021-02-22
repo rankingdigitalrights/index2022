@@ -85,7 +85,7 @@
   }
 
   .hero-state-of-emergency {
-    @apply bg-contain bg-no-repeat bg-center;
+    @apply bg-contain bg-no-repeat bg-center bg-left;
     background-image: url("../images/bg-kashmir.jpg?size=1024");
   }
 
