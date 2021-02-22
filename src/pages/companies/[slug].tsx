@@ -139,7 +139,7 @@ const CompanyPage = ({
 
   return (
     <Layout>
-      <div className="relative">
+      <div className="report-card relative">
         <div className="absolute flex flex-row w-full h-full top-0">
           <div className="md:w-7/12 lg:w-3/5 xl:w-7/12 w-full md:bg-prissian" />
           <div className="md:w-5/12 lg:w-2/5 xl:w-5/12 w-full md:bg-beige" />
