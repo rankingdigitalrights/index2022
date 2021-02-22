@@ -52,10 +52,10 @@ const hideItem = (query) => {
   item.classList.remove("fade-in");
   setTimeout(function () {
     item.style.display = "none";
-  }, 1000);
+  }, 600);
 };
 
-const unHideItem = (query) => {
+const showItem = (query) => {
   const item = document.querySelector(query);
   item.style.display = "flex";
   setTimeout(function () {
@@ -69,7 +69,7 @@ const toggleVisibility = (query) => {
   if (modal.style.display !== "none") {
     setTimeout(function () {
       modal.style.display = "none";
-    }, 1000);
+    }, 600);
     modal.classList.add("fade-out");
     modal.classList.remove("fade-in");
   } else {
@@ -382,11 +382,7 @@ const section3a = (
       conduct these assessments before they launch new products or services, or
       enter new markets, to mitigate harms before they happen.
     </p>
-    <FigureImg
-      img={imgTableG4}
-      // caption="TBA; Currently no caption by decision"
-      alt="TODO - Caption | Description"
-    />
+    <FigureImg img={imgTableG4} alt="TODO - Caption | Description" />
     <div className="flex flex-col justify-around items-center">
       <div className="mt-6 mb-12 ml-auto">
         <BoxPrompt readmore="/indicators/G4b" />
@@ -732,6 +728,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
           <div className="m-auto bg-rdr bg-opacity-20">
             <FigureImg
               img={ImgProtest}
+              extraClass="spot-figure"
               caption="Demonstrators protest a network shutdown in Myanmar. Photo by <a href='https://twitter.com/lwin051965' target='_blank'>Nyinyi Lwin</a>, used with permission."
               alt="TODO - Demonstrators protest a network shutdown in Myanmar. Photo by Nyinyi Lwin, used with permission."
             />
@@ -799,6 +796,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
           <div className="m-auto bg-rdr bg-opacity-20">
             <FigureImg
               img={ImgWhiteFlags}
+              extraClass="spot-figure"
               caption="Mourners hang white flags in Sri Lanka, following the 2019 bombings of churches around the country. Photo by Groundviews (CC BY-ND 3.0)"
               alt="Mourners hang white flags in Sri Lanka, following the 2019 bombings of churches around the country. Photo by Groundviews (CC BY-ND 3.0)"
             />
@@ -828,12 +826,12 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 hideItem("#fb-info");
               }
               if (index === 1) {
-                unHideItem("#fb-infobox");
+                showItem("#fb-infobox");
               }
 
               if (index >= 2) {
                 hideItem("#fb-infobox");
-                unHideItem("#fb-info");
+                showItem("#fb-info");
               }
             }}
             // stepExit={({index, direction}) => {
@@ -873,19 +871,21 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               </div>
               <div
                 id="fb-infobox"
-                className="flex-col hidden h-screen m-auto justify-center items-center"
+                className="flex-col w-3/4 max-w-screen-md	hidden h-screen m-auto text-center justify-center items-center"
               >
-                <h2>Background</h2>
-                <p>
-                  When COVID - 19 hit, both Facebook and Google (YouTube’ s
-                  parent company) sent their content moderators home, and
-                  deployed algorithms more extensively to review content.
-                </p>
-                <p>Facebook almost completely shut off its appeals option.</p>
-                <p>
-                  YouTube kept it enabled, and put extra resources into
-                  reviewing appeals and restoring content.
-                </p>
+                <div className="bg-white shadow-xl px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                  <h2>Background</h2>
+                  <p>
+                    When COVID - 19 hit, both Facebook and Google (YouTube’ s
+                    parent company) sent their content moderators home, and
+                    deployed algorithms more extensively to review content.
+                  </p>
+                  <p>Facebook almost completely shut off its appeals option.</p>
+                  <p>
+                    YouTube kept it enabled, and put extra resources into
+                    reviewing appeals and restoring content.
+                  </p>
+                </div>
               </div>
               <FigureSvg
                 className="scrolly-figure bg-light-grey p-4"

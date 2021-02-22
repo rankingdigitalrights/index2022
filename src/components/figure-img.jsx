@@ -14,7 +14,7 @@ const FigureImg = ({img, id, extraClass = "", alt, caption}) => {
     <figure
       id={id}
       ref={ioHook}
-      className={`spot-figure ${toggleFade(inView)} ${extraClass}`}
+      className={`${toggleFade(inView)} ${extraClass}`}
     >
       <img src={img} alt={alt} />
       <figcaption

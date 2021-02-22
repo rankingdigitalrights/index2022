@@ -518,8 +518,10 @@
 
   .step.invisible {
     visibility: hidden;
-    margin: 50vh auto 50vh auto;
-    height: 1vh;
+  }
+
+  .step.invisible .step-content {
+    height: 100vh;
   }
 
   .step {
