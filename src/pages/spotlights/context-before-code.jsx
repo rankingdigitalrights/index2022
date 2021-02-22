@@ -16,6 +16,7 @@ import NarrativeLink from "../../components/link";
 import NarrativeContainer from "../../components/narrative-container-full-feature";
 import Readmore from "../../components/readmore";
 import ScrollyFeature from "../../components/scrolly-feature";
+import ImgKashmir from "../../images/bg-kashmir.jpg";
 import Cancel from "../../images/icons/cancel.svg";
 import Help from "../../images/icons/help.svg";
 import ImgChartF4 from "../../images/spotlights/soe-f4-barchart.png";
@@ -517,12 +518,11 @@ const section4 = (
         </a>
       </sup>
     </p>
-    <FigureImg
+    {/* <FigureImg
       img={ImgTweetFB}
       caption="Twitter user Tim Samoff <a href='https://twitter.com/timsamoff/status/1265374113901604865/photo/1' target='_blank' rel='noopener noreferrer'>posted a screenshot</a> showing a notification he received from Facebook, when he “disagreed” with the company's decision to take down his page. Tweet used with permission."
       alt="Embed FB “SORRY YOU CAN’T APPEAL THAT”"
-    />
-
+    /> */}
     <p className="hidden">
       The{" "}
       <NarrativeLink href="https://www.cnet.com/news/youtube-automation-removes-11m-videos-in-3-months/">
@@ -725,7 +725,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 </p>
               </h1>
               <span className="font-platform text-sm">
-                By Elizabeth M. Renieris & Jan Rydzak
+                By Jan Rydzak &namp; Elizabeth M. Renieris
               </span>
             </div>
             {section1}
@@ -770,14 +770,24 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               if (index === 3 && direction === "down") {
                 animateSVGviewBox("#map-world svg", "#Asia-View", "zoom-asia");
               }
-              if (index === story1.steps.length - 1 && direction === "down") {
-                animateSVGviewBox(
-                  "#map-world svg",
-                  "#Shutdowns-View",
-                  "zoom-shutdowns",
-                );
+              if (index === story1.steps.length - 1) {
+                showItem("#map-world");
+                hideItem("#modal-kashmir");
+                if (direction === "down") {
+                  animateSVGviewBox(
+                    "#map-world svg",
+                    "#Shutdowns-View",
+                    "zoom-shutdowns",
+                  );
+                }
+              }
+
+              if (index === story1.steps.length) {
+                hideItem("#map-world");
+                showItem("#modal-kashmir");
               }
             }}
+
             // stepExit={({index, direction}) => {
             //   console.log(`Local Exit 1: ${index} - ${direction}`); // TODO
             // }}
@@ -791,6 +801,20 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               >
                 <Help className="w-5 h-5 ml-3" />
               </button>
+              <div
+                className="modal pl-0 pr-0 fade-out h-full flex relative z-10 items-center justify-center"
+                style={{display: "none"}}
+                id="modal-kashmir"
+              >
+                <div className="relative overflow-auto">
+                  <FigureImg
+                    img={ImgKashmir}
+                    extraClass="contained"
+                    caption="People queue for milk during the pandemic in Kashmir. Photo by Abid Bhat, used with permission."
+                    alt="People queue for milk during the pandemic in Kashmir. Photo by Abid Bhat, used with permission."
+                  />
+                </div>
+              </div>
               <div
                 className="modal relative fade-out z-10 w-full h-full items-center justify-center"
                 style={{display: "none"}}
@@ -871,6 +895,15 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 hideItem("#fb-infobox");
                 showItem("#fb-info");
               }
+
+              if (index === 8) {
+                showItem("#chart-q1");
+                hideItem("#modal-tweet");
+              }
+              if (index === 9) {
+                hideItem("#chart-q1");
+                showItem("#modal-tweet");
+              }
             }}
             // stepExit={({index, direction}) => {
             //   console.log(`Local Exit: ${index} - ${direction}`);
@@ -885,6 +918,20 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               >
                 <Help className="w-5 h-5 ml-3" />
               </button>
+              <div
+                className="modal fade-out h-full flex relative z-10 items-center justify-center"
+                style={{display: "none"}}
+                id="modal-tweet"
+              >
+                <div className="relative max-w-screen-md overflow-auto">
+                  <FigureImg
+                    img={ImgTweetFB}
+                    extraClass="contained"
+                    caption="Twitter user Tim Samoff <a href='https://twitter.com/timsamoff/status/1265374113901604865/photo/1' target='_blank' rel='noopener noreferrer'>posted a screenshot</a> showing a notification he received from Facebook, when he “disagreed” with the company's decision to take down his page. Tweet used with permission."
+                    alt="Embed FB “SORRY YOU CAN’T APPEAL THAT”"
+                  />
+                </div>
+              </div>
               <div
                 className="modal relative fade-out z-10 w-full h-full items-center justify-center"
                 style={{display: "none"}}

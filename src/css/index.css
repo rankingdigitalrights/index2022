@@ -381,6 +381,18 @@
     padding-right: 1rem;
   }
 
+  main.spotlight section.scrolly .modal.fade-in {
+    transition: opacity 1s ease-in;
+  }
+
+  main.spotlight section.scrolly .modal figure {
+    margin: 0 auto;
+  }
+
+  main.spotlight section.scrolly .modal figcaption {
+    position: relative;
+  }
+
   main.spotlight h2.sticky-h {
     @apply sticky;
     top: 30px;
@@ -496,6 +508,10 @@
     -moz-transition: background-color 1.2s ease-out;
     -o-transition: background-color 1.2s ease-out;
     transition: background-color 1.2s ease-out;
+  }
+
+  .scrolly-canvas figure.contained {
+    max-height: 100%;
   }
 
   div.scrolly-steps {
