@@ -5,7 +5,7 @@ import React from "react";
 import {enumerate} from "../utils";
 
 interface CompanyRankCardProps {
-  company: string;
+  company: React.ReactNode;
   score: number;
   rank: number;
   basicInformation: React.ReactNode;
