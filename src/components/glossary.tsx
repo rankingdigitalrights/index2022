@@ -1,8 +1,7 @@
 /* eslint react/no-danger: off */
 import React, {useContext} from "react";
 
-import glossary from "../../data/glossary.json";
-import {ModalContext} from "../context";
+import {GlossaryContext, ModalContext} from "../context";
 
 interface GlossaryProps {
   id: string;
@@ -11,8 +10,9 @@ interface GlossaryProps {
 
 const Glossary = ({id, children}: GlossaryProps) => {
   const modal = useContext(ModalContext);
+  const glossary = useContext(GlossaryContext);
 
-  const entry = glossary.find((item) => item.id === id);
+  const entry = glossary[id];
 
   if (!entry) return <span>XXXX {id} XXXX</span>;
 

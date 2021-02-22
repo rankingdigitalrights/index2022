@@ -1,5 +1,7 @@
 import React from "react";
 
+import {Glossary} from "./types";
+
 export type ModalEntry = {
   title: string;
   hasHtmlTitle?: boolean;
@@ -22,3 +24,7 @@ export const ModalContext = React.createContext<ModalCtx>({
   toggleModal: () => {},
   closeModal: () => {},
 });
+
+export const GlossaryContext = React.createContext<Record<string, Glossary>>(
+  {},
+);

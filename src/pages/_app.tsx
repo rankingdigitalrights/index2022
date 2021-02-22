@@ -6,7 +6,8 @@ import React, {useEffect, useState} from "react";
 import smoothscroll from "smoothscroll-polyfill";
 import SwiperCore, {Pagination} from "swiper";
 
-import {ModalContext, ModalEntry} from "../context";
+import glossary from "../../data/glossary.json";
+import {GlossaryContext, ModalContext, ModalEntry} from "../context";
 import {initMatomo} from "../matomo";
 
 SwiperCore.use([Pagination]);
@@ -34,6 +35,19 @@ const ModalWrapper = ({children}: {children?: React.ReactNode}) => {
     >
       {children}
     </ModalContext.Provider>
+  );
+};
+
+const GlossaryWrapper = ({children}: {children?: React.ReactNode}) => {
+  const glossaryEntries = glossary.reduce(
+    (memo, entry) => ({...memo, [entry.id]: entry}),
+    {},
+  );
+
+  return (
+    <GlossaryContext.Provider value={glossaryEntries}>
+      {children}
+    </GlossaryContext.Provider>
   );
 };
 
@@ -69,9 +83,11 @@ const MyApp = ({Component, pageProps}: AppProps) => {
   }, []);
 
   return (
-    <ModalWrapper>
-      <Component {...pageProps} />
-    </ModalWrapper>
+    <GlossaryWrapper>
+      <ModalWrapper>
+        <Component {...pageProps} />
+      </ModalWrapper>
+    </GlossaryWrapper>
   );
 };
 
