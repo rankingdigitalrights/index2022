@@ -118,7 +118,16 @@ const NarrativeContainer = ({
       </div>
 
       {readmoreSelection.length > 0 && (
-        <div className="bg-beige flex py-3 md:py-12">
+        <div className="bg-beige flex flex-col items-center py-3 md:pt-10 md:pb-6">
+          <span
+            className={c(
+              "narrative-container relative mx-3  font-platform text-lg font-bold mb-3",
+              "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
+            )}
+          >
+            Readmore:
+          </span>
+
           <div
             className={c(
               "narrative-container relative flex flex-col mx-3 md:mx-auto lg:flex-row items-center",
