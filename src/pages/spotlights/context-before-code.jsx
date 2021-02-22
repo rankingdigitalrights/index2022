@@ -723,7 +723,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 </p>
               </h1>
               <span className="font-platform text-sm">
-                By: Elizabeth M. Renieris & Jan Rydzak
+                By Elizabeth M. Renieris & Jan Rydzak
               </span>
             </div>
             {section1}
