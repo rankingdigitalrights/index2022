@@ -144,15 +144,15 @@ const Home = ({
             </div>
             <div className="w-full sm:w-1/2 sm:flex-grow md:items-center bg-light-freedom z-10">
               <HomeBox
-                title="Recommendations"
+                title="How can companies change?"
                 href="/recommendations"
                 theme="dark"
                 className="h-60 lg:h-80"
               >
                 <div className="flex flex-col h-full justify-end">
                   <p>
-                    Our guidance for companies and policymakers committed to
-                    protecting and promoting human rights online
+                    Our recommendations for companies and policymakers committed
+                    to protecting and promoting human rights online
                   </p>
                 </div>
               </HomeBox>
