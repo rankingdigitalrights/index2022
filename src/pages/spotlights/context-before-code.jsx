@@ -111,18 +111,6 @@ const footnotes = (
         <a href="#ftnt_ref3" id="ftnt3">
           [3]
         </a>{" "}
-        Appeals on Instagram were turned off completely, according to the same
-        report. The figures are based on Facebook&rsquo;s disclosed categories
-        of enforcement data. Facebook did not explicitly state whether the sum
-        of these categories represents all of the enforcement actions it takes
-        on its platform.
-      </p>
-    </div>
-    <div>
-      <p>
-        <a href="#ftnt_ref4" id="ftnt4">
-          [4]
-        </a>{" "}
         See Lucy Amis and Ashleigh Owens, A Guide for Business: How to Develop a
         Human Rights Policy, 2nd ed. (New York: UN Global Compact and Office of
         the United Nations High Commissioner for Human Rights, 2015), available
@@ -511,12 +499,7 @@ const section4 = (
       the processing of new appeals sent by disgruntled users, indicating that
       the company&rsquo;s experiments with algorithmic moderation had not worked
       out so well. The system&rsquo;s apparent collapse left millions of users
-      unable to appeal moderation decisions at all.&nbsp;
-      <sup>
-        <a id="ftnt_ref3" href="#ftnt3">
-          [3]
-        </a>
-      </sup>
+      unable to appeal moderation decisions at all.
     </p>
     {/* <FigureImg
       img={ImgTweetFB}
@@ -568,8 +551,8 @@ const section5 = (
       Companies must make a public commitment to respect human rights standards
       across their operations.
       <sup>
-        <a id="ftnt_ref4" href="#ftnt4">
-          [4]
+        <a id="ftnt_ref3" href="#ftnt3">
+          [3]
         </a>
       </sup>{" "}
       Of course, a policy alone will not improve performance. As our 2020 data
@@ -965,6 +948,14 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                       Google Transparency Report (YouTube)
                     </NarrativeLink>
                     .
+                    <br />
+                    <br />
+                    Appeals on Instagram were turned off completely, according
+                    to the same report. The figures are based on
+                    Facebook&rsquo;s disclosed categories of enforcement data.
+                    Facebook did not explicitly state whether the sum of these
+                    categories represents all of the enforcement actions it
+                    takes on its platform.
                   </p>
                 </div>
               </div>
