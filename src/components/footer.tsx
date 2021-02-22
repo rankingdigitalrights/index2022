@@ -88,11 +88,11 @@ const Footer = ({className}: FooterProps) => {
               </li>
               <li className="pb-1">
                 <a
-                  className="text-white no-underline flex items-center"
+                  className="text-white no-underline flex items-center mt-1"
                   href="mailto:info@rankingdigitalrights.org"
                 >
-                  <LogoEmail className="flex-none w-3 h-3" />
-                  <span className="ml-2">
+                  <LogoEmail className="flex-none place-self-start w-3 h-3" />
+                  <span className="ml-2 leading-none">
                     Media inquiries: comms@rankingdigitalrights.org
                   </span>
                 </a>
