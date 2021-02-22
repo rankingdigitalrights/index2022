@@ -13,6 +13,7 @@ import FigureImg from "../../components/figure-img";
 import FigureSvg from "../../components/figure-svg";
 import Footnotes from "../../components/footnotes";
 import Layout from "../../components/layout";
+import NarrativeLink from "../../components/link";
 import NarrativeContainer from "../../components/narrative-container-full-feature";
 import Readmore from "../../components/readmore";
 import ScrollyFeature from "../../components/scrolly-feature";
@@ -125,9 +126,9 @@ const footnotes = (
         Human Rights Policy, 2nd ed. (New York: UN Global Compact and Office of
         the United Nations High Commissioner for Human Rights, 2015), available
         at{" "}
-        <a href="https://d306pr3pise04h.cloudfront.net/docs/issues_doc%2Fhuman_rights%2FResources%2FHR_Policy_Guide_2nd_Edition.pdf">
+        <NarrativeLink href="https://d306pr3pise04h.cloudfront.net/docs/issues_doc%2Fhuman_rights%2FResources%2FHR_Policy_Guide_2nd_Edition.pdf">
           FHR_Policy_Guide_2nd_Edition.pdf
-        </a>
+        </NarrativeLink>
       </p>
     </div>
   </>
@@ -139,28 +140,28 @@ const section1 = (
     <p>
       The COVID-19 pandemic has brought about a multitude of crises that stretch
       far beyond the realm of public health. In conflict areas like{" "}
-      <a href="https://www.hrw.org/news/2020/10/14/war-and-covid-19-yemen">
+      <NarrativeLink href="https://www.hrw.org/news/2020/10/14/war-and-covid-19-yemen">
         Yemen
-      </a>
+      </NarrativeLink>
       , the disease compounded already dire circumstances for civilians seeking
       protection from ongoing violence. For students around the world, it laid
       bare the meaning of the{" "}
-      <a href="https://www.weforum.org/agenda/2020/04/coronavirus-education-global-covid19-online-digital-learning/">
+      <NarrativeLink href="https://www.weforum.org/agenda/2020/04/coronavirus-education-global-covid19-online-digital-learning/">
         digital divide
-      </a>
+      </NarrativeLink>
       : those with reliable internet access have been able to keep up with
       schooling, and those without have fallen behind. In the tech sector, while
       profits have soared, the spread of algorithmically-driven{" "}
-      <a href="https://secure.avaaz.org/campaign/en/facebook_threat_health/">
+      <NarrativeLink href="https://secure.avaaz.org/campaign/en/facebook_threat_health/">
         disinformation about the virus
-      </a>{" "}
+      </NarrativeLink>{" "}
       has brought fatal consequences to people around the world.
     </p>
     <p>
       While the digital platforms we rank were all prepared to{" "}
-      <a href="https://www.ft.com/content/dcd96d62-ffe5-414a-a392-018f4208d63a/">
+      <NarrativeLink href="https://www.ft.com/content/dcd96d62-ffe5-414a-a392-018f4208d63a/">
         seize the moment and profit
-      </a>{" "}
+      </NarrativeLink>{" "}
       from the circumstances created by the pandemic, all the companies were
       caught off guard by the impact of COVID-19 on their own users. Yet they
       have all weathered crises before. Telcos have raced to repair
@@ -212,23 +213,23 @@ const section2a = (
     <h2>No network, no peace</h2>
     <p>
       From{" "}
-      <a href="https://globalvoices.org/2020/09/29/azerbaijani-authorities-disrupt-internet-nationwide-amid-nagorno-karabakh-clashes/">
+      <NarrativeLink href="https://globalvoices.org/2020/09/29/azerbaijani-authorities-disrupt-internet-nationwide-amid-nagorno-karabakh-clashes/">
         Azerbaijan
-      </a>{" "}
+      </NarrativeLink>{" "}
       to{" "}
-      <a href="https://www.hrw.org/news/2020/06/19/myanmar-end-worlds-longest-internet-shutdown">
+      <NarrativeLink href="https://www.hrw.org/news/2020/06/19/myanmar-end-worlds-longest-internet-shutdown">
         Myanmar
-      </a>{" "}
+      </NarrativeLink>{" "}
       to{" "}
-      <a href="https://netblocks.org/reports/zimbabwe-internet-disruption-limits-coverage-of-protests-7yNV70yq">
+      <NarrativeLink href="https://netblocks.org/reports/zimbabwe-internet-disruption-limits-coverage-of-protests-7yNV70yq">
         Zimbabwe
-      </a>
+      </NarrativeLink>
       , network shutdowns have become a knee-jerk government response to
       conflict and political upheaval. In 2019 alone, governments around the
       world{" "}
-      <a href="https://www.accessnow.org/cms/assets/uploads/2020/02/KeepItOn-2019-report-1.pdf">
+      <NarrativeLink href="https://www.accessnow.org/cms/assets/uploads/2020/02/KeepItOn-2019-report-1.pdf">
         ordered
-      </a>{" "}
+      </NarrativeLink>{" "}
       approximately 213 network shutdowns, many of them designed to be
       indefinite.
     </p>
@@ -236,20 +237,22 @@ const section2a = (
       In a network shutdown, the mass violation of freedom of expression is
       typically only the first in a cascade of human rights harms that follow.
       People are rendered unable to communicate with loved ones, obtain vital{" "}
-      <a href="https://globalvoices.org/2018/09/07/south-asian-governments-keep-ordering-mobile-shutdowns-and-leaving-users-in-the-dark/">
+      <NarrativeLink href="https://globalvoices.org/2018/09/07/south-asian-governments-keep-ordering-mobile-shutdowns-and-leaving-users-in-the-dark/">
         news and health information
-      </a>
+      </NarrativeLink>
       , or call for help in emergencies, putting their right to life in danger.
       Shutdowns can also{" "}
-      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3330413">
+      <NarrativeLink href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3330413">
         foment violence
-      </a>
+      </NarrativeLink>
       , hide evidence of{" "}
-      <a href="https://iran-shutdown.amnesty.org/">killings</a>, or even send
-      the disconnected{" "}
-      <a href="https://www.premiumtimesng.com/news/145640-borno-residents-want-phone-network-restored-boko-haram-gets-deadlier.html">
+      <NarrativeLink href="https://iran-shutdown.amnesty.org/">
+        killings
+      </NarrativeLink>
+      , or even send the disconnected{" "}
+      <NarrativeLink href="https://www.premiumtimesng.com/news/145640-borno-residents-want-phone-network-restored-boko-haram-gets-deadlier.html">
         directly into the line of fire
-      </a>
+      </NarrativeLink>
       .
     </p>
   </section>
@@ -260,19 +263,21 @@ const section2b = (
     <p>
       The 12 telecommunications companies in the RDR Index operate in 125
       countries. In 2020,{" "}
-      <a href="https://www.top10vpn.com/cost-of-internet-shutdowns">seven</a> of
-      these companies were known to have executed government-ordered network
+      <NarrativeLink href="https://www.top10vpn.com/cost-of-internet-shutdowns">
+        seven
+      </NarrativeLink>{" "}
+      of these companies were known to have executed government-ordered network
       shutdowns, either directly or through their subsidiaries. Two cases stand
       out: Telenor, a dominant provider in Myanmar, cut off internet access for
       more than a{" "}
-      <a href="https://www.hrw.org/news/2020/06/19/myanmar-end-worlds-longest-internet-shutdown">
+      <NarrativeLink href="https://www.hrw.org/news/2020/06/19/myanmar-end-worlds-longest-internet-shutdown">
         million people
-      </a>{" "}
+      </NarrativeLink>{" "}
       in Myanmar&rsquo;s Rakhine and Chin states, and kept it off at the
       government&rsquo;s behest. In India,{" "}
-      <a href="https://news.un.org/en/story/2019/08/1044741">
+      <NarrativeLink href="https://news.un.org/en/story/2019/08/1044741">
         millions of residents of Kashmir
-      </a>{" "}
+      </NarrativeLink>{" "}
       have lived under digital siege since mid-2019, thanks in part to a
       shutdown executed by Bharti Airtel and its peers at the order of the Modi
       government.
@@ -286,20 +291,20 @@ const section2b = (
     <p>
       In Myanmar, while Telenor complied with government orders, the company
       publicly{" "}
-      <a href="https://www.telenor.com/network-restrictions-in-myanmar-1-august-2020/">
+      <NarrativeLink href="https://www.telenor.com/network-restrictions-in-myanmar-1-august-2020/">
         opposed the blackout
-      </a>{" "}
+      </NarrativeLink>{" "}
       and published{" "}
-      <a href="https://www.telenor.com/internet-services-restricted-in-five-townships-in-myanmar-03-february-2020/">
+      <NarrativeLink href="https://www.telenor.com/internet-services-restricted-in-five-townships-in-myanmar-03-february-2020/">
         detailed information
-      </a>{" "}
+      </NarrativeLink>{" "}
       about the shutdown, identifying the order&rsquo;s legal basis and
       responsible authorities. As the government repeatedly extended the
       blackout, the company continued to release updates. Telenor also injected
       more transparency on shutdowns into its{" "}
-      <a href="https://www.telenor.com/wp-content/uploads/2020/08/Telenor-Disclosure-report-2019_08.pdf">
+      <NarrativeLink href="https://www.telenor.com/wp-content/uploads/2020/08/Telenor-Disclosure-report-2019_08.pdf">
         annual report
-      </a>{" "}
+      </NarrativeLink>{" "}
       on authority requests and mitigated the risk to lives and livelihoods by
       reducing international call rates, enabling people to more easily make
       calls in the absence of VoIP apps like WhatsApp.
@@ -313,13 +318,13 @@ const section2c = (
       By contrast, India&rsquo;s Bharti Airtel has exercised an apparent policy
       of silence, reporting no information about the order, or data on
       shutdowns. In India, the world&rsquo;s{" "}
-      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3330413">
+      <NarrativeLink href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3330413">
         most frequent purveyor
-      </a>{" "}
+      </NarrativeLink>{" "}
       of this extreme form of digital repression, such corporate inertia can{" "}
-      <a href="http://thebachchaoproject.org/wp-content/uploads/Of_Sieges_and_Shutdowns_The_Bachchao_Project_2018_12_22.pdf">
+      <NarrativeLink href="http://thebachchaoproject.org/wp-content/uploads/Of_Sieges_and_Shutdowns_The_Bachchao_Project_2018_12_22.pdf">
         trigger hopelessness
-      </a>{" "}
+      </NarrativeLink>{" "}
       among those who are perpetually disconnected.
     </p>
     <p>
@@ -354,9 +359,9 @@ const section3a = (
     </p>
     <p>
       Facebook itself has{" "}
-      <a href="https://www.wsj.com/articles/facebook-knows-it-encourages-division-top-executives-nixed-solutions-11590507499">
+      <NarrativeLink href="https://www.wsj.com/articles/facebook-knows-it-encourages-division-top-executives-nixed-solutions-11590507499">
         published research
-      </a>{" "}
+      </NarrativeLink>{" "}
       on its operations in Germany showing that 64 percent of the time, when
       people join an extremist Facebook Group, they do so because the platform
       recommended it.
@@ -364,9 +369,9 @@ const section3a = (
     <p>
       Structured human rights impact assessments are rapidly gaining acceptance
       as a{" "}
-      <a href="https://www.humanrights.dk/publications/human-rights-impact-assessment-digital-activities">
+      <NarrativeLink href="https://www.humanrights.dk/publications/human-rights-impact-assessment-digital-activities">
         model
-      </a>{" "}
+      </NarrativeLink>{" "}
       for evaluating the harms that a company may cause or contribute to in
       different contexts. Strong due diligence can help predict, for instance,
       the rise of fringe movements in social media communities or the likelihood
@@ -411,18 +416,18 @@ const section3a = (
       wave of violent attacks, mostly targeting Muslims, who represent a
       minority in the predominantly Buddhist country. Following bitter criticism
       from{" "}
-      <a href="https://groundviews.org/2018/04/10/open-letter-to-facebook-implement-your-own-community-standards/">
+      <NarrativeLink href="https://groundviews.org/2018/04/10/open-letter-to-facebook-implement-your-own-community-standards/">
         civil society
-      </a>{" "}
+      </NarrativeLink>{" "}
       and coverage by major media including the{" "}
-      <a href="https://www.nytimes.com/2018/04/21/world/asia/facebook-sri-lanka-riots.html">
+      <NarrativeLink href="https://www.nytimes.com/2018/04/21/world/asia/facebook-sri-lanka-riots.html">
         <em>New York Times</em>
-      </a>
+      </NarrativeLink>
       , Facebook commissioned a third-party assessment of its operations in Sri
       Lanka. In May 2020, the company released an abridged version of{" "}
-      <a href="https://about.fb.com/news/2020/05/human-rights-work-in-asia/">
+      <NarrativeLink href="https://about.fb.com/news/2020/05/human-rights-work-in-asia/">
         the assessment
-      </a>
+      </NarrativeLink>
       , alongside two others it had commissioned two years prior.
     </p>
   </section>
@@ -436,9 +441,9 @@ const section3b = (
       Facebook&rsquo;s ranking and recommendation algorithms helped incite
       communal violence and exacerbate other harms. In its response to two of
       the assessments, Facebook{" "}
-      <a href="https://about.fb.com/wp-content/uploads/2020/05/Sri-Lanka-HRIA-Executive-Summary-v82.pdf">
+      <NarrativeLink href="https://about.fb.com/wp-content/uploads/2020/05/Sri-Lanka-HRIA-Executive-Summary-v82.pdf">
         addressed this issue
-      </a>{" "}
+      </NarrativeLink>{" "}
       in the most skeletal way, claiming only that certain engagement-driving
       algorithms were &ldquo;now phased out.&rdquo;
     </p>
@@ -446,9 +451,9 @@ const section3b = (
       Companies also need to publicly report how they carry out these actions.
       Here too, the companies in the RDR Index are falling short.
       Facebook&rsquo;s{" "}
-      <a href="https://transparency.facebook.com/community-standards-enforcement">
+      <NarrativeLink href="https://transparency.facebook.com/community-standards-enforcement">
         Community Standards Enforcement Report
-      </a>
+      </NarrativeLink>
       , for example, does not include the total volume of restricted content or
       accounts, enforcement by restriction type, or country-specific
       information.
@@ -477,30 +482,32 @@ const section4 = (
       communication limbo. When accounts are wrongfully suspended, people lose
       what might be their only remote communication tool. On the content side,
       we&rsquo;ve seen companies mistakenly censor everything from vital{" "}
-      <a href="https://citizenlab.ca/2020/03/censored-contagion-how-information-on-the-coronavirus-is-managed-on-chinese-social-media/">
+      <NarrativeLink href="https://citizenlab.ca/2020/03/censored-contagion-how-information-on-the-coronavirus-is-managed-on-chinese-social-media/">
         public health information
-      </a>
+      </NarrativeLink>
       , to{" "}
-      <a href="https://slate.com/technology/2020/10/facebook-instagram-endsars-protests-nigeria.html">
+      <NarrativeLink href="https://slate.com/technology/2020/10/facebook-instagram-endsars-protests-nigeria.html">
         calls for protest
-      </a>
+      </NarrativeLink>
       , to{" "}
-      <a href="https://www.hrw.org/news/2020/09/10/social-media-platforms-remove-war-crimes-evidence">
+      <NarrativeLink href="https://www.hrw.org/news/2020/09/10/social-media-platforms-remove-war-crimes-evidence">
         evidence of war crimes
-      </a>
+      </NarrativeLink>
       .
     </p>
     <p>
       When the COVID-19 pandemic struck, Facebook{" "}
-      <a href="https://about.fb.com/news/2020/12/coronavirus/">sent home</a>{" "}
+      <NarrativeLink href="https://about.fb.com/news/2020/12/coronavirus/">
+        sent home
+      </NarrativeLink>{" "}
       workers who review millions of posts each day for rule violations. The
       company decided to put its algorithms in charge instead, hoping the
       technology would keep content moderation processes moving. But the
       solution had at least one critical flaw: it was unable to address appeals.
       In an August 2020 press call, Facebook explained that it had{" "}
-      <a href="https://about.fb.com/wp-content/uploads/2020/08/Press-Call-Transcript.pdf">
+      <NarrativeLink href="https://about.fb.com/wp-content/uploads/2020/08/Press-Call-Transcript.pdf">
         severely scaled back
-      </a>{" "}
+      </NarrativeLink>{" "}
       the processing of new appeals sent by disgruntled users, indicating that
       the company&rsquo;s experiments with algorithmic moderation had not worked
       out so well. The system&rsquo;s apparent collapse left millions of users
@@ -513,29 +520,29 @@ const section4 = (
     </p>
     <FigureImg
       img={ImgTweetFB}
-      caption="Embed FB “SORRY YOU CAN’T APPEAL THAT” [<a href='https://twitter.com/timsamoff/status/1265374113901604865/photo/1'>Tweet Link</a>]"
+      caption="Embed FB “SORRY YOU CAN’T APPEAL THAT” [<a href='https://twitter.com/timsamoff/status/1265374113901604865/photo/1' target='_blank' rel='noopener noreferrer'>Tweet Link</a>]"
       alt="Embed FB “SORRY YOU CAN’T APPEAL THAT”"
     />
 
     <p>
       The{" "}
-      <a href="https://www.cnet.com/news/youtube-automation-removes-11m-videos-in-3-months/">
+      <NarrativeLink href="https://www.cnet.com/news/youtube-automation-removes-11m-videos-in-3-months/">
         story at YouTube
-      </a>{" "}
+      </NarrativeLink>{" "}
       was different. Like Facebook, Google (YouTube&rsquo;s parent company) was
       forced to send workers home, also &ldquo;relying more on technology&rdquo;
       to carry out content moderation. Google even offered a statement saying
       that the change might result in the company &ldquo;removing more content
       that may not be violative of our policies.&rdquo; But Google also thought
       ahead and{" "}
-      <a href="https://www.protocol.com/youtube-content-moderation-covid-19">
+      <NarrativeLink href="https://www.protocol.com/youtube-content-moderation-covid-19">
         ramped up its appeals systems
-      </a>
+      </NarrativeLink>
       , anticipating that algorithmic content moderation would lead to more
       wrongful removals and more appeals from users. Indeed, appeals{" "}
-      <a href="https://transparencyreport.google.com/youtube-policy/appeals">
+      <NarrativeLink href="https://transparencyreport.google.com/youtube-policy/appeals">
         doubled
-      </a>{" "}
+      </NarrativeLink>{" "}
       in the same period. But because the company took measures to prepare, the
       number of videos restored on appeal quadrupled.
     </p>
@@ -577,18 +584,18 @@ const section5 = (
     <p>
       Take Apple, which was one of the most improved companies in the 2020
       Index, largely due to a new{" "}
-      <a href="https://s2.q4cdn.com/470004039/files/doc_downloads/gov_docs/Apple-Human-Rights-Policy.pdf">
+      <NarrativeLink href="https://s2.q4cdn.com/470004039/files/doc_downloads/gov_docs/Apple-Human-Rights-Policy.pdf">
         human rights policy
-      </a>{" "}
+      </NarrativeLink>{" "}
       that the company published after years of{" "}
-      <a href="https://rankingdigitalrights.org/2020/10/09/the-radar-weve-got-our-eyes-on-apple/">
+      <NarrativeLink href="https://rankingdigitalrights.org/2020/10/09/the-radar-weve-got-our-eyes-on-apple/">
         sustained pressure by RDR
-      </a>{" "}
+      </NarrativeLink>{" "}
       and others. When Apple delayed the rollout of pro-privacy, anti-tracking
       features in iOS 14, advocates (including RDR) were able to{" "}
-      <a href="https://9to5mac.com/2020/11/19/apple-privacy-letter-ios-14-facebook/">
+      <NarrativeLink href="https://9to5mac.com/2020/11/19/apple-privacy-letter-ios-14-facebook/">
         use the new policy
-      </a>{" "}
+      </NarrativeLink>{" "}
       to hold the company to account.
     </p>
     <h3>2. Double down on due diligence</h3>
@@ -631,9 +638,9 @@ const section5 = (
       of their own policies and only six revealed data on government censorship
       demands. Even existing transparency reports suffer from major blind spots.
       Facebook&rsquo;s{" "}
-      <a href="https://transparency.facebook.com/community-standards-enforcement">
+      <NarrativeLink href="https://transparency.facebook.com/community-standards-enforcement">
         Community Standards Enforcement Report
-      </a>
+      </NarrativeLink>
       , for example, does not include the total volume of restricted content or
       accounts, enforcement by restriction type, or country-specific
       information.
@@ -654,9 +661,9 @@ const section6 = (
       Without preparedness, crises spin out of control. Understaffed hospitals
       and truncated national pandemic response teams fail to harness the
       outbreaks of diseases, security forces{" "}
-      <a href="https://www.theatlantic.com/international/archive/2021/01/us-big-tech-capitol-hill/617636/">
+      <NarrativeLink href="https://www.theatlantic.com/international/archive/2021/01/us-big-tech-capitol-hill/617636/">
         fail to protect
-      </a>{" "}
+      </NarrativeLink>{" "}
       core institutions overwhelmed by frenzied mobs, and social media companies
       fail to quash online threats of violence before they lead to real-life
       harm.
@@ -729,7 +736,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             <FigureImg
               img={ImgProtest}
               extraClass="spot-figure"
-              caption="Demonstrators protest a network shutdown in Myanmar. Photo by <a href='https://twitter.com/lwin051965' target='_blank'>Nyinyi Lwin</a>, used with permission."
+              caption="Demonstrators protest a network shutdown in Myanmar. Photo by <a href='https://twitter.com/lwin051965' target='_blank' rel='noopener noreferrer'>Nyinyi Lwin</a>, used with permission."
               alt="TODO - Demonstrators protest a network shutdown in Myanmar. Photo by Nyinyi Lwin, used with permission."
             />
           </div>
@@ -858,14 +865,14 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                   September 2020. Data for Facebook does not include the
                   &ldquo;Fake Accounts&rdquo; category, for which appeals are
                   not reported. Sources:{" "}
-                  <a href="https://transparency.facebook.com/community-standards-enforcement">
+                  <NarrativeLink href="https://transparency.facebook.com/community-standards-enforcement">
                     Community Standards Enforcement Report (Facebook)
-                  </a>{" "}
+                  </NarrativeLink>{" "}
                   and{" "}
-                  <a href="https://transparencyreport.google.com/youtube-policy/appeals">
+                  <NarrativeLink href="https://transparencyreport.google.com/youtube-policy/appeals">
                     {" "}
                     Google Transparency Report (YouTube)
-                  </a>
+                  </NarrativeLink>
                   .
                 </p>
               </div>
