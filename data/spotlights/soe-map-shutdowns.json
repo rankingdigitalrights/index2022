@@ -13,7 +13,7 @@
     },
     {
       "id": "b1",
-      "content": "<p>In 2020, seven of these companies were known to have executed government - ordered network shutdowns, either directly or through their subsidiaries.</p><p>They include <strong>Bharti Airtel</strong> (India, Chad, Tanzania), <strong>Orange</strong> (Guinea, Jordan), <strong>Telenor</strong> (Myanmar), <strong>Vodafone</strong> (Turkey, India via Vodafone Idea), <strong>MTN</strong> (Sudan, Syria, Guinea, Yemen), <strong>Etisalat</strong> (Tanzania via ZanTel), <strong>América Móvil</strong> (Belarus via A1 Belarus / A1 Telekom Austria Group).</p>",
+      "content": "<p>In 2020, seven of these companies were known to have executed government - ordered network shutdowns, either directly or through their subsidiaries.</p><p>They include <strong>Bharti Airtel</strong> (India, Chad, Tanzania), <strong>Orange</strong> (Guinea, Jordan), <strong>Telenor</strong> (Myanmar), <strong>Vodafone</strong> (Turkey, India via Vodafone Idea), <strong>MTN</strong> (Sudan, Syria, Guinea, Yemen), <strong>Etisalat</strong> (Tanzania via ZanTel), and <strong>América Móvil</strong> (Belarus via A1 Belarus / A1 Telekom Austria Group).</p>",
       "color": "bg-mint-green",
       "showLayers": "#Shutdowns, #Labels, #Label-India, #Label-Myanmar, #Label-India"
     },
