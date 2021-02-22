@@ -325,6 +325,12 @@
     right: 1rem;
   }
 
+  main.spotlight :target {
+    scroll-margin-top: 1rem;
+    background-color: yellow;
+    transition: background-color 0.3s ease-in;
+  }
+
   main.spotlight h1 {
     max-width: 900px;
   }
