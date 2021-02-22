@@ -186,9 +186,11 @@ const CompanyPage = ({
 
           <div className="flex flex-col items-start w-full md:w-2/6 font-circular text-sm">
             <div>
-              <h3 className="font-bold pb-3">Services evaluated:</h3>
+              <h3 className="font-bold mt-3 md:mt-0 pb-3">
+                Services evaluated:
+              </h3>
 
-              <ul className="list-none list-inside ml-0 pl-0 border-b border-disabled-light w-full pb-6">
+              <ul className="shortlist list-none list-inside ml-0 pl-0 border-b border-disabled-light w-full pb-6">
                 {services
                   .filter(
                     ({kind}) =>
@@ -201,7 +203,7 @@ const CompanyPage = ({
                   ))}
               </ul>
 
-              <ul className="list-none list-outside ml-0 pl-0 border-b border-disabled-light w-full py-6">
+              <ul className="shortlist list-none list-outside ml-0 pl-0 border-b border-disabled-light w-full py-6">
                 {meta.operatingCompany && (
                   <li className="flex flex-col pt-0 pb-3">
                     <span className="font-bold">

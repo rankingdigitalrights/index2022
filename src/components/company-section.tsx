@@ -72,7 +72,7 @@ const CompanySection = ({
         </div>
 
         <div className="md:w-2/6 md:ml-3 print:hidden">
-          <div className="flex flex-col justify-end mb-6 md:mt-0">
+          <div className="flex flex-col justify-end mt-8 mb-6 md:mt-0">
             <h3 className="text-lg font-circular">Indicators</h3>
           </div>
 
