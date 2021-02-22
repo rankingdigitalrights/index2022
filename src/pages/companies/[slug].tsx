@@ -290,7 +290,7 @@ const CompanyPage = ({
 
       <div className="border-t border-disabled-dark">
         <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
-          <div className="flex flex-col md:flex-row items-center">
+          <div className="flex flex-col md:flex-row justify-center items-center">
             <CompanyScoreChart
               category="governance"
               score={index.scores.governance}
