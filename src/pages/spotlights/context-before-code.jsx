@@ -260,7 +260,7 @@ const section2b = (
       </NarrativeLink>
       .
     </p>
-    <p>
+    <p className="hidden">
       The 12 telecommunications companies in the RDR Index operate in 125
       countries. In 2020,{" "}
       <NarrativeLink href="https://www.top10vpn.com/cost-of-internet-shutdowns">
@@ -282,13 +282,13 @@ const section2b = (
       shutdown executed by Bharti Airtel and its peers at the order of the Modi
       government.
     </p>
-    <p>
+    <p className="hidden">
       Marginalized people in both conflict zones have suffered doubly from
       COVID-19 and communication disruptions. But the companies carried these
       orders out in starkly different ways that had measurable impacts for
       customers.
     </p>
-    <p>
+    <p className="hidden">
       In Myanmar, while Telenor complied with government orders, the company
       publicly{" "}
       <NarrativeLink href="https://www.telenor.com/network-restrictions-in-myanmar-1-august-2020/">
@@ -314,7 +314,7 @@ const section2b = (
 
 const section2c = (
   <section>
-    <p>
+    <p className="hidden">
       By contrast, India&rsquo;s Bharti Airtel has exercised an apparent policy
       of silence, reporting no information about the order, or data on
       shutdowns. In India, the world&rsquo;s{" "}
@@ -327,7 +327,7 @@ const section2c = (
       </NarrativeLink>{" "}
       among those who are perpetually disconnected.
     </p>
-    <p>
+    <p className="hidden">
       Telenor&rsquo;s response shows how transparency can form a breakwater
       against network shutdowns. When they receive a shutdown order, we urge
       companies to make this information public. But they must also take a stand
@@ -494,7 +494,7 @@ const section4 = (
       </NarrativeLink>
       .
     </p>
-    <p>
+    <p className="hidden">
       When the COVID-19 pandemic struck, Facebook{" "}
       <NarrativeLink href="https://about.fb.com/news/2020/12/coronavirus/">
         sent home
@@ -519,11 +519,11 @@ const section4 = (
     </p>
     <FigureImg
       img={ImgTweetFB}
-      caption="Embed FB “SORRY YOU CAN’T APPEAL THAT” [<a href='https://twitter.com/timsamoff/status/1265374113901604865/photo/1' target='_blank' rel='noopener noreferrer'>Tweet Link</a>]"
+      caption="Twitter user Tim Samoff <a href='https://twitter.com/timsamoff/status/1265374113901604865/photo/1' target='_blank' rel='noopener noreferrer'>posted a screenshot</a> showing a notification he received from Facebook, when he “disagreed” with the company's decision to take down his page. Tweet used with permission."
       alt="Embed FB “SORRY YOU CAN’T APPEAL THAT”"
     />
 
-    <p>
+    <p className="hidden">
       The{" "}
       <NarrativeLink href="https://www.cnet.com/news/youtube-automation-removes-11m-videos-in-3-months/">
         story at YouTube
@@ -783,6 +783,39 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             // }}
           >
             <figure className="scrolly-figure bg-light-grey">
+              <button
+                id="map-info"
+                className="btn-info focus:outline-none z-20"
+                // style={{display: "none"}}
+                onClick={() => toggleVisibility("#modal-map")}
+              >
+                <Help className="w-5 h-5 ml-3" />
+              </button>
+              <div
+                className="modal relative fade-out z-10 w-full h-full items-center justify-center"
+                style={{display: "none"}}
+                id="modal-map"
+              >
+                <div className="relative max-w-screen-md overflow-auto bg-light-grey">
+                  <button
+                    className="absolute mt-6 right-4"
+                    tabIndex={0}
+                    onClick={() => toggleVisibility("#modal-map")}
+                  >
+                    <span>
+                      <Cancel
+                        className="w-3 h-3 text-black fill-current"
+                        aria-label="Close modal"
+                      />
+                    </span>
+                  </button>
+                  <p className="p-8 bg-white m-auto h-auto content-center">
+                    This map feature draws on data from Indicator F10 of the
+                    2020 RDR Index, along with research by NetBlocks, an
+                    internet censorship research NGO.
+                  </p>
+                </div>
+              </div>
               <FigureSvg
                 className="scrolly-figure bg-light-grey"
                 svg={svgWorldMap}
@@ -890,10 +923,10 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               </div>
               <div
                 id="fb-infobox"
-                className="flex-col w-3/4 max-w-screen-md	hidden h-screen m-auto text-center justify-center items-center"
+                className="flex-col w-3/4 max-w-screen-md	hidden h-screen m-auto justify-center items-center"
               >
                 <div className="bg-white shadow-xl px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                  <h2>Background</h2>
+                  <h2 className="text-center">Background</h2>
                   <p>
                     When COVID - 19 hit, both Facebook and Google (YouTube’ s
                     parent company) sent their content moderators home, and
