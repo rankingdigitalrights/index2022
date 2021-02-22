@@ -8,12 +8,12 @@ import readmoreItems from "../../../data/readmore.json";
 import story2 from "../../../data/spotlights/soe-fb-vs-youtube.json";
 import story1 from "../../../data/spotlights/soe-map-shutdowns.json";
 import BoxPrompt from "../../components/box-prompt";
+import Donate from "../../components/donate";
 import FigureImg from "../../components/figure-img";
 import FigureSvg from "../../components/figure-svg";
 import Footnotes from "../../components/footnotes";
 import Layout from "../../components/layout";
 import NarrativeContainer from "../../components/narrative-container-full-feature";
-// import Donate from "../../components/donate";
 import Readmore from "../../components/readmore";
 import ScrollyFeature from "../../components/scrolly-feature";
 import ImgChartF4 from "../../images/spotlights/soe-f4-barchart.png";
@@ -908,8 +908,8 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
           >
             {section5}
             {section6}
-            {/* <Donate className={c("relative mx-auto mt-12", containerWidth)} /> */}
             <Footnotes source={footnotes} />
+            <Donate className={c("relative mx-auto mt-12 mb-8")} />
           </NarrativeContainer>
           <div className="bg-beige flex py-3 md:py-12">
             <div

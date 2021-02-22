@@ -12,8 +12,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Black.otf);
-    src: url(../../public/fonts/CircularStd-Black.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Black.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Black.woff) format("woff");
     font-weight: 700;
@@ -23,8 +22,7 @@
   @font-face {
     font-family: Circular;
     src: url(../../public/fonts/CircularStd-Book.ttf);
-    src: url(../../public/fonts/CircularStd-Book.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/CircularStd-Book.eot) format("embedded-opentype"),
       url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
       url(../../public/fonts/CircularStd-Book.woff) format("woff");
     font-weight: 400;
@@ -43,8 +41,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-Regular.otf);
-    src: url(../../public/fonts/LyonText-Regular.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-Regular.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
       url(../../public/fonts/LyonText-Regular.woff) format("woff");
     font-weight: 400;
@@ -64,8 +61,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-RegularItalic.otf);
-    src: url(../../public/fonts/LyonText-RegularItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-RegularItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
       url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
     font-weight: 400;
@@ -75,8 +71,7 @@
   @font-face {
     font-family: Lyon;
     src: url(../../public/fonts/LyonText-BoldItalic.otf);
-    src: url(../../public/fonts/LyonText-BoldItalic.eot)
-        format("embedded-opentype"),
+    src: url(../../public/fonts/LyonText-BoldItalic.eot) format("embedded-opentype"),
       url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
     font-weight: 700;
     font-style: italic;
@@ -227,8 +222,8 @@
     @apply mb-3;
   }
 
-  ul.menubar > li,
-  ul.footer > li {
+  ul.menubar>li,
+  ul.footer>li {
     @apply mb-0;
   }
 
@@ -302,7 +297,7 @@
     }
   }
 
-  .pullquote > p {
+  .pullquote>p {
     @apply p-0 m-0 leading-tight;
   }
 
@@ -571,18 +566,10 @@
     margin-bottom: 133vh;
   } */
 
-  .step.is-active h3 {
-    @apply bg-yellow-500 text-gray-200;
-  }
-
   .step h1,
   .step h2,
   .step h3 {
     @apply text-center;
-  }
-
-  .step h3 {
-    @apply p-4 bg-gray-200;
   }
 
   div.scrolly-chart {
