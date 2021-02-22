@@ -28,7 +28,7 @@ const ScrollySteps = (props) => {
               data-hide={hideLayers}
             >
               <div className="step-content">
-                <h2 className="bg-white-100">{title}</h2>
+                {title && <h2 className="bg-white-100">{title}</h2>}
                 <div
                   dangerouslySetInnerHTML={{
                     __html: content,

@@ -1,13 +1,13 @@
 {
   "steps": [{
       "id": "a1",
-      "content": "<h2>A Tale of Two Shutdowns</h2>",
+      "content": "<h1>A Tale of Two Shutdowns</h1>",
       "color": "bg-mint-green",
       "showLayers": "#Basemap"
     },
     {
       "id": "a2",
-      "content": "The 12 telecommunications companies in the RDR Index operate in 125 countries.",
+      "content": "<p>The 12 telecommunications companies in the RDR Index operate in 125 countries.</p>",
       "color": "bg-mint-green",
       "showLayers": "#RDRScope"
     },
@@ -19,13 +19,13 @@
     },
     {
       "id": "c2",
-      "content": "<h3 class='content-center bg-white'>Two cases stand out:</h3>",
+      "content": "<h3 class='content-center bg-white mt-3'>Two cases stand out:</h3>",
       "color": "bg-cat-freedom",
       "hideLayers": "#Labels"
     },
     {
       "id": "c3",
-      "content": "Telenor, a dominant provider in Myanmar, cut off internet access for more than a <a href='https://www.hrw.org/news/2020/06/19/myanmar-end-worlds-longest-internet-shutdown' target='_blank'>million people</a> in Myanmar’s Rakhine and Chin states, and kept it off at the government’s behest.",
+      "content": "<p>Telenor, a dominant provider in Myanmar, cut off internet access for more than a <a href='https://www.hrw.org/news/2020/06/19/myanmar-end-worlds-longest-internet-shutdown' target='_blank'>million people</a> in Myanmar’s Rakhine and Chin states, and kept it off at the government’s behest.</p>",
       "color": "bg-cat-freedom",
       "showLayers": "#Rakhine, #Chin",
       "hideLayers": "#Label-India"
