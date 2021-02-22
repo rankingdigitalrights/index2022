@@ -5438,11 +5438,11 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2020,ATT,G,G04c,4,c,Services,Services,broadband,Fixed-line broadband,0,AT&T
 2020,ATT,G,G04c,4,c,Services,Mobile Services,mobile,Prepaid mobile,0,AT&T
 2020,ATT,G,G04c,4,c,Services,Mobile Services,mobile,Postpaid mobile,0,AT&T
-2020,ATT,G,G04d,4,d,Company,Group,Group,Group,0,NA
+2020,ATT,G,G04d,4,d,Company,Group,Group,Group,6,NA
 2020,ATT,G,G04d,4,d,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,ATT,G,G04d,4,d,Services,Services,broadband,Fixed-line broadband,0,AT&T
-2020,ATT,G,G04d,4,d,Services,Mobile Services,mobile,Prepaid mobile,0,AT&T
-2020,ATT,G,G04d,4,d,Services,Mobile Services,mobile,Postpaid mobile,0,AT&T
+2020,ATT,G,G04d,4,d,Services,Services,broadband,Fixed-line broadband,6,AT&T
+2020,ATT,G,G04d,4,d,Services,Mobile Services,mobile,Prepaid mobile,6,AT&T
+2020,ATT,G,G04d,4,d,Services,Mobile Services,mobile,Postpaid mobile,6,AT&T
 2020,ATT,G,G04e,4,e,Company,Group,Group,Group,0,NA
 2020,ATT,G,G04e,4,e,Company,OpCom,OpCom,Operating Company,NA,NA
 2020,ATT,G,G04e,4,e,Services,Services,broadband,Fixed-line broadband,0,AT&T
