@@ -28,10 +28,13 @@ const NarrativeContainer = ({
   return (
     <div className="NarContainer">
       {hasHero && heroClassName && (
-        <figure className="hero-figure">
-          <div className={c("w-full", heroClassName)} />
+        <figure className="bg-white hero-figure">
+          <div className={c("w-full h-96", heroClassName)} />
           <figcaption
-            className={c("font-circular text-xxs py-1", backgroundClassName)}
+            className={c(
+              "font-circular text-right text-xs md:text-sm py-1 pr-3 md:pr-1.5",
+              backgroundClassName,
+            )}
           >
             {heroCaption}
           </figcaption>

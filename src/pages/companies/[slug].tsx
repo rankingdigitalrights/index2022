@@ -31,7 +31,7 @@ type Params = {
 
 type CompanyDetailsMdx = {
   id: string;
-  printName: string;
+  printName: MdxRemote.Source;
   keyFindingsTitle: string;
   changesTitle: string;
   keyRecommendationTitle: string;
@@ -76,7 +76,9 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
 
   const mdxDetails = {
     id: details.id,
-    printName: details.printName,
+    printName: await renderToString(details.printName, {
+      components,
+    }),
     keyFindingsTitle: details.keyFindingsTitle,
     changesTitle: details.changesTitle,
     keyRecommendationTitle: details.keyRecommendationTitle,
@@ -122,6 +124,7 @@ const CompanyPage = ({
   services,
   hasFootnotes,
 }: CompanyProps) => {
+  const printName = hydrate(details.printName, {components});
   const basicInformation = hydrate(details.basicInformation, {components});
   const keyFindings = hydrate(details.keyFindings, {components});
   const changes = hydrate(details.changes, {components});
@@ -147,7 +150,7 @@ const CompanyPage = ({
             <CompanyKindLabel className="mt-3 md:mt-0" kind={index.kind} />
 
             <CompanyRankCard
-              company={details.printName}
+              company={printName}
               rank={index.rank}
               score={index.scores.total}
               basicInformation={basicInformation}

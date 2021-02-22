@@ -85,7 +85,7 @@
   }
 
   .hero-state-of-emergency {
-    @apply bg-contain bg-no-repeat bg-center;
+    @apply bg-contain bg-no-repeat bg-center bg-left;
     background-image: url("../images/bg-kashmir.jpg?size=1024");
   }
 
@@ -335,7 +335,6 @@
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    cursor: crosshair;
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -520,7 +519,7 @@
     margin-top: 0;
     margin-bottom: 0;
     padding: 0 1rem;
-    z-index: 3;
+    z-index: 99;
     overflow-y: hidden;
     width: 100%;
     /* unclear why, but solves white space problem for now */

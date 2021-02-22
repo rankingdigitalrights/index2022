@@ -6,7 +6,7 @@
     },
     {
       "id": 0,
-      "content": "[Invisible Step - toggle new 'Info-box']<br/><br/>[will fade in - needs styling]",
+      "extraClass": "invisible",
       "color": "bg-mint-green"
     },
     {
@@ -43,11 +43,6 @@
       "content": "<p>In an August 2020 press call, Facebook explained that it had severely scaled back the processing of new appeals sent by disgruntled users. The system’s apparent collapse left millions of users unable to appeal moderation decisions at all.</p><p>In both the second (April—June) and the third quarter (July—September) of 2020, Facebook users were only able to file approximately 200,000 appeals—3 percent of the number of appeals submitted in the first three months of 2020.</p>",
       "color": "bg-cat-freedom",
       "showLayers": "#_2020-q3 #q3-split-fb"
-    },
-    {
-      "id": 99,
-      "content": "<p>placeholder - maybe toglle on/off Screenshot from Tweet</p>",
-      "color": "bg-cat-privacy"
     },
     {
       "id": 7,
