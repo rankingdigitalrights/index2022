@@ -47,6 +47,7 @@ const ScrollyFeature = ({
         {children}
       </div>
       <ScrollySteps story={story} />
+      <noscript>NoScript TEST</noscript>
     </section>
   );
 };

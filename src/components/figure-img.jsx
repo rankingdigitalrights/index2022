@@ -17,12 +17,14 @@ const FigureImg = ({img, id, extraClass = "", alt, caption}) => {
       className={`${toggleFade(inView)} ${extraClass}`}
     >
       <img src={img} alt={alt} />
-      <figcaption
-        className="font-circular text-sm mt-2"
-        dangerouslySetInnerHTML={{
-          __html: caption,
-        }}
-      />
+      {caption && (
+        <figcaption
+          className="font-circular text-sm mt-2"
+          dangerouslySetInnerHTML={{
+            __html: caption,
+          }}
+        />
+      )}
     </figure>
   );
 };

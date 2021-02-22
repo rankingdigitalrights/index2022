@@ -7,7 +7,6 @@ import React from "react";
 import readmoreItems from "../../../data/readmore.json";
 import story2 from "../../../data/spotlights/soe-fb-vs-youtube.json";
 import story1 from "../../../data/spotlights/soe-map-shutdowns.json";
-import BoxPrompt from "../../components/box-prompt";
 import Donate from "../../components/donate";
 import FigureImg from "../../components/figure-img";
 import FigureSvg from "../../components/figure-svg";
@@ -234,6 +233,11 @@ const section2a = (
       approximately 213 network shutdowns, many of them designed to be
       indefinite.
     </p>
+  </section>
+);
+
+const section2b = (
+  <section>
     <p>
       In a network shutdown, the mass violation of freedom of expression is
       typically only the first in a cascade of human rights harms that follow.
@@ -256,11 +260,6 @@ const section2a = (
       </NarrativeLink>
       .
     </p>
-  </section>
-);
-
-const section2b = (
-  <section>
     <p>
       The 12 telecommunications companies in the RDR Index operate in 125
       countries. In 2020,{" "}
@@ -388,12 +387,11 @@ const section3a = (
       conduct these assessments before they launch new products or services, or
       enter new markets, to mitigate harms before they happen.
     </p>
-    <FigureImg img={imgTableG4} alt="TODO - Caption | Description" />
-    <div className="flex flex-col justify-around items-center">
-      <div className="mt-6 mb-12 ml-auto">
-        <BoxPrompt readmore="/indicators/G4b" />
-      </div>
-    </div>
+    <FigureImg
+      img={imgTableG4}
+      alt="TODO - Caption | Description"
+      caption="Data from Indicator G4b in the 2020 RDR Index"
+    />
     <p>
       Companies are erratic and opaque about how they implement their human
       rights commitments in ordinary times, but these things can become even
@@ -715,7 +713,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
           <NarrativeContainer
             hasHero
             heroClassName="hero-full hero-state-of-emergency"
-            heroCaption="People queue for milk during the pandemic in Kashmir. Photo by Abid Bhat, used with permission"
+            heroCaption="People queue for milk during the pandemic in Kashmir. Photo by Abid Bhat, used with permission."
             backgroundClassName="bg-rdr bg-opacity-20"
             transparent
           >
@@ -788,7 +786,6 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               <FigureSvg
                 className="scrolly-figure bg-light-grey"
                 svg={svgWorldMap}
-                caption="TODO: Caption ???"
                 alt="TODO: Alternative description"
                 id="map-world"
               />
@@ -912,7 +909,6 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               <FigureSvg
                 className="scrolly-figure bg-light-grey p-4"
                 svg={svgFbYt}
-                caption="TODO: Caption ???"
                 alt="TODO: Alternative description"
                 id="chart-q1"
               />

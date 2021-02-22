@@ -5,7 +5,7 @@ const toggleFade = (inView) => {
   return inView ? "fade-in" : "fade-out";
 };
 
-const FigureSvg = ({id, alt, svg, caption}) => {
+const FigureSvg = ({id, alt, svg, caption = ""}) => {
   const [ioHook, inView] = useInView({
     threshold: 0.5,
     triggerOnce: true,
