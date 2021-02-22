@@ -26,19 +26,34 @@ const Modal = ({
   // eslint-disable-next-line unicorn/no-null
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (ev: Event) => {
-    if (isMouseEvent(ev) && !ref.current?.contains(ev.target as Node)) {
-      onCancel();
-    }
-  };
-
   // Collapse the modal when we click outside the menu.
   useEffect(() => {
+    const handleClickOutside = (ev: Event) => {
+      if (isMouseEvent(ev) && !ref.current?.contains(ev.target as Node)) {
+        onCancel();
+      }
+    };
+
     document.addEventListener("click", handleClickOutside, true);
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  });
+  }, []);
+
+  // Collapse the modal when we press the escape key.
+  useEffect(() => {
+    const handleEscapeKey = (ev: KeyboardEvent) => {
+      const key = ev.key || ev.keyCode;
+      if (key === "Escape" || key === "Esc" || key === 27) {
+        onCancel();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKey, false);
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey, false);
+    };
+  }, []);
 
   // Disable background scrolling.
   useEffect(() => {

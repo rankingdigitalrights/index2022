@@ -23,13 +23,21 @@ const Glossary = ({id, children}: GlossaryProps) => {
       hasHtmlTitle: true,
     });
   };
+
+  const handleKeyDown = (ev: React.KeyboardEvent<HTMLSpanElement>) => {
+    const key = ev.key || ev.keyCode;
+    if (key === "Enter" || key === 13) {
+      handleClick();
+    }
+  };
+
   return (
     <>
       {" "}
       <span
-        className="inline font-circular text-prissian font-bold"
+        className="inline font-circular text-prissian font-bold cursor-pointer"
         onClick={handleClick}
-        onKeyDown={handleClick}
+        onKeyDown={handleKeyDown}
         role="button"
         tabIndex={0}
       >
