@@ -12,8 +12,8 @@ const ScrollySteps = (props) => {
       {props.story.steps.map(
         ({
           id,
+          extraClass = "",
           title,
-          company,
           content,
           color,
           showLayers = "",
@@ -22,8 +22,7 @@ const ScrollySteps = (props) => {
           return (
             <div
               key={id}
-              className="step"
-              data-step={company}
+              className={`step ${extraClass}`}
               data-color={color}
               data-show={showLayers}
               data-hide={hideLayers}

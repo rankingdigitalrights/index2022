@@ -16,6 +16,7 @@ import Layout from "../../components/layout";
 import NarrativeContainer from "../../components/narrative-container-full-feature";
 import Readmore from "../../components/readmore";
 import ScrollyFeature from "../../components/scrolly-feature";
+import Help from "../../images/icons/help.svg";
 import ImgChartF4 from "../../images/spotlights/soe-f4-barchart.png";
 import ImgProtest from "../../images/spotlights/soe-myanmar-protest.jpeg";
 import imgTableG4 from "../../images/spotlights/soe-table-g4.png";
@@ -65,7 +66,6 @@ const unHideItem = (query) => {
 
 const toggleVisibility = (query) => {
   const modal = document.querySelector(query);
-  console.log(modal);
   if (modal.style.display !== "none") {
     setTimeout(function () {
       modal.style.display = "none";
@@ -775,9 +775,9 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 );
               }
             }}
-            stepExit={({index, direction}) => {
-              console.log(`Local Exit 1: ${index} - ${direction}`); // TODO
-            }}
+            // stepExit={({index, direction}) => {
+            //   console.log(`Local Exit 1: ${index} - ${direction}`); // TODO
+            // }}
           >
             <figure className="scrolly-figure bg-light-grey">
               <FigureSvg
@@ -836,25 +836,25 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 unHideItem("#fb-info");
               }
             }}
-            stepExit={({index, direction}) => {
-              console.log(`Local Exit: ${index} - ${direction}`);
-            }}
+            // stepExit={({index, direction}) => {
+            //   console.log(`Local Exit: ${index} - ${direction}`);
+            // }}
           >
             <figure className="scrolly-figure bg-light-grey p-4">
               <button
                 id="fb-info"
-                className="btn-info fade-out bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 z-10"
+                className="btn-info fade-out focus:outline-none z-10"
                 style={{display: "none"}}
                 onClick={() => toggleVisibility("#modal-fb")}
               >
-                (i)
+                <Help className="w-5 h-5 ml-3" />
               </button>
               <div
-                className="modal fade-out fixed z-50 max-w-md overflow-auto bg-light-grey flex"
+                className="modal fade-out fixed z-50 overflow-auto bg-light-grey flex"
                 style={{display: "none"}}
                 id="modal-fb"
               >
-                <p className="p-8 bg-white m-auto h-auto content-center align-middle">
+                <p className="p-8 bg-white m-auto h-auto content-center">
                   Content appealed and restored on appeal on Facebook vs. videos
                   appealed and restored on YouTube between October 2019 and
                   September 2020. Data for Facebook does not include the

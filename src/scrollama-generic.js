@@ -28,9 +28,9 @@ const resetScene = (figure) => {
   updateBGColor(figure);
 };
 
-const handleStepEnter = (figure, steps, {index, direction, element}) => {
-  console.log(`Generic enter: ${index} - ${direction}`);
-  console.log("payload", element);
+const handleStepEnter = (figure, steps, {index, element}) => {
+  // console.log(`Generic enter: ${index} - ${direction}`);
+  // console.log("payload", element);
   toggleActiveStep(index, steps);
   updateBGColor(figure, element.dataset.color);
 };
