@@ -101,7 +101,7 @@
 
   .hero-key-findings {
     @apply bg-cover bg-center;
-    background-image: url("../images/bg-key-findings.jpg?size=1024");
+    background-image: url("../images/bg-key-findings.jpg?size=1440");
   }
 
   .bg-key-findings {
