@@ -392,6 +392,22 @@ const writeJsonFile = (
           return writeJsonFile(target)(company);
         }),
       );
+
+      console.log(`
+
+
+As a last step you have to still place the illustration for the algorithms
+spotlight in place. Probably the target is \`data/images/algorithms/image3.png\`.
+You can verify the target by running one of the two commands:
+
+On Linux: xdg-open data/images/algorithms/image3.png
+On macOS: open data/images/algorithms/image3.png
+
+To copy the illustration in place run the following command and make sure that
+target matches the real illustration.
+
+cp csv/algorithm-illustration.png data/images/algorithms/image3.png
+`);
     })
     .command(
       "pdf",
