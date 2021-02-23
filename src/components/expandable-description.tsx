@@ -27,9 +27,15 @@ const ExpandableDescription = ({
         <span className="text-prissian font-circular text-sm">{label}</span>
 
         {isExpanded ? (
-          <ChevronDown className="ml-2 text-prissian stroke-current" />
+          <ChevronDown
+            className="ml-2 text-prissian stroke-current"
+            aria-label="Close description icon"
+          />
         ) : (
-          <ChevronRight className="ml-2 text-prissian stroke-current" />
+          <ChevronRight
+            className="ml-2 text-prissian stroke-current"
+            aria-label="Open description icon"
+          />
         )}
       </button>
 

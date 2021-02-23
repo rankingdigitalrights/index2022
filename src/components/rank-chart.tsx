@@ -124,6 +124,7 @@ const RankChart = ({
             width="100%"
             height={chartHeight}
             transform="translate(0, 0)"
+            aria-label={`Score bar for ${companyPretty}: ${score}`}
           >
             <PercentageBar
               value={score}

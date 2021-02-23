@@ -21,6 +21,14 @@ const IndicatorTableMobile = ({
 
   const templateService = services[0] && companyElements[services[0].id];
 
+  const handlePrevSlide = () => {
+    if (swiper) swiper.slidePrev();
+  };
+
+  const handleNextSlide = () => {
+    if (swiper) swiper.slideNext();
+  };
+
   if (!templateService) return <div />;
 
   return (
@@ -74,13 +82,16 @@ const IndicatorTableMobile = ({
                       </div>
 
                       <div className="flex items-center justify-between mt-3 mb-3">
-                        <div className="cursor-pointer w-1/12">
+                        <div
+                          role="button"
+                          tabIndex={0}
+                          className="cursor-pointer w-1/12"
+                          onClick={handlePrevSlide}
+                          onKeyDown={handlePrevSlide}
+                          aria-label="Previous slide"
+                        >
                           {!isFirstService && (
-                            <ChevronLeft
-                              onClick={() => {
-                                if (swiper) swiper.slidePrev();
-                              }}
-                            />
+                            <ChevronLeft aria-label="Previous slide icon" />
                           )}
                         </div>
 
@@ -98,13 +109,18 @@ const IndicatorTableMobile = ({
                           </div>
                         </div>
 
-                        <div className="cursor-pointer w-1/12">
+                        <div
+                          role="button"
+                          tabIndex={0}
+                          className="cursor-pointer w-1/12"
+                          onClick={handleNextSlide}
+                          onKeyDown={handleNextSlide}
+                          aria-label="Next slide"
+                        >
                           {!isLastService && (
                             <ChevronRight
                               className="float-right"
-                              onClick={() => {
-                                if (swiper) swiper.slideNext();
-                              }}
+                              aria-label="Next slide icon"
                             />
                           )}
                         </div>

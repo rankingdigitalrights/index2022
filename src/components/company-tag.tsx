@@ -24,7 +24,9 @@ const CompanyTag = ({
   return (
     <button className={className2} onClick={onClick}>
       <span>{company}</span>{" "}
-      {active && <CancelX className="ml-2 w-2 h-2 text-white fill-current" />}
+      {active && (
+        <CancelX className="ml-2 p-1 w-4 h-4 text-white fill-current" />
+      )}
     </button>
   );
 };

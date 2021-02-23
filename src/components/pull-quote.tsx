@@ -6,7 +6,7 @@ interface PullQuoteProps {
 
 const PullQuote = ({children}: PullQuoteProps) => {
   return (
-    <figure>
+    <figure aria-label="Pull quote">
       <blockquote className="pullquote">{children}</blockquote>
     </figure>
   );

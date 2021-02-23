@@ -34,7 +34,7 @@ const CompareScoresChart = ({scores, className}: CompareScoresChartProps) => {
           width={0}
           height={chartHeight / 2 - 11}
           transform="translate(0, 0)"
-          className=""
+          aria-label="Empty spacer element"
         />
         <span className="font-circular text-sm mr-2">0</span>
       </div>

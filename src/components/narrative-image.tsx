@@ -33,7 +33,7 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
           <source srcSet={image.srcSet} type="image/jpg" />
 
           <img
-            className="mx-auto img-pixel"
+            className="mx-auto"
             src={image.src}
             srcSet={image.srcSet}
             alt={description}

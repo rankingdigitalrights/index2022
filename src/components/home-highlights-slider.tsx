@@ -15,6 +15,14 @@ interface HomeHighlightsSliderProps {
 const HomeHighlightsSlider = ({highlights}: HomeHighlightsSliderProps) => {
   const [swiper, setSwiper] = useState<SwiperType>();
 
+  const handlePrevSlide = () => {
+    if (swiper) swiper.slidePrev();
+  };
+
+  const handleNextSlide = () => {
+    if (swiper) swiper.slideNext();
+  };
+
   return (
     <div className="relative w-full flex items-center">
       <div className="w-full">
@@ -36,21 +44,24 @@ const HomeHighlightsSlider = ({highlights}: HomeHighlightsSliderProps) => {
         </Swiper>
       </div>
 
-      <div className="cursor-pointer absolute z-10">
-        <ChevronLeft
-          onClick={() => {
-            if (swiper) swiper.slidePrev();
-          }}
-        />
+      <div
+        role="button"
+        tabIndex={0}
+        className="cursor-pointer absolute z-10"
+        onClick={handlePrevSlide}
+        onKeyDown={handlePrevSlide}
+      >
+        <ChevronLeft aria-label="Previous slide" />
       </div>
 
-      <div className="cursor-pointer absolute right-0 z-10">
-        <ChevronRight
-          className="float-right"
-          onClick={() => {
-            if (swiper) swiper.slideNext();
-          }}
-        />
+      <div
+        role="button"
+        tabIndex={0}
+        className="cursor-pointer absolute right-0 z-10"
+        onClick={handleNextSlide}
+        onKeyDown={handleNextSlide}
+      >
+        <ChevronRight className="float-right" aria-label="Next slide" />
       </div>
     </div>
   );

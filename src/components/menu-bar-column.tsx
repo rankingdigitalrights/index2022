@@ -42,7 +42,13 @@ const MenuBarColumn = ({
       >
         {title}
         {isExpandable && (
-          <span>{isExpanded ? <ChevronUp /> : <ChevronDown />}</span>
+          <span>
+            {isExpanded ? (
+              <ChevronUp aria-label="Close menu bar icon" />
+            ) : (
+              <ChevronDown aria-label="Open menu bar icon" />
+            )}
+          </span>
         )}
       </button>
       {showChildren && children}

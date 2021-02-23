@@ -362,7 +362,7 @@ const IndicatorPage = ({
                   });
                 }}
               >
-                <Help className="w-5 h-5 ml-3" />
+                <Help className="w-5 h-5 ml-3" aria-label="Help icon" />
               </button>
             </div>
           </div>

@@ -173,6 +173,10 @@
   body:not(.user-is-tabbing) textarea:focus {
     outline: none;
   }
+  /* span is used as glossary buttons */
+  body:not(.user-is-tabbing) span:focus {
+    outline: none;
+  }
 
   html {
     @apply font-lyon text-base;

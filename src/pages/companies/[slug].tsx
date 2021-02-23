@@ -259,7 +259,10 @@ const CompanyPage = ({
             <div className="mt-6">
               <Link passHref href={`/excel/companies/${index.id}.xlsx`}>
                 <a className="flex items-center border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm">
-                  <Download className="w-4 h-4 mr-2" />
+                  <Download
+                    className="w-4 h-4 mr-2"
+                    aria-label="Download icon"
+                  />
                   Download data and sources
                 </a>
               </Link>

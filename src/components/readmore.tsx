@@ -26,51 +26,111 @@ const Readmore = ({readmore, className}: ReadmoreProps) => {
 
   switch (readmore.kind) {
     case "summary": {
-      icon = <ExecutiveSummary className={iconClassName} />;
+      icon = (
+        <ExecutiveSummary
+          className={iconClassName}
+          aria-label="Readmore summary icon"
+        />
+      );
       break;
     }
     case "introduction": {
-      icon = <Introduction className={iconClassName} />;
+      icon = (
+        <Introduction
+          className={iconClassName}
+          aria-label="Readmore introduction icon"
+        />
+      );
       break;
     }
     case "key-findings": {
-      icon = <KeyFindings className={iconClassName} />;
+      icon = (
+        <KeyFindings
+          className={iconClassName}
+          aria-label="Readmore key findings icon"
+        />
+      );
       break;
     }
     case "recommendations": {
-      icon = <Recommendations className={iconClassName} />;
+      icon = (
+        <Recommendations
+          className={iconClassName}
+          aria-label="Readmore recommendations icon"
+        />
+      );
       break;
     }
     case "methodology": {
-      icon = <Methodology className={iconClassName} />;
+      icon = (
+        <Methodology
+          className={iconClassName}
+          aria-label="Readmore methodology icon"
+        />
+      );
       break;
     }
     case "context-before-code": {
-      icon = <ContextBeforeCode className={iconClassName} />;
+      icon = (
+        <ContextBeforeCode
+          className={iconClassName}
+          aria-label="Readmore context before code icon"
+        />
+      );
       break;
     }
     case "unaccountable-algorithms": {
-      icon = <Algorithms className={iconClassName} />;
+      icon = (
+        <Algorithms
+          className={iconClassName}
+          aria-label="Readmore unaccountable algorithms icon"
+        />
+      );
       break;
     }
     case "china-tech-giants": {
-      icon = <TechGiants className={iconClassName} />;
+      icon = (
+        <TechGiants
+          className={iconClassName}
+          aria-label="Readmore china tech giants icon"
+        />
+      );
       break;
     }
     case "compare": {
-      icon = <Compare className={iconClassName} />;
+      icon = (
+        <Compare
+          className={iconClassName}
+          aria-label="Readmore compare year on year icon"
+        />
+      );
       break;
     }
     case "indicators": {
-      icon = <Services className={iconClassName} />;
+      icon = (
+        <Services
+          className={iconClassName}
+          aria-label="Readmore explore indicators icon"
+        />
+      );
       break;
     }
     case "services": {
-      icon = <Indicators className={iconClassName} />;
+      icon = (
+        <Indicators
+          className={iconClassName}
+          aria-label="Readmore explore services icon"
+        />
+      );
       break;
     }
     default: {
-      icon = <KeyFindings className={iconClassName} />;
+      icon = (
+        <KeyFindings
+          className={iconClassName}
+          aria-label="Readmore key findings icon"
+        />
+      );
     }
   }
 

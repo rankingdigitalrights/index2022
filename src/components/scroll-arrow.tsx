@@ -27,15 +27,21 @@ const ScrollArrow = () => {
     };
   }, [showScroll]);
 
+  const handleScrollToTop = () => {
+    if (showScroll) window.scrollTo({top: 0, behavior: "smooth"});
+  };
+
   return (
     <ScrollArrowIcon
       className={c(
         "fixed bottom-3 right-3 md:bottom-10 md:right-10 w-12 h-12 md:w-14 md:h-14 svg-shadow z-40",
         className,
       )}
-      onClick={() => {
-        if (showScroll) window.scrollTo({top: 0, behavior: "smooth"});
-      }}
+      role="button"
+      tabIndex={0}
+      onClick={handleScrollToTop}
+      onKeyDown={handleScrollToTop}
+      aria-label="Scroll to Top Button"
     />
   );
 };

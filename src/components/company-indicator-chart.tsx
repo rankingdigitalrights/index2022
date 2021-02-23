@@ -86,9 +86,15 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
                     <div className="flex flex-grow justify-between items-center text-left">
                       <span className="flex-grow">{indicatorPretty}</span>
                       {isOpen ? (
-                        <ChevronUp className="flex-none ml-auto ml-1" />
+                        <ChevronUp
+                          className="flex-none ml-auto ml-1"
+                          aria-label="Close family indicators icon"
+                        />
                       ) : (
-                        <ChevronDown className="flex-none ml-auto ml-1" />
+                        <ChevronDown
+                          className="flex-none ml-auto ml-1"
+                          aria-label="Open family indicators icon"
+                        />
                       )}
                     </div>
                     <div className="flex-none ml-auto w-8">&nbsp;</div>
@@ -109,6 +115,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
                       width="100%"
                       height={10}
                       transform="translate(0, 0)"
+                      aria-label="Chart bar for company indicator"
                     >
                       <PercentageBar
                         value={mapScore(score)}
@@ -167,6 +174,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
                             width="100%"
                             height={10}
                             transform="translate(0, 0)"
+                            aria-label="Chart bar for company indicator"
                           >
                             <PercentageBar
                               value={mapScore(m.score)}

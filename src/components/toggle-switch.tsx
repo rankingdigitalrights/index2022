@@ -24,6 +24,7 @@ const ToggleSwitch = ({label, onChange, className}: ToggleSwitchProps) => {
       <button
         className="relative inline-block w-10 align-middle select-none transition duration-200 ease-in"
         onClick={handleToggle}
+        aria-label="Toggle switch"
       >
         <label
           htmlFor="toggle"
@@ -41,6 +42,7 @@ const ToggleSwitch = ({label, onChange, className}: ToggleSwitchProps) => {
               toggle ? "bg-beige" : "bg-prissian",
             )}
             onChange={handleToggle}
+            aria-label="Toggle switch check mark"
           />
         </label>
       </button>

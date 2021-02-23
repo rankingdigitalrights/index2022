@@ -62,6 +62,7 @@ const IndicatorCompaniesChart = ({
             height={180}
             transform="translate(0, 0)"
             className="ml-2"
+            aria-label="Indicator score chart element"
           >
             <line
               x1={1}
@@ -110,6 +111,7 @@ const IndicatorCompaniesChart = ({
                   width={10}
                   height={221}
                   transform="translate(0, 0)"
+                  aria-label="Company score for indicator chart bar"
                 >
                   <PercentageBar
                     key={id}

@@ -71,7 +71,10 @@ const Footer = ({className}: FooterProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LogoTwitter className="flex-none w-3 h-3" />
+                  <LogoTwitter
+                    className="flex-none w-3 h-3"
+                    aria-label="Twitter Logo"
+                  />
                   <span className="ml-2">RankingRights</span>
                 </a>
               </li>
@@ -82,7 +85,10 @@ const Footer = ({className}: FooterProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LogoLinkedin className="flex-none w-3 h-3" />
+                  <LogoLinkedin
+                    className="flex-none w-3 h-3"
+                    aria-label="Linkedin Logo"
+                  />
                   <span className="ml-2">Linkedin</span>
                 </a>
               </li>
@@ -91,7 +97,10 @@ const Footer = ({className}: FooterProps) => {
                   className="text-white no-underline flex items-center mt-1"
                   href="mailto:comms@rankingdigitalrights.org"
                 >
-                  <LogoEmail className="flex-none place-self-start w-3 h-3" />
+                  <LogoEmail
+                    className="flex-none place-self-start w-3 h-3"
+                    aria-label="Email Logo"
+                  />
                   <span className="ml-2 leading-none">Media inquiries</span>
                 </a>
               </li>

@@ -55,7 +55,7 @@ const CompareBarPositive = ({
         width={40}
         height={barHeight + lineOffset}
         transform="translate(0, 0)"
-        className=""
+        aria-label="Comparison chart bar"
       >
         <rect
           className={c("fill-current", barClassName)}

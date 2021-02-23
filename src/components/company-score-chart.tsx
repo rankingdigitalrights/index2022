@@ -57,6 +57,7 @@ const CompanyScoreChart = ({
         version="1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox={`0 0 ${portSize} ${portSize}`}
+        aria-label={`Company score chart for ${mapCategoryName(category)}`}
       >
         <g transform={`translate(${outerRadius + 35},${outerRadius + 30})`}>
           <circle

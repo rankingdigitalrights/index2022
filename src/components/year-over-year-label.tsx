@@ -38,33 +38,33 @@ const YearOverYearLabel = ({
     numYear - 1
   } RDR Index.`;
   let numModifier = "";
-  let icon = <Dash className="w-6 h-6" />;
+  let icon = <Dash className="w-6 h-6" aria-label="No change icon" />;
   if (isIncrease) {
     desc = `Gained ${value} points on comparable indicators since the ${
       numYear - 1
     } RDR Index.`;
     numModifier = "+ ";
-    icon = <ArrowUp className="w-6 h-6" />;
+    icon = <ArrowUp className="w-6 h-6" aria-label="Positive change icon" />;
   }
   if (isDecrease) {
     desc = `Lost ${value} points on comparable indicators since the ${
       numYear - 1
     } RDR Index.`;
-    icon = <ArrowDown className="w-6 h-6" />;
+    icon = <ArrowDown className="w-6 h-6" aria-label="Negative change icon" />;
   }
 
   return (
     <div className={c("flex flex-col", className)}>
       <div className="flex">
         <Link href="/compare">
-          <span
+          <a
             className={c(
               "flex items-center justify-around rounded-md p-2 w-10 cursor-pointer",
               iconClassName,
             )}
           >
             {icon}
-          </span>
+          </a>
         </Link>
 
         <span

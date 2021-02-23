@@ -24,27 +24,51 @@ const mapIcon = (kind: ServiceKind) => {
 
   switch (kind) {
     case "broadband":
-      return <Broadband className={className} />;
+      return (
+        <Broadband className={className} aria-label="Broadband service icon" />
+      );
     case "cloud":
-      return <Cloud className={className} />;
+      return <Cloud className={className} aria-label="Cloud service icon" />;
     case "eCommerce":
-      return <ECommerce className={className} />;
+      return (
+        <ECommerce className={className} aria-label="eCommerce service icon" />
+      );
     case "email":
-      return <Email className={className} />;
+      return <Email className={className} aria-label="Email service icon" />;
     case "messagingVoip":
-      return <Messaging className={className} />;
+      return (
+        <Messaging
+          className={className}
+          aria-label="Messaging and VOIP service icon"
+        />
+      );
     case "mobile":
-      return <Prepaid className={className} />;
+      return <Prepaid className={className} aria-label="Mobile service icon" />;
     case "mobileEcosystem":
-      return <Mobile className={className} />;
+      return (
+        <Mobile
+          className={className}
+          aria-label="Mobile ecosystem service icon"
+        />
+      );
     case "pda":
-      return <Assistant className={className} />;
+      return <Assistant className={className} aria-label="PDA service icon" />;
     case "photoVideo":
-      return <Video className={className} />;
+      return (
+        <Video
+          className={className}
+          aria-label="Photo and video service icon"
+        />
+      );
     case "search":
-      return <Search className={className} />;
+      return <Search className={className} aria-label="Search service icon" />;
     case "socialNetworkBlogs":
-      return <Social className={className} />;
+      return (
+        <Social
+          className={className}
+          aria-label="Social network service icon"
+        />
+      );
     default:
       return "";
   }
