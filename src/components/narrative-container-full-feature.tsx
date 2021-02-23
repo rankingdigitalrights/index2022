@@ -47,7 +47,7 @@ const NarrativeContainer = ({
       <div className={c("narrative flex justify-around", backgroundClassName)}>
         <div
           className={c(
-            "container mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
+            "narrative-container mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-3 md:px-16 xl:px-28 2xl:px-24",
             containerPadding,
             containerClassName,
           )}
