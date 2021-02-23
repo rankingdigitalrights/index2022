@@ -19,9 +19,3 @@ RewriteRule !\.\w{2,4}$ %{REQUEST_URI}.html [L]
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
 RewriteRule !\.\w{2,4}$ %{REQUEST_URI}/index.html [L]
 </IfModule>
-
-AuthType Basic
-AuthName "index2020"
-AuthGroupFile /dev/null
-Require valid-user
-AuthUserFile "/home1/ranking5/.htpasswds/public_html/index2019-working/passwd"
