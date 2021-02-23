@@ -27,7 +27,7 @@
       "id": 4,
       "title": "Facebook in COVID times",
       "content": "<p>When the COVID-19 pandemic struck, Facebook <a href='https://about.fb.com/news/2020/12/coronavirus/' target='_blank' rel='noopener noreferrer'>sent home</a> workers who review millions of posts each day for rule violations.</p><p>The company decided to ramp up its use of algorithms for content moderation, hoping the technology would keep its content review processes moving.</p>",
-      "color": "bg-cat-freedom",
+      "color": "bg-mint-green",
       "showLayers": "#label-human, #area-covid, #label-algo"
     },
     {
