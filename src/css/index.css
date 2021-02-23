@@ -349,6 +349,7 @@
   }
 
   .btn-info {
+    visibility: hidden;
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -385,12 +386,16 @@
     transition: opacity 0.6s ease-in-out;
   }
 
-  main.spotlight section p {
+  /* main.spotlight svg .fade-in,
+  main.spotlight svg .fade-out {
+    transition: opacity 0.3s ease-in-out;
+  } */
+
+  main.spotlight section p:not(.pullquote > p) {
     margin: 1rem auto;
   }
 
   .hero-full {
-    height: 66vh;
     background-size: cover;
   }
 
@@ -459,7 +464,7 @@
   }
 
   main.spotlight figure.spot-figure {
-    @apply m-auto;
+    @apply m-auto pt-2 pb-2;
     max-width: 900px;
   }
 
@@ -712,6 +717,10 @@
     height: 100%;
     left: -8%;
     z-index: -1;
+  }
+
+  .btn-info {
+    visibility: visible;
   }
 }
 

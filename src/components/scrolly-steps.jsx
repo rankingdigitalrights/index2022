@@ -1,14 +1,7 @@
 /* eslint react/destructuring-assignment: off */
 const ScrollySteps = (props) => {
-  // console.log("props:\n");
-  // console.dir(props);
   return (
     <div className="scrolly-steps z-40">
-      {/* <div
-        className="step invisible"
-        data-step="-99"
-        data-color="bg-gray-400"
-      /> */}
       {props.story.steps.map(
         ({
           id,

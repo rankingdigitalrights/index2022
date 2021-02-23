@@ -29,15 +29,13 @@ const resetScene = (figure) => {
 };
 
 const handleStepEnter = (figure, steps, {index, element}) => {
-  // console.log(`Generic enter: ${index} - ${direction}`);
-  // console.log("payload", element);
   toggleActiveStep(index, steps);
   updateBGColor(figure, element.dataset.color);
 };
 
 const handleStepExit = (figure, {index, direction}) => {
   if (
-    (index === 0 && direction === "up") ||
+    (index <= 1 && direction === "up") ||
     (index === figure.maxStep && direction === "down")
   ) {
     setTimeout(() => resetScene(figure), 300);

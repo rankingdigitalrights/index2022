@@ -776,11 +776,11 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
           >
             <button
               id="map-info"
-              className="btn-info focus:outline-none z-50"
+              className="btn-info absolute flex focus:outline-none z-50 items-center justify-center"
               // style={{display: "none"}}
               onClick={() => toggleVisibility("#modal-map")}
             >
-              <Help className="w-5 h-5 ml-3" />
+              <Help className="w-5 h-5" />
             </button>
             <figure className="scrolly-figure bg-light-grey">
               <div
@@ -884,7 +884,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
           >
             <button
               id="fb-info"
-              className="btn-info fade-out focus:outline-none z-50"
+              className="btn-info fade-out absolute flex focus:outline-none z-50 items-center justify-center"
               style={{display: "none"}}
               onClick={() => toggleVisibility("#modal-fb")}
             >

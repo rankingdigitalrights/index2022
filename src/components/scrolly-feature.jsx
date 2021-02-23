@@ -1,6 +1,4 @@
-import c from "clsx";
 import React, {useEffect, useMemo, useRef} from "react";
-import {useInView} from "react-intersection-observer";
 import scrollama from "scrollama";
 
 import {setupSpotlight} from "../scrollama-generic";
@@ -16,11 +14,6 @@ const ScrollyFeature = ({
   const scrollyEl = useRef(undefined);
   const scroller = useMemo(() => scrollama(), []);
 
-  const [ioHook, inView] = useInView({
-    threshold: [0.5],
-    triggerOnce: true,
-  });
-
   useEffect(() => {
     const unmount = setupSpotlight(
       scrollyEl,
@@ -35,19 +28,13 @@ const ScrollyFeature = ({
     };
   }, [scroller, scrollyEl, id, stepEnter, stepExit]);
 
-  // equivalent to `scrolly-canvas ${inView ? "fade-in" : "fade-out"}`
-  const className = c("scrolly-canvas", {
-    "fade-in": inView,
-    "fade-out": !inView,
-  });
-
   return (
     <section
       id={id}
       ref={scrollyEl}
       className="scrolly bg-light-grey print:hidden"
     >
-      <div ref={ioHook} id={`canvas-${id}`} className={className}>
+      <div id={`canvas-${id}`} className="scrolly-canvas">
         {children}
       </div>
       <ScrollySteps story={story} />
