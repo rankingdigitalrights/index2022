@@ -193,7 +193,7 @@
   }
 
   h3 {
-    @apply font-platform leading-none mt-3 mb-3 break-words;
+    @apply font-platform leading-none mt-5 mb-3 break-words;
     font-size: 1.2rem;
   }
 
@@ -730,4 +730,8 @@
 
 .feature-box {
   @apply relative pt-6 pb-8;
+}
+.feature-box h2:first-child,
+.feature-box h3:first-child {
+  @apply mt-0;
 }

@@ -41,7 +41,7 @@ const Algorithms = ({details}: NarrativeProps) => {
       <NarrativeContainer
         heroClassName="hero-algorithms"
         heroCaption="Original art by Paweł Kuczyński."
-        backgroundClassName="bg-rdr bg-opacity-30"
+        backgroundClassName="bg-rdr bg-opacity-20"
         transparent
         readmore={readmore}
       >
