@@ -1,4 +1,5 @@
 import Head from "next/head";
+import {useRouter} from "next/router";
 import React from "react";
 
 import htmlMeta from "../../data/html-meta.json";
@@ -7,14 +8,27 @@ import RdrTouchIcon from "../images/cropped-rdr_icon_black-180x180.png";
 import RdrIconLarge from "../images/cropped-rdr_icon_black-192x192.png";
 
 const HtmlHead = () => {
-  const {title, description, ...metaTags} = htmlMeta as Record<string, string>;
+  const router = useRouter();
+
+  const path = router.pathname.replace(/\/index2020|\/index2020-stg(.*)/, "$1");
+  const metaTags = htmlMeta;
+
+  const title = metaTags[path]?.title ? metaTags[path]?.title : metaTags.title;
+  const description = metaTags[path]?.description
+    ? metaTags[path]?.description
+    : metaTags.description;
 
   const twitterTags = Object.keys(metaTags).filter((key) =>
     key.startsWith("twitter"),
   );
   const ogTags = Object.keys(metaTags).filter((key) => key.startsWith("og"));
   const otherTags = Object.keys(metaTags).filter(
-    (key) => !(key.startsWith("twitter") || key.startsWith("og")),
+    (key) =>
+      !(
+        key.startsWith("twitter") ||
+        key.startsWith("og") ||
+        key.startsWith("/")
+      ),
   );
 
   return (
@@ -26,21 +40,31 @@ const HtmlHead = () => {
       <meta content="width=device-width, initial-scale=1" name="viewport" />
 
       <>
-        {twitterTags.map((name) => (
-          <meta key={name} name={name} content={metaTags[name]} />
-        ))}
+        {twitterTags.map((name) => {
+          const content = metaTags[path]?.[name]
+            ? metaTags[path]?.[name]
+            : metaTags[name];
+          return <meta key={name} name={name} content={content} />;
+        })}
       </>
 
       <>
-        {ogTags.map((name) => (
-          <meta key={name} property={name} content={metaTags[name]} />
-        ))}
+        {ogTags.map((name) => {
+          const content = metaTags[path]?.[name]
+            ? metaTags[path]?.[name]
+            : metaTags[name];
+          return <meta key={name} property={name} content={content} />;
+        })}
       </>
 
       <>
-        {otherTags.map((name) => (
-          <meta key={name} name={name} content={metaTags[name]} />
-        ))}
+        {otherTags.map((name) => {
+          const content = metaTags[path]?.[name]
+            ? metaTags[path]?.[name]
+            : metaTags[name];
+
+          return <meta key={name} name={name} content={content} />;
+        })}
       </>
 
       <link
