@@ -172,7 +172,7 @@ const Home = ({
             privacy.
           </p>
 
-          <Link passHref href="/methodology">
+          <Link passHref href="/explore-services">
             <a>Learn more: Explore our data by issue area and service.</a>
           </Link>
         </div>
