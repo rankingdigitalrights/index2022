@@ -42,7 +42,11 @@ const ScrollyFeature = ({
   });
 
   return (
-    <section id={id} ref={scrollyEl} className="scrolly bg-light-grey">
+    <section
+      id={id}
+      ref={scrollyEl}
+      className="scrolly bg-light-grey print:hidden"
+    >
       <div ref={ioHook} id={`canvas-${id}`} className={className}>
         {children}
       </div>

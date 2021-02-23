@@ -173,6 +173,7 @@
   body:not(.user-is-tabbing) span:focus {
     outline: none;
   }
+
   body:not(.user-is-tabbing) #scroll-to-top:focus {
     outline: none;
   }
@@ -411,16 +412,6 @@
     position: relative;
   }
 
-  main.spotlight h2.sticky-h {
-    @apply sticky;
-    top: 30px;
-    display: inline;
-  }
-
-  main.spotlight h3 {
-    @apply text-lg;
-  }
-
   main.spotlight a:not(.font-normal) {
     font-weight: 700;
   }
@@ -541,6 +532,7 @@
   .step {
     padding-top: 33vh;
     padding-bottom: 100vh;
+    /* outline: 1px solid; */
   }
 
   .step .step-content {
@@ -587,7 +579,7 @@
       width: 34%;
       margin-left: 0;
       max-width: unset;
-      background-color: bg-light-grey;
+      background-color: #f7f4f2;
       transition: background-color 1s ease-in;
     }
 
@@ -717,6 +709,7 @@
 .feature-box {
   @apply relative pt-6 pb-8;
 }
+
 .feature-box h2:first-child,
 .feature-box h3:first-child {
   @apply mt-0;

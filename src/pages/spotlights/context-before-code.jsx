@@ -22,7 +22,6 @@ import Help from "../../images/icons/help.svg";
 import ImgChartF4 from "../../images/spotlights/soe-f4-barchart.png";
 import ImgProtest from "../../images/spotlights/soe-myanmar-protest.jpeg";
 import imgTableG4 from "../../images/spotlights/soe-table-g4.png";
-import ImgTweetFB from "../../images/spotlights/soe-tweet-fb.png";
 import ImgWhiteFlags from "../../images/spotlights/soe-white-flags.jpeg";
 import {animateSVGviewBox, toggleSVGclass} from "../../scrollama-generic";
 
@@ -878,15 +877,6 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 hideItem("#fb-infobox");
                 showItem("#fb-info");
               }
-
-              if (index === 8) {
-                showItem("#chart-q1");
-                hideItem("#modal-tweet");
-              }
-              if (index === 9) {
-                hideItem("#chart-q1");
-                showItem("#modal-tweet");
-              }
             }}
             // stepExit={({index, direction}) => {
             //   console.log(`Local Exit: ${index} - ${direction}`);
@@ -901,20 +891,6 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               <Help className="w-5 h-5 ml-3" />
             </button>
             <figure className="scrolly-figure bg-light-grey p-4">
-              <div
-                className="modal fade-out h-full flex relative z-20 items-center justify-center"
-                style={{display: "none"}}
-                id="modal-tweet"
-              >
-                <div className="relative max-w-screen-md overflow-auto">
-                  <FigureImg
-                    img={ImgTweetFB}
-                    extraClass="contained"
-                    caption="Twitter user Tim Samoff <a href='https://twitter.com/timsamoff/status/1265374113901604865/photo/1' target='_blank' rel='noopener noreferrer'>posted a screenshot</a> showing a notification he received from Facebook, when he “disagreed” with the company's decision to take down his page. Tweet used with permission."
-                    alt="Embed FB “SORRY YOU CAN’T APPEAL THAT”"
-                  />
-                </div>
-              </div>
               <div
                 className="modal relative fade-out z-20 w-full h-full items-center justify-center"
                 style={{display: "none"}}
