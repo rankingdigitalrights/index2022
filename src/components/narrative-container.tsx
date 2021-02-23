@@ -121,8 +121,8 @@ const NarrativeContainer = ({
         <div className="bg-beige flex flex-col items-center py-3 md:pt-10 md:pb-6">
           <span
             className={c(
-              "narrative-container relative mx-3  font-platform text-lg font-bold mb-3",
-              "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
+              "narrative-container relative mx-3 px-3 md:px-0 font-platform text-lg font-bold mb-3",
+              "w-full md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
             )}
           >
             Read more:
