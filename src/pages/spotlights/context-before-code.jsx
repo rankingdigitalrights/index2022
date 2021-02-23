@@ -25,8 +25,7 @@ import imgTableG4 from "../../images/spotlights/soe-table-g4.png";
 import ImgWhiteFlags from "../../images/spotlights/soe-white-flags.jpeg";
 import {animateSVGviewBox, toggleSVGclass} from "../../scrollama-generic";
 
-// const containerWidth =
-//   "w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 px-4 md:px-16 xl:px-28 2xl:px-24";
+const containerWidth = "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12";
 
 export const getStaticProps = async () => {
   const svgFbYt = (
@@ -968,9 +967,16 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             {section5}
             {section6}
             <Footnotes source={footnotes} />
-            <Donate className={c("relative mx-auto mt-12 mb-8")} />
           </NarrativeContainer>
-          <div className="bg-beige flex flex-col items-center py-3 md:pt-6 md:pb-8">
+          <div className="bg-rdr bg-opacity-20 pt-3 md:pt-12 pb-3 md:pb-12">
+            <Donate
+              className={c(
+                "narrative-container relative mx-3 md:mx-auto",
+                containerWidth,
+              )}
+            />
+          </div>
+          <div className="bg-beige flex flex-col items-center pt-6 pb-8 md:pt-6 md:pb-8">
             <span
               className={c(
                 "narrative-container relative mx-3 px-3 md:px-0 font-platform text-lg font-bold mb-3",
