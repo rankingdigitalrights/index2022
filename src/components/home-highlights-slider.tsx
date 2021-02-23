@@ -47,7 +47,7 @@ const HomeHighlightsSlider = ({highlights}: HomeHighlightsSliderProps) => {
       <div
         role="button"
         tabIndex={0}
-        className="cursor-pointer absolute z-10"
+        className="slider-button cursor-pointer absolute z-10"
         onClick={handlePrevSlide}
         onKeyDown={handlePrevSlide}
       >
@@ -57,7 +57,7 @@ const HomeHighlightsSlider = ({highlights}: HomeHighlightsSliderProps) => {
       <div
         role="button"
         tabIndex={0}
-        className="cursor-pointer absolute right-0 z-10"
+        className="slider-button cursor-pointer absolute right-0 z-10"
         onClick={handleNextSlide}
         onKeyDown={handleNextSlide}
       >

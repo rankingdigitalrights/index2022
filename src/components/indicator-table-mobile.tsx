@@ -85,7 +85,7 @@ const IndicatorTableMobile = ({
                         <div
                           role="button"
                           tabIndex={0}
-                          className="cursor-pointer w-1/12"
+                          className="slider-button cursor-pointer w-1/12"
                           onClick={handlePrevSlide}
                           onKeyDown={handlePrevSlide}
                           aria-label="Previous slide"
@@ -112,7 +112,7 @@ const IndicatorTableMobile = ({
                         <div
                           role="button"
                           tabIndex={0}
-                          className="cursor-pointer w-1/12"
+                          className="slider-button cursor-pointer w-1/12"
                           onClick={handleNextSlide}
                           onKeyDown={handleNextSlide}
                           aria-label="Next slide"
