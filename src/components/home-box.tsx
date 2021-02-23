@@ -43,11 +43,12 @@ const HomeBox = ({
     >
       <div className="flex flex-col h-full w-4/5 justify-between">
         <Link passHref href={href}>
-          <a className="text-white hover:no-underline">
+          <a className="hover:no-underline">
             <h3
               className={c(
                 "cursor-pointer font-platform font-bold text-xl mb-3 leading-9",
                 hoverClassName,
+                textColor,
               )}
               onMouseEnter={() => setIsHover(true)}
               onMouseLeave={() => setIsHover(false)}

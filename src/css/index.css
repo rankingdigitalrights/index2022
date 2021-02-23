@@ -177,6 +177,9 @@
   body:not(.user-is-tabbing) span:focus {
     outline: none;
   }
+  body:not(.user-is-tabbing) #scroll-to-top:focus {
+    outline: none;
+  }
 
   html {
     @apply font-lyon text-base;

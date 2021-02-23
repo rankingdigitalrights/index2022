@@ -93,7 +93,7 @@ const Modal = ({
         </span>
         <div
           ref={ref}
-          className="inline-block align-bottom bg-white text-left overflow-y-auto shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full"
+          className="inline-block align-bottom bg-white text-left overflow-y-auto shadow-xl rounded-md transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full"
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-headline"
@@ -103,7 +103,7 @@ const Modal = ({
               <div className="mt-3 sm:mt-0 sm:ml-4 sm:text-left">
                 <div className="flex items-start justify-between">
                   <h3
-                    className="font-circular font-bold text-prissian w-10/12"
+                    className="font-circular font-bold text-prissian w-10/12 mt-0"
                     id="modal-headline"
                   >
                     {hasHtmlTitle ? (

@@ -30,7 +30,7 @@ const CompareBarPositive = ({
   const value = isNA(score) ? 0 : score;
   const barHeight = height / 2;
   const lineOffset = 2;
-  const percentage = scaleLinear([0, maxValue], [0, barHeight - 20])(value);
+  const percentage = scaleLinear([0, maxValue], [0, barHeight - 24])(value);
 
   const barClassName = {
     "text-prissian": isHighlighted,

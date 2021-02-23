@@ -149,7 +149,7 @@ const Home = ({
                 theme="dark"
                 className="h-60 lg:h-80"
               >
-                <div className="flex flex-col h-full justify-end text-white">
+                <div className="flex flex-col h-full justify-end text-black">
                   <p>
                     Our recommendations for companies and policymakers committed
                     to protecting and promoting human rights online

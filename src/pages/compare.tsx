@@ -73,7 +73,7 @@ const ScoresOverTime = ({diffScores, details}: ScoresOverTimeProps) => {
                 {introduction}
               </Container>
 
-              <div className="container mx-auto">
+              <div className="container mx-auto mt-10">
                 <div className="flex flex-col px-6 overflow-x-scroll md:px-0 md:items-center lg:justify-center lg:flex-row lg:overflow-x-visible">
                   <div className="flex flex-col">
                     <CompanyKindLabel kind="internet" theme="dark" />
