@@ -26,13 +26,13 @@ const NarrativeLink = ({id, href, children, className}: LinkProps) => {
   }
 
   if (isFootnoteReferenceLink(href) && id) {
-    const footnoteId = id.replace(/ftnt_ref(\d)*$/, "$1");
+    const footnoteId = id.replace(/ftnt_ref(\d*)$/, "$1");
 
     return <FootnoteReference className={className} id={footnoteId} />;
   }
 
   if (isFootnoteLink(href) && id) {
-    const footnoteId = id.replace(/ftnt(\d)*$/, "$1");
+    const footnoteId = id.replace(/ftnt(\d*)$/, "$1");
 
     return <FootnoteBacklink className={className} id={footnoteId} />;
   }
