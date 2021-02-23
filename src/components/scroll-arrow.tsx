@@ -32,17 +32,15 @@ const ScrollArrow = () => {
   };
 
   return (
-    <ScrollArrowIcon
-      className={c(
-        "fixed bottom-3 right-3 md:bottom-10 md:right-10 w-12 h-12 md:w-14 md:h-14 svg-shadow z-40",
-        className,
-      )}
-      role="button"
-      tabIndex={0}
-      onClick={handleScrollToTop}
-      onKeyDown={handleScrollToTop}
-      aria-label="Scroll to Top Button"
-    />
+    <button onClick={handleScrollToTop}>
+      <ScrollArrowIcon
+        className={c(
+          "fixed bottom-3 right-3 md:bottom-10 md:right-10 w-12 h-12 md:w-14 md:h-14 svg-shadow z-40",
+          className,
+        )}
+        aria-label="Scroll to Top Button"
+      />
+    </button>
   );
 };
 
