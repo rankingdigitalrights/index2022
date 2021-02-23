@@ -40,7 +40,7 @@ const ChinaTechGiants = ({details}: NarrativeProps) => {
     <Layout>
       <NarrativeContainer
         heroClassName="hero-tech-giants"
-        heroCaption="Speech in the Age of COVID, by Rafat Alkhatib. Used with permission."
+        heroCaption="Original art by Rafat Alkhatib. Used with permission."
         backgroundClassName="bg-rdr bg-opacity-20"
         transparent
         readmore={readmore}

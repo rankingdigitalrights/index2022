@@ -40,7 +40,7 @@ const KeyFindings = ({details}: NarrativeProps) => {
     <Layout>
       <NarrativeContainer
         heroClassName="hero-key-findings"
-        heroCaption="Photo by Amy Brouillette, used with permission"
+        heroCaption="Photo by Amy Brouillette."
         backgroundClassName="bg-cat-freedom bg-opacity-20"
         readmore={readmore}
       >
