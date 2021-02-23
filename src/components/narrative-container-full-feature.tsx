@@ -22,7 +22,7 @@ const NarrativeContainer = ({
 }: NarrativeContainerProps) => {
   const containerPadding = {
     "px-6 md:px-16 xl:px-28 2xl:px-24": !transparent,
-    "px-3 md:px-16 xl:px-28 2xl:px-24": transparent,
+    "px-4 md:px-16 xl:px-28 2xl:px-24": transparent,
   };
   const containerClassName = {
     "bg-white shadow-md": !transparent,
@@ -47,7 +47,7 @@ const NarrativeContainer = ({
       <div className={c("narrative flex justify-around", backgroundClassName)}>
         <div
           className={c(
-            "container mx-auto w-11/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
+            "container mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
             containerPadding,
             containerClassName,
           )}

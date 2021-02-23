@@ -937,7 +937,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               </div>
               <div
                 id="fb-infobox"
-                className="flex-col md:w-3/4 max-w-screen-md hidden h-screen m-auto justify-center items-center"
+                className="flex-col z-50 relative md:w-3/4 max-w-screen-md hidden h-screen m-auto justify-center items-center"
               >
                 <div className="bg-white shadow-xl px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <h2 className="text-center">Background</h2>
@@ -970,19 +970,40 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             <Footnotes source={footnotes} />
             <Donate className={c("relative mx-auto mt-12 mb-8")} />
           </NarrativeContainer>
-          <div className="bg-beige flex py-3 md:py-12">
+          <div className="bg-beige flex flex-col items-center py-3 md:pt-6 md:pb-8">
+            <span
+              className={c(
+                "narrative-container relative mx-3 px-3 md:px-0 font-platform text-lg font-bold mb-3",
+                "w-full md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
+              )}
+            >
+              Read more:
+            </span>
+
             <div
               className={c(
                 "narrative-container relative flex flex-col mx-3 md:mx-auto lg:flex-row items-center",
                 "md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
               )}
             >
-              <Readmore className="w-full lg:max-w-xs" readmore={readmore[0]} />
-              <Readmore
-                className="w-full my-6 lg:my-0 lg:max-w-xs lg:mx-6"
-                readmore={readmore[1]}
-              />
-              <Readmore className="w-full lg:max-w-xs" readmore={readmore[2]} />
+              {readmore[0] && (
+                <Readmore
+                  className="w-full lg:max-w-xs"
+                  readmore={readmore[0]}
+                />
+              )}
+              {readmore[1] && (
+                <Readmore
+                  className="w-full my-6 lg:my-0 lg:max-w-xs lg:mx-6"
+                  readmore={readmore[1]}
+                />
+              )}
+              {readmore[2] && (
+                <Readmore
+                  className="w-full lg:max-w-xs"
+                  readmore={readmore[2]}
+                />
+              )}
             </div>
           </div>
         </>
