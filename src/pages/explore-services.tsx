@@ -11,6 +11,7 @@ import NarrativeTitle from "../components/narrative-title";
 import RankChart from "../components/rank-chart";
 import Selector from "../components/selector";
 import ServiceRankChart from "../components/service-rank-chart";
+import {Option, SingleValue} from "../components/service-selector";
 import {
   allServices,
   companyRankingData,
@@ -283,6 +284,8 @@ const Explore = ({
                       defaultValue={state.service}
                       isClearable
                       onSelect={handleServiceSelect}
+                      LocalOption={Option}
+                      LocalSingleValue={SingleValue}
                       className="my-6 self-stretch"
                     />
                   </div>

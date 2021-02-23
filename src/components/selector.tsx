@@ -122,6 +122,8 @@ interface SelectorProps<T extends SelectOption> {
   defaultValue?: T;
   isSearchable?: boolean;
   isClearable?: boolean;
+  LocalOption?: (props: OptionProps<T, false>) => JSX.Element;
+  LocalSingleValue?: (props: SingleValueProps<T>) => JSX.Element;
   className?: string;
 }
 
@@ -133,6 +135,8 @@ const Selector = <T extends SelectOption>({
   defaultValue,
   isSearchable = false,
   isClearable = false,
+  LocalOption = Option,
+  LocalSingleValue = SingleValue,
   className,
 }: SelectorProps<T>) => {
   const handleChange = (value: ValueType<T, false>) => {
@@ -154,9 +158,9 @@ const Selector = <T extends SelectOption>({
           Input,
           IndicatorSeparator,
           Placeholder,
-          SingleValue,
-          Option,
           Control,
+          SingleValue: LocalSingleValue,
+          Option: LocalOption,
         }}
         onChange={handleChange}
       />

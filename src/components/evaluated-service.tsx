@@ -1,3 +1,4 @@
+import c from "clsx";
 import Link from "next/link";
 import React from "react";
 
@@ -19,8 +20,8 @@ interface EvaluatedServiceProps {
   kind: ServiceKind;
 }
 
-const mapIcon = (kind: ServiceKind) => {
-  const className = "mr-2 svg-shadow";
+export const mapIcon = (kind: ServiceKind, hasShadow = true) => {
+  const className = c("mr-2", hasShadow ? "svg-shadow" : undefined);
 
   switch (kind) {
     case "broadband":
