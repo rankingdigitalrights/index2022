@@ -308,8 +308,13 @@
     @apply break-words;
   }
 
-  .footnotes p {
+  .footnotes p,
+  .footnotes div {
     @apply mb-2;
+  }
+
+  .footnotes p:last-child {
+    @apply mb-0;
   }
 
   .company-table::-webkit-scrollbar {
