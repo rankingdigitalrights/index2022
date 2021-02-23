@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React, {useState} from "react";
 
 import CategorySelector from "../components/category-selector";
@@ -6,6 +5,7 @@ import HomeBox from "../components/home-box";
 import HomeHighlightsSlider from "../components/home-highlights-slider";
 import HomeSpotlightBox from "../components/home-spotlight-box";
 import Layout from "../components/layout";
+import LearnMore from "../components/learn-more";
 import RankChart from "../components/rank-chart";
 import {companyHighlights, companyRankingData} from "../data";
 import {CompanyHighlight, CompanyRank, IndicatorCategoryExt} from "../types";
@@ -172,9 +172,7 @@ const Home = ({
             privacy.
           </p>
 
-          <Link passHref href="/explore-services">
-            <a>Learn more: Explore our data by issue area and service.</a>
-          </Link>
+          <LearnMore href="/explore-services" />
         </div>
 
         <div className="flex flex-col sm:flex-row lg:w-2/3 px-6">
