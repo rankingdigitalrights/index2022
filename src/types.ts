@@ -332,6 +332,12 @@ export type ReadmoreItem = {
   excerpt: string;
 };
 
+export type ModalEntry = {
+  title: string;
+  hasHtmlTitle?: boolean;
+  content?: React.ReactNode;
+};
+
 export type Glossary = {
   id: string;
   title: string;

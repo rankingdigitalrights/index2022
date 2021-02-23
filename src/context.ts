@@ -1,15 +1,8 @@
 import React from "react";
 
-import {Glossary} from "./types";
-
-export type ModalEntry = {
-  title: string;
-  hasHtmlTitle?: boolean;
-  content?: React.ReactNode;
-};
+import {Glossary, ModalEntry} from "./types";
 
 type ModalCtx = {
-  // entry?: ModalEntry;
   title?: string;
   content?: React.ReactNode;
   hasHtmlTitle?: boolean;

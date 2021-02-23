@@ -7,8 +7,9 @@ import smoothscroll from "smoothscroll-polyfill";
 import SwiperCore, {Pagination} from "swiper";
 
 import glossary from "../../data/glossary.json";
-import {GlossaryContext, ModalContext, ModalEntry} from "../context";
+import {GlossaryContext, ModalContext} from "../context";
 import {initMatomo} from "../matomo";
+import {ModalEntry} from "../types";
 
 SwiperCore.use([Pagination]);
 
