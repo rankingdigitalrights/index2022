@@ -2,7 +2,7 @@
 import React, {useEffect, useRef} from "react";
 
 import Cancel from "../images/icons/cancel.svg";
-import {isMouseEvent} from "../utils";
+import {isMouseEvent, isString} from "../utils";
 
 export type ModalEntry = {
   title: string;
@@ -14,7 +14,7 @@ interface ModalProps {
   title: string;
   hasHtmlTitle?: boolean;
   onCancel: () => void;
-  children?: React.ReactNode;
+  children?: React.ReactNode | string;
 }
 
 const Modal = ({
@@ -25,6 +25,21 @@ const Modal = ({
 }: ModalProps) => {
   // eslint-disable-next-line unicorn/no-null
   const ref = useRef<HTMLDivElement>(null);
+
+  let content: string | React.ReactNode = "";
+
+  if (isString(children)) {
+    content = (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: children,
+        }}
+      />
+    );
+  }
+  if (React.isValidElement(children)) {
+    content = children;
+  }
 
   // Collapse the modal when we click outside the menu.
   useEffect(() => {
@@ -112,7 +127,7 @@ const Modal = ({
                   </button>
                 </div>
 
-                <div className="mt-2 mb-4">{children}</div>
+                <div className="mt-2 mb-4">{content}</div>
               </div>
             </div>
           </div>
