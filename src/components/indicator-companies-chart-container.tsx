@@ -30,7 +30,7 @@ const IndicatorCompaniesChartContainer = ({
     return (
       <div
         className={c(
-          "flex flex-col md:flex-row overflow-x-scroll lg:overflow-x-visible",
+          "flex flex-col py-3 md:py-0 md:flex-row overflow-x-auto lg:overflow-x-visible",
           className,
         )}
       >
