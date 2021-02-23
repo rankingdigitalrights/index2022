@@ -34,7 +34,7 @@ const Footer = ({className}: FooterProps) => {
               <li className="pb-1">
                 <a
                   className="text-white no-underline"
-                  href="/methodology/"
+                  href="https://rankingdigitalrights.org/index2020/methodology/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
