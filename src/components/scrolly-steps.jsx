@@ -3,7 +3,7 @@ const ScrollySteps = (props) => {
   // console.log("props:\n");
   // console.dir(props);
   return (
-    <div className="scrolly-steps">
+    <div className="scrolly-steps z-40">
       {/* <div
         className="step invisible"
         data-step="-99"

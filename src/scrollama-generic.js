@@ -60,7 +60,7 @@ export const setupSpotlight = (
   scroller
     .setup({
       step: stepSelector,
-      offset: 0.7,
+      offset: 0.5,
       debug: false,
     })
     .onStepEnter((...args) => {

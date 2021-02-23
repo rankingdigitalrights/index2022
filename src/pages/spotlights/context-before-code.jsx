@@ -775,17 +775,17 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             //   console.log(`Local Exit 1: ${index} - ${direction}`); // TODO
             // }}
           >
+            <button
+              id="map-info"
+              className="btn-info focus:outline-none z-50"
+              // style={{display: "none"}}
+              onClick={() => toggleVisibility("#modal-map")}
+            >
+              <Help className="w-5 h-5 ml-3" />
+            </button>
             <figure className="scrolly-figure bg-light-grey">
-              <button
-                id="map-info"
-                className="btn-info focus:outline-none z-20"
-                // style={{display: "none"}}
-                onClick={() => toggleVisibility("#modal-map")}
-              >
-                <Help className="w-5 h-5 ml-3" />
-              </button>
               <div
-                className="modal pl-0 pr-0 fade-out h-full flex relative z-10 items-center justify-center"
+                className="modal pl-0 pr-0 fade-out h-full flex relative z-20 items-center justify-center"
                 style={{display: "none"}}
                 id="modal-kashmir"
               >
@@ -799,7 +799,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 </div>
               </div>
               <div
-                className="modal relative fade-out z-10 w-full h-full items-center justify-center"
+                className="modal relative fade-out z-20 w-full h-full items-center justify-center"
                 style={{display: "none"}}
                 id="modal-map"
               >
@@ -892,17 +892,17 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             //   console.log(`Local Exit: ${index} - ${direction}`);
             // }}
           >
+            <button
+              id="fb-info"
+              className="btn-info fade-out focus:outline-none z-50"
+              style={{display: "none"}}
+              onClick={() => toggleVisibility("#modal-fb")}
+            >
+              <Help className="w-5 h-5 ml-3" />
+            </button>
             <figure className="scrolly-figure bg-light-grey p-4">
-              <button
-                id="fb-info"
-                className="btn-info fade-out focus:outline-none z-20"
-                style={{display: "none"}}
-                onClick={() => toggleVisibility("#modal-fb")}
-              >
-                <Help className="w-5 h-5 ml-3" />
-              </button>
               <div
-                className="modal fade-out h-full flex relative z-10 items-center justify-center"
+                className="modal fade-out h-full flex relative z-20 items-center justify-center"
                 style={{display: "none"}}
                 id="modal-tweet"
               >
@@ -916,7 +916,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 </div>
               </div>
               <div
-                className="modal relative fade-out z-10 w-full h-full items-center justify-center"
+                className="modal relative fade-out z-20 w-full h-full items-center justify-center"
                 style={{display: "none"}}
                 id="modal-fb"
               >
@@ -961,7 +961,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
               </div>
               <div
                 id="fb-infobox"
-                className="flex-col w-3/4 max-w-screen-md	hidden h-screen m-auto justify-center items-center"
+                className="flex-col md:w-3/4 max-w-screen-md hidden h-screen m-auto justify-center items-center"
               >
                 <div className="bg-white shadow-xl px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <h2 className="text-center">Background</h2>
