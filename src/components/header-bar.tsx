@@ -408,7 +408,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                         </a>
                       </Link>
                       <span>/</span>
-                      <Link passHref href="/2020RDRIndexFullDataSet.csv.zip">
+                      <Link passHref href="/2020RDRIndexcsv.zip">
                         <a role="menuitem" className="text-black font-bold">
                           CSV
                         </a>
