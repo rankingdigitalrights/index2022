@@ -22,7 +22,7 @@ const NarrativeContainer = ({
 }: NarrativeContainerProps) => {
   const containerPadding = {
     "px-6 md:px-16 xl:px-28 2xl:px-24": !transparent,
-    "px-4 md:px-16 xl:px-28 2xl:px-24": transparent,
+    "px-3 md:px-16 xl:px-28 2xl:px-24": transparent,
   };
   const containerClassName = {
     "bg-white shadow-md": !transparent,
