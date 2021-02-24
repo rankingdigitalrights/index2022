@@ -5,6 +5,9 @@ Options -Indexes -MultiViews
 # Prevent mod_dir appending a slash to directory requests
 DirectorySlash On
 
+# Custom 404
+ErrorDocument 404   https://%{SERVER_NAME}/index2020/404.html
+
 # Rewrite HTTP to HTTPS
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*) https://%{SERVER_NAME}/index2020/$1 [R=301,L]
