@@ -36,7 +36,7 @@ const HomeBox = ({
   return (
     <div
       className={c(
-        "relative pt-8 pb-6 px-6 md:p-6 lg:py-0 lg:pt-10 lg:pb-8 leading-none font-circular",
+        "relative pb-4 sm:pt-8 sm:pb-6 px-6 md:p-6 lg:py-0 lg:pt-10 lg:pb-8 leading-none font-circular",
         textColor,
         className,
       )}
@@ -46,7 +46,7 @@ const HomeBox = ({
           <a className="hover:no-underline">
             <h3
               className={c(
-                "cursor-pointer font-platform font-bold text-xl mb-3 leading-9",
+                "cursor-pointer font-platform font-bold text-xl leading-9",
                 hoverClassName,
                 textColor,
               )}
