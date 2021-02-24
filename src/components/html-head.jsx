@@ -1,11 +1,9 @@
+/* eslint @typescript-eslint/no-var-requires: off, import/no-dynamic-require: off, global-require: off, import/no-unresolved: off */
 import Head from "next/head";
 import {useRouter} from "next/router";
 import React from "react";
 
 import htmlMeta from "../../data/html-meta.json";
-import RdrIconSmall from "../images/cropped-rdr_icon_black-32x32.png";
-import RdrTouchIcon from "../images/cropped-rdr_icon_black-180x180.png";
-import RdrIconLarge from "../images/cropped-rdr_icon_black-192x192.png";
 
 const HtmlHead = () => {
   const router = useRouter();
@@ -80,9 +78,20 @@ const HtmlHead = () => {
         href="https://rankingdigitalrights.org/comments/feed/"
       />
 
-      <link rel="icon" href={RdrIconSmall} sizes="32x32" />
-      <link rel="icon" href={RdrIconLarge} sizes="192x192" />
-      <link rel="apple-touch-icon-precomposed" href={RdrTouchIcon} />
+      <link
+        rel="icon"
+        href={require("../images/cropped-rdr_icon_black-32x32.png?url")}
+        sizes="32x32"
+      />
+      <link
+        rel="icon"
+        href={require("../images/cropped-rdr_icon_black-192x192.png?url")}
+        sizes="192x192"
+      />
+      <link
+        rel="apple-touch-icon-precomposed"
+        href={require("../images/cropped-rdr_icon_black-180x180.png?url")}
+      />
     </Head>
   );
 };
