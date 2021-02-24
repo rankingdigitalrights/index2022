@@ -36,7 +36,7 @@ const NarrativeContainer = ({
           <div className={c("w-full h-96", heroClassName)} />
           <figcaption
             className={c(
-              "font-circular text-right text-xs md:text-sm py-1 pr-3 md:pr-1.5",
+              "font-circular text-right text-xs md:text-sm py-1 pl-3 pr-3 md:pr-1.5",
               backgroundClassName,
             )}
           >

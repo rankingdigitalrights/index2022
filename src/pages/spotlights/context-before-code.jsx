@@ -699,7 +699,7 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             transparent
           >
             <div className="mb-6 border-b border-prissian mt-3 md:mt-12 pb-4">
-              <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none">
+              <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none mb-1">
                 <p>
                   Context before code: Protecting human rights in a state of
                   emergency
