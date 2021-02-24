@@ -68,8 +68,8 @@ const HighlightsSlide = ({
       <div className="flex flex-col sm:flex-row w-full lg:w-2/3 sm:mt-6 lg:mt-0 pl-9 pr-9">
         {highlights.map((h, idx) => {
           const innerClassName = {
-            "pr-3": idx === 0,
-            "pl-3": idx === 1,
+            "md:pr-3": idx === 0,
+            "md:pl-3": idx === 1,
           };
           return (
             <CompanySlide
