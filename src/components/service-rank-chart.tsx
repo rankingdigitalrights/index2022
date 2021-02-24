@@ -169,9 +169,9 @@ const ServiceRankChart = ({
 
             <div className="flex-none w-8 text-center">Rank</div>
 
-            <div className="flex-none w-9 ml-auto">
-              <span className="float-right">Score</span>
-            </div>
+            <div className="flex-shrink-0 ml-2 w-24 sm:flex-grow">&nbsp;</div>
+
+            <div className="flex-none w-9 ml-2 float-right">Score</div>
           </div>
         </>
       )}
