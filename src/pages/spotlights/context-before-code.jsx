@@ -730,7 +730,10 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             id="scrolly-map"
             story={story1}
             stepEnter={({index, element, direction}) => {
-              if (element.dataset.show || element.dataset.hide) {
+              if (
+                direction === "down" &&
+                (element.dataset.show || element.dataset.hide)
+              ) {
                 toggleSVGclass({
                   objId: "map-world",
                   showLayers: element.dataset.show,
@@ -768,10 +771,19 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 showItem("#modal-kashmir");
               }
             }}
-
-            // stepExit={({index, direction}) => {
-            //   console.log(`Local Exit 1: ${index} - ${direction}`); // TODO
-            // }}
+            stepExit={({element, direction}) => {
+              if (
+                direction === "up" &&
+                (element.dataset.show || element.dataset.hide)
+              ) {
+                toggleSVGclass({
+                  objId: "map-world",
+                  showLayers: element.dataset.show,
+                  hideLayers: element.dataset.hide,
+                  direction,
+                });
+              }
+            }}
           >
             <button
               id="map-info"
@@ -855,7 +867,10 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
             id="scrolly-graph"
             story={story2}
             stepEnter={({index, element, direction}) => {
-              if (element.dataset.show || element.dataset.hide) {
+              if (
+                direction === "down" &&
+                (element.dataset.show || element.dataset.hide)
+              ) {
                 toggleSVGclass({
                   objId: "chart-q1",
                   showLayers: element.dataset.show,
@@ -877,9 +892,19 @@ const SpotlightOne = ({svgFbYt, svgWorldMap}) => {
                 showItem("#fb-info");
               }
             }}
-            // stepExit={({index, direction}) => {
-            //   console.log(`Local Exit: ${index} - ${direction}`);
-            // }}
+            stepExit={({element, direction}) => {
+              if (
+                direction === "up" &&
+                (element.dataset.show || element.dataset.hide)
+              ) {
+                toggleSVGclass({
+                  objId: "chart-q1",
+                  showLayers: element.dataset.show,
+                  hideLayers: element.dataset.hide,
+                  direction,
+                });
+              }
+            }}
           >
             <button
               id="fb-info"
