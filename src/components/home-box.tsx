@@ -36,7 +36,7 @@ const HomeBox = ({
   return (
     <div
       className={c(
-        "relative pb-4 sm:pt-8 sm:pb-6 px-6 md:p-6 lg:py-0 lg:pt-10 lg:pb-8 leading-none font-circular",
+        "relative px-6 py-4 sm:py-6 leading-none font-circular",
         textColor,
         className,
       )}
@@ -46,7 +46,7 @@ const HomeBox = ({
           <a className="hover:no-underline">
             <h3
               className={c(
-                "cursor-pointer font-platform font-bold text-xl leading-9",
+                "cursor-pointer font-platform font-bold text-xl leading-9 mt-0",
                 hoverClassName,
                 textColor,
               )}
@@ -58,7 +58,7 @@ const HomeBox = ({
           </a>
         </Link>
 
-        <div className="flex-grow h-full">{children}</div>
+        <div>{children}</div>
       </div>
 
       <Link passHref href={href}>
