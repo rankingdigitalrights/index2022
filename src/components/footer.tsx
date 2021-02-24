@@ -34,9 +34,7 @@ const Footer = ({className}: FooterProps) => {
               <li className="pb-1">
                 <a
                   className="text-white no-underline"
-                  href="https://rankingdigitalrights.org/index2020/methodology/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="https://rankingdigitalrights.org/index2020/methodology"
                 >
                   2020 RDR Index methodology
                 </a>
