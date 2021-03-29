@@ -78,6 +78,20 @@ parse_params() {
 	return 0
 }
 
+htaccess_stg() {
+	if [[ "${prod}" -eq "0" ]];
+	then
+		local htaccess_path="out/.htaccess"
+
+		{ echo "AuthType Basic";
+		  echo 'AuthName "index2020"';
+		  echo 'AuthGroupFile /dev/null';
+		  echo 'Require valid-user';
+		  echo 'AuthUserFile "/home1/ranking5/.htpasswds/public_html/index2019-working/passwd"';
+		}  >> "${htaccess_path}"
+	fi
+}
+
 parse_params "$@"
 setup_colors
 
@@ -92,6 +106,7 @@ yarn -s clean || die "failing to clean local environment"
 
 BASE_PATH="${base_path}" yarn -s build
 BASE_PATH="${base_path}" yarn -s export
+htaccess_stg
 
 msg_info "deploying to remote host"
 rsync -qaz out/ "ranking5@rankingdigitalrights.org:${deploy_path}" || die "failed to sync to the remote host"
