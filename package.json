@@ -6,7 +6,7 @@
     "build": "next build",
     "build-storybook": "yarn fixtures && build-storybook",
     "clean": "rimraf storybook-static out .next",
-    "data": "yarn -s data:csv && yarn -s data:google && yarn -s data:pdf",
+    "data": "yarn -s data:csv && yarn -s data:google",
     "data:csv": "yarn -s indexctl csv",
     "data:google": "yarn -s indexctl google",
     "data:pdf": "yarn -s indexctl pdf",
