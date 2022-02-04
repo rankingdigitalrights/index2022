@@ -181,6 +181,7 @@ type CsvYearOverYear = {
   diff2018: IndicatorScore;
   diff2019: IndicatorScore;
   diff2020: IndicatorScore;
+  diff2022: IndicatorScore;
 };
 
 type CsvCompanyServiceRank = {
@@ -200,7 +201,7 @@ type CsvCompanyServiceRank = {
 /*
  * The years we include in the data extraction.
  */
-const indexYears: Set<IndexYear> = new Set(["2020"]);
+const indexYears: Set<IndexYear> = new Set(["2022"]);
 
 /* A helper function to extract and map indicators for one category
  * from a list of indicators. This is used by the loadData function.
@@ -452,6 +453,7 @@ export const loadScoreDiffsCsv = loadCsv<CsvYearOverYear>((record) => ({
   diff2018: floatOrNA(record["2018DiffAdjusted"]),
   diff2019: floatOrNA(record["2019DiffAdjusted"]),
   diff2020: floatOrNA(record["2020DiffAdjusted"]),
+  diff2022: floatOrNA(record["2020DiffAdjusted"]),
 }));
 
 /*
@@ -477,7 +479,7 @@ const loadCompanyServiceRanksCsv = loadCsv<CsvCompanyServiceRank>((record) => ({
 export const companies = memoizeAsync(
   async (): Promise<Company[]> => {
     const csvCompanySpecs = await loadCompanySpecsCsv(
-      "csv/2020-company-specs.csv",
+      "csv/2022-company-specs.csv",
     );
     return csvCompanySpecs.map(
       ({company: id, companyPretty: name, kind, brand}) => ({
@@ -496,7 +498,7 @@ export const companies = memoizeAsync(
 export const companyMeta = memoizeAsync(
   async (company: string): Promise<CompanyMeta> => {
     const csvCompanyMeta = await loadCompanyMetaCsv(
-      "csv/2020-company-meta.csv",
+      "csv/2022-company-meta.csv",
     );
 
     const {researchers, website, ...meta} =
@@ -521,9 +523,9 @@ export const services = memoizeAsync(
       csvServiceSpecs,
       csvServiceKinds,
     ] = await Promise.all([
-      loadCompanySpecsCsv("csv/2020-company-specs.csv"),
-      loadServiceSpecsCsv("csv/2020-service-specs.csv"),
-      loadServiceKindsCsv("csv/2020-service-kinds.csv"),
+      loadCompanySpecsCsv("csv/2022-company-specs.csv"),
+      loadServiceSpecsCsv("csv/2022-service-specs.csv"),
+      loadServiceKindsCsv("csv/2022-service-kinds.csv"),
     ]);
 
     const serviceMaps = new Set([
@@ -579,8 +581,8 @@ export const companyServices = services;
 export const indicators = memoizeAsync(
   async (): Promise<Indicator[]> => {
     const [csvIndicators, csvExcludes] = await Promise.all([
-      loadIndicatorSpecsCsv("csv/2020-indicator-specs.csv"),
-      loadIndicatorExcludesCsv("csv/2020-indicator-excludes.csv"),
+      loadIndicatorSpecsCsv("csv/2022-indicator-specs.csv"),
+      loadIndicatorExcludesCsv("csv/2022-indicator-excludes.csv"),
     ]);
 
     return csvIndicators.map(
@@ -637,7 +639,7 @@ export const indicators = memoizeAsync(
  */
 export const elements = memoizeAsync(
   async (): Promise<Element[]> => {
-    const csvElements = await loadElementSpecsCsv("csv/2020-element-specs.csv");
+    const csvElements = await loadElementSpecsCsv("csv/2022-element-specs.csv");
 
     return csvElements.map(
       ({
@@ -694,7 +696,7 @@ export const indicatorScores = memoizeAsync(
   async (indicatorId: string): Promise<IndicatorCompanyScore[]> => {
     const [allCompanies, csvIndicators] = await Promise.all([
       indicatorCompanies(indicatorId),
-      loadIndicatorsCsv("csv/2020-indicators.csv"),
+      loadIndicatorsCsv("csv/2022-indicators.csv"),
     ]);
 
     return allCompanies
@@ -777,7 +779,7 @@ export const indicatorElements = memoizeAsync(
     const [allCompanies, allElements, csvElements] = await Promise.all([
       indicatorCompanies(indicatorId),
       elements(),
-      loadElementsCsv("csv/2020-elements.csv"),
+      loadElementsCsv("csv/2022-elements.csv"),
     ]);
 
     return allCompanies.reduce(
@@ -805,7 +807,7 @@ export const indicatorAverages = memoizeAsync(
   async (indicatorId: string): Promise<IndicatorAverages> => {
     const [allCompanies, csvLevels] = await Promise.all([
       indicatorCompanies(indicatorId),
-      loadLevelsCsv("csv/2020-levels.csv"),
+      loadLevelsCsv("csv/2022-levels.csv"),
     ]);
 
     return allCompanies.reduce(async (memo, {id: companyId}) => {
@@ -832,7 +834,7 @@ export const indicatorAverages = memoizeAsync(
 );
 
 /*
- * Load the source data and construct the company index for 2020. This
+ * Load the source data and construct the company index for 2022. This
  * function is called to populate the website pages.
  */
 export const companyIndices = memoizeAsync(
@@ -846,13 +848,13 @@ export const companyIndices = memoizeAsync(
       csvCompanyRanks,
       csvYearOverYear,
     ] = await Promise.all([
-      loadTotalsCsv("csv/2020-totals.csv"),
-      loadCategoriesCsv("csv/2020-categories.csv"),
-      loadIndicatorsCsv("csv/2020-indicators.csv"),
-      loadCompanySpecsCsv("csv/2020-company-specs.csv"),
-      loadIndicatorSpecsCsv("csv/2020-indicator-specs.csv"),
-      loadCompanyRanksCsv("csv/2020-rankings.csv"),
-      loadScoreDiffsCsv("csv/2020-year-over-year.csv"),
+      loadTotalsCsv("csv/2022-totals.csv"),
+      loadCategoriesCsv("csv/2022-categories.csv"),
+      loadIndicatorsCsv("csv/2022-indicators.csv"),
+      loadCompanySpecsCsv("csv/2022-company-specs.csv"),
+      loadIndicatorSpecsCsv("csv/2022-indicator-specs.csv"),
+      loadCompanyRanksCsv("csv/2022-rankings.csv"),
+      loadScoreDiffsCsv("csv/2022-year-over-year.csv"),
     ]);
 
     return (
@@ -886,6 +888,8 @@ export const companyIndices = memoizeAsync(
               diffs.find((d) => d.category === "total")?.diff2019 || "NA",
             diff2020:
               diffs.find((d) => d.category === "total")?.diff2020 || "NA",
+            diff2022:
+              diffs.find((d) => d.category === "total")?.diff2022 || "NA",
           };
 
           const scores: Scores = companyCategories.reduce(
@@ -956,7 +960,7 @@ export const companyIndices = memoizeAsync(
 export const indicatorDetails = memoizeAsync(
   async (indicatorId: string): Promise<IndicatorDetails> => {
     const csvIndicatorSpecs = await loadIndicatorSpecsCsv(
-      "csv/2020-indicator-specs.csv",
+      "csv/2022-indicator-specs.csv",
     );
 
     const spec = csvIndicatorSpecs.find(
@@ -993,11 +997,11 @@ export const indicatorIndices = memoizeAsync(
       // allIndicators,
       allCompanies,
     ] = await Promise.all([
-      loadIndicatorsCsv("csv/2020-indicators.csv"),
-      loadLevelsCsv("csv/2020-levels.csv"),
-      loadElementsCsv("csv/2020-elements.csv"),
-      loadIndicatorSpecsCsv("csv/2020-indicator-specs.csv"),
-      loadElementSpecsCsv("csv/2020-element-specs.csv"),
+      loadIndicatorsCsv("csv/2022-indicators.csv"),
+      loadLevelsCsv("csv/2022-levels.csv"),
+      loadElementsCsv("csv/2022-elements.csv"),
+      loadIndicatorSpecsCsv("csv/2022-indicator-specs.csv"),
+      loadElementSpecsCsv("csv/2022-element-specs.csv"),
       // indicators(),
       companies(),
     ]);
@@ -1147,7 +1151,7 @@ export const companyRanking = async (
 ): Promise<CompanyRank[]> => {
   const [companyData, csvCompanyRanks] = await Promise.all([
     companyIndices(),
-    loadCompanyRanksCsv("csv/2020-rankings.csv"),
+    loadCompanyRanksCsv("csv/2022-rankings.csv"),
   ]);
 
   return csvCompanyRanks
@@ -1207,7 +1211,7 @@ export const companyServiceRanking = async (
 ): Promise<ServiceCompanyRank[]> => {
   const [companyData, csvCompanyServiceRanks] = await Promise.all([
     companyIndices(),
-    loadCompanyServiceRanksCsv("csv/2020-service-rankings.csv"),
+    loadCompanyServiceRanksCsv("csv/2022-service-rankings.csv"),
   ]);
 
   return csvCompanyServiceRanks
@@ -1268,7 +1272,7 @@ export const companyDiffs = async (
 ): Promise<CompanyScoreDiff[]> => {
   const [companyData, csvScoreDiffs] = await Promise.all([
     companies(),
-    loadScoreDiffsCsv("csv/2020-year-over-year.csv"),
+    loadScoreDiffsCsv("csv/2022-year-over-year.csv"),
   ]);
 
   return (
@@ -1286,7 +1290,7 @@ export const companyDiffs = async (
           id,
           company,
           kind,
-          score: diff.diff2020,
+          score: diff.diff2022,
         };
       })
       // sort descending
@@ -1303,7 +1307,7 @@ export const companyDiffs = async (
  */
 export const glossary = async (): Promise<Glossary[]> => {
   const src = await fsP.readFile(
-    path.join(process.cwd(), "csv/2020-glossary.html"),
+    path.join(process.cwd(), "csv/2022-glossary.html"),
   );
   const $ = cheerio.load(src);
 

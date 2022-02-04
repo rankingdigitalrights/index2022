@@ -55,7 +55,7 @@ export default async (headless = true): Promise<BrowserCtx> => {
       // </div>`;
 
       await page.pdf({
-        format: "A4",
+        format: "a4",
         printBackground: true,
         preferCSSPageSize: true,
         // displayHeaderFooter: true,

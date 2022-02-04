@@ -1,0 +1,15 @@
+company,companyClean,subtype,maintype,region,country,id,serviceBrand
+Alibaba,Alibaba,ecommerce,platforms,Asia,China,iAL1,NA
+Amazon,Amazon,ecommerce,platforms,United States,USA,iAZ1,NA
+Apple,Apple,internet,platforms,United States,USA,iAP1,NA
+Baidu,Baidu,internet,platforms,Asia,China,iBA1,NA
+Facebook,Facebook,internet,platforms,United States,USA,iFB1,NA
+Google,Google,internet,platforms,United States,USA,iGO1,NA
+Kakao,Kakao,internet,platforms,Asia,South Korea,iKA1,NA
+Mail.Ru,MailRu,internet,platforms,Russia,Russia,iMA1,NA
+Microsoft,Microsoft,internet,platforms,United States,USA,iMS1,NA
+Samsung,Samsung,internet,platforms,Asia,South Korea,iSA1,NA
+Tencent,Tencent,internet,platforms,Asia,China,iTC1,NA
+Twitter,Twitter,internet,platforms,United States,USA,iTW1,NA
+Yahoo,Yahoo,internet,platforms,United States,USA,iVM1,NA
+Yandex,Yandex,internet,platforms,Russia,Russia,iYA1,NA

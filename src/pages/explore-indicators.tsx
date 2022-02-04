@@ -107,7 +107,7 @@ const Indicators = ({indicators}: IndicatorsProps) => {
           return (
             <div>
               <Container>
-                <NarrativeTitle title="Explore the data: Indicators for the 2020 RDR Index" />
+                <NarrativeTitle title="Explore the data: Indicators for the 2022 RDR Index" />
 
                 <p className="font-circular mt-6">
                   We conduct our research using human rights-based indicators

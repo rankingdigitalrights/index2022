@@ -51,7 +51,7 @@ export const isNA = (x: unknown): x is NA => {
 };
 
 export const isInternalLink = (x: string): boolean => {
-  const reFullUrl = /^https:\/\/[.w]?rankingdigitalrights.org\/index2020/;
+  const reFullUrl = /^https:\/\/[.w]?rankingdigitalrights.org\/index2022/;
   const rePartialUrl = /^\/(companies|indicators)\/\w*\/?$/;
 
   return reFullUrl.test(x) || rePartialUrl.test(x);

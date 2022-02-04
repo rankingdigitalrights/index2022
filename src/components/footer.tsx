@@ -34,9 +34,9 @@ const Footer = ({className}: FooterProps) => {
               <li className="pb-1">
                 <a
                   className="text-white no-underline"
-                  href="https://rankingdigitalrights.org/index2020/methodology"
+                  href="https://rankingdigitalrights.org/index2022/methodology"
                 >
-                  2020 RDR Index methodology
+                  2022 RDR Index methodology
                 </a>
               </li>
               <li className="pb-1">
@@ -52,9 +52,9 @@ const Footer = ({className}: FooterProps) => {
               <li className="pb-1">
                 <a
                   className="text-white no-underline"
-                  href="https://rankingdigitalrights.org/index2020/"
+                  href="https://rankingdigitalrights.org/index2022/"
                 >
-                  2020 RDR Corporate Accountability Index
+                  2022 RDR Corporate Accountability Index
                 </a>
               </li>
             </ul>

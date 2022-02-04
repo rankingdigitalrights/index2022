@@ -206,7 +206,7 @@ export const fetchDocumentHtml = async (
 export const companyDetails = async (): Promise<CompanyDetails[]> => {
   const auth = getAuth();
   const googleDocs = await listFiles(auth, companiesFolder);
-  const companiesDir = await fsP.mkdtemp(path.join(os.tmpdir(), "index2020-"));
+  const companiesDir = await fsP.mkdtemp(path.join(os.tmpdir(), "index2022-"));
 
   return Promise.all(
     googleDocs.map(async (googleDoc) => {
@@ -225,7 +225,7 @@ export const companyDetails = async (): Promise<CompanyDetails[]> => {
 export const narrativeContent = async (name: string): Promise<string> => {
   const auth = getAuth();
   const googleDocs = await listFiles(auth, rootFolder);
-  const downloadsDir = await fsP.mkdtemp(path.join(os.tmpdir(), "index2020-"));
+  const downloadsDir = await fsP.mkdtemp(path.join(os.tmpdir(), "index2022-"));
 
   const googleDoc = googleDocs.find(({name: n}) => n.trim() === name);
   if (!googleDoc) return unreachable(`unable to fetch ${name}`);

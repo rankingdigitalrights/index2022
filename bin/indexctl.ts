@@ -281,10 +281,10 @@ const writeJsonFile = (
       );
 
       /*
-       * Year over year diff scores, e.g. ./data/2020-diff.json
+       * Year over year diff scores, e.g. ./data/2022-diff.json
        */
       await Promise.all(
-        (["2020"] as CompanyYear[]).map(async (year) => {
+        (["2022"] as CompanyYear[]).map(async (year) => {
           await Promise.all(
             (["total"] as IndicatorCategoryExt[]).map(
               async (category: IndicatorCategoryExt) => {
@@ -439,7 +439,7 @@ cp csv/algorithm-illustration.png data/images/algorithms/image3.png
             restartBrowser = false;
           }
 
-          const href = `http://localhost:3000/index2020/pdf/${companyId}`;
+          const href = `http://localhost:3000/index2022/pdf/${companyId}`;
           const target = path.join(process.cwd(), pdfDir, `${companyId}.pdf`);
 
           console.log(`Generate company PDF for: ${companyId}.`);

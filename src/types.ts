@@ -1,6 +1,6 @@
 import {MdxRemote} from "next-mdx-remote/types";
 
-export type IndexYear = "2019" | "2020";
+export type IndexYear = "2019" | "2020" | "2022";
 
 export type NA = "NA";
 
@@ -15,6 +15,7 @@ export type ScoreDiffs = {
   diff2018: IndicatorScore;
   diff2019: IndicatorScore;
   diff2020: IndicatorScore;
+  diff2022: IndicatorScore;
 };
 
 export type IndicatorNested = {
@@ -30,7 +31,7 @@ export type IndicatorNested = {
   familyMembers: IndicatorNested[];
 };
 
-export type CompanyYear = "2020";
+export type CompanyYear = "2022";
 
 export type CompanyScoreDiff = {
   id: string;

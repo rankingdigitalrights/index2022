@@ -163,7 +163,7 @@ const Home = ({
 
       <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between my-10">
         <div className="font-circular lg:flex-grow w-full lg:w-1/3 pl-6 pr-10 mb-10">
-          <h2 className="font-bold text-xl leading-10">The 2020 RDR Index</h2>
+          <h2 className="font-bold text-xl leading-10">The 2022 RDR Index</h2>
 
           <p className="mt-4">
             We evaluated 26 of the world’s most powerful digital platforms and

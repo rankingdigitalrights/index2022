@@ -23,7 +23,7 @@ interface ScoresOverTimeProps {
 }
 
 export const getStaticProps = async () => {
-  const diffScores = await companyDiffScoresData("2020", "total");
+  const diffScores = await companyDiffScoresData("2022", "total");
   const details = await compareDetails();
 
   const pageTitle = await renderToString(details.pageTitle, {components});

@@ -129,7 +129,7 @@ export const getStaticProps = async ({params: {id: indicatorId}}: Params) => {
         };
       }),
     )
-  ).reduce((memo, localServices) => ({...localServices, ...memo}));
+  ).reduce((memo, localServices) => ({...localServices, ...memo}), {});
 
   const indicatorDescription = await renderToString(details.description, {
     components,

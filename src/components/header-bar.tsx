@@ -167,8 +167,8 @@ const HeaderBar = ({className}: HeaderBarProps) => {
               />
               <span className="flex-none font-platform font-bold text-lg ml-4 whitespace-nowrap">
                 {isMobile
-                  ? "2020 RDR Index"
-                  : "2020 Ranking Digital Rights Corporate Accountability Index"}
+                  ? "2022 RDR Index"
+                  : "2022 Ranking Digital Rights Corporate Accountability Index"}
               </span>
             </a>
           </Link>
@@ -402,13 +402,13 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   <div className="flex flex-col ml-3">
                     <span className="font-bold">Download the data</span>
                     <div className="flex">
-                      <Link passHref href="/2020RDRIndexFullDataSet.xlsx">
+                      <Link passHref href="/2022RDRIndexFullDataSet.xlsx">
                         <a role="menuitem" className="text-black font-bold">
                           Excel
                         </a>
                       </Link>
                       <span>/</span>
-                      <Link passHref href="/2020RDRIndexCSV.zip">
+                      <Link passHref href="/2022RDRIndexCSV.zip">
                         <a role="menuitem" className="text-black font-bold">
                           CSV
                         </a>

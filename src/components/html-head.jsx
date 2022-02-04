@@ -8,7 +8,7 @@ import htmlMeta from "../../data/html-meta.json";
 const HtmlHead = () => {
   const router = useRouter();
 
-  const path = router.pathname.replace(/\/index2020|\/index2020-stg(.*)/, "$1");
+  const path = router.pathname.replace(/\/index2022|\/index2022-stg(.*)/, "$1");
   const metaTags = htmlMeta;
 
   const title = metaTags[path]?.title ? metaTags[path]?.title : metaTags.title;
@@ -78,7 +78,7 @@ const HtmlHead = () => {
         href="https://rankingdigitalrights.org/comments/feed/"
       />
 
-      <link
+      {/* <link
         rel="icon"
         href={require("../images/cropped-rdr_icon_black-32x32.png?url")}
         sizes="32x32"
@@ -92,6 +92,7 @@ const HtmlHead = () => {
         rel="apple-touch-icon-precomposed"
         href={require("../images/cropped-rdr_icon_black-180x180.png?url")}
       />
+       */}
     </Head>
   );
 };

@@ -1,0 +1,73 @@
+Company,CompanyClean,Class,Label,LabelShort
+Alibaba,Alibaba,Group,Alibaba,Alibaba
+Alibaba,Alibaba,OpCom,NA,NA
+Alibaba,Alibaba,eCommerce,Taobao.com,Taobao.com
+Alibaba,Alibaba,pda,AliGenie,AliGenie
+Amazon,Amazon,Group,Amazon,Amazon
+Amazon,Amazon,OpCom,NA,NA
+Amazon,Amazon,eCommerce,Amazon.com,Amazon.com
+Amazon,Amazon,pda,Alexa,Alexa
+Apple,Apple,Group,Apple,Apple
+Apple,Apple,OpCom,NA,NA
+Apple,Apple,mobileEcosystem,iOS (mobile ecosystem),iOS
+Apple,Apple,messagingVoip,iMessage,iMessage
+Apple,Apple,cloud,iCloud,iCloud
+Apple,Apple,pda,Siri,Siri
+Baidu,Baidu,Group,Baidu,Baidu
+Baidu,Baidu,OpCom,NA,NA
+Baidu,Baidu,search,Baidu Search,Baidu Search
+Baidu,Baidu,cloud,Baidu Cloud,Baidu Cloud
+Baidu,Baidu,socialNetworkBlogs,Baidu PostBar,Baidu PostBar
+Facebook,Facebook,Group,Facebook (Group),Facebook
+Facebook,Facebook,OpCom,NA,NA
+Facebook,Facebook,socialNetworkBlogs,Facebook,Facebook
+Facebook,Facebook,photoVideo,Instagram,Instagram
+Facebook,Facebook,messagingVoip,WhatsApp,WhatsApp
+Facebook,Facebook,messagingVoip,Messenger,Messenger
+Google,Google,Group,Google (Group),Google
+Google,Google,OpCom,NA,NA
+Google,Google,search,Google Search,Google Search
+Google,Google,email,Gmail,Gmail
+Google,Google,photoVideo,YouTube,YouTube
+Google,Google,mobileEcosystem,Android mobile ecosystem,Android mobile ecosystem
+Google,Google,cloud,Google Drive,Google Drive
+Google,Google,pda,Google Assistant,Google Assistant
+Kakao,Kakao,Group,Kakao (Group),Kakao
+Kakao,Kakao,OpCom,NA,NA
+Kakao,Kakao,search,Daum Search,Daum Search
+Kakao,Kakao,email,Daum Mail,Daum Mail
+Kakao,Kakao,messagingVoip,KakaoTalk,KakaoTalk
+Mail.Ru,MailRu,Group,Mail.Ru (Group),Mail.Ru
+Mail.Ru,MailRu,OpCom,NA,NA
+Mail.Ru,MailRu,socialNetworkBlogs,Vkontakte,Vkontakte
+Mail.Ru,MailRu,email,Mail.Ru email,Mail.Ru email
+Mail.Ru,MailRu,messagingVoip,Mail.Ru Agent,Mail.Ru Agent
+Mail.Ru,MailRu,cloud,Mail.Ru Cloud,Mail.Ru Cloud
+Mail.Ru,MailRu,socialNetworkBlogs,Odnoklassniki,Odnoklassniki
+Microsoft,Microsoft,Group,Microsoft,Microsoft
+Microsoft,Microsoft,OpCom,NA,NA
+Microsoft,Microsoft,search,Bing,Bing
+Microsoft,Microsoft,email,Outlook.com,Outlook.com
+Microsoft,Microsoft,messagingVoip,Skype,Skype
+Microsoft,Microsoft,cloud,OneDrive,OneDrive
+Microsoft,Microsoft,socialNetworkBlogs,LinkedIn,LinkedIn
+Samsung,Samsung,Group,Samsung (Group),Samsung
+Samsung,Samsung,OpCom,NA,NA
+Samsung,Samsung,mobileEcosystem,Samsung implementation of Android,Samsung implementation of Android
+Tencent,Tencent,Group,Tencent (Group),Tencent
+Tencent,Tencent,OpCom,NA,NA
+Tencent,Tencent,socialNetworkBlogs,QZone,QZone
+Tencent,Tencent,messagingVoip,QQ,QQ
+Tencent,Tencent,messagingVoip,WeChat,WeChat
+Tencent,Tencent,cloud,Tencent Cloud,Tencent Cloud
+Twitter,Twitter,Group,Twitter,Twitter
+Twitter,Twitter,OpCom,NA,NA
+Twitter,Twitter,socialNetworkBlogs,Twitter,Twitter
+Yahoo,Yahoo,Group,Yahoo,Yahoo
+Yahoo,Yahoo,OpCom,NA,NA
+Yahoo,Yahoo,email,Yahoo Mail,Yahoo Mail
+Yandex,Yandex,Group,Yandex (Group),Yandex
+Yandex,Yandex,OpCom,NA,NA
+Yandex,Yandex,email,Yandex Mail,Yandex Mail
+Yandex,Yandex,search,Yandex Search,Yandex Search
+Yandex,Yandex,cloud,Yandex Disk,Yandex Disk

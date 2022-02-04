@@ -39,8 +39,8 @@ const NarrativeLink = ({id, href, children, className}: LinkProps) => {
 
   if (isInternalLink(href)) {
     const target = href
-      .replace(/^https:\/\/[.w]?rankingdigitalrights.org\/index2020/, "")
-      .replace(/^\/(index2020|index2020-stg)/, "");
+      .replace(/^https:\/\/[.w]?rankingdigitalrights.org\/index2022/, "")
+      .replace(/^\/(index2022|index2022-stg)/, "");
 
     return (
       <Link passHref href={decodeURIComponent(target)}>

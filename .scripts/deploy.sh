@@ -56,7 +56,7 @@ die() {
 parse_params() {
 	# default values of variables set from params
 	prod=0
-	base_path="index2020-stg"
+	base_path="index2022-stg"
 
 	while :; do
 		case "${1-}" in
@@ -73,7 +73,7 @@ parse_params() {
 	args=("$@")
 
 	### check required params and arguments
-	[[ "${prod}" -eq "1" ]] && base_path="index2020"
+	[[ "${prod}" -eq "1" ]] && base_path="index2022"
 
 	return 0
 }
@@ -84,7 +84,7 @@ htaccess_stg() {
 		local htaccess_path="out/.htaccess"
 
 		{ echo "AuthType Basic";
-		  echo 'AuthName "index2020"';
+		  echo 'AuthName "index2022"';
 		  echo 'AuthGroupFile /dev/null';
 		  echo 'Require valid-user';
 		  echo 'AuthUserFile "/home1/ranking5/.htpasswds/public_html/index2019-working/passwd"';

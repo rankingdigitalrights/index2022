@@ -1,17 +1,15 @@
-# Ranking Digital Rights - 2020 Corporate Accountability Index
+# Ranking Digital Rights - 2022 Corporate Accountability Index
 
 > Surveying internet and telecommunications companies on user privacy and freedom of expression
 
 ## Setup Development Environment
 
-Make sure to have a recent version of [NodeJS](https://nodejs.org). This project is developed using NodeJS 12. Further, install the [Yarn package manager](https://yarnpkg.com/).
+Make sure to have a recent version of [NodeJS](https://nodejs.org). This project is developed using NodeJS 14.
 
-To fetch the editorial content from Google Docs the authentication token for Google Drive has to be placed in the `./.auth.json` file in the repository root.
-
-Once NodeJS and Yarn are setup install all dependencies:
+Once NodeJS is setup install all dependencies:
 
 ```sh
-yarn install
+npm install
 ```
 
 ## I want to do ...
@@ -100,7 +98,7 @@ yarn deploy -p
 yarn dev
 ```
 
-Open [http://localhost:3000/index2020](http://localhost:3000/index2020) with your browser to see the result.
+Open [http://localhost:3000/index2022](http://localhost:3000/index2022) with your browser to see the result.
 
 ### Verify code quality
 

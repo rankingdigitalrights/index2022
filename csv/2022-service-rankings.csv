@@ -1,0 +1,44 @@
+"Company","ServiceType","Scope","Total","TotalRank","Governance","GovernanceRank","Freedom","FreedomRank","Privacy","PrivacyRank"
+"Alibaba","pda","AliGenie",19,2,7,3,15,2,27,1
+"Alibaba","eCommerce","Taobao.com",32,18,13,12,31,24,40,20
+"Amazon","pda","Alexa",18,1,0,1,14,1,29,3
+"Amazon","eCommerce","Amazon.com",23,6,2,2,20,12,33,11
+"Apple","cloud","iCloud",37,26,35,28,22,15,50,38
+"Apple","messagingVoip","iMessage",34,20,31,23,15,4,53,42
+"Apple","mobileEcosystem","iOS (mobile ecosystem)",40,29,34,27,29,22,52,41
+"Apple","pda","Siri",35,22,35,28,15,3,53,43
+"Baidu","cloud","Baidu Cloud",25,11,16,14,21,13,32,7
+"Baidu","socialNetworkBlogs","Baidu PostBar",27,13,17,17,23,16,35,13
+"Baidu","search","Baidu Search",24,8,16,14,17,6,31,5
+"Facebook","socialNetworkBlogs","Facebook",48,38,49,39,47,38,49,34
+"Facebook","photoVideo","Instagram",43,33,48,36,48,39,37,15
+"Facebook","messagingVoip","Messenger",38,27,42,35,25,18,49,34
+"Facebook","messagingVoip","WhatsApp",37,25,41,34,30,23,41,21
+"Google","mobileEcosystem","Android mobile ecosystem",41,31,34,26,39,32,44,26
+"Google","email","Gmail",45,35,37,31,46,37,47,30
+"Google","pda","Google Assistant",40,30,33,25,40,33,43,24
+"Google","cloud","Google Drive",45,34,37,30,46,36,47,30
+"Google","search","Google Search",50,43,39,33,58,43,47,29
+"Google","photoVideo","YouTube",48,37,37,32,52,40,47,30
+"Kakao","email","Daum Mail",35,23,18,21,34,29,42,23
+"Kakao","search","Daum Search",34,21,18,21,33,27,41,22
+"Kakao","messagingVoip","KakaoTalk",36,24,17,16,36,31,43,25
+"MailRu","cloud","Mail.Ru Cloud",24,7,13,9,18,7,31,6
+"MailRu","email","Mail.Ru email",29,15,13,9,31,25,33,10
+"MailRu","socialNetworkBlogs","Odnoklassniki",23,4,11,7,17,5,32,8
+"MailRu","socialNetworkBlogs","Vkontakte",28,14,13,11,25,17,36,14
+"Microsoft","search","Bing",49,41,53,40,53,41,45,28
+"Microsoft","socialNetworkBlogs","LinkedIn",41,32,48,38,34,28,45,27
+"Microsoft","cloud","OneDrive",48,39,53,40,45,35,50,36
+"Microsoft","email","Outlook.com",45,36,53,40,35,30,50,39
+"Microsoft","messagingVoip","Skype",39,28,48,37,28,21,47,33
+"Samsung","mobileEcosystem","Samsung implementation of Android",23,5,14,13,22,14,28,2
+"Tencent","messagingVoip","QQ",26,12,9,4,19,8,38,17
+"Tencent","socialNetworkBlogs","QZone",22,3,10,5,20,9,29,4
+"Tencent","cloud","Tencent Cloud",25,10,10,6,20,11,33,12
+"Tencent","messagingVoip","WeChat",24,9,12,8,20,10,33,9
+"Twitter","socialNetworkBlogs","Twitter",50,42,32,24,56,42,50,37
+"Yahoo","email","Yahoo Mail",49,40,60,43,41,34,51,40
+"Yandex","cloud","Yandex Disk",31,16,18,18,26,19,39,18
+"Yandex","email","Yandex Mail",32,17,18,18,27,20,39,18
+"Yandex","search","Yandex Search",33,19,18,18,33,26,37,16

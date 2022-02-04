@@ -237,9 +237,9 @@ const CompanyPage = ({
 
             <div className="border-b border-disabled-light w-full py-6">
               <p>
-                The 2020 RDR Index covers policies that were active between
-                February 8, 2019, and September 15, 2020. Policies that came
-                into effect after September 15, 2020 were not evaluated for this
+                The 2022 RDR Index covers policies that were active between
+                February 8, 2019, and September 15, 2022. Policies that came
+                into effect after September 15, 2022 were not evaluated for this
                 Index.
               </p>
 
@@ -270,7 +270,7 @@ const CompanyPage = ({
           </div>
         </section>
 
-        {index.totalDiffs.diff2020 !== "NA" && (
+        {index.totalDiffs.diff2022 !== "NA" && (
           <section className="relative flex flex-col md:flex-row pt-3">
             <div className="w-full md:w-4/6 pr-12 border-t border-disabled-light">
               <h2 className="text-prissian mt-8 mb-6">
@@ -283,8 +283,8 @@ const CompanyPage = ({
             <div className="flex flex-col items-start w-full md:w-2/6 px-3 font-circular text-sm">
               <YearOverYearLabel
                 className="mt-8"
-                value={index.totalDiffs.diff2020}
-                year="2020"
+                value={index.totalDiffs.diff2022}
+                year="2022"
               />
             </div>
           </section>
