@@ -1,0 +1,61 @@
+{
+  "steps": [{
+      "id": 1,
+      "content": "<h1 class='mb-6'>Appeals in Crisis:</h1><h2>Facebook vs. YouTube</h2>",
+      "color": "bg-light-grey"
+    },
+    {
+      "id": 0,
+      "extraClass": "invisible",
+      "color": "bg-mint-green"
+    },
+    {
+      "id": 2,
+      "title": "Ordinary times: Q4 2019",
+      "content": "<p>Between October and December 2019, YouTube users appealed the removal of 10k videos. About 20% of these videos were restored on appeal.</p><p>In the same period, Facebook reported that it had received appeals on nearly six million pieces of content or accounts that the company had restricted. About 16% were restored on appeal.</p>",
+      "color": "bg-mint-green",
+      "showLayers": "#label-fb, #label-yt, #grid, #labels-q, #_2019-q4 #q4-split-yt, #q4-split-fb, #legend"
+    },
+    {
+      "id": 3,
+      "title": "Ordinary times: Q1 2020",
+      "content": "<p>The two platforms maintained similar dynamics in the next quarter. YouTube reversed 25% of the restrictions it had imposed upon appeal and Facebook reversed 20%. But then the unexpected happened.</p>",
+      "color": "bg-mint-green",
+      "showLayers": "#_2020-q1"
+    },
+    {
+      "id": 4,
+      "title": "Facebook in COVID times",
+      "content": "<p>When the COVID-19 pandemic struck, Facebook <a href='https://about.fb.com/news/2020/12/coronavirus/' target='_blank' rel='noopener noreferrer'>sent home</a> workers who review millions of posts each day for rule violations.</p><p>The company decided to ramp up its use of algorithms for content moderation, hoping the technology would keep its content review processes moving.</p>",
+      "color": "bg-mint-green",
+      "showLayers": "#label-human, #area-covid, #label-algo"
+    },
+    {
+      "id": 5,
+      "title": "Facebook in COVID times",
+      "content": "But the solution had at least one critical flaw: it was largely unable to address appeals.",
+      "color": "bg-mint-green",
+      "showLayers": "#_2020-q2 #q2-split-fb"
+    },
+    {
+      "id": 6,
+      "title": "Facebook in COVID times",
+      "content": "<p>In an August 2020 press call, Facebook explained that it had severely scaled back the processing of new appeals sent by disgruntled users. The system’s apparent collapse left millions of users unable to appeal moderation decisions at all.</p><p>In both the second (April—June) and the third quarter (July—September) of 2020, Facebook users were only able to file approximately 200,000 appeals—3 percent of the number of appeals submitted in the first three months of 2020.</p>",
+      "color": "bg-mint-green",
+      "showLayers": "#_2020-q3 #q3-split-fb"
+    },
+    {
+      "id": 7,
+      "title": "YouTube in COVID times",
+      "content": "The story at YouTube was different. Like Facebook, Google (YouTube’s parent company) was forced to send workers home, instead “relying more on technology” to carry out content moderation. The company offered a statement saying that the change might result in the company “removing more content that may not be violative of our policies.”",
+      "color": "bg-mint-green"
+    },
+    {
+      "id": 8,
+      "title": "YouTube in COVID times",
+      "content": "<p>Google also thought ahead and ramped up its appeals systems, rightly anticipating that algorithmic content moderation would lead to more wrongful removals and more appeals from users.</p><p>Indeed, appeals doubled in the same period. But because the company took measures to prepare, the number of videos restored on appeal quadrupled in relation to the first three months of 2020.</p>",
+      "color": "bg-mint-green",
+      "showLayers": "#_2020-q2 #q2-split-yt, #_2020-q3 #q3-split-yt"
+    }
+  ]
+}

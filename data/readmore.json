@@ -1,0 +1,68 @@
+[
+  {
+    "kind": "summary",
+    "url": "/executive-summary",
+    "title": "Executive summary",
+    "excerpt": "Top takeaways from our 2020 research"
+  },
+  {
+    "kind": "introduction",
+    "url": "/intro-essay",
+    "title": "The decision only we can make",
+    "excerpt": "Switching the “mega-machine” off is no longer a discrete choice. But whether we govern tech—or let it govern us—still is."
+  },
+  {
+    "kind": "key-findings",
+    "url": "/key-findings",
+    "title": "Key findings",
+    "excerpt": "Companies are improving in principle, but failing in practice"
+  },
+  {
+    "kind": "recommendations",
+    "url": "/recommendations",
+    "title": "Recommendations",
+    "excerpt": "Our guidance for companies and policymakers committed to protecting and promoting human rights online"
+  },
+  {
+    "kind": "methodology",
+    "url": "/methodology",
+    "title": "What we look for",
+    "excerpt": "Our methodology builds on more than a decade of work by the human rights, privacy, and security communities"
+  },
+  {
+    "kind": "context-before-code",
+    "url": "/spotlights/context-before-code",
+    "title": "Context before code",
+    "excerpt": "Protecting human rights in a state of emergency"
+  },
+  {
+    "kind": "unaccountable-algorithms",
+    "url": "/spotlights/unaccountable-algorithms",
+    "title": "Moving fast and breaking us all",
+    "excerpt": "Big Tech’s unaccountable algorithms"
+  },
+  {
+    "kind": "china-tech-giants",
+    "url": "/spotlights/china-tech-giants",
+    "title": "China’s tech giants",
+    "excerpt": "China’s biggest tech companies have proven they can change. But the state is still their number one stakeholder."
+  },
+  {
+    "kind": "compare",
+    "url": "/compare",
+    "title": "Year-over-year trends",
+    "excerpt": "How did company performance change from 2019 to 2020?"
+  },
+  {
+    "kind": "indicators",
+    "url": "/explore-indicators",
+    "title": "Explore our indicators ",
+    "excerpt": "Find out how companies did on specific issues in 2020"
+  },
+  {
+    "kind": "services",
+    "url": "/explore-services",
+    "title": "Compare services",
+    "excerpt": "See how company scores on specific services compare"
+  }
+]

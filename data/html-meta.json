@@ -1,0 +1,85 @@
+{
+  "title": "Ranking Digital Rights - 2020 RDR Corporate Accountability Index",
+  "description": "Surveying internet and telecommunications companies on user privacy and freedom of expression",
+
+  "msapplication-TileImage": "/index2020/cropped-rdr_icon_black-270x270.png",
+
+  "og:locale": "en_US",
+  "og:type": "article",
+  "og:title": "2020 Ranking Digital Rights Corporate Accountability Index",
+  "og:description": "A comprehensive ranking of top tech and telecom companies’ disclosed policies and practices affecting people’s rights to freedom of expression and privacy.",
+  "og:site_name": "Ranking Digital Rights",
+  "og:image": "https://rankingdigitalrights.org/index2020/social/2020RDRranking2.png",
+
+  "twitter:card": "summary_large_image",
+  "twitter:site": "@rankingrights",
+  "twitter:title": "2020 Ranking Digital Rights Corporate Accountability Index",
+  "twitter:description": "We evaluated 26 of the world’s most powerful digital platforms and telecommunications companies on their disclosed policies and practices affecting people’s rights to freedom of expression and privacy.",
+  "twitter:domain": "Ranking Digital Rights",
+  "twitter:image": "https://rankingdigitalrights.org/index2020/social/2020RDRranking.png",
+
+  "/key-findings": {
+    "title": "Key findings from the 2020 RDR Corporate Accountability Index",
+    "og:title": "Key findings from the 2020 RDR Corporate Accountability Index",
+    "twitter:title": "Key findings from the 2020 RDR Corporate Accountability Index",
+
+    "description": "Our research sheds light on a systemic crisis of transparency and accountability among digital platforms and telecommunications companies.",
+    "og:description": "Our research sheds light on a systemic crisis of transparency and accountability among digital platforms and telecommunications companies.",
+    "twitter:description": "Our research sheds light on a systemic crisis of transparency and accountability among digital platforms and telecommunications companies.",
+
+    "og:image": "https://rankingdigitalrights.org/index2020/social/2020RDRIndexphoto2.png",
+    "twitter:image": "https://rankingdigitalrights.org/index2020/social/2020RDRIndexphoto.png"
+  },
+
+  "/intro-essay": {
+    "title": "Will we govern tech? Or will we let it govern us?",
+    "og:title": "Will we govern tech? Or will we let it govern us?",
+    "twitter:title": "Will we govern tech? Or will we let it govern us?",
+
+    "description": "Companies’ collective failure to meet even our minimum standards of policy transparency—especially in a year like 2020—puts the dangers of abusing digital power into high relief.",
+    "og:description": "Companies’ collective failure to meet even our minimum standards of policy transparency—especially in a year like 2020—puts the dangers of abusing digital power into high relief.",
+    "twitter:description": "Companies’ collective failure to meet even our minimum standards of policy transparency—especially in a year like 2020—puts the dangers of abusing digital power into high relief.",
+
+    "og:image": "https://rankingdigitalrights.org/index2020/social/2020RDRIndexphoto2.png",
+    "twitter:image": "https://rankingdigitalrights.org/index2020/social/2020RDRIndexphoto.png"
+  },
+
+  "/spotlights/context-before-code": {
+    "title": "Context before code: Protecting human rights in a state of emergency",
+    "og:title": "Context before code: Protecting human rights in a state of emergency",
+    "twitter:title": "Context before code: Protecting human rights in a state of emergency",
+
+    "description": "The year 2020 could not have given us a better set of case studies in just how dangerous it is for these companies to be so unprepared for the human impact of crisis.",
+    "og:description": "The year 2020 could not have given us a better set of case studies in just how dangerous it is for these companies to be so unprepared for the human impact of crisis.",
+    "twitter:description": "The year 2020 could not have given us a better set of case studies in just how dangerous it is for these companies to be so unprepared for the human impact of crisis.",
+
+    "og:image": "https://rankingdigitalrights.org/index2020/social/2020RDRIndexSOE2.png",
+    "twitter:image": "https://rankingdigitalrights.org/index2020/social/2020RDRIndexSOE.png"
+  },
+
+  "/spotlights/unaccountable-algorithms": {
+    "title": "Moving fast and breaking us all: Big Tech’s unaccountable algorithms",
+    "og:title": "Moving fast and breaking us all: Big Tech’s unaccountable algorithms",
+    "twitter:title": "Moving fast and breaking us all: Big Tech’s unaccountable algorithms",
+
+    "description": "Much of the technology driving revenues for the world’s most powerful digital platforms is accountable to no one—not even the companies themselves.",
+    "og:description": "Much of the technology driving revenues for the world’s most powerful digital platforms is accountable to no one—not even the companies themselves.",
+    "twitter:description": "Much of the technology driving revenues for the world’s most powerful digital platforms is accountable to no one—not even the companies themselves.",
+
+    "og:image": "https://rankingdigitalrights.org/index2020/social/2020RDRIndexAlgo2.png",
+    "twitter:image": "https://rankingdigitalrights.org/index2020/social/2020RDRIndexAlgo.png"
+  },
+
+  "/spotlights/china-tech-giants": {
+    "title": "China’s tech giants can change. But the state is still their number one stakeholder.",
+    "og:title": "China’s tech giants can change. But the state is still their number one stakeholder.",
+    "twitter:title": "China’s tech giants can change. But the state is still their number one stakeholder.",
+
+    "description": "Rebecca MacKinnon on how companies like Baidu and Tencent respond to pressure from foreign governments, investors, and even users.",
+    "og:description": "Rebecca MacKinnon on how companies like Baidu and Tencent respond to pressure from foreign governments, investors, and even users.",
+    "twitter:description": "Rebecca MacKinnon on how companies like Baidu and Tencent respond to pressure from foreign governments, investors, and even users.",
+
+    "og:image": "https://rankingdigitalrights.org/index2020/social/2020RDRIndexChina2.png",
+    "twitter:image": "https://rankingdigitalrights.org/index2020/social/2020RDRIndexChina.png"
+  }
+}

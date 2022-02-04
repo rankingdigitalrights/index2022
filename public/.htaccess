@@ -1,0 +1,29 @@
+<IfModule mod_rewrite.c>
+# Disable directory indexes and MultiViews
+Options -Indexes -MultiViews
+
+# Prevent mod_dir appending a slash to directory requests
+DirectorySlash On
+
+# Custom 404
+ErrorDocument 404   https://%{SERVER_NAME}/index2020/404.html
+
+# Rewrite HTTP to HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*) https://%{SERVER_NAME}/index2020/$1 [R=301,L]
+
+# Prevent any further processing if the URL already ends with a file extension
+RewriteRule \.\w{2.4}$ - [L]
+
+# Redirect any requests to remove a trailing slash
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /index2020/$1 [R=301,L]
+
+# Rewrite /foo to /foo.html if it exists
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+RewriteRule !\.\w{2,4}$ %{REQUEST_URI}.html [L]
+
+# Otherwise, rewrite /foo to /foo/index.html if it exists
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
+RewriteRule !\.\w{2,4}$ %{REQUEST_URI}/index.html [L]
+</IfModule>

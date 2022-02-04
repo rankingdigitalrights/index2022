@@ -1,0 +1,27 @@
+company,companyClean,subtype,maintype,region,country,id,serviceBrand
+Alibaba,Alibaba,ecommerce,platforms,China,China,iAL1,NA
+Amazon,Amazon,ecommerce,platforms,United States,USA,iAZ1,NA
+América Móvil,AmericaMovil,telcos,telcos,Latin America,Mexico,tAM1,Telcel
+Apple,Apple,internet,platforms,United States,USA,iAP1,NA
+AT&T,ATT,telcos,telcos,United States,USA,tAT1,AT&T
+Axiata,Axiata,telcos,telcos,Southeast Asia,Malaysia,tAX1,Celcom
+Baidu,Baidu,internet,platforms,China,China,iBA1,NA
+Bharti Airtel,BhartiAirtel,telcos,telcos,South Asia,India,tBH1,Airtel India
+Deutsche Telekom,DeutscheTelekom,telcos,telcos,Western Europe,GER,tDT1,Deutsche Telekom
+Etisalat,Etisalat,telcos,telcos,Middle East,UAE,tET1,Etisalat UAE
+Facebook,Facebook,internet,platforms,United States,USA,iFB1,NA
+Google,Google,internet,platforms,United States,USA,iGO1,NA
+Kakao,Kakao,internet,platforms,East Asia,South Korea,iKA1,NA
+Mail.Ru,MailRu,internet,platforms,Russia,Russia,iMA1,NA
+Microsoft,Microsoft,internet,platforms,United States,USA,iMS1,NA
+MTN,MTN,telcos,telcos,Africa,South Africa,tMT1,MTN South Africa
+Ooredoo,Ooredoo,telcos,telcos,Middle East,Qatar,tOD1,Ooredoo Qatar
+Orange,Orange,telcos,telcos,Western Europe,France,tOR1,Orange France
+Samsung,Samsung,internet,platforms,East Asia,South Korea,iSA1,NA
+Telefónica,Telefonica,telcos,telcos,Western Europe,Spain,tTF1,Movistar
+Telenor,Telenor,telcos,telcos,Western Europe,Norway,tTN1,Telenor
+Tencent,Tencent,internet,platforms,China,China,iTC1,NA
+Twitter,Twitter,internet,platforms,United States,USA,iTW1,NA
+Verizon Media,VerizonMedia,internet,platforms,United States,USA,iVM1,NA
+Vodafone,Vodafone,telcos,telcos,Western Europe,UK,tVF1,Vodafone UK
+Yandex,Yandex,internet,platforms,Russia,Russia,iYA1,NA

@@ -1,0 +1,728 @@
+@import "swiper/swiper.min.css";
+@import "swiper/components/pagination/pagination.min.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --swiper-theme-color: #1c5275;
+  }
+
+  @font-face {
+    font-family: Circular;
+    src: url(../../public/fonts/CircularStd-Black.otf);
+    src: url(../../public/fonts/CircularStd-Black.eot)
+        format("embedded-opentype"),
+      url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
+      url(../../public/fonts/CircularStd-Black.woff) format("woff");
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Circular;
+    src: url(../../public/fonts/CircularStd-Book.ttf);
+    src: url(../../public/fonts/CircularStd-Book.eot)
+        format("embedded-opentype"),
+      url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
+      url(../../public/fonts/CircularStd-Book.woff) format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Platform;
+    src: url(../../public/fonts/Platform-Medium.otf);
+    src: url(../../public/fonts/Platform-Medium.eot) format("embedded-opentype"),
+      url(../../public/fonts/Platform-Medium.woff2) format("woff2"),
+      url(../../public/fonts/Platform-Medium.woff) format("woff");
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: Lyon;
+    src: url(../../public/fonts/LyonText-Regular.otf);
+    src: url(../../public/fonts/LyonText-Regular.eot)
+        format("embedded-opentype"),
+      url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
+      url(../../public/fonts/LyonText-Regular.woff) format("woff");
+    font-weight: 400;
+    font-style: none;
+  }
+
+  @font-face {
+    font-family: Lyon;
+    src: url(../../public/fonts/LyonText-Bold.otf);
+    src: url(../../public/fonts/LyonText-Bold.eot) format("embedded-opentype"),
+      url(../../public/fonts/LyonText-Bold.woff2) format("woff2"),
+      url(../../public/fonts/LyonText-Bold.woff) format("woff");
+    font-weight: 700;
+    font-style: none;
+  }
+
+  @font-face {
+    font-family: Lyon;
+    src: url(../../public/fonts/LyonText-RegularItalic.otf);
+    src: url(../../public/fonts/LyonText-RegularItalic.eot)
+        format("embedded-opentype"),
+      url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
+      url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: Lyon;
+    src: url(../../public/fonts/LyonText-BoldItalic.otf);
+    src: url(../../public/fonts/LyonText-BoldItalic.eot)
+        format("embedded-opentype"),
+      url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .hero-tech-giants {
+    /* @apply bg-cover bg-center; */
+    @apply bg-contain bg-no-repeat bg-center;
+
+    background-image: url("../images/hero-tech-giants.jpg?size=1024");
+  }
+
+  .hero-state-of-emergency {
+    @apply bg-contain bg-no-repeat bg-center bg-left;
+    background-image: url("../images/bg-kashmir.jpg?size=1024");
+  }
+
+  .hero-algorithms {
+    @apply bg-cover bg-center;
+    background-image: url("../images/hero-robots-by-pawel-kuczynski.jpg?size=1024");
+  }
+
+  .hero-key-findings {
+    @apply bg-cover bg-center;
+    background-image: url("../images/bg-key-findings.jpg?size=1440");
+  }
+
+  .bg-key-findings {
+    @apply bg-cover;
+    background-image: url("../images/bg-key-findings.jpg?size=600");
+  }
+
+  .bg-context-over-code {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .bg-context-over-code::before {
+    /* @apply bg-cover absolute; */
+    content: "";
+    background-image: url("../images/bg-kashmir.jpg?size=600");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+  }
+
+  .bg-unaccountable-algorithms {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .bg-unaccountable-algorithms:before {
+    content: "";
+    background-image: url("../images/bg-unaccountable-algorithms.jpg?size=600");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+  }
+
+  .bg-tech-giants {
+    /* @apply relative w-full h-full inset-0 relative; */
+    position: relative;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .bg-tech-giants::before {
+    /* @apply bg-cover absolute; */
+    content: "";
+    background-image: url("../images/bg-tech-giants.jpg?size=1024");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+  }
+
+  /* Get rid of the border outlines on button unless user is actually tabbing. */
+  body:not(.user-is-tabbing) button:focus,
+  body:not(.user-is-tabbing) input:focus,
+  body:not(.user-is-tabbing) select:focus,
+  body:not(.user-is-tabbing) textarea:focus {
+    outline: none;
+  }
+
+  /* span is used as glossary buttons */
+  body:not(.user-is-tabbing) span:focus {
+    outline: none;
+  }
+
+  body:not(.user-is-tabbing) #scroll-to-top:focus {
+    outline: none;
+  }
+
+  body:not(.user-is-tabbing) .slider-button:focus {
+    outline: none;
+  }
+
+  html {
+    @apply font-lyon text-base;
+    font-size: 18px;
+  }
+
+  h1 {
+    @apply text-xl font-platform leading-none break-words;
+  }
+
+  h2 {
+    @apply font-platform leading-none break-words;
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    @apply font-platform leading-none mt-5 mb-3 break-words;
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    @apply text-xs font-circular;
+  }
+
+  h5 {
+    @apply text-xxs font-circular;
+  }
+
+  button {
+    @apply font-lyon;
+  }
+
+  ul {
+    @apply list-disc list-outside ml-6;
+  }
+
+  li {
+    @apply mb-3;
+  }
+
+  .shortlist li:last-child {
+    @apply mb-0;
+  }
+
+  ul.menubar > li,
+  ul.footer > li {
+    @apply mb-0;
+  }
+
+  p {
+    @apply mb-3;
+  }
+
+  .element p {
+    @apply inline;
+  }
+
+  .narrative-container :target,
+  .report-card :target {
+    scroll-margin-top: 1rem;
+  }
+
+  .narrative-container {
+    max-width: 900px;
+  }
+
+  .narrative-container p:last-child {
+    @apply mb-0;
+  }
+
+  a {
+    @apply text-prissian font-bold;
+  }
+
+  div.rank-card a {
+    @apply text-white;
+  }
+
+  a:hover {
+    @apply underline;
+  }
+
+  .toggle-checkbox:not(:checked) {
+    left: 0.2rem;
+  }
+
+  .toggle-checkbox:checked {
+    right: 0.2rem;
+  }
+
+  .score-label:before {
+    @apply absolute transform -rotate-90;
+
+    content: "";
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #1c5275;
+    left: -6px;
+    top: 9px;
+  }
+
+  .svg-shadow {
+    -webkit-filter: drop-shadow(-3px 3px 2px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(-3px 3px 2px rgba(0, 0, 0, 0.2));
+  }
+
+  .narrative h2 {
+    @apply my-6;
+  }
+
+  .pullquote {
+    @apply flex font-platform text-lg text-prissian my-6;
+  }
+
+  @screen md {
+    .pullquote:before {
+      @apply relative -left-5 border-prissian;
+
+      content: " ";
+      border-right-width: 7px;
+    }
+  }
+
+  .pullquote > p {
+    @apply p-0 m-0 leading-tight;
+  }
+
+  .footnotes a {
+    @apply break-words;
+  }
+
+  .footnotes p,
+  .footnotes div {
+    @apply mb-2;
+  }
+
+  .footnotes p:last-child {
+    @apply mb-0;
+  }
+
+  .company-table::-webkit-scrollbar {
+    height: 9px;
+  }
+
+  .company-table::-webkit-scrollbar-track {
+    @apply bg-beige;
+  }
+
+  .company-table::-webkit-scrollbar-thumb {
+    @apply bg-prissian rounded-md;
+  }
+
+  /* Spotlights Start */
+
+  .bg-mint-green {
+    background-color: #abd9d7!important;
+  }
+
+  .bg-light-grey {
+    background-color: #f7f4f2;
+  }
+
+  .btn-info {
+    visibility: hidden;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  main.spotlight h1 {
+    max-width: 900px;
+  }
+
+  main.spotlight {
+    max-width: 100%;
+  }
+
+  main.spotlight .hidden {
+    display: none;
+  }
+
+  main.spotlight .fade-in {
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
+  }
+
+  main.spotlight .fade-out {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+  }
+
+  /* main.spotlight svg .fade-in,
+  main.spotlight svg .fade-out {
+    transition: opacity 0.3s ease-in-out;
+  } */
+
+  main.spotlight section p:not(.pullquote > p) {
+    margin: 1rem auto;
+  }
+
+  .hero-full {
+    background-size: cover;
+  }
+
+  .author-byline {
+    @apply text-lg font-platform;
+  }
+
+  main.spotlight section.scrolly {
+    /* @apply relative; */
+    padding: 0;
+    margin: 0;
+  }
+
+  main.spotlight section.scrolly .modal {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  main.spotlight section.scrolly .modal.fade-in {
+    transition: opacity 0.6s ease-in;
+  }
+
+  main.spotlight section.scrolly .modal figure {
+    margin: 0 auto;
+  }
+
+  main.spotlight section.scrolly .modal figcaption {
+    position: relative;
+  }
+
+  main.spotlight a:not(.font-normal) {
+    font-weight: 700;
+  }
+
+  main.spotlight ol {
+    list-style-type: decimal;
+  }
+
+  main.spotlight ol li {
+    font-family: Circular, sans-serif;
+    font-size: 1rem;
+  }
+
+  main.spotlight iframe {
+    margin: 3rem auto;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+
+  main.spotlight figure:not(.hero-figure) {
+    width: 100%;
+    margin: 1.5rem auto 2rem auto;
+  }
+
+  main.spotlight figure:not(.hero-figure) img {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  figure svg {
+    margin: 0 auto;
+  }
+
+  main.spotlight figure.scrolly-figure {
+    margin: 0;
+  }
+
+  main.spotlight figure.spot-figure {
+    @apply m-auto pt-2 pb-2;
+    max-width: 900px;
+  }
+
+  main.spotlight figure.spot-figure figcaption {
+    margin-left: 1rem;
+  }
+
+  .scrolly-canvas figure.figure-svg {
+    margin: 0 auto;
+    overflow: clip;
+  }
+
+  .scrolly-canvas figure.figure-svg svg {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    position: absolute;
+    min-width: 100%;
+    left: 50%;
+    max-height: 100%;
+  }
+
+  .scrolly-canvas figure#chart-q1 svg {
+    padding: 1rem;
+  }
+
+  .scrolly-canvas figure figcaption {
+    position: absolute;
+    bottom: 0;
+    padding-left: 1rem;
+    right: 1rem;
+  }
+
+  div.scrolly-canvas {
+    @apply sticky w-full m-0 left-0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    z-index: 0;
+  }
+
+  div.scrolly-canvas figure.scrolly-figure {
+    overflow: clip;
+    width: 100%;
+    height: 100%;
+    max-width: unset;
+    margin: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: background-color 1.2s ease-out;
+    -moz-transition: background-color 1.2s ease-out;
+    -o-transition: background-color 1.2s ease-out;
+    transition: background-color 1.2s ease-out;
+  }
+
+  .scrolly-canvas figure.contained {
+    max-height: 100%;
+  }
+
+  div.scrolly-steps {
+    @apply relative p-0 max-w-md mx-auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0 1rem;
+    overflow-y: hidden;
+    width: 100%;
+  }
+
+  .step.invisible {
+    visibility: hidden;
+  }
+
+  .step.invisible .step-content {
+    height: 100vh;
+  }
+
+  .step {
+    padding-top: 33vh;
+    padding-bottom: 100vh;
+    /* outline: 1px solid; */
+  }
+
+  .step .step-content {
+    @apply bg-white shadow;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .step h1,
+  .step h2,
+  .step h3 {
+    @apply text-center;
+    margin-bottom: 0.75rem;
+  }
+
+  main.spotlight section.scrolly .step h1 {
+    margin: 1rem auto;
+    padding-left: 0;
+    display: block;
+  }
+
+  main.spotlight section.scrolly .step p {
+    padding-bottom: 0;
+  }
+
+  main.spotlight section.scrolly .step:first-child {
+    margin-top: 0;
+  }
+
+  main.spotlight section.scrolly .step p:first-child {
+    margin-top: 0;
+  }
+
+  main.spotlight section.scrolly .step p:last-child {
+    margin-bottom: 0;
+  }
+
+  main.spotlight .box-prompt .box-prompt-content a {
+    @apply text-black;
+  }
+
+  @media screen and (min-width: 900px) {
+    div.scrolly-steps {
+      width: 34%;
+      margin-left: 0;
+      max-width: unset;
+      background-color: #f7f4f2;
+      transition: background-color 1s ease-in;
+    }
+
+    div.scrolly-canvas {
+      width: 66%;
+      margin-right: 0;
+      margin-left: auto;
+    }
+
+    div.scrolly-steps .step {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    main.spotlight figure.spot-figure figcaption {
+      margin-left: 0rem;
+    }
+  }
+
+  /* Spotlights End */
+}
+
+@media print {
+  @page :first {
+    size: A4 portrait;
+    margin: 0 0 10mm 0;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 10mm 0 10mm 0;
+  }
+
+  html {
+    @apply font-lyon text-base;
+    font-size: 12px;
+  }
+
+  body {
+    background-size: 21cm 29.7cm;
+  }
+
+  li {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    break-inside: avoid-column;
+  }
+
+  p {
+    padding: 0;
+  }
+
+  .printer {
+    /* width: auto; */
+    border: 0;
+    margin: 5% 5%;
+    padding: 0;
+    float: none;
+    position: static;
+    overflow: visible;
+  }
+
+  .page-break {
+    break-before: page;
+  }
+
+  .no-page-break {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    break-inside: avoid-column;
+  }
+
+  .score-label:before {
+    @apply absolute;
+
+    content: "";
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #1c5275;
+    transform: rotate(-90deg);
+    left: -6px;
+    top: 5px;
+  }
+}
+
+@layer utilities {
+  .h-hero {
+    height: 36rem;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+}
+
+/* For some reason unknown to me those styles are being removed during build.
+ * Placing them here prevents that.
+ */
+.feature-box-wrapper {
+  @apply relative mb-6 mt-6;
+}
+
+.feature-box-inner:before {
+  @apply bg-disabled-light;
+  content: "";
+  position: absolute;
+  width: 104%;
+  height: 100%;
+  left: -2%;
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  .feature-box-inner:before {
+    @apply bg-disabled-light;
+    content: "";
+    position: absolute;
+    width: 116%;
+    height: 100%;
+    left: -8%;
+    z-index: -1;
+  }
+
+  .btn-info {
+    visibility: visible;
+  }
+}
+
+.feature-box {
+  @apply relative pt-6 pb-8;
+}
+
+.feature-box h2:first-child,
+.feature-box h3:first-child {
+  @apply mt-0;
+}
