@@ -2739,7 +2739,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Alibaba,F,F10,10,NA,Services,Services,pda,AliGenie,NA,NA
 2022,Alibaba,F,F11,11,NA,Services,Services,eCommerce,Taobao.com,NA,NA
 2022,Alibaba,F,F11,11,NA,Services,Services,pda,AliGenie,0,NA
-2022,Alibaba,F,F12,12,NA,Services,Services,eCommerce,Taobao.com,50,NA
+2022,Alibaba,F,F12,12,NA,Services,Services,eCommerce,Taobao.com,60,NA
 2022,Alibaba,F,F12,12,NA,Services,Services,pda,AliGenie,30,NA
 2022,Alibaba,F,F13,13,NA,Services,Services,eCommerce,Taobao.com,NA,NA
 2022,Alibaba,F,F13,13,NA,Services,Services,pda,AliGenie,NA,NA
@@ -2763,8 +2763,8 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Alibaba,P,P06,6,NA,Services,Services,pda,AliGenie,14,NA
 2022,Alibaba,P,P07,7,NA,Services,Services,eCommerce,Taobao.com,25,NA
 2022,Alibaba,P,P07,7,NA,Services,Services,pda,AliGenie,39,NA
-2022,Alibaba,P,P08,8,NA,Services,Services,eCommerce,Taobao.com,0,NA
-2022,Alibaba,P,P08,8,NA,Services,Services,pda,AliGenie,0,NA
+2022,Alibaba,P,P08,8,NA,Services,Services,eCommerce,Taobao.com,8,NA
+2022,Alibaba,P,P08,8,NA,Services,Services,pda,AliGenie,14,NA
 2022,Alibaba,P,P09,9,NA,Services,Services,eCommerce,Taobao.com,17,NA
 2022,Alibaba,P,P09,9,NA,Services,Services,pda,AliGenie,0,NA
 2022,Alibaba,P,P10a,10,a,Services,Services,eCommerce,Taobao.com,7,NA
@@ -2791,14 +2791,14 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Alibaba,P,P18,18,NA,Services,Services,pda,AliGenie,0,NA
 2022,Amazon,G,G01,1,NA,Company,Group,Group,Group,33,NA
 2022,Amazon,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Amazon,G,G02,2,NA,Company,Group,Group,Group,0,NA
+2022,Amazon,G,G02,2,NA,Company,Group,Group,Group,17,NA
 2022,Amazon,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Amazon,G,G02,2,NA,Services,Services,eCommerce,Amazon.com,0,NA
-2022,Amazon,G,G02,2,NA,Services,Services,pda,Alexa,0,NA
-2022,Amazon,G,G03,3,NA,Company,Group,Group,Group,0,NA
+2022,Amazon,G,G02,2,NA,Services,Services,eCommerce,Amazon.com,17,NA
+2022,Amazon,G,G02,2,NA,Services,Services,pda,Alexa,17,NA
+2022,Amazon,G,G03,3,NA,Company,Group,Group,Group,13,NA
 2022,Amazon,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Amazon,G,G03,3,NA,Services,Services,eCommerce,Amazon.com,0,NA
-2022,Amazon,G,G03,3,NA,Services,Services,pda,Alexa,0,NA
+2022,Amazon,G,G03,3,NA,Services,Services,eCommerce,Amazon.com,13,NA
+2022,Amazon,G,G03,3,NA,Services,Services,pda,Alexa,13,NA
 2022,Amazon,G,G04a,4,a,Company,Group,Group,Group,0,NA
 2022,Amazon,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Amazon,G,G04a,4,a,Services,Services,eCommerce,Amazon.com,0,NA
@@ -2869,7 +2869,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Amazon,F,F10,10,NA,Services,Services,pda,Alexa,NA,NA
 2022,Amazon,F,F11,11,NA,Services,Services,eCommerce,Amazon.com,NA,NA
 2022,Amazon,F,F11,11,NA,Services,Services,pda,Alexa,50,NA
-2022,Amazon,F,F12,12,NA,Services,Services,eCommerce,Amazon.com,0,NA
+2022,Amazon,F,F12,12,NA,Services,Services,eCommerce,Amazon.com,40,NA
 2022,Amazon,F,F12,12,NA,Services,Services,pda,Alexa,0,NA
 2022,Amazon,F,F13,13,NA,Services,Services,eCommerce,Amazon.com,NA,NA
 2022,Amazon,F,F13,13,NA,Services,Services,pda,Alexa,NA,NA
@@ -2889,10 +2889,10 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Amazon,P,P04,4,NA,Services,Services,pda,Alexa,33,NA
 2022,Amazon,P,P05,5,NA,Services,Services,eCommerce,Amazon.com,30,NA
 2022,Amazon,P,P05,5,NA,Services,Services,pda,Alexa,30,NA
-2022,Amazon,P,P06,6,NA,Services,Services,eCommerce,Amazon.com,10,NA
-2022,Amazon,P,P06,6,NA,Services,Services,pda,Alexa,7,NA
-2022,Amazon,P,P07,7,NA,Services,Services,eCommerce,Amazon.com,13,NA
-2022,Amazon,P,P07,7,NA,Services,Services,pda,Alexa,17,NA
+2022,Amazon,P,P06,6,NA,Services,Services,eCommerce,Amazon.com,0,NA
+2022,Amazon,P,P06,6,NA,Services,Services,pda,Alexa,0,NA
+2022,Amazon,P,P07,7,NA,Services,Services,eCommerce,Amazon.com,6,NA
+2022,Amazon,P,P07,7,NA,Services,Services,pda,Alexa,33,NA
 2022,Amazon,P,P08,8,NA,Services,Services,eCommerce,Amazon.com,17,NA
 2022,Amazon,P,P08,8,NA,Services,Services,pda,Alexa,14,NA
 2022,Amazon,P,P09,9,NA,Services,Services,eCommerce,Amazon.com,33,NA
@@ -2908,13 +2908,13 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Amazon,P,P12,12,NA,Services,Services,eCommerce,Amazon.com,33,NA
 2022,Amazon,P,P12,12,NA,Services,Services,pda,Alexa,33,NA
 2022,Amazon,P,P13,13,NA,Services,Services,eCommerce,Amazon.com,0,NA
-2022,Amazon,P,P13,13,NA,Services,Services,pda,Alexa,0,NA
+2022,Amazon,P,P13,13,NA,Services,Services,pda,Alexa,50,NA
 2022,Amazon,P,P14,14,NA,Services,Services,eCommerce,Amazon.com,83,NA
 2022,Amazon,P,P14,14,NA,Services,Services,pda,Alexa,39,NA
 2022,Amazon,P,P15,15,NA,Services,Services,eCommerce,Amazon.com,0,NA
 2022,Amazon,P,P15,15,NA,Services,Services,pda,Alexa,0,NA
 2022,Amazon,P,P16,16,NA,Services,Services,eCommerce,Amazon.com,50,NA
-2022,Amazon,P,P16,16,NA,Services,Services,pda,Alexa,25,NA
+2022,Amazon,P,P16,16,NA,Services,Services,pda,Alexa,38,NA
 2022,Amazon,P,P17,17,NA,Services,Services,eCommerce,Amazon.com,83,NA
 2022,Amazon,P,P17,17,NA,Services,Services,pda,Alexa,83,NA
 2022,Amazon,P,P18,18,NA,Services,Services,eCommerce,Amazon.com,100,NA
@@ -2933,12 +2933,12 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Apple,G,G03,3,NA,Services,Services,messagingVoip,iMessage,88,NA
 2022,Apple,G,G03,3,NA,Services,Services,cloud,iCloud,88,NA
 2022,Apple,G,G03,3,NA,Services,Services,pda,Siri,88,NA
-2022,Apple,G,G04a,4,a,Company,Group,Group,Group,36,NA
+2022,Apple,G,G04a,4,a,Company,Group,Group,Group,55,NA
 2022,Apple,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Apple,G,G04a,4,a,Services,Services,mobileEcosystem,iOS (mobile ecosystem),36,NA
-2022,Apple,G,G04a,4,a,Services,Services,messagingVoip,iMessage,36,NA
-2022,Apple,G,G04a,4,a,Services,Services,cloud,iCloud,36,NA
-2022,Apple,G,G04a,4,a,Services,Services,pda,Siri,36,NA
+2022,Apple,G,G04a,4,a,Services,Services,mobileEcosystem,iOS (mobile ecosystem),55,NA
+2022,Apple,G,G04a,4,a,Services,Services,messagingVoip,iMessage,55,NA
+2022,Apple,G,G04a,4,a,Services,Services,cloud,iCloud,55,NA
+2022,Apple,G,G04a,4,a,Services,Services,pda,Siri,55,NA
 2022,Apple,G,G04b,4,b,Company,Group,Group,Group,0,NA
 2022,Apple,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Apple,G,G04b,4,b,Services,Services,mobileEcosystem,iOS (mobile ecosystem),0,NA
@@ -2965,10 +2965,10 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Apple,G,G04e,4,e,Services,Services,pda,Siri,NA,NA
 2022,Apple,G,G05,5,NA,Company,Group,Group,Group,17,NA
 2022,Apple,G,G05,5,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Apple,G,G06a,6,a,Services,Services,mobileEcosystem,iOS (mobile ecosystem),28,NA
-2022,Apple,G,G06a,6,a,Services,Services,messagingVoip,iMessage,17,NA
-2022,Apple,G,G06a,6,a,Services,Services,cloud,iCloud,17,NA
-2022,Apple,G,G06a,6,a,Services,Services,pda,Siri,17,NA
+2022,Apple,G,G06a,6,a,Services,Services,mobileEcosystem,iOS (mobile ecosystem),33,NA
+2022,Apple,G,G06a,6,a,Services,Services,messagingVoip,iMessage,22,NA
+2022,Apple,G,G06a,6,a,Services,Services,cloud,iCloud,22,NA
+2022,Apple,G,G06a,6,a,Services,Services,pda,Siri,22,NA
 2022,Apple,G,G06b,6,b,Services,Services,mobileEcosystem,iOS (mobile ecosystem),14,NA
 2022,Apple,G,G06b,6,b,Services,Services,messagingVoip,iMessage,0,NA
 2022,Apple,G,G06b,6,b,Services,Services,cloud,iCloud,NA,NA
@@ -2985,7 +2985,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Apple,F,F01c,1,c,Services,Services,messagingVoip,iMessage,0,NA
 2022,Apple,F,F01c,1,c,Services,Services,cloud,iCloud,0,NA
 2022,Apple,F,F01c,1,c,Services,Services,pda,Siri,0,NA
-2022,Apple,F,F01d,1,d,Services,Services,mobileEcosystem,iOS (mobile ecosystem),0,NA
+2022,Apple,F,F01d,1,d,Services,Services,mobileEcosystem,iOS (mobile ecosystem),33,NA
 2022,Apple,F,F01d,1,d,Services,Services,messagingVoip,iMessage,0,NA
 2022,Apple,F,F01d,1,d,Services,Services,cloud,iCloud,0,NA
 2022,Apple,F,F01d,1,d,Services,Services,pda,Siri,0,NA
@@ -3008,27 +3008,27 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Apple,F,F03a,3,a,Services,Services,mobileEcosystem,iOS (mobile ecosystem),29,NA
 2022,Apple,F,F03a,3,a,Services,Services,messagingVoip,iMessage,30,NA
 2022,Apple,F,F03a,3,a,Services,Services,cloud,iCloud,50,NA
-2022,Apple,F,F03a,3,a,Services,Services,pda,Siri,29,NA
+2022,Apple,F,F03a,3,a,Services,Services,pda,Siri,NA,NA
 2022,Apple,F,F03b,3,b,Services,Services,mobileEcosystem,iOS (mobile ecosystem),67,NA
 2022,Apple,F,F03b,3,b,Services,Services,messagingVoip,iMessage,0,NA
 2022,Apple,F,F03b,3,b,Services,Services,cloud,iCloud,0,NA
-2022,Apple,F,F03b,3,b,Services,Services,pda,Siri,0,NA
+2022,Apple,F,F03b,3,b,Services,Services,pda,Siri,NA,NA
 2022,Apple,F,F03c,3,c,Services,Services,mobileEcosystem,iOS (mobile ecosystem),40,NA
 2022,Apple,F,F03c,3,c,Services,Services,messagingVoip,iMessage,20,NA
 2022,Apple,F,F03c,3,c,Services,Services,cloud,iCloud,20,NA
-2022,Apple,F,F03c,3,c,Services,Services,pda,Siri,20,NA
+2022,Apple,F,F03c,3,c,Services,Services,pda,Siri,NA,NA
 2022,Apple,F,F04a,4,a,Services,Services,mobileEcosystem,iOS (mobile ecosystem),17,NA
 2022,Apple,F,F04a,4,a,Services,Services,messagingVoip,iMessage,0,NA
 2022,Apple,F,F04a,4,a,Services,Services,cloud,iCloud,0,NA
-2022,Apple,F,F04a,4,a,Services,Services,pda,Siri,0,NA
+2022,Apple,F,F04a,4,a,Services,Services,pda,Siri,NA,NA
 2022,Apple,F,F04b,4,b,Services,Services,mobileEcosystem,iOS (mobile ecosystem),20,NA
 2022,Apple,F,F04b,4,b,Services,Services,messagingVoip,iMessage,0,NA
 2022,Apple,F,F04b,4,b,Services,Services,cloud,iCloud,0,NA
-2022,Apple,F,F04b,4,b,Services,Services,pda,Siri,0,NA
+2022,Apple,F,F04b,4,b,Services,Services,pda,Siri,NA,NA
 2022,Apple,F,F04c,4,c,Services,Services,mobileEcosystem,iOS (mobile ecosystem),0,NA
 2022,Apple,F,F04c,4,c,Services,Services,messagingVoip,iMessage,0,NA
 2022,Apple,F,F04c,4,c,Services,Services,cloud,iCloud,0,NA
-2022,Apple,F,F04c,4,c,Services,Services,pda,Siri,0,NA
+2022,Apple,F,F04c,4,c,Services,Services,pda,Siri,NA,NA
 2022,Apple,F,F05a,5,a,Services,Services,mobileEcosystem,iOS (mobile ecosystem),100,NA
 2022,Apple,F,F05a,5,a,Services,Services,messagingVoip,iMessage,100,NA
 2022,Apple,F,F05a,5,a,Services,Services,cloud,iCloud,100,NA
@@ -3048,7 +3048,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Apple,F,F08,8,NA,Services,Services,mobileEcosystem,iOS (mobile ecosystem),13,NA
 2022,Apple,F,F08,8,NA,Services,Services,messagingVoip,iMessage,13,NA
 2022,Apple,F,F08,8,NA,Services,Services,cloud,iCloud,13,NA
-2022,Apple,F,F08,8,NA,Services,Services,pda,Siri,13,NA
+2022,Apple,F,F08,8,NA,Services,Services,pda,Siri,0,NA
 2022,Apple,F,F09,9,NA,Services,Services,mobileEcosystem,iOS (mobile ecosystem),NA,NA
 2022,Apple,F,F09,9,NA,Services,Services,messagingVoip,iMessage,NA,NA
 2022,Apple,F,F09,9,NA,Services,Services,cloud,iCloud,NA,NA
@@ -3080,7 +3080,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Apple,P,P02a,2,a,Services,Services,mobileEcosystem,iOS (mobile ecosystem),20,NA
 2022,Apple,P,P02a,2,a,Services,Services,messagingVoip,iMessage,25,NA
 2022,Apple,P,P02a,2,a,Services,Services,cloud,iCloud,25,NA
-2022,Apple,P,P02a,2,a,Services,Services,pda,Siri,30,NA
+2022,Apple,P,P02a,2,a,Services,Services,pda,Siri,38,NA
 2022,Apple,P,P02b,2,b,Services,Services,mobileEcosystem,iOS (mobile ecosystem),0,NA
 2022,Apple,P,P02b,2,b,Services,Services,messagingVoip,iMessage,0,NA
 2022,Apple,P,P02b,2,b,Services,Services,cloud,iCloud,0,NA
@@ -3113,10 +3113,10 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Apple,P,P08,8,NA,Services,Services,messagingVoip,iMessage,67,NA
 2022,Apple,P,P08,8,NA,Services,Services,cloud,iCloud,67,NA
 2022,Apple,P,P08,8,NA,Services,Services,pda,Siri,83,NA
-2022,Apple,P,P09,9,NA,Services,Services,mobileEcosystem,iOS (mobile ecosystem),56,NA
-2022,Apple,P,P09,9,NA,Services,Services,messagingVoip,iMessage,56,NA
-2022,Apple,P,P09,9,NA,Services,Services,cloud,iCloud,56,NA
-2022,Apple,P,P09,9,NA,Services,Services,pda,Siri,56,NA
+2022,Apple,P,P09,9,NA,Services,Services,mobileEcosystem,iOS (mobile ecosystem),44,NA
+2022,Apple,P,P09,9,NA,Services,Services,messagingVoip,iMessage,44,NA
+2022,Apple,P,P09,9,NA,Services,Services,cloud,iCloud,44,NA
+2022,Apple,P,P09,9,NA,Services,Services,pda,Siri,44,NA
 2022,Apple,P,P10a,10,a,Services,Services,mobileEcosystem,iOS (mobile ecosystem),100,NA
 2022,Apple,P,P10a,10,a,Services,Services,messagingVoip,iMessage,100,NA
 2022,Apple,P,P10a,10,a,Services,Services,cloud,iCloud,100,NA
@@ -3151,7 +3151,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Apple,P,P15,15,NA,Services,Services,pda,Siri,67,NA
 2022,Apple,P,P16,16,NA,Services,Services,mobileEcosystem,iOS (mobile ecosystem),100,NA
 2022,Apple,P,P16,16,NA,Services,Services,messagingVoip,iMessage,100,NA
-2022,Apple,P,P16,16,NA,Services,Services,cloud,iCloud,38,NA
+2022,Apple,P,P16,16,NA,Services,Services,cloud,iCloud,75,NA
 2022,Apple,P,P16,16,NA,Services,Services,pda,Siri,100,NA
 2022,Apple,P,P17,17,NA,Services,Services,mobileEcosystem,iOS (mobile ecosystem),83,NA
 2022,Apple,P,P17,17,NA,Services,Services,messagingVoip,iMessage,83,NA
@@ -3232,7 +3232,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Baidu,F,F02d,2,d,Services,Services,socialNetworkBlogs,Baidu PostBar,0,NA
 2022,Baidu,F,F03a,3,a,Services,Services,search,Baidu Search,50,NA
 2022,Baidu,F,F03a,3,a,Services,Services,cloud,Baidu Cloud,80,NA
-2022,Baidu,F,F03a,3,a,Services,Services,socialNetworkBlogs,Baidu PostBar,93,NA
+2022,Baidu,F,F03a,3,a,Services,Services,socialNetworkBlogs,Baidu PostBar,57,NA
 2022,Baidu,F,F03b,3,b,Services,Services,search,Baidu Search,50,NA
 2022,Baidu,F,F03b,3,b,Services,Services,cloud,Baidu Cloud,33,NA
 2022,Baidu,F,F03b,3,b,Services,Services,socialNetworkBlogs,Baidu PostBar,33,NA
@@ -3397,7 +3397,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Facebook,G,G06a,6,a,Services,Services,photoVideo,Instagram,6,NA
 2022,Facebook,G,G06a,6,a,Services,Services,messagingVoip,WhatsApp,0,NA
 2022,Facebook,G,G06a,6,a,Services,Services,messagingVoip,Messenger,17,NA
-2022,Facebook,G,G06b,6,b,Services,Services,socialNetworkBlogs,Facebook,64,NA
+2022,Facebook,G,G06b,6,b,Services,Services,socialNetworkBlogs,Facebook,73,NA
 2022,Facebook,G,G06b,6,b,Services,Services,photoVideo,Instagram,59,NA
 2022,Facebook,G,G06b,6,b,Services,Services,messagingVoip,WhatsApp,0,NA
 2022,Facebook,G,G06b,6,b,Services,Services,messagingVoip,Messenger,0,NA
@@ -3534,12 +3534,12 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Facebook,P,P06,6,NA,Services,Services,messagingVoip,WhatsApp,40,NA
 2022,Facebook,P,P06,6,NA,Services,Services,messagingVoip,Messenger,40,NA
 2022,Facebook,P,P07,7,NA,Services,Services,socialNetworkBlogs,Facebook,13,NA
-2022,Facebook,P,P07,7,NA,Services,Services,photoVideo,Instagram,6,NA
+2022,Facebook,P,P07,7,NA,Services,Services,photoVideo,Instagram,13,NA
 2022,Facebook,P,P07,7,NA,Services,Services,messagingVoip,WhatsApp,0,NA
 2022,Facebook,P,P07,7,NA,Services,Services,messagingVoip,Messenger,13,NA
 2022,Facebook,P,P08,8,NA,Services,Services,socialNetworkBlogs,Facebook,92,NA
 2022,Facebook,P,P08,8,NA,Services,Services,photoVideo,Instagram,42,NA
-2022,Facebook,P,P08,8,NA,Services,Services,messagingVoip,WhatsApp,33,NA
+2022,Facebook,P,P08,8,NA,Services,Services,messagingVoip,WhatsApp,42,NA
 2022,Facebook,P,P08,8,NA,Services,Services,messagingVoip,Messenger,92,NA
 2022,Facebook,P,P09,9,NA,Services,Services,socialNetworkBlogs,Facebook,33,NA
 2022,Facebook,P,P09,9,NA,Services,Services,photoVideo,Instagram,33,NA
@@ -3925,11 +3925,11 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Google,P,P15,15,NA,Services,Services,mobileEcosystem,Android mobile ecosystem,0,NA
 2022,Google,P,P15,15,NA,Services,Services,cloud,Google Drive,0,NA
 2022,Google,P,P15,15,NA,Services,Services,pda,Google Assistant,0,NA
-2022,Google,P,P16,16,NA,Services,Services,search,Google Search,100,NA
-2022,Google,P,P16,16,NA,Services,Services,email,Gmail,50,NA
-2022,Google,P,P16,16,NA,Services,Services,photoVideo,YouTube,50,NA
+2022,Google,P,P16,16,NA,Services,Services,search,Google Search,50,NA
+2022,Google,P,P16,16,NA,Services,Services,email,Gmail,25,NA
+2022,Google,P,P16,16,NA,Services,Services,photoVideo,YouTube,25,NA
 2022,Google,P,P16,16,NA,Services,Services,mobileEcosystem,Android mobile ecosystem,75,NA
-2022,Google,P,P16,16,NA,Services,Services,cloud,Google Drive,50,NA
+2022,Google,P,P16,16,NA,Services,Services,cloud,Google Drive,25,NA
 2022,Google,P,P16,16,NA,Services,Services,pda,Google Assistant,25,NA
 2022,Google,P,P17,17,NA,Services,Services,search,Google Search,NA,NA
 2022,Google,P,P17,17,NA,Services,Services,email,Gmail,100,NA
@@ -3945,11 +3945,11 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Google,P,P18,18,NA,Services,Services,pda,Google Assistant,100,NA
 2022,Kakao,G,G01,1,NA,Company,Group,Group,Group,83,NA
 2022,Kakao,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Kakao,G,G02,2,NA,Company,Group,Group,Group,33,NA
+2022,Kakao,G,G02,2,NA,Company,Group,Group,Group,67,NA
 2022,Kakao,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Kakao,G,G02,2,NA,Services,Services,search,Daum Search,33,NA
-2022,Kakao,G,G02,2,NA,Services,Services,email,Daum Mail,33,NA
-2022,Kakao,G,G02,2,NA,Services,Services,messagingVoip,KakaoTalk,33,NA
+2022,Kakao,G,G02,2,NA,Services,Services,search,Daum Search,67,NA
+2022,Kakao,G,G02,2,NA,Services,Services,email,Daum Mail,67,NA
+2022,Kakao,G,G02,2,NA,Services,Services,messagingVoip,KakaoTalk,67,NA
 2022,Kakao,G,G03,3,NA,Company,Group,Group,Group,50,NA
 2022,Kakao,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Kakao,G,G03,3,NA,Services,Services,search,Daum Search,50,NA
@@ -3960,11 +3960,11 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Kakao,G,G04a,4,a,Services,Services,search,Daum Search,18,NA
 2022,Kakao,G,G04a,4,a,Services,Services,email,Daum Mail,18,NA
 2022,Kakao,G,G04a,4,a,Services,Services,messagingVoip,KakaoTalk,18,NA
-2022,Kakao,G,G04b,4,b,Company,Group,Group,Group,0,NA
+2022,Kakao,G,G04b,4,b,Company,Group,Group,Group,11,NA
 2022,Kakao,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Kakao,G,G04b,4,b,Services,Services,search,Daum Search,0,NA
-2022,Kakao,G,G04b,4,b,Services,Services,email,Daum Mail,0,NA
-2022,Kakao,G,G04b,4,b,Services,Services,messagingVoip,KakaoTalk,0,NA
+2022,Kakao,G,G04b,4,b,Services,Services,search,Daum Search,11,NA
+2022,Kakao,G,G04b,4,b,Services,Services,email,Daum Mail,11,NA
+2022,Kakao,G,G04b,4,b,Services,Services,messagingVoip,KakaoTalk,11,NA
 2022,Kakao,G,G04c,4,c,Company,Group,Group,Group,0,NA
 2022,Kakao,G,G04c,4,c,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Kakao,G,G04c,4,c,Services,Services,search,Daum Search,0,NA
@@ -3997,7 +3997,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Kakao,F,F01c,1,c,Services,Services,search,Daum Search,0,NA
 2022,Kakao,F,F01c,1,c,Services,Services,email,Daum Mail,0,NA
 2022,Kakao,F,F01c,1,c,Services,Services,messagingVoip,KakaoTalk,0,NA
-2022,Kakao,F,F01d,1,d,Services,Services,search,Daum Search,0,NA
+2022,Kakao,F,F01d,1,d,Services,Services,search,Daum Search,100,NA
 2022,Kakao,F,F01d,1,d,Services,Services,email,Daum Mail,0,NA
 2022,Kakao,F,F01d,1,d,Services,Services,messagingVoip,KakaoTalk,0,NA
 2022,Kakao,F,F02a,2,a,Services,Services,search,Daum Search,100,NA
@@ -4014,7 +4014,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Kakao,F,F02d,2,d,Services,Services,messagingVoip,KakaoTalk,0,NA
 2022,Kakao,F,F03a,3,a,Services,Services,search,Daum Search,25,NA
 2022,Kakao,F,F03a,3,a,Services,Services,email,Daum Mail,50,NA
-2022,Kakao,F,F03a,3,a,Services,Services,messagingVoip,KakaoTalk,50,NA
+2022,Kakao,F,F03a,3,a,Services,Services,messagingVoip,KakaoTalk,80,NA
 2022,Kakao,F,F03b,3,b,Services,Services,search,Daum Search,33,NA
 2022,Kakao,F,F03b,3,b,Services,Services,email,Daum Mail,33,NA
 2022,Kakao,F,F03b,3,b,Services,Services,messagingVoip,KakaoTalk,33,NA
@@ -4054,7 +4054,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Kakao,F,F11,11,NA,Services,Services,search,Daum Search,NA,NA
 2022,Kakao,F,F11,11,NA,Services,Services,email,Daum Mail,50,NA
 2022,Kakao,F,F11,11,NA,Services,Services,messagingVoip,KakaoTalk,50,NA
-2022,Kakao,F,F12,12,NA,Services,Services,search,Daum Search,0,NA
+2022,Kakao,F,F12,12,NA,Services,Services,search,Daum Search,20,NA
 2022,Kakao,F,F12,12,NA,Services,Services,email,Daum Mail,NA,NA
 2022,Kakao,F,F12,12,NA,Services,Services,messagingVoip,KakaoTalk,NA,NA
 2022,Kakao,F,F13,13,NA,Services,Services,search,Daum Search,NA,NA
@@ -4084,9 +4084,9 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Kakao,P,P05,5,NA,Services,Services,search,Daum Search,30,NA
 2022,Kakao,P,P05,5,NA,Services,Services,email,Daum Mail,30,NA
 2022,Kakao,P,P05,5,NA,Services,Services,messagingVoip,KakaoTalk,30,NA
-2022,Kakao,P,P06,6,NA,Services,Services,search,Daum Search,30,NA
-2022,Kakao,P,P06,6,NA,Services,Services,email,Daum Mail,30,NA
-2022,Kakao,P,P06,6,NA,Services,Services,messagingVoip,KakaoTalk,40,NA
+2022,Kakao,P,P06,6,NA,Services,Services,search,Daum Search,40,NA
+2022,Kakao,P,P06,6,NA,Services,Services,email,Daum Mail,40,NA
+2022,Kakao,P,P06,6,NA,Services,Services,messagingVoip,KakaoTalk,50,NA
 2022,Kakao,P,P07,7,NA,Services,Services,search,Daum Search,19,NA
 2022,Kakao,P,P07,7,NA,Services,Services,email,Daum Mail,19,NA
 2022,Kakao,P,P07,7,NA,Services,Services,messagingVoip,KakaoTalk,19,NA
@@ -4095,7 +4095,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Kakao,P,P08,8,NA,Services,Services,messagingVoip,KakaoTalk,33,NA
 2022,Kakao,P,P09,9,NA,Services,Services,search,Daum Search,0,NA
 2022,Kakao,P,P09,9,NA,Services,Services,email,Daum Mail,0,NA
-2022,Kakao,P,P09,9,NA,Services,Services,messagingVoip,KakaoTalk,0,NA
+2022,Kakao,P,P09,9,NA,Services,Services,messagingVoip,KakaoTalk,11,NA
 2022,Kakao,P,P10a,10,a,Services,Services,search,Daum Search,86,NA
 2022,Kakao,P,P10a,10,a,Services,Services,email,Daum Mail,86,NA
 2022,Kakao,P,P10a,10,a,Services,Services,messagingVoip,KakaoTalk,86,NA
@@ -4122,14 +4122,14 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Kakao,P,P15,15,NA,Services,Services,messagingVoip,KakaoTalk,50,NA
 2022,Kakao,P,P16,16,NA,Services,Services,search,Daum Search,25,NA
 2022,Kakao,P,P16,16,NA,Services,Services,email,Daum Mail,0,NA
-2022,Kakao,P,P16,16,NA,Services,Services,messagingVoip,KakaoTalk,25,NA
+2022,Kakao,P,P16,16,NA,Services,Services,messagingVoip,KakaoTalk,50,NA
 2022,Kakao,P,P17,17,NA,Services,Services,search,Daum Search,NA,NA
 2022,Kakao,P,P17,17,NA,Services,Services,email,Daum Mail,100,NA
 2022,Kakao,P,P17,17,NA,Services,Services,messagingVoip,KakaoTalk,83,NA
 2022,Kakao,P,P18,18,NA,Services,Services,search,Daum Search,100,NA
 2022,Kakao,P,P18,18,NA,Services,Services,email,Daum Mail,100,NA
 2022,Kakao,P,P18,18,NA,Services,Services,messagingVoip,KakaoTalk,100,NA
-2022,MailRu,G,G01,1,NA,Company,Group,Group,Group,0,NA
+2022,MailRu,G,G01,1,NA,Company,Group,Group,Group,33,NA
 2022,MailRu,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,MailRu,G,G02,2,NA,Company,Group,Group,Group,17,NA
 2022,MailRu,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
@@ -4182,7 +4182,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,MailRu,G,G06b,6,b,Services,Services,socialNetworkBlogs,Vkontakte,9,NA
 2022,MailRu,G,G06b,6,b,Services,Services,email,Mail.Ru email,NA,NA
 2022,MailRu,G,G06b,6,b,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2022,MailRu,G,G06b,6,b,Services,Services,socialNetworkBlogs,Odnoklassniki,14,NA
+2022,MailRu,G,G06b,6,b,Services,Services,socialNetworkBlogs,Odnoklassniki,9,NA
 2022,MailRu,F,F01a,1,a,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
 2022,MailRu,F,F01a,1,a,Services,Services,email,Mail.Ru email,67,NA
 2022,MailRu,F,F01a,1,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
@@ -4195,8 +4195,8 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,MailRu,F,F01c,1,c,Services,Services,email,Mail.Ru email,100,NA
 2022,MailRu,F,F01c,1,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
 2022,MailRu,F,F01c,1,c,Services,Services,socialNetworkBlogs,Odnoklassniki,100,NA
-2022,MailRu,F,F01d,1,d,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
-2022,MailRu,F,F01d,1,d,Services,Services,email,Mail.Ru email,17,NA
+2022,MailRu,F,F01d,1,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,MailRu,F,F01d,1,d,Services,Services,email,Mail.Ru email,0,NA
 2022,MailRu,F,F01d,1,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
 2022,MailRu,F,F01d,1,d,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
 2022,MailRu,F,F02a,2,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
@@ -4227,7 +4227,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,MailRu,F,F03c,3,c,Services,Services,email,Mail.Ru email,20,NA
 2022,MailRu,F,F03c,3,c,Services,Services,cloud,Mail.Ru Cloud,20,NA
 2022,MailRu,F,F03c,3,c,Services,Services,socialNetworkBlogs,Odnoklassniki,20,NA
-2022,MailRu,F,F04a,4,a,Services,Services,socialNetworkBlogs,Vkontakte,8,NA
+2022,MailRu,F,F04a,4,a,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
 2022,MailRu,F,F04a,4,a,Services,Services,email,Mail.Ru email,0,NA
 2022,MailRu,F,F04a,4,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
 2022,MailRu,F,F04a,4,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
@@ -4319,14 +4319,14 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,MailRu,P,P07,7,NA,Services,Services,email,Mail.Ru email,25,NA
 2022,MailRu,P,P07,7,NA,Services,Services,cloud,Mail.Ru Cloud,25,NA
 2022,MailRu,P,P07,7,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,13,NA
-2022,MailRu,P,P08,8,NA,Services,Services,socialNetworkBlogs,Vkontakte,25,NA
+2022,MailRu,P,P08,8,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
 2022,MailRu,P,P08,8,NA,Services,Services,email,Mail.Ru email,8,NA
 2022,MailRu,P,P08,8,NA,Services,Services,cloud,Mail.Ru Cloud,8,NA
 2022,MailRu,P,P08,8,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,8,NA
 2022,MailRu,P,P09,9,NA,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
-2022,MailRu,P,P09,9,NA,Services,Services,email,Mail.Ru email,17,NA
-2022,MailRu,P,P09,9,NA,Services,Services,cloud,Mail.Ru Cloud,17,NA
-2022,MailRu,P,P09,9,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,17,NA
+2022,MailRu,P,P09,9,NA,Services,Services,email,Mail.Ru email,11,NA
+2022,MailRu,P,P09,9,NA,Services,Services,cloud,Mail.Ru Cloud,11,NA
+2022,MailRu,P,P09,9,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,11,NA
 2022,MailRu,P,P10a,10,a,Services,Services,socialNetworkBlogs,Vkontakte,86,NA
 2022,MailRu,P,P10a,10,a,Services,Services,email,Mail.Ru email,79,NA
 2022,MailRu,P,P10a,10,a,Services,Services,cloud,Mail.Ru Cloud,79,NA
@@ -4359,10 +4359,10 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,MailRu,P,P15,15,NA,Services,Services,email,Mail.Ru email,0,NA
 2022,MailRu,P,P15,15,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
 2022,MailRu,P,P15,15,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,P,P16,16,NA,Services,Services,socialNetworkBlogs,Vkontakte,25,NA
-2022,MailRu,P,P16,16,NA,Services,Services,email,Mail.Ru email,25,NA
-2022,MailRu,P,P16,16,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,P,P16,16,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,25,NA
+2022,MailRu,P,P16,16,NA,Services,Services,socialNetworkBlogs,Vkontakte,50,NA
+2022,MailRu,P,P16,16,NA,Services,Services,email,Mail.Ru email,50,NA
+2022,MailRu,P,P16,16,NA,Services,Services,cloud,Mail.Ru Cloud,50,NA
+2022,MailRu,P,P16,16,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,50,NA
 2022,MailRu,P,P17,17,NA,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
 2022,MailRu,P,P17,17,NA,Services,Services,email,Mail.Ru email,100,NA
 2022,MailRu,P,P17,17,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
@@ -4458,7 +4458,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Microsoft,F,F02a,2,a,Services,Services,email,Outlook.com,63,NA
 2022,Microsoft,F,F02a,2,a,Services,Services,messagingVoip,Skype,63,NA
 2022,Microsoft,F,F02a,2,a,Services,Services,cloud,OneDrive,63,NA
-2022,Microsoft,F,F02a,2,a,Services,Services,socialNetworkBlogs,LinkedIn,38,NA
+2022,Microsoft,F,F02a,2,a,Services,Services,socialNetworkBlogs,LinkedIn,50,NA
 2022,Microsoft,F,F02b,2,b,Services,Services,search,Bing,25,NA
 2022,Microsoft,F,F02b,2,b,Services,Services,email,Outlook.com,25,NA
 2022,Microsoft,F,F02b,2,b,Services,Services,messagingVoip,Skype,25,NA
@@ -4478,7 +4478,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Microsoft,F,F03a,3,a,Services,Services,email,Outlook.com,70,NA
 2022,Microsoft,F,F03a,3,a,Services,Services,messagingVoip,Skype,50,NA
 2022,Microsoft,F,F03a,3,a,Services,Services,cloud,OneDrive,70,NA
-2022,Microsoft,F,F03a,3,a,Services,Services,socialNetworkBlogs,LinkedIn,29,NA
+2022,Microsoft,F,F03a,3,a,Services,Services,socialNetworkBlogs,LinkedIn,50,NA
 2022,Microsoft,F,F03b,3,b,Services,Services,search,Bing,50,NA
 2022,Microsoft,F,F03b,3,b,Services,Services,email,Outlook.com,33,NA
 2022,Microsoft,F,F03b,3,b,Services,Services,messagingVoip,Skype,33,NA
@@ -4490,13 +4490,13 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Microsoft,F,F03c,3,c,Services,Services,cloud,OneDrive,0,NA
 2022,Microsoft,F,F03c,3,c,Services,Services,socialNetworkBlogs,LinkedIn,30,NA
 2022,Microsoft,F,F04a,4,a,Services,Services,search,Bing,50,NA
-2022,Microsoft,F,F04a,4,a,Services,Services,email,Outlook.com,0,NA
-2022,Microsoft,F,F04a,4,a,Services,Services,messagingVoip,Skype,0,NA
+2022,Microsoft,F,F04a,4,a,Services,Services,email,Outlook.com,42,NA
+2022,Microsoft,F,F04a,4,a,Services,Services,messagingVoip,Skype,42,NA
 2022,Microsoft,F,F04a,4,a,Services,Services,cloud,OneDrive,50,NA
 2022,Microsoft,F,F04a,4,a,Services,Services,socialNetworkBlogs,LinkedIn,42,NA
 2022,Microsoft,F,F04b,4,b,Services,Services,search,Bing,NA,NA
-2022,Microsoft,F,F04b,4,b,Services,Services,email,Outlook.com,0,NA
-2022,Microsoft,F,F04b,4,b,Services,Services,messagingVoip,Skype,0,NA
+2022,Microsoft,F,F04b,4,b,Services,Services,email,Outlook.com,50,NA
+2022,Microsoft,F,F04b,4,b,Services,Services,messagingVoip,Skype,50,NA
 2022,Microsoft,F,F04b,4,b,Services,Services,cloud,OneDrive,60,NA
 2022,Microsoft,F,F04b,4,b,Services,Services,socialNetworkBlogs,LinkedIn,40,NA
 2022,Microsoft,F,F04c,4,c,Services,Services,search,Bing,42,NA
@@ -4528,7 +4528,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Microsoft,F,F08,8,NA,Services,Services,email,Outlook.com,0,NA
 2022,Microsoft,F,F08,8,NA,Services,Services,messagingVoip,Skype,0,NA
 2022,Microsoft,F,F08,8,NA,Services,Services,cloud,OneDrive,0,NA
-2022,Microsoft,F,F08,8,NA,Services,Services,socialNetworkBlogs,LinkedIn,25,NA
+2022,Microsoft,F,F08,8,NA,Services,Services,socialNetworkBlogs,LinkedIn,38,NA
 2022,Microsoft,F,F09,9,NA,Services,Services,search,Bing,NA,NA
 2022,Microsoft,F,F09,9,NA,Services,Services,email,Outlook.com,NA,NA
 2022,Microsoft,F,F09,9,NA,Services,Services,messagingVoip,Skype,NA,NA
@@ -4548,12 +4548,12 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Microsoft,F,F12,12,NA,Services,Services,email,Outlook.com,NA,NA
 2022,Microsoft,F,F12,12,NA,Services,Services,messagingVoip,Skype,NA,NA
 2022,Microsoft,F,F12,12,NA,Services,Services,cloud,OneDrive,NA,NA
-2022,Microsoft,F,F12,12,NA,Services,Services,socialNetworkBlogs,LinkedIn,80,NA
+2022,Microsoft,F,F12,12,NA,Services,Services,socialNetworkBlogs,LinkedIn,70,NA
 2022,Microsoft,F,F13,13,NA,Services,Services,search,Bing,NA,NA
 2022,Microsoft,F,F13,13,NA,Services,Services,email,Outlook.com,NA,NA
 2022,Microsoft,F,F13,13,NA,Services,Services,messagingVoip,Skype,25,NA
 2022,Microsoft,F,F13,13,NA,Services,Services,cloud,OneDrive,NA,NA
-2022,Microsoft,F,F13,13,NA,Services,Services,socialNetworkBlogs,LinkedIn,0,NA
+2022,Microsoft,F,F13,13,NA,Services,Services,socialNetworkBlogs,LinkedIn,50,NA
 2022,Microsoft,P,P01a,1,a,Services,Services,search,Bing,67,NA
 2022,Microsoft,P,P01a,1,a,Services,Services,email,Outlook.com,67,NA
 2022,Microsoft,P,P01a,1,a,Services,Services,messagingVoip,Skype,67,NA
@@ -4568,7 +4568,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Microsoft,P,P02a,2,a,Services,Services,email,Outlook.com,50,NA
 2022,Microsoft,P,P02a,2,a,Services,Services,messagingVoip,Skype,50,NA
 2022,Microsoft,P,P02a,2,a,Services,Services,cloud,OneDrive,50,NA
-2022,Microsoft,P,P02a,2,a,Services,Services,socialNetworkBlogs,LinkedIn,25,NA
+2022,Microsoft,P,P02a,2,a,Services,Services,socialNetworkBlogs,LinkedIn,38,NA
 2022,Microsoft,P,P02b,2,b,Services,Services,search,Bing,0,NA
 2022,Microsoft,P,P02b,2,b,Services,Services,email,Outlook.com,0,NA
 2022,Microsoft,P,P02b,2,b,Services,Services,messagingVoip,Skype,0,NA
@@ -4608,7 +4608,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Microsoft,P,P08,8,NA,Services,Services,email,Outlook.com,50,NA
 2022,Microsoft,P,P08,8,NA,Services,Services,messagingVoip,Skype,50,NA
 2022,Microsoft,P,P08,8,NA,Services,Services,cloud,OneDrive,8,NA
-2022,Microsoft,P,P08,8,NA,Services,Services,socialNetworkBlogs,LinkedIn,75,NA
+2022,Microsoft,P,P08,8,NA,Services,Services,socialNetworkBlogs,LinkedIn,67,NA
 2022,Microsoft,P,P09,9,NA,Services,Services,search,Bing,33,NA
 2022,Microsoft,P,P09,9,NA,Services,Services,email,Outlook.com,33,NA
 2022,Microsoft,P,P09,9,NA,Services,Services,messagingVoip,Skype,33,NA
@@ -4643,17 +4643,17 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Microsoft,P,P13,13,NA,Services,Services,email,Outlook.com,83,NA
 2022,Microsoft,P,P13,13,NA,Services,Services,messagingVoip,Skype,83,NA
 2022,Microsoft,P,P13,13,NA,Services,Services,cloud,OneDrive,83,NA
-2022,Microsoft,P,P13,13,NA,Services,Services,socialNetworkBlogs,LinkedIn,83,NA
+2022,Microsoft,P,P13,13,NA,Services,Services,socialNetworkBlogs,LinkedIn,100,NA
 2022,Microsoft,P,P14,14,NA,Services,Services,search,Bing,83,NA
 2022,Microsoft,P,P14,14,NA,Services,Services,email,Outlook.com,83,NA
 2022,Microsoft,P,P14,14,NA,Services,Services,messagingVoip,Skype,83,NA
 2022,Microsoft,P,P14,14,NA,Services,Services,cloud,OneDrive,83,NA
 2022,Microsoft,P,P14,14,NA,Services,Services,socialNetworkBlogs,LinkedIn,33,NA
 2022,Microsoft,P,P15,15,NA,Services,Services,search,Bing,0,NA
-2022,Microsoft,P,P15,15,NA,Services,Services,email,Outlook.com,50,NA
+2022,Microsoft,P,P15,15,NA,Services,Services,email,Outlook.com,0,NA
 2022,Microsoft,P,P15,15,NA,Services,Services,messagingVoip,Skype,0,NA
-2022,Microsoft,P,P15,15,NA,Services,Services,cloud,OneDrive,50,NA
-2022,Microsoft,P,P15,15,NA,Services,Services,socialNetworkBlogs,LinkedIn,67,NA
+2022,Microsoft,P,P15,15,NA,Services,Services,cloud,OneDrive,0,NA
+2022,Microsoft,P,P15,15,NA,Services,Services,socialNetworkBlogs,LinkedIn,50,NA
 2022,Microsoft,P,P16,16,NA,Services,Services,search,Bing,50,NA
 2022,Microsoft,P,P16,16,NA,Services,Services,email,Outlook.com,50,NA
 2022,Microsoft,P,P16,16,NA,Services,Services,messagingVoip,Skype,50,NA
@@ -4663,7 +4663,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Microsoft,P,P17,17,NA,Services,Services,email,Outlook.com,100,NA
 2022,Microsoft,P,P17,17,NA,Services,Services,messagingVoip,Skype,83,NA
 2022,Microsoft,P,P17,17,NA,Services,Services,cloud,OneDrive,100,NA
-2022,Microsoft,P,P17,17,NA,Services,Services,socialNetworkBlogs,LinkedIn,83,NA
+2022,Microsoft,P,P17,17,NA,Services,Services,socialNetworkBlogs,LinkedIn,67,NA
 2022,Microsoft,P,P18,18,NA,Services,Services,search,Bing,100,NA
 2022,Microsoft,P,P18,18,NA,Services,Services,email,Outlook.com,100,NA
 2022,Microsoft,P,P18,18,NA,Services,Services,messagingVoip,Skype,100,NA
@@ -4698,7 +4698,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Samsung,G,G06b,6,b,Services,Services,mobileEcosystem,Samsung implementation of Android,0,NA
 2022,Samsung,F,F01a,1,a,Services,Services,mobileEcosystem,Samsung implementation of Android,50,NA
 2022,Samsung,F,F01b,1,b,Services,Services,mobileEcosystem,Samsung implementation of Android,63,NA
-2022,Samsung,F,F01c,1,c,Services,Services,mobileEcosystem,Samsung implementation of Android,50,NA
+2022,Samsung,F,F01c,1,c,Services,Services,mobileEcosystem,Samsung implementation of Android,0,NA
 2022,Samsung,F,F01d,1,d,Services,Services,mobileEcosystem,Samsung implementation of Android,0,NA
 2022,Samsung,F,F02a,2,a,Services,Services,mobileEcosystem,Samsung implementation of Android,100,NA
 2022,Samsung,F,F02b,2,b,Services,Services,mobileEcosystem,Samsung implementation of Android,0,NA
@@ -4706,7 +4706,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Samsung,F,F02d,2,d,Services,Services,mobileEcosystem,Samsung implementation of Android,0,NA
 2022,Samsung,F,F03a,3,a,Services,Services,mobileEcosystem,Samsung implementation of Android,50,NA
 2022,Samsung,F,F03b,3,b,Services,Services,mobileEcosystem,Samsung implementation of Android,67,NA
-2022,Samsung,F,F03c,3,c,Services,Services,mobileEcosystem,Samsung implementation of Android,0,NA
+2022,Samsung,F,F03c,3,c,Services,Services,mobileEcosystem,Samsung implementation of Android,20,NA
 2022,Samsung,F,F04a,4,a,Services,Services,mobileEcosystem,Samsung implementation of Android,0,NA
 2022,Samsung,F,F04b,4,b,Services,Services,mobileEcosystem,Samsung implementation of Android,0,NA
 2022,Samsung,F,F04c,4,c,Services,Services,mobileEcosystem,Samsung implementation of Android,0,NA
@@ -4987,15 +4987,15 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Tencent,P,P18,18,NA,Services,Services,cloud,Tencent Cloud,100,NA
 2022,Twitter,G,G01,1,NA,Company,Group,Group,Group,67,NA
 2022,Twitter,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Twitter,G,G02,2,NA,Company,Group,Group,Group,83,NA
+2022,Twitter,G,G02,2,NA,Company,Group,Group,Group,100,NA
 2022,Twitter,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Twitter,G,G02,2,NA,Services,Services,socialNetworkBlogs,Twitter,83,NA
+2022,Twitter,G,G02,2,NA,Services,Services,socialNetworkBlogs,Twitter,100,NA
 2022,Twitter,G,G03,3,NA,Company,Group,Group,Group,88,NA
 2022,Twitter,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Twitter,G,G03,3,NA,Services,Services,socialNetworkBlogs,Twitter,88,NA
-2022,Twitter,G,G04a,4,a,Company,Group,Group,Group,18,NA
+2022,Twitter,G,G04a,4,a,Company,Group,Group,Group,14,NA
 2022,Twitter,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Twitter,G,G04a,4,a,Services,Services,socialNetworkBlogs,Twitter,18,NA
+2022,Twitter,G,G04a,4,a,Services,Services,socialNetworkBlogs,Twitter,14,NA
 2022,Twitter,G,G04b,4,b,Company,Group,Group,Group,0,NA
 2022,Twitter,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Twitter,G,G04b,4,b,Services,Services,socialNetworkBlogs,Twitter,0,NA
@@ -5013,14 +5013,14 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Twitter,G,G06a,6,a,Services,Services,socialNetworkBlogs,Twitter,39,NA
 2022,Twitter,G,G06b,6,b,Services,Services,socialNetworkBlogs,Twitter,18,NA
 2022,Twitter,F,F01a,1,a,Services,Services,socialNetworkBlogs,Twitter,100,NA
-2022,Twitter,F,F01b,1,b,Services,Services,socialNetworkBlogs,Twitter,67,NA
+2022,Twitter,F,F01b,1,b,Services,Services,socialNetworkBlogs,Twitter,83,NA
 2022,Twitter,F,F01c,1,c,Services,Services,socialNetworkBlogs,Twitter,83,NA
 2022,Twitter,F,F01d,1,d,Services,Services,socialNetworkBlogs,Twitter,50,NA
 2022,Twitter,F,F02a,2,a,Services,Services,socialNetworkBlogs,Twitter,38,NA
 2022,Twitter,F,F02b,2,b,Services,Services,socialNetworkBlogs,Twitter,13,NA
 2022,Twitter,F,F02c,2,c,Services,Services,socialNetworkBlogs,Twitter,13,NA
 2022,Twitter,F,F02d,2,d,Services,Services,socialNetworkBlogs,Twitter,0,NA
-2022,Twitter,F,F03a,3,a,Services,Services,socialNetworkBlogs,Twitter,50,NA
+2022,Twitter,F,F03a,3,a,Services,Services,socialNetworkBlogs,Twitter,79,NA
 2022,Twitter,F,F03b,3,b,Services,Services,socialNetworkBlogs,Twitter,100,NA
 2022,Twitter,F,F03c,3,c,Services,Services,socialNetworkBlogs,Twitter,60,NA
 2022,Twitter,F,F04a,4,a,Services,Services,socialNetworkBlogs,Twitter,50,NA
@@ -5034,7 +5034,7 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Twitter,F,F09,9,NA,Services,Services,socialNetworkBlogs,Twitter,NA,NA
 2022,Twitter,F,F10,10,NA,Services,Services,socialNetworkBlogs,Twitter,NA,NA
 2022,Twitter,F,F11,11,NA,Services,Services,socialNetworkBlogs,Twitter,100,NA
-2022,Twitter,F,F12,12,NA,Services,Services,socialNetworkBlogs,Twitter,30,NA
+2022,Twitter,F,F12,12,NA,Services,Services,socialNetworkBlogs,Twitter,50,NA
 2022,Twitter,F,F13,13,NA,Services,Services,socialNetworkBlogs,Twitter,63,NA
 2022,Twitter,P,P01a,1,a,Services,Services,socialNetworkBlogs,Twitter,100,NA
 2022,Twitter,P,P01b,1,b,Services,Services,socialNetworkBlogs,Twitter,0,NA
@@ -5061,9 +5061,9 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Twitter,P,P18,18,NA,Services,Services,socialNetworkBlogs,Twitter,100,NA
 2022,Yahoo,G,G01,1,NA,Company,Group,Group,Group,67,NA
 2022,Yahoo,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Yahoo,G,G02,2,NA,Company,Group,Group,Group,100,NA
+2022,Yahoo,G,G02,2,NA,Company,Group,Group,Group,67,NA
 2022,Yahoo,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Yahoo,G,G02,2,NA,Services,Services,email,Yahoo Mail,100,NA
+2022,Yahoo,G,G02,2,NA,Services,Services,email,Yahoo Mail,67,NA
 2022,Yahoo,G,G03,3,NA,Company,Group,Group,Group,100,NA
 2022,Yahoo,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Yahoo,G,G03,3,NA,Services,Services,email,Yahoo Mail,100,NA
@@ -5121,19 +5121,19 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Yahoo,P,P06,6,NA,Services,Services,email,Yahoo Mail,50,NA
 2022,Yahoo,P,P07,7,NA,Services,Services,email,Yahoo Mail,25,NA
 2022,Yahoo,P,P08,8,NA,Services,Services,email,Yahoo Mail,50,NA
-2022,Yahoo,P,P09,9,NA,Services,Services,email,Yahoo Mail,50,NA
+2022,Yahoo,P,P09,9,NA,Services,Services,email,Yahoo Mail,56,NA
 2022,Yahoo,P,P10a,10,a,Services,Services,email,Yahoo Mail,100,NA
 2022,Yahoo,P,P10b,10,b,Services,Services,email,Yahoo Mail,0,NA
 2022,Yahoo,P,P11a,11,a,Services,Services,email,Yahoo Mail,65,NA
 2022,Yahoo,P,P11b,11,b,Services,Services,email,Yahoo Mail,0,NA
 2022,Yahoo,P,P12,12,NA,Services,Services,email,Yahoo Mail,67,NA
-2022,Yahoo,P,P13,13,NA,Services,Services,email,Yahoo Mail,50,NA
+2022,Yahoo,P,P13,13,NA,Services,Services,email,Yahoo Mail,100,NA
 2022,Yahoo,P,P14,14,NA,Services,Services,email,Yahoo Mail,100,NA
 2022,Yahoo,P,P15,15,NA,Services,Services,email,Yahoo Mail,83,NA
-2022,Yahoo,P,P16,16,NA,Services,Services,email,Yahoo Mail,13,NA
+2022,Yahoo,P,P16,16,NA,Services,Services,email,Yahoo Mail,38,NA
 2022,Yahoo,P,P17,17,NA,Services,Services,email,Yahoo Mail,100,NA
 2022,Yahoo,P,P18,18,NA,Services,Services,email,Yahoo Mail,100,NA
-2022,Yandex,G,G01,1,NA,Company,Group,Group,Group,67,NA
+2022,Yandex,G,G01,1,NA,Company,Group,Group,Group,83,NA
 2022,Yandex,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Yandex,G,G02,2,NA,Company,Group,Group,Group,17,NA
 2022,Yandex,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
@@ -5145,11 +5145,11 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Yandex,G,G03,3,NA,Services,Services,email,Yandex Mail,75,NA
 2022,Yandex,G,G03,3,NA,Services,Services,search,Yandex Search,75,NA
 2022,Yandex,G,G03,3,NA,Services,Services,cloud,Yandex Disk,75,NA
-2022,Yandex,G,G04a,4,a,Company,Group,Group,Group,9,NA
+2022,Yandex,G,G04a,4,a,Company,Group,Group,Group,14,NA
 2022,Yandex,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Yandex,G,G04a,4,a,Services,Services,email,Yandex Mail,9,NA
-2022,Yandex,G,G04a,4,a,Services,Services,search,Yandex Search,9,NA
-2022,Yandex,G,G04a,4,a,Services,Services,cloud,Yandex Disk,9,NA
+2022,Yandex,G,G04a,4,a,Services,Services,email,Yandex Mail,14,NA
+2022,Yandex,G,G04a,4,a,Services,Services,search,Yandex Search,14,NA
+2022,Yandex,G,G04a,4,a,Services,Services,cloud,Yandex Disk,14,NA
 2022,Yandex,G,G04b,4,b,Company,Group,Group,Group,0,NA
 2022,Yandex,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Yandex,G,G04b,4,b,Services,Services,email,Yandex Mail,0,NA
