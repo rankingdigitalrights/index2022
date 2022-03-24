@@ -1364,15 +1364,24 @@ export const glossary = async (): Promise<Glossary[]> => {
  * Construct the indicator topic index.
  */
 export const indicatorTopicIndex = async (): Promise<IndicatorTopicIndex[]> => {
-  const indicatorTopicData = await loadIndicatorTopicsCsv(
-    "csv/2022-indicator-topics.csv",
-  );
+  const [indicatorTopicData, allCompanies] = await Promise.all([
+    loadIndicatorTopicsCsv("csv/2022-indicator-topics.csv"),
+    companies(),
+  ]);
 
   const indicatorTopics = indicatorTopicData.reduce(
-    (memo, {topic, topicName: topicPretty, company, score}) => {
+    (memo, {topic, topicName: topicPretty, company: companyId, score}) => {
       // eslint-disable-next-line no-param-reassign
       if (!memo[topic]) memo[topic] = {topic, topicPretty, scores: []};
-      memo[topic].scores.push({company, score});
+      const company = allCompanies.find(({id}) => id === companyId);
+
+      if (!company) return unreachable(`Company ${companyId} not found`);
+
+      memo[topic].scores.push({
+        company: company.id,
+        companyPretty: company.name,
+        score,
+      });
 
       return memo;
     },
@@ -1393,15 +1402,26 @@ export const indicatorTopicIndex = async (): Promise<IndicatorTopicIndex[]> => {
 export const indicatorTopicCompanyIndex = async (): Promise<
   IndicatorTopicCompanyIndex[]
 > => {
-  const indicatorTopicData = await loadIndicatorTopicsCsv(
-    "csv/2022-indicator-topics.csv",
-  );
+  const [indicatorTopicData, allCompanies] = await Promise.all([
+    loadIndicatorTopicsCsv("csv/2022-indicator-topics.csv"),
+    companies(),
+  ]);
 
   const indicatorTopics = indicatorTopicData.reduce(
-    (memo, {topic, topicName: topicPretty, company, score}) => {
-      // eslint-disable-next-line no-param-reassign
-      if (!memo[company]) memo[company] = {company, scores: []};
-      memo[company].scores.push({topic, topicPretty, score});
+    (memo, {topic, topicName: topicPretty, company: companyId, score}) => {
+      const company = allCompanies.find(({id}) => id === companyId);
+
+      if (!company) return unreachable(`Company ${companyId} not found`);
+
+      if (!memo[company.id])
+        // eslint-disable-next-line no-param-reassign
+        memo[company.id] = {
+          company: company.id,
+          companyPretty: company.name,
+          scores: [],
+        };
+
+      memo[company.id].scores.push({topic, topicPretty, score});
 
       return memo;
     },

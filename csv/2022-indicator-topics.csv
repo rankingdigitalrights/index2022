@@ -1,113 +1,113 @@
 Company,IndicatorTopicId,IndicatorTopicName,Score
-Alibaba,itAlg,Algorithmic transparency,17.00
-Alibaba,itAds,Targeted advertising,31.60
-Alibaba,itMod,Content governance/moderation,26.87
-Alibaba,itGoc,Government demands for data/censorship,7.78
-Alibaba,itSec,Security,58.80
-Alibaba,itPri,Private requests,3.00
-Alibaba,itDat,Data handling,34.40
-Alibaba,itUsa,User agency,25.62
-Amazon,itAlg,Algorithmic transparency,5.75
-Amazon,itAds,Targeted advertising,24.88
-Amazon,itMod,Content governance/moderation,15.54
-Amazon,itGoc,Government demands for data/censorship,22.22
-Amazon,itSec,Security,52.20
-Amazon,itPri,Private requests,0.00
-Amazon,itDat,Data handling,23.85
-Amazon,itUsa,User agency,28.66
-Apple,itAlg,Algorithmic transparency,5.87
-Apple,itAds,Targeted advertising,19.82
-Apple,itMod,Content governance/moderation,11.77
-Apple,itGoc,Government demands for data/censorship,72.03
-Apple,itSec,Security,78.13
-Apple,itPri,Private requests,12.50
-Apple,itDat,Data handling,40.64
-Apple,itUsa,User agency,39.03
-Baidu,itAlg,Algorithmic transparency,13.45
-Baidu,itAds,Targeted advertising,26.84
-Baidu,itMod,Content governance/moderation,29.36
-Baidu,itGoc,Government demands for data/censorship,5.24
-Baidu,itSec,Security,66.67
-Baidu,itPri,Private requests,2.00
-Baidu,itDat,Data handling,26.49
-Baidu,itUsa,User agency,24.00
-Facebook,itAlg,Algorithmic transparency,21.93
-Facebook,itAds,Targeted advertising,34.92
-Facebook,itMod,Content governance/moderation,37.60
-Facebook,itGoc,Government demands for data/censorship,68.32
-Facebook,itSec,Security,53.47
-Facebook,itPri,Private requests,13.00
-Facebook,itDat,Data handling,39.46
-Facebook,itUsa,User agency,45.81
-Google,itAlg,Algorithmic transparency,14.17
-Google,itAds,Targeted advertising,42.52
-Google,itMod,Content governance/moderation,35.86
-Google,itGoc,Government demands for data/censorship,80.11
-Google,itSec,Security,50.69
-Google,itPri,Private requests,17.51
-Google,itDat,Data handling,40.77
-Google,itUsa,User agency,45.05
-Kakao,itAlg,Algorithmic transparency,13.18
-Kakao,itAds,Targeted advertising,21.89
-Kakao,itMod,Content governance/moderation,34.54
-Kakao,itGoc,Government demands for data/censorship,50.56
-Kakao,itSec,Security,63.89
-Kakao,itPri,Private requests,29.11
-Kakao,itDat,Data handling,34.12
-Kakao,itUsa,User agency,38.09
-Mail.Ru,itAlg,Algorithmic transparency,8.86
-Mail.Ru,itAds,Targeted advertising,28.76
-Mail.Ru,itMod,Content governance/moderation,17.05
-Mail.Ru,itGoc,Government demands for data/censorship,18.62
-Mail.Ru,itSec,Security,61.11
-Mail.Ru,itPri,Private requests,2.00
-Mail.Ru,itDat,Data handling,29.54
-Mail.Ru,itUsa,User agency,28.15
-Microsoft,itAlg,Algorithmic transparency,21.36
-Microsoft,itAds,Targeted advertising,33.03
-Microsoft,itMod,Content governance/moderation,37.14
-Microsoft,itGoc,Government demands for data/censorship,65.59
-Microsoft,itSec,Security,67.92
-Microsoft,itPri,Private requests,20.53
-Microsoft,itDat,Data handling,36.31
-Microsoft,itUsa,User agency,42.42
-Samsung,itAlg,Algorithmic transparency,5.56
-Samsung,itAds,Targeted advertising,24.13
-Samsung,itMod,Content governance/moderation,21.25
-Samsung,itGoc,Government demands for data/censorship,6.17
-Samsung,itSec,Security,34.26
-Samsung,itPri,Private requests,0.00
-Samsung,itDat,Data handling,34.89
-Samsung,itUsa,User agency,22.09
-Tencent,itAlg,Algorithmic transparency,3.64
-Tencent,itAds,Targeted advertising,32.92
-Tencent,itMod,Content governance/moderation,22.27
-Tencent,itGoc,Government demands for data/censorship,1.30
-Tencent,itSec,Security,57.29
-Tencent,itPri,Private requests,6.50
-Tencent,itDat,Data handling,34.17
-Tencent,itUsa,User agency,27.61
-Twitter,itAlg,Algorithmic transparency,19.89
-Twitter,itAds,Targeted advertising,47.17
-Twitter,itMod,Content governance/moderation,51.37
-Twitter,itGoc,Government demands for data/censorship,75.88
-Twitter,itSec,Security,56.94
-Twitter,itPri,Private requests,26.00
-Twitter,itDat,Data handling,49.40
-Twitter,itUsa,User agency,52.75
-Yahoo,itAlg,Algorithmic transparency,22.45
-Yahoo,itAds,Targeted advertising,47.43
-Yahoo,itMod,Content governance/moderation,35.97
-Yahoo,itGoc,Government demands for data/censorship,72.09
-Yahoo,itSec,Security,86.81
-Yahoo,itPri,Private requests,0.00
-Yahoo,itDat,Data handling,49.01
-Yahoo,itUsa,User agency,42.85
-Yandex,itAlg,Algorithmic transparency,12.33
-Yandex,itAds,Targeted advertising,28.36
-Yandex,itMod,Content governance/moderation,31.04
-Yandex,itGoc,Government demands for data/censorship,24.86
-Yandex,itSec,Security,75.00
-Yandex,itPri,Private requests,8.00
-Yandex,itDat,Data handling,26.25
-Yandex,itUsa,User agency,39.86
+Alibaba,itAlg,Algorithmic transparency,17
+Alibaba,itAds,Targeted advertising,32
+Alibaba,itMod,Content governance/moderation,27
+Alibaba,itGoc,Government demands for data/censorship,8
+Alibaba,itSec,Security,59
+Alibaba,itPri,Private requests,3
+Alibaba,itDat,Data handling,34
+Alibaba,itUsa,User agency,26
+Amazon,itAlg,Algorithmic transparency,6
+Amazon,itAds,Targeted advertising,25
+Amazon,itMod,Content governance/moderation,16
+Amazon,itGoc,Government demands for data/censorship,22
+Amazon,itSec,Security,52
+Amazon,itPri,Private requests,0
+Amazon,itDat,Data handling,24
+Amazon,itUsa,User agency,29
+Apple,itAlg,Algorithmic transparency,6
+Apple,itAds,Targeted advertising,20
+Apple,itMod,Content governance/moderation,12
+Apple,itGoc,Government demands for data/censorship,72
+Apple,itSec,Security,78
+Apple,itPri,Private requests,13
+Apple,itDat,Data handling,41
+Apple,itUsa,User agency,39
+Baidu,itAlg,Algorithmic transparency,13
+Baidu,itAds,Targeted advertising,27
+Baidu,itMod,Content governance/moderation,29
+Baidu,itGoc,Government demands for data/censorship,5
+Baidu,itSec,Security,67
+Baidu,itPri,Private requests,2
+Baidu,itDat,Data handling,26
+Baidu,itUsa,User agency,24
+Facebook,itAlg,Algorithmic transparency,22
+Facebook,itAds,Targeted advertising,35
+Facebook,itMod,Content governance/moderation,38
+Facebook,itGoc,Government demands for data/censorship,68
+Facebook,itSec,Security,53
+Facebook,itPri,Private requests,13
+Facebook,itDat,Data handling,39
+Facebook,itUsa,User agency,46
+Google,itAlg,Algorithmic transparency,14
+Google,itAds,Targeted advertising,43
+Google,itMod,Content governance/moderation,36
+Google,itGoc,Government demands for data/censorship,80
+Google,itSec,Security,51
+Google,itPri,Private requests,18
+Google,itDat,Data handling,41
+Google,itUsa,User agency,45
+Kakao,itAlg,Algorithmic transparency,13
+Kakao,itAds,Targeted advertising,22
+Kakao,itMod,Content governance/moderation,35
+Kakao,itGoc,Government demands for data/censorship,51
+Kakao,itSec,Security,64
+Kakao,itPri,Private requests,29
+Kakao,itDat,Data handling,34
+Kakao,itUsa,User agency,38
+MailRu,itAlg,Algorithmic transparency,9
+MailRu,itAds,Targeted advertising,29
+MailRu,itMod,Content governance/moderation,17
+MailRu,itGoc,Government demands for data/censorship,19
+MailRu,itSec,Security,61
+MailRu,itPri,Private requests,2
+MailRu,itDat,Data handling,30
+MailRu,itUsa,User agency,28
+Microsoft,itAlg,Algorithmic transparency,21
+Microsoft,itAds,Targeted advertising,33
+Microsoft,itMod,Content governance/moderation,37
+Microsoft,itGoc,Government demands for data/censorship,66
+Microsoft,itSec,Security,68
+Microsoft,itPri,Private requests,21
+Microsoft,itDat,Data handling,36
+Microsoft,itUsa,User agency,42
+Samsung,itAlg,Algorithmic transparency,6
+Samsung,itAds,Targeted advertising,24
+Samsung,itMod,Content governance/moderation,21
+Samsung,itGoc,Government demands for data/censorship,6
+Samsung,itSec,Security,34
+Samsung,itPri,Private requests,0
+Samsung,itDat,Data handling,35
+Samsung,itUsa,User agency,22
+Tencent,itAlg,Algorithmic transparency,4
+Tencent,itAds,Targeted advertising,33
+Tencent,itMod,Content governance/moderation,22
+Tencent,itGoc,Government demands for data/censorship,1
+Tencent,itSec,Security,57
+Tencent,itPri,Private requests,7
+Tencent,itDat,Data handling,34
+Tencent,itUsa,User agency,28
+Twitter,itAlg,Algorithmic transparency,20
+Twitter,itAds,Targeted advertising,47
+Twitter,itMod,Content governance/moderation,51
+Twitter,itGoc,Government demands for data/censorship,76
+Twitter,itSec,Security,57
+Twitter,itPri,Private requests,26
+Twitter,itDat,Data handling,49
+Twitter,itUsa,User agency,53
+Yahoo,itAlg,Algorithmic transparency,22
+Yahoo,itAds,Targeted advertising,47
+Yahoo,itMod,Content governance/moderation,36
+Yahoo,itGoc,Government demands for data/censorship,72
+Yahoo,itSec,Security,87
+Yahoo,itPri,Private requests,0
+Yahoo,itDat,Data handling,49
+Yahoo,itUsa,User agency,43
+Yandex,itAlg,Algorithmic transparency,12
+Yandex,itAds,Targeted advertising,28
+Yandex,itMod,Content governance/moderation,31
+Yandex,itGoc,Government demands for data/censorship,25
+Yandex,itSec,Security,75
+Yandex,itPri,Private requests,8
+Yandex,itDat,Data handling,26
+Yandex,itUsa,User agency,40

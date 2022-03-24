@@ -260,11 +260,16 @@ export type IndicatorIndex = {
 export type IndicatorTopicIndex = {
   topic: IndicatorTopic;
   topicPretty: string;
-  scores: Array<{company: string; score: number}>;
+  scores: Array<{
+    company: string;
+    companyPretty: string;
+    score: number;
+  }>;
 };
 
 export type IndicatorTopicCompanyIndex = {
   company: string;
+  companyPretty: string;
   scores: Array<{
     topic: IndicatorTopic;
     topicPretty: string;
