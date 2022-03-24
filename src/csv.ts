@@ -3,7 +3,7 @@ import parse from "csv-parse";
 import fs, {promises as fsP} from "fs";
 import path from "path";
 
-import {byRankAndName, byScore} from "./sort";
+import {byCompany, byRankAndName, byScore, byTopic} from "./sort";
 import {
   Company,
   CompanyIndex,
@@ -30,6 +30,9 @@ import {
   IndicatorIndexElement,
   IndicatorNested,
   IndicatorScore,
+  IndicatorTopic,
+  IndicatorTopicCompanyIndex,
+  IndicatorTopicIndex,
   Scores,
   Service,
   ServiceCompanyRank,
@@ -45,6 +48,7 @@ import {
   mapCompanyKindOrNil,
   mapElementValue,
   mapExtCategory,
+  mapIndicatorTopic,
   mapServiceKind,
   memoizeAsync,
   stringOrNil,
@@ -196,6 +200,13 @@ type CsvCompanyServiceRank = {
   governanceRank: number;
   freedomRank: number;
   privacyRank: number;
+};
+
+type CsvIndicatorTopic = {
+  company: string;
+  topic: IndicatorTopic;
+  topicName: string;
+  score: number;
 };
 
 /*
@@ -471,6 +482,16 @@ const loadCompanyServiceRanksCsv = loadCsv<CsvCompanyServiceRank>((record) => ({
   governanceRank: Number.parseInt(record.GovernanceRank, 10),
   freedomRank: Number.parseInt(record.FreedomRank, 10),
   privacyRank: Number.parseInt(record.PrivacyRank, 10),
+}));
+
+/*
+ * Load the Indicator Topics
+ */
+const loadIndicatorTopicsCsv = loadCsv<CsvIndicatorTopic>((record) => ({
+  company: record.Company,
+  topic: mapIndicatorTopic(record.IndicatorTopicId),
+  topicName: record.IndicatorTopicName,
+  score: Number.parseInt(record.Score, 10),
 }));
 
 /*
@@ -1337,4 +1358,60 @@ export const glossary = async (): Promise<Glossary[]> => {
           .trim(),
       };
     });
+};
+
+/*
+ * Construct the indicator topic index.
+ */
+export const indicatorTopicIndex = async (): Promise<IndicatorTopicIndex[]> => {
+  const indicatorTopicData = await loadIndicatorTopicsCsv(
+    "csv/2022-indicator-topics.csv",
+  );
+
+  const indicatorTopics = indicatorTopicData.reduce(
+    (memo, {topic, topicName: topicPretty, company, score}) => {
+      // eslint-disable-next-line no-param-reassign
+      if (!memo[topic]) memo[topic] = {topic, topicPretty, scores: []};
+      memo[topic].scores.push({company, score});
+
+      return memo;
+    },
+    {} as Record<IndicatorTopic, IndicatorTopicIndex>,
+  );
+
+  return Object.values(indicatorTopics)
+    .map((indicatorTopic) => {
+      indicatorTopic.scores.sort(byScore("desc"));
+      return indicatorTopic;
+    })
+    .sort(byTopic("asc"));
+};
+
+/*
+ * Construct the indicator topic company index.
+ */
+export const indicatorTopicCompanyIndex = async (): Promise<
+  IndicatorTopicCompanyIndex[]
+> => {
+  const indicatorTopicData = await loadIndicatorTopicsCsv(
+    "csv/2022-indicator-topics.csv",
+  );
+
+  const indicatorTopics = indicatorTopicData.reduce(
+    (memo, {topic, topicName: topicPretty, company, score}) => {
+      // eslint-disable-next-line no-param-reassign
+      if (!memo[company]) memo[company] = {company, scores: []};
+      memo[company].scores.push({topic, topicPretty, score});
+
+      return memo;
+    },
+    {} as Record<string, IndicatorTopicCompanyIndex>,
+  );
+
+  return Object.values(indicatorTopics)
+    .map((indicatorTopic) => {
+      indicatorTopic.scores.sort(byTopic("asc"));
+      return indicatorTopic;
+    })
+    .sort(byCompany("asc"));
 };

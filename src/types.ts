@@ -10,6 +10,16 @@ export type IndicatorCategoryExt = IndicatorCategory | "total";
 
 export type IndicatorScore = number | NA;
 
+export type IndicatorTopic =
+  | "algorithmic-transparency"
+  | "targeted-advertising"
+  | "content-governance-moderation"
+  | "demands-data-censorship"
+  | "security"
+  | "private-requests"
+  | "data-handling"
+  | "user-agency";
+
 export type ScoreDiffs = {
   diff2017: IndicatorScore;
   diff2018: IndicatorScore;
@@ -245,6 +255,21 @@ export type IndicatorIndex = {
   scores: Record<string, IndicatorScore>;
   averages: Record<string, Record<string, IndicatorScore>>;
   elements: Record<string, Record<string, IndicatorIndexElement[]>>;
+};
+
+export type IndicatorTopicIndex = {
+  topic: IndicatorTopic;
+  topicPretty: string;
+  scores: Array<{company: string; score: number}>;
+};
+
+export type IndicatorTopicCompanyIndex = {
+  company: string;
+  scores: Array<{
+    topic: IndicatorTopic;
+    topicPretty: string;
+    score: number;
+  }>;
 };
 
 export type CsvRecord = Record<string, string>;

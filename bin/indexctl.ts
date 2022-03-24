@@ -20,6 +20,8 @@ import {
   indicatorElements,
   indicators,
   indicatorScores,
+  indicatorTopicCompanyIndex,
+  indicatorTopicIndex,
   services,
 } from "../src/csv";
 import {companyDetails, comparePage, narrativePage} from "../src/google";
@@ -75,6 +77,11 @@ const writeJsonFile = (
       const elementsTarget = path.join(dataDir, "elements.json");
       const servicesTarget = path.join(dataDir, "services.json");
       const glossaryTarget = path.join(dataDir, "glossary.json");
+      const indicatorTopicsTarget = path.join(dataDir, "indicator-topics.json");
+      const indicatorTopicsCompaniesTarget = path.join(
+        dataDir,
+        "indicator-topics-companies.json",
+      );
 
       console.log(`Generating glossary at ${glossaryTarget}`);
 
@@ -299,6 +306,18 @@ const writeJsonFile = (
           );
         }),
       );
+
+      /*
+       * Indicator topic scores.
+       */
+      console.log("Generating indicator topic scores");
+
+      await Promise.all([
+        indicatorTopicIndex().then(writeJsonFile(indicatorTopicsTarget)),
+        indicatorTopicCompanyIndex().then(
+          writeJsonFile(indicatorTopicsCompaniesTarget),
+        ),
+      ]);
     })
     .command("google", "pull content from Google docs.", async () => {
       const companiesDir = "data/companies";

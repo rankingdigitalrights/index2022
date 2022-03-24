@@ -1,4 +1,4 @@
-import {IndicatorScore} from "./types";
+import {IndicatorScore, IndicatorTopic} from "./types";
 import {isNA} from "./utils";
 
 type SortOrder = "asc" | "desc";
@@ -52,6 +52,50 @@ export const byRankAndName = (order?: SortOrder) => <
   // If two companies have the same rank we sort alphabetically.
   if (a.companyPretty < b.companyPretty) return left;
   if (a.companyPretty > b.companyPretty) return right;
+
+  return 0;
+};
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const byTopic = (order?: SortOrder) => <
+  T extends Required<{topic: IndicatorTopic}>
+>(
+  a: T,
+  b: T,
+) => {
+  // The default is to sort ascending.
+  let left = -1;
+  let right = 1;
+
+  if (order && order === "desc") {
+    left = 1;
+    right = -1;
+  }
+
+  if (a.topic.localeCompare(b.topic) < 0) return left;
+  if (a.topic.localeCompare(b.topic) > 0) return right;
+
+  return 0;
+};
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const byCompany = (order?: SortOrder) => <
+  T extends Required<{company: string}>
+>(
+  a: T,
+  b: T,
+) => {
+  // The default is to sort ascending.
+  let left = -1;
+  let right = 1;
+
+  if (order && order === "desc") {
+    left = 1;
+    right = -1;
+  }
+
+  if (a.company.localeCompare(b.company) < 0) return left;
+  if (a.company.localeCompare(b.company) > 0) return right;
 
   return 0;
 };
