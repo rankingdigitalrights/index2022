@@ -4,6 +4,7 @@ import path from "path";
 import {emptyCompany} from "./formatter";
 import {
   Company,
+  CompanyCategoryYearOverYear,
   CompanyDetails,
   CompanyHighlight,
   CompanyIndex,
@@ -284,6 +285,18 @@ export const companyDiffScoresData = async (
   category: IndicatorCategoryExt,
 ): Promise<CompanyScoreDiff[]> => {
   return loadJson<CompanyScoreDiff[]>(`data/diffs/${category}-${year}.json`)();
+};
+
+/*
+ * Load the company diff scores.
+ */
+export const companyYearOverYearCategoryScoreData = async (
+  company: string,
+  category: IndicatorCategoryExt,
+): Promise<CompanyCategoryYearOverYear> => {
+  return loadJson<CompanyCategoryYearOverYear>(
+    `data/companies/${company}/year-over-year-${category}.json`,
+  )();
 };
 
 /*

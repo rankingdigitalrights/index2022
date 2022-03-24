@@ -6,6 +6,7 @@ import yargs from "yargs";
 import browser, {BrowserApi} from "../src/browser";
 import {
   companies,
+  companyCategoryYearOverYear,
   companyDiffs,
   companyIndices,
   companyMeta,
@@ -151,6 +152,44 @@ const writeJsonFile = (
         const target = path.join(companyDir, "meta.json");
         const meta = await companyMeta(company.id);
         return writeJsonFile(target)(meta);
+      }, Promise.resolve());
+
+      /*
+       * Company year over year, e.g. ./data/companies/year-over-year-total.json
+       */
+      await allCompanies.reduce(async (memo, company) => {
+        await memo;
+
+        // Ensure company data directory.
+        const companyDir = path.join(companiesDir, company.id);
+        await fs.mkdir(path.join(process.cwd(), companyDir), {
+          recursive: true,
+        });
+
+        await Promise.all(
+          ([
+            "total",
+            "freedom",
+            "privacy",
+            "governance",
+          ] as IndicatorCategoryExt[]).map(
+            async (category: IndicatorCategoryExt) => {
+              console.log(
+                `Generating year over year for ${company.name}/${category}`,
+              );
+
+              const target = path.join(
+                companyDir,
+                `year-over-year-${category}.json`,
+              );
+              const data = await companyCategoryYearOverYear(
+                company.id,
+                category,
+              );
+              return writeJsonFile(target)(data);
+            },
+          ),
+        );
       }, Promise.resolve());
 
       /*

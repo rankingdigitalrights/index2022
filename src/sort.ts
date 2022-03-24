@@ -99,3 +99,24 @@ export const byCompany = (order?: SortOrder) => <
 
   return 0;
 };
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const byYear = (order?: SortOrder) => <
+  T extends Required<{year: number}>
+>(
+  a: T,
+  b: T,
+) => {
+  // The default is to sort ascending.
+  let left = -1;
+  let right = 1;
+
+  if (order && order === "desc") {
+    left = 1;
+    right = -1;
+  }
+
+  if (a.year < b.year) return left;
+  if (a.year > b.year) return right;
+  return 0;
+};

@@ -3,9 +3,10 @@ import parse from "csv-parse";
 import fs, {promises as fsP} from "fs";
 import path from "path";
 
-import {byCompany, byRankAndName, byScore, byTopic} from "./sort";
+import {byCompany, byRankAndName, byScore, byTopic, byYear} from "./sort";
 import {
   Company,
+  CompanyCategoryYearOverYear,
   CompanyIndex,
   CompanyKind,
   CompanyMeta,
@@ -34,9 +35,11 @@ import {
   IndicatorTopicCompanyIndex,
   IndicatorTopicIndex,
   Scores,
+  ScoreYear,
   Service,
   ServiceCompanyRank,
   ServiceKind,
+  YearOverYearScores,
 } from "./types";
 import {
   floatOrNA,
@@ -186,7 +189,7 @@ type CsvYearOverYear = {
   diff2019: IndicatorScore;
   diff2020: IndicatorScore;
   diff2022: IndicatorScore;
-};
+} & YearOverYearScores;
 
 type CsvCompanyServiceRank = {
   company: string;
@@ -460,6 +463,11 @@ export const loadCompanyRanksCsv = loadCsv<CsvCompanyRank>((record) => ({
 export const loadScoreDiffsCsv = loadCsv<CsvYearOverYear>((record) => ({
   company: record.Company,
   category: mapExtCategory(record.Scope),
+  "2017": floatOrNA(record["2017"]),
+  "2018": floatOrNA(record["2018"]),
+  "2019": floatOrNA(record["2019"]),
+  "2020": floatOrNA(record["2020"]),
+  "2022": floatOrNA(record["2022"]),
   diff2017: floatOrNA(record["2017DiffAdjusted"]),
   diff2018: floatOrNA(record["2018DiffAdjusted"]),
   diff2019: floatOrNA(record["2019DiffAdjusted"]),
@@ -1434,4 +1442,40 @@ export const indicatorTopicCompanyIndex = async (): Promise<
       return indicatorTopic;
     })
     .sort(byCompany("asc"));
+};
+
+/*
+ * Generate the list of company diff scores for a year.
+ */
+export const companyCategoryYearOverYear = async (
+  companyId: string,
+  category: IndicatorCategoryExt,
+): Promise<CompanyCategoryYearOverYear> => {
+  const [allCompanies, csvScoreDiffs] = await Promise.all([
+    companies(),
+    loadScoreDiffsCsv("csv/2022-year-over-year.csv"),
+  ]);
+
+  const company = allCompanies.find(({id}) => id === companyId);
+
+  if (!company) return unreachable(`Company ${companyId} not found`);
+
+  const scores = csvScoreDiffs.find(
+    (row) => row.company === company.id && row.category === category,
+  );
+
+  if (!scores)
+    return unreachable(`No scores found for company ${companyId}/${category}.`);
+
+  return {
+    company: company.id,
+    companyPretty: company.name,
+    category,
+    scores: (["2017", "2018", "2019", "2020", "2022"] as ScoreYear[])
+      .map((year) => ({
+        year: Number.parseInt(year, 10),
+        score: scores[year],
+      }))
+      .sort(byYear("asc")),
+  };
 };

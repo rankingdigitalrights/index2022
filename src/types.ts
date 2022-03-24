@@ -2,6 +2,8 @@ import {MdxRemote} from "next-mdx-remote/types";
 
 export type IndexYear = "2019" | "2020" | "2022";
 
+export type ScoreYear = "2017" | "2018" | "2019" | "2020" | "2022";
+
 export type NA = "NA";
 
 export type IndicatorCategory = "governance" | "freedom" | "privacy";
@@ -27,6 +29,8 @@ export type ScoreDiffs = {
   diff2020: IndicatorScore;
   diff2022: IndicatorScore;
 };
+
+export type YearOverYearScores = Record<ScoreYear, IndicatorScore>;
 
 export type IndicatorNested = {
   category: IndicatorCategory;
@@ -88,6 +92,16 @@ export type Company = {
   name: string;
   kind: CompanyKind;
   brand?: string;
+};
+
+export type CompanyCategoryYearOverYear = {
+  company: string;
+  companyPretty: string;
+  category: IndicatorCategoryExt;
+  scores: Array<{
+    year: number;
+    score: IndicatorScore;
+  }>;
 };
 
 export type Indicator = {
