@@ -25,7 +25,7 @@ import {
   indicatorTopicIndex,
   services,
 } from "../src/csv";
-import {companyDetails, comparePage, narrativePage} from "../src/google";
+import {companyDetails, narrativePage} from "../src/google";
 import {companyPdf} from "../src/pdf";
 import {CompanyKind, CompanyYear, IndicatorCategoryExt} from "../src/types";
 import {uniqueBy} from "../src/utils";
@@ -373,23 +373,23 @@ const writeJsonFile = (
         narrativesDir,
         "executive-summary.json",
       );
-      const introEssayTarget = path.join(narrativesDir, "intro-essay.json");
+      // const introEssayTarget = path.join(narrativesDir, "intro-essay.json");
       const acknowledgementsTarget = path.join(
         narrativesDir,
         "acknowledgements.json",
       );
       const keyFindingsTarget = path.join(narrativesDir, "key-findings.json");
-      const methodologyTarget = path.join(narrativesDir, "methodology.json");
-      const policyRecommendationsTarget = path.join(
-        narrativesDir,
-        "policy-recommendations.json",
-      );
-      const algorithmsTarget = path.join(narrativesDir, "algorithms.json");
-      const chinaTechGiantsTarget = path.join(
-        narrativesDir,
-        "china-tech-giants.json",
-      );
-      const compareTarget = path.join(narrativesDir, "compare.json");
+      // const methodologyTarget = path.join(narrativesDir, "methodology.json");
+      // const policyRecommendationsTarget = path.join(
+      //   narrativesDir,
+      //   "policy-recommendations.json",
+      // );
+      // const algorithmsTarget = path.join(narrativesDir, "algorithms.json");
+      // const chinaTechGiantsTarget = path.join(
+      //   narrativesDir,
+      //   "china-tech-giants.json",
+      // );
+      // const compareTarget = path.join(narrativesDir, "compare.json");
 
       console.log(`Pull content for: ${executiveSummaryTarget}`);
 
@@ -397,9 +397,9 @@ const writeJsonFile = (
         writeJsonFile(executiveSummaryTarget),
       );
 
-      console.log(`Pull content for: ${introEssayTarget}`);
+      // console.log(`Pull content for: ${introEssayTarget}`);
 
-      await narrativePage("Intro Essay").then(writeJsonFile(introEssayTarget));
+      // await narrativePage("Intro Essay").then(writeJsonFile(introEssayTarget));
 
       console.log(`Pull content for: ${acknowledgementsTarget}`);
 
@@ -413,29 +413,29 @@ const writeJsonFile = (
         writeJsonFile(keyFindingsTarget),
       );
 
-      console.log(`Pull content for: ${methodologyTarget}`);
+      // console.log(`Pull content for: ${methodologyTarget}`);
 
-      await narrativePage("Methodology").then(writeJsonFile(methodologyTarget));
+      // await narrativePage("Methodology").then(writeJsonFile(methodologyTarget));
 
-      console.log(`Pull content for: ${policyRecommendationsTarget}`);
+      // console.log(`Pull content for: ${policyRecommendationsTarget}`);
 
-      await narrativePage("Policy Recommendations").then(
-        writeJsonFile(policyRecommendationsTarget),
-      );
+      // await narrativePage("Policy Recommendations").then(
+      //   writeJsonFile(policyRecommendationsTarget),
+      // );
 
-      console.log(`Pull content for: ${algorithmsTarget}`);
+      // console.log(`Pull content for: ${algorithmsTarget}`);
 
-      await narrativePage("Algorithms").then(writeJsonFile(algorithmsTarget));
+      // await narrativePage("Algorithms").then(writeJsonFile(algorithmsTarget));
 
-      console.log(`Pull content for: ${chinaTechGiantsTarget}`);
+      // console.log(`Pull content for: ${chinaTechGiantsTarget}`);
 
-      await narrativePage("China Tech Giants").then(
-        writeJsonFile(chinaTechGiantsTarget),
-      );
+      // await narrativePage("China Tech Giants").then(
+      //   writeJsonFile(chinaTechGiantsTarget),
+      // );
 
-      console.log(`Pull content for: ${compareTarget}`);
+      // console.log(`Pull content for: ${compareTarget}`);
 
-      await comparePage("Compare").then(writeJsonFile(compareTarget));
+      // await comparePage("Compare").then(writeJsonFile(compareTarget));
 
       await Promise.all(
         details.map(async (company) => {
