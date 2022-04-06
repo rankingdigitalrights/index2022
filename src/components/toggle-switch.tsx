@@ -18,7 +18,7 @@ const ToggleSwitch = ({label, onChange, className}: ToggleSwitchProps) => {
 
   return (
     <div className={c("flex items-center self-end", className)}>
-      <label htmlFor="toggle" className="font-circular text-sm mr-2">
+      <label htmlFor="toggle" className="text-sm mr-2">
         {label}
       </label>
       <button

@@ -3,9 +3,9 @@ import {promises as fs} from "fs";
 import path from "path";
 import yargs from "yargs";
 
-import browser, {BrowserApi} from "../src/browser";
 import {
   companies,
+  companyCategoryYearOverYear,
   companyDiffs,
   companyIndices,
   companyMeta,
@@ -20,10 +20,11 @@ import {
   indicatorElements,
   indicators,
   indicatorScores,
+  indicatorTopicCompanyIndex,
+  indicatorTopicIndex,
   services,
 } from "../src/csv";
-import {companyDetails, comparePage, narrativePage} from "../src/google";
-import {companyPdf} from "../src/pdf";
+import {companyDetails, narrativePage} from "../src/google";
 import {CompanyKind, CompanyYear, IndicatorCategoryExt} from "../src/types";
 import {uniqueBy} from "../src/utils";
 
@@ -75,6 +76,11 @@ const writeJsonFile = (
       const elementsTarget = path.join(dataDir, "elements.json");
       const servicesTarget = path.join(dataDir, "services.json");
       const glossaryTarget = path.join(dataDir, "glossary.json");
+      const indicatorTopicsTarget = path.join(dataDir, "indicator-topics.json");
+      const indicatorTopicsCompaniesTarget = path.join(
+        dataDir,
+        "indicator-topics-companies.json",
+      );
 
       console.log(`Generating glossary at ${glossaryTarget}`);
 
@@ -144,6 +150,44 @@ const writeJsonFile = (
         const target = path.join(companyDir, "meta.json");
         const meta = await companyMeta(company.id);
         return writeJsonFile(target)(meta);
+      }, Promise.resolve());
+
+      /*
+       * Company year over year, e.g. ./data/companies/year-over-year-total.json
+       */
+      await allCompanies.reduce(async (memo, company) => {
+        await memo;
+
+        // Ensure company data directory.
+        const companyDir = path.join(companiesDir, company.id);
+        await fs.mkdir(path.join(process.cwd(), companyDir), {
+          recursive: true,
+        });
+
+        await Promise.all(
+          ([
+            "total",
+            "freedom",
+            "privacy",
+            "governance",
+          ] as IndicatorCategoryExt[]).map(
+            async (category: IndicatorCategoryExt) => {
+              console.log(
+                `Generating year over year for ${company.name}/${category}`,
+              );
+
+              const target = path.join(
+                companyDir,
+                `year-over-year-${category}.json`,
+              );
+              const data = await companyCategoryYearOverYear(
+                company.id,
+                category,
+              );
+              return writeJsonFile(target)(data);
+            },
+          ),
+        );
       }, Promise.resolve());
 
       /*
@@ -299,6 +343,18 @@ const writeJsonFile = (
           );
         }),
       );
+
+      /*
+       * Indicator topic scores.
+       */
+      console.log("Generating indicator topic scores");
+
+      await Promise.all([
+        indicatorTopicIndex().then(writeJsonFile(indicatorTopicsTarget)),
+        indicatorTopicCompanyIndex().then(
+          writeJsonFile(indicatorTopicsCompaniesTarget),
+        ),
+      ]);
     })
     .command("google", "pull content from Google docs.", async () => {
       const companiesDir = "data/companies";
@@ -315,23 +371,23 @@ const writeJsonFile = (
         narrativesDir,
         "executive-summary.json",
       );
-      const introEssayTarget = path.join(narrativesDir, "intro-essay.json");
+      // const introEssayTarget = path.join(narrativesDir, "intro-essay.json");
       const acknowledgementsTarget = path.join(
         narrativesDir,
         "acknowledgements.json",
       );
       const keyFindingsTarget = path.join(narrativesDir, "key-findings.json");
-      const methodologyTarget = path.join(narrativesDir, "methodology.json");
-      const policyRecommendationsTarget = path.join(
-        narrativesDir,
-        "policy-recommendations.json",
-      );
-      const algorithmsTarget = path.join(narrativesDir, "algorithms.json");
-      const chinaTechGiantsTarget = path.join(
-        narrativesDir,
-        "china-tech-giants.json",
-      );
-      const compareTarget = path.join(narrativesDir, "compare.json");
+      // const methodologyTarget = path.join(narrativesDir, "methodology.json");
+      // const policyRecommendationsTarget = path.join(
+      //   narrativesDir,
+      //   "policy-recommendations.json",
+      // );
+      // const algorithmsTarget = path.join(narrativesDir, "algorithms.json");
+      // const chinaTechGiantsTarget = path.join(
+      //   narrativesDir,
+      //   "china-tech-giants.json",
+      // );
+      // const compareTarget = path.join(narrativesDir, "compare.json");
 
       console.log(`Pull content for: ${executiveSummaryTarget}`);
 
@@ -339,9 +395,9 @@ const writeJsonFile = (
         writeJsonFile(executiveSummaryTarget),
       );
 
-      console.log(`Pull content for: ${introEssayTarget}`);
+      // console.log(`Pull content for: ${introEssayTarget}`);
 
-      await narrativePage("Intro Essay").then(writeJsonFile(introEssayTarget));
+      // await narrativePage("Intro Essay").then(writeJsonFile(introEssayTarget));
 
       console.log(`Pull content for: ${acknowledgementsTarget}`);
 
@@ -355,29 +411,29 @@ const writeJsonFile = (
         writeJsonFile(keyFindingsTarget),
       );
 
-      console.log(`Pull content for: ${methodologyTarget}`);
+      // console.log(`Pull content for: ${methodologyTarget}`);
 
-      await narrativePage("Methodology").then(writeJsonFile(methodologyTarget));
+      // await narrativePage("Methodology").then(writeJsonFile(methodologyTarget));
 
-      console.log(`Pull content for: ${policyRecommendationsTarget}`);
+      // console.log(`Pull content for: ${policyRecommendationsTarget}`);
 
-      await narrativePage("Policy Recommendations").then(
-        writeJsonFile(policyRecommendationsTarget),
-      );
+      // await narrativePage("Policy Recommendations").then(
+      //   writeJsonFile(policyRecommendationsTarget),
+      // );
 
-      console.log(`Pull content for: ${algorithmsTarget}`);
+      // console.log(`Pull content for: ${algorithmsTarget}`);
 
-      await narrativePage("Algorithms").then(writeJsonFile(algorithmsTarget));
+      // await narrativePage("Algorithms").then(writeJsonFile(algorithmsTarget));
 
-      console.log(`Pull content for: ${chinaTechGiantsTarget}`);
+      // console.log(`Pull content for: ${chinaTechGiantsTarget}`);
 
-      await narrativePage("China Tech Giants").then(
-        writeJsonFile(chinaTechGiantsTarget),
-      );
+      // await narrativePage("China Tech Giants").then(
+      //   writeJsonFile(chinaTechGiantsTarget),
+      // );
 
-      console.log(`Pull content for: ${compareTarget}`);
+      // console.log(`Pull content for: ${compareTarget}`);
 
-      await comparePage("Compare").then(writeJsonFile(compareTarget));
+      // await comparePage("Compare").then(writeJsonFile(compareTarget));
 
       await Promise.all(
         details.map(async (company) => {
@@ -409,57 +465,6 @@ target matches the real illustration.
 cp csv/algorithm-illustration.png data/images/algorithms/image3.png
 `);
     })
-    .command(
-      "pdf",
-      "generate pdf's.",
-      {
-        headless: {
-          type: "boolean",
-          default: true,
-        },
-      },
-      async (argv) => {
-        const pdfDir = "public/pdf/companies";
-
-        const allCompanies = await companies();
-
-        await fs.mkdir(path.join(process.cwd(), pdfDir), {recursive: true});
-
-        let {browse, dispose} = await browser(argv.headless);
-        let restartBrowser = false;
-
-        // FIXME: This will not restart pdf generation for a company if it
-        // fails.
-        for await (const {id: companyId} of allCompanies) {
-          if (restartBrowser) {
-            await dispose();
-            const newBrowser = await browser(argv.headless);
-            browse = newBrowser.browse;
-            dispose = newBrowser.dispose;
-            restartBrowser = false;
-          }
-
-          const href = `http://localhost:3000/index2022/pdf/${companyId}`;
-          const target = path.join(process.cwd(), pdfDir, `${companyId}.pdf`);
-
-          console.log(`Generate company PDF for: ${companyId}.`);
-
-          try {
-            await browse(
-              async (browserApi: BrowserApi): Promise<void> => {
-                await companyPdf(href, target, browserApi);
-              },
-            );
-          } catch (error) {
-            console.error(error);
-            console.error("Restarting browser.");
-            restartBrowser = true;
-          }
-        }
-
-        await dispose();
-      },
-    )
     .demandCommand(1)
     .help()
     .alias("help", "h")

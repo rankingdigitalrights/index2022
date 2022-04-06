@@ -2,6 +2,8 @@ import {MdxRemote} from "next-mdx-remote/types";
 
 export type IndexYear = "2019" | "2020" | "2022";
 
+export type ScoreYear = "2017" | "2018" | "2019" | "2020" | "2022";
+
 export type NA = "NA";
 
 export type IndicatorCategory = "governance" | "freedom" | "privacy";
@@ -10,6 +12,16 @@ export type IndicatorCategoryExt = IndicatorCategory | "total";
 
 export type IndicatorScore = number | NA;
 
+export type IndicatorTopic =
+  | "algorithmic-transparency"
+  | "targeted-advertising"
+  | "content-governance-moderation"
+  | "demands-data-censorship"
+  | "security"
+  | "private-requests"
+  | "data-handling"
+  | "user-agency";
+
 export type ScoreDiffs = {
   diff2017: IndicatorScore;
   diff2018: IndicatorScore;
@@ -17,6 +29,8 @@ export type ScoreDiffs = {
   diff2020: IndicatorScore;
   diff2022: IndicatorScore;
 };
+
+export type YearOverYearScores = Record<ScoreYear, IndicatorScore>;
 
 export type IndicatorNested = {
   category: IndicatorCategory;
@@ -44,11 +58,16 @@ export type CompanyMeta = {
   company: string;
   researchers: string[];
   website: string;
-  marketCap: string;
-  marketCapDate: string;
-  exchange: string;
-  stockSymbol: string;
+  marketCap?: string;
+  marketCapDate?: string;
+  stockStructure?: string;
+  exchange?: string;
+  stockSymbol?: string;
+  exchangeAlt?: string;
+  stockSymbolAlt?: string;
   operatingCompany?: string;
+  dateOfSale?: string;
+  salePrice?: string;
 };
 
 export type CompanyDetails = {
@@ -78,6 +97,16 @@ export type Company = {
   name: string;
   kind: CompanyKind;
   brand?: string;
+};
+
+export type CompanyCategoryYearOverYear = {
+  company: string;
+  companyPretty: string;
+  category: IndicatorCategoryExt;
+  scores: Array<{
+    year: number;
+    score: IndicatorScore;
+  }>;
 };
 
 export type Indicator = {
@@ -245,6 +274,26 @@ export type IndicatorIndex = {
   scores: Record<string, IndicatorScore>;
   averages: Record<string, Record<string, IndicatorScore>>;
   elements: Record<string, Record<string, IndicatorIndexElement[]>>;
+};
+
+export type IndicatorTopicIndex = {
+  topic: IndicatorTopic;
+  topicPretty: string;
+  scores: Array<{
+    company: string;
+    companyPretty: string;
+    score: number;
+  }>;
+};
+
+export type IndicatorTopicCompanyIndex = {
+  company: string;
+  companyPretty: string;
+  scores: Array<{
+    topic: IndicatorTopic;
+    topicPretty: string;
+    score: number;
+  }>;
 };
 
 export type CsvRecord = Record<string, string>;

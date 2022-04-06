@@ -103,7 +103,7 @@ const Modal = ({
               <div className="mt-3 sm:mt-0 sm:ml-4 sm:text-left">
                 <div className="flex items-start justify-between">
                   <h3
-                    className="font-circular font-bold text-prissian w-10/12 mt-0"
+                    className="font-bold text-prissian w-10/12 mt-0"
                     id="modal-headline"
                   >
                     {hasHtmlTitle ? (

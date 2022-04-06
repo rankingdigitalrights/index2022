@@ -32,18 +32,18 @@ const HomeSpotlightBox = ({
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
         >
-          <span className="relative font-circular font-normal text-white mb-3">
+          <span className="relative font-normal text-white mb-3">
             Featured essay
           </span>
           <span
             className={c(
-              "relative font-circular text-center text-white font-bold text-lg leading-5",
+              "relative text-center text-white font-bold text-lg leading-5",
               hoverClassName,
             )}
           >
             {title}
           </span>
-          <span className="relative font-circular text-center text-white leading-none mt-3">
+          <span className="relative text-center text-white leading-none mt-3">
             {text}
           </span>
         </a>

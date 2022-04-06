@@ -30,7 +30,7 @@ const BoxPrompt = ({readmore, className}: BoxPromptProps) => {
       onMouseLeave={() => setIsHover(false)}
     >
       <Link passHref href={href}>
-        <a className="flex items-center font-circular text-black font-normal text-right leading-none">
+        <a className="flex items-center text-black font-normal text-right leading-none">
           How did we calculate these scores?
           <ReadMore className={c("w-6 h-6 ml-3 mr-3", animationClassName)} />
         </a>

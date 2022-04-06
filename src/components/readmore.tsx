@@ -141,12 +141,12 @@ const Readmore = ({readmore, className}: ReadmoreProps) => {
       <Link passHref href={readmore.url}>
         <a className="border-b mb-3 pb-2 flex items-center text-black no-underline">
           {icon}
-          <span className="font-circular font-bold text-md ml-2 leading-none">
+          <span className="font-bold text-md ml-2 leading-none">
             {readmore.title}
           </span>
         </a>
       </Link>
-      <p className="font-circular text-sm">{readmore.excerpt}</p>
+      <p className="text-sm">{readmore.excerpt}</p>
     </div>
   );
 };

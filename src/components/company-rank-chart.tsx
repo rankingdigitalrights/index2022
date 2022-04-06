@@ -1,6 +1,5 @@
 import c from "clsx";
 import Link from "next/link";
-import {useRouter} from "next/router";
 import React, {useState} from "react";
 
 import {useChartResize} from "../hooks";
@@ -18,7 +17,6 @@ const CompanyRankChart = ({
   ranking,
   height = 10,
 }: CompanyRankChartProps) => {
-  const router = useRouter();
   const [chartRef, chartWidth] = useChartResize();
 
   const [highlightedCompany, setHighlightedCompany] = useState<
@@ -26,8 +24,6 @@ const CompanyRankChart = ({
   >();
 
   const companyKind: CompanyKind = ranking[0]?.kind || "telecom";
-  const isPrint = router.query?.print !== undefined;
-
   return (
     <div className="flex flex-col">
       {ranking.map(({id, companyPretty, score, rank}, idx) => {
@@ -36,7 +32,7 @@ const CompanyRankChart = ({
         const isActiveCompany = id === activeCompany;
         const isHighlightedCompany = id === highlightedCompany;
 
-        const className = c("flex items-center m-0.5 font-circular text-sm", {
+        const className = c("flex items-center m-0.5 text-sm", {
           "text-prissian": isActiveCompany || isHighlightedCompany,
         });
 
@@ -57,18 +53,6 @@ const CompanyRankChart = ({
           "text-white bg-prissian": isActiveCompany,
         });
 
-        const companyLabel = isPrint ? (
-          <span className="flex-none font-circular w-28 select-none whitespace-nowrap">
-            {companyPretty}
-          </span>
-        ) : (
-          <Link passHref href={`/companies/${id}`}>
-            <a className="flex-none font-circular text-black no-underline w-28 select-none whitespace-nowrap">
-              {companyPretty}
-            </a>
-          </Link>
-        );
-
         return (
           <div
             key={`company-rank-${activeCompany}-${id}`}
@@ -76,7 +60,11 @@ const CompanyRankChart = ({
             onMouseEnter={() => setHighlightedCompany(id)}
             onMouseLeave={() => setHighlightedCompany(undefined)}
           >
-            {companyLabel}
+            <Link passHref href={`/companies/${id}`}>
+              <a className="flex-none text-black no-underline w-28 select-none whitespace-nowrap">
+                {companyPretty}
+              </a>
+            </Link>
 
             <div className="flex-none w-8 flex justify-center">
               <div
@@ -99,7 +87,7 @@ const CompanyRankChart = ({
               >
                 <PercentageBar
                   value={score}
-                  width={isPrint ? "100%" : chartWidth}
+                  width={chartWidth}
                   height={height}
                   className={barClassName}
                 />
@@ -122,7 +110,7 @@ const CompanyRankChart = ({
 
         <div className="flex-none w-8">&nbsp;</div>
 
-        <div className="flex-grow font-circular text-xs flex justify-between ml-2">
+        <div className="flex-grow text-xs flex justify-between ml-2">
           <span>0%</span>
           <span>100%</span>
         </div>

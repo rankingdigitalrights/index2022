@@ -60,13 +60,7 @@ const IndicatorHeading = ({
   };
 
   return (
-    <h2
-      className={c(
-        "font-circular font-bold text-md",
-        colorClassName,
-        className,
-      )}
-    >
+    <h2 className={c("font-bold text-md", colorClassName, className)}>
       {title}
     </h2>
   );
@@ -75,7 +69,7 @@ const IndicatorHeading = ({
 const IndicatorLink = ({option}: {option: IndicatorSelectOption}) => {
   const {isParent, hasParent, label, value} = option;
 
-  const className = c("text-sm text-black font-circular font-normal py-1", {
+  const className = c("text-sm text-black font-normal py-1", {
     "font-bold": isParent,
     "pl-6": hasParent,
   });
@@ -109,7 +103,7 @@ const Indicators = ({indicators}: IndicatorsProps) => {
               <Container>
                 <NarrativeTitle title="Explore the data: Indicators for the 2022 RDR Index" />
 
-                <p className="font-circular mt-6">
+                <p className="mt-6">
                   We conduct our research using human rights-based indicators
                   organized under three top-level categories: governance,
                   freedom of expression and information, and privacy.

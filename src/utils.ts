@@ -4,6 +4,7 @@ import {
   IndicatorCategory,
   IndicatorCategoryExt,
   IndicatorScore,
+  IndicatorTopic,
   NA,
   ServiceKind,
 } from "./types";
@@ -259,6 +260,29 @@ export const mapServiceKind = (value: string): ServiceKind => {
     return value as ServiceKind;
 
   return unreachable(`${value} could not be mapped to a valid service kind.`);
+};
+
+export const mapIndicatorTopic = (value: string): IndicatorTopic => {
+  switch (value) {
+    case "itAlg":
+      return "algorithmic-transparency";
+    case "itAds":
+      return "targeted-advertising";
+    case "itMod":
+      return "content-governance-moderation";
+    case "itGoc":
+      return "demands-data-censorship";
+    case "itSec":
+      return "security";
+    case "itPri":
+      return "private-requests";
+    case "itDat":
+      return "data-handling";
+    case "itUsa":
+      return "user-agency";
+    default:
+      return unreachable(`Indicator topic ${value} couldn't be mapped`);
+  }
 };
 
 export const enumerate = (value: string | number): string => {

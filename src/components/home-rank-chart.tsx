@@ -34,7 +34,7 @@ const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
     <div className={c("flex flex-col", className)}>
       <CompanyKindLabel kind={companyKind} theme="dark" />
 
-      <div className="flex items-center font-circular text-sm mb-6 mt-2">
+      <div className="flex items-center text-sm mb-6 mt-2">
         <div className="flex-none w-28">&nbsp;</div>
 
         <div className="flex-none w-3 mr-2">&nbsp;</div>
@@ -69,7 +69,7 @@ const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
           <div
             key={`home-rank-${category}-${id}`}
             className={c(
-              "flex items-center font-circular text-sm mb-1",
+              "flex items-center text-sm mb-1",
               highlightedClassName,
             )}
             onMouseEnter={() => setHighlightedCompany(id)}
@@ -80,7 +80,7 @@ const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
             <Link passHref href={`/companies/${id}`}>
               <a
                 className={c(
-                  "flex-none font-circular text-black no-underline w-28 select-none whitespace-nowrap",
+                  "flex-none text-black no-underline w-28 select-none whitespace-nowrap",
                   highlightedClassName,
                 )}
               >

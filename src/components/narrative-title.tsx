@@ -25,11 +25,11 @@ const NarrativeTitle = ({
         byLine ? "pb-4" : "pb-2",
       )}
     >
-      <h1 className="flex flex-col md:flex-row md:items-start font-platform bold text-xl leading-none mb-1">
+      <h1 className="flex flex-col md:flex-row md:items-start bold text-xl leading-none mb-1">
         {title}
       </h1>
 
-      {byLine && <span className="font-platform text-sm">By {byLine}</span>}
+      {byLine && <span className="text-sm">By {byLine}</span>}
     </div>
   );
 };

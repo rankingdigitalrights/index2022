@@ -14,7 +14,6 @@ interface RankChartProps {
   category?: IndicatorCategoryExt;
   chartHeight?: number;
   hasHeader?: boolean;
-  isPrint?: boolean;
 }
 
 const RankChart = ({
@@ -24,7 +23,6 @@ const RankChart = ({
   category = "total",
   chartHeight = 10,
   hasHeader = true,
-  isPrint = false,
 }: RankChartProps) => {
   const [chartRef, chartWidth] = useChartResize();
 
@@ -70,41 +68,24 @@ const RankChart = ({
       "text-white bg-prissian score-label": isActiveCompany,
     };
 
-    const companyLabel = isPrint ? (
-      <span
-        className={c(
-          "flex-none font-circular select-none whitespace-nowrap",
-          highlightedClassName,
-          companyWidth,
-        )}
-      >
-        {companyPretty}
-      </span>
-    ) : (
-      <Link passHref href={`/companies/${id}`}>
-        <a
-          className={c(
-            "flex-none font-circular text-black font-normal select-none whitespace-nowrap",
-            highlightedClassName,
-            companyWidth,
-          )}
-        >
-          {companyPretty}
-        </a>
-      </Link>
-    );
-
     return (
       <div
         key={`home-rank-${category}-${id}`}
-        className={c(
-          "flex items-center font-circular text-sm mb-1",
-          highlightedClassName,
-        )}
+        className={c("flex items-center text-sm mb-1", highlightedClassName)}
         onMouseEnter={() => setHighlightedCompany(id)}
         onMouseLeave={() => setHighlightedCompany(undefined)}
       >
-        {companyLabel}
+        <Link passHref href={`/companies/${id}`}>
+          <a
+            className={c(
+              "flex-none text-black font-normal select-none whitespace-nowrap",
+              highlightedClassName,
+              companyWidth,
+            )}
+          >
+            {companyPretty}
+          </a>
+        </Link>
 
         <div className="flex-none w-8 flex justify-center">
           <div
@@ -153,7 +134,7 @@ const RankChart = ({
         <>
           <CompanyKindLabel kind={companyKind} theme="dark" />
 
-          <div className="flex items-center font-circular text-sm mb-2 mt-3">
+          <div className="flex items-center text-sm mb-2 mt-3">
             <div className={c("flex-none", companyWidth)}>&nbsp;</div>
 
             <div className="flex-none w-8 text-center">Rank</div>

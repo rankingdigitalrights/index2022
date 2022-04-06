@@ -209,7 +209,7 @@ export const emptyCompany = (id: string): CompanyDetails => ({
   keyTakeaways: "key takeaways missing",
   keyFindingsTitle: "Key findings",
   keyFindings: "key findings missing",
-  changesTitle: "Changes since 2019",
+  changesTitle: "Changes since 2020",
   changes: "analysis missing",
   keyRecommendationTitle: "Key recommendations",
   keyRecommendation: "key recommendations missing",
@@ -251,11 +251,11 @@ export const companyDetails = (id: string, src: string): CompanyDetails => {
   const keyRecommendationTitle = extractSectionTitle("key-recommendations", $);
   const keyRecommendation = extractSection(
     "key-recommendations",
-    "changes-since-2019",
+    "changes-since-2020",
     $,
   ).html();
-  const changesTitle = extractSectionTitle("changes-since-2019", $);
-  const changes = extractSection("changes-since-2019", "governance", $).html();
+  const changesTitle = extractSectionTitle("changes-since-2020", $);
+  const changes = extractSection("changes-since-2020", "governance", $).html();
   const governance = extractSection(
     "governance",
     "freedom-of-expression",

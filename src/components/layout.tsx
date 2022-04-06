@@ -20,7 +20,7 @@ const Layout = ({hideScrollArrow, children}: LayoutProps) => {
     <div>
       <HtmlHead />
 
-      <HeaderBar className="print:hidden" />
+      <HeaderBar />
 
       {modal?.title && (
         <Modal
@@ -36,7 +36,7 @@ const Layout = ({hideScrollArrow, children}: LayoutProps) => {
 
       {!hideScrollArrow && <ScrollArrow />}
 
-      <Footer className="print:hidden" />
+      <Footer />
     </div>
   );
 };

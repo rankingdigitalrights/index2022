@@ -7,21 +7,28 @@ import CompanyKindLabel from "../../components/company-kind-label";
 import CompanyRankCard from "../../components/company-rank-card";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
+import CompanyYearOverYearChart from "../../components/company-year-over-year-chart";
 import EvaluatedService from "../../components/evaluated-service";
 import Footnotes from "../../components/footnotes";
 import Layout from "../../components/layout";
 import RankChart from "../../components/rank-chart";
-import YearOverYearLabel from "../../components/year-over-year-label";
 import {
   allCompanies,
   companyData,
   companyMeta,
   companyRankingData,
   companyServices,
+  companyYearOverYearCategoryScoreData,
 } from "../../data";
 import Download from "../../images/icons/download.svg";
 import {components} from "../../mdx";
-import {CompanyIndex, CompanyMeta, CompanyRank, Service} from "../../types";
+import {
+  CompanyCategoryYearOverYear,
+  CompanyIndex,
+  CompanyMeta,
+  CompanyRank,
+  Service,
+} from "../../types";
 
 type Params = {
   params: {
@@ -54,6 +61,7 @@ interface CompanyProps {
   ranking: CompanyRank[];
   services: Service[];
   hasFootnotes: boolean;
+  yearOverYear: CompanyCategoryYearOverYear;
 }
 
 export const getStaticPaths = async () => {
@@ -73,6 +81,10 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
   const meta = await companyMeta(slug);
   const ranking = await companyRankingData(index.kind, "total");
   const services = await companyServices(slug);
+  const yearOverYear = await companyYearOverYearCategoryScoreData(
+    slug,
+    "total",
+  );
 
   const mdxDetails = {
     id: details.id,
@@ -110,6 +122,7 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
       meta,
       ranking,
       services,
+      yearOverYear,
       details: mdxDetails,
       hasFootnotes: !!details.footnotes,
     },
@@ -123,6 +136,7 @@ const CompanyPage = ({
   ranking,
   services,
   hasFootnotes,
+  yearOverYear,
 }: CompanyProps) => {
   const printName = hydrate(details.printName, {components});
   const basicInformation = hydrate(details.basicInformation, {components});
@@ -184,7 +198,7 @@ const CompanyPage = ({
             <div className="mt-6">{keyRecommendation}</div>
           </div>
 
-          <div className="flex flex-col items-start w-full md:w-2/6 font-circular text-sm">
+          <div className="flex flex-col items-start w-full md:w-2/6 text-sm">
             <div>
               <h3 className="font-bold mt-3 md:mt-0 pb-3">
                 Services evaluated:
@@ -218,15 +232,45 @@ const CompanyPage = ({
                   </li>
                 )}
 
-                <li className="pb-0">
-                  <span className="font-bold">Market cap:</span>{" "}
-                  {meta.marketCap} ({meta.marketCapDate})
-                </li>
+                {meta.marketCap && meta.marketCapDate && (
+                  <li className="pb-0">
+                    <span className="font-bold">Market cap:</span>{" "}
+                    {meta.marketCap} ({meta.marketCapDate})
+                  </li>
+                )}
 
-                <li className="pt-3 pb-0">
-                  <span className="font-bold">{meta.exchange}:</span>{" "}
-                  {meta.stockSymbol}
-                </li>
+                {meta.dateOfSale && (
+                  <li className="pb-0">
+                    <span className="font-bold">Date of sale:</span>{" "}
+                    {meta.dateOfSale}
+                  </li>
+                )}
+                {meta.salePrice && (
+                  <li className="pb-0">
+                    <span className="font-bold">Sale:</span> {meta.salePrice}
+                  </li>
+                )}
+
+                {meta.exchange && meta.stockSymbol && (
+                  <li className="pt-3 pb-0">
+                    <span className="font-bold">{meta.exchange}:</span>{" "}
+                    {meta.stockSymbol}
+                  </li>
+                )}
+
+                {meta.exchangeAlt && meta.stockSymbolAlt && (
+                  <li className="pt-3 pb-0">
+                    <span className="font-bold">{meta.exchangeAlt}:</span>{" "}
+                    {meta.stockSymbolAlt}
+                  </li>
+                )}
+
+                {meta.stockStructure && (
+                  <li className="pt-3 pb-0">
+                    <span className="font-bold">Stock structure:</span>{" "}
+                    {meta.stockStructure}
+                  </li>
+                )}
 
                 <li className="pt-3 pb-0">
                   <span className="font-bold">Website:</span>{" "}
@@ -237,10 +281,9 @@ const CompanyPage = ({
 
             <div className="border-b border-disabled-light w-full py-6">
               <p>
-                The 2022 RDR Index covers policies that were active between
-                February 8, 2019, and September 15, 2022. Policies that came
-                into effect after September 15, 2022 were not evaluated for this
-                Index.
+                The 2022 Big Tech Scorecard covers policies that were active on
+                November 1, 2021. Policies that came into effect after November
+                1, 2021, were not evaluated for this ranking
               </p>
 
               <p className="pb-0">
@@ -258,7 +301,7 @@ const CompanyPage = ({
 
             <div className="mt-6">
               <Link passHref href={`/excel/companies/${index.id}.xlsx`}>
-                <a className="flex items-center border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm">
+                <a className="flex items-center border rounded-md px-4 py-3 bg-rdr text-white text-sm">
                   <Download
                     className="w-4 h-4 mr-2"
                     aria-label="Download icon"
@@ -272,7 +315,7 @@ const CompanyPage = ({
 
         {index.totalDiffs.diff2022 !== "NA" && (
           <section className="relative flex flex-col md:flex-row pt-3">
-            <div className="w-full md:w-4/6 pr-12 border-t border-disabled-light">
+            <div className="w-full md:w-1/2 lg:w-4/6 pr-12 border-t border-disabled-light">
               <h2 className="text-prissian mt-8 mb-6">
                 {details.changesTitle}
               </h2>
@@ -280,20 +323,18 @@ const CompanyPage = ({
               {changes}
             </div>
 
-            <div className="flex flex-col items-start w-full md:w-2/6 px-3 font-circular text-sm">
-              <YearOverYearLabel
-                className="mt-8"
-                value={index.totalDiffs.diff2022}
-                year="2022"
-              />
+            <div className="flex flex-col items-start w-full md:w-1/2 lg:w-2/6 px-3 text-sm">
+              <h2 className="text-prissian mt-8 mb-6">Scores since 2017</h2>
+
+              <CompanyYearOverYearChart data={yearOverYear} />
             </div>
           </section>
         )}
       </div>
 
       <div className="border-t border-disabled-dark">
-        <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
-          <div className="flex flex-col md:flex-row justify-center items-center">
+        <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12 mt-8">
+          <div className="flex flex-col md:flex-row justify-center items-center md:space-x-2">
             <CompanyScoreChart
               category="governance"
               score={index.scores.governance}
@@ -308,7 +349,7 @@ const CompanyPage = ({
             />
           </div>
 
-          <p className="font-circular text-sm text-center">
+          <p className="text-sm text-center">
             We rank companies on their governance, and on their policies and
             practices affecting freedom of expression and privacy.
           </p>

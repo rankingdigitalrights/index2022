@@ -149,7 +149,7 @@ const Selector = <T extends SelectOption>({
       <Select
         instanceId={id}
         options={options}
-        className="font-circular text-sm"
+        className="text-sm"
         defaultValue={defaultValue}
         openMenuOnFocus
         isSearchable={isSearchable}

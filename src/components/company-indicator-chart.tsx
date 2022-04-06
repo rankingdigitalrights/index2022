@@ -1,6 +1,5 @@
 import c from "clsx";
 import Link from "next/link";
-import {useRouter} from "next/router";
 import React, {useState} from "react";
 
 import {useChartResize} from "../hooks";
@@ -17,7 +16,6 @@ interface CompanyIndicatorChartProps {
 type CollapseableIndicator = Map<string, boolean>;
 
 const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
-  const router = useRouter();
   const [chartRef, chartWidth] = useChartResize();
 
   const [collapsedIndicators, setCollapsedIndicators] = useState<
@@ -41,10 +39,8 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
     );
   };
 
-  const isPrint = router.query?.print !== undefined;
-
   return (
-    <div className={c(isPrint ? "w-full" : undefined)}>
+    <div>
       {indicators.map(
         ({indicator, display, label, category, score, familyMembers}, idx) => {
           // eslint-disable-next-line unicorn/no-null
@@ -66,13 +62,10 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
           const highlightClassName = "text-prissian";
 
           const classNameBarRow =
-            "flex flex-grow items-center justify-between font-circular text-xs";
+            "flex flex-grow items-center justify-between text-xs";
 
           return (
-            <div
-              key={`company-indicator-chart-${indicator}`}
-              className={c("no-page-break", isPrint ? "w-full" : undefined)}
-            >
+            <div key={`company-indicator-chart-${indicator}`}>
               <div
                 className={c("flex flex-col", {"mt-2": idx > 0})}
                 onMouseEnter={() => setHighlightedIndicator(indicator)}
@@ -80,7 +73,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
               >
                 {hasCollapse ? (
                   <button
-                    className="flex justify-between items-center text-xs font-circular cursor-pointer"
+                    className="flex justify-between items-center text-xs cursor-pointer"
                     onClick={() => handleCollapse(indicator)}
                   >
                     <div className="flex flex-grow justify-between items-center text-left">
@@ -101,7 +94,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
                   </button>
                 ) : (
                   <Link passHref href={`/indicators/${display}`}>
-                    <a className="font-circular text-xs text-black font-normal hover:text-prissian">
+                    <a className="text-xs text-black font-normal hover:text-prissian">
                       {indicatorPretty}
                     </a>
                   </Link>
@@ -119,7 +112,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
                     >
                       <PercentageBar
                         value={mapScore(score)}
-                        width={isPrint ? "100%" : chartWidth}
+                        width={chartWidth}
                         height={9}
                         className={
                           isHighlightedIndicator
@@ -161,7 +154,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
                       onMouseLeave={() => setHighlightedIndicator(undefined)}
                     >
                       <Link passHref href={`/indicators/${m.display}`}>
-                        <a className="font-circular text-xs text-black font-normal hover:text-prissian">
+                        <a className="text-xs text-black font-normal hover:text-prissian">
                           {mIndicatorPretty}
                         </a>
                       </Link>

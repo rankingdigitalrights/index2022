@@ -1,33 +1,33 @@
-/* eslint global-require: off */
+/* eslint global-require: off, @typescript-eslint/no-var-requires: off */
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: {
-    content: [
-      "./src/components/**/*.{js,ts,jsx,tsx}",
-      "./src/pages/**/*.{js,ts,jsx,tsx}",
-    ],
-    options: {
-      safelist: ["bg-disabled-light", "italic", "font-bold"],
-    },
-  },
+  content: [
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+  ],
+  safelist: [
+    "bg-disabled-light",
+    "italic",
+    "font-bold",
+    "fill-2017",
+    "fill-2018",
+    "fill-2019",
+    "fill-2020",
+    "fill-2022",
+  ],
   theme: {
     extend: {
-      screens: {
-        print: {raw: "print"},
-      },
-
       transitionDuration: {
         600: "600ms",
       },
 
       fontFamily: {
-        circular: ["Circular", "sans-serif"],
-        platform: ["Platform", "sans-serif"],
-        lyon: ["Lyon", "serif"],
+        sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
 
       fontSize: {
@@ -75,6 +75,12 @@ module.exports = {
         light: {
           freedom: "#BCEBE8",
         },
+
+        2017: "#FFA47C",
+        2018: "#F48E64",
+        2019: "#DC5F38",
+        2020: "#DC5F38",
+        2022: "#C2260E",
       },
     },
   },

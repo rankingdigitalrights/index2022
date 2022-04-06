@@ -20,7 +20,6 @@ interface ServiceRankChartProps {
   category?: IndicatorCategoryExt;
   chartHeight?: number;
   hasHeader?: boolean;
-  isPrint?: boolean;
 }
 
 const ServiceRankChart = ({
@@ -31,7 +30,6 @@ const ServiceRankChart = ({
   category = "total",
   chartHeight = 10,
   hasHeader = true,
-  isPrint = false,
 }: ServiceRankChartProps) => {
   const [chartRef, chartWidth] = useChartResize();
 
@@ -78,41 +76,24 @@ const ServiceRankChart = ({
       "text-white bg-prissian score-label": isActiveCompany,
     };
 
-    const companyLabel = isPrint ? (
-      <span
-        className={c(
-          "flex-none font-circular select-none whitespace-nowrap",
-          highlightedClassName,
-          companyWidth,
-        )}
-      >
-        {companyPretty}
-      </span>
-    ) : (
-      <Link passHref href={`/companies/${id}`}>
-        <a
-          className={c(
-            "flex-none font-circular text-black font-normal select-none whitespace-nowrap",
-            highlightedClassName,
-            companyWidth,
-          )}
-        >
-          {companyPretty}
-        </a>
-      </Link>
-    );
-
     return (
       <div
         key={`home-rank-${service}-${category}-${id}`}
-        className={c(
-          "flex items-center font-circular text-sm mb-1",
-          highlightedClassName,
-        )}
+        className={c("flex items-center text-sm mb-1", highlightedClassName)}
         onMouseEnter={() => setHighlightedCompany(id)}
         onMouseLeave={() => setHighlightedCompany(undefined)}
       >
-        {companyLabel}
+        <Link passHref href={`/companies/${id}`}>
+          <a
+            className={c(
+              "flex-none text-black font-normal select-none whitespace-nowrap",
+              highlightedClassName,
+              companyWidth,
+            )}
+          >
+            {companyPretty}
+          </a>
+        </Link>
 
         <div className={c("flex-none ml-2", serviceWidth)}>{service}</div>
 
@@ -162,7 +143,7 @@ const ServiceRankChart = ({
         <>
           <CompanyKindLabel kind={companyKind} theme="dark" />
 
-          <div className="flex items-center font-circular text-sm mb-2 mt-3">
+          <div className="flex items-center text-sm mb-2 mt-3">
             <div className={c("flex-none", companyWidth)}>&nbsp;</div>
 
             <div className={c("flex-none ml-2", serviceWidth)}>Service</div>

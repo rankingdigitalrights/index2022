@@ -3,9 +3,10 @@ import parse from "csv-parse";
 import fs, {promises as fsP} from "fs";
 import path from "path";
 
-import {byRankAndName, byScore} from "./sort";
+import {byCompany, byRankAndName, byScore, byTopic, byYear} from "./sort";
 import {
   Company,
+  CompanyCategoryYearOverYear,
   CompanyIndex,
   CompanyKind,
   CompanyMeta,
@@ -30,10 +31,15 @@ import {
   IndicatorIndexElement,
   IndicatorNested,
   IndicatorScore,
+  IndicatorTopic,
+  IndicatorTopicCompanyIndex,
+  IndicatorTopicIndex,
   Scores,
+  ScoreYear,
   Service,
   ServiceCompanyRank,
   ServiceKind,
+  YearOverYearScores,
 } from "./types";
 import {
   floatOrNA,
@@ -45,6 +51,7 @@ import {
   mapCompanyKindOrNil,
   mapElementValue,
   mapExtCategory,
+  mapIndicatorTopic,
   mapServiceKind,
   memoizeAsync,
   stringOrNil,
@@ -118,10 +125,15 @@ type CsvCompanyMeta = {
   company: string;
   researchers: string;
   website: string;
-  marketCap: string;
-  marketCapDate: string;
-  exchange: string;
-  stockSymbol: string;
+  marketCap?: string;
+  marketCapDate?: string;
+  stockStructure?: string;
+  exchange?: string;
+  stockSymbol?: string;
+  exchangeAlt?: string;
+  stockSymbolAlt?: string;
+  salePrice?: string;
+  dateOfSale?: string;
   operatingCompany?: string;
 };
 
@@ -182,7 +194,7 @@ type CsvYearOverYear = {
   diff2019: IndicatorScore;
   diff2020: IndicatorScore;
   diff2022: IndicatorScore;
-};
+} & YearOverYearScores;
 
 type CsvCompanyServiceRank = {
   company: string;
@@ -196,6 +208,13 @@ type CsvCompanyServiceRank = {
   governanceRank: number;
   freedomRank: number;
   privacyRank: number;
+};
+
+type CsvIndicatorTopic = {
+  company: string;
+  topic: IndicatorTopic;
+  topicName: string;
+  score: number;
 };
 
 /*
@@ -370,10 +389,15 @@ const loadCompanyMetaCsv = loadCsv<CsvCompanyMeta>((record) => ({
   researchers: record.LeadResearchers,
   operatingCompany: stringOrNil(record.OperatingCompanyEvaluated),
   website: record.Website,
-  marketCap: record.MarketCap,
-  marketCapDate: record.MarketCapDate,
-  exchange: record.Exchange,
-  stockSymbol: record.StockSymbol,
+  marketCap: stringOrNil(record.MarketCap),
+  marketCapDate: stringOrNil(record.MarketCapDate),
+  exchange: stringOrNil(record.Exchange),
+  exchangeAlt: stringOrNil(record.SecondExchange),
+  stockSymbol: stringOrNil(record.StockSymbol),
+  stockSymbolAlt: stringOrNil(record.SecondStockSymbol),
+  stockStructure: stringOrNil(record.StockStructure),
+  salePrice: stringOrNil(record.SalePrice),
+  dateOfSale: stringOrNil(record.DateOfSale),
 }));
 
 /*
@@ -449,11 +473,16 @@ export const loadCompanyRanksCsv = loadCsv<CsvCompanyRank>((record) => ({
 export const loadScoreDiffsCsv = loadCsv<CsvYearOverYear>((record) => ({
   company: record.Company,
   category: mapExtCategory(record.Scope),
+  "2017": floatOrNA(record["2017"]),
+  "2018": floatOrNA(record["2018"]),
+  "2019": floatOrNA(record["2019"]),
+  "2020": floatOrNA(record["2020"]),
+  "2022": floatOrNA(record["2022"]),
   diff2017: floatOrNA(record["2017DiffAdjusted"]),
   diff2018: floatOrNA(record["2018DiffAdjusted"]),
   diff2019: floatOrNA(record["2019DiffAdjusted"]),
   diff2020: floatOrNA(record["2020DiffAdjusted"]),
-  diff2022: floatOrNA(record["2020DiffAdjusted"]),
+  diff2022: floatOrNA(record["2022DiffAdjusted"]),
 }));
 
 /*
@@ -471,6 +500,16 @@ const loadCompanyServiceRanksCsv = loadCsv<CsvCompanyServiceRank>((record) => ({
   governanceRank: Number.parseInt(record.GovernanceRank, 10),
   freedomRank: Number.parseInt(record.FreedomRank, 10),
   privacyRank: Number.parseInt(record.PrivacyRank, 10),
+}));
+
+/*
+ * Load the Indicator Topics
+ */
+const loadIndicatorTopicsCsv = loadCsv<CsvIndicatorTopic>((record) => ({
+  company: record.Company,
+  topic: mapIndicatorTopic(record.IndicatorTopicId),
+  topicName: record.IndicatorTopicName,
+  score: Number.parseInt(record.Score, 10),
 }));
 
 /*
@@ -1337,4 +1376,116 @@ export const glossary = async (): Promise<Glossary[]> => {
           .trim(),
       };
     });
+};
+
+/*
+ * Construct the indicator topic index.
+ */
+export const indicatorTopicIndex = async (): Promise<IndicatorTopicIndex[]> => {
+  const [indicatorTopicData, allCompanies] = await Promise.all([
+    loadIndicatorTopicsCsv("csv/2022-indicator-topics.csv"),
+    companies(),
+  ]);
+
+  const indicatorTopics = indicatorTopicData.reduce(
+    (memo, {topic, topicName: topicPretty, company: companyId, score}) => {
+      // eslint-disable-next-line no-param-reassign
+      if (!memo[topic]) memo[topic] = {topic, topicPretty, scores: []};
+      const company = allCompanies.find(({id}) => id === companyId);
+
+      if (!company) return unreachable(`Company ${companyId} not found`);
+
+      memo[topic].scores.push({
+        company: company.id,
+        companyPretty: company.name,
+        score,
+      });
+
+      return memo;
+    },
+    {} as Record<IndicatorTopic, IndicatorTopicIndex>,
+  );
+
+  return Object.values(indicatorTopics)
+    .map((indicatorTopic) => {
+      indicatorTopic.scores.sort(byScore("desc"));
+      return indicatorTopic;
+    })
+    .sort(byTopic("asc"));
+};
+
+/*
+ * Construct the indicator topic company index.
+ */
+export const indicatorTopicCompanyIndex = async (): Promise<
+  IndicatorTopicCompanyIndex[]
+> => {
+  const [indicatorTopicData, allCompanies] = await Promise.all([
+    loadIndicatorTopicsCsv("csv/2022-indicator-topics.csv"),
+    companies(),
+  ]);
+
+  const indicatorTopics = indicatorTopicData.reduce(
+    (memo, {topic, topicName: topicPretty, company: companyId, score}) => {
+      const company = allCompanies.find(({id}) => id === companyId);
+
+      if (!company) return unreachable(`Company ${companyId} not found`);
+
+      if (!memo[company.id])
+        // eslint-disable-next-line no-param-reassign
+        memo[company.id] = {
+          company: company.id,
+          companyPretty: company.name,
+          scores: [],
+        };
+
+      memo[company.id].scores.push({topic, topicPretty, score});
+
+      return memo;
+    },
+    {} as Record<string, IndicatorTopicCompanyIndex>,
+  );
+
+  return Object.values(indicatorTopics)
+    .map((indicatorTopic) => {
+      indicatorTopic.scores.sort(byTopic("asc"));
+      return indicatorTopic;
+    })
+    .sort(byCompany("asc"));
+};
+
+/*
+ * Generate the list of company diff scores for a year.
+ */
+export const companyCategoryYearOverYear = async (
+  companyId: string,
+  category: IndicatorCategoryExt,
+): Promise<CompanyCategoryYearOverYear> => {
+  const [allCompanies, csvScoreDiffs] = await Promise.all([
+    companies(),
+    loadScoreDiffsCsv("csv/2022-year-over-year.csv"),
+  ]);
+
+  const company = allCompanies.find(({id}) => id === companyId);
+
+  if (!company) return unreachable(`Company ${companyId} not found`);
+
+  const scores = csvScoreDiffs.find(
+    (row) => row.company === company.id && row.category === category,
+  );
+
+  if (!scores)
+    return unreachable(`No scores found for company ${companyId}/${category}.`);
+
+  return {
+    company: company.id,
+    companyPretty: company.name,
+    category,
+    scores: (["2017", "2018", "2019", "2020", "2022"] as ScoreYear[])
+      .map((year) => ({
+        year: Number.parseInt(year, 10),
+        score: scores[year],
+      }))
+      .sort(byYear("asc")),
+  };
 };

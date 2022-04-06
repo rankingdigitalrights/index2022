@@ -80,7 +80,7 @@ const NarrativeContainer = ({
           <div className={c("w-full h-96", heroClassName)} />
           <figcaption
             className={c(
-              "font-circular text-right text-xs md:text-sm py-1 pr-3 md:pr-1.5",
+              "text-right text-xs md:text-sm py-1 pr-3 md:pr-1.5",
               backgroundClassName,
             )}
           >
@@ -121,7 +121,7 @@ const NarrativeContainer = ({
         <div className="bg-beige flex flex-col items-center py-3 md:pt-10 md:pb-6">
           <span
             className={c(
-              "narrative-container relative mx-3 px-3 md:px-0 font-platform text-lg font-bold mb-3",
+              "narrative-container relative mx-3 px-3 md:px-0 text-lg font-bold mb-3",
               "w-full md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12",
             )}
           >

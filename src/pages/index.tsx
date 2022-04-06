@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import CategorySelector from "../components/category-selector";
 import HomeBox from "../components/home-box";
 import HomeHighlightsSlider from "../components/home-highlights-slider";
-import HomeSpotlightBox from "../components/home-spotlight-box";
 import Layout from "../components/layout";
 import LearnMore from "../components/learn-more";
 import RankChart from "../components/rank-chart";
@@ -162,7 +161,7 @@ const Home = ({
       </div>
 
       <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between my-10">
-        <div className="font-circular lg:flex-grow w-full lg:w-1/3 pl-6 pr-10 mb-10">
+        <div className="lg:flex-grow w-full lg:w-1/3 pl-6 pr-10 mb-10">
           <h2 className="font-bold text-xl leading-10">The 2022 RDR Index</h2>
 
           <p className="mt-4">
@@ -202,24 +201,24 @@ const Home = ({
       </div>
 
       <div className="lg:container lg:mx-auto flex flex-col md:flex-row md:justify-between bg-black">
-        <HomeSpotlightBox
-          className="md:w-1/3 h-64 bg-context-over-code"
-          title="Context before code"
-          href="/spotlights/context-before-code"
-          text="Protecting human rights in a state of emergency"
-        />
-        <HomeSpotlightBox
-          className="md:w-1/3 h-64 bg-unaccountable-algorithms"
-          title="Moving fast and breaking us all"
-          href="/spotlights/unaccountable-algorithms"
-          text="Big Tech’s unaccountable algorithms"
-        />
-        <HomeSpotlightBox
-          className="md:w-1/3 h-64 bg-tech-giants"
-          title="China’s tech giants can change:"
-          href="/spotlights/china-tech-giants"
-          text="But the state is still their number one stakeholder"
-        />
+        {/* <HomeSpotlightBox
+            className="md:w-1/3 h-64 bg-context-over-code"
+            title="Context before code"
+            href="/spotlights/context-before-code"
+            text="Protecting human rights in a state of emergency"
+            />
+            <HomeSpotlightBox
+            className="md:w-1/3 h-64 bg-unaccountable-algorithms"
+            title="Moving fast and breaking us all"
+            href="/spotlights/unaccountable-algorithms"
+            text="Big Tech’s unaccountable algorithms"
+            />
+            <HomeSpotlightBox
+            className="md:w-1/3 h-64 bg-tech-giants"
+            title="China’s tech giants can change:"
+            href="/spotlights/china-tech-giants"
+            text="But the state is still their number one stakeholder"
+            /> */}
       </div>
 
       <div className="lg:container lg:mx-auto flex flex-row md:justify-between items-center my-10 px-6">

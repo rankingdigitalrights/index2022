@@ -4,6 +4,7 @@ import path from "path";
 import {emptyCompany} from "./formatter";
 import {
   Company,
+  CompanyCategoryYearOverYear,
   CompanyDetails,
   CompanyHighlight,
   CompanyIndex,
@@ -20,6 +21,8 @@ import {
   IndicatorCompanyScore,
   IndicatorDetails,
   IndicatorElements,
+  IndicatorTopicCompanyIndex,
+  IndicatorTopicIndex,
   NarrativePage,
   Service,
   ServiceCompanyRank,
@@ -54,6 +57,12 @@ export const allCompanies = loadJson<Company[]>("data/companies.json");
 export const allIndicators = loadJson<Indicator[]>("data/indicators.json");
 export const allElements = loadJson<Element[]>("data/elements.json");
 export const allServices = loadJson<Service[]>("data/services.json");
+export const allIndicatorTopics = loadJson<IndicatorTopicIndex[]>(
+  "data/indicator-topics.json",
+);
+export const allIndicatorTopicsCompanies = loadJson<
+  IndicatorTopicCompanyIndex[]
+>("data/indicator-topics-companies.json");
 
 export const companyIndices = loadJsonDir<CompanyIndex>(
   "data/companies",
@@ -276,6 +285,18 @@ export const companyDiffScoresData = async (
   category: IndicatorCategoryExt,
 ): Promise<CompanyScoreDiff[]> => {
   return loadJson<CompanyScoreDiff[]>(`data/diffs/${category}-${year}.json`)();
+};
+
+/*
+ * Load the company diff scores.
+ */
+export const companyYearOverYearCategoryScoreData = async (
+  company: string,
+  category: IndicatorCategoryExt,
+): Promise<CompanyCategoryYearOverYear> => {
+  return loadJson<CompanyCategoryYearOverYear>(
+    `data/companies/${company}/year-over-year-${category}.json`,
+  )();
 };
 
 /*
