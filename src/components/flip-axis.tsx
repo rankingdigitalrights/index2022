@@ -1,7 +1,7 @@
 import c from "clsx";
 import React, { useState } from "react";
-import Down from "../../images/icons/axis-down.svg"
-import Up from "../../images/icons/axis-up.svg"
+import Down from "../images/icons/axis-down.svg"
+import Up from "../images/icons/axis-up.svg"
 
 interface FlipAxisProps {
   label: string;
