@@ -22,10 +22,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      screens: {
-        print: {raw: "print"},
-      },
-
       transitionDuration: {
         600: "600ms",
       },

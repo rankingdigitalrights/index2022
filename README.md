@@ -17,7 +17,6 @@ npm install
 There are a few common tasks that developers and administrators of this website want to commonly do. This is a summary of each of these tasks and recipes on how to them. All of those tasks are executed on the terminal. Please see [Setup Development Environment](#setup-development-environment) and make sure the environment and dependencies are set up.
 
 - [Update the site data](#update-the-site-data)
-- [Generate the company PDFs](#generate-the-company-pdfs)
 - [Update HTML meta tags](#update-html-meta-tags)
 - [Fetch the latest version](#fetch-the-latest-version)
 - [Commit data changes](#commit-data-changes)
@@ -38,18 +37,7 @@ The `yarn data` commands regenerates the **complete** data structure for the web
 - The index raw data are stored in different CSV files in [`./csv`](./csv). The `yarn data:csv` command generates JSON data that can be used by the website.
 - Narrative content is stored on Google Docs. To only update the narrative content run `yarn data:google`.
 
-Note that no PDF's are generated as part of generating the site data. See [Generate the company PDFs](#generate-the-company-pdfs) for more information.
-
 Calling `yarn data` is equivalent to calling each of the specialized data commands individually.
-
-### Generate the company PDFs
-
-1. [Fetch the latest version](#fetch-the-latest-version).
-2. Run `yarn data` to regenerate the complete data structures for the website. See below for more information.
-3. Run `yarn data:pdf` to generate new PDF's.
-4. [Commit data changes](#commit-data-changes).
-5. _Optionally:_ [Run the local development server](#run-the-local-development-server) to verify the changes are working as expected.
-6. [Deploy website](#deploy-website).
 
 ### Update HTML meta tags
 

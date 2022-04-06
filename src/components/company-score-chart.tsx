@@ -11,23 +11,18 @@ type Datum = PieArcDatum<number | {valueOf(): number}>;
 export interface CompanyScoreChartProps {
   category: IndicatorCategory;
   score: number;
-  isPrint?: boolean;
 }
 
-const CompanyScoreChart = ({
-  category,
-  score,
-  isPrint = false,
-}: CompanyScoreChartProps) => {
+const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
   // eslint-disable-next-line unicorn/no-null
   const sliceRef = useRef<SVGGElement>(null);
 
   // eslint-disable-next-line unicorn/no-null
   const [datum] = pie().sort(null)([score, 100 - score]);
 
-  const outerRadius = isPrint ? 75 : 95;
-  const innerRadius = isPrint ? 65 : 85;
-  const portSize = isPrint ? 200 : 260;
+  const outerRadius = 95;
+  const innerRadius = 85;
+  const portSize = 260;
 
   const sliceArc = arc<Datum>()
     .innerRadius(innerRadius)
@@ -43,10 +38,8 @@ const CompanyScoreChart = ({
   });
 
   return (
-    <div className="print:m-2 flex flex-col items-center w-96 print:w-48 no-page-break">
-      <span
-        className={c("font-black text-center", isPrint ? "text-sm" : "text-md")}
-      >
+    <div className="flex flex-col items-center w-96">
+      <span className="font-black text-center text-md">
         {mapCategoryName(category)}
       </span>
 

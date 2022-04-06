@@ -3,7 +3,6 @@ import {promises as fs} from "fs";
 import path from "path";
 import yargs from "yargs";
 
-import browser, {BrowserApi} from "../src/browser";
 import {
   companies,
   companyCategoryYearOverYear,
@@ -26,7 +25,6 @@ import {
   services,
 } from "../src/csv";
 import {companyDetails, narrativePage} from "../src/google";
-import {companyPdf} from "../src/pdf";
 import {CompanyKind, CompanyYear, IndicatorCategoryExt} from "../src/types";
 import {uniqueBy} from "../src/utils";
 
@@ -467,57 +465,6 @@ target matches the real illustration.
 cp csv/algorithm-illustration.png data/images/algorithms/image3.png
 `);
     })
-    .command(
-      "pdf",
-      "generate pdf's.",
-      {
-        headless: {
-          type: "boolean",
-          default: true,
-        },
-      },
-      async (argv) => {
-        const pdfDir = "public/pdf/companies";
-
-        const allCompanies = await companies();
-
-        await fs.mkdir(path.join(process.cwd(), pdfDir), {recursive: true});
-
-        let {browse, dispose} = await browser(argv.headless);
-        let restartBrowser = false;
-
-        // FIXME: This will not restart pdf generation for a company if it
-        // fails.
-        for await (const {id: companyId} of allCompanies) {
-          if (restartBrowser) {
-            await dispose();
-            const newBrowser = await browser(argv.headless);
-            browse = newBrowser.browse;
-            dispose = newBrowser.dispose;
-            restartBrowser = false;
-          }
-
-          const href = `http://localhost:3000/index2022/pdf/${companyId}`;
-          const target = path.join(process.cwd(), pdfDir, `${companyId}.pdf`);
-
-          console.log(`Generate company PDF for: ${companyId}.`);
-
-          try {
-            await browse(
-              async (browserApi: BrowserApi): Promise<void> => {
-                await companyPdf(href, target, browserApi);
-              },
-            );
-          } catch (error) {
-            console.error(error);
-            console.error("Restarting browser.");
-            restartBrowser = true;
-          }
-        }
-
-        await dispose();
-      },
-    )
     .demandCommand(1)
     .help()
     .alias("help", "h")

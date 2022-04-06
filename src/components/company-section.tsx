@@ -44,13 +44,10 @@ const CompanySection = ({
 
   return (
     <section
-      className={c(
-        "mt-6 pb-6 border-t border-disabled-dark print:border-t-0 printer print:px-20 print:pb-0 print:pt-8",
-        className,
-      )}
+      className={c("mt-6 pb-6 border-t border-disabled-dark", className)}
     >
-      <div className="flex flex-col md:flex-row md:space-x-6 mt-8 md:mt-16 print:mt-0">
-        <div className="md:w-1/3 md:mr-3 print:w-full print:m-0">
+      <div className="flex flex-col md:flex-row md:space-x-6 mt-8 md:mt-16">
+        <div className="md:w-1/3 md:mr-3">
           <h2
             className={c(
               "flex items-center md:items-start text-lg font-bold mb-6",
@@ -68,7 +65,7 @@ const CompanySection = ({
           {text}
         </div>
 
-        <div className="md:w-2/3 md:ml-3 print:hidden">
+        <div className="md:w-2/3 md:ml-3">
           <div className="flex flex-col justify-end mt-8 mb-6 md:mt-0">
             <h3 className="text-lg font-bold mt-0">Indicators</h3>
           </div>
