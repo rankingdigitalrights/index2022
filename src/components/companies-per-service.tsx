@@ -1,3 +1,4 @@
+import Layout from "./layout"
 
 
 
@@ -5,7 +6,11 @@ const CompaniesByService = () => {
 
   console.log("companies by service")
   
-  // props: 
+  return (
+    <Layout>
+      
+    </Layout>
+  )
   // { service: 
       // { company: 
       // { total: xx,

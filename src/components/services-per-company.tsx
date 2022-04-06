@@ -1,7 +1,15 @@
 
+import Layout from "./layout";
 
 const ServicesByCompany = () => {
 console.log('services by company')
+
+
+return (
+  <Layout>
+
+  </Layout>
+)
 }
 
 // Props = s
