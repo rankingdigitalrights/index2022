@@ -482,7 +482,7 @@ export const loadScoreDiffsCsv = loadCsv<CsvYearOverYear>((record) => ({
   diff2018: floatOrNA(record["2018DiffAdjusted"]),
   diff2019: floatOrNA(record["2019DiffAdjusted"]),
   diff2020: floatOrNA(record["2020DiffAdjusted"]),
-  diff2022: floatOrNA(record["2020DiffAdjusted"]),
+  diff2022: floatOrNA(record["2022DiffAdjusted"]),
 }));
 
 /*
