@@ -9,7 +9,16 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
     "./src/pages/**/*.{js,ts,jsx,tsx}",
   ],
-  safelist: ["bg-disabled-light", "italic", "font-bold"],
+  safelist: [
+    "bg-disabled-light",
+    "italic",
+    "font-bold",
+    "fill-2017",
+    "fill-2018",
+    "fill-2019",
+    "fill-2020",
+    "fill-2022",
+  ],
   theme: {
     extend: {
       screens: {
@@ -71,6 +80,12 @@ module.exports = {
         light: {
           freedom: "#BCEBE8",
         },
+
+        2017: "#FFA47C",
+        2018: "#F48E64",
+        2019: "#DC5F38",
+        2020: "#DC5F38",
+        2022: "#C2260E",
       },
     },
   },

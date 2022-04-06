@@ -7,21 +7,28 @@ import CompanyKindLabel from "../../components/company-kind-label";
 import CompanyRankCard from "../../components/company-rank-card";
 import CompanyScoreChart from "../../components/company-score-chart";
 import CompanySection from "../../components/company-section";
+import CompanyYearOverYearChart from "../../components/company-year-over-year-chart";
 import EvaluatedService from "../../components/evaluated-service";
 import Footnotes from "../../components/footnotes";
 import Layout from "../../components/layout";
 import RankChart from "../../components/rank-chart";
-import YearOverYearLabel from "../../components/year-over-year-label";
 import {
   allCompanies,
   companyData,
   companyMeta,
   companyRankingData,
   companyServices,
+  companyYearOverYearCategoryScoreData,
 } from "../../data";
 import Download from "../../images/icons/download.svg";
 import {components} from "../../mdx";
-import {CompanyIndex, CompanyMeta, CompanyRank, Service} from "../../types";
+import {
+  CompanyCategoryYearOverYear,
+  CompanyIndex,
+  CompanyMeta,
+  CompanyRank,
+  Service,
+} from "../../types";
 
 type Params = {
   params: {
@@ -54,6 +61,7 @@ interface CompanyProps {
   ranking: CompanyRank[];
   services: Service[];
   hasFootnotes: boolean;
+  yearOverYear: CompanyCategoryYearOverYear;
 }
 
 export const getStaticPaths = async () => {
@@ -73,6 +81,10 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
   const meta = await companyMeta(slug);
   const ranking = await companyRankingData(index.kind, "total");
   const services = await companyServices(slug);
+  const yearOverYear = await companyYearOverYearCategoryScoreData(
+    slug,
+    "total",
+  );
 
   const mdxDetails = {
     id: details.id,
@@ -110,6 +122,7 @@ export const getStaticProps = async ({params: {slug}}: Params) => {
       meta,
       ranking,
       services,
+      yearOverYear,
       details: mdxDetails,
       hasFootnotes: !!details.footnotes,
     },
@@ -123,6 +136,7 @@ const CompanyPage = ({
   ranking,
   services,
   hasFootnotes,
+  yearOverYear,
 }: CompanyProps) => {
   const printName = hydrate(details.printName, {components});
   const basicInformation = hydrate(details.basicInformation, {components});
@@ -301,11 +315,9 @@ const CompanyPage = ({
             </div>
 
             <div className="flex flex-col items-start w-full md:w-2/6 px-3 font-circular text-sm">
-              <YearOverYearLabel
-                className="mt-8"
-                value={index.totalDiffs.diff2022}
-                year="2022"
-              />
+              <h2 className="text-prissian mt-8 mb-6">Scores since 2017</h2>
+
+              <CompanyYearOverYearChart data={yearOverYear} />
             </div>
           </section>
         )}
