@@ -58,9 +58,9 @@ export type CompanyMeta = {
   company: string;
   researchers: string[];
   website: string;
-  marketCap: string;
-  marketCapDate: string;
-  stockStructure: string;
+  marketCap?: string;
+  marketCapDate?: string;
+  stockStructure?: string;
   exchange?: string;
   stockSymbol?: string;
   exchangeAlt?: string;

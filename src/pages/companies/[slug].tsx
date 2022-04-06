@@ -232,15 +232,22 @@ const CompanyPage = ({
                   </li>
                 )}
 
-                <li className="pb-0">
-                  <span className="font-bold">Market cap:</span>{" "}
-                  {meta.marketCap} ({meta.marketCapDate})
-                </li>
-
-                {meta.dateOfSale && meta.salePrice && (
+                {meta.marketCap && meta.marketCapDate && (
                   <li className="pb-0">
-                    <span className="font-bold">Sale:</span> {meta.salePrice} (
-                    {meta.dateOfSale})
+                    <span className="font-bold">Market cap:</span>{" "}
+                    {meta.marketCap} ({meta.marketCapDate})
+                  </li>
+                )}
+
+                {meta.dateOfSale && (
+                  <li className="pb-0">
+                    <span className="font-bold">Date of sale:</span>{" "}
+                    {meta.dateOfSale}
+                  </li>
+                )}
+                {meta.salePrice && (
+                  <li className="pb-0">
+                    <span className="font-bold">Sale:</span> {meta.salePrice}
                   </li>
                 )}
 
@@ -258,10 +265,12 @@ const CompanyPage = ({
                   </li>
                 )}
 
-                <li className="pt-3 pb-0">
-                  <span className="font-bold">Stock structure:</span>{" "}
-                  {meta.stockStructure}
-                </li>
+                {meta.stockStructure && (
+                  <li className="pt-3 pb-0">
+                    <span className="font-bold">Stock structure:</span>{" "}
+                    {meta.stockStructure}
+                  </li>
+                )}
 
                 <li className="pt-3 pb-0">
                   <span className="font-bold">Website:</span>{" "}
