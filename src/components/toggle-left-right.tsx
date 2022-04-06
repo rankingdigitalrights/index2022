@@ -48,7 +48,7 @@ const ToggleLeftRight = ({labelLeft, labelRight, onChange, className}: ToggleLef
           />
         </label>
       </button>
-      <label htmlFor="toggle" className="font-circular text-sm mr-2">
+      <label htmlFor="toggle" className="font-circular text-sm ml-2">
         {labelRight}
       </label>
     </div>
