@@ -372,11 +372,7 @@ const Explorer = ({
   //   const [platformRankings, setPlatformRankings] = useState<CompanyRank[]>(totalRanking[0]);
 
   const handleServicesToggle = (toggle: boolean) => {
-    console.log('handle toggle left-right')
     setLiteralValues(toggle)
-    // fill this out to switch between companies & services chart displays
-    // 
-    // if toggle right (services chart), show flip axis toggle, if left, don't
   };
 
   const handleFlipAxis = (toggle: boolean) => {
@@ -403,7 +399,8 @@ const Explorer = ({
                   Some new text about the 2022 explore companies views.
                 </p>
 
-                <div className="flex flex-col md:flex-row justify-between items-center w-full">
+                <div className="flex flex-col md:flex-row mt-10 justify-between items-center w-full">
+                  {/* this toggle current has 3 states... */}
                   <ToggleLeftRight
                     labelLeft="Totals"
                     labelRight="Services"
@@ -421,18 +418,15 @@ const Explorer = ({
                     <Help className="w-5 h-5 ml-3" aria-label="Help icon" />
                   </button> */}
 
-
-                  {/* fix the toggle function */}
-                  {state.services && (
-                  <FlipAxis
-                    label="Flip axis"
-                    onChange={handleFlipAxis}
-                  />
+                  {literalValues && (
+                    <FlipAxis
+                      label="Flip axis"
+                      onChange={handleFlipAxis}
+                    />
                   )}
 
                 </div>
-                {/* <div className="flex flex-col items-center mt-12"> */}
-                <div className="flex flex-col items-center mt-12">
+                <div className="flex flex-col items-center">
                   {/* finish the associated functions */}
                   <Selector<ServiceOption>
                     id="service-selector"
@@ -452,54 +446,55 @@ const Explorer = ({
                 </div>
               </Container>
 
-      <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
-        <div
-          style={{ minHeight: "22rem" }}
-          className={c(
-            "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3"
-          )}
-        >
+              <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
+                <div
+                  style={{ minHeight: "22rem" }}
+                  className={c(
+                    "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3"
+                  )}
+                >
 
-          {/* state1: company ranking */}
+                  {/* state1: company ranking */}
 
-          {/* state2a: services ranking by company */}
-          {/* switch i: axis1 */}
-          {/* switch ii: axis2 */}
+                  {/* state2a: services ranking by company */}
+                  {/* switch i: axis1 */}
+                  {/* switch ii: axis2 */}
 
-          {/* state 2b: company ranking by service */}
-          {/* switch i: axis1 */}
-          {/* switch ii: axis2 */}
-          {state.companies &&
-            //  MAKE SURE THIS STATE.COMPANIES = BOOLEAN PROPERTY EXISTS ON THE STATE OBJECT
-            <RankChart
-              className="w-full sm:w-1/2 sm:pr-3"
-              ranking={state.platformRankings}
-              category={state.category}
-              hasHeader
-            />
-          }
-          ({!state.companies &&
-            // if state.axis is true, show services by company
-            state.axis ?
-            <ServicesByCompany
-            // category={state.category}
-            // axis="toggle up or down"
-            // props="find props"
-            />
-            :
-            // if state.axis is false, show companies by service
-            <CompaniesByService
-            // category={state.category}
-            // axis="toggle up or down"
-            // props="find props"
-            />
-          });
+                  {/* state 2b: company ranking by service */}
+                  {/* switch i: axis1 */}
+                  {/* switch ii: axis2 */}
+                  {state.companies &&
+                    //  MAKE SURE THIS STATE.COMPANIES = BOOLEAN PROPERTY EXISTS ON THE STATE OBJECT
+                    (<RankChart
+                      className="w-full sm:w-1/2 sm:pr-3"
+                      ranking={state.platformRankings}
+                      category={state.category}
+                      hasHeader
+                    />
+                    )
+                  }
+                  ({!state.companies &&
+                    // if state.axis is true, show services by company
+                    state.axis ?
+                    <ServicesByCompany
+                    // category={state.category}
+                    // axis="toggle up or down"
+                    // props="find props"
+                    />
+                    :
+                    // if state.axis is false, show companies by service
+                    <CompaniesByService
+                    // category={state.category}
+                    // axis="toggle up or down"
+                    // props="find props"
+                    />
+                  });
 
-        </div>
-      </div>
-    </div >
-  );
-}}
+                </div>
+              </div>
+            </div >
+          );
+        }}
       </NarrativeContainer >
     </Layout >
   );
