@@ -2,29 +2,15 @@
 import Layout from "./layout";
 
 const ServicesByCompany = () => {
-console.log('services by company')
+  console.log('services by company')
 
 
-return (
-  <Layout>
+  return (
 
-  </Layout>
-)
+    <div>
+      <h1>'Services-By-Company Chart'</h1>
+    </div>
+  );
 }
 
-// Props = s
-// company: { service: 
-              // { total: xx, 
-                // gov: xx, 
-                // free: xx, 
-                // priv: xx
-                // }
-            // service: 
-              // { total: xx, 
-              // gov: xx, 
-              // free: xx, 
-              // priv: xx
-            // }
-
-
-            export default ServicesByCompany
+export default ServicesByCompany
