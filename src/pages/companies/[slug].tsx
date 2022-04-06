@@ -306,7 +306,7 @@ const CompanyPage = ({
 
         {index.totalDiffs.diff2022 !== "NA" && (
           <section className="relative flex flex-col md:flex-row pt-3">
-            <div className="w-full md:w-4/6 pr-12 border-t border-disabled-light">
+            <div className="w-full md:w-1/2 lg:w-4/6 pr-12 border-t border-disabled-light">
               <h2 className="text-prissian mt-8 mb-6">
                 {details.changesTitle}
               </h2>
@@ -314,7 +314,7 @@ const CompanyPage = ({
               {changes}
             </div>
 
-            <div className="flex flex-col items-start w-full md:w-2/6 px-3 font-circular text-sm">
+            <div className="flex flex-col items-start w-full md:w-1/2 lg:w-2/6 px-3 font-circular text-sm">
               <h2 className="text-prissian mt-8 mb-6">Scores since 2017</h2>
 
               <CompanyYearOverYearChart data={yearOverYear} />

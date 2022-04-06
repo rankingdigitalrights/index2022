@@ -42,7 +42,7 @@ const CompanyYearOverYearChart = ({data}: CompanyYearOverYearChartProps) => {
   // The real height of the graph.
   const h = height - insetY;
   // The padding of the graph elements on the x axis
-  const padding = 20;
+  const padding = 25;
 
   const x = useMemo(
     () =>
@@ -140,23 +140,23 @@ const CompanyYearOverYearChart = ({data}: CompanyYearOverYearChartProps) => {
           return (
             <g
               key={`labels-${data.company}-${year}`}
-              transform={`translate(${(x(year) || 0) - 25},${
-                (y(score) || 0) - 40
+              transform={`translate(${(x(year) || 0) - 28},${
+                (y(score) || 0) - 43
               })`}
             >
               <rect
                 x="10"
                 y="10"
-                width="32"
-                height="20"
+                width="36"
+                height="23"
                 stroke="none"
                 fill="white"
                 strokeWidth="0.4"
-                ry="5"
-                rx="5"
+                ry="12"
+                rx="12"
                 filter="url(#shadow)"
               />
-              <text className="text-xs" x={14} y={24}>
+              <text className="text-xs" x={16} y={26}>
                 {score}%
               </text>
             </g>
