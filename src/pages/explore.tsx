@@ -285,6 +285,7 @@ const Explorer = ({
   const { toggleModal } = useContext(ModalContext); // useModalCtx();
 
   const [literalValues, setLiteralValues] = useState(false);
+  const [axis, setAxis] = useState(true)
 
   const [state, dispatch] = useReducer(
     reducer,
@@ -376,8 +377,7 @@ const Explorer = ({
   };
 
   const handleFlipAxis = (toggle: boolean) => {
-    console.log('handle flip axis')
-    // fill this out to switch between axes
+    setAxis(toggle)
   }
 
   const helpText = (
@@ -454,28 +454,17 @@ const Explorer = ({
                   )}
                 >
 
-                  {/* state1: company ranking */}
-
-                  {/* state2a: services ranking by company */}
-                  {/* switch i: axis1 */}
-                  {/* switch ii: axis2 */}
-
-                  {/* state 2b: company ranking by service */}
-                  {/* switch i: axis1 */}
-                  {/* switch ii: axis2 */}
-                  {state.companies &&
-                    //  MAKE SURE THIS STATE.COMPANIES = BOOLEAN PROPERTY EXISTS ON THE STATE OBJECT
+                  {!literalValues &&
                     (<RankChart
-                      className="w-full sm:w-1/2 sm:pr-3"
                       ranking={state.platformRankings}
                       category={state.category}
                       hasHeader
                     />
                     )
                   }
-                  ({!state.companies &&
+                  {/* ({literalValues &&
                     // if state.axis is true, show services by company
-                    state.axis ?
+                    axis ?
                     <ServicesByCompany
                     // category={state.category}
                     // axis="toggle up or down"
@@ -488,7 +477,7 @@ const Explorer = ({
                     // axis="toggle up or down"
                     // props="find props"
                     />
-                  });
+                  }); */}
 
                 </div>
               </div>
