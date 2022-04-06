@@ -24,18 +24,19 @@ const FlipAxis = ({ label, onChange, className }: FlipAxisProps) => {
         {label}
       </label>
       <button
-        className="relative inline-block w-10 align-middle select-none transition duration-200 ease-in"
+        className="relative inline-block w-5 align-middle select-none transition duration-200 ease-in"
         onClick={handleToggle}
         aria-label="Flip-Axis"
       >
-        <label
+        {/* <label
           htmlFor="toggle"
-          className={c(
-            "overflow-hidden h-5 rounded-full border-2 border-prissian cursor-pointer flex items-center",
+          // className={c(
+            // "overflow-hidden h-5 rounded-full border-2 border-prissian cursor-pointer flex items-center",
             toggle ? Up : Down,
-          )}
-        >
-        </label>
+          // )}
+        > */}
+        {/* </label> */}
+        {toggle ? <Up/> : <Down />}
       </button>
     </div>
   );
