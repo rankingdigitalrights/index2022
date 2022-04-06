@@ -40,11 +40,11 @@ const CompanyElements = ({
     <div className={className}>
       <div className="flex items-center">
         {score !== "NA" && (
-          <span className="font-circular text-md text-white bg-prissian rounded px-2 py-1 text-center mr-3">
+          <span className="text-md text-white bg-prissian rounded px-2 py-1 text-center mr-3">
             {score}%
           </span>
         )}
-        <h3 className="text-lg font-platform mb-0">{company}</h3>
+        <h3 className="text-lg mb-0">{company}</h3>
       </div>
 
       {breakpointSize < 768 ? (

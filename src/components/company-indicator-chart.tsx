@@ -66,7 +66,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
           const highlightClassName = "text-prissian";
 
           const classNameBarRow =
-            "flex flex-grow items-center justify-between font-circular text-xs";
+            "flex flex-grow items-center justify-between text-xs";
 
           return (
             <div
@@ -80,7 +80,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
               >
                 {hasCollapse ? (
                   <button
-                    className="flex justify-between items-center text-xs font-circular cursor-pointer"
+                    className="flex justify-between items-center text-xs cursor-pointer"
                     onClick={() => handleCollapse(indicator)}
                   >
                     <div className="flex flex-grow justify-between items-center text-left">
@@ -101,7 +101,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
                   </button>
                 ) : (
                   <Link passHref href={`/indicators/${display}`}>
-                    <a className="font-circular text-xs text-black font-normal hover:text-prissian">
+                    <a className="text-xs text-black font-normal hover:text-prissian">
                       {indicatorPretty}
                     </a>
                   </Link>
@@ -161,7 +161,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
                       onMouseLeave={() => setHighlightedIndicator(undefined)}
                     >
                       <Link passHref href={`/indicators/${m.display}`}>
-                        <a className="font-circular text-xs text-black font-normal hover:text-prissian">
+                        <a className="text-xs text-black font-normal hover:text-prissian">
                           {mIndicatorPretty}
                         </a>
                       </Link>

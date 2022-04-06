@@ -42,7 +42,7 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
             loading="lazy"
           />
         </picture>
-        <figcaption className="font-circular text-sm mt-2">{title}</figcaption>
+        <figcaption className="text-sm mt-2">{title}</figcaption>
       </figure>
 
       {readmore && (

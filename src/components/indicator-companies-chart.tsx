@@ -39,13 +39,7 @@ const IndicatorCompaniesChart = ({
   };
 
   return (
-    <div
-      className={c(
-        "flex w-full font-circular text-sm",
-        className,
-        containerClassName,
-      )}
-    >
+    <div className={c("flex w-full text-sm", className, containerClassName)}>
       <div className="flex flex-col w-12 mr-1">
         <span className="flex-none text-sm">&nbsp;</span>
 

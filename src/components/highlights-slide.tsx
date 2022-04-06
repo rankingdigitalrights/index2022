@@ -32,23 +32,19 @@ const CompanySlide = ({
           <div className="flex mt-4">
             <span
               className={c(
-                "w-12 font-circular text-center border rounded p-1 hover:no-underline",
+                "w-12 text-center border rounded p-1 hover:no-underline",
                 scoreClassName,
               )}
             >
               {score}%
             </span>
-            <span
-              className={c(
-                "ml-3 font-platform font-bold text-lg hover:underline",
-              )}
-            >
+            <span className={c("ml-3 font-bold text-lg hover:underline")}>
               {companyPretty}
             </span>
           </div>
         </a>
       </Link>
-      <p className="font-circular font-normal text-sm mt-4">{text}</p>
+      <p className="font-normal text-sm mt-4">{text}</p>
     </div>
   );
 };
@@ -59,10 +55,8 @@ const HighlightsSlide = ({
   return (
     <div className="flex flex-col lg:flex-row justify-between w-full">
       <div className="flex flex-col lg:h-64 w-full lg:w-1/3 px-8 lg:pt-10">
-        <span className="font-platform font-bold text-xl leading-8">
-          {title}
-        </span>
-        <span className="font-circular text-sm mt-3">{text}</span>
+        <span className="font-bold text-xl leading-8">{title}</span>
+        <span className="text-sm mt-3">{text}</span>
       </div>
 
       <div className="flex flex-col sm:flex-row w-full lg:w-2/3 sm:mt-6 lg:mt-0 pl-9 pr-9">

@@ -10,76 +10,38 @@
   }
 
   @font-face {
-    font-family: Circular;
-    src: url(../../public/fonts/CircularStd-Black.otf);
-    src: url(../../public/fonts/CircularStd-Black.eot)
-        format("embedded-opentype"),
-      url(../../public/fonts/CircularStd-Black.woff2) format("woff2"),
-      url(../../public/fonts/CircularStd-Black.woff) format("woff");
-    font-weight: 700;
+    font-family: "Poppins";
     font-style: normal;
+    font-weight: 400;
+    src: url("../../public/fonts/poppins-regular.eot"); /* IE9 Compat Modes */
+    src: local(""),
+      url("../../public/fonts/poppins-regular.eot?#iefix")
+        format("embedded-opentype"),
+      /* IE6-IE8 */ url("../../public/fonts/poppins-regular.woff2")
+        format("woff2"),
+      /* Super Modern Browsers */ url("../../public/fonts/poppins-regular.woff")
+        format("woff"),
+      /* Modern Browsers */ url("../../public/fonts/poppins-regular.ttf")
+        format("truetype"),
+      /* Safari, Android, iOS */
+        url("../../public/fonts/poppins-regular.svg#Poppins") format("svg"); /* Legacy iOS */
   }
 
   @font-face {
-    font-family: Circular;
-    src: url(../../public/fonts/CircularStd-Book.ttf);
-    src: url(../../public/fonts/CircularStd-Book.eot)
-        format("embedded-opentype"),
-      url(../../public/fonts/CircularStd-Book.woff2) format("woff2"),
-      url(../../public/fonts/CircularStd-Book.woff) format("woff");
-    font-weight: 400;
+    font-family: "Poppins";
     font-style: normal;
-  }
-
-  @font-face {
-    font-family: Platform;
-    src: url(../../public/fonts/Platform-Medium.otf);
-    src: url(../../public/fonts/Platform-Medium.eot) format("embedded-opentype"),
-      url(../../public/fonts/Platform-Medium.woff2) format("woff2"),
-      url(../../public/fonts/Platform-Medium.woff) format("woff");
     font-weight: 700;
-  }
-
-  @font-face {
-    font-family: Lyon;
-    src: url(../../public/fonts/LyonText-Regular.otf);
-    src: url(../../public/fonts/LyonText-Regular.eot)
+    src: url("../../public/fonts/poppins-700.eot"); /* IE9 Compat Modes */
+    src: local(""),
+      url("../../public/fonts/poppins-700.eot?#iefix")
         format("embedded-opentype"),
-      url(../../public/fonts/LyonText-Regular.woff2) format("woff2"),
-      url(../../public/fonts/LyonText-Regular.woff) format("woff");
-    font-weight: 400;
-    font-style: none;
-  }
-
-  @font-face {
-    font-family: Lyon;
-    src: url(../../public/fonts/LyonText-Bold.otf);
-    src: url(../../public/fonts/LyonText-Bold.eot) format("embedded-opentype"),
-      url(../../public/fonts/LyonText-Bold.woff2) format("woff2"),
-      url(../../public/fonts/LyonText-Bold.woff) format("woff");
-    font-weight: 700;
-    font-style: none;
-  }
-
-  @font-face {
-    font-family: Lyon;
-    src: url(../../public/fonts/LyonText-RegularItalic.otf);
-    src: url(../../public/fonts/LyonText-RegularItalic.eot)
-        format("embedded-opentype"),
-      url(../../public/fonts/LyonText-RegularItalic.woff2) format("woff2"),
-      url(../../public/fonts/LyonText-RegularItalic.woff) format("woff");
-    font-weight: 400;
-    font-style: italic;
-  }
-
-  @font-face {
-    font-family: Lyon;
-    src: url(../../public/fonts/LyonText-BoldItalic.otf);
-    src: url(../../public/fonts/LyonText-BoldItalic.eot)
-        format("embedded-opentype"),
-      url(../../public/fonts/LyonText-BoldItalic.woff) format("woff");
-    font-weight: 700;
-    font-style: italic;
+      /* IE6-IE8 */ url("../../public/fonts/poppins-700.woff2") format("woff2"),
+      /* Super Modern Browsers */ url("../../public/fonts/poppins-700.woff")
+        format("woff"),
+      /* Modern Browsers */ url("../../public/fonts/poppins-700.ttf")
+        format("truetype"),
+      /* Safari, Android, iOS */
+        url("../../public/fonts/poppins-700.svg#Poppins") format("svg"); /* Legacy iOS */
   }
 
   .hero-key-findings {
@@ -114,34 +76,30 @@
   }
 
   html {
-    @apply font-lyon text-base;
+    @apply font-sans text-base;
     font-size: 18px;
   }
 
   h1 {
-    @apply text-xl font-platform leading-none break-words;
+    @apply text-xl leading-none break-words;
   }
 
   h2 {
-    @apply font-platform leading-none break-words;
+    @apply leading-none break-words;
     font-size: 1.6rem;
   }
 
   h3 {
-    @apply font-platform leading-none mt-5 mb-3 break-words;
+    @apply leading-none mt-5 mb-3 break-words;
     font-size: 1.2rem;
   }
 
   h4 {
-    @apply text-xs font-circular;
+    @apply text-xs;
   }
 
   h5 {
-    @apply text-xxs font-circular;
-  }
-
-  button {
-    @apply font-lyon;
+    @apply text-xxs;
   }
 
   ul {
@@ -223,7 +181,7 @@
   }
 
   .pullquote {
-    @apply flex font-platform text-lg text-prissian my-6;
+    @apply flex text-lg text-prissian my-6;
   }
 
   @screen md {
@@ -277,7 +235,7 @@
   }
 
   html {
-    @apply font-lyon text-base;
+    @apply text-base;
     font-size: 12px;
   }
 

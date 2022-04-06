@@ -198,7 +198,7 @@ const CompanyPage = ({
             <div className="mt-6">{keyRecommendation}</div>
           </div>
 
-          <div className="flex flex-col items-start w-full md:w-2/6 font-circular text-sm">
+          <div className="flex flex-col items-start w-full md:w-2/6 text-sm">
             <div>
               <h3 className="font-bold mt-3 md:mt-0 pb-3">
                 Services evaluated:
@@ -301,7 +301,7 @@ const CompanyPage = ({
 
             <div className="mt-6">
               <Link passHref href={`/excel/companies/${index.id}.xlsx`}>
-                <a className="flex items-center border rounded-md px-4 py-3 bg-rdr text-white font-circular text-sm">
+                <a className="flex items-center border rounded-md px-4 py-3 bg-rdr text-white text-sm">
                   <Download
                     className="w-4 h-4 mr-2"
                     aria-label="Download icon"
@@ -323,7 +323,7 @@ const CompanyPage = ({
               {changes}
             </div>
 
-            <div className="flex flex-col items-start w-full md:w-1/2 lg:w-2/6 px-3 font-circular text-sm">
+            <div className="flex flex-col items-start w-full md:w-1/2 lg:w-2/6 px-3 text-sm">
               <h2 className="text-prissian mt-8 mb-6">Scores since 2017</h2>
 
               <CompanyYearOverYearChart data={yearOverYear} />
@@ -333,8 +333,8 @@ const CompanyPage = ({
       </div>
 
       <div className="border-t border-disabled-dark">
-        <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12">
-          <div className="flex flex-col md:flex-row justify-center items-center">
+        <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12 mt-8">
+          <div className="flex flex-col md:flex-row justify-center items-center md:space-x-2">
             <CompanyScoreChart
               category="governance"
               score={index.scores.governance}
@@ -349,7 +349,7 @@ const CompanyPage = ({
             />
           </div>
 
-          <p className="font-circular text-sm text-center">
+          <p className="text-sm text-center">
             We rank companies on their governance, and on their policies and
             practices affecting freedom of expression and privacy.
           </p>

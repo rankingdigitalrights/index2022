@@ -27,7 +27,7 @@ const Option = ({
 }: OptionProps<IndicatorSelectOption, false>) => {
   const {isParent, hasParent} = data;
 
-  const className = c("text-sm text-black font-circular p-1 pl-2 pr-2", {
+  const className = c("text-sm text-black p-1 pl-2 pr-2", {
     "bg-prissian text-white": isSelected || isFocused,
     "font-bold": isParent,
     "cursor-pointer": !isSelected && !isParent,
@@ -60,9 +60,7 @@ const GroupHeading = (props: {data: IndicatorSelectOption}) => {
   };
 
   return (
-    <span className={c("font-circular font-bold text-md ml-2", className)}>
-      {label}
-    </span>
+    <span className={c("font-bold text-md ml-2", className)}>{label}</span>
   );
 };
 
@@ -103,7 +101,7 @@ const IndicatorSelector = ({
     <div className="w-full">
       <Select
         instanceId="indicator-select"
-        className="text-xs font-platform text-prissian"
+        className="text-xs text-prissian"
         options={options}
         value={selected}
         openMenuOnFocus

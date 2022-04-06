@@ -84,7 +84,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
   );
 
   const navClassName = c(
-    "absolute top-22 inset-x-0 w-full shadow-md bg-white z-40 font-circular text-sm",
+    "absolute top-22 inset-x-0 w-full shadow-md bg-white z-40 text-sm",
     {
       hidden: !isExpanded,
     },
@@ -138,7 +138,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 aria-label="Ranking Digital Rights Logo"
                 className="flex-none"
               />
-              <span className="flex-none font-platform font-bold text-lg ml-4 whitespace-nowrap">
+              <span className="flex-none font-bold text-lg ml-4 whitespace-nowrap">
                 {isMobile
                   ? "2022 RDR Index"
                   : "2022 Ranking Digital Rights Corporate Accountability Index"}
@@ -367,7 +367,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                   <a
                     href="https://www.classy.org/give/325264/#!/donation/checkout"
                     role="menuitem"
-                    className="w-28 bg-accent-red font-circular font-bold text-white no-underline text-sm text-center rounded-md px-4 py-2 uppercase"
+                    className="w-28 bg-accent-red font-bold text-white no-underline text-sm text-center rounded-md px-4 py-2 uppercase"
                   >
                     Donate
                   </a>

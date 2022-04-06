@@ -12,11 +12,9 @@ const Donate = ({className}: DonateProps) => {
         className,
       )}
     >
-      <span className="font-platform font-bold text-md">
-        Support Ranking Digital Rights!
-      </span>
+      <span className="font-bold text-md">Support Ranking Digital Rights!</span>
 
-      <p className="font-circular text-sm my-6">
+      <p className="text-sm my-6">
         Tech companies wield unprecedented power in the digital age. Ranking
         Digital Rights helps hold them accountable for their obligations to
         protect and respect their users’ rights.
@@ -29,7 +27,7 @@ const Donate = ({className}: DonateProps) => {
 
       <a
         href="https://www.classy.org/give/325264/#!/donation/checkout"
-        className="w-28 bg-white font-circular font-bold text-sm text-center text-accent-red rounded-md px-4 py-2 uppercase"
+        className="w-28 bg-white font-bold text-sm text-center text-accent-red rounded-md px-4 py-2 uppercase"
       >
         Donate
       </a>

@@ -43,12 +43,9 @@ const CompanyScoreChart = ({
   });
 
   return (
-    <div className="p-4 m-4 print:m-2 flex flex-col items-center w-64 print:w-48 no-page-break">
+    <div className="print:m-2 flex flex-col items-center w-96 print:w-48 no-page-break">
       <span
-        className={c(
-          "font-circular font-black text-center",
-          isPrint ? "text-sm" : "text-md",
-        )}
+        className={c("font-black text-center", isPrint ? "text-sm" : "text-md")}
       >
         {mapCategoryName(category)}
       </span>

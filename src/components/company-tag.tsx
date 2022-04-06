@@ -17,7 +17,7 @@ const CompanyTag = ({
   active = false,
 }: CompanyTagProps) => {
   const className2 = c(
-    "flex justify-between items-center font-circular text-sm rounded-lg px-2 py-1 text-center",
+    "flex justify-between items-center text-sm rounded-lg px-2 py-1 text-center",
     className,
   );
 

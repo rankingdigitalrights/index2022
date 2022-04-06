@@ -136,11 +136,10 @@ const CompanySelector = ({
     <div
       className={c("w-full flex flex-col justify-between h-16 z-10", className)}
     >
-      <span className="text-sm font-circular">Select companies:</span>
+      <span className="text-sm">Select companies:</span>
 
       <Select
         instanceId="company-select"
-        className="font-circular"
         placeholder="All companies"
         options={options}
         value={companies.filter((obj) => selected.includes(obj.value))}

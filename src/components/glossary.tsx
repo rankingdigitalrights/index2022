@@ -35,7 +35,7 @@ const Glossary = ({id, children}: GlossaryProps) => {
     <>
       {" "}
       <span
-        className="inline font-circular text-prissian font-bold cursor-pointer"
+        className="inline text-prissian font-bold cursor-pointer"
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         role="button"

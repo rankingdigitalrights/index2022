@@ -48,7 +48,7 @@ export default async (headless = true): Promise<BrowserCtx> => {
 
     const pdf: BrowserTask<string> = async (path) => {
       // const headerTemplate = `<div style="background-color:#1c5275;height:100%">
-      // <span class="title text-sm font-circular" />
+      // <span class="title text-sm" />
       // </div>`;
       // const footerTemplate = `<div class="flex items-end">
       // <span class="pageNumber" />/<span class="totalPages" />

@@ -73,7 +73,7 @@ const RankChart = ({
     const companyLabel = isPrint ? (
       <span
         className={c(
-          "flex-none font-circular select-none whitespace-nowrap",
+          "flex-none select-none whitespace-nowrap",
           highlightedClassName,
           companyWidth,
         )}
@@ -84,7 +84,7 @@ const RankChart = ({
       <Link passHref href={`/companies/${id}`}>
         <a
           className={c(
-            "flex-none font-circular text-black font-normal select-none whitespace-nowrap",
+            "flex-none text-black font-normal select-none whitespace-nowrap",
             highlightedClassName,
             companyWidth,
           )}
@@ -97,10 +97,7 @@ const RankChart = ({
     return (
       <div
         key={`home-rank-${category}-${id}`}
-        className={c(
-          "flex items-center font-circular text-sm mb-1",
-          highlightedClassName,
-        )}
+        className={c("flex items-center text-sm mb-1", highlightedClassName)}
         onMouseEnter={() => setHighlightedCompany(id)}
         onMouseLeave={() => setHighlightedCompany(undefined)}
       >
@@ -153,7 +150,7 @@ const RankChart = ({
         <>
           <CompanyKindLabel kind={companyKind} theme="dark" />
 
-          <div className="flex items-center font-circular text-sm mb-2 mt-3">
+          <div className="flex items-center text-sm mb-2 mt-3">
             <div className={c("flex-none", companyWidth)}>&nbsp;</div>
 
             <div className="flex-none w-8 text-center">Rank</div>

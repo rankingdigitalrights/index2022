@@ -36,7 +36,7 @@ const CompanyRankChart = ({
         const isActiveCompany = id === activeCompany;
         const isHighlightedCompany = id === highlightedCompany;
 
-        const className = c("flex items-center m-0.5 font-circular text-sm", {
+        const className = c("flex items-center m-0.5 text-sm", {
           "text-prissian": isActiveCompany || isHighlightedCompany,
         });
 
@@ -58,12 +58,12 @@ const CompanyRankChart = ({
         });
 
         const companyLabel = isPrint ? (
-          <span className="flex-none font-circular w-28 select-none whitespace-nowrap">
+          <span className="flex-none w-28 select-none whitespace-nowrap">
             {companyPretty}
           </span>
         ) : (
           <Link passHref href={`/companies/${id}`}>
-            <a className="flex-none font-circular text-black no-underline w-28 select-none whitespace-nowrap">
+            <a className="flex-none text-black no-underline w-28 select-none whitespace-nowrap">
               {companyPretty}
             </a>
           </Link>
@@ -122,7 +122,7 @@ const CompanyRankChart = ({
 
         <div className="flex-none w-8">&nbsp;</div>
 
-        <div className="flex-grow font-circular text-xs flex justify-between ml-2">
+        <div className="flex-grow text-xs flex justify-between ml-2">
           <span>0%</span>
           <span>100%</span>
         </div>

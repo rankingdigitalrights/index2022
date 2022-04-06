@@ -248,14 +248,12 @@ const IndicatorPage = ({
     <div className="flex flex-col">
       <div className="flex items-center mt-6">
         <IndicatorElementTag score={100} value="Yes" />
-        <span className="font-circular text-sm ml-12">
-          Yes (100 points): Full disclosure
-        </span>
+        <span className="text-sm ml-12">Yes (100 points): Full disclosure</span>
       </div>
 
       <div className="flex items-center mt-6">
         <IndicatorElementTag score={100} value="Partial" />
-        <span className="font-circular text-sm ml-12">
+        <span className="text-sm ml-12">
           Partial (50 points): Company disclosure meets some but not all aspects
           of the element, or the disclosure is not comprehensive enough to
           satisfy the full scope of the element.
@@ -264,7 +262,7 @@ const IndicatorPage = ({
 
       <div className="flex items-center mt-6">
         <IndicatorElementTag score={100} value="No" />
-        <span className="font-circular text-sm ml-12">
+        <span className="text-sm ml-12">
           No disclosure found (0 points): Researchers were unable to find
           information provided by the company on its website that answers the
           element question.
@@ -273,7 +271,7 @@ const IndicatorPage = ({
 
       <div className="flex items-center mt-6">
         <IndicatorElementTag score={100} value="No Disclosure Found" />
-        <span className="font-circular text-sm ml-12">
+        <span className="text-sm ml-12">
           No (0 points): Company disclosure exists, but it does not answer the
           question that the element asks.
         </span>
@@ -281,7 +279,7 @@ const IndicatorPage = ({
 
       <div className="flex items-center mt-6">
         <IndicatorElementTag score={100} value="NA" />
-        <span className="font-circular text-sm ml-12">
+        <span className="text-sm ml-12">
           N/A (excluded from score): Not applicable, excluded from score and
           averages.
         </span>
@@ -298,7 +296,7 @@ const IndicatorPage = ({
           onSelect={handleSelectIndicator}
         />
 
-        <div className="mt-6 pb-0 text-sm font-circular">{description}</div>
+        <div className="mt-6 pb-0 text-sm">{description}</div>
 
         <ExpandableDescription className="mt-6" label="Elements">
           <ol className="list-inside list-decimal">
@@ -306,7 +304,7 @@ const IndicatorPage = ({
               return (
                 <li
                   key={`element-description-${e.id}`}
-                  className="element pb-2 font-circular text-sm"
+                  className="element pb-2 text-sm"
                 >
                   <ElementDescription description={e.description} />
                 </li>
@@ -316,7 +314,7 @@ const IndicatorPage = ({
         </ExpandableDescription>
 
         <ExpandableDescription className="mt-2" label="Research guidance">
-          <div className="mt-1 font-circular text-sm">{guidance}</div>
+          <div className="mt-1 text-sm">{guidance}</div>
         </ExpandableDescription>
       </section>
 

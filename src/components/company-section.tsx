@@ -53,16 +53,13 @@ const CompanySection = ({
         <div className="md:w-1/3 md:mr-3 print:w-full print:m-0">
           <h2
             className={c(
-              "flex items-center md:items-start font-platform text-lg mb-6",
+              "flex items-center md:items-start text-lg font-bold mb-6",
               titleClassName,
             )}
           >
             {title}{" "}
             <span
-              className={c(
-                "font-circular font-bold text-black text-md px-3 py-2 ml-3",
-                scoreClassName,
-              )}
+              className={c("text-black text-md px-3 py-2 ml-3", scoreClassName)}
             >
               {score}%
             </span>
@@ -73,7 +70,7 @@ const CompanySection = ({
 
         <div className="md:w-2/3 md:ml-3 print:hidden">
           <div className="flex flex-col justify-end mt-8 mb-6 md:mt-0">
-            <h3 className="text-lg font-circular mt-0">Indicators</h3>
+            <h3 className="text-lg font-bold mt-0">Indicators</h3>
           </div>
 
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">

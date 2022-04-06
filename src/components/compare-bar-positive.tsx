@@ -45,7 +45,7 @@ const CompareBarPositive = ({
   return (
     <div
       className={c(
-        "relative h-full flex flex-col items-center font-circular text-sm",
+        "relative h-full flex flex-col items-center text-sm",
         className,
       )}
     >

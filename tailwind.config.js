@@ -1,4 +1,5 @@
-/* eslint global-require: off */
+/* eslint global-require: off, @typescript-eslint/no-var-requires: off */
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   future: {
@@ -30,9 +31,7 @@ module.exports = {
       },
 
       fontFamily: {
-        circular: ["Circular", "sans-serif"],
-        platform: ["Platform", "sans-serif"],
-        lyon: ["Lyon", "serif"],
+        sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
 
       fontSize: {

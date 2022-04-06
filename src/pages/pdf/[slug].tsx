@@ -151,7 +151,7 @@ const CompanyPage = ({
           />
         </div>
 
-        <div className="flex w-full font-circular text-sm printer print:px-20 print:pt-8 print:pb-3 page-break">
+        <div className="flex w-full text-sm printer print:px-20 print:pt-8 print:pb-3 page-break">
           <div>
             <h3 className="font-bold pb-3 print:whitespace-nowrap">
               Services evaluated:
@@ -223,7 +223,7 @@ const CompanyPage = ({
         </div>
 
         {index.totalDiffs.diff2022 !== "NA" && (
-          <div className="flex w-full font-circular text-sm printer print:px-20 print:pt-8 print:pb-3">
+          <div className="flex w-full text-sm printer print:px-20 print:pt-8 print:pb-3">
             <div className="w-full pr-12">
               <h2 className="text-prissian mt-8 mb-6">
                 {details.changesTitle}
@@ -236,7 +236,7 @@ const CompanyPage = ({
               />
             </div>
 
-            <div className="w-full px-3 font-circular text-sm">
+            <div className="w-full px-3 text-sm">
               <YearOverYearLabel
                 className="mt-8"
                 value={index.totalDiffs.diff2022}
@@ -266,7 +266,7 @@ const CompanyPage = ({
           />
         </div>
 
-        <p className="font-circular text-sm text-center">
+        <p className="text-sm text-center">
           We rank companies on their governance, and on their policies and
           practices affecting freedom of expression and privacy.
         </p>

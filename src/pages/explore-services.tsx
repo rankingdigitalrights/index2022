@@ -264,7 +264,7 @@ const Explore = ({
               <Container>
                 <NarrativeTitle title="Explore the data: Scores for platforms and services" />
 
-                <p className="font-circular mt-6">
+                <p className="mt-6">
                   Which companies are strongest on privacy? How does WhatsApp
                   compare to WeChat? Use the tools below to sort by category or
                   service.

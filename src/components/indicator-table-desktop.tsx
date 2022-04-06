@@ -149,7 +149,7 @@ const IndicatorTableDesktop = ({
   });
 
   return (
-    <div className="flex flex-col font-circular company-table overflow-x-auto">
+    <div className="flex flex-col company-table overflow-x-auto">
       <div className="flex flex-row">{legend}</div>
 
       {grid}
