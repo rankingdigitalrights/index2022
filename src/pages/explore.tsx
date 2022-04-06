@@ -284,7 +284,7 @@ const Explorer = ({
   const queryService = serviceQueryParam(router.asPath);
   const { toggleModal } = useContext(ModalContext); // useModalCtx();
 
-  const [literalValues, setLiteralValues] = useState(false);
+  const [literalValues, setLiteralValues] = useState(true);
   const [axis, setAxis] = useState(true)
 
   const [state, dispatch] = useReducer(
@@ -380,11 +380,13 @@ const Explorer = ({
     setAxis(toggle)
   }
 
-  const helpText = (
-    <div className="flex flex-col">
-    </div>
-  );
+  // const helpText = (
+  //   <div className="flex flex-col">
+  //   </div>
+  // );
 
+
+  // TODO toggles for totals/services & flip axis are currently working, but not predictably or consistently - FIX THIS
 
   return (
     <Layout>
@@ -400,7 +402,6 @@ const Explorer = ({
                 </p>
 
                 <div className="flex flex-col md:flex-row mt-10 justify-between items-center w-full">
-                  {/* this toggle current has 3 states... */}
                   <ToggleLeftRight
                     labelLeft="Totals"
                     labelRight="Services"
@@ -418,7 +419,7 @@ const Explorer = ({
                     <Help className="w-5 h-5 ml-3" aria-label="Help icon" />
                   </button> */}
 
-                  {literalValues && (
+                  {(!literalValues) && (
                     <FlipAxis
                       label="Flip axis"
                       onChange={handleFlipAxis}
@@ -454,30 +455,27 @@ const Explorer = ({
                   )}
                 >
 
-                  {!literalValues &&
+                  {(literalValues) ?
                     (<RankChart
                       ranking={state.platformRankings}
                       category={state.category}
                       hasHeader
-                    />
+                    />)
+                    : (axis ?
+                      (<ServicesByCompany
+                      // category={state.category}
+                      // axis="toggle up or down"
+                      // props="find props"
+                      />)
+                      :
+                      // if state.axis is false, show companies by service
+                      (<CompaniesByService
+                      // category={state.category}
+                      // axis="toggle up or down"
+                      // props="find props"
+                      />)
                     )
-                  }
-                  {/* ({literalValues &&
-                    // if state.axis is true, show services by company
-                    axis ?
-                    <ServicesByCompany
-                    // category={state.category}
-                    // axis="toggle up or down"
-                    // props="find props"
-                    />
-                    :
-                    // if state.axis is false, show companies by service
-                    <CompaniesByService
-                    // category={state.category}
-                    // axis="toggle up or down"
-                    // props="find props"
-                    />
-                  }); */}
+                  });
 
                 </div>
               </div>
