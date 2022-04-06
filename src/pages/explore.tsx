@@ -9,6 +9,7 @@ import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import CategorySelector from "../components/category-selector";
+import CompanySelector from "../components/company-selector-simple";
 import RankChart from "../components/rank-chart-nolabel";
 import ServicesByCompany from "../components/services-per-company"
 import CompaniesByService from "../components/companies-per-service"
@@ -26,6 +27,7 @@ import {
 import {
   CompanyKind,
   CompanyRank,
+  CompanySelectOption,
   IndicatorCategoryExt,
   ServiceCompanyRank,
   ServiceKind,
@@ -35,28 +37,6 @@ import { uniqueBy } from "../utils";
 import Selector, { SingleValue } from "../components/selector";
 
 
-// import StateManager from "react-select";
-// import CompaniesScore from "../components/companies-score";
-// import { services } from "../csv";
-// import { string } from "yargs";
-
-// import ScoresOverTime from "./compare";
-// import IndicatorScoresChart from "../components/indicator-scores-chart";
-
-// ServiceCompanyRanks =
-// { broadband: 
-//   { governance: 
-//     { internet: 
-//       { id: string, 
-//         score: IndicatorScore, 
-//         kind: internet, 
-//         category: broadband, 
-//         rank: number, 
-//         service: broadband 
-//       }
-//     }
-//   }
-// }}
 type ServiceCompanyRanks = {
   [service in ServiceKind]: {
     [category in IndicatorCategoryExt]: {
@@ -64,39 +44,6 @@ type ServiceCompanyRanks = {
     };
   };
 };
-
-// CompanyServiceRanks = {
-// company:
-//  { broadband: 
-//     { governance: 
-//       { internet: 
-//         { id: string, 
-//           score: IndicatorScore, 
-//           kind: internet, 
-//           category: broadband, 
-//           rank: number, 
-//           service: broadband 
-//          }
-//        }
-//      }
-//    }
-//  }
-// type CompanyServiceRanks = {
-//   [service in Services]: ServiceCompanyRanks
-// }
-
-// CompanyRanks = {
-//   governance: {
-//     internet: {
-//       id: string;
-//       companyPretty: string;
-//       score: IndicatorScore;
-//       kind: CompanyKind;
-//       category: IndicatorCategoryExt;
-//       rank: number;
-//     };
-//   }
-// }
 
 type CompanyRanks = {
   [category in IndicatorCategoryExt]: {
@@ -118,6 +65,7 @@ type Action =
   | { type: "setCompany"; company: CompanyRank | undefined }
   | { type: "updateRankings" };
 interface ExplorerProps {
+  // companies: CompanySelectOption[];
   serviceOptions: ServiceOption[];
   serviceRankings: ServiceCompanyRanks;
   companyRankings: CompanyRanks;
@@ -133,7 +81,17 @@ export const getStaticProps = async () => {
     value: kind,
   }));
 
-  const companies = (await allCompanies());
+  // const allcompanies = (await allCompanies());
+  // const companies = allcompanies.map(({id: companyId, name, kind}) => {
+  //   const rank = companyRankings.find(({id}) => id === companyId);
+
+  //   return {
+  //     value: companyId,
+  //     label: name,
+  //     score: score ? score.score : "NA",
+  //     kind,
+  //   };
+  // });
 
   const companyRankings = await ([
     "internet",
@@ -202,7 +160,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      companies,
+      // companies,
       serviceOptions,
       serviceRankings,
       companyRankings,
@@ -239,17 +197,11 @@ const serviceQueryParam = (url: string): ServiceKind | undefined => {
 //   platformRankings: CompanyRank[] | ServiceCompanyRank[] | undefined;
 //   serviceRankings: ServiceCompanyRanks;
 //   companyRankings: CompanyRanks;
-//   axis: Boolean;
 // };
 const initializeState = (state: State) => {
   const platformRankings = state.service
     ? state.serviceRankings[state.service.kind]?.[state.category]?.internet
     : state.companyRankings[state.category]?.internet;
-
-  console.log('state: ', {
-    ...state,
-    platformRankings,
-  })
   return {
     ...state,
     platformRankings,
@@ -263,14 +215,18 @@ const reducer = (state: State, action: Action) => {
         ...state,
         category: action.category,
         platformRankings: state.service
-        ? state.serviceRankings[state.service.kind]?.[action.category]
+          ? state.serviceRankings[state.service.kind]?.[action.category]
             ?.internet
-        : state.companyRankings[action.category]?.internet,
+          : state.companyRankings[action.category]?.internet,
       };
     case "setCompany":
       return {
         ...state,
         service: action.company,
+        platformRankings: action.company
+          ? state.companyRankings[action.company]?.[state.category]
+            ?.internet
+          : state.companyRankings[state.category]?.internet,
       };
     default:
       throw new Error(`No match for action ${action.type}.`);
@@ -285,8 +241,9 @@ const Explorer = ({
 }: ExplorerProps) => {
   const router = useRouter();
   const queryService = serviceQueryParam(router.asPath);
-  const { toggleModal } = useContext(ModalContext); // useModalCtx();
+  // const { toggleModal } = useContext(ModalContext); // useModalCtx();
 
+  const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [literalValues, setLiteralValues] = useState(true);
   const [axis, setAxis] = useState(true)
 
@@ -319,60 +276,6 @@ const Explorer = ({
     dispatch({ type: "setCompany", company });
   };
 
-  // Need here all the props that are passed down to company rank chart & company services chart 
-  // -> for each company: list the services (and scores) they provide (for each of the four categories).
-  // create new chart 'services-per-company-chart'
-  // company: { service: 
-  // { total: xx, 
-  // gov: xx, 
-  // free: xx, 
-  // priv: xx
-  // }
-  // service: 
-  // { total: xx, 
-  // gov: xx, 
-  // free: xx, 
-  // priv: xx
-  // }
-  //}
-  // for each service: list the companies (and their score, for each of the four categories) that provide this service 
-  // create new chart 'companies-per-service-chart'
-  // { service: 
-  // { company: 
-  // { total: xx,
-  // gov: xx,
-  // free: xx,
-  // priv: xx
-  //  },
-  // { company: 
-  // { total: xx,
-  // gov: xx,
-  // free: xx,
-  // priv: xx
-  //  },
-  // }
-  // }
-  // the data for these two new charts is the same, but different sort functions
-
-  // interface RankChartProps {
-  //   ranking: CompanyRank[];
-  //   className?: string;
-  //   activeCompany?: string;
-  //   category?: IndicatorCategoryExt;
-  //   chartHeight?: number;
-  //   hasHeader?: boolean;
-  //   isPrint?: boolean;
-  // }
-
-  // const Explorer = ({
-  //   totalRanking,
-  //   governanceRanking,
-  //   freedomRanking,
-  //   privacyRanking,
-  // }: ExplorerProps) => {
-  //   const [selectedCategory, setSelectedCategory] = useState<IndicatorCategoryExt>("total");
-  //   const [platformRankings, setPlatformRankings] = useState<CompanyRank[]>(totalRanking[0]);
-
   const handleServicesToggle = (toggle: boolean) => {
     setLiteralValues(toggle)
   };
@@ -381,11 +284,14 @@ const Explorer = ({
     setAxis(toggle)
   }
 
+  const handleSelectCompany = (ids: string[]) => {
+    setSelectedCompanies(ids);
+  };
+
   // const helpText = (
   //   <div className="flex flex-col">
   //   </div>
   // );
-
 
   // TODO toggles for totals/services & flip axis are currently working, but not predictably or consistently - FIX THIS
 
@@ -428,17 +334,13 @@ const Explorer = ({
                   )}
 
                 </div>
-                <div className="flex flex-col items-center">
-                  {/* finish the associated functions */}
-                  <Selector<ServiceOption>
-                    id="service-selector"
-                    // options={companyOptions}
-                    defaultValue={state.company}
-                    isClearable
-                    // onSelect={handleCompanySelect}
-                    // LocalOption={Option}
-                    LocalSingleValue={SingleValue}
-                    className="my-6 self-stretch"
+                <div className="flex flex-col items-center mt-8">
+                  {/* pass a list of companies here */}
+                  <CompanySelector
+                    className="flex-none w-full md:w-10/12 "
+                    // companies={companies}
+                    selected={selectedCompanies}
+                    onSelect={handleSelectCompany}
                   />
 
                   <CategorySelector
