@@ -2,9 +2,12 @@ import React, { useState, useReducer, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { promises as fsP } from "fs";
 import path from "path";
+import c from "clsx";
+
 
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
+import NarrativeTitle from "../components/narrative-title";
 import RankChart from "../components/rank-chart-nolabel";
 import ServicesByCompany from "../components/services-per-company"
 import CompaniesByService from "../components/companies-per-service"
@@ -12,7 +15,7 @@ import FlipAxis from "../components/flip-axis";
 import ToggleLeftRight from "../components/toggle-left-right";
 import Help from "../images/icons/help.svg";
 
-import {ModalContext} from "../context";
+import { ModalContext } from "../context";
 import {
   allCompanies,
   allServices,
@@ -279,7 +282,7 @@ const Explorer = ({
 }: ExplorerProps) => {
   const router = useRouter();
   const queryService = serviceQueryParam(router.asPath);
-  const {toggleModal} = useContext(ModalContext); // useModalCtx();
+  const { toggleModal } = useContext(ModalContext); // useModalCtx();
 
   const [literalValues, setLiteralValues] = useState(false);
 
@@ -368,7 +371,7 @@ const Explorer = ({
   //   const [selectedCategory, setSelectedCategory] = useState<IndicatorCategoryExt>("total");
   //   const [platformRankings, setPlatformRankings] = useState<CompanyRank[]>(totalRanking[0]);
 
-  const handleToggleLeftRight = (toggle: boolean) => {
+  const handleServicesToggle = (toggle: boolean) => {
     console.log('handle toggle left-right')
     setLiteralValues(toggle)
     // fill this out to switch between companies & services chart displays
@@ -389,105 +392,115 @@ const Explorer = ({
 
   return (
     <Layout>
-      <div className="relative">
-        <div className="absolute flex flex-row w-full h-full top-0">
-          <div className="lg:w-1/2 w-full lg:bg-accent-red" />
-          <div className="lg:w-1/2 w-full lg:bg-light-freedom" />
-        </div>
-      </div>
-      {/* <div className="enter css for putting companies/services & flip-axis toggles on one line"> */}
-      <div className="flex-none self-end flex w-full my-3 sm:float-left md:w-max md:mb-1">
-        <ToggleLeftRight
-          labelLeft="View Totals"
-          labelRight="View Services"
-          onChange={handleToggleLeftRight}
-        />
-        <button
-          onClick={() => {
-            toggleModal({
-              title:
-                "Toggle between displaying company totals, or displaying the breakdown of scores by the services that each company provides.",
-              content: helpText,
-            });
-          }}
-        >
-          <Help className="w-5 h-5 ml-3" aria-label="Help icon" />
-        </button>
-      </div>
-      <div className="flex-none self-end flex w-full my-3 sm:float-right md:w-max md:mb-1">
-        {/* add if ToggleLeft : show FlipAxis */}
-        <FlipAxis
-          label="Flip axis"
-          onChange={handleFlipAxis}
-        />
-      </div>
-      {/* </div> */}
-      <div className="lg:container lg:mx-auto flex flex-col lg:flex-row lg:justify-between my-10">
-        <div className="flex flex-col sm:flex-row lg:w-2/3 px-6">
-          <div>
-            {/* FILL OUT THIS COMPANY SELECT OPTION COMPONENT */}
-            <Selector<ServiceOption>
-              id="company-selector"
-              isClearable
-              defaultValue="Select company..."
-              LocalSingleValue={SingleValue}
-              className="w-full sm:w-1/2 mr-3"
-            />
-          </div>
-          <div className="flex flex-col w-full">
-            <CategorySelector
-              selected={state.category}
-              onClick={handleSelectCategory}
-            />
-          </div>
-          <NarrativeContainer transparent>
-            {({ Container }) => {
-              return (
-                <div>
-                  <Container>
-                    {/* state1: company ranking */}
+      <NarrativeContainer transparent>
+        {({ Container }) => {
+          return (
+            <div>
+              <Container>
+                <NarrativeTitle title="2022 Companies Score" />
 
-                    {/* state2a: services ranking by company */}
-                    {/* switch i: axis1 */}
-                    {/* switch ii: axis2 */}
+                <p className="font-circular mt-6">
+                  Some new text about the 2022 explore companies views.
+                </p>
 
-                    {/* state 2b: company ranking by service */}
-                    {/* switch i: axis1 */}
-                    {/* switch ii: axis2 */}
-                    {state.companies &&
-                      //  MAKE SURE THIS STATE.COMPANIES = BOOLEAN PROPERTY EXISTS ON THE STATE OBJECT
-                      <RankChart
-                        className="w-full sm:w-1/2 sm:pr-3"
-                        ranking={state.platformRankings}
-                        category={state.category}
-                        hasHeader
-                      />
-                    }
-                    ({!state.companies &&
-                      // if state.axis is true, show services by company
-                      state.axis ?
-                      <ServicesByCompany
-                        // category={state.category}
-                        // axis="toggle up or down"
-                        // props="find props"
-                      />
-                      :
-                      // if state.axis is false, show companies by service
-                      <CompaniesByService
-                        // category={state.category}
-                        // axis="toggle up or down"
-                        // props="find props"
-                      />
-                    })
+                <div className="flex flex-col md:flex-row justify-between items-center w-full">
+                  <ToggleLeftRight
+                    labelLeft="Totals"
+                    labelRight="Services"
+                    onChange={handleServicesToggle}
+                  />
+                  {/* <button
+                    onClick={() => {
+                      toggleModal({
+                        title:
+                          "Toggle between displaying company totals, or displaying the breakdown of scores by the services that each company provides.",
+                        content: helpText,
+                      });
+                    }}
+                  >
+                    <Help className="w-5 h-5 ml-3" aria-label="Help icon" />
+                  </button> */}
 
-                    {/* time-score */}
-                  </Container>
+
+                  {/* fix the toggle function */}
+                  {state.services && (
+                  <FlipAxis
+                    label="Flip axis"
+                    onChange={handleFlipAxis}
+                  />
+                  )}
+
                 </div>
-              );
-            }}
-          </NarrativeContainer>
+                {/* <div className="flex flex-col items-center mt-12"> */}
+                <div className="flex flex-col items-center mt-12">
+                  {/* finish the associated functions */}
+                  <Selector<ServiceOption>
+                    id="service-selector"
+                    // options={companyOptions}
+                    defaultValue={state.company}
+                    isClearable
+                    // onSelect={handleCompanySelect}
+                    // LocalOption={Option}
+                    LocalSingleValue={SingleValue}
+                    className="my-6 self-stretch"
+                  />
+
+                  <CategorySelector
+                    selected={state.category}
+                    onClick={handleSelectCategory}
+                  />
+                </div>
+              </Container>
+
+      <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
+        <div
+          style={{ minHeight: "22rem" }}
+          className={c(
+            "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3"
+          )}
+        >
+
+          {/* state1: company ranking */}
+
+          {/* state2a: services ranking by company */}
+          {/* switch i: axis1 */}
+          {/* switch ii: axis2 */}
+
+          {/* state 2b: company ranking by service */}
+          {/* switch i: axis1 */}
+          {/* switch ii: axis2 */}
+          {state.companies &&
+            //  MAKE SURE THIS STATE.COMPANIES = BOOLEAN PROPERTY EXISTS ON THE STATE OBJECT
+            <RankChart
+              className="w-full sm:w-1/2 sm:pr-3"
+              ranking={state.platformRankings}
+              category={state.category}
+              hasHeader
+            />
+          }
+          ({!state.companies &&
+            // if state.axis is true, show services by company
+            state.axis ?
+            <ServicesByCompany
+            // category={state.category}
+            // axis="toggle up or down"
+            // props="find props"
+            />
+            :
+            // if state.axis is false, show companies by service
+            <CompaniesByService
+            // category={state.category}
+            // axis="toggle up or down"
+            // props="find props"
+            />
+          });
+
         </div>
       </div>
+    </div >
+  );
+}}
+      </NarrativeContainer >
     </Layout >
   );
 };
