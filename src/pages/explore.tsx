@@ -8,6 +8,7 @@ import c from "clsx";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
+import CategorySelector from "../components/category-selector";
 import RankChart from "../components/rank-chart-nolabel";
 import ServicesByCompany from "../components/services-per-company"
 import CompaniesByService from "../components/companies-per-service"
@@ -32,7 +33,6 @@ import {
 } from "../types";
 import { uniqueBy } from "../utils";
 import Selector, { SingleValue } from "../components/selector";
-import CategorySelector from "../components/category-selector";
 
 
 // import StateManager from "react-select";
@@ -215,7 +215,6 @@ const serviceQueryParam = (url: string): ServiceKind | undefined => {
   const match = url.match(re);
 
   if (!match) return undefined;
-  console.log('match: ', match)
   return match[1] as ServiceKind;
 };
 // type State = {
@@ -263,6 +262,10 @@ const reducer = (state: State, action: Action) => {
       return {
         ...state,
         category: action.category,
+        platformRankings: state.service
+        ? state.serviceRankings[state.service.kind]?.[action.category]
+            ?.internet
+        : state.companyRankings[action.category]?.internet,
       };
     case "setCompany":
       return {
@@ -291,8 +294,6 @@ const Explorer = ({
     reducer,
     {
       category: "total",
-      // FIGURE OUT WHAT TO DO WITH THIS COMPANY PROPERTY
-      company: undefined,
       service: serviceOptions.find(({ kind }) => kind === queryService),
       platformRankings: undefined,
       serviceRankings,
