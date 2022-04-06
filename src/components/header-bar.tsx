@@ -6,8 +6,6 @@ import React, {useEffect, useRef, useState} from "react";
 import companies from "../../data/companies.json";
 import {useMobileSize} from "../hooks";
 import Cancel from "../images/icons/cancel.svg";
-import ChinaTechGiants from "../images/icons/china-tech-giants.svg";
-import ContextBeforeCode from "../images/icons/context-before-code.svg";
 import DownloadTheData from "../images/icons/download-the-data.svg";
 import ExecutiveSummary from "../images/icons/executive-summary.svg";
 import ExploreTheData from "../images/icons/explore-the-data.svg";
@@ -15,7 +13,6 @@ import Hamburger from "../images/icons/hamburger.svg";
 import IntroEssay from "../images/icons/intro-essay.svg";
 import KeyFindings from "../images/icons/key-findings.svg";
 import Methodology from "../images/icons/methodology.svg";
-import MovingFast from "../images/icons/moving-fast.svg";
 import PolicyRecommendations from "../images/icons/policy-recommendations.svg";
 import ScoresByIndicator from "../images/icons/scores-by-indicator.svg";
 import ScoresOverTime from "../images/icons/scores-over-time.svg";
@@ -37,13 +34,6 @@ interface CompanyLinkProps {
 interface IconLinkProps {
   href: string;
   name: string;
-  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
-}
-
-interface SpotlightLinkProps {
-  href: string;
-  name: string;
-  desc: string;
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
@@ -133,23 +123,6 @@ const HeaderBar = ({className}: HeaderBarProps) => {
         >
           <Icon className="flex-none w-8 h-8" />
           <span className="ml-3">{name}</span>
-        </a>
-      </Link>
-    );
-  };
-
-  const SpotlightLink = ({href, name, desc, Icon}: SpotlightLinkProps) => {
-    return (
-      <Link passHref href={href}>
-        <a
-          role="menuitem"
-          className="flex items-start font-bold text-black no-underline"
-        >
-          <Icon className="flex-none w-8 h-8" />
-          <div className="ml-3">
-            <span className="font-bold">{name}:</span>{" "}
-            <span className="font-normal">{desc}</span>
-          </div>
         </a>
       </Link>
     );
@@ -247,34 +220,6 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                     name="Policy recommendations"
                     href="/recommendations"
                     Icon={PolicyRecommendations}
-                  />
-                </li>
-
-                <li role="none" className="pt-6 pb-0">
-                  <span className="font-bold">Featured essays:</span>
-                </li>
-                <li role="none" className="py-3">
-                  <SpotlightLink
-                    name="Context before code"
-                    desc="Protecting human rights in a state of emergency"
-                    href="/spotlights/context-before-code"
-                    Icon={ContextBeforeCode}
-                  />
-                </li>
-                <li role="none" className="py-3">
-                  <SpotlightLink
-                    name="Moving fast and breaking us all"
-                    desc="Big Tech’s unaccountable algorithms"
-                    href="/spotlights/unaccountable-algorithms"
-                    Icon={MovingFast}
-                  />
-                </li>
-                <li role="none" className="pt-3">
-                  <SpotlightLink
-                    name="China’s tech giants can change"
-                    desc="But the state is still their number one stakeholder"
-                    href="/spotlights/china-tech-giants"
-                    Icon={ChinaTechGiants}
                   />
                 </li>
               </ul>
