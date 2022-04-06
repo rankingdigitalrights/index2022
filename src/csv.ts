@@ -127,8 +127,13 @@ type CsvCompanyMeta = {
   website: string;
   marketCap: string;
   marketCapDate: string;
-  exchange: string;
-  stockSymbol: string;
+  stockStructure: string;
+  exchange?: string;
+  stockSymbol?: string;
+  exchangeAlt?: string;
+  stockSymbolAlt?: string;
+  salePrice?: string;
+  dateOfSale?: string;
   operatingCompany?: string;
 };
 
@@ -386,8 +391,13 @@ const loadCompanyMetaCsv = loadCsv<CsvCompanyMeta>((record) => ({
   website: record.Website,
   marketCap: record.MarketCap,
   marketCapDate: record.MarketCapDate,
-  exchange: record.Exchange,
-  stockSymbol: record.StockSymbol,
+  exchange: stringOrNil(record.Exchange),
+  exchangeAlt: stringOrNil(record.SecondExchange),
+  stockSymbol: stringOrNil(record.StockSymbol),
+  stockSymbolAlt: stringOrNil(record.SecondStockSymbol),
+  stockStructure: record.StockStructure,
+  salePrice: stringOrNil(record.SalePrice),
+  dateOfSale: stringOrNil(record.DateOfSale),
 }));
 
 /*

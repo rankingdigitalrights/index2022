@@ -60,9 +60,14 @@ export type CompanyMeta = {
   website: string;
   marketCap: string;
   marketCapDate: string;
-  exchange: string;
-  stockSymbol: string;
+  stockStructure: string;
+  exchange?: string;
+  stockSymbol?: string;
+  exchangeAlt?: string;
+  stockSymbolAlt?: string;
   operatingCompany?: string;
+  dateOfSale?: string;
+  salePrice?: string;
 };
 
 export type CompanyDetails = {

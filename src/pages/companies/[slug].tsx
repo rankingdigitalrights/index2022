@@ -223,9 +223,30 @@ const CompanyPage = ({
                   {meta.marketCap} ({meta.marketCapDate})
                 </li>
 
+                {meta.dateOfSale && meta.salePrice && (
+                  <li className="pb-0">
+                    <span className="font-bold">Sale:</span> {meta.salePrice} (
+                    {meta.dateOfSale})
+                  </li>
+                )}
+
+                {meta.exchange && meta.stockSymbol && (
+                  <li className="pt-3 pb-0">
+                    <span className="font-bold">{meta.exchange}:</span>{" "}
+                    {meta.stockSymbol}
+                  </li>
+                )}
+
+                {meta.exchangeAlt && meta.stockSymbolAlt && (
+                  <li className="pt-3 pb-0">
+                    <span className="font-bold">{meta.exchangeAlt}:</span>{" "}
+                    {meta.stockSymbolAlt}
+                  </li>
+                )}
+
                 <li className="pt-3 pb-0">
-                  <span className="font-bold">{meta.exchange}:</span>{" "}
-                  {meta.stockSymbol}
+                  <span className="font-bold">Stock structure:</span>{" "}
+                  {meta.stockStructure}
                 </li>
 
                 <li className="pt-3 pb-0">
@@ -237,10 +258,9 @@ const CompanyPage = ({
 
             <div className="border-b border-disabled-light w-full py-6">
               <p>
-                The 2022 RDR Index covers policies that were active between
-                February 8, 2019, and September 15, 2022. Policies that came
-                into effect after September 15, 2022 were not evaluated for this
-                Index.
+                The 2022 Big Tech Scorecard covers policies that were active on
+                November 1, 2021. Policies that came into effect after November
+                1, 2021, were not evaluated for this ranking
               </p>
 
               <p className="pb-0">

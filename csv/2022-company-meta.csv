@@ -1,15 +1,15 @@
-Company,LeadResearchers,OperatingCompanyEvaluated,Website,MarketCap,MarketCapDate,Exchange,StockSymbol
-Alibaba,"Jie Zhang, Veszna Wessenauer",NA,https://www.alibabagroup.com/,$713.1 billion,"as of February 4, 2021",NYSE,BABA
-Amazon,"Veszna Wessenauer, Jie Zhang",NA,https://www.amazon.com/,$1.67 trillion,"as of February 4, 2021",NasdaqGS,AMZN
-Apple,"Veszna Wessenauer, Afef Abrougui",NA,https://www.apple.com/,$2.35 trillion,"as of February 4, 2021",NasdaqGS,AAPL
-Baidu,Jie Zhang and Zak Rogoff,NA,https://www.baidu.com/,$88.95 billion,"as of February 4, 2021",NasdaqGS,BIDU
-Facebook,"Jan Rydzak, Veszna Wessenauer",NA,https://www.facebook.com/,$759.3 billion,"as of February 4, 2021",NasdaqGS,FB
-Google,"Veszna Wessenauer, Jan Rydzak",NA,https://www.google.com/,$1.4 trillion,"as of February 4, 2021",NasdaqGS,GOOGL
-Kakao,"Jie Zhang, Afef Abrougui",NA,https://www.kakaocorp.com/,$36 billion,"as of February 4, 2021",KRX,35720
-MailRu,"Afef Abrougui, Jie Zhang",NA,https://corp.mail.ru/,$6.4 billion,"as of February 4, 2021",LSE,MAIL
-Microsoft,"Jan Rydzak, Veszna Wessenauer",NA,https://www.microsoft.com/,$1.833 trillion,"as of February 4, 2021",NasdaqGS,MSFT
-Samsung,"Jie Zhang, Afef Abrougui",NA,https://www.samsung.com/,$490 billion,"as of February 4, 2021",KRX,5930
-Tencent,"Jie Zhang, Zak Rogoff",NA,https://tencent.com/,$910.16 billion,"as of February 4, 2021",HKEX,700
-Twitter,"Zak Rogoff, Veszna Wessenauer",NA,https://www.twitter.com,$44.02 billion,"as of February 4, 2021",NYSE,TWTR
-Yandex,Afef Abrougui and Veszna Wessenauer,NA,https://yandex.com/,$22.796 billion,"as of February 4, 2021",NasdaqGS,YNDX
-Yahoo,"Jan Rydzak, Veszna Wessenauer",NA,,,,,
+Company,LeadResearchers,OperatingCompanyEvaluated,Website,MarketCap,MarketCapDate,Exchange,StockSymbol,StockStructure,SalePrice,DateOfSale,SecondExchange,SecondStockSymbol
+Alibaba,"Dumitrita Holdis, Jie Zhang",NA,https://www.alibabagroup.com/,$713.1 billion,"as of February 4, 2021",NYSE,BABA,"Single class, one vote per share. Company partners (insiders) have the exclusive right to nominate candidates for the board of directors.",NA,NA,HKEX,9988
+Amazon,Jie Zhang,NA,https://www.amazon.com/,$1.604 trillion,"as of January 19, 2022",NasdaqGS,AMZN,"Single class, one vote per share.",NA,NA,NA,NA
+Apple,"Afef Abrougui, Veszna Wessenauer",NA,https://www.apple.com/,$2.839 trillion,"as of January 14, 2022",NasdaqGS,AAPL,"Single class, one vote per share.",NA,NA,NA,NA
+Baidu,Jie Zhang,NA,https://www.baidu.com/,$88.95 billion,"as of February 4, 2021",NasdaqGS,BIDU,"Multi-class. Class A shareholders receive one vote per share; Class B (insider) shareholders receive ten votes per share.",NA,NA,HKEX,9888
+Facebook,"Afef Abrougui, Veszna Wessenauer",NA,https://www.meta.com/,$923.2 billion,"as of January 14, 2022",NasdaqGS,FB,"Multi-class. Class A shareholders receive one vote per share; Class B (insider) shareholders receive ten votes per share.",NA,NA,NA,NA
+Google,"Afef Abrougui, Jie Zhang",NA,https://www.google.com/,$1.7 trillion,"as of January 20, 2022",NasdaqGS,GOOGL,"Multi-class. Class A shareholders receive one vote per share; Class B (insider) shareholders receive ten votes per share; Class C shareholders have no voting rights.",NA,NA,NA,NA
+Kakao,"Mila Bajic, Zak Rogoff",NA,https://www.kakaocorp.com/,$42.698 billion,"as of January 3, 2022",KRX,35720,"Single class, one vote per share.",NA,NA,NA,NA
+MailRu,"Afef Abrougui, Veszna Wessenauer",NA,https://vk.company/ru/,$2.774 billion,"as of January 3, 2022",LSE,MAIL,"Multi-class. Ordinary Class shareholders receive one vote per share; Class A (insider) shareholders receive 25 votes per share.",NA,NA,NA,NA
+Microsoft,"Mila Bajic, Zak Rogoff",NA,https://www.microsoft.com/,$2.525 trillion,"as of January 3, 2022",NasdaqGS,MSFT,"Single class, one vote per share.",NA,NA,NA,NA
+Samsung,"Mila Bajic, Zak Rogoff",NA,https://www.samsung.com/,$441.720 billion,"as of January 3, 2022",KRX,5930,"Single class, one vote per share.",NA,NA,NA,NA
+Tencent,"Dumitrita Holdis, Jie Zhang",NA,https://tencent.com/,$910.16 billion,"as of February 4, 2021",HKEX,700,"Single class, one vote per share.",NA,NA,NA,NA
+Twitter,"Mila Bajic, Zak Rogoff",NA,https://www.twitter.com,$34.20 billion,"as of January 3, 2022",NYSE,TWTR,"Single class, one vote per share.",NA,NA,NA,NA
+Yandex,"Afef Abrougui, Veszna Wessenauer",NA,https://yandex.com/,$21.693 billion,"as of January 3, 2022",NasdaqGS,YNDX,"Multi-class. Class A shareholders receive one vote per share; Class B (insider) shareholders receive ten votes per share.",NA,NA,NA,NA
+Yahoo,"Mila Bajic, Zak Rogoff",NA,https://www.yahooinc.com/,NA,NA,NA,NA,"N/A. As a subsidiary of Apollo Global Management, Yahoo is not publicly traded as an independent company.","$5 billion ($4.25 billion in cash, plus preferred interests of $750 million)","September 1, 2021",NA,NA
