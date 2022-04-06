@@ -25,7 +25,6 @@ const ToggleLeftRight = ({labelLeft, labelRight, onChange, className}: ToggleLef
       <button
         className="relative inline-block w-10 align-middle select-none transition duration-200 ease-in"
         onClick={handleToggle}
-        // change this aria-label?
         aria-label="Toggle switch"
       >
         <label
