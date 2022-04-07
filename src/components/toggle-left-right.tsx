@@ -1,20 +1,23 @@
 import c from "clsx";
-import React, {useState} from "react";
+import React from "react";
 
 interface ToggleLeftRightProps {
   labelLeft: string;
   labelRight: string;
   onChange: (toggle: boolean) => void;
+  toggle: boolean;
   className?: string;
 }
 
-const ToggleLeftRight = ({labelLeft, labelRight, onChange, className}: ToggleLeftRightProps) => {
-  const [toggle, setToggle] = useState(false);
-
+const ToggleLeftRight = ({
+  labelLeft,
+  labelRight,
+  onChange,
+  toggle,
+  className,
+}: ToggleLeftRightProps) => {
   const handleToggle = () => {
-    const newToggle = !toggle;
-    onChange(newToggle);
-    setToggle(newToggle);
+    onChange(!toggle);
   };
 
   return (

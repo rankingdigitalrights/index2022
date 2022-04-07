@@ -1,9 +1,8 @@
-import React, { useState, useReducer, useEffect, useContext } from "react";
-import { useRouter } from "next/router";
-import { promises as fsP } from "fs";
+import React, {useState, useReducer, useEffect, useContext} from "react";
+import {useRouter} from "next/router";
+import {promises as fsP} from "fs";
 import path from "path";
 import c from "clsx";
-
 
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
@@ -11,13 +10,13 @@ import NarrativeTitle from "../components/narrative-title";
 import CategorySelector from "../components/category-selector";
 import CompanySelector from "../components/company-selector-simple";
 import RankChart from "../components/rank-chart-nolabel";
-import ServicesByCompany from "../components/services-per-company"
-import CompaniesByService from "../components/companies-per-service"
+import ServicesByCompany from "../components/services-per-company";
+import CompaniesByService from "../components/companies-per-service";
 import FlipAxis from "../components/flip-axis";
 import ToggleLeftRight from "../components/toggle-left-right";
 import Help from "../images/icons/help.svg";
 
-import { ModalContext } from "../context";
+import {ModalContext} from "../context";
 import {
   allCompanies,
   allServices,
@@ -33,9 +32,8 @@ import {
   ServiceKind,
   ServiceOption,
 } from "../types";
-import { uniqueBy } from "../utils";
-import Selector, { SingleValue } from "../components/selector";
-
+import {uniqueBy} from "../utils";
+import Selector, {SingleValue} from "../components/selector";
 
 type ServiceCompanyRanks = {
   [service in ServiceKind]: {
@@ -61,9 +59,9 @@ type State = {
 };
 
 type Action =
-  | { type: "setCategory"; category: IndicatorCategoryExt }
-  | { type: "setCompany"; company: CompanyRank | undefined }
-  | { type: "updateRankings" };
+  | {type: "setCategory"; category: IndicatorCategoryExt}
+  | {type: "setCompany"; company: CompanyRank | undefined}
+  | {type: "updateRankings"};
 interface ExplorerProps {
   // companies: CompanySelectOption[];
   serviceOptions: ServiceOption[];
@@ -73,9 +71,9 @@ interface ExplorerProps {
 
 export const getStaticProps = async () => {
   const services = (await allServices()).filter(
-    ({ kind }) => kind !== "Group" && kind !== "Operating Company",
+    ({kind}) => kind !== "Group" && kind !== "Operating Company",
   );
-  const serviceOptions = uniqueBy("kind", services).map(({ kind, kindName }) => ({
+  const serviceOptions = uniqueBy("kind", services).map(({kind, kindName}) => ({
     kind,
     label: kindName,
     value: kind,
@@ -93,31 +91,32 @@ export const getStaticProps = async () => {
   //   };
   // });
 
-  const companyRankings = await ([
-    "internet",
-  ] as CompanyKind[]).reduce(async (memo, kind) => {
-    return ([
-      "total",
-      "governance",
-      "freedom",
-      "privacy",
-    ] as IndicatorCategoryExt[]).reduce(async (agg, category) => {
-      const data = await agg;
-      const rankings = await companyRankingData(kind, category);
+  const companyRankings = await (["internet"] as CompanyKind[]).reduce(
+    async (memo, kind) => {
+      return ([
+        "total",
+        "governance",
+        "freedom",
+        "privacy",
+      ] as IndicatorCategoryExt[]).reduce(async (agg, category) => {
+        const data = await agg;
+        const rankings = await companyRankingData(kind, category);
 
-      if (!data[category]) {
-        data[category] = {} as {
-          [kind in CompanyKind]: CompanyRank[];
-        };
-      }
+        if (!data[category]) {
+          data[category] = {} as {
+            [kind in CompanyKind]: CompanyRank[];
+          };
+        }
 
-      data[category][kind] = rankings;
-      return data;
-    }, memo);
-  }, Promise.resolve({} as CompanyRanks));
+        data[category][kind] = rankings;
+        return data;
+      }, memo);
+    },
+    Promise.resolve({} as CompanyRanks),
+  );
 
   const serviceRankings = await serviceOptions.reduce(
-    async (memo, { kind: service }) => {
+    async (memo, {kind: service}) => {
       const files = await fsP.readdir(
         path.join(process.cwd(), "data/rankings", service),
       );
@@ -216,7 +215,7 @@ const reducer = (state: State, action: Action) => {
         category: action.category,
         platformRankings: state.service
           ? state.serviceRankings[state.service.kind]?.[action.category]
-            ?.internet
+              ?.internet
           : state.companyRankings[action.category]?.internet,
       };
     case "setCompany":
@@ -224,8 +223,7 @@ const reducer = (state: State, action: Action) => {
         ...state,
         service: action.company,
         platformRankings: action.company
-          ? state.companyRankings[action.company]?.[state.category]
-            ?.internet
+          ? state.companyRankings[action.company]?.[state.category]?.internet
           : state.companyRankings[state.category]?.internet,
       };
     default:
@@ -244,17 +242,17 @@ const Explorer = ({
   // const { toggleModal } = useContext(ModalContext); // useModalCtx();
 
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
-  const [literalValues, setLiteralValues] = useState(true);
-  const [axis, setAxis] = useState(true)
+  const [typeOfGraph, setTypeOfGraph] = useState("total");
+  const [axis, setAxis] = useState(true);
 
   const [state, dispatch] = useReducer(
     reducer,
     {
       category: "total",
-      service: serviceOptions.find(({ kind }) => kind === queryService),
+      service: serviceOptions.find(({kind}) => kind === queryService),
       platformRankings: undefined,
       serviceRankings,
-      companyRankings
+      companyRankings,
     },
     initializeState,
   );
@@ -264,25 +262,29 @@ const Explorer = ({
     // Ensure that we run this hook only once.
     if (!firstRender) return;
 
-    router.push("/explore", undefined, { shallow: true });
+    router.push("/explore", undefined, {shallow: true});
     setFirstRender(false);
   }, [router, firstRender]);
 
   const handleSelectCategory = (category: IndicatorCategoryExt): void => {
-    dispatch({ type: "setCategory", category });
+    dispatch({type: "setCategory", category});
   };
 
   const handleCompanySelect = (company?: CompanyRank) => {
-    dispatch({ type: "setCompany", company });
+    dispatch({type: "setCompany", company});
   };
 
-  const handleServicesToggle = (toggle: boolean) => {
-    setLiteralValues(toggle)
+  const handleTypeOfGraphToggle = (toggle: boolean) => {
+    if (toggle) {
+      setTypeOfGraph("services");
+    } else {
+      setTypeOfGraph("total");
+    }
   };
 
   const handleFlipAxis = (toggle: boolean) => {
-    setAxis(toggle)
-  }
+    setAxis(toggle);
+  };
 
   const handleSelectCompany = (ids: string[]) => {
     setSelectedCompanies(ids);
@@ -298,7 +300,7 @@ const Explorer = ({
   return (
     <Layout>
       <NarrativeContainer transparent>
-        {({ Container }) => {
+        {({Container}) => {
           return (
             <div>
               <Container>
@@ -312,27 +314,24 @@ const Explorer = ({
                   <ToggleLeftRight
                     labelLeft="Totals"
                     labelRight="Services"
-                    onChange={handleServicesToggle}
+                    toggle={typeOfGraph === "total" ? false : true}
+                    onChange={handleTypeOfGraphToggle}
                   />
                   {/* <button
-                    onClick={() => {
+                      onClick={() => {
                       toggleModal({
-                        title:
-                          "Toggle between displaying company totals, or displaying the breakdown of scores by the services that each company provides.",
-                        content: helpText,
+                      title:
+                      "Toggle between displaying company totals, or displaying the breakdown of scores by the services that each company provides.",
+                      content: helpText,
                       });
-                    }}
-                  >
-                    <Help className="w-5 h-5 ml-3" aria-label="Help icon" />
-                  </button> */}
+                      }}
+                      >
+                      <Help className="w-5 h-5 ml-3" aria-label="Help icon" />
+                      </button> */}
 
-                  {(!literalValues) && (
-                    <FlipAxis
-                      label="Flip axis"
-                      onChange={handleFlipAxis}
-                    />
+                  {typeOfGraph === "services" && (
+                    <FlipAxis label="Flip axis" onChange={handleFlipAxis} />
                   )}
-
                 </div>
                 <div className="flex flex-col items-center mt-8">
                   {/* pass a list of companies here */}
@@ -352,41 +351,39 @@ const Explorer = ({
 
               <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
                 <div
-                  style={{ minHeight: "22rem" }}
+                  style={{minHeight: "22rem"}}
                   className={c(
-                    "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3"
+                    "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3",
                   )}
                 >
-
-                  {(literalValues) ?
-                    (<RankChart
+                  {typeOfGraph === "total" && (
+                    <RankChart
                       ranking={state.platformRankings}
                       category={state.category}
                       hasHeader
-                    />)
-                    : (axis ?
-                      (<ServicesByCompany
-                      // category={state.category}
-                      // axis="toggle up or down"
-                      // props="find props"
-                      />)
-                      :
-                      // if state.axis is false, show companies by service
-                      (<CompaniesByService
-                      // category={state.category}
-                      // axis="toggle up or down"
-                      // props="find props"
-                      />)
-                    )
-                  });
-
+                    />
+                  )}
+                  {typeOfGraph === "services" && axis && (
+                    <ServicesByCompany
+                      category={state.category}
+                      axis="toggle up or down"
+                      props="find props"
+                    />
+                  )}
+                  {typeOfGraph === "services" && !axis && (
+                    <CompaniesByService
+                      category={state.category}
+                      axis="toggle up or down"
+                      props="find props"
+                    />
+                  )}
                 </div>
               </div>
-            </div >
+            </div>
           );
         }}
-      </NarrativeContainer >
-    </Layout >
+      </NarrativeContainer>
+    </Layout>
   );
 };
 
