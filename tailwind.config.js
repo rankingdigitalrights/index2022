@@ -13,7 +13,6 @@ module.exports = {
   safelist: [
     "bg-disabled-light",
     "italic",
-    "font-bold",
     "fill-2017",
     "fill-2018",
     "fill-2019",
@@ -28,6 +27,7 @@ module.exports = {
 
       fontFamily: {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+        serif: ["Source Serif Pro", ...defaultTheme.fontFamily.serif],
       },
 
       fontSize: {

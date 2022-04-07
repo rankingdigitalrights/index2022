@@ -1,9 +1,11 @@
 import c from "clsx";
 import React from "react";
 
-import LogoEmail from "../images/icons/logo-email.svg";
+import LogoCreativeCommonsBy from "../images/icons/logo-creative-commons-by.svg";
+import LogoCreativeCommons from "../images/icons/logo-creative-commons.svg";
 import LogoLinkedin from "../images/icons/logo-linkedin.svg";
 import LogoTwitter from "../images/icons/logo-twitter.svg";
+import LogoLarge from "../images/logo_large.svg";
 
 interface FooterProps {
   className?: string;
@@ -11,100 +13,78 @@ interface FooterProps {
 
 const Footer = ({className}: FooterProps) => {
   return (
-    <footer className={c("bg-black font-bold text-white text-sm", className)}>
-      <div className="lg:container lg:mx-auto flex flex-col justify-center md:h-48">
-        <div className="flex flex-col md:flex-row md:justify-between divide-y-2 md:divide-y-0 md:divide-x-2 divide-solid divide-white">
-          <div className="md:w-1/3 py-3 md:px-3 lg:py-6 lg:pl-6">
-            <ul className="footer list-none">
-              <li className="pb-1">
-                <a
-                  className="text-white no-underline"
-                  href="https://rankingdigitalrights.org/about/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  About RDR
-                </a>
-              </li>
-              <li className="pb-1">
-                <a
-                  className="text-white no-underline"
-                  href="https://rankingdigitalrights.org/index2022/methodology"
-                >
-                  2022 RDR Index methodology
-                </a>
-              </li>
-              <li className="pb-1">
-                <a
-                  className="text-white no-underline"
-                  href="https://rankingdigitalrights.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Ranking Digital Rights main site
-                </a>
-              </li>
-              <li className="pb-1">
-                <a
-                  className="text-white no-underline"
-                  href="https://rankingdigitalrights.org/index2022/"
-                >
-                  2022 RDR Corporate Accountability Index
-                </a>
-              </li>
-            </ul>
-          </div>
+    <footer
+      className={c(
+        "bg-prissian font-serif text-white text-lg pt-12 pb-20",
+        className,
+      )}
+    >
+      <div className="lg:container lg:mx-auto flex flex-col justify-center ">
+        <div className="flex flex-col md:flex-row md:flex-row-reverse md:justify-between">
+          <div className="md:w-1/2 py-3 ml-8 md:px-3 lg:py-6 lg:pl-6">
+            <LogoLarge className="max-h-10 md:max-h-20 mb-16" />
 
-          <div className="md:w-1/3 py-3 md:px-3 lg:py-6 lg:pl-6">
-            <ul className="footer list-none">
-              <li className="pb-1">
+            <dl>
+              <dd className="font-semibold">Media requests:</dd>
+              <dt className="mb-16">
                 <a
-                  className="text-white no-underline flex items-center"
-                  href="https://twitter.com/rankingrights"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <LogoTwitter
-                    className="flex-none w-3 h-3"
-                    aria-label="Twitter Logo"
-                  />
-                  <span className="ml-2">RankingRights</span>
-                </a>
-              </li>
-              <li className="pb-1">
-                <a
-                  className="text-white no-underline flex items-center"
-                  href="https://www.linkedin.com/company/ranking-digital-rights"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <LogoLinkedin
-                    className="flex-none w-3 h-3"
-                    aria-label="Linkedin Logo"
-                  />
-                  <span className="ml-2">Linkedin</span>
-                </a>
-              </li>
-              <li className="pb-1">
-                <a
-                  className="text-white no-underline flex items-center mt-1"
+                  className="text-white font-normal"
                   href="mailto:comms@rankingdigitalrights.org"
                 >
-                  <LogoEmail
-                    className="flex-none place-self-start w-3 h-3"
-                    aria-label="Email Logo"
-                  />
-                  <span className="ml-2 leading-none">Media inquiries</span>
+                  comms@rankingdigitalrights.org
                 </a>
-              </li>
-            </ul>
+              </dt>
+
+              <dd className="font-semibold">Other inquires:</dd>
+              <dt>
+                <a
+                  className="text-white font-normal"
+                  href="mailto:info@rankingdigitalrights.org"
+                >
+                  info@rankingdigitalrights.org
+                </a>
+              </dt>
+            </dl>
           </div>
 
-          <div className="md:w-1/3 py-3 md:px-3 lg:py-6 lg:pl-6">
-            <ul className="footer list-none">
-              <li className="pb-1">
+          <div className="md:w-1/2 py-3 md:px-3 lg:py-6 lg:pl-6 mx-auto text-center md:text-left md:mx-none">
+            <ul className="footer list-none mt-8">
+              <li>
                 <a
-                  className="text-white no-underline"
+                  className="font-sans font-medium font-normal md:text-xl text-white no-underline"
+                  href="https://rankingdigitalrights.org/who-we-are/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Who we are
+                </a>
+              </li>
+
+              <li>
+                <a
+                  className="font-sans font-medium font-normal md:text-xl text-white no-underline"
+                  href="https://rankingdigitalrights.org/news"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  News &amp; Events
+                </a>
+              </li>
+
+              <li className="pb-2">
+                <a
+                  className="font-sans font-medium font-normal md:text-xl text-white no-underline"
+                  href="https://rankingdigitalrights.org/opportunities"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Opportunities
+                </a>
+              </li>
+
+              <li>
+                <a
+                  className="font-normal text-white no-underline"
                   href="https://rankingdigitalrights.org/privacypolicy"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -112,25 +92,77 @@ const Footer = ({className}: FooterProps) => {
                   Privacy policy
                 </a>
               </li>
-              <li className="pb-1">
+
+              <li>
                 <a
-                  className="text-white no-underline"
-                  href="https://rankingdigitalrights.org/who/partners/"
+                  className="font-normal text-white no-underline"
+                  href="https://www.classy.org/give/325264/#!/donation/checkout"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Funders and partners
+                  Support RDR
                 </a>
               </li>
-              <li className="pb-1">
+
+              <li className="pb-2">
                 <a
-                  href="http://creativecommons.org/licenses/by/4.0/"
+                  className="font-normal text-white no-underline"
+                  href="https://rankingdigitalrights.org/newsletter/"
                   target="_blank"
-                  rel="license noopener noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  <img
-                    alt="Creative Commons License"
-                    src="https://i.creativecommons.org/l/by/4.0/88x31.png"
+                  Subscribe
+                </a>
+              </li>
+
+              <li className="pb-1 flex flex-row">
+                <a
+                  className="text-white no-underline flex items-center"
+                  href="https://twitter.com/rankingrights"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LogoTwitter
+                    className="w-6 h-6 fill-white"
+                    aria-label="Twitter Logo"
+                  />
+                  <span className="ml-2 sr-only">Twitter</span>
+                </a>
+
+                <a
+                  className="text-white no-underline flex items-center ml-8"
+                  href="https://www.linkedin.com/company/ranking-digital-rights"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LogoLinkedin
+                    className="w-6 h-6 fill-white"
+                    aria-label="Linkedin Logo"
+                  />
+                  <span className="ml-2 sr-only">Linkedin</span>
+                </a>
+
+                <a
+                  className="text-white no-underline ml-16"
+                  href="https://creativecommons.org/licenses/by/4.0/legalcode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LogoCreativeCommons
+                    className="w-6 h-6 fill-white"
+                    aria-label="Linkedin Logo"
+                  />
+                </a>
+
+                <a
+                  className="text-white no-underline ml-2"
+                  href="https://creativecommons.org/licenses/by/4.0/legalcode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LogoCreativeCommonsBy
+                    className="w-6 h-6 fill-white"
+                    aria-label="Creative Commons By Logo"
                   />
                 </a>
               </li>
