@@ -31,14 +31,14 @@ Baidu,itSec,Security,67
 Baidu,itPri,Private requests,2
 Baidu,itDat,Data handling,26
 Baidu,itUsa,User agency,24
-Facebook,itAlg,Algorithmic transparency,22
-Facebook,itAds,Targeted advertising,35
-Facebook,itMod,Content governance/moderation,38
-Facebook,itGoc,Government demands for data/censorship,68
-Facebook,itSec,Security,53
-Facebook,itPri,Private requests,13
-Facebook,itDat,Data handling,39
-Facebook,itUsa,User agency,46
+Meta,itAlg,Algorithmic transparency,22
+Meta,itAds,Targeted advertising,35
+Meta,itMod,Content governance/moderation,38
+Meta,itGoc,Government demands for data/censorship,68
+Meta,itSec,Security,53
+Meta,itPri,Private requests,13
+Meta,itDat,Data handling,39
+Meta,itUsa,User agency,46
 Google,itAlg,Algorithmic transparency,14
 Google,itAds,Targeted advertising,43
 Google,itMod,Content governance/moderation,36
@@ -55,14 +55,14 @@ Kakao,itSec,Security,64
 Kakao,itPri,Private requests,29
 Kakao,itDat,Data handling,34
 Kakao,itUsa,User agency,38
-MailRu,itAlg,Algorithmic transparency,9
-MailRu,itAds,Targeted advertising,29
-MailRu,itMod,Content governance/moderation,17
-MailRu,itGoc,Government demands for data/censorship,19
-MailRu,itSec,Security,61
-MailRu,itPri,Private requests,2
-MailRu,itDat,Data handling,30
-MailRu,itUsa,User agency,28
+VK,itAlg,Algorithmic transparency,9
+VK,itAds,Targeted advertising,29
+VK,itMod,Content governance/moderation,17
+VK,itGoc,Government demands for data/censorship,19
+VK,itSec,Security,61
+VK,itPri,Private requests,2
+VK,itDat,Data handling,30
+VK,itUsa,User agency,28
 Microsoft,itAlg,Algorithmic transparency,21
 Microsoft,itAds,Targeted advertising,33
 Microsoft,itMod,Content governance/moderation,37
