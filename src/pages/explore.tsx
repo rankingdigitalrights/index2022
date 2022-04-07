@@ -1,21 +1,20 @@
-import React, {useState, useReducer, useEffect, useContext} from "react";
-import {useRouter} from "next/router";
-import {promises as fsP} from "fs";
-import path from "path";
 import c from "clsx";
+import {promises as fsP} from "fs";
+import {useRouter} from "next/router";
+import path from "path";
+import React, {useContext, useEffect, useReducer, useState} from "react";
 
+import CategorySelector from "../components/category-selector";
+import CompaniesByService from "../components/companies-per-service";
+import CompanySelector from "../components/company-selector-simple";
+import FlipAxis from "../components/flip-axis";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
-import CategorySelector from "../components/category-selector";
-import CompanySelector from "../components/company-selector-simple";
 import RankChart from "../components/rank-chart-nolabel";
+import Selector, {SingleValue} from "../components/selector";
 import ServicesByCompany from "../components/services-per-company";
-import CompaniesByService from "../components/companies-per-service";
-import FlipAxis from "../components/flip-axis";
 import ToggleLeftRight from "../components/toggle-left-right";
-import Help from "../images/icons/help.svg";
-
 import {ModalContext} from "../context";
 import {
   allCompanies,
@@ -23,6 +22,7 @@ import {
   companyRankingData,
   companyServiceRankingData,
 } from "../data";
+import Help from "../images/icons/help.svg";
 import {
   CompanyKind,
   CompanyRank,
@@ -33,7 +33,6 @@ import {
   ServiceOption,
 } from "../types";
 import {uniqueBy} from "../utils";
-import Selector, {SingleValue} from "../components/selector";
 
 type ServiceCompanyRanks = {
   [service in ServiceKind]: {
@@ -55,7 +54,7 @@ type State = {
   platformRankings: CompanyRank[] | ServiceCompanyRank[] | undefined;
   serviceRankings: ServiceCompanyRanks;
   companyRankings: CompanyRanks;
-  axis: Boolean;
+  axis: boolean;
 };
 
 type Action =
@@ -314,7 +313,7 @@ const Explorer = ({
                   <ToggleLeftRight
                     labelLeft="Totals"
                     labelRight="Services"
-                    toggle={typeOfGraph === "total" ? false : true}
+                    toggle={typeOfGraph !== "total"}
                     onChange={handleTypeOfGraphToggle}
                   />
                   {/* <button

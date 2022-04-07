@@ -27,7 +27,8 @@ const RankChart = ({
 }: RankChartProps) => {
   const [chartRef, chartWidth] = useChartResize();
 
-  const [highlightedCompany, setHighlightedCompany] = useState<string | undefined
+  const [highlightedCompany, setHighlightedCompany] = useState<
+    string | undefined
   >();
 
   const categoryClassName = {
@@ -37,7 +38,7 @@ const RankChart = ({
     "text-prissian": category === "total",
   };
 
-  const companyWidth = "w-24"
+  const companyWidth = "w-24";
 
   const chartRow = (
     {id, companyPretty, score, rank}: CompanyRank,
@@ -54,7 +55,7 @@ const RankChart = ({
 
     const rankClassName = {
       "bg-prissian": isHighlightedCompany,
-      "bg-diff-del": !isHighlightedCompany
+      "bg-diff-del": !isHighlightedCompany,
     };
 
     const barClassName =
@@ -126,8 +127,8 @@ const RankChart = ({
             />
           </svg>
         </div>
-          <span className="pl-1 pr-1 select-none float-right">{score}%</span>
-        </div>
+        <span className="pl-1 pr-1 select-none float-right">{score}%</span>
+      </div>
     );
   };
 

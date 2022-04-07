@@ -1,7 +1,8 @@
 import c from "clsx";
-import React, { useState } from "react";
-import Down from "../images/icons/axis-down.svg"
-import Up from "../images/icons/axis-up.svg"
+import React, {useState} from "react";
+
+import Down from "../images/icons/axis-down.svg";
+import Up from "../images/icons/axis-up.svg";
 
 interface FlipAxisProps {
   label: string;
@@ -9,7 +10,7 @@ interface FlipAxisProps {
   className?: string;
 }
 
-const FlipAxis = ({ label, onChange, className }: FlipAxisProps) => {
+const FlipAxis = ({label, onChange, className}: FlipAxisProps) => {
   const [toggle, setToggle] = useState(false);
 
   const handleToggle = () => {
@@ -36,7 +37,7 @@ const FlipAxis = ({ label, onChange, className }: FlipAxisProps) => {
           // )}
         > */}
         {/* </label> */}
-        {toggle ? <Up/> : <Down />}
+        {toggle ? <Up /> : <Down />}
       </button>
     </div>
   );

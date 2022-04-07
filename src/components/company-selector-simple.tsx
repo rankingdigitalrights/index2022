@@ -11,12 +11,7 @@ import Select, {
 
 import {CompanySelectOption} from "../types";
 import CompanyTag from "./company-tag";
-import {
-  Control,
-  IndicatorSeparator,
-  Input,
-  Placeholder,
-} from "./selector";
+import {Control, IndicatorSeparator, Input, Placeholder} from "./selector";
 
 interface CompanySelectorProps {
   companies: CompanySelectOption[];
@@ -115,7 +110,6 @@ const CompanySelector = ({
   };
 
   // const internetCompanies = companies.filter(({kind}) => kind === "internet");
-
 
   return (
     <div

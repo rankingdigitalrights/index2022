@@ -20,10 +20,10 @@ const ChartSubHeadingBar = ({
   width,
   className,
   height = 8,
-  // transform = "translate(0,0)",
-  // orientation = "horizontal",
-  // roundedCorners = true,
-}: ChartSubHeadingBarProps) => {
+}: // transform = "translate(0,0)",
+// orientation = "horizontal",
+// roundedCorners = true,
+ChartSubHeadingBarProps) => {
   const t = useTween("inOutQuad", 800);
   // const rx = roundedCorners ? 5 : 0;
 
@@ -42,12 +42,11 @@ const ChartSubHeadingBar = ({
   let percentage: string | number = 0;
 
   if (isNumber(width)) {
-    percentage =
-      scaleLinear(
-        [0, 100],
-        // [0, orientation === "horizontal" ? width : height],
+    percentage = scaleLinear(
+      [0, 100],
+      // [0, orientation === "horizontal" ? width : height],
       // )(value) * t;
-      )
+    );
   } else if (width === "100%") {
     const percentageRaw = scaleLinear([0, 100], [0, 100])(value);
     percentage = `${percentageRaw}%`;
@@ -57,7 +56,7 @@ const ChartSubHeadingBar = ({
     <g
       width={`${percentage}%`}
       transform={
-        // orientation === "horizontal"
+        orientation === "horizontal"
           ? transform
           : `scale(1,-1) translate(0,-${height})`
       }
