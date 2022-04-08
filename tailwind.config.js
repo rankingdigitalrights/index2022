@@ -76,6 +76,13 @@ module.exports = {
           freedom: "#BCEBE8",
         },
 
+        arrow: {
+          turquoise: "#21BBB2",
+          yellow: "#EBA300",
+          blue: "#4D9ECF",
+          red: "#EC6A5A",
+        },
+
         2017: "#FFA47C",
         2018: "#F48E64",
         2019: "#DC5F38",

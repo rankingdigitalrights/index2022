@@ -110,6 +110,11 @@
     background-image: url("../images/bg-key-findings.jpg?size=600");
   }
 
+  .bg-landing-page {
+    @apply bg-cover;
+    background-image: url("../images/bg-landing-page.jpg?size=600");
+  }
+
   /* Get rid of the border outlines on button unless user is actually tabbing. */
   body:not(.user-is-tabbing) button:focus,
   body:not(.user-is-tabbing) input:focus,
@@ -287,6 +292,10 @@
   .italic {
     font-style: italic;
   }
+
+  .rotate-arrow {
+    @apply transform rotate-180;
+  }
 }
 
 /* For some reason unknown to me those styles are being removed during build.
@@ -329,4 +338,40 @@
 .feature-box h2:first-child,
 .feature-box h3:first-child {
   @apply mt-0;
+}
+
+.beige-grid-col {
+  grid-area: 3 / 1 / 4 / 1;
+}
+
+.overlay-grid-col {
+  grid-area: 3 / 1 / 4 / 1;
+}
+
+@media (min-width: 768px) {
+  .overlay-grid-col {
+    grid-area: 2 / 1 / 4 / 4;
+  }
+
+  .beige-grid-col {
+    grid-area: 2 / 1 / 2 / 4;
+  }
+
+  .disabled-grid-col {
+    grid-area: 3 / 1 / 4 / 4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .overlay-grid-col {
+    grid-area: 1 / 3 / 3 / 3;
+  }
+
+  .beige-grid-col {
+    grid-area: 1 / 3 / 2 / 3;
+  }
+
+  .disabled-grid-col {
+    grid-area: 2 / 3 / 3 / 3;
+  }
 }
