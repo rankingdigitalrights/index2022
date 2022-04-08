@@ -125,11 +125,11 @@ const CompanySelector = ({
   };
 
   const internetCompanies = companies.filter(({kind}) => kind === "internet");
-  const telecomCompanies = companies.filter(({kind}) => kind === "telecom");
+  // const telecomCompanies = companies.filter(({kind}) => kind === "telecom");
 
   const options = [
     {kind: "internet", options: internetCompanies},
-    {kind: "telecom", options: telecomCompanies},
+    // {kind: "telecom", options: telecomCompanies},
   ];
 
   return (
@@ -140,7 +140,7 @@ const CompanySelector = ({
 
       <Select
         instanceId="company-select"
-        placeholder="All companies"
+        placeholder="Select companies"
         options={options}
         value={companies.filter((obj) => selected.includes(obj.value))}
         isMulti

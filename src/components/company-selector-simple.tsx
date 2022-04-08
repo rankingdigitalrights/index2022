@@ -13,6 +13,8 @@ import {CompanySelectOption} from "../types";
 import CompanyTag from "./company-tag";
 import {Control, IndicatorSeparator, Input, Placeholder} from "./selector";
 
+// FIXME: This is the same component as company-selector, but with label commented out. Eventually it would be better to add a 'label' property to the original selector, by which the label can optionally be displayed depending on which page is employing the selector component
+
 interface CompanySelectorProps {
   companies: CompanySelectOption[];
   selected: string[];
