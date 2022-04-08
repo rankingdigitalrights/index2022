@@ -6,7 +6,7 @@ import React, { useEffect, useReducer, useState } from "react";
 
 import CategorySelector from "../components/category-selector";
 import CompaniesByService from "../components/companies-per-service";
-import CompanySelector from "../components/company-selector-simple";
+import CompanySelector from "../components/company-selector";
 import FlipAxis from "../components/flip-axis";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
@@ -34,14 +34,10 @@ export const getStaticProps = async () => {
   }));
 
   const companies = await allCompanies();
-  const companySelectors = companies.map(({ id: companyId, name, kind }) => {
-    // FIXME: Score is hardcoded and it is unclear if it is even required.
-    const score = { score: 20 };
-
+  const companySelector = companies.map(({ id: companyId, name, kind }) => {
     return {
       value: companyId,
       label: name,
-      score: score ? score.score : "NA",
       kind,
     };
   });
@@ -131,7 +127,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      companySelectors,
+      companySelector,
       serviceOptions,
       serviceRankings,
       companyRankings,
@@ -175,7 +171,7 @@ const reducer = (state, action) => {
 };
 
 const Explorer = ({
-  companySelectors,
+  companySelector,
   serviceOptions,
   serviceRankings,
   companyRankings,
@@ -256,7 +252,7 @@ const Explorer = ({
                 <div className="flex flex-col items-center mt-8">
                   <CompanySelector
                     className="flex-none w-full md:w-10/12 "
-                    companies={companySelectors}
+                    companies={companySelector}
                     selected={selectedCompanies}
                     onSelect={handleSelectCompany}
                   />
@@ -280,8 +276,7 @@ const Explorer = ({
                       ranking={
                         selectedCompanies.length > 0
                           ? state.platformRankings.filter(({ id }) =>
-                            selectedCompanies.includes(id),
-                          )
+                            selectedCompanies.includes(id),)
                           : state.platformRankings
                       }
                       category={state.category}
@@ -292,8 +287,10 @@ const Explorer = ({
                     <ServicesByCompany
                       category={state.category}
                       axis="toggle up or down"
-                      props="find props"
-                      data={servicesByCompany}
+                      companies={selectedCompanies.length > 0
+                        ? servicesByCompany.filter(({ id }) =>
+                          selectedCompanies.includes(id),)
+                        : servicesByCompany}
                     />
                   )}
                   {typeOfGraph === "services" && !axis && (
