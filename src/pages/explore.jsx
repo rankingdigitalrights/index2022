@@ -6,7 +6,8 @@ import React, { useEffect, useReducer, useState } from "react";
 
 import CategorySelector from "../components/category-selector";
 import CompaniesByService from "../components/companies-per-service";
-import CompanySelector from "../components/company-selector";
+// FIXME: eventually switch this out for the original company-selector component with an optional label property added
+import CompanySelector from "../components/company-selector-simple";
 import FlipAxis from "../components/flip-axis";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
@@ -71,7 +72,6 @@ export const getStaticProps = async () => {
       };
     })
   );
-
   const companyRankings = await ["internet"].reduce(async (memo, kind) => {
     return ["total", "governance", "freedom", "privacy"].reduce(
       async (agg, category) => {
