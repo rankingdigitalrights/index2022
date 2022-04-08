@@ -97,6 +97,7 @@ export type Company = {
   name: string;
   kind: CompanyKind;
   brand?: string;
+  region: string;
 };
 
 export type CompanyCategoryYearOverYear = {
@@ -393,3 +394,8 @@ export type Glossary = {
   title: string;
   text: string;
 };
+
+export type CompanyYearOverYear = Omit<
+  CompanyCategoryYearOverYear,
+  "category"
+> & {region: string};

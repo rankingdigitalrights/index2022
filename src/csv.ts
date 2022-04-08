@@ -521,11 +521,12 @@ export const companies = memoizeAsync(
       "csv/2022-company-specs.csv",
     );
     return csvCompanySpecs.map(
-      ({company: id, companyPretty: name, kind, brand}) => ({
+      ({company: id, companyPretty: name, kind, brand, region}) => ({
         id,
         name,
         kind,
         brand,
+        region,
       }),
     );
   },
