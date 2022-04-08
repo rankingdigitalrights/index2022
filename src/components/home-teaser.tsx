@@ -12,7 +12,7 @@ const HomeTeaser = () => {
       </div>
 
       <div className="lg:container lg:mx-auto flex flex-col md:flex-row">
-        <div className="md:w-1/2 items-center bg-accent-red z-10">
+        <div className="md:w-1/3 items-center bg-accent-red z-10">
           <HomeBox title="2022 Big Tech Scorecard" href="/intro-essay">
             <div className="flex flex-col h-full justify-end">
               <p>
@@ -25,7 +25,7 @@ const HomeTeaser = () => {
           </HomeBox>
         </div>
 
-        <div className="md:w-1/2 bg-prissian flex flex-col justify-around">
+        <div className="md:w-2/3 bg-prissian flex flex-col justify-around">
           <HomeLogo />
         </div>
       </div>
