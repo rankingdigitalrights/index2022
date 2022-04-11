@@ -1,7 +1,5 @@
 import React from "react";
 import Link from "next/link";
-
-import c from "clsx";
 import { useChartResize } from "../hooks";
 import { mapIcon } from "./evaluated-service";
 import PercentageBar from "./percentage-bar"
@@ -87,7 +85,9 @@ const ServicesByCompany = (props) => {
             />
           </svg>
         </div>
-        <span className="w-4 flex-none select-none float-right text-right text-xs">{score}%</span>
+        <div>
+          <span className="w-4 flex-none select-none float-right text-right text-xs">{score}%</span>
+        </div>
       </div>
     );
   };
@@ -111,30 +111,3 @@ const ServicesByCompany = (props) => {
 }
 
 export default ServicesByCompany;
-
-
-
-
-
-  // companies [
-  //   { id: 'Alibaba',
-  //     name: 'Alibaba',
-  //     services: [
-  //        {
-  //          id: 'Taobao.com',
-  //          kind: 'eCommerce',
-  //          kindName: 'eCommerce',
-  //          name: 'Taobao.com',
-  //          categoryScore: { freedom: 28, governance: 13, privacy: 43, total: 34 }
-  //        },
-  //        {
-  //          id: 'AliGenie',
-  //          kind: 'pda',
-  //          kindName: 'Virtual assistant',
-  //          name: 'AliGenie',
-  //          categoryScore: { freedom: 11, governance: 9, privacy: 31, total: 21 }
-  //         }
-  //       ]
-  //    }
-  //  .....
-  // ]
