@@ -133,7 +133,7 @@ const RankChart = ({
   };
 
   return (
-    <div className={c("flex flex-col", className)}>
+    <div className={c("flex flex-col w-full", className)}>
       {hasHeader && (
         <>
           <div className="flex items-center font-circular text-sm mb-2 mt-3">

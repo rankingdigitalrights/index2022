@@ -6,6 +6,7 @@ import React, {useEffect, useReducer, useState} from "react";
 
 import CategorySelector from "../components/category-selector";
 import CompaniesByService from "../components/companies-per-service";
+// FIXME: eventually switch this out for the original company-selector component with an optional label property added
 import CompanySelector from "../components/company-selector-simple";
 import FlipAxis from "../components/flip-axis";
 import Layout from "../components/layout";
@@ -34,31 +35,53 @@ export const getStaticProps = async () => {
   }));
 
   const companies = await allCompanies();
-  const companySelectors = companies.map(({id: companyId, name, kind}) => {
-    // FIXME: Score is hardcoded and it is unclear if it is even required.
-    const score = {score: 20};
-
+  const companySelector = companies.map(({id: companyId, name, kind}) => {
     return {
       value: companyId,
       label: name,
-      score: score ? score.score : "NA",
       kind,
     };
   });
 
   const servicesByCompany = await Promise.all(
     companies.map(async ({id, name}) => {
-      // FIXME: Scores are missing from the company services.
-      const servicesForCompany = await companyServices(id);
+      const servicesPerCompany = await companyServices(id);
+      const filteredServices = servicesPerCompany.filter((service) => {
+        return service.kind !== "Group" && service.kind !== "Operating Company";
+      });
+      const serviceScores = await Promise.all(
+        filteredServices.map(async (filteredService) => {
+          // set an empty property on each service object to record the four category scores
+          // TODO Christo, change the data files ...
+          const service = {...filteredService, categoryScore: {}};
 
+          const files = await fsP.readdir(
+            path.join(process.cwd(), "data/rankings", service.kind),
+          );
+          // eslint-disable-next-line no-restricted-syntax
+          for (const file of files) {
+            // eslint-disable-next-line no-await-in-loop
+            const fileData = await fsP.readFile(
+              path.join(process.cwd(), "data/rankings", service.kind, file),
+            );
+            const parsed = JSON.parse(fileData);
+            parsed.forEach((item) => {
+              if (item.service === service.id) {
+                // eslint-disable-next-line no-param-reassign
+                service.categoryScore[item.category] = item.score;
+              }
+            });
+          }
+          return service;
+        }),
+      );
       return {
         id,
         name,
-        services: servicesForCompany,
+        services: serviceScores,
       };
     }),
   );
-
   const companyRankings = await ["internet"].reduce(async (memo, kind) => {
     return ["total", "governance", "freedom", "privacy"].reduce(
       async (agg, category) => {
@@ -114,7 +137,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      companySelectors,
+      companySelector,
       serviceOptions,
       serviceRankings,
       companyRankings,
@@ -158,7 +181,7 @@ const reducer = (state, action) => {
 };
 
 const Explorer = ({
-  companySelectors,
+  companySelector,
   serviceOptions,
   serviceRankings,
   companyRankings,
@@ -243,7 +266,7 @@ const Explorer = ({
                 <div className="flex flex-col items-center mt-8">
                   <CompanySelector
                     className="flex-none w-full md:w-10/12 "
-                    companies={companySelectors}
+                    companies={companySelector}
                     selected={selectedCompanies}
                     onSelect={handleSelectCompany}
                   />
@@ -278,16 +301,25 @@ const Explorer = ({
                   {typeOfGraph === "services" && axis && (
                     <ServicesByCompany
                       category={state.category}
-                      axis="toggle up or down"
-                      props="find props"
-                      data={servicesByCompany}
+                      companies={
+                        selectedCompanies.length > 0
+                          ? servicesByCompany.filter(({id}) =>
+                              selectedCompanies.includes(id),
+                            )
+                          : servicesByCompany
+                      }
                     />
                   )}
                   {typeOfGraph === "services" && !axis && (
                     <CompaniesByService
                       category={state.category}
-                      axis="toggle up or down"
-                      props="find props"
+                      companies={
+                        selectedCompanies.length > 0
+                          ? servicesByCompany.filter(({id}) =>
+                              selectedCompanies.includes(id),
+                            )
+                          : servicesByCompany
+                      }
                     />
                   )}
                 </div>
