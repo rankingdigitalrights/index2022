@@ -1,16 +1,15 @@
-import React from "react";
 import Link from "next/link";
-import { useChartResize } from "../hooks";
-import { mapIcon } from "./evaluated-service";
-import PercentageBar from "./percentage-bar"
+import React from "react";
 
+import {useChartResize} from "../hooks";
+import {mapIcon} from "./evaluated-service";
+import PercentageBar from "./percentage-bar";
 
 const ServicesByCompany = (props) => {
-
-  let category = props.category
-  let companies = props.companies
+  const {category} = props;
+  const {companies} = props;
   const [chartRef, chartWidth] = useChartResize();
-  const chartHeight = 10
+  const chartHeight = 10;
 
   const categoryClassName = {
     "text-cat-governance": category === "governance",
@@ -19,54 +18,34 @@ const ServicesByCompany = (props) => {
     "text-prissian": category === "total",
   };
 
-  const chartBlock = (companies, category) => {
-    return (
-      <div className="space-y-5">
-        {companies.map((company, idx) => {
-          return (
-            <div className="flex flex-col space-y-5">
-              {chartHeader(company.name, company.id)}
-              {company.services.map(service => {
-                const sIcon = icon(service.kind)
-                const score = service.categoryScore[category]
-                return chartRow(sIcon, service.name, score, idx)
-              })
-              }
-            </div>
-          )
-        })
-        }
-      </div>
-    )
-  }
-
   const chartHeader = (companyName, companyId) => {
     return (
       <div
         key={`chart-header-${category}-${companyId}`}
-        className="flex-grow h-9 text-prissian font-bold indent-5 bg-beige rounded-full">
+        className="flex-grow h-9 text-prissian font-bold indent-5 bg-beige rounded-full"
+      >
         <Link passHref href={`/companies/${companyId}`}>
-          <a>
-            {companyName}
-          </a>
+          <a>{companyName}</a>
         </Link>
       </div>
-    )
-  }
+    );
+  };
+
+  const serviceIcon = (serviceKind) => {
+    return mapIcon(serviceKind, false);
+  };
 
   const chartRow = (icon, serviceName, score, idx) => {
+    // eslint-disable-next-line unicorn/no-null
     const ref = idx === 0 ? chartRef : null;
     return (
       <div
         key={`chart-row-${category}-${serviceName}`}
-        className="flex items-center space-x-1 pr-1.5 pl-1.5">
-        <div className="flex-none justify-center w-8">
-          {icon}
-        </div>
+        className="flex items-center space-x-1 pr-1.5 pl-1.5"
+      >
+        <div className="flex-none justify-center w-8">{icon}</div>
 
-        <div className="flex-none w-24 text-xs">
-          {serviceName}
-        </div>
+        <div className="flex-none w-24 text-xs">{serviceName}</div>
 
         <div ref={ref} className="flex-grow">
           <svg
@@ -86,17 +65,34 @@ const ServicesByCompany = (props) => {
           </svg>
         </div>
         <div>
-          <span className="w-4 flex-none select-none float-right text-right text-xs">{score}%</span>
+          <span className="w-4 flex-none select-none float-right text-right text-xs">
+            {score}%
+          </span>
         </div>
       </div>
     );
   };
 
-  const icon = (serviceKind) => {
-    return mapIcon(serviceKind, false);
-  }
+  const chartBlock = (companiesArr, cat) => {
+    return (
+      <div className="space-y-5">
+        {companiesArr.map((company, idx) => {
+          return (
+            <div className="flex flex-col space-y-5">
+              {chartHeader(company.name, company.id)}
+              {company.services.map((service) => {
+                const sIcon = serviceIcon(service.kind);
+                const score = service.categoryScore[cat];
+                return chartRow(sIcon, service.name, score, idx);
+              })}
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
 
-  const divider = Math.ceil(companies.length / 2)
+  const divider = Math.ceil(companies.length / 2);
 
   return (
     <div className="flex flex-col space-x-8 md:flex-row">
@@ -108,6 +104,6 @@ const ServicesByCompany = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default ServicesByCompany;

@@ -1,8 +1,8 @@
 import c from "clsx";
-import { promises as fsP } from "fs";
-import { useRouter } from "next/router";
+import {promises as fsP} from "fs";
+import {useRouter} from "next/router";
 import path from "path";
-import React, { useEffect, useReducer, useState } from "react";
+import React, {useEffect, useReducer, useState} from "react";
 
 import CategorySelector from "../components/category-selector";
 import CompaniesByService from "../components/companies-per-service";
@@ -22,20 +22,20 @@ import {
   companyServiceRankingData,
   companyServices,
 } from "../data";
-import { uniqueBy } from "../utils";
+import {uniqueBy} from "../utils";
 
 export const getStaticProps = async () => {
   const services = (await allServices()).filter(
-    ({ kind }) => kind !== "Group" && kind !== "Operating Company",
+    ({kind}) => kind !== "Group" && kind !== "Operating Company",
   );
-  const serviceOptions = uniqueBy("kind", services).map(({ kind, kindName }) => ({
+  const serviceOptions = uniqueBy("kind", services).map(({kind, kindName}) => ({
     kind,
     label: kindName,
     value: kind,
   }));
 
   const companies = await allCompanies();
-  const companySelector = companies.map(({ id: companyId, name, kind }) => {
+  const companySelector = companies.map(({id: companyId, name, kind}) => {
     return {
       value: companyId,
       label: name,
@@ -44,33 +44,43 @@ export const getStaticProps = async () => {
   });
 
   const servicesByCompany = await Promise.all(
-    companies.map(async ({ id, name }) => {
-      const servicesPerCompany = await companyServices(id)
-      let filteredServices = servicesPerCompany.filter((service) => {
-        return service.kind !== "Group" && service.kind !== "Operating Company"
+    companies.map(async ({id, name}) => {
+      const servicesPerCompany = await companyServices(id);
+      const filteredServices = servicesPerCompany.filter((service) => {
+        return service.kind !== "Group" && service.kind !== "Operating Company";
       });
-      let serviceScores = await Promise.all(filteredServices.map(async (service) => {
-        // set an empty property on each service object to record the four category scores
-        service.categoryScore = {};
+      const serviceScores = await Promise.all(
+        filteredServices.map(async (filteredService) => {
+          // set an empty property on each service object to record the four category scores
+          // TODO Christo, change the data files ...
+          const service = {...filteredService, categoryScore: {}};
 
-        const files = await fsP.readdir(path.join(process.cwd(), "data/rankings", service.kind));
-        for (const file of files) {
-          const fileData = await fsP.readFile(path.join(process.cwd(), "data/rankings", service.kind, file));
-          let parsed = JSON.parse(fileData);
-          parsed.forEach((item) => {
-            if (item.service === service.id) {
-              service.categoryScore[item.category] = item.score;
-            }
-          });
-        }
-        return service
-      }));
+          const files = await fsP.readdir(
+            path.join(process.cwd(), "data/rankings", service.kind),
+          );
+          // eslint-disable-next-line no-restricted-syntax
+          for (const file of files) {
+            // eslint-disable-next-line no-await-in-loop
+            const fileData = await fsP.readFile(
+              path.join(process.cwd(), "data/rankings", service.kind, file),
+            );
+            const parsed = JSON.parse(fileData);
+            parsed.forEach((item) => {
+              if (item.service === service.id) {
+                // eslint-disable-next-line no-param-reassign
+                service.categoryScore[item.category] = item.score;
+              }
+            });
+          }
+          return service;
+        }),
+      );
       return {
         id,
         name,
         services: serviceScores,
       };
-    })
+    }),
   );
   const companyRankings = await ["internet"].reduce(async (memo, kind) => {
     return ["total", "governance", "freedom", "privacy"].reduce(
@@ -90,7 +100,7 @@ export const getStaticProps = async () => {
   }, Promise.resolve({}));
 
   const serviceRankings = await serviceOptions.reduce(
-    async (memo, { kind: service }) => {
+    async (memo, {kind: service}) => {
       const files = await fsP.readdir(
         path.join(process.cwd(), "data/rankings", service),
       );
@@ -162,7 +172,7 @@ const reducer = (state, action) => {
         category: action.category,
         platformRankings: state.service
           ? state.serviceRankings[state.service.kind]?.[action.category]
-            ?.internet
+              ?.internet
           : state.companyRankings[action.category]?.internet,
       };
     default:
@@ -188,7 +198,7 @@ const Explorer = ({
     reducer,
     {
       category: "total",
-      service: serviceOptions.find(({ kind }) => kind === queryService),
+      service: serviceOptions.find(({kind}) => kind === queryService),
       platformRankings: undefined,
       serviceRankings,
       companyRankings,
@@ -201,13 +211,12 @@ const Explorer = ({
     // Ensure that we run this hook only once.
     if (!firstRender) return;
 
-    router.push("/explore", undefined, { shallow: true });
+    router.push("/explore", undefined, {shallow: true});
     setFirstRender(false);
   }, [router, firstRender]);
 
   const handleSelectCategory = (category) => {
-    dispatch({ type: "setCategory", category });
-    console.log('category: ', category)
+    dispatch({type: "setCategory", category});
   };
 
   const handleTypeOfGraphToggle = (toggle) => {
@@ -229,7 +238,7 @@ const Explorer = ({
   return (
     <Layout>
       <NarrativeContainer transparent>
-        {({ Container }) => {
+        {({Container}) => {
           return (
             <div>
               <Container>
@@ -267,7 +276,7 @@ const Explorer = ({
 
               <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
                 <div
-                  style={{ minHeight: "22rem" }}
+                  style={{minHeight: "22rem"}}
                   className={c(
                     "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3",
                   )}
@@ -276,8 +285,9 @@ const Explorer = ({
                     <RankChart
                       ranking={
                         selectedCompanies.length > 0
-                          ? state.platformRankings.filter(({ id }) =>
-                            selectedCompanies.includes(id))
+                          ? state.platformRankings.filter(({id}) =>
+                              selectedCompanies.includes(id),
+                            )
                           : state.platformRankings
                       }
                       category={state.category}
@@ -287,19 +297,25 @@ const Explorer = ({
                   {typeOfGraph === "services" && axis && (
                     <ServicesByCompany
                       category={state.category}
-                      companies={selectedCompanies.length > 0
-                        ? servicesByCompany.filter(({ id }) =>
-                          selectedCompanies.includes(id))
-                        : servicesByCompany}
+                      companies={
+                        selectedCompanies.length > 0
+                          ? servicesByCompany.filter(({id}) =>
+                              selectedCompanies.includes(id),
+                            )
+                          : servicesByCompany
+                      }
                     />
                   )}
                   {typeOfGraph === "services" && !axis && (
                     <CompaniesByService
                       category={state.category}
-                      companies={selectedCompanies.length > 0
-                        ? servicesByCompany.filter(({ id }) =>
-                          selectedCompanies.includes(id))
-                        : servicesByCompany}
+                      companies={
+                        selectedCompanies.length > 0
+                          ? servicesByCompany.filter(({id}) =>
+                              selectedCompanies.includes(id),
+                            )
+                          : servicesByCompany
+                      }
                     />
                   )}
                 </div>
