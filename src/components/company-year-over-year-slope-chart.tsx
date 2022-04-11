@@ -1,7 +1,7 @@
 import {scaleLinear, scalePoint} from "d3";
 import React, {useMemo} from "react";
 
-import {useChartResize} from "../hooks";
+import {useChartResize, useMobileSize} from "../hooks";
 import type {CompanyYearOverYear} from "../types";
 
 interface CompanyYearOverYearSlopeChartProps {
@@ -13,6 +13,7 @@ type ScorePair = [{year: string; score: number}, {year: string; score: number}];
 const CompanyYearOverYearSlopeChart = ({
   data,
 }: CompanyYearOverYearSlopeChartProps) => {
+  const isMobile = useMobileSize(768);
   const years = data.scores.map(({year}) => year.toString());
 
   const scores = data.scores
@@ -45,8 +46,8 @@ const CompanyYearOverYearSlopeChart = ({
   const [chartRef, width, height] = useChartResize();
 
   // Insets the graph on the left and right.
-  const insetLeft = 20;
-  const insetRight = 40;
+  const insetLeft = isMobile ? 28 : 30;
+  const insetRight = isMobile ? 14 : 18;
   // Insets the graph on the bottom y axis.
   const insetY = 22;
   // The real width of the graph.
@@ -71,7 +72,7 @@ const CompanyYearOverYearSlopeChart = ({
   );
 
   return (
-    <div ref={chartRef} className="w-full h-20 px-1">
+    <div ref={chartRef} className="w-full h-20">
       <svg
         version="1"
         xmlns="http://www.w3.org/2000/svg"
@@ -123,10 +124,10 @@ const CompanyYearOverYearSlopeChart = ({
               })`}
             >
               <rect
-                x="10"
-                y="10"
-                width="36"
-                height="23"
+                x={isMobile ? "11" : "10"}
+                y={isMobile ? "12" : "10"}
+                width={isMobile ? "30" : "36"}
+                height={isMobile ? "20" : "23"}
                 stroke="none"
                 fill="white"
                 strokeWidth="0.4"
@@ -134,7 +135,7 @@ const CompanyYearOverYearSlopeChart = ({
                 rx="12"
                 filter="url(#shadow)"
               />
-              <text className="text-xs" x={16} y={26}>
+              <text className={isMobile ? "text-xxs" : "text-xs"} x={16} y={26}>
                 {score}%
               </text>
             </g>

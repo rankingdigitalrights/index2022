@@ -15,7 +15,7 @@ const FlipAxis = ({label, toggle, onChange, className}: FlipAxisProps) => {
   const handleToggle = () => onChange(!toggle);
 
   return (
-    <div className={c("flex items-center self-end", className)}>
+    <div className={c("flex items-center", className)}>
       <label htmlFor="toggle" className="font-circular text-sm mr-2">
         {label}
       </label>

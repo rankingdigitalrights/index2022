@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useMemo, useState} from "react";
 
 import CompanySelector from "../components/company-selector-simple";
-import CompanyYearOverYearSlope from "../components/company-year-over-year-slope";
+import CompanyYearOverYearTable from "../components/company-year-over-year-table";
+import FlipAxis from "../components/flip-axis";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
@@ -49,9 +50,15 @@ export const getStaticProps = async () => {
 
 const TimeCharts = ({companySelectors, yoyScores}: TimeChartProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
+  const [axis, setAxis] = useState(true);
+  const years = useMemo(() => ["2017", "2018", "2019", "2020", "2022"], []);
 
   const handleSelectCompany = (ids: string[]) => {
     setSelectedCompanies(ids);
+  };
+
+  const handleFlipAxis = (toggle: boolean) => {
+    setAxis(toggle);
   };
 
   return (
@@ -63,21 +70,29 @@ const TimeCharts = ({companySelectors, yoyScores}: TimeChartProps) => {
               <Container>
                 <NarrativeTitle title="Time" />
 
-                <div className="flex flex-row">
+                <div className="flex flex-col md:flex-row justify-between items-center w-full">
                   <CompanySelector
-                    className="flex-none w-full md:w-10/12 "
+                    className="flex-none w-full md:w-9/12 "
                     companies={companySelectors}
                     selected={selectedCompanies}
                     onSelect={handleSelectCompany}
                   />
+
+                  <FlipAxis
+                    label="Flip axis"
+                    onChange={handleFlipAxis}
+                    toggle={axis}
+                  />
                 </div>
 
-                <CompanyYearOverYearSlope
+                <CompanyYearOverYearTable
+                  years={years}
                   data={yoyScores.filter(({company}) => {
                     if (selectedCompanies.length > 0)
                       return selectedCompanies.includes(company);
                     return true;
                   })}
+                  axis={axis}
                 />
               </Container>
             </>
