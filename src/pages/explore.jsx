@@ -207,6 +207,7 @@ const Explorer = ({
 
   const handleSelectCategory = (category) => {
     dispatch({ type: "setCategory", category });
+    console.log('category: ', category)
   };
 
   const handleTypeOfGraphToggle = (toggle) => {
@@ -276,7 +277,7 @@ const Explorer = ({
                       ranking={
                         selectedCompanies.length > 0
                           ? state.platformRankings.filter(({ id }) =>
-                            selectedCompanies.includes(id),)
+                            selectedCompanies.includes(id))
                           : state.platformRankings
                       }
                       category={state.category}
@@ -286,18 +287,19 @@ const Explorer = ({
                   {typeOfGraph === "services" && axis && (
                     <ServicesByCompany
                       category={state.category}
-                      axis="toggle up or down"
                       companies={selectedCompanies.length > 0
                         ? servicesByCompany.filter(({ id }) =>
-                          selectedCompanies.includes(id),)
+                          selectedCompanies.includes(id))
                         : servicesByCompany}
                     />
                   )}
                   {typeOfGraph === "services" && !axis && (
                     <CompaniesByService
                       category={state.category}
-                      axis="toggle up or down"
-                      props="find props"
+                      companies={selectedCompanies.length > 0
+                        ? servicesByCompany.filter(({ id }) =>
+                          selectedCompanies.includes(id))
+                        : servicesByCompany}
                     />
                   )}
                 </div>
