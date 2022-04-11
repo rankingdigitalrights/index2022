@@ -233,7 +233,11 @@ const Explorer = ({
                     onChange={handleTypeOfGraphToggle}
                   />
                   {typeOfGraph === "services" && (
-                    <FlipAxis label="Flip axis" onChange={handleFlipAxis} />
+                    <FlipAxis
+                      label="Flip axis"
+                      onChange={handleFlipAxis}
+                      toggle={axis}
+                    />
                   )}
                 </div>
                 <div className="flex flex-col items-center mt-8">

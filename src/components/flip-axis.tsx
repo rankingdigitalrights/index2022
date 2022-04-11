@@ -1,5 +1,5 @@
 import c from "clsx";
-import React, {useState} from "react";
+import React from "react";
 
 import Down from "../images/icons/axis-down.svg";
 import Up from "../images/icons/axis-up.svg";
@@ -7,17 +7,12 @@ import Up from "../images/icons/axis-up.svg";
 interface FlipAxisProps {
   label: string;
   onChange: (toggle: boolean) => void;
+  toggle: boolean;
   className?: string;
 }
 
-const FlipAxis = ({label, onChange, className}: FlipAxisProps) => {
-  const [toggle, setToggle] = useState(false);
-
-  const handleToggle = () => {
-    const newToggle = !toggle;
-    onChange(newToggle);
-    setToggle(newToggle);
-  };
+const FlipAxis = ({label, toggle, onChange, className}: FlipAxisProps) => {
+  const handleToggle = () => onChange(!toggle);
 
   return (
     <div className={c("flex items-center self-end", className)}>
@@ -29,14 +24,6 @@ const FlipAxis = ({label, onChange, className}: FlipAxisProps) => {
         onClick={handleToggle}
         aria-label="Flip-Axis"
       >
-        {/* <label
-          htmlFor="toggle"
-          // className={c(
-            // "overflow-hidden h-5 rounded-full border-2 border-prissian cursor-pointer flex items-center",
-            toggle ? Up : Down,
-          // )}
-        > */}
-        {/* </label> */}
         {toggle ? <Up /> : <Down />}
       </button>
     </div>
