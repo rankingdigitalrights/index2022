@@ -323,10 +323,20 @@ export interface SortStrategy<T extends SelectOption = SelectOption> {
   (xs: T[]): T[];
 }
 
+export interface SortStrategyYOY<
+  T extends CompanyYearOverYear = CompanyYearOverYear
+> {
+  (xs: T[]): T[];
+}
+
 export type SortStrategies<T extends SelectOption = SelectOption> = Map<
   string,
   SortStrategy<T>
 >;
+
+export type SortStrategiesYOY<
+  T extends CompanyYearOverYear = CompanyYearOverYear
+> = Map<string, SortStrategyYOY<T>>;
 
 export type HighlightedCompany = {
   company: string;

@@ -7,7 +7,12 @@ import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import {allCompanies, companyYearOverYearCategoryScoreData} from "../data";
-import type {CompanySelectOption, CompanyYearOverYear} from "../types";
+import type {
+  CompanySelectOption,
+  CompanyYearOverYear,
+  SortStrategiesYOY,
+  SortStrategyYOY,
+} from "../types";
 
 interface TimeChartProps {
   companySelectors: CompanySelectOption[];
@@ -16,15 +21,11 @@ interface TimeChartProps {
 
 export const getStaticProps = async () => {
   const companies = await allCompanies();
-  const companySelectors = companies.map(({id: companyId, name, kind}) => {
-    // FIXME: Score is hardcoded and it is unclear if it is even required.
-    const score = {score: 20};
-
+  const companySelectors = companies.map(({id: companyId, name, region}) => {
     return {
       value: companyId,
       label: name,
-      score: score ? score.score : "NA",
-      kind,
+      region,
     };
   });
 
@@ -48,9 +49,39 @@ export const getStaticProps = async () => {
   };
 };
 
+const strategies: SortStrategiesYOY<CompanyYearOverYear> = new Map<
+  string,
+  SortStrategyYOY<CompanyYearOverYear>
+>();
+strategies.set(
+  "Alphabetically",
+  (options: CompanyYearOverYear[]): CompanyYearOverYear[] => {
+    return options.sort((a, b) => {
+      if (a.company > b.company) return 1;
+      if (a.company < b.company) return -1;
+      return 0;
+    });
+  },
+);
+strategies.set(
+  "By Region",
+  (options: CompanyYearOverYear[]): CompanyYearOverYear[] => {
+    return options.sort((a, b) => {
+      if (a.region > b.region) return 1;
+      if (a.region < b.region) return -1;
+      return 0;
+    });
+  },
+);
+
+const identitySortFn: SortStrategyYOY<CompanyYearOverYear> = (xs) => xs;
+
 const TimeCharts = ({companySelectors, yoyScores}: TimeChartProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [axis, setAxis] = useState(true);
+  const [sortStrategy, setSortStrategy] = useState<
+    "Alphabetically" | "By Region"
+  >("Alphabetically");
   const years = useMemo(() => ["2017", "2018", "2019", "2020", "2022"], []);
 
   const handleSelectCompany = (ids: string[]) => {
@@ -60,6 +91,21 @@ const TimeCharts = ({companySelectors, yoyScores}: TimeChartProps) => {
   const handleFlipAxis = (toggle: boolean) => {
     setAxis(toggle);
   };
+
+  const handleSelectSortStrategy = (
+    strategy: "Alphabetically" | "By Region",
+  ) => {
+    if (strategy) setSortStrategy(strategy);
+  };
+
+  const sortStrategyFn = strategies.get(sortStrategy) || identitySortFn;
+
+  const dataGrids =
+    selectedCompanies.length === 0
+      ? sortStrategyFn(yoyScores)
+      : sortStrategyFn(
+          yoyScores.filter(({company}) => selectedCompanies.includes(company)),
+        );
 
   return (
     <Layout>
@@ -87,12 +133,10 @@ const TimeCharts = ({companySelectors, yoyScores}: TimeChartProps) => {
 
                 <CompanyYearOverYearTable
                   years={years}
-                  data={yoyScores.filter(({company}) => {
-                    if (selectedCompanies.length > 0)
-                      return selectedCompanies.includes(company);
-                    return true;
-                  })}
+                  data={dataGrids}
                   axis={axis}
+                  onChangeSorting={handleSelectSortStrategy}
+                  sortOrder={sortStrategy}
                 />
               </Container>
             </>
