@@ -70,16 +70,16 @@ const TimeCharts = ({companySelectors, yoyScores}: TimeChartProps) => {
               <Container>
                 <NarrativeTitle title="Time" />
 
-                <div className="flex flex-col md:flex-row justify-between items-center w-full">
+                <div className="flex flex-row justify-between items-center w-full">
                   <CompanySelector
-                    className="flex-none w-full md:w-9/12 "
+                    className="flex-none w-10/12 md:w-9/12 "
                     companies={companySelectors}
                     selected={selectedCompanies}
                     onSelect={handleSelectCompany}
                   />
 
                   <FlipAxis
-                    label="Flip axis"
+                    label="Flip"
                     onChange={handleFlipAxis}
                     toggle={axis}
                   />
