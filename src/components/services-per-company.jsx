@@ -44,21 +44,24 @@ const ServicesByCompany = (props) => {
 
   const chartHeader = (companyName, companyId) => {
     return (
-      <rect
-        className="flex-grow h-9 text-prissian font-bold indent-5 bg-beige rounded-full content-center">
+      <div
+        key={`chart-header-${category}-${companyId}`}
+        className="flex-grow h-9 text-prissian font-bold indent-5 bg-beige rounded-full">
         <Link passHref href={`/companies/${companyId}`}>
-          <a className="">
+          <a>
             {companyName}
-          </a >
+          </a>
         </Link>
-      </rect >
+      </div>
     )
   }
 
   const chartRow = (icon, serviceName, score, idx) => {
     const ref = idx === 0 ? chartRef : null;
     return (
-      <div className="flex items-center space-x-1 pr-1.5 pl-1.5">
+      <div
+        key={`chart-row-${category}-${serviceName}`}
+        className="flex items-center space-x-1 pr-1.5 pl-1.5">
         <div className="flex-none justify-center w-8">
           {icon}
         </div>
