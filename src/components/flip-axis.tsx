@@ -6,17 +6,18 @@ import Up from "../images/icons/axis-up.svg";
 
 interface FlipAxisProps {
   label: string;
-  onChange: (toggle: boolean) => void;
+  onChange: (flip: boolean) => void;
+  flip: boolean;
   className?: string;
 }
 
-const FlipAxis = ({label, onChange, className}: FlipAxisProps) => {
-  const [toggle, setToggle] = useState(false);
+const FlipAxis = ({label, onChange, flip, className}: FlipAxisProps) => {
+  // const [toggle, setToggle] = useState(false);
 
   const handleToggle = () => {
-    const newToggle = !toggle;
-    onChange(newToggle);
-    setToggle(newToggle);
+    // const newToggle = !toggle;
+    onChange(!flip);
+    // setToggle(newToggle);
   };
 
   return (
@@ -29,15 +30,7 @@ const FlipAxis = ({label, onChange, className}: FlipAxisProps) => {
         onClick={handleToggle}
         aria-label="Flip-Axis"
       >
-        {/* <label
-          htmlFor="toggle"
-          // className={c(
-            // "overflow-hidden h-5 rounded-full border-2 border-prissian cursor-pointer flex items-center",
-            toggle ? Up : Down,
-          // )}
-        > */}
-        {/* </label> */}
-        {toggle ? <Up /> : <Down />}
+        {flip ? <Up /> : <Down />}
       </button>
     </div>
   );
