@@ -35,6 +35,12 @@ export const getStaticProps = async () => {
   }));
 
   const companies = await allCompanies();
+
+  const companiesArr = companies.reduce((compArr, company) => {
+    compArr.push(company.id);
+    return compArr;
+  }, []);
+
   const companySelector = companies.map(({id: companyId, name, kind}) => {
     return {
       value: companyId,
@@ -137,6 +143,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
+      companiesArr,
       companySelector,
       serviceOptions,
       serviceRankings,
@@ -181,6 +188,7 @@ const reducer = (state, action) => {
 };
 
 const Explorer = ({
+  companiesArr,
   companySelector,
   serviceOptions,
   serviceRankings,
@@ -192,7 +200,7 @@ const Explorer = ({
 
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [typeOfGraph, setTypeOfGraph] = useState("total");
-  const [axis, setAxis] = useState(true);
+  const [chartHeaders, setChartHeaders] = useState("companies");
 
   const [state, dispatch] = useReducer(
     reducer,
@@ -227,8 +235,12 @@ const Explorer = ({
     }
   };
 
-  const handleFlipAxis = (toggle) => {
-    setAxis(toggle);
+  const handleFlipAxis = (flip) => {
+    if (flip) {
+      setChartHeaders("companies");
+    } else {
+      setChartHeaders("services");
+    }
   };
 
   const handleSelectCompany = (ids) => {
@@ -256,7 +268,11 @@ const Explorer = ({
                     onChange={handleTypeOfGraphToggle}
                   />
                   {typeOfGraph === "services" && (
-                    <FlipAxis label="Flip axis" onChange={handleFlipAxis} />
+                    <FlipAxis
+                      label="Flip axis"
+                      flip={chartHeaders === "companies"}
+                      onChange={handleFlipAxis}
+                    />
                   )}
                 </div>
                 <div className="flex flex-col items-center mt-8">
@@ -294,30 +310,32 @@ const Explorer = ({
                       hasHeader
                     />
                   )}
-                  {typeOfGraph === "services" && axis && (
-                    <ServicesByCompany
-                      category={state.category}
-                      companies={
-                        selectedCompanies.length > 0
-                          ? servicesByCompany.filter(({id}) =>
-                              selectedCompanies.includes(id),
-                            )
-                          : servicesByCompany
-                      }
-                    />
-                  )}
-                  {typeOfGraph === "services" && !axis && (
-                    <CompaniesByService
-                      category={state.category}
-                      companies={
-                        selectedCompanies.length > 0
-                          ? servicesByCompany.filter(({id}) =>
-                              selectedCompanies.includes(id),
-                            )
-                          : servicesByCompany
-                      }
-                    />
-                  )}
+                  {typeOfGraph === "services" &&
+                    chartHeaders === "companies" && (
+                      <ServicesByCompany
+                        category={state.category}
+                        companies={
+                          selectedCompanies.length > 0
+                            ? servicesByCompany.filter(({id}) =>
+                                selectedCompanies.includes(id),
+                              )
+                            : servicesByCompany
+                        }
+                      />
+                    )}
+                  {typeOfGraph === "services" &&
+                    chartHeaders === "services" && (
+                      <CompaniesByService
+                        category={state.category}
+                        companies={
+                          selectedCompanies.length > 0
+                            ? selectedCompanies
+                            : companiesArr
+                        }
+                        serviceRankings={serviceRankings}
+                        serviceOptions={serviceOptions}
+                      />
+                    )}
                 </div>
               </div>
             </div>
