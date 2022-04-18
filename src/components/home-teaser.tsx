@@ -15,11 +15,11 @@ const HomeTeaser = () => {
         <div className="md:w-1/3 items-center bg-accent-red z-10">
           <HomeBox title="2022 Big Tech Scorecard" href="/intro-essay">
             <div className="flex flex-col h-full justify-end">
-              <p>
-                Soluta omnis exercitationem dolorem qui eos. At libero alias
-                aut. Voluptas sint omnis ullam velit eius. Soluta omnis
-                exercitationem dolorem qui eos. At libero alias aut. Voluptas
-                sint omnis ullam velit eius.
+              <p className="font-serif">
+                Each year, Ranking Digital Rights evaluates and ranks
+                14 of the world’s most powerful digital platforms
+                on their policies and practices affecting people’s rights
+                to freedom of expression and privacy.
               </p>
             </div>
           </HomeBox>
