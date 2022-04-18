@@ -62,12 +62,12 @@ const HomeMainArea = ({
           href="/intro-essay"
           theme="dark"
         >
-          <div className="flex flex-col h-full justify-end">
+          <div className="font-serif flex flex-col h-full justify-end">
             <p>
-              We evaluated 26 of the world’s most powerful digital platforms and
-              telecommunications companies on their disclosed policies and
-              practices affecting people’s rights to freedom of expression and
-              privacy.
+              For the sixth consecutive year, not one digital platform earned a passing grade
+              in our ranking. While we see some incremental progress overall,
+              companies must improve their governance and accelerate their adoption
+              of human rights standards to protect their users and the public interest.
             </p>
           </div>
         </HomeBox>
@@ -101,9 +101,9 @@ const HomeMainArea = ({
             href="/key-findings"
             theme="dark"
           >
-            <div className="hidden md:block flex flex-col h-full justify-end">
+            <div className="font-serif hidden md:block flex flex-col h-full justify-end">
               <p>
-                Companies are improving in principle, but failing in practice
+                In 2022, what’s changed? What hasn’t? Read our top observations and recommendations, and learn why—more than ever—this is no time for business as usual.
               </p>
             </div>
           </HomeBox>
@@ -114,10 +114,13 @@ const HomeMainArea = ({
             href="/explore"
             theme="dark"
           >
-            <div className="hidden md:block flex flex-col h-full justify-end">
+            <div className="font-serif hidden md:block flex flex-col h-full justify-end">
               <p>
-                Soluta omnis exercitationem dolorem qui eos. At libero alias
-                aut. Voluptas sint omnis ullam velit eius.
+                Which companies commit to human rights?
+                Who does the best job describing how they moderate content?
+                Where is your data safest in case of a breach? How has Apple’s scores changed over time?
+                Drill down into hundreds of thousands of data points to answer questions
+                like these in our enhanced Data Explorer.
               </p>
             </div>
           </HomeBox>
