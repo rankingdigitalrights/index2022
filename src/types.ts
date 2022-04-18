@@ -68,6 +68,7 @@ export type CompanyMeta = {
   operatingCompany?: string;
   dateOfSale?: string;
   salePrice?: string;
+  firstServiceEval?: string;
 };
 
 export type CompanyDetails = {

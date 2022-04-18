@@ -140,8 +140,8 @@ const HeaderBar = ({className}: HeaderBarProps) => {
               />
               <span className="flex-none font-bold text-lg ml-4 whitespace-nowrap">
                 {isMobile
-                  ? "2022 RDR Index"
-                  : "2022 Ranking Digital Rights Corporate Accountability Index"}
+                  ? "RDR Big Tech Scorecard"
+                  : "The Ranking Digital Rights Big Tech Scorecard"}
               </span>
             </a>
           </Link>
