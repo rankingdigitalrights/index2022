@@ -1,8 +1,8 @@
 import c from "clsx";
 import React from "react";
 
-import {useChartResize} from "../hooks";
-import {mapIcon} from "./evaluated-service";
+import { useChartResize } from "../hooks";
+import { mapIcon } from "./evaluated-service";
 import PercentageBar from "./percentage-bar";
 
 // FIXME: some chartRows are never disappearing
@@ -12,14 +12,13 @@ import PercentageBar from "./percentage-bar";
 // TODO: fix centering of chartHeader contents & rank numbers
 // TODO: add highlighting to rows?
 // TODO: add links to company names?
-// TO-ASK: when a company is selected, serviceKind headers show even if that company does not have any services of that kind => keep or change?
 
 const serviceIcon = (serviceKind) => {
   return mapIcon(serviceKind, false);
 };
 
 const CompaniesByService = (props) => {
-  const {companies, category, serviceRankings, serviceOptions} = props;
+  const { companies, category, serviceRankings, serviceOptions } = props;
 
   const [chartRef, chartWidth] = useChartResize();
   const chartHeight = 10;
@@ -41,7 +40,7 @@ const CompaniesByService = (props) => {
   // [ {serviceKind: [ { id: company }, { id: company } ] } ]
   const prepRanks = keys.map((key) => {
     const companiesArr = serviceRankings[key][category].internet;
-    return {[key]: companiesArr};
+    return { [key]: companiesArr };
   });
 
   const chartHeader = (serviceKind) => {
@@ -111,7 +110,7 @@ const CompaniesByService = (props) => {
         </div>
       </div>
     ) : // eslint-disable-next-line unicorn/no-null
-    null;
+      null;
   };
 
   // rankings is an array of objects of the form:
@@ -121,15 +120,20 @@ const CompaniesByService = (props) => {
     return (
       <div className="space-y-5">
         {rankings.map((entry) => {
+          // key is the serviceKind name
           const key = Object.keys(entry);
+          // values is an array of companies that provide services of that kind
           const values = entry[key[0]];
+          const list = values.filter(value => companies.includes(value.id))
           return (
-            // fix these inputs
             <div className="flex flex-col space-y-5">
-              {chartHeader(key[0])}
-              {values.map((value, idx) => {
-                return chartRow(value, idx);
-              })}
+              {list.length > 0 && (
+                chartHeader(key[0])
+              )}
+              {list.map((item, idx) => {
+                return chartRow(item, idx);
+              })
+              }
             </div>
           );
         })}
@@ -140,6 +144,7 @@ const CompaniesByService = (props) => {
   const divider = Math.ceil(prepRanks.length / 2);
 
   // TODO: add a conditional here so that if entries.length is 1, it shows only one column
+  // TODO: this creates a chartblock before the selected companies have been filtered => rearrange this flow
   return (
     <div className="flex flex-col space-x-8 md:flex-row">
       <div className="w-full md:w-1/2">
