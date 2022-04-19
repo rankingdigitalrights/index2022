@@ -228,14 +228,14 @@ Big Tech Scorecard`}
                 <li role="none" className="pt-6 pb-3">
                   <IconLink
                     name="We Must Govern Online Ads"
-                    href="/"
+                    href="https://rankingdigitalrights.org/mini-report/we-must-govern-online-ads"
                     Icon={Ads}
                   />
                 </li>
                 <li role="none" className="py-3">
                   <IconLink
                     name="Empowering Big Tech Shareholders"
-                    href="/"
+                    href="https://rankingdigitalrights.org/mini-report/its-time-to-bring-down-the-barriers-blocking-shareholders-on-human-rights/"
                     Icon={Shareholders}
                   />
                 </li>
@@ -357,7 +357,7 @@ Big Tech Scorecard`}
 
                 <li className="border-b border-disabled pt-3 pb-6">
                   <IconLink
-                    href="/methodology"
+                    href="https://rankingdigitalrights.org/methods-and-standards"
                     Icon={Methodology}
                     name="RDR Index Methodology"
                   />
