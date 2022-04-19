@@ -55,7 +55,7 @@ const HomeTeaserBox = ({
 
       <Link passHref href={href}>
         <a
-          className="flex items-center justify-between hover:no-underline"
+          className="flex items-center justify-between hover:no-underline font-sans"
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
         >
