@@ -7,11 +7,7 @@ import NarrativeTitle from "../components/narrative-title";
 import {ReadmoreKind} from "../types";
 
 const FourOhFour = () => {
-  const readmore: ReadmoreKind[] = [
-    "key-findings",
-    "unaccountable-algorithms",
-    "recommendations",
-  ];
+  const readmore: ReadmoreKind[] = ["key-findings", "shareholders", "ads"];
 
   return (
     <Layout>

@@ -376,16 +376,14 @@ export interface ComparePage {
 
 export type ReadmoreKind =
   | "summary"
-  | "introduction"
   | "key-findings"
-  | "recommendations"
   | "methodology"
-  | "context-before-code"
-  | "unaccountable-algorithms"
-  | "china-tech-giants"
+  | "shareholders"
+  | "ads"
+  | "china-companies"
   | "compare"
   | "indicators"
-  | "services";
+  | "data";
 
 export type ReadmoreItem = {
   kind: ReadmoreKind;

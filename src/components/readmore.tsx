@@ -2,17 +2,15 @@ import c from "clsx";
 import Link from "next/link";
 import React from "react";
 
-import TechGiants from "../images/icons/china-tech-giants.svg";
-import ContextBeforeCode from "../images/icons/context-before-code.svg";
+import Ads from "../images/icons/ads.svg";
+import ChinaCompanies from "../images/icons/china-companies.svg";
 import ExecutiveSummary from "../images/icons/executive-summary.svg";
 import Services from "../images/icons/explore-the-data.svg";
-import Introduction from "../images/icons/intro-essay.svg";
 import KeyFindings from "../images/icons/key-findings.svg";
 import Methodology from "../images/icons/methodology.svg";
-import Algorithms from "../images/icons/moving-fast.svg";
-import Recommendations from "../images/icons/policy-recommendations.svg";
 import Indicators from "../images/icons/scores-by-indicator.svg";
 import Compare from "../images/icons/scores-over-time.svg";
+import Shareholders from "../images/icons/shareholders.svg";
 import {ReadmoreItem} from "../types";
 
 interface ReadmoreProps {
@@ -34,29 +32,11 @@ const Readmore = ({readmore, className}: ReadmoreProps) => {
       );
       break;
     }
-    case "introduction": {
-      icon = (
-        <Introduction
-          className={iconClassName}
-          aria-label="Readmore introduction icon"
-        />
-      );
-      break;
-    }
     case "key-findings": {
       icon = (
         <KeyFindings
           className={iconClassName}
           aria-label="Readmore key findings icon"
-        />
-      );
-      break;
-    }
-    case "recommendations": {
-      icon = (
-        <Recommendations
-          className={iconClassName}
-          aria-label="Readmore recommendations icon"
         />
       );
       break;
@@ -70,33 +50,29 @@ const Readmore = ({readmore, className}: ReadmoreProps) => {
       );
       break;
     }
-    case "context-before-code": {
+    case "shareholders": {
       icon = (
-        <ContextBeforeCode
+        <Shareholders
           className={iconClassName}
-          aria-label="Readmore context before code icon"
+          aria-label="Readmore shareholders icon"
         />
       );
       break;
     }
-    case "unaccountable-algorithms": {
+    case "ads": {
+      icon = <Ads className={iconClassName} aria-label="Readmore ads icon" />;
+      break;
+    }
+    case "china-companies": {
       icon = (
-        <Algorithms
+        <ChinaCompanies
           className={iconClassName}
-          aria-label="Readmore unaccountable algorithms icon"
+          aria-label="Readmore shareholders icon"
         />
       );
       break;
     }
-    case "china-tech-giants": {
-      icon = (
-        <TechGiants
-          className={iconClassName}
-          aria-label="Readmore china tech giants icon"
-        />
-      );
-      break;
-    }
+
     case "compare": {
       icon = (
         <Compare
@@ -106,7 +82,7 @@ const Readmore = ({readmore, className}: ReadmoreProps) => {
       );
       break;
     }
-    case "indicators": {
+    case "data": {
       icon = (
         <Services
           className={iconClassName}
@@ -115,7 +91,7 @@ const Readmore = ({readmore, className}: ReadmoreProps) => {
       );
       break;
     }
-    case "services": {
+    case "indicators": {
       icon = (
         <Indicators
           className={iconClassName}
