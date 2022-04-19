@@ -2,7 +2,7 @@ import React, {useMemo, useState} from "react";
 
 import CompanySelector from "../components/company-selector-simple";
 import CompanyYearOverYearTable from "../components/company-year-over-year-table";
-import FlipAxis from "../components/flip-axis";
+import FlipTimeChart from "../components/flip-time-chart";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
@@ -78,7 +78,7 @@ const identitySortFn: SortStrategyYOY<CompanyYearOverYear> = (xs) => xs;
 
 const TimeCharts = ({companySelectors, yoyScores}: TimeChartProps) => {
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
-  const [axis, setAxis] = useState(true);
+  const [timeChart, setTimeChart] = useState(true);
   const [sortStrategy, setSortStrategy] = useState<
     "Alphabetically" | "By Region"
   >("Alphabetically");
@@ -88,8 +88,8 @@ const TimeCharts = ({companySelectors, yoyScores}: TimeChartProps) => {
     setSelectedCompanies(ids);
   };
 
-  const handleFlipAxis = (toggle: boolean) => {
-    setAxis(toggle);
+  const handleFlipTimeChart = (toggle: boolean) => {
+    setTimeChart(toggle);
   };
 
   const handleSelectSortStrategy = (
@@ -124,17 +124,17 @@ const TimeCharts = ({companySelectors, yoyScores}: TimeChartProps) => {
                     onSelect={handleSelectCompany}
                   />
 
-                  <FlipAxis
-                    label="Flip"
-                    onChange={handleFlipAxis}
-                    toggle={axis}
+                  <FlipTimeChart
+                    label={timeChart ? "Bars" : "Lines"}
+                    onChange={handleFlipTimeChart}
+                    toggle={timeChart}
                   />
                 </div>
 
                 <CompanyYearOverYearTable
                   years={years}
                   data={dataGrids}
-                  axis={axis}
+                  axis={timeChart}
                   onChangeSorting={handleSelectSortStrategy}
                   sortOrder={sortStrategy}
                 />
