@@ -335,12 +335,6 @@ export const policyRecommendations = loadJson<NarrativePage>(
 );
 
 /*
- * Load the methodology HTML.
- */
-export const methodology = loadJson<NarrativePage>(
-  "data/narratives/methodology.json",
-);
-/*
  * Load the algorithms HTML.
  */
 export const algorithms = loadJson<NarrativePage>(
