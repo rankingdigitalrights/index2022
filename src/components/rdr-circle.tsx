@@ -1,7 +1,8 @@
 import c from "clsx";
 import React from "react";
 
-import Bars from "../images/icons/rdr-bars.svg";
+import CircleBarsDark from "../images/icons/circle-bars-dark.svg";
+import CircleBarsLight from "../images/icons/circle-bars-light.svg";
 import Circle from "../images/icons/rdr-circle.svg";
 
 interface RdrCircleProps {
@@ -16,20 +17,12 @@ const RdrCircle = ({color, bars = false, className}: RdrCircleProps) => {
     "fill-arrow-white": color === "white",
   };
 
-  const barStyles = {
-    "fill-arrow-white": color === "red",
-    "fill-arrow-red": color === "white",
-  };
+  if (bars && color === "white") {
+    return <CircleBarsLight className={c("w-full h-full", circleStyles)} />;
+  }
 
-  if (bars) {
-    return (
-      <div className={c("relative", className)}>
-        <Circle className={c("w-full h-full", circleStyles)} />
-        <div className="z-10 absolute top-1/4 left-0 w-full h-full">
-          <Bars className={c("h-1.5 w-1.5 md:h-3 md:w-3 m-auto", barStyles)} />
-        </div>
-      </div>
-    );
+  if (bars && color === "red") {
+    return <CircleBarsDark className={c("w-full h-full", circleStyles)} />;
   }
 
   return (
