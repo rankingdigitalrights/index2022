@@ -185,7 +185,9 @@ const CompanyPage = ({
       <div className="md:container md:mx-auto px-3 mt-6 md:py-6 md:mt-12 md:px-0 lg:w-10/12 xl:w-8/12">
         <section className="flex flex-col md:flex-row">
           <div className="md:w-4/6 md:pr-20">
-            <div className="font-serif border-b border-disabled-light">{keyFindings}</div>
+            <div className="font-serif border-b border-disabled-light">
+              {keyFindings}
+            </div>
 
             <h2 className="text-prissian mt-8 mb-6">
               {details.keyTakeawaysTitle}
@@ -329,7 +331,7 @@ const CompanyPage = ({
           <section className="relative flex flex-col md:flex-row pt-3">
             <div className="w-full md:w-1/2 lg:w-4/6 pr-12 border-t border-disabled-light">
               <h2 className="text-prissian mt-8 mb-6">
-              {details.changesTitle}
+                {details.changesTitle}
               </h2>
 
               <div className="font-serif mt-6">{changes}</div>
