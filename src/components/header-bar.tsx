@@ -132,6 +132,33 @@ const HeaderBar = ({className}: HeaderBarProps) => {
     <header ref={ref} className={c("font-sans", className)}>
       <div className="relative bg-beige shadow-md py-2 z-50">
         <div className="lg:container md:mx-auto flex justify-between items-center relative px-3 md:px-6">
+          {isExpanded ? (
+            <button
+              tabIndex={0}
+              className="float-left w-6 h-12 relative"
+              onClick={handleClickHamburger}
+              aria-expanded
+            >
+              <span className="flex justify-around w-full">
+                <Cancel
+                  className="w-4 h-4 text-black fill-current"
+                  aria-label="Close menu"
+                />
+              </span>
+            </button>
+          ) : (
+            <button
+              tabIndex={0}
+              className="float-right w-6 h-12 relative"
+              onClick={handleClickHamburger}
+              aria-haspopup="menu"
+            >
+              <span className="flex justify-around w-full">
+                <Hamburger aria-label="Open the navigation menu" />
+              </span>
+            </button>
+          )}
+
           <Link passHref href="/">
             <a className="flex lg:mx-auto items-center text-black no-underline hover:no-underline">
               <Logo
@@ -156,33 +183,6 @@ Big Tech Scorecard`}
               </span>
             </a>
           </Link>
-
-          {isExpanded ? (
-            <button
-              tabIndex={0}
-              className="float-right w-6 h-12 relative"
-              onClick={handleClickHamburger}
-              aria-expanded
-            >
-              <span className="flex justify-around w-full">
-                <Cancel
-                  className="w-4 h-4 text-black fill-current"
-                  aria-label="Close menu"
-                />
-              </span>
-            </button>
-          ) : (
-            <button
-              tabIndex={0}
-              className="float-right w-6 h-12 relative"
-              onClick={handleClickHamburger}
-              aria-haspopup="menu"
-            >
-              <span className="flex justify-around w-full">
-                <Hamburger aria-label="Open the navigation menu" />
-              </span>
-            </button>
-          )}
         </div>
       </div>
 
