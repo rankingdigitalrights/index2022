@@ -111,8 +111,8 @@
   }
 
   .bg-landing-page {
-    @apply bg-cover;
-    background-image: url("../images/bg-landing-page.jpg?size=600");
+    @apply bg-cover bg-left-top bg-no-repeat;
+    background-image: url("../images/charting-the-future-of-big-tech-accountability.jpg?size=600");
   }
 
   /* Get rid of the border outlines on button unless user is actually tabbing. */
