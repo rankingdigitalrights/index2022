@@ -10,11 +10,17 @@ interface RdrArrowProps {
   className?: string;
 }
 
-const RdrArrow = ({color, rotate, outline, className}: RdrArrowProps) => {
+const RdrArrow = ({
+  color,
+  rotate = false,
+  outline = false,
+  className,
+}: RdrArrowProps) => {
   const styles = {
     [`stroke-arrow-${color}`]: outline,
     [`fill-arrow-${color}`]: !outline,
     "transform rotate-180": rotate,
+    "transform rotate-0": !rotate,
   };
   return <Arrow className={c(className, styles)} />;
 };

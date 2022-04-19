@@ -300,10 +300,6 @@
   .italic {
     font-style: italic;
   }
-
-  .rotate-arrow {
-    @apply transform rotate-180;
-  }
 }
 
 /* For some reason unknown to me those styles are being removed during build.

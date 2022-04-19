@@ -32,7 +32,9 @@ const RdrCircle = ({color, bars = false, className}: RdrCircleProps) => {
     );
   }
 
-  return <Circle className={c("fill-arrow-red", className)} />;
+  return (
+    <Circle className={c("fill-arrow-red transform rotate-0", className)} />
+  );
 };
 
 export default RdrCircle;

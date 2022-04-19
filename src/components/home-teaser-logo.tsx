@@ -1,68 +1,140 @@
 import React from "react";
 
-import RdrArrow from "../images/icons/rdr-arrow.svg";
-import RdrCircle from "../images/icons/rdr-circle.svg";
+import {useMobileSize} from "../hooks";
+import Arrow from "./rdr-arrow";
+import Circle from "./rdr-circle";
 
 const HomeTeaserLogo = () => {
+  const isMobile = useMobileSize(768);
+  const isTablet = useMobileSize(1024);
+  const isDesktop = !(isMobile || isTablet);
+
   return (
-    <aside className="grid grid-rows-3 grid-cols-9 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-9 gap-0.5 lg:gap-1 xl:gap-2 place-items-center py-12 px-8">
-      {/* Row 1 */}
-      <RdrArrow className="w-fit h-fit fill-arrow-blue transform rotate-0" />
+    <>
+      {isMobile && (
+        <aside className="grid md:hidden grid-rows grid-cols-9 gap-0.5">
+          {/* Row 1 */}
+          <Arrow color="blue" />
 
-      <div />
+          <div />
 
-      <div className="md:hidden lg:block" />
+          <div />
 
-      <div className="md:hidden xl:block" />
+          <div />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-turquoise transform rotate-0 md:hidden xl:block" />
+          <Arrow color="turquoise" />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-turquoise transform rotate-0" />
+          <Arrow color="turquoise" rotate />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-yellow transform rotate-0" />
+          <Arrow color="yellow" />
 
-      <div className="md:hidden lg:block" />
+          <div />
 
-      <RdrCircle className="w-fit h-fit fill-arrow-red transform rotate-0" />
+          <Circle color="red" />
+        </aside>
+      )}
 
-      {/* Row 2 */}
-      <div />
+      {isTablet && (
+        <aside className="hidden md:grid lg:hidden md:grid-rows-2 md:grid-cols-9 gap-0.5">
+          {/* Row 1 */}
+          <Arrow color="blue" />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-turquoise transform rotate-0 md:hidden xl:block" />
+          <div />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-turquoise rotate-arrow" />
+          <div />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-blue transform rotate-0 md:hidden lg:block" />
+          <div />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-blue rotate-arrow md:hidden xl:block" />
+          <Arrow color="turquoise" />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-blue transform rotate-0" />
+          <Arrow color="turquoise" rotate />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-blue rotate-arrow" />
+          <Arrow color="yellow" />
 
-      <div className="md:hidden lg:block" />
+          <div />
 
-      <div />
+          <Circle color="red" />
 
-      {/* Row 3 */}
-      <RdrArrow className="w-fit h-fit fill-arrow-turquoise transform rotate-0 md:hidden lg:block" />
+          {/* Row 2 */}
+          <div />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-blue transform rotate-0 md:hidden xl:block" />
+          <Arrow color="turquoise" rotate />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-blue transform rotate-0" />
+          <Arrow color="blue" />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-yellow transform rotate-0" />
+          <Arrow color="blue" />
 
-      <div className="md:hidden xl:block" />
+          <Arrow color="blue" rotate />
 
-      <div className="md:hidden lg:block" />
+          <div />
 
-      <div />
+          <div />
 
-      <RdrArrow className="w-fit h-fit fill-arrow-blue rotate-arrow" />
+          <div />
+        </aside>
+      )}
 
-      <RdrArrow className="w-fit h-fit fill-arrow-blue transform rotate-0" />
-    </aside>
+      {isDesktop && (
+        <aside className="hidden lg:grid grid-rows-2 grid-cols-9 lg:gap-1 xl:gap-2">
+          {/* Row 1 */}
+          <Arrow color="blue" rotate />
+
+          <div />
+
+          <div />
+
+          <div />
+
+          <Arrow color="turquoise" rotate />
+
+          <Arrow color="turquoise" rotate />
+
+          <Arrow color="yellow" rotate />
+
+          <div />
+
+          <Circle className="w-fit h-fit" color="red" />
+
+          {/* Row 2 */}
+          <div />
+
+          <Arrow color="turquoise" />
+
+          <Arrow color="turquoise" rotate />
+
+          <Arrow color="blue" />
+
+          <Arrow color="blue" rotate />
+
+          <Arrow color="blue" />
+
+          <Arrow color="blue" rotate />
+
+          <div />
+
+          <div />
+
+          {/* Row 3 */}
+          <Arrow color="turquoise" />
+
+          <Arrow color="blue" />
+
+          <Arrow color="blue" />
+
+          <Arrow color="yellow" />
+
+          <div />
+
+          <div />
+
+          <div />
+
+          <Arrow color="blue" rotate />
+
+          <Arrow color="blue" />
+        </aside>
+      )}
+    </>
   );
 };
 

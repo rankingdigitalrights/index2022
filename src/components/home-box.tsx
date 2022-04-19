@@ -36,7 +36,7 @@ const HomeBox = ({
   return (
     <div
       className={c(
-        "relative px-6 py-4 sm:py-6 leading-none",
+        "relative py-4 sm:py-6 xl:py-1 leading-none",
         textColor,
         className,
       )}
@@ -63,7 +63,7 @@ const HomeBox = ({
 
       <Link passHref href={href}>
         <a
-          className="cursor-pointer absolute right-0 bottom-0 w-12 h-12 mb-6 mr-6 rounded-full flex items-center justify-center bg-white"
+          className="cursor-pointer absolute right-0 bottom-0 w-12 h-12 mb-6 xl:mb-1 2xl:mb-6 mr-6 rounded-full flex items-center justify-center bg-white"
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
         >
