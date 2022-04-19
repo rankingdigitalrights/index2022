@@ -3,7 +3,7 @@ import parse from "csv-parse";
 import fs, {promises as fsP} from "fs";
 import path from "path";
 
-import {byCompany, byRankAndName, byScore, byTopic, byYear} from "./sort";
+import {byCompany, byLens, byRankAndName, byScore, byYear} from "./sort";
 import {
   Company,
   CompanyCategoryYearOverYear,
@@ -29,11 +29,11 @@ import {
   IndicatorElements,
   IndicatorIndex,
   IndicatorIndexElement,
+  IndicatorLens,
+  IndicatorLensCompanyIndex,
+  IndicatorLensIndex,
   IndicatorNested,
   IndicatorScore,
-  IndicatorTopic,
-  IndicatorTopicCompanyIndex,
-  IndicatorTopicIndex,
   Scores,
   ScoreYear,
   Service,
@@ -51,7 +51,7 @@ import {
   mapCompanyKindOrNil,
   mapElementValue,
   mapExtCategory,
-  mapIndicatorTopic,
+  mapIndicatorLens,
   mapServiceKind,
   memoizeAsync,
   stringOrNil,
@@ -210,10 +210,10 @@ type CsvCompanyServiceRank = {
   privacyRank: number;
 };
 
-type CsvIndicatorTopic = {
+type CsvIndicatorLens = {
   company: string;
-  topic: IndicatorTopic;
-  topicName: string;
+  lens: IndicatorLens;
+  lensName: string;
   score: number;
 };
 
@@ -506,10 +506,10 @@ const loadCompanyServiceRanksCsv = loadCsv<CsvCompanyServiceRank>((record) => ({
 /*
  * Load the Indicator Topics
  */
-const loadIndicatorTopicsCsv = loadCsv<CsvIndicatorTopic>((record) => ({
+const loadIndicatorLensesCsv = loadCsv<CsvIndicatorLens>((record) => ({
   company: record.Company,
-  topic: mapIndicatorTopic(record.IndicatorTopicId),
-  topicName: record.IndicatorTopicName,
+  lens: mapIndicatorLens(record.IndicatorLensId),
+  lensName: record.IndicatorLensName,
   score: Number.parseInt(record.Score, 10),
 }));
 
@@ -1383,21 +1383,21 @@ export const glossary = async (): Promise<Glossary[]> => {
 /*
  * Construct the indicator topic index.
  */
-export const indicatorTopicIndex = async (): Promise<IndicatorTopicIndex[]> => {
-  const [indicatorTopicData, allCompanies] = await Promise.all([
-    loadIndicatorTopicsCsv("csv/2022-indicator-topics.csv"),
+export const indicatorLensIndex = async (): Promise<IndicatorLensIndex[]> => {
+  const [indicatorLensData, allCompanies] = await Promise.all([
+    loadIndicatorLensesCsv("csv/2022-indicator-lenses.csv"),
     companies(),
   ]);
 
-  const indicatorTopics = indicatorTopicData.reduce(
-    (memo, {topic, topicName: topicPretty, company: companyId, score}) => {
+  const indicatorLenses = indicatorLensData.reduce(
+    (memo, {lens, lensName: lensPretty, company: companyId, score}) => {
       // eslint-disable-next-line no-param-reassign
-      if (!memo[topic]) memo[topic] = {topic, topicPretty, scores: []};
+      if (!memo[lens]) memo[lens] = {lens, lensPretty, scores: []};
       const company = allCompanies.find(({id}) => id === companyId);
 
       if (!company) return unreachable(`Company ${companyId} not found`);
 
-      memo[topic].scores.push({
+      memo[lens].scores.push({
         company: company.id,
         companyPretty: company.name,
         score,
@@ -1405,30 +1405,30 @@ export const indicatorTopicIndex = async (): Promise<IndicatorTopicIndex[]> => {
 
       return memo;
     },
-    {} as Record<IndicatorTopic, IndicatorTopicIndex>,
+    {} as Record<IndicatorLens, IndicatorLensIndex>,
   );
 
-  return Object.values(indicatorTopics)
-    .map((indicatorTopic) => {
-      indicatorTopic.scores.sort(byScore("desc"));
-      return indicatorTopic;
+  return Object.values(indicatorLenses)
+    .map((indicatorLens) => {
+      indicatorLens.scores.sort(byScore("desc"));
+      return indicatorLens;
     })
-    .sort(byTopic("asc"));
+    .sort(byLens("asc"));
 };
 
 /*
  * Construct the indicator topic company index.
  */
-export const indicatorTopicCompanyIndex = async (): Promise<
-  IndicatorTopicCompanyIndex[]
+export const indicatorLensCompanyIndex = async (): Promise<
+  IndicatorLensCompanyIndex[]
 > => {
-  const [indicatorTopicData, allCompanies] = await Promise.all([
-    loadIndicatorTopicsCsv("csv/2022-indicator-topics.csv"),
+  const [indicatorLensData, allCompanies] = await Promise.all([
+    loadIndicatorLensesCsv("csv/2022-indicator-lenses.csv"),
     companies(),
   ]);
 
-  const indicatorTopics = indicatorTopicData.reduce(
-    (memo, {topic, topicName: topicPretty, company: companyId, score}) => {
+  const indicatorLenses = indicatorLensData.reduce(
+    (memo, {lens, lensName: lensPretty, company: companyId, score}) => {
       const company = allCompanies.find(({id}) => id === companyId);
 
       if (!company) return unreachable(`Company ${companyId} not found`);
@@ -1441,17 +1441,17 @@ export const indicatorTopicCompanyIndex = async (): Promise<
           scores: [],
         };
 
-      memo[company.id].scores.push({topic, topicPretty, score});
+      memo[company.id].scores.push({lens, lensPretty, score});
 
       return memo;
     },
-    {} as Record<string, IndicatorTopicCompanyIndex>,
+    {} as Record<string, IndicatorLensCompanyIndex>,
   );
 
-  return Object.values(indicatorTopics)
-    .map((indicatorTopic) => {
-      indicatorTopic.scores.sort(byTopic("asc"));
-      return indicatorTopic;
+  return Object.values(indicatorLenses)
+    .map((indicatorLens) => {
+      indicatorLens.scores.sort(byLens("asc"));
+      return indicatorLens;
     })
     .sort(byCompany("asc"));
 };

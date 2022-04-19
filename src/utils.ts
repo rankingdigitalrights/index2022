@@ -3,8 +3,8 @@ import {
   ElementValue,
   IndicatorCategory,
   IndicatorCategoryExt,
+  IndicatorLens,
   IndicatorScore,
-  IndicatorTopic,
   NA,
   ServiceKind,
 } from "./types";
@@ -262,7 +262,7 @@ export const mapServiceKind = (value: string): ServiceKind => {
   return unreachable(`${value} could not be mapped to a valid service kind.`);
 };
 
-export const mapIndicatorTopic = (value: string): IndicatorTopic => {
+export const mapIndicatorLens = (value: string): IndicatorLens => {
   switch (value) {
     case "itAlg":
       return "algorithmic-transparency";

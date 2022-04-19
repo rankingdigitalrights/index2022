@@ -21,8 +21,8 @@ import {
   IndicatorCompanyScore,
   IndicatorDetails,
   IndicatorElements,
-  IndicatorTopicCompanyIndex,
-  IndicatorTopicIndex,
+  IndicatorLensCompanyIndex,
+  IndicatorLensIndex,
   NarrativePage,
   Service,
   ServiceCompanyRank,
@@ -57,12 +57,12 @@ export const allCompanies = loadJson<Company[]>("data/companies.json");
 export const allIndicators = loadJson<Indicator[]>("data/indicators.json");
 export const allElements = loadJson<Element[]>("data/elements.json");
 export const allServices = loadJson<Service[]>("data/services.json");
-export const allIndicatorTopics = loadJson<IndicatorTopicIndex[]>(
-  "data/indicator-topics.json",
+export const allIndicatorLenss = loadJson<IndicatorLensIndex[]>(
+  "data/indicator-lenses.json",
 );
-export const allIndicatorTopicsCompanies = loadJson<
-  IndicatorTopicCompanyIndex[]
->("data/indicator-topics-companies.json");
+export const allIndicatorLenssCompanies = loadJson<IndicatorLensCompanyIndex[]>(
+  "data/indicator-topics-companies.json",
+);
 
 export const companyIndices = loadJsonDir<CompanyIndex>(
   "data/companies",

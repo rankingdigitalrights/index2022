@@ -12,7 +12,7 @@ export type IndicatorCategoryExt = IndicatorCategory | "total";
 
 export type IndicatorScore = number | NA;
 
-export type IndicatorTopic =
+export type IndicatorLens =
   | "algorithmic-transparency"
   | "targeted-advertising"
   | "content-governance-moderation"
@@ -278,9 +278,9 @@ export type IndicatorIndex = {
   elements: Record<string, Record<string, IndicatorIndexElement[]>>;
 };
 
-export type IndicatorTopicIndex = {
-  topic: IndicatorTopic;
-  topicPretty: string;
+export type IndicatorLensIndex = {
+  lens: IndicatorLens;
+  lensPretty: string;
   scores: Array<{
     company: string;
     companyPretty: string;
@@ -288,12 +288,12 @@ export type IndicatorTopicIndex = {
   }>;
 };
 
-export type IndicatorTopicCompanyIndex = {
+export type IndicatorLensCompanyIndex = {
   company: string;
   companyPretty: string;
   scores: Array<{
-    topic: IndicatorTopic;
-    topicPretty: string;
+    lens: IndicatorLens;
+    lensPretty: string;
     score: number;
   }>;
 };
