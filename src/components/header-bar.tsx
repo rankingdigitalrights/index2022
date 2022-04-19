@@ -16,10 +16,10 @@ import Methodology from "../images/icons/methodology.svg";
 import PolicyRecommendations from "../images/icons/policy-recommendations.svg";
 import ScoresByIndicator from "../images/icons/scores-by-indicator.svg";
 import ScoresOverTime from "../images/icons/scores-over-time.svg";
-import Logo from "../images/logo.svg";
 import {CompanyKind} from "../types";
 import {isMouseEvent} from "../utils";
 import MenuBarColumn from "./menu-bar-column";
+import Logo from "./rdr-logo";
 
 interface HeaderBarProps {
   className?: string;
@@ -131,17 +131,28 @@ const HeaderBar = ({className}: HeaderBarProps) => {
   return (
     <header ref={ref} className={c(className)}>
       <div className="relative bg-beige shadow-md py-2 z-50">
-        <div className="lg:container lg:mx-auto flex justify-between items-center relative px-6">
+        <div className="lg:container md:mx-auto flex justify-between items-center relative px-3 md:px-6">
           <Link passHref href="/">
-            <a className="flex items-center text-black no-underline hover:no-underline">
+            <a className="flex lg:mx-auto items-center text-black no-underline hover:no-underline">
               <Logo
-                aria-label="Ranking Digital Rights Logo"
-                className="flex-none"
+                className={c("flex-none", {
+                  "w-6 h-6": isMobile,
+                  "w-12 h-12": !isMobile,
+                })}
               />
-              <span className="flex-none font-bold text-lg ml-4 whitespace-nowrap">
+              <span
+                className={c(
+                  "flex-none font-bold text-prissian text-md ml-2 md:ml-4",
+                  {
+                    "whitespace-nowrap": isMobile,
+                    "whitespace-pre": !isMobile,
+                  },
+                )}
+              >
                 {isMobile
                   ? "RDR Big Tech Scorecard"
-                  : "The Ranking Digital Rights Big Tech Scorecard"}
+                  : `The Ranking Digital Rights
+Big Tech Scorecard`}
               </span>
             </a>
           </Link>
