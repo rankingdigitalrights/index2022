@@ -29,7 +29,13 @@ const CompanyKindLabel = ({
   };
 
   return (
-    <div className={c("text-sm flex items-center", labelClassName, className)}>
+    <div
+      className={c(
+        "text-sm font-sans flex items-center",
+        labelClassName,
+        className,
+      )}
+    >
       <div className={c("rounded-full w-2.5 h-2.5", dotClassName)} />
 
       <div className="ml-2">{text}</div>

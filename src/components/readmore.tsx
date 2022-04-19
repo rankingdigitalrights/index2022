@@ -141,7 +141,7 @@ const Readmore = ({readmore, className}: ReadmoreProps) => {
       <Link passHref href={readmore.url}>
         <a className="border-b mb-3 pb-2 flex items-center text-black no-underline">
           {icon}
-          <span className="font-bold text-md ml-2 leading-none">
+          <span className="font-bold text-md ml-2 leading-none font-sans">
             {readmore.title}
           </span>
         </a>

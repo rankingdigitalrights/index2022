@@ -51,7 +51,7 @@ const CompanyYearOverYearBarChart = ({
   );
 
   return (
-    <div ref={chartRef} className="w-full h-28 px-1">
+    <div ref={chartRef} className="w-full h-28 px-1 font-sans">
       <svg
         version="1"
         xmlns="http://www.w3.org/2000/svg"

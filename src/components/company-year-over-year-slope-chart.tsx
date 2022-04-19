@@ -72,7 +72,7 @@ const CompanyYearOverYearSlopeChart = ({
   );
 
   return (
-    <div ref={chartRef} className="w-full h-20">
+    <div ref={chartRef} className="w-full h-20 font-sans">
       <svg
         version="1"
         xmlns="http://www.w3.org/2000/svg"

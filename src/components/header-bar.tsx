@@ -129,7 +129,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
   };
 
   return (
-    <header ref={ref} className={c(className)}>
+    <header ref={ref} className={c("font-sans", className)}>
       <div className="relative bg-beige shadow-md py-2 z-50">
         <div className="lg:container md:mx-auto flex justify-between items-center relative px-3 md:px-6">
           <Link passHref href="/">

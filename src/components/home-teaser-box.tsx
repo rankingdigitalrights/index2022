@@ -51,7 +51,7 @@ const HomeTeaserBox = ({
           </a>
         </Link>
 
-        <p className="font-serif">
+        <p>
           Each year, Ranking Digital Rights evaluates and ranks 14 of the
           world’s most powerful digital platforms on their policies and
           practices affecting people’s rights to freedom of expression and

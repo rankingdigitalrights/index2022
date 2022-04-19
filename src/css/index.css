@@ -137,8 +137,16 @@
   }
 
   html {
-    @apply font-sans text-base;
+    @apply font-serif text-base;
     font-size: 18px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-sans;
   }
 
   h1 {

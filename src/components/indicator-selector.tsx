@@ -98,7 +98,7 @@ const IndicatorSelector = ({
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full font-sans">
       <Select
         instanceId="indicator-select"
         className="text-xs text-prissian"

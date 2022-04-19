@@ -160,7 +160,7 @@ const CompanyPage = ({
         </div>
 
         <div className="md:container md:mx-auto flex flex-col md:flex-row md:justify-between lg:w-10/12 xl:w-8/12">
-          <div className="flex flex-col bg-prissian w-full p-3 z-10 md:w-7/12 md:p-0 md:mt-6 md:mb-6 md:mr-6 lg:w-7/12 lg:mr-0">
+          <div className="flex flex-col bg-prissian w-full p-3 z-10 md:w-7/12 md:p-0 md:mt-6 md:mb-6 md:mr-6 lg:w-7/12 lg:mr-0 font-sans">
             <CompanyKindLabel className="mt-3 md:mt-0" kind={index.kind} />
 
             <CompanyRankCard
@@ -185,22 +185,20 @@ const CompanyPage = ({
       <div className="md:container md:mx-auto px-3 mt-6 md:py-6 md:mt-12 md:px-0 lg:w-10/12 xl:w-8/12">
         <section className="flex flex-col md:flex-row">
           <div className="md:w-4/6 md:pr-20">
-            <div className="font-serif border-b border-disabled-light">
-              {keyFindings}
-            </div>
+            <div className="border-b border-disabled-light">{keyFindings}</div>
 
-            <h2 className="text-prissian mt-8 mb-6">
+            <h2 className="text-prissian font-bold mt-8 mb-6">
               {details.keyTakeawaysTitle}
             </h2>
-            <div className="font-serif mt-6">{keyTakeaways}</div>
+            <div className="mt-6">{keyTakeaways}</div>
 
-            <h2 className="text-prissian mt-8 mb-6">
+            <h2 className="text-prissian font-bold mt-8 mb-6">
               {details.keyRecommendationTitle}
             </h2>
-            <div className="font-serif mt-6">{keyRecommendation}</div>
+            <div className="mt-6">{keyRecommendation}</div>
           </div>
 
-          <div className="flex flex-col items-start w-full md:w-2/6 text-sm">
+          <div className="flex flex-col items-start w-full md:w-2/6 text-sm font-sans">
             <div>
               <h3 className="font-bold mt-3 md:mt-0 pb-3">
                 Services evaluated:
@@ -335,18 +333,20 @@ const CompanyPage = ({
         {index.totalDiffs.diff2022 !== "NA" && (
           <section className="relative flex flex-col md:flex-row pt-3">
             <div className="w-full md:w-1/2 lg:w-4/6 pr-12 border-t border-disabled-light">
-              <h2 className="text-prissian mt-8 mb-6">
+              <h2 className="text-prissian font-bold mt-8 mb-6">
                 {details.changesTitle}
               </h2>
 
-              <div className="font-serif mt-6">{changes}</div>
+              <div className="mt-6">{changes}</div>
             </div>
 
             <div className="flex flex-col items-start w-full md:w-1/2 lg:w-2/6 px-3 text-sm">
-              <h2 className="text-prissian mt-8 mb-6">Scores since 2017</h2>
+              <h2 className="text-prissian font-bold mt-8 mb-6">
+                Scores since 2017
+              </h2>
 
               <CompanyYearOverYearChart data={yearOverYear} />
-              <div className="text-sm font-serif mt-6">
+              <div className="text-sm mt-6">
                 Most companies’ scores dropped between 2019 and 2020 with the
                 inclusion of our new indicators on targeted advertising and
                 algorithmic systems. To learn more, please visit our{" "}
@@ -361,7 +361,7 @@ const CompanyPage = ({
 
       <div className="border-t border-disabled-dark">
         <div className="container mx-auto lg:w-8/12 md:w-10/12 w-11/12 mt-8">
-          <div className="flex flex-col md:flex-row justify-center items-center md:space-x-2">
+          <div className="flex flex-col md:flex-row justify-center items-center md:space-x-2 font-sans">
             <CompanyScoreChart
               category="governance"
               score={index.scores.governance}
@@ -376,7 +376,7 @@ const CompanyPage = ({
             />
           </div>
 
-          <p className="text-sm text-center">
+          <p className="text-xs font-sans text-center">
             We rank companies on their governance, and on their policies and
             practices affecting freedom of expression and privacy.
           </p>
