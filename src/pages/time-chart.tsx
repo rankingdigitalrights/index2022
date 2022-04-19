@@ -114,7 +114,16 @@ const TimeCharts = ({companySelectors, yoyScores}: TimeChartProps) => {
           return (
             <>
               <Container>
-                <NarrativeTitle title="Time" />
+                <NarrativeTitle title="Performance Over Time" />
+
+                <p className="pb-3">
+                  Here we show the total scores of companies year-over-year
+                  since their inclusion in the ranking. Note that between 2019
+                  and 2020 we expanded our methodology to include standards
+                  around targeted advertising and algorithmic systems. The
+                  expansion resulted in overall decline in total score for many
+                  of the companies in 2020.
+                </p>
 
                 <div className="flex flex-row justify-between items-center w-full">
                   <CompanySelector
