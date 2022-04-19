@@ -138,7 +138,7 @@ const HomeMainArea = ({
 
         <HomeBox
           className="h-56 xl:h-80 lg:mb-8"
-          title="Companies are improving in principle, but failing in practice"
+          title="Charting the Future of Big Tech Accountability"
           href="/explore"
           theme="dark"
         >

@@ -398,6 +398,7 @@ const loadCompanyMetaCsv = loadCsv<CsvCompanyMeta>((record) => ({
   stockStructure: stringOrNil(record.StockStructure),
   salePrice: stringOrNil(record.SalePrice),
   dateOfSale: stringOrNil(record.DateOfSale),
+  firstServiceEval: stringOrNil(record.FirstServiceEval),
 }));
 
 /*

@@ -189,7 +189,7 @@ const CompanyPage = ({
               {keyFindings}
             </div>
 
-            <h2 className="font-serif text-prissian mt-8 mb-6">
+            <h2 className="text-prissian mt-8 mb-6">
               {details.keyTakeawaysTitle}
             </h2>
             <div className="font-serif mt-6">{keyTakeaways}</div>
@@ -234,6 +234,7 @@ const CompanyPage = ({
                   </li>
                 )}
 
+
                 {meta.marketCap && meta.marketCapDate && (
                   <li className="pb-0">
                     <span className="font-bold">Market cap:</span>{" "}
@@ -273,11 +274,22 @@ const CompanyPage = ({
                     {meta.stockStructure}
                   </li>
                 )}
+                <li className="pt-3 pb-0">
+                  <span className="">Read more about how stock structures can
+                  be a <a href="https://rankingdigitalrights.org/mini-report/its-time-to-bring-down-the-barriers-blocking-shareholders-on-human-rights/">barrier
+                  to shareholder participation</a></span>
+                </li>
 
                 <li className="pt-3 pb-0">
                   <span className="font-bold">Website:</span>{" "}
                   <a href={meta.website}>{meta.website}</a>
                 </li>
+
+                {meta.firstServiceEval && (
+                  <li className="pt-3 pb-0">
+                    <span className="text-sm">*In 2022, we evaluated {meta.firstServiceEval} for the first time.</span>{" "}
+                  </li>
+                )}
               </ul>
             </div>
 
@@ -285,7 +297,7 @@ const CompanyPage = ({
               <p>
                 The 2022 Big Tech Scorecard covers policies that were active on
                 November 1, 2021. Policies that came into effect after November
-                1, 2021, were not evaluated for this ranking
+                1, 2021, were not evaluated for this ranking.
               </p>
 
               <p className="pb-0">
@@ -329,8 +341,13 @@ const CompanyPage = ({
               <h2 className="text-prissian mt-8 mb-6">Scores since 2017</h2>
 
               <CompanyYearOverYearChart data={yearOverYear} />
+              <div className="text-sm font-serif mt-6">Most companies’ scores dropped
+              between 2019 and 2020 with the inclusion of our new indicators
+              on targeted advertising and algorithmic systems.
+              To learn more, please visit our <a href="https://rankingdigitalrights.org/methods-and-standards/#methodology-archive">Methodology development archive.</a>
+              </div>
             </div>
-          </section>
+            </section>
         )}
       </div>
 
