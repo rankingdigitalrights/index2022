@@ -12,7 +12,7 @@ const HomeTeaser = () => {
       </div>
 
       <div className="xl:container lg:mx-auto flex flex-col-reverse lg:flex-row">
-        <div className="lg:w-5/12 xl:w-1/2 2xl:w-5/12 self-center bg-accent-red px-2 py-4 sm:py-6 lg:px-6">
+        <div className="lg:w-5/12 xl:w-1/2 2xl:w-5/12 2xl:pr-16 self-center bg-accent-red px-2 py-4 sm:py-6 lg:px-6">
           <HomeBox href="/executive-summary" />
         </div>
 
