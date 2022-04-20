@@ -281,21 +281,19 @@ export type IndicatorIndex = {
 export type IndicatorLensIndex = {
   lens: IndicatorLens;
   lensPretty: string;
-  scores: Array<{
-    company: string;
-    companyPretty: string;
-    score: number;
-  }>;
+  scores: CompanyRank[];
+};
+
+export type LensRank = {
+  lens: IndicatorLens;
+  lensPretty: string;
+  score: number;
 };
 
 export type IndicatorLensCompanyIndex = {
   company: string;
   companyPretty: string;
-  scores: Array<{
-    lens: IndicatorLens;
-    lensPretty: string;
-    score: number;
-  }>;
+  scores: LensRank[];
 };
 
 export type CsvRecord = Record<string, string>;

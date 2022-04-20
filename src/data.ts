@@ -57,12 +57,12 @@ export const allCompanies = loadJson<Company[]>("data/companies.json");
 export const allIndicators = loadJson<Indicator[]>("data/indicators.json");
 export const allElements = loadJson<Element[]>("data/elements.json");
 export const allServices = loadJson<Service[]>("data/services.json");
-export const allIndicatorLenss = loadJson<IndicatorLensIndex[]>(
+export const allIndicatorLenses = loadJson<IndicatorLensIndex[]>(
   "data/indicator-lenses.json",
 );
-export const allIndicatorLenssCompanies = loadJson<IndicatorLensCompanyIndex[]>(
-  "data/indicator-topics-companies.json",
-);
+export const allIndicatorLensesCompanies = loadJson<
+  IndicatorLensCompanyIndex[]
+>("data/indicator-lenses-companies.json");
 
 export const companyIndices = loadJsonDir<CompanyIndex>(
   "data/companies",

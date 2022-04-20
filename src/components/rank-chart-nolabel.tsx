@@ -107,7 +107,7 @@ const RankChart = ({
           </div>
         </div>
 
-        <div ref={ref} className="flex-grow ml-2">
+        <div ref={ref} className="flex-grow flex items-center ml-2">
           <svg
             version="1"
             xmlns="http://www.w3.org/2000/svg"
@@ -123,8 +123,10 @@ const RankChart = ({
               className={barClassName}
             />
           </svg>
+          <span className="shrink-0 text-right w-8 pl-1 pr-1 select-none float-right">
+            {score}%
+          </span>
         </div>
-        <span className="pl-1 pr-1 select-none float-right">{score}%</span>
       </div>
     );
   };

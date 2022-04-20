@@ -1398,9 +1398,13 @@ export const indicatorLensIndex = async (): Promise<IndicatorLensIndex[]> => {
       if (!company) return unreachable(`Company ${companyId} not found`);
 
       memo[lens].scores.push({
-        company: company.id,
+        id: company.id,
         companyPretty: company.name,
         score,
+        // FIXME: The rank for the lens os missing.
+        rank: 1,
+        kind: company.kind,
+        category: "total",
       });
 
       return memo;
