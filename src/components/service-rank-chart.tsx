@@ -97,6 +97,7 @@ const ServiceRankChart = ({
 
         <div className={c("flex-none ml-2", serviceWidth)}>{service}</div>
 
+        {/* TODO: Replace with RankLabel component */}
         <div className="flex-none w-8 flex justify-center">
           <div
             className={c(

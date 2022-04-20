@@ -96,6 +96,7 @@ const RankChart = ({
       >
         {companyLabel}
 
+        {/* TODO: Replace with RankLabel component */}
         <div className="flex-none w-8 flex justify-center">
           <div
             className={c(

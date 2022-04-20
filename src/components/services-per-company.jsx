@@ -22,7 +22,7 @@ const ServicesByCompany = (props) => {
     return (
       <div
         key={`chart-header-${category}-${companyId}`}
-        className="flex-grow h-9 text-prissian font-bold indent-5 bg-beige rounded-full"
+        className="flex-grow flex items-center h-9 text-prissian font-bold pl-5 bg-beige rounded-full"
       >
         <Link passHref href={`/companies/${companyId}`}>
           <a>{companyName}</a>

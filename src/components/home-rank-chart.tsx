@@ -88,6 +88,7 @@ const HomeRankChart = ({ranking, category, className}: HomeRankChartProps) => {
               </a>
             </Link>
 
+            {/* TODO: Replace with RankLabel component */}
             <div className="flex-none w-8 flex justify-center">
               <div
                 className={c(
