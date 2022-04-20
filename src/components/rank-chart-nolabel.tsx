@@ -1,9 +1,9 @@
 import c from "clsx";
 import Link from "next/link";
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-import {useChartResize} from "../hooks";
-import {CompanyRank, IndicatorCategoryExt} from "../types";
+import { useChartResize } from "../hooks";
+import { CompanyRank, IndicatorCategoryExt } from "../types";
 import PercentageBar from "./percentage-bar";
 
 interface RankChartProps {
@@ -41,7 +41,7 @@ const RankChart = ({
   const companyWidth = "w-24";
 
   const chartRow = (
-    {id, companyPretty, score, rank}: CompanyRank,
+    { id, companyPretty, score, rank }: CompanyRank,
     idx: number,
   ) => {
     // eslint-disable-next-line unicorn/no-null
@@ -95,7 +95,7 @@ const RankChart = ({
         onMouseLeave={() => setHighlightedCompany(undefined)}
       >
         {companyLabel}
-
+        {/* TODO: Replace with RankLabel component */}
         <div className="flex-none w-8 flex justify-center">
           <div
             className={c(
@@ -107,7 +107,7 @@ const RankChart = ({
           </div>
         </div>
 
-        <div ref={ref} className="flex-grow flex items-center ml-2">
+        <div ref={ref} className="flex-grow ml-2">
           <svg
             version="1"
             xmlns="http://www.w3.org/2000/svg"
@@ -123,10 +123,8 @@ const RankChart = ({
               className={barClassName}
             />
           </svg>
-          <span className="shrink-0 text-right w-8 pl-1 pr-1 select-none float-right">
-            {score}%
-          </span>
         </div>
+        <span className="pl-1 pr-1 select-none float-right">{score}%</span>
       </div>
     );
   };

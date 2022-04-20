@@ -4,12 +4,10 @@ import React from "react";
 import { useChartResize } from "../hooks";
 import { mapIcon } from "./evaluated-service";
 import PercentageBar from "./percentage-bar";
+import RankLabel from "./rank-label";
 
-// FIXME: some chartRows are never disappearing
-// FIXME: rankings have seemingly random numbers
 // FIXME: going crazy with the 'unique key' warning (also in spc)
 
-// TODO: fix centering of chartHeader contents & rank numbers
 // TODO: add highlighting to rows?
 // TODO: add links to company names?
 
@@ -52,11 +50,10 @@ const CompaniesByService = (props) => {
     return (
       <div
         key={`chart-header-${category}-${serviceKind}`}
-        // check this styling
-        className="flex flex-grow h-9 bg-beige rounded-full"
+        className="flex-grow flex items-center font-medium font-sans text-sm pl-5 h-9 bg-beige rounded-full"
       >
-        <div className="align-left w-8 indent-5">{sIcon}</div>
-        <div className="text-m">{kindName.label}</div>
+        <div>{sIcon}</div>
+        <div>{kindName.label}</div>
       </div>
     );
   };
@@ -67,9 +64,11 @@ const CompaniesByService = (props) => {
     return companies.includes(company.id) ? (
       <div
         key={`chart-row-${category}-${company.service}`}
-        className="flex items-center space-x-1 pr-1.5 pl-1.5"
+        className="flex items-center space-x-1 pr-1.5 pl-1.5 font-sans"
       >
-        <div className="flex-none align-left w-24 h-10">
+        <div 
+        key={`chart-label-${company.companyPretty}`}
+        className="flex-none align-left w-24 h-10">
           <p className="text-prissian text-xs font-bold">
             {company.companyPretty}
             <br />
@@ -78,15 +77,8 @@ const CompaniesByService = (props) => {
             </span>
           </p>
         </div>
-        <div
-          className={c(
-            "rounded-full h-5 w-5 text-white text-xs flex-none items-center justify-center",
-            rankClassName,
-          )}
-        >
-          {company.rank}
-        </div>
-        <div ref={ref} className="flex-grow">
+        <RankLabel rank={company.rank} className={rankClassName} />
+        <div key={`chart-bar-${company.companyPretty}-${company.service}-${company.score}`} ref={ref} className="flex-grow">
           <svg
             version="1"
             xmlns="http://www.w3.org/2000/svg"
@@ -124,16 +116,13 @@ const CompaniesByService = (props) => {
           const key = Object.keys(entry);
           // values is an array of companies that provide services of that kind
           const values = entry[key[0]];
-          const list = values.filter(value => companies.includes(value.id))
+          const list = values.filter((value) => companies.includes(value.id))
           return (
-            <div className="flex flex-col space-y-5">
-              {list.length > 0 && (
-                chartHeader(key[0])
-              )}
+            <div key={`chartBlock-${key[0]}`} className="flex flex-col space-y-5">
+              {list.length > 0 && chartHeader(key[0])}
               {list.map((item, idx) => {
                 return chartRow(item, idx);
-              })
-              }
+              })}
             </div>
           );
         })}

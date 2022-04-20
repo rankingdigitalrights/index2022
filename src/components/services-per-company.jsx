@@ -22,7 +22,7 @@ const ServicesByCompany = (props) => {
     return (
       <div
         key={`chart-header-${category}-${companyId}`}
-        className="flex-grow h-9 text-prissian font-bold indent-5 bg-beige rounded-full"
+        className="flex-grow flex items-center h-9 text-prissian font-bold pl-5 bg-beige rounded-full"
       >
         <Link passHref href={`/companies/${companyId}`}>
           <a>{companyName}</a>
@@ -64,7 +64,7 @@ const ServicesByCompany = (props) => {
             />
           </svg>
         </div>
-        <div>
+        <div key={`score-span-${serviceName}-${score}%`} >
           <span className="w-4 flex-none select-none float-right text-right text-xs">
             {score}%
           </span>
@@ -78,7 +78,7 @@ const ServicesByCompany = (props) => {
       <div className="space-y-5">
         {companiesArr.map((company, idx) => {
           return (
-            <div className="flex flex-col space-y-5">
+            <div key={`chartBlock-${company.name}-${company.id}`} className="flex flex-col space-y-5">
               {chartHeader(company.name, company.id)}
               {company.services.map((service) => {
                 const sIcon = serviceIcon(service.kind);
