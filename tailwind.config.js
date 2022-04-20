@@ -30,6 +30,14 @@ module.exports = {
     "stroke-arrow-turquoise",
     "stroke-arrow-yellow",
     "stroke-arrow-red",
+    "fill-lens-algorithmic-transparency",
+    "fill-lens-content-governance-moderation",
+    "fill-lens-data-handling",
+    "fill-lens-demands-data-censorship",
+    "fill-lens-private-requests",
+    "fill-lens-security",
+    "fill-lens-targeted-advertising",
+    "fill-lens-user-agency",
   ],
   theme: {
     extend: {
@@ -95,6 +103,17 @@ module.exports = {
           blue: "#4D9ECF",
           red: "#EC6A5A",
           white: "#FFFFFF",
+        },
+
+        lens: {
+          "algorithmic-transparency": "#D00000",
+          "content-governance-moderation": "#ED6A5A",
+          "data-handling": "#F17105",
+          "demands-data-censorship": "#ECA400",
+          "private-requests": "#BFAB25",
+          security: "#21BCB3",
+          "targeted-advertising": "#238E88",
+          "user-agency": "#D00000",
         },
 
         2017: "#FFA47C",
