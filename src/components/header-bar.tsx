@@ -5,21 +5,22 @@ import React, {useEffect, useRef, useState} from "react";
 
 import companies from "../../data/companies.json";
 import {useMobileSize} from "../hooks";
+import Ads from "../images/icons/ads.svg";
 import Cancel from "../images/icons/cancel.svg";
+import ChinaCompanies from "../images/icons/china-companies.svg";
 import DownloadTheData from "../images/icons/download-the-data.svg";
 import ExecutiveSummary from "../images/icons/executive-summary.svg";
 import ExploreTheData from "../images/icons/explore-the-data.svg";
 import Hamburger from "../images/icons/hamburger.svg";
-import IntroEssay from "../images/icons/intro-essay.svg";
 import KeyFindings from "../images/icons/key-findings.svg";
 import Methodology from "../images/icons/methodology.svg";
-import PolicyRecommendations from "../images/icons/policy-recommendations.svg";
 import ScoresByIndicator from "../images/icons/scores-by-indicator.svg";
 import ScoresOverTime from "../images/icons/scores-over-time.svg";
-import Logo from "../images/logo.svg";
+import Shareholders from "../images/icons/shareholders.svg";
 import {CompanyKind} from "../types";
 import {isMouseEvent} from "../utils";
 import MenuBarColumn from "./menu-bar-column";
+import Logo from "./rdr-logo";
 
 interface HeaderBarProps {
   className?: string;
@@ -129,27 +130,13 @@ const HeaderBar = ({className}: HeaderBarProps) => {
   };
 
   return (
-    <header ref={ref} className={c(className)}>
+    <header ref={ref} className={c("font-sans", className)}>
       <div className="relative bg-beige shadow-md py-2 z-50">
-        <div className="lg:container lg:mx-auto flex justify-between items-center relative px-6">
-          <Link passHref href="/">
-            <a className="flex items-center text-black no-underline hover:no-underline">
-              <Logo
-                aria-label="Ranking Digital Rights Logo"
-                className="flex-none"
-              />
-              <span className="flex-none font-bold text-lg ml-4 whitespace-nowrap">
-                {isMobile
-                  ? "2022 RDR Index"
-                  : "2022 Ranking Digital Rights Corporate Accountability Index"}
-              </span>
-            </a>
-          </Link>
-
+        <div className="xl:container md:mx-auto flex justify-between items-center relative px-3 md:px-6">
           {isExpanded ? (
             <button
               tabIndex={0}
-              className="float-right w-6 h-12 relative"
+              className="float-left w-6 h-12 relative"
               onClick={handleClickHamburger}
               aria-expanded
             >
@@ -172,6 +159,31 @@ const HeaderBar = ({className}: HeaderBarProps) => {
               </span>
             </button>
           )}
+
+          <Link passHref href="/">
+            <a className="flex lg:mx-auto items-center text-black no-underline hover:no-underline">
+              <Logo
+                className={c("flex-none", {
+                  "w-6 h-6": isMobile,
+                  "w-12 h-12": !isMobile,
+                })}
+              />
+              <span
+                className={c(
+                  "flex-none font-bold text-prissian text-md ml-2 md:ml-4",
+                  {
+                    "whitespace-nowrap": isMobile,
+                    "whitespace-pre": !isMobile,
+                  },
+                )}
+              >
+                {isMobile
+                  ? "RDR Big Tech Scorecard"
+                  : `The Ranking Digital Rights
+Big Tech Scorecard`}
+              </span>
+            </a>
+          </Link>
         </div>
       </div>
 
@@ -194,32 +206,44 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 aria-label="The Report"
                 className="menubar list-inside list-none ml-0"
               >
-                <li role="none" className="border-b border-disabled pt-6 pb-6">
+                <li role="none" className="pt-6 pb-6">
                   <IconLink
-                    name="Executive summary"
+                    name="Executive Summary"
                     href="/executive-summary"
                     Icon={ExecutiveSummary}
                   />
                 </li>
-                <li role="none" className="pt-6 pb-3">
+                <li role="none" className="border-b border-disabled pt-3 pb-6">
                   <IconLink
-                    name="Introduction"
-                    href="/intro-essay"
-                    Icon={IntroEssay}
-                  />
-                </li>
-                <li role="none" className="py-3">
-                  <IconLink
-                    name="Key findings"
+                    name="Key Findings"
                     href="/key-findings"
                     Icon={KeyFindings}
                   />
                 </li>
+
+                <li role="none" className="pt-6 pb-0">
+                  <span className="font-bold">Featured essays:</span>
+                </li>
+
+                <li role="none" className="pt-6 pb-3">
+                  <IconLink
+                    name="We Must Govern Online Ads"
+                    href="https://rankingdigitalrights.org/mini-report/we-must-govern-online-ads"
+                    Icon={Ads}
+                  />
+                </li>
+                <li role="none" className="py-3">
+                  <IconLink
+                    name="Empowering Big Tech Shareholders"
+                    href="https://rankingdigitalrights.org/mini-report/its-time-to-bring-down-the-barriers-blocking-shareholders-on-human-rights/"
+                    Icon={Shareholders}
+                  />
+                </li>
                 <li role="none" className="border-b border-disabled pt-3 pb-6">
                   <IconLink
-                    name="Policy recommendations"
-                    href="/recommendations"
-                    Icon={PolicyRecommendations}
+                    name="Why Won't Chinese Companies Talk to Us?"
+                    href="/"
+                    Icon={ChinaCompanies}
                   />
                 </li>
               </ul>
@@ -232,10 +256,10 @@ const HeaderBar = ({className}: HeaderBarProps) => {
             isExpandable={isMobile}
             onExpand={(toggle: boolean) =>
               toggle
-                ? setExpandedColumn("Company Report Cards")
+                ? setExpandedColumn("COMPANY SCORECARDS")
                 : setExpandedColumn(undefined)
             }
-            isExpanded={expandedColumn === "Company Report Cards"}
+            isExpanded={expandedColumn === "COMPANY SCORECARDS"}
           >
             <div className="flex justify-between pt-6">
               <ul
@@ -297,10 +321,10 @@ const HeaderBar = ({className}: HeaderBarProps) => {
             isExpandable={isMobile}
             onExpand={(toggle: boolean) =>
               toggle
-                ? setExpandedColumn("Our Data + Methods")
+                ? setExpandedColumn("OUR DATA + METHODS")
                 : setExpandedColumn(undefined)
             }
-            isExpanded={expandedColumn === "Our Data + Methods"}
+            isExpanded={expandedColumn === "OUR DATA + METHODS"}
           >
             <div className="flex flex-col">
               <ul
@@ -308,44 +332,41 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 aria-label="Our Data + Methods"
                 className="menubar list-inside list-none ml-0"
               >
-                <li role="none" className="pt-6 pb-0">
-                  <span className="font-bold">Explore the data:</span>
-                </li>
-                <li className="py-3">
+                <li className="pt-6 pb-3">
                   <IconLink
-                    href="/explore-services"
+                    href="/explore"
                     Icon={ExploreTheData}
-                    name="Platforms & services"
-                  />
-                </li>
-
-                <li className="py-3">
-                  <IconLink
-                    href="/explore-indicators"
-                    Icon={ScoresByIndicator}
-                    name="Issue areas & indicators"
+                    name="Data Explorer"
                   />
                 </li>
                 <li className="border-b border-disabled pt-3 pb-6">
                   <IconLink
-                    href="/compare"
-                    Icon={ScoresOverTime}
-                    name="Year-over-year trends"
+                    href="/explore-indicators"
+                    Icon={ScoresByIndicator}
+                    name="RDR Indicators"
                   />
                 </li>
 
-                <li className="border-b border-disabled py-6">
+                <li className="pt-6 pb-6">
                   <IconLink
-                    href="/methodology"
+                    href="/compare"
+                    Icon={ScoresOverTime}
+                    name="Year-over-year Trends"
+                  />
+                </li>
+
+                <li className="border-b border-disabled pt-3 pb-6">
+                  <IconLink
+                    href="https://rankingdigitalrights.org/methods-and-standards"
                     Icon={Methodology}
-                    name="RDR Index methodology"
+                    name="RDR Index Methodology"
                   />
                 </li>
 
                 <li className="flex items-start border-b border-disabled py-6">
                   <DownloadTheData className="flex-none w-8 h-8" />
                   <div className="flex flex-col ml-3">
-                    <span className="font-bold">Download the data</span>
+                    <span className="font-bold">Download the Data</span>
                     <div className="flex">
                       <Link passHref href="/2022RDRIndexFullDataSet.xlsx">
                         <a role="menuitem" className="text-black font-bold">
@@ -363,7 +384,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 </li>
 
                 <li className="flex flex-col border-b border-disabled py-3">
-                  <span className="font-bold mb-3">Support our work</span>
+                  <span className="font-bold mb-3">Support our Work</span>
                   <a
                     href="https://www.classy.org/give/325264/#!/donation/checkout"
                     role="menuitem"

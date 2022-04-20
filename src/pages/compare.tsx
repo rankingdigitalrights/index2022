@@ -84,15 +84,6 @@ const ScoresOverTime = ({diffScores, details}: ScoresOverTimeProps) => {
                       )}
                     />
                   </div>
-
-                  <div className="flex flex-col lg:ml-10">
-                    <CompanyKindLabel kind="telecom" theme="dark" />
-
-                    <CompareScoresChart
-                      className="flex-none w-full lg:w-1/2 mt-3"
-                      scores={diffScores.filter(({kind}) => kind === "telecom")}
-                    />
-                  </div>
                 </div>
               </div>
 

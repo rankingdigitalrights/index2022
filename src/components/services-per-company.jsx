@@ -95,7 +95,7 @@ const ServicesByCompany = (props) => {
   const divider = Math.ceil(companies.length / 2);
 
   return (
-    <div className="flex flex-col space-x-8 md:flex-row">
+    <div className="flex flex-col space-x-8 md:flex-row font-sans">
       <div className="w-full md:w-1/2">
         {chartBlock(companies.slice(0, divider), category)}
       </div>

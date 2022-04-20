@@ -12,7 +12,7 @@ export type IndicatorCategoryExt = IndicatorCategory | "total";
 
 export type IndicatorScore = number | NA;
 
-export type IndicatorTopic =
+export type IndicatorLens =
   | "algorithmic-transparency"
   | "targeted-advertising"
   | "content-governance-moderation"
@@ -68,6 +68,7 @@ export type CompanyMeta = {
   operatingCompany?: string;
   dateOfSale?: string;
   salePrice?: string;
+  firstServiceEval?: string;
 };
 
 export type CompanyDetails = {
@@ -97,6 +98,7 @@ export type Company = {
   name: string;
   kind: CompanyKind;
   brand?: string;
+  region: string;
 };
 
 export type CompanyCategoryYearOverYear = {
@@ -276,9 +278,9 @@ export type IndicatorIndex = {
   elements: Record<string, Record<string, IndicatorIndexElement[]>>;
 };
 
-export type IndicatorTopicIndex = {
-  topic: IndicatorTopic;
-  topicPretty: string;
+export type IndicatorLensIndex = {
+  lens: IndicatorLens;
+  lensPretty: string;
   scores: Array<{
     company: string;
     companyPretty: string;
@@ -286,12 +288,12 @@ export type IndicatorTopicIndex = {
   }>;
 };
 
-export type IndicatorTopicCompanyIndex = {
+export type IndicatorLensCompanyIndex = {
   company: string;
   companyPretty: string;
   scores: Array<{
-    topic: IndicatorTopic;
-    topicPretty: string;
+    lens: IndicatorLens;
+    lensPretty: string;
     score: number;
   }>;
 };
@@ -322,10 +324,20 @@ export interface SortStrategy<T extends SelectOption = SelectOption> {
   (xs: T[]): T[];
 }
 
+export interface SortStrategyYOY<
+  T extends CompanyYearOverYear = CompanyYearOverYear
+> {
+  (xs: T[]): T[];
+}
+
 export type SortStrategies<T extends SelectOption = SelectOption> = Map<
   string,
   SortStrategy<T>
 >;
+
+export type SortStrategiesYOY<
+  T extends CompanyYearOverYear = CompanyYearOverYear
+> = Map<string, SortStrategyYOY<T>>;
 
 export type HighlightedCompany = {
   company: string;
@@ -364,16 +376,14 @@ export interface ComparePage {
 
 export type ReadmoreKind =
   | "summary"
-  | "introduction"
   | "key-findings"
-  | "recommendations"
   | "methodology"
-  | "context-before-code"
-  | "unaccountable-algorithms"
-  | "china-tech-giants"
+  | "shareholders"
+  | "ads"
+  | "china-companies"
   | "compare"
   | "indicators"
-  | "services";
+  | "data";
 
 export type ReadmoreItem = {
   kind: ReadmoreKind;
@@ -393,3 +403,8 @@ export type Glossary = {
   title: string;
   text: string;
 };
+
+export type CompanyYearOverYear = Omit<
+  CompanyCategoryYearOverYear,
+  "category"
+> & {region: string};

@@ -30,11 +30,7 @@ const KeyFindings = ({details}: NarrativeProps) => {
     ? hydrate(details.footnotes, {components})
     : undefined;
 
-  const readmore: ReadmoreKind[] = [
-    "context-before-code",
-    "recommendations",
-    "services",
-  ];
+  const readmore: ReadmoreKind[] = ["ads", "shareholders", "data"];
 
   return (
     <Layout>

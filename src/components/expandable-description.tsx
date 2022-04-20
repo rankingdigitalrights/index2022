@@ -24,7 +24,7 @@ const ExpandableDescription = ({
   return (
     <div className={c("flex flex-col", className)}>
       <button className="flex items-center" onClick={toggleExpanded}>
-        <span className="text-prissian text-sm">{label}</span>
+        <span className="text-prissian text-sm font-sans">{label}</span>
 
         {isExpanded ? (
           <ChevronDown

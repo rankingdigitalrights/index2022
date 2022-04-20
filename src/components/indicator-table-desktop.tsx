@@ -150,11 +150,11 @@ const IndicatorTableDesktop = ({
 
   return (
     <div className="flex flex-col company-table overflow-x-auto">
-      <div className="flex flex-row">{legend}</div>
+      <div className="flex flex-row font-sans">{legend}</div>
 
       {grid}
 
-      <div className="flex flex-row">{footer}</div>
+      <div className="flex flex-row font-sans">{footer}</div>
     </div>
   );
 };

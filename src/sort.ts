@@ -1,4 +1,4 @@
-import {IndicatorScore, IndicatorTopic} from "./types";
+import {IndicatorLens, IndicatorScore} from "./types";
 import {isNA} from "./utils";
 
 type SortOrder = "asc" | "desc";
@@ -57,8 +57,8 @@ export const byRankAndName = (order?: SortOrder) => <
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const byTopic = (order?: SortOrder) => <
-  T extends Required<{topic: IndicatorTopic}>
+export const byLens = (order?: SortOrder) => <
+  T extends Required<{lens: IndicatorLens}>
 >(
   a: T,
   b: T,
@@ -72,8 +72,8 @@ export const byTopic = (order?: SortOrder) => <
     right = -1;
   }
 
-  if (a.topic.localeCompare(b.topic) < 0) return left;
-  if (a.topic.localeCompare(b.topic) > 0) return right;
+  if (a.lens.localeCompare(b.lens) < 0) return left;
+  if (a.lens.localeCompare(b.lens) > 0) return right;
 
   return 0;
 };
