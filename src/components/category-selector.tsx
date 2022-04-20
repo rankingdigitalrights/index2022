@@ -49,7 +49,9 @@ const CategorySelector = ({
   });
 
   return (
-    <div className={c("flex flex-wrap items-center text-sm", className)}>
+    <div
+      className={c("flex flex-wrap items-center font-sans text-sm", className)}
+    >
       <button className={totalClassName} onClick={() => onClick("total")}>
         Total
       </button>

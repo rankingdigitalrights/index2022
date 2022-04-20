@@ -30,11 +30,7 @@ const ExecutiveSummary = ({details}: NarrativeProps) => {
     ? hydrate(details.footnotes, {components})
     : undefined;
 
-  const readmore: ReadmoreKind[] = [
-    "introduction",
-    "key-findings",
-    "indicators",
-  ];
+  const readmore: ReadmoreKind[] = ["key-findings", "data", "indicators"];
 
   return (
     <Layout>

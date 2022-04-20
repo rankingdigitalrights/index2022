@@ -33,7 +33,7 @@ const IndicatorTableMobile = ({
 
   return (
     <div className="flex flex-col">
-      <div className="w-full px-1 py-4 bg-white border border-disabled-dark leading-tight">
+      <div className="w-full px-1 py-4 bg-white border border-disabled-dark leading-tight font-sans">
         <span>{indicatorLabel}</span>
       </div>
 
@@ -96,7 +96,7 @@ const IndicatorTableMobile = ({
                         </div>
 
                         <div className="flex justify-around items-center w-10/12">
-                          <span className="text-center  w-5/12">
+                          <span className="text-center font-sans w-5/12">
                             {service.name}
                           </span>
 

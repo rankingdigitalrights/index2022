@@ -78,7 +78,7 @@ const RankChart = ({
         <Link passHref href={`/companies/${id}`}>
           <a
             className={c(
-              "flex-none text-black font-normal select-none whitespace-nowrap",
+              "flex-none text-black font-normal font-sans select-none whitespace-nowrap",
               highlightedClassName,
               companyWidth,
             )}
@@ -90,7 +90,7 @@ const RankChart = ({
         <div className="flex-none w-8 flex justify-center">
           <div
             className={c(
-              "rounded-full h-5 w-5 text-white flex items-center justify-center",
+              "rounded-full h-5 w-5 text-white font-sans flex items-center justify-center",
               rankClassName,
             )}
           >
@@ -122,7 +122,9 @@ const RankChart = ({
             scoreClassName,
           )}
         >
-          <span className="pl-1 pr-1 select-none float-right">{score}%</span>
+          <span className="pl-1 pr-1 select-none font-sans float-right">
+            {score}%
+          </span>
         </div>
       </div>
     );

@@ -13,12 +13,23 @@ module.exports = {
   safelist: [
     "bg-disabled-light",
     "italic",
-    "font-bold",
     "fill-2017",
     "fill-2018",
     "fill-2019",
     "fill-2020",
     "fill-2022",
+    "fill-arrow-white",
+    "fill-arrow-blue",
+    "fill-arrow-prissian",
+    "fill-arrow-turquoise",
+    "fill-arrow-yellow",
+    "fill-arrow-red",
+    "stroke-arrow-white",
+    "stroke-arrow-blue",
+    "stroke-arrow-prissian",
+    "stroke-arrow-turquoise",
+    "stroke-arrow-yellow",
+    "stroke-arrow-red",
   ],
   theme: {
     extend: {
@@ -28,6 +39,7 @@ module.exports = {
 
       fontFamily: {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+        serif: ["Source Serif Pro", ...defaultTheme.fontFamily.serif],
       },
 
       fontSize: {
@@ -74,6 +86,15 @@ module.exports = {
 
         light: {
           freedom: "#BCEBE8",
+        },
+
+        arrow: {
+          prissian: "#1C5275",
+          turquoise: "#21BBB2",
+          yellow: "#EBA300",
+          blue: "#4D9ECF",
+          red: "#EC6A5A",
+          white: "#FFFFFF",
         },
 
         2017: "#FFA47C",

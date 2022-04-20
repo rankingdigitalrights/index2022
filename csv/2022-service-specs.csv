@@ -18,12 +18,12 @@ Baidu,Baidu,OpCom,NA,NA
 Baidu,Baidu,search,Baidu Search,Baidu Search
 Baidu,Baidu,cloud,Baidu Cloud,Baidu Cloud
 Baidu,Baidu,socialNetworkBlogs,Baidu PostBar,Baidu PostBar
-Facebook,Facebook,Group,Facebook (Group),Facebook
-Facebook,Facebook,OpCom,NA,NA
-Facebook,Facebook,socialNetworkBlogs,Facebook,Facebook
-Facebook,Facebook,photoVideo,Instagram,Instagram
-Facebook,Facebook,messagingVoip,WhatsApp,WhatsApp
-Facebook,Facebook,messagingVoip,Messenger,Messenger
+Meta,Meta,Group,Facebook (Group),Facebook
+Meta,Meta,OpCom,NA,NA
+Meta,Meta,socialNetworkBlogs,Facebook,Facebook
+Meta,Meta,photoVideo,Instagram,Instagram
+Meta,Meta,messagingVoip,WhatsApp,WhatsApp
+Meta,Meta,messagingVoip,Messenger,Messenger
 Google,Google,Group,Google (Group),Google
 Google,Google,OpCom,NA,NA
 Google,Google,search,Google Search,Google Search
@@ -37,13 +37,12 @@ Kakao,Kakao,OpCom,NA,NA
 Kakao,Kakao,search,Daum Search,Daum Search
 Kakao,Kakao,email,Daum Mail,Daum Mail
 Kakao,Kakao,messagingVoip,KakaoTalk,KakaoTalk
-Mail.Ru,MailRu,Group,Mail.Ru (Group),Mail.Ru
-Mail.Ru,MailRu,OpCom,NA,NA
-Mail.Ru,MailRu,socialNetworkBlogs,Vkontakte,Vkontakte
-Mail.Ru,MailRu,email,Mail.Ru email,Mail.Ru email
-Mail.Ru,MailRu,messagingVoip,Mail.Ru Agent,Mail.Ru Agent
-Mail.Ru,MailRu,cloud,Mail.Ru Cloud,Mail.Ru Cloud
-Mail.Ru,MailRu,socialNetworkBlogs,Odnoklassniki,Odnoklassniki
+VK,VK,Group,Mail.Ru (Group),Mail.Ru
+VK,VK,OpCom,NA,NA
+VK,VK,socialNetworkBlogs,Vkontakte,Vkontakte
+VK,VK,email,Mail.Ru email,Mail.Ru email
+VK,VK,cloud,Mail.Ru Cloud,Mail.Ru Cloud
+VK,VK,socialNetworkBlogs,Odnoklassniki,Odnoklassniki
 Microsoft,Microsoft,Group,Microsoft,Microsoft
 Microsoft,Microsoft,OpCom,NA,NA
 Microsoft,Microsoft,search,Bing,Bing

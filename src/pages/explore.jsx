@@ -256,7 +256,7 @@ const Explorer = ({
               <Container>
                 <NarrativeTitle title="2022 Companies Score" />
 
-                <p className="font-circular mt-6">
+                <p className="mt-6">
                   Some new text about the 2022 explore companies views.
                 </p>
 

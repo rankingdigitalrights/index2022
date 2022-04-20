@@ -144,8 +144,10 @@ const Selector = <T extends SelectOption>({
   };
 
   return (
-    <div className={c("flex flex-col justify-between h-16", className)}>
-      <span className="text-sm font-circular">{title}</span>
+    <div
+      className={c("flex flex-col justify-between h-16 font-sans", className)}
+    >
+      <span className="text-sm">{title}</span>
       <Select
         instanceId={id}
         options={options}

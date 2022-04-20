@@ -10,10 +10,10 @@ Apple,pda,Siri,47,22,51,28,22,3,57,43
 Baidu,cloud,Baidu Cloud,28,11,25,14,15,13,36,7
 Baidu,socialNetworkBlogs,Baidu PostBar,29,13,28,17,17,16,38,13
 Baidu,search,Baidu Search,27,8,25,14,14,6,34,5
-Facebook,socialNetworkBlogs,Facebook,52,38,69,39,45,38,52,34
-Facebook,photoVideo,Instagram,46,33,66,36,49,39,37,15
-Facebook,messagingVoip,Messenger,45,27,62,35,21,18,52,34
-Facebook,messagingVoip,WhatsApp,40,25,61,34,26,23,42,21
+Meta,socialNetworkBlogs,Facebook,52,38,69,39,45,38,52,34
+Meta,photoVideo,Instagram,46,33,66,36,49,39,37,15
+Meta,messagingVoip,Messenger,45,27,62,35,21,18,52,34
+Meta,messagingVoip,WhatsApp,40,25,61,34,26,23,42,21
 Google,mobileEcosystem,Android mobile ecosystem,43,31,55,26,30,32,46,26
 Google,email,Gmail,49,35,56,31,53,37,46,30
 Google,pda,Google Assistant,45,30,55,25,42,33,43,24
@@ -23,10 +23,10 @@ Google,photoVideo,YouTube,50,37,58,32,51,40,46,30
 Kakao,email,Daum Mail,45,23,50,21,45,29,43,23
 Kakao,search,Daum Search,42,21,50,21,39,27,41,22
 Kakao,messagingVoip,KakaoTalk,45,24,47,16,40,31,47,25
-MailRu,cloud,Mail.Ru Cloud,29,7,20,9,19,7,37,6
-MailRu,email,Mail.Ru email,33,15,20,9,34,25,37,10
-MailRu,socialNetworkBlogs,Odnoklassniki,25,4,17,7,11,5,37,8
-MailRu,socialNetworkBlogs,Vkontakte,29,14,19,11,15,17,41,14
+VK,cloud,Mail.Ru Cloud,29,7,20,9,19,7,37,6
+VK,email,Mail.Ru email,33,15,20,9,34,25,37,10
+VK,socialNetworkBlogs,Odnoklassniki,25,4,17,7,11,5,37,8
+VK,socialNetworkBlogs,Vkontakte,29,14,19,11,15,17,41,14
 Microsoft,search,Bing,52,41,67,40,52,41,47,28
 Microsoft,socialNetworkBlogs,LinkedIn,47,32,66,38,37,28,47,27
 Microsoft,cloud,OneDrive,52,39,67,40,48,35,49,36

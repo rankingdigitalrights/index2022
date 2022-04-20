@@ -50,7 +50,8 @@ const CompanySection = ({
         <div className="md:w-1/3 md:mr-3">
           <h2
             className={c(
-              "flex items-center md:items-start text-lg font-bold mb-6",
+              "flex items-center text-lg font-bold mb-6",
+              {"md:items-start": title.startsWith("Freedom")},
               titleClassName,
             )}
           >

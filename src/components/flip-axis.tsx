@@ -1,4 +1,5 @@
 import c from "clsx";
+import React from "react";
 
 import Down from "../images/icons/axis-down.svg";
 import Up from "../images/icons/axis-up.svg";
@@ -16,8 +17,8 @@ const FlipAxis = ({label, onChange, flip, className}: FlipAxisProps) => {
   };
 
   return (
-    <div className={c("flex items-center self-end", className)}>
-      <label htmlFor="toggle" className="font-circular text-sm mr-2">
+    <div className={c("flex items-center font-sans", className)}>
+      <label htmlFor="toggle" className="text-sm mr-2">
         {label}
       </label>
       <button

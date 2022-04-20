@@ -30,6 +30,23 @@
   @font-face {
     font-family: "Poppins";
     font-style: normal;
+    font-weight: 500;
+    src: url("../../public/fonts/poppins-500.eot"); /* IE9 Compat Modes */
+    src: local(""),
+      url("../../public/fonts/poppins-500.eot?#iefix")
+        format("embedded-opentype"),
+      /* IE6-IE8 */ url("../../public/fonts/poppins-500.woff2") format("woff2"),
+      /* Super Modern Browsers */ url("../../public/fonts/poppins-500.woff")
+        format("woff"),
+      /* Modern Browsers */ url("../../public/fonts/poppins-500.ttf")
+        format("truetype"),
+      /* Safari, Android, iOS */
+        url("../../public/fonts/poppins-500.svg#Poppins") format("svg"); /* Legacy iOS */
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
     font-weight: 700;
     src: url("../../public/fonts/poppins-700.eot"); /* IE9 Compat Modes */
     src: local(""),
@@ -44,6 +61,45 @@
         url("../../public/fonts/poppins-700.svg#Poppins") format("svg"); /* Legacy iOS */
   }
 
+  @font-face {
+    font-family: "Source Serif Pro";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../public/fonts/source-serif-pro-regular.eot"); /* IE9 Compat Modes */
+    src: local(""),
+      url("../../public/fonts/source-serif-pro-regular.eot?#iefix")
+        format("embedded-opentype"),
+      /* IE6-IE8 */ url("../../public/fonts/source-serif-pro-regular.woff2")
+        format("woff2"),
+      /* Super Modern Browsers */
+        url("../../public/fonts/source-serif-pro-regular.woff") format("woff"),
+      /* Modern Browsers */
+        url("../../public/fonts/source-serif-pro-regular.ttf")
+        format("truetype"),
+      /* Safari, Android, iOS */
+        url("../../public/fonts/source-serif-pro-regular.svg#SourceSerifPro")
+        format("svg"); /* Legacy iOS */
+  }
+
+  @font-face {
+    font-family: "Source Serif Pro";
+    font-style: normal;
+    font-weight: 600;
+    src: url("../../public/fonts/source-serif-pro-600.eot"); /* IE9 Compat Modes */
+    src: local(""),
+      url("../../public/fonts/source-serif-pro-600.eot?#iefix")
+        format("embedded-opentype"),
+      /* IE6-IE8 */ url("../../public/fonts/source-serif-pro-600.woff2")
+        format("woff2"),
+      /* Super Modern Browsers */
+        url("../../public/fonts/source-serif-pro-600.woff") format("woff"),
+      /* Modern Browsers */ url("../../public/fonts/source-serif-pro-600.ttf")
+        format("truetype"),
+      /* Safari, Android, iOS */
+        url("../../public/fonts/source-serif-pro-600.svg#SourceSerifPro")
+        format("svg"); /* Legacy iOS */
+  }
+
   .hero-key-findings {
     @apply bg-cover bg-center;
     background-image: url("../images/bg-key-findings.jpg?size=1440");
@@ -52,6 +108,11 @@
   .bg-key-findings {
     @apply bg-cover;
     background-image: url("../images/bg-key-findings.jpg?size=600");
+  }
+
+  .bg-landing-page {
+    @apply bg-cover bg-left-top bg-no-repeat;
+    background-image: url("../images/charting-the-future-of-big-tech-accountability.jpg?size=600");
   }
 
   /* Get rid of the border outlines on button unless user is actually tabbing. */
@@ -76,8 +137,16 @@
   }
 
   html {
-    @apply font-sans text-base;
+    @apply font-serif text-base;
     font-size: 18px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-sans;
   }
 
   h1 {
@@ -273,4 +342,40 @@
 .feature-box h2:first-child,
 .feature-box h3:first-child {
   @apply mt-0;
+}
+
+.beige-grid-col {
+  grid-area: 3 / 1 / 4 / 1;
+}
+
+.overlay-grid-col {
+  grid-area: 3 / 1 / 4 / 1;
+}
+
+@media (min-width: 768px) {
+  .overlay-grid-col {
+    grid-area: 2 / 1 / 4 / 4;
+  }
+
+  .beige-grid-col {
+    grid-area: 2 / 1 / 2 / 4;
+  }
+
+  .disabled-grid-col {
+    grid-area: 3 / 1 / 4 / 4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .overlay-grid-col {
+    grid-area: 1 / 3 / 3 / 3;
+  }
+
+  .beige-grid-col {
+    grid-area: 1 / 3 / 2 / 3;
+  }
+
+  .disabled-grid-col {
+    grid-area: 2 / 3 / 3 / 3;
+  }
 }

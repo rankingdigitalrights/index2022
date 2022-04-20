@@ -687,248 +687,248 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2020,Baidu,P,P18,18,NA,Services,Services,search,Baidu Search,100,NA
 2020,Baidu,P,P18,18,NA,Services,Services,cloud,Baidu Cloud,100,NA
 2020,Baidu,P,P18,18,NA,Services,Services,socialNetworkBlogs,Baidu PostBar,100,NA
-2020,Facebook,G,G01,1,NA,Company,Group,Group,Group,67,NA
-2020,Facebook,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,Facebook,G,G02,2,NA,Company,Group,Group,Group,100,NA
-2020,Facebook,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,Facebook,G,G02,2,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2020,Facebook,G,G02,2,NA,Services,Services,photoVideo,Instagram,100,NA
-2020,Facebook,G,G02,2,NA,Services,Services,messagingVoip,WhatsApp,100,NA
-2020,Facebook,G,G02,2,NA,Services,Services,messagingVoip,Messenger,100,NA
-2020,Facebook,G,G03,3,NA,Company,Group,Group,Group,100,NA
-2020,Facebook,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,Facebook,G,G03,3,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2020,Facebook,G,G03,3,NA,Services,Services,photoVideo,Instagram,100,NA
-2020,Facebook,G,G03,3,NA,Services,Services,messagingVoip,WhatsApp,100,NA
-2020,Facebook,G,G03,3,NA,Services,Services,messagingVoip,Messenger,100,NA
-2020,Facebook,G,G04a,4,a,Company,Group,Group,Group,82,NA
-2020,Facebook,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,Facebook,G,G04a,4,a,Services,Services,socialNetworkBlogs,Facebook,82,NA
-2020,Facebook,G,G04a,4,a,Services,Services,photoVideo,Instagram,82,NA
-2020,Facebook,G,G04a,4,a,Services,Services,messagingVoip,WhatsApp,82,NA
-2020,Facebook,G,G04a,4,a,Services,Services,messagingVoip,Messenger,82,NA
-2020,Facebook,G,G04b,4,b,Company,Group,Group,Group,33,NA
-2020,Facebook,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,Facebook,G,G04b,4,b,Services,Services,socialNetworkBlogs,Facebook,33,NA
-2020,Facebook,G,G04b,4,b,Services,Services,photoVideo,Instagram,33,NA
-2020,Facebook,G,G04b,4,b,Services,Services,messagingVoip,WhatsApp,33,NA
-2020,Facebook,G,G04b,4,b,Services,Services,messagingVoip,Messenger,33,NA
-2020,Facebook,G,G04c,4,c,Company,Group,Group,Group,25,NA
-2020,Facebook,G,G04c,4,c,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,Facebook,G,G04c,4,c,Services,Services,socialNetworkBlogs,Facebook,25,NA
-2020,Facebook,G,G04c,4,c,Services,Services,photoVideo,Instagram,25,NA
-2020,Facebook,G,G04c,4,c,Services,Services,messagingVoip,WhatsApp,25,NA
-2020,Facebook,G,G04c,4,c,Services,Services,messagingVoip,Messenger,25,NA
-2020,Facebook,G,G04d,4,d,Company,Group,Group,Group,25,NA
-2020,Facebook,G,G04d,4,d,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,Facebook,G,G04d,4,d,Services,Services,socialNetworkBlogs,Facebook,25,NA
-2020,Facebook,G,G04d,4,d,Services,Services,photoVideo,Instagram,25,NA
-2020,Facebook,G,G04d,4,d,Services,Services,messagingVoip,WhatsApp,25,NA
-2020,Facebook,G,G04d,4,d,Services,Services,messagingVoip,Messenger,25,NA
-2020,Facebook,G,G04e,4,e,Company,Group,Group,Group,0,NA
-2020,Facebook,G,G04e,4,e,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,Facebook,G,G04e,4,e,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2020,Facebook,G,G04e,4,e,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,G,G04e,4,e,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,G,G04e,4,e,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,G,G05,5,NA,Company,Group,Group,Group,50,NA
-2020,Facebook,G,G05,5,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,Facebook,G,G06a,6,a,Services,Services,socialNetworkBlogs,Facebook,17,NA
-2020,Facebook,G,G06a,6,a,Services,Services,photoVideo,Instagram,6,NA
-2020,Facebook,G,G06a,6,a,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,G,G06a,6,a,Services,Services,messagingVoip,Messenger,17,NA
-2020,Facebook,G,G06b,6,b,Services,Services,socialNetworkBlogs,Facebook,73,NA
-2020,Facebook,G,G06b,6,b,Services,Services,photoVideo,Instagram,68,NA
-2020,Facebook,G,G06b,6,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,G,G06b,6,b,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F01a,1,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2020,Facebook,F,F01a,1,a,Services,Services,photoVideo,Instagram,100,NA
-2020,Facebook,F,F01a,1,a,Services,Services,messagingVoip,WhatsApp,100,NA
-2020,Facebook,F,F01a,1,a,Services,Services,messagingVoip,Messenger,100,NA
-2020,Facebook,F,F01b,1,b,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2020,Facebook,F,F01b,1,b,Services,Services,photoVideo,Instagram,83,NA
-2020,Facebook,F,F01b,1,b,Services,Services,messagingVoip,WhatsApp,67,NA
-2020,Facebook,F,F01b,1,b,Services,Services,messagingVoip,Messenger,100,NA
-2020,Facebook,F,F01c,1,c,Services,Services,socialNetworkBlogs,Facebook,83,NA
-2020,Facebook,F,F01c,1,c,Services,Services,photoVideo,Instagram,83,NA
-2020,Facebook,F,F01c,1,c,Services,Services,messagingVoip,WhatsApp,67,NA
-2020,Facebook,F,F01c,1,c,Services,Services,messagingVoip,Messenger,67,NA
-2020,Facebook,F,F01d,1,d,Services,Services,socialNetworkBlogs,Facebook,67,NA
-2020,Facebook,F,F01d,1,d,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,F,F01d,1,d,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,F,F01d,1,d,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F02a,2,a,Services,Services,socialNetworkBlogs,Facebook,25,NA
-2020,Facebook,F,F02a,2,a,Services,Services,photoVideo,Instagram,50,NA
-2020,Facebook,F,F02a,2,a,Services,Services,messagingVoip,WhatsApp,38,NA
-2020,Facebook,F,F02a,2,a,Services,Services,messagingVoip,Messenger,25,NA
-2020,Facebook,F,F02b,2,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2020,Facebook,F,F02b,2,b,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,F,F02b,2,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,F,F02b,2,b,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F02c,2,c,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2020,Facebook,F,F02c,2,c,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,F,F02c,2,c,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,F,F02c,2,c,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F02d,2,d,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2020,Facebook,F,F02d,2,d,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,F,F02d,2,d,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,F,F02d,2,d,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F03a,3,a,Services,Services,socialNetworkBlogs,Facebook,71,NA
-2020,Facebook,F,F03a,3,a,Services,Services,photoVideo,Instagram,71,NA
-2020,Facebook,F,F03a,3,a,Services,Services,messagingVoip,WhatsApp,80,NA
-2020,Facebook,F,F03a,3,a,Services,Services,messagingVoip,Messenger,100,NA
-2020,Facebook,F,F03b,3,b,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2020,Facebook,F,F03b,3,b,Services,Services,photoVideo,Instagram,50,NA
-2020,Facebook,F,F03b,3,b,Services,Services,messagingVoip,WhatsApp,33,NA
-2020,Facebook,F,F03b,3,b,Services,Services,messagingVoip,Messenger,33,NA
-2020,Facebook,F,F03c,3,c,Services,Services,socialNetworkBlogs,Facebook,40,NA
-2020,Facebook,F,F03c,3,c,Services,Services,photoVideo,Instagram,40,NA
-2020,Facebook,F,F03c,3,c,Services,Services,messagingVoip,WhatsApp,75,NA
-2020,Facebook,F,F03c,3,c,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F04a,4,a,Services,Services,socialNetworkBlogs,Facebook,33,NA
-2020,Facebook,F,F04a,4,a,Services,Services,photoVideo,Instagram,33,NA
-2020,Facebook,F,F04a,4,a,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,F,F04a,4,a,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F04b,4,b,Services,Services,socialNetworkBlogs,Facebook,40,NA
-2020,Facebook,F,F04b,4,b,Services,Services,photoVideo,Instagram,40,NA
-2020,Facebook,F,F04b,4,b,Services,Services,messagingVoip,WhatsApp,10,NA
-2020,Facebook,F,F04b,4,b,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F04c,4,c,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2020,Facebook,F,F04c,4,c,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,F,F04c,4,c,Services,Services,messagingVoip,WhatsApp,NA,NA
-2020,Facebook,F,F04c,4,c,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F05a,5,a,Services,Services,socialNetworkBlogs,Facebook,93,NA
-2020,Facebook,F,F05a,5,a,Services,Services,photoVideo,Instagram,93,NA
-2020,Facebook,F,F05a,5,a,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,F,F05a,5,a,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F05b,5,b,Services,Services,socialNetworkBlogs,Facebook,80,NA
-2020,Facebook,F,F05b,5,b,Services,Services,photoVideo,Instagram,80,NA
-2020,Facebook,F,F05b,5,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,F,F05b,5,b,Services,Services,messagingVoip,Messenger,10,NA
-2020,Facebook,F,F06,6,NA,Services,Services,socialNetworkBlogs,Facebook,40,NA
-2020,Facebook,F,F06,6,NA,Services,Services,photoVideo,Instagram,40,NA
-2020,Facebook,F,F06,6,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,F,F06,6,NA,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F07,7,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2020,Facebook,F,F07,7,NA,Services,Services,photoVideo,Instagram,50,NA
-2020,Facebook,F,F07,7,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,F,F07,7,NA,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F08,8,NA,Services,Services,socialNetworkBlogs,Facebook,63,NA
-2020,Facebook,F,F08,8,NA,Services,Services,photoVideo,Instagram,50,NA
-2020,Facebook,F,F08,8,NA,Services,Services,messagingVoip,WhatsApp,25,NA
-2020,Facebook,F,F08,8,NA,Services,Services,messagingVoip,Messenger,63,NA
-2020,Facebook,F,F09,9,NA,Services,Services,socialNetworkBlogs,Facebook,NA,NA
-2020,Facebook,F,F09,9,NA,Services,Services,photoVideo,Instagram,NA,NA
-2020,Facebook,F,F09,9,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
-2020,Facebook,F,F09,9,NA,Services,Services,messagingVoip,Messenger,NA,NA
-2020,Facebook,F,F10,10,NA,Services,Services,socialNetworkBlogs,Facebook,NA,NA
-2020,Facebook,F,F10,10,NA,Services,Services,photoVideo,Instagram,NA,NA
-2020,Facebook,F,F10,10,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
-2020,Facebook,F,F10,10,NA,Services,Services,messagingVoip,Messenger,NA,NA
-2020,Facebook,F,F11,11,NA,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2020,Facebook,F,F11,11,NA,Services,Services,photoVideo,Instagram,100,NA
-2020,Facebook,F,F11,11,NA,Services,Services,messagingVoip,WhatsApp,100,NA
-2020,Facebook,F,F11,11,NA,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,F,F12,12,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2020,Facebook,F,F12,12,NA,Services,Services,photoVideo,Instagram,20,NA
-2020,Facebook,F,F12,12,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
-2020,Facebook,F,F12,12,NA,Services,Services,messagingVoip,Messenger,NA,NA
-2020,Facebook,F,F13,13,NA,Services,Services,socialNetworkBlogs,Facebook,25,NA
-2020,Facebook,F,F13,13,NA,Services,Services,photoVideo,Instagram,25,NA
-2020,Facebook,F,F13,13,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,F,F13,13,NA,Services,Services,messagingVoip,Messenger,25,NA
-2020,Facebook,P,P01a,1,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2020,Facebook,P,P01a,1,a,Services,Services,photoVideo,Instagram,100,NA
-2020,Facebook,P,P01a,1,a,Services,Services,messagingVoip,WhatsApp,100,NA
-2020,Facebook,P,P01a,1,a,Services,Services,messagingVoip,Messenger,100,NA
-2020,Facebook,P,P01b,1,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2020,Facebook,P,P01b,1,b,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,P,P01b,1,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,P,P01b,1,b,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,P,P02a,2,a,Services,Services,socialNetworkBlogs,Facebook,25,NA
-2020,Facebook,P,P02a,2,a,Services,Services,photoVideo,Instagram,25,NA
-2020,Facebook,P,P02a,2,a,Services,Services,messagingVoip,WhatsApp,50,NA
-2020,Facebook,P,P02a,2,a,Services,Services,messagingVoip,Messenger,25,NA
-2020,Facebook,P,P02b,2,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2020,Facebook,P,P02b,2,b,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,P,P02b,2,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,P,P02b,2,b,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,P,P03a,3,a,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2020,Facebook,P,P03a,3,a,Services,Services,photoVideo,Instagram,50,NA
-2020,Facebook,P,P03a,3,a,Services,Services,messagingVoip,WhatsApp,67,NA
-2020,Facebook,P,P03a,3,a,Services,Services,messagingVoip,Messenger,50,NA
-2020,Facebook,P,P03b,3,b,Services,Services,socialNetworkBlogs,Facebook,33,NA
-2020,Facebook,P,P03b,3,b,Services,Services,photoVideo,Instagram,33,NA
-2020,Facebook,P,P03b,3,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,P,P03b,3,b,Services,Services,messagingVoip,Messenger,33,NA
-2020,Facebook,P,P04,4,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2020,Facebook,P,P04,4,NA,Services,Services,photoVideo,Instagram,50,NA
-2020,Facebook,P,P04,4,NA,Services,Services,messagingVoip,WhatsApp,63,NA
-2020,Facebook,P,P04,4,NA,Services,Services,messagingVoip,Messenger,50,NA
-2020,Facebook,P,P05,5,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2020,Facebook,P,P05,5,NA,Services,Services,photoVideo,Instagram,50,NA
-2020,Facebook,P,P05,5,NA,Services,Services,messagingVoip,WhatsApp,40,NA
-2020,Facebook,P,P05,5,NA,Services,Services,messagingVoip,Messenger,50,NA
-2020,Facebook,P,P06,6,NA,Services,Services,socialNetworkBlogs,Facebook,40,NA
-2020,Facebook,P,P06,6,NA,Services,Services,photoVideo,Instagram,20,NA
-2020,Facebook,P,P06,6,NA,Services,Services,messagingVoip,WhatsApp,40,NA
-2020,Facebook,P,P06,6,NA,Services,Services,messagingVoip,Messenger,40,NA
-2020,Facebook,P,P07,7,NA,Services,Services,socialNetworkBlogs,Facebook,13,NA
-2020,Facebook,P,P07,7,NA,Services,Services,photoVideo,Instagram,13,NA
-2020,Facebook,P,P07,7,NA,Services,Services,messagingVoip,WhatsApp,6,NA
-2020,Facebook,P,P07,7,NA,Services,Services,messagingVoip,Messenger,13,NA
-2020,Facebook,P,P08,8,NA,Services,Services,socialNetworkBlogs,Facebook,92,NA
-2020,Facebook,P,P08,8,NA,Services,Services,photoVideo,Instagram,42,NA
-2020,Facebook,P,P08,8,NA,Services,Services,messagingVoip,WhatsApp,50,NA
-2020,Facebook,P,P08,8,NA,Services,Services,messagingVoip,Messenger,92,NA
-2020,Facebook,P,P09,9,NA,Services,Services,socialNetworkBlogs,Facebook,33,NA
-2020,Facebook,P,P09,9,NA,Services,Services,photoVideo,Instagram,33,NA
-2020,Facebook,P,P09,9,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,P,P09,9,NA,Services,Services,messagingVoip,Messenger,33,NA
-2020,Facebook,P,P10a,10,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2020,Facebook,P,P10a,10,a,Services,Services,photoVideo,Instagram,100,NA
-2020,Facebook,P,P10a,10,a,Services,Services,messagingVoip,WhatsApp,100,NA
-2020,Facebook,P,P10a,10,a,Services,Services,messagingVoip,Messenger,100,NA
-2020,Facebook,P,P10b,10,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2020,Facebook,P,P10b,10,b,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,P,P10b,10,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,P,P10b,10,b,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,P,P11a,11,a,Services,Services,socialNetworkBlogs,Facebook,80,NA
-2020,Facebook,P,P11a,11,a,Services,Services,photoVideo,Instagram,80,NA
-2020,Facebook,P,P11a,11,a,Services,Services,messagingVoip,WhatsApp,80,NA
-2020,Facebook,P,P11a,11,a,Services,Services,messagingVoip,Messenger,80,NA
-2020,Facebook,P,P11b,11,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2020,Facebook,P,P11b,11,b,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,P,P11b,11,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,P,P11b,11,b,Services,Services,messagingVoip,Messenger,0,NA
-2020,Facebook,P,P12,12,NA,Services,Services,socialNetworkBlogs,Facebook,67,NA
-2020,Facebook,P,P12,12,NA,Services,Services,photoVideo,Instagram,67,NA
-2020,Facebook,P,P12,12,NA,Services,Services,messagingVoip,WhatsApp,67,NA
-2020,Facebook,P,P12,12,NA,Services,Services,messagingVoip,Messenger,67,NA
-2020,Facebook,P,P13,13,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2020,Facebook,P,P13,13,NA,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,P,P13,13,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,P,P13,13,NA,Services,Services,messagingVoip,Messenger,50,NA
-2020,Facebook,P,P14,14,NA,Services,Services,socialNetworkBlogs,Facebook,67,NA
-2020,Facebook,P,P14,14,NA,Services,Services,photoVideo,Instagram,67,NA
-2020,Facebook,P,P14,14,NA,Services,Services,messagingVoip,WhatsApp,67,NA
-2020,Facebook,P,P14,14,NA,Services,Services,messagingVoip,Messenger,67,NA
-2020,Facebook,P,P15,15,NA,Services,Services,socialNetworkBlogs,Facebook,17,NA
-2020,Facebook,P,P15,15,NA,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,P,P15,15,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2020,Facebook,P,P15,15,NA,Services,Services,messagingVoip,Messenger,17,NA
-2020,Facebook,P,P16,16,NA,Services,Services,socialNetworkBlogs,Facebook,75,NA
-2020,Facebook,P,P16,16,NA,Services,Services,photoVideo,Instagram,0,NA
-2020,Facebook,P,P16,16,NA,Services,Services,messagingVoip,WhatsApp,100,NA
-2020,Facebook,P,P16,16,NA,Services,Services,messagingVoip,Messenger,75,NA
-2020,Facebook,P,P17,17,NA,Services,Services,socialNetworkBlogs,Facebook,83,NA
-2020,Facebook,P,P17,17,NA,Services,Services,photoVideo,Instagram,33,NA
-2020,Facebook,P,P17,17,NA,Services,Services,messagingVoip,WhatsApp,33,NA
-2020,Facebook,P,P17,17,NA,Services,Services,messagingVoip,Messenger,83,NA
-2020,Facebook,P,P18,18,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2020,Facebook,P,P18,18,NA,Services,Services,photoVideo,Instagram,100,NA
-2020,Facebook,P,P18,18,NA,Services,Services,messagingVoip,WhatsApp,100,NA
-2020,Facebook,P,P18,18,NA,Services,Services,messagingVoip,Messenger,100,NA
+2020,Meta,G,G01,1,NA,Company,Group,Group,Group,67,NA
+2020,Meta,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,Meta,G,G02,2,NA,Company,Group,Group,Group,100,NA
+2020,Meta,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,Meta,G,G02,2,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2020,Meta,G,G02,2,NA,Services,Services,photoVideo,Instagram,100,NA
+2020,Meta,G,G02,2,NA,Services,Services,messagingVoip,WhatsApp,100,NA
+2020,Meta,G,G02,2,NA,Services,Services,messagingVoip,Messenger,100,NA
+2020,Meta,G,G03,3,NA,Company,Group,Group,Group,100,NA
+2020,Meta,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,Meta,G,G03,3,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2020,Meta,G,G03,3,NA,Services,Services,photoVideo,Instagram,100,NA
+2020,Meta,G,G03,3,NA,Services,Services,messagingVoip,WhatsApp,100,NA
+2020,Meta,G,G03,3,NA,Services,Services,messagingVoip,Messenger,100,NA
+2020,Meta,G,G04a,4,a,Company,Group,Group,Group,82,NA
+2020,Meta,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,Meta,G,G04a,4,a,Services,Services,socialNetworkBlogs,Facebook,82,NA
+2020,Meta,G,G04a,4,a,Services,Services,photoVideo,Instagram,82,NA
+2020,Meta,G,G04a,4,a,Services,Services,messagingVoip,WhatsApp,82,NA
+2020,Meta,G,G04a,4,a,Services,Services,messagingVoip,Messenger,82,NA
+2020,Meta,G,G04b,4,b,Company,Group,Group,Group,33,NA
+2020,Meta,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,Meta,G,G04b,4,b,Services,Services,socialNetworkBlogs,Facebook,33,NA
+2020,Meta,G,G04b,4,b,Services,Services,photoVideo,Instagram,33,NA
+2020,Meta,G,G04b,4,b,Services,Services,messagingVoip,WhatsApp,33,NA
+2020,Meta,G,G04b,4,b,Services,Services,messagingVoip,Messenger,33,NA
+2020,Meta,G,G04c,4,c,Company,Group,Group,Group,25,NA
+2020,Meta,G,G04c,4,c,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,Meta,G,G04c,4,c,Services,Services,socialNetworkBlogs,Facebook,25,NA
+2020,Meta,G,G04c,4,c,Services,Services,photoVideo,Instagram,25,NA
+2020,Meta,G,G04c,4,c,Services,Services,messagingVoip,WhatsApp,25,NA
+2020,Meta,G,G04c,4,c,Services,Services,messagingVoip,Messenger,25,NA
+2020,Meta,G,G04d,4,d,Company,Group,Group,Group,25,NA
+2020,Meta,G,G04d,4,d,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,Meta,G,G04d,4,d,Services,Services,socialNetworkBlogs,Facebook,25,NA
+2020,Meta,G,G04d,4,d,Services,Services,photoVideo,Instagram,25,NA
+2020,Meta,G,G04d,4,d,Services,Services,messagingVoip,WhatsApp,25,NA
+2020,Meta,G,G04d,4,d,Services,Services,messagingVoip,Messenger,25,NA
+2020,Meta,G,G04e,4,e,Company,Group,Group,Group,0,NA
+2020,Meta,G,G04e,4,e,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,Meta,G,G04e,4,e,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2020,Meta,G,G04e,4,e,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,G,G04e,4,e,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,G,G04e,4,e,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,G,G05,5,NA,Company,Group,Group,Group,50,NA
+2020,Meta,G,G05,5,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,Meta,G,G06a,6,a,Services,Services,socialNetworkBlogs,Facebook,17,NA
+2020,Meta,G,G06a,6,a,Services,Services,photoVideo,Instagram,6,NA
+2020,Meta,G,G06a,6,a,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,G,G06a,6,a,Services,Services,messagingVoip,Messenger,17,NA
+2020,Meta,G,G06b,6,b,Services,Services,socialNetworkBlogs,Facebook,73,NA
+2020,Meta,G,G06b,6,b,Services,Services,photoVideo,Instagram,68,NA
+2020,Meta,G,G06b,6,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,G,G06b,6,b,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F01a,1,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2020,Meta,F,F01a,1,a,Services,Services,photoVideo,Instagram,100,NA
+2020,Meta,F,F01a,1,a,Services,Services,messagingVoip,WhatsApp,100,NA
+2020,Meta,F,F01a,1,a,Services,Services,messagingVoip,Messenger,100,NA
+2020,Meta,F,F01b,1,b,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2020,Meta,F,F01b,1,b,Services,Services,photoVideo,Instagram,83,NA
+2020,Meta,F,F01b,1,b,Services,Services,messagingVoip,WhatsApp,67,NA
+2020,Meta,F,F01b,1,b,Services,Services,messagingVoip,Messenger,100,NA
+2020,Meta,F,F01c,1,c,Services,Services,socialNetworkBlogs,Facebook,83,NA
+2020,Meta,F,F01c,1,c,Services,Services,photoVideo,Instagram,83,NA
+2020,Meta,F,F01c,1,c,Services,Services,messagingVoip,WhatsApp,67,NA
+2020,Meta,F,F01c,1,c,Services,Services,messagingVoip,Messenger,67,NA
+2020,Meta,F,F01d,1,d,Services,Services,socialNetworkBlogs,Facebook,67,NA
+2020,Meta,F,F01d,1,d,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,F,F01d,1,d,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,F,F01d,1,d,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F02a,2,a,Services,Services,socialNetworkBlogs,Facebook,25,NA
+2020,Meta,F,F02a,2,a,Services,Services,photoVideo,Instagram,50,NA
+2020,Meta,F,F02a,2,a,Services,Services,messagingVoip,WhatsApp,38,NA
+2020,Meta,F,F02a,2,a,Services,Services,messagingVoip,Messenger,25,NA
+2020,Meta,F,F02b,2,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2020,Meta,F,F02b,2,b,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,F,F02b,2,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,F,F02b,2,b,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F02c,2,c,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2020,Meta,F,F02c,2,c,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,F,F02c,2,c,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,F,F02c,2,c,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F02d,2,d,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2020,Meta,F,F02d,2,d,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,F,F02d,2,d,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,F,F02d,2,d,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F03a,3,a,Services,Services,socialNetworkBlogs,Facebook,71,NA
+2020,Meta,F,F03a,3,a,Services,Services,photoVideo,Instagram,71,NA
+2020,Meta,F,F03a,3,a,Services,Services,messagingVoip,WhatsApp,80,NA
+2020,Meta,F,F03a,3,a,Services,Services,messagingVoip,Messenger,100,NA
+2020,Meta,F,F03b,3,b,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2020,Meta,F,F03b,3,b,Services,Services,photoVideo,Instagram,50,NA
+2020,Meta,F,F03b,3,b,Services,Services,messagingVoip,WhatsApp,33,NA
+2020,Meta,F,F03b,3,b,Services,Services,messagingVoip,Messenger,33,NA
+2020,Meta,F,F03c,3,c,Services,Services,socialNetworkBlogs,Facebook,40,NA
+2020,Meta,F,F03c,3,c,Services,Services,photoVideo,Instagram,40,NA
+2020,Meta,F,F03c,3,c,Services,Services,messagingVoip,WhatsApp,75,NA
+2020,Meta,F,F03c,3,c,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F04a,4,a,Services,Services,socialNetworkBlogs,Facebook,33,NA
+2020,Meta,F,F04a,4,a,Services,Services,photoVideo,Instagram,33,NA
+2020,Meta,F,F04a,4,a,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,F,F04a,4,a,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F04b,4,b,Services,Services,socialNetworkBlogs,Facebook,40,NA
+2020,Meta,F,F04b,4,b,Services,Services,photoVideo,Instagram,40,NA
+2020,Meta,F,F04b,4,b,Services,Services,messagingVoip,WhatsApp,10,NA
+2020,Meta,F,F04b,4,b,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F04c,4,c,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2020,Meta,F,F04c,4,c,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,F,F04c,4,c,Services,Services,messagingVoip,WhatsApp,NA,NA
+2020,Meta,F,F04c,4,c,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F05a,5,a,Services,Services,socialNetworkBlogs,Facebook,93,NA
+2020,Meta,F,F05a,5,a,Services,Services,photoVideo,Instagram,93,NA
+2020,Meta,F,F05a,5,a,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,F,F05a,5,a,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F05b,5,b,Services,Services,socialNetworkBlogs,Facebook,80,NA
+2020,Meta,F,F05b,5,b,Services,Services,photoVideo,Instagram,80,NA
+2020,Meta,F,F05b,5,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,F,F05b,5,b,Services,Services,messagingVoip,Messenger,10,NA
+2020,Meta,F,F06,6,NA,Services,Services,socialNetworkBlogs,Facebook,40,NA
+2020,Meta,F,F06,6,NA,Services,Services,photoVideo,Instagram,40,NA
+2020,Meta,F,F06,6,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,F,F06,6,NA,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F07,7,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2020,Meta,F,F07,7,NA,Services,Services,photoVideo,Instagram,50,NA
+2020,Meta,F,F07,7,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,F,F07,7,NA,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F08,8,NA,Services,Services,socialNetworkBlogs,Facebook,63,NA
+2020,Meta,F,F08,8,NA,Services,Services,photoVideo,Instagram,50,NA
+2020,Meta,F,F08,8,NA,Services,Services,messagingVoip,WhatsApp,25,NA
+2020,Meta,F,F08,8,NA,Services,Services,messagingVoip,Messenger,63,NA
+2020,Meta,F,F09,9,NA,Services,Services,socialNetworkBlogs,Facebook,NA,NA
+2020,Meta,F,F09,9,NA,Services,Services,photoVideo,Instagram,NA,NA
+2020,Meta,F,F09,9,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
+2020,Meta,F,F09,9,NA,Services,Services,messagingVoip,Messenger,NA,NA
+2020,Meta,F,F10,10,NA,Services,Services,socialNetworkBlogs,Facebook,NA,NA
+2020,Meta,F,F10,10,NA,Services,Services,photoVideo,Instagram,NA,NA
+2020,Meta,F,F10,10,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
+2020,Meta,F,F10,10,NA,Services,Services,messagingVoip,Messenger,NA,NA
+2020,Meta,F,F11,11,NA,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2020,Meta,F,F11,11,NA,Services,Services,photoVideo,Instagram,100,NA
+2020,Meta,F,F11,11,NA,Services,Services,messagingVoip,WhatsApp,100,NA
+2020,Meta,F,F11,11,NA,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,F,F12,12,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2020,Meta,F,F12,12,NA,Services,Services,photoVideo,Instagram,20,NA
+2020,Meta,F,F12,12,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
+2020,Meta,F,F12,12,NA,Services,Services,messagingVoip,Messenger,NA,NA
+2020,Meta,F,F13,13,NA,Services,Services,socialNetworkBlogs,Facebook,25,NA
+2020,Meta,F,F13,13,NA,Services,Services,photoVideo,Instagram,25,NA
+2020,Meta,F,F13,13,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,F,F13,13,NA,Services,Services,messagingVoip,Messenger,25,NA
+2020,Meta,P,P01a,1,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2020,Meta,P,P01a,1,a,Services,Services,photoVideo,Instagram,100,NA
+2020,Meta,P,P01a,1,a,Services,Services,messagingVoip,WhatsApp,100,NA
+2020,Meta,P,P01a,1,a,Services,Services,messagingVoip,Messenger,100,NA
+2020,Meta,P,P01b,1,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2020,Meta,P,P01b,1,b,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,P,P01b,1,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,P,P01b,1,b,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,P,P02a,2,a,Services,Services,socialNetworkBlogs,Facebook,25,NA
+2020,Meta,P,P02a,2,a,Services,Services,photoVideo,Instagram,25,NA
+2020,Meta,P,P02a,2,a,Services,Services,messagingVoip,WhatsApp,50,NA
+2020,Meta,P,P02a,2,a,Services,Services,messagingVoip,Messenger,25,NA
+2020,Meta,P,P02b,2,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2020,Meta,P,P02b,2,b,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,P,P02b,2,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,P,P02b,2,b,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,P,P03a,3,a,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2020,Meta,P,P03a,3,a,Services,Services,photoVideo,Instagram,50,NA
+2020,Meta,P,P03a,3,a,Services,Services,messagingVoip,WhatsApp,67,NA
+2020,Meta,P,P03a,3,a,Services,Services,messagingVoip,Messenger,50,NA
+2020,Meta,P,P03b,3,b,Services,Services,socialNetworkBlogs,Facebook,33,NA
+2020,Meta,P,P03b,3,b,Services,Services,photoVideo,Instagram,33,NA
+2020,Meta,P,P03b,3,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,P,P03b,3,b,Services,Services,messagingVoip,Messenger,33,NA
+2020,Meta,P,P04,4,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2020,Meta,P,P04,4,NA,Services,Services,photoVideo,Instagram,50,NA
+2020,Meta,P,P04,4,NA,Services,Services,messagingVoip,WhatsApp,63,NA
+2020,Meta,P,P04,4,NA,Services,Services,messagingVoip,Messenger,50,NA
+2020,Meta,P,P05,5,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2020,Meta,P,P05,5,NA,Services,Services,photoVideo,Instagram,50,NA
+2020,Meta,P,P05,5,NA,Services,Services,messagingVoip,WhatsApp,40,NA
+2020,Meta,P,P05,5,NA,Services,Services,messagingVoip,Messenger,50,NA
+2020,Meta,P,P06,6,NA,Services,Services,socialNetworkBlogs,Facebook,40,NA
+2020,Meta,P,P06,6,NA,Services,Services,photoVideo,Instagram,20,NA
+2020,Meta,P,P06,6,NA,Services,Services,messagingVoip,WhatsApp,40,NA
+2020,Meta,P,P06,6,NA,Services,Services,messagingVoip,Messenger,40,NA
+2020,Meta,P,P07,7,NA,Services,Services,socialNetworkBlogs,Facebook,13,NA
+2020,Meta,P,P07,7,NA,Services,Services,photoVideo,Instagram,13,NA
+2020,Meta,P,P07,7,NA,Services,Services,messagingVoip,WhatsApp,6,NA
+2020,Meta,P,P07,7,NA,Services,Services,messagingVoip,Messenger,13,NA
+2020,Meta,P,P08,8,NA,Services,Services,socialNetworkBlogs,Facebook,92,NA
+2020,Meta,P,P08,8,NA,Services,Services,photoVideo,Instagram,42,NA
+2020,Meta,P,P08,8,NA,Services,Services,messagingVoip,WhatsApp,50,NA
+2020,Meta,P,P08,8,NA,Services,Services,messagingVoip,Messenger,92,NA
+2020,Meta,P,P09,9,NA,Services,Services,socialNetworkBlogs,Facebook,33,NA
+2020,Meta,P,P09,9,NA,Services,Services,photoVideo,Instagram,33,NA
+2020,Meta,P,P09,9,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,P,P09,9,NA,Services,Services,messagingVoip,Messenger,33,NA
+2020,Meta,P,P10a,10,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2020,Meta,P,P10a,10,a,Services,Services,photoVideo,Instagram,100,NA
+2020,Meta,P,P10a,10,a,Services,Services,messagingVoip,WhatsApp,100,NA
+2020,Meta,P,P10a,10,a,Services,Services,messagingVoip,Messenger,100,NA
+2020,Meta,P,P10b,10,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2020,Meta,P,P10b,10,b,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,P,P10b,10,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,P,P10b,10,b,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,P,P11a,11,a,Services,Services,socialNetworkBlogs,Facebook,80,NA
+2020,Meta,P,P11a,11,a,Services,Services,photoVideo,Instagram,80,NA
+2020,Meta,P,P11a,11,a,Services,Services,messagingVoip,WhatsApp,80,NA
+2020,Meta,P,P11a,11,a,Services,Services,messagingVoip,Messenger,80,NA
+2020,Meta,P,P11b,11,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2020,Meta,P,P11b,11,b,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,P,P11b,11,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,P,P11b,11,b,Services,Services,messagingVoip,Messenger,0,NA
+2020,Meta,P,P12,12,NA,Services,Services,socialNetworkBlogs,Facebook,67,NA
+2020,Meta,P,P12,12,NA,Services,Services,photoVideo,Instagram,67,NA
+2020,Meta,P,P12,12,NA,Services,Services,messagingVoip,WhatsApp,67,NA
+2020,Meta,P,P12,12,NA,Services,Services,messagingVoip,Messenger,67,NA
+2020,Meta,P,P13,13,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2020,Meta,P,P13,13,NA,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,P,P13,13,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,P,P13,13,NA,Services,Services,messagingVoip,Messenger,50,NA
+2020,Meta,P,P14,14,NA,Services,Services,socialNetworkBlogs,Facebook,67,NA
+2020,Meta,P,P14,14,NA,Services,Services,photoVideo,Instagram,67,NA
+2020,Meta,P,P14,14,NA,Services,Services,messagingVoip,WhatsApp,67,NA
+2020,Meta,P,P14,14,NA,Services,Services,messagingVoip,Messenger,67,NA
+2020,Meta,P,P15,15,NA,Services,Services,socialNetworkBlogs,Facebook,17,NA
+2020,Meta,P,P15,15,NA,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,P,P15,15,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2020,Meta,P,P15,15,NA,Services,Services,messagingVoip,Messenger,17,NA
+2020,Meta,P,P16,16,NA,Services,Services,socialNetworkBlogs,Facebook,75,NA
+2020,Meta,P,P16,16,NA,Services,Services,photoVideo,Instagram,0,NA
+2020,Meta,P,P16,16,NA,Services,Services,messagingVoip,WhatsApp,100,NA
+2020,Meta,P,P16,16,NA,Services,Services,messagingVoip,Messenger,75,NA
+2020,Meta,P,P17,17,NA,Services,Services,socialNetworkBlogs,Facebook,83,NA
+2020,Meta,P,P17,17,NA,Services,Services,photoVideo,Instagram,33,NA
+2020,Meta,P,P17,17,NA,Services,Services,messagingVoip,WhatsApp,33,NA
+2020,Meta,P,P17,17,NA,Services,Services,messagingVoip,Messenger,83,NA
+2020,Meta,P,P18,18,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2020,Meta,P,P18,18,NA,Services,Services,photoVideo,Instagram,100,NA
+2020,Meta,P,P18,18,NA,Services,Services,messagingVoip,WhatsApp,100,NA
+2020,Meta,P,P18,18,NA,Services,Services,messagingVoip,Messenger,100,NA
 2020,Google,G,G01,1,NA,Company,Group,Group,Group,83,NA
 2020,Google,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
 2020,Google,G,G02,2,NA,Company,Group,Group,Group,50,NA
@@ -1469,248 +1469,248 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2020,Kakao,P,P18,18,NA,Services,Services,search,Daum Search,100,NA
 2020,Kakao,P,P18,18,NA,Services,Services,email,Daum Mail,100,NA
 2020,Kakao,P,P18,18,NA,Services,Services,messagingVoip,KakaoTalk,100,NA
-2020,MailRu,G,G01,1,NA,Company,Group,Group,Group,67,NA
-2020,MailRu,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,MailRu,G,G02,2,NA,Company,Group,Group,Group,17,NA
-2020,MailRu,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,MailRu,G,G02,2,NA,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
-2020,MailRu,G,G02,2,NA,Services,Services,email,Mail.Ru email,17,NA
-2020,MailRu,G,G02,2,NA,Services,Services,cloud,Mail.Ru Cloud,17,NA
-2020,MailRu,G,G02,2,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,G,G03,3,NA,Company,Group,Group,Group,38,NA
-2020,MailRu,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,MailRu,G,G03,3,NA,Services,Services,socialNetworkBlogs,Vkontakte,38,NA
-2020,MailRu,G,G03,3,NA,Services,Services,email,Mail.Ru email,38,NA
-2020,MailRu,G,G03,3,NA,Services,Services,cloud,Mail.Ru Cloud,38,NA
-2020,MailRu,G,G03,3,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,G,G04a,4,a,Company,Group,Group,Group,0,NA
-2020,MailRu,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,MailRu,G,G04a,4,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,G,G04a,4,a,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,G,G04a,4,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,G,G04a,4,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,G,G04b,4,b,Company,Group,Group,Group,0,NA
-2020,MailRu,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,MailRu,G,G04b,4,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,G,G04b,4,b,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,G,G04b,4,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,G,G04b,4,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,G,G04c,4,c,Company,Group,Group,Group,0,NA
-2020,MailRu,G,G04c,4,c,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,MailRu,G,G04c,4,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,G,G04c,4,c,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,G,G04c,4,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,G,G04c,4,c,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,G,G04d,4,d,Company,Group,Group,Group,0,NA
-2020,MailRu,G,G04d,4,d,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,MailRu,G,G04d,4,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,G,G04d,4,d,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,G,G04d,4,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,G,G04d,4,d,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,G,G04e,4,e,Company,Group,Group,Group,NA,NA
-2020,MailRu,G,G04e,4,e,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,MailRu,G,G04e,4,e,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
-2020,MailRu,G,G04e,4,e,Services,Services,email,Mail.Ru email,NA,NA
-2020,MailRu,G,G04e,4,e,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2020,MailRu,G,G04e,4,e,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,G,G05,5,NA,Company,Group,Group,Group,0,NA
-2020,MailRu,G,G05,5,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2020,MailRu,G,G06a,6,a,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2020,MailRu,G,G06a,6,a,Services,Services,email,Mail.Ru email,33,NA
-2020,MailRu,G,G06a,6,a,Services,Services,cloud,Mail.Ru Cloud,33,NA
-2020,MailRu,G,G06a,6,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,G,G06b,6,b,Services,Services,socialNetworkBlogs,Vkontakte,9,NA
-2020,MailRu,G,G06b,6,b,Services,Services,email,Mail.Ru email,NA,NA
-2020,MailRu,G,G06b,6,b,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2020,MailRu,G,G06b,6,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F01a,1,a,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
-2020,MailRu,F,F01a,1,a,Services,Services,email,Mail.Ru email,67,NA
-2020,MailRu,F,F01a,1,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
-2020,MailRu,F,F01a,1,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F01b,1,b,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
-2020,MailRu,F,F01b,1,b,Services,Services,email,Mail.Ru email,83,NA
-2020,MailRu,F,F01b,1,b,Services,Services,cloud,Mail.Ru Cloud,83,NA
-2020,MailRu,F,F01b,1,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F01c,1,c,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
-2020,MailRu,F,F01c,1,c,Services,Services,email,Mail.Ru email,100,NA
-2020,MailRu,F,F01c,1,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F01c,1,c,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F01d,1,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F01d,1,d,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,F,F01d,1,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F01d,1,d,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F02a,2,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F02a,2,a,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,F,F02a,2,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F02a,2,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F02b,2,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F02b,2,b,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,F,F02b,2,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F02b,2,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F02c,2,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F02c,2,c,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,F,F02c,2,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F02c,2,c,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F02d,2,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F02d,2,d,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,F,F02d,2,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F02d,2,d,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F03a,3,a,Services,Services,socialNetworkBlogs,Vkontakte,57,NA
-2020,MailRu,F,F03a,3,a,Services,Services,email,Mail.Ru email,80,NA
-2020,MailRu,F,F03a,3,a,Services,Services,cloud,Mail.Ru Cloud,60,NA
-2020,MailRu,F,F03a,3,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F03b,3,b,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2020,MailRu,F,F03b,3,b,Services,Services,email,Mail.Ru email,33,NA
-2020,MailRu,F,F03b,3,b,Services,Services,cloud,Mail.Ru Cloud,33,NA
-2020,MailRu,F,F03b,3,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F03c,3,c,Services,Services,socialNetworkBlogs,Vkontakte,20,NA
-2020,MailRu,F,F03c,3,c,Services,Services,email,Mail.Ru email,20,NA
-2020,MailRu,F,F03c,3,c,Services,Services,cloud,Mail.Ru Cloud,20,NA
-2020,MailRu,F,F03c,3,c,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F04a,4,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F04a,4,a,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,F,F04a,4,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F04a,4,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F04b,4,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F04b,4,b,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,F,F04b,4,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F04b,4,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F04c,4,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F04c,4,c,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,F,F04c,4,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F04c,4,c,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F05a,5,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F05a,5,a,Services,Services,email,Mail.Ru email,NA,NA
-2020,MailRu,F,F05a,5,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F05a,5,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F05b,5,b,Services,Services,socialNetworkBlogs,Vkontakte,20,NA
-2020,MailRu,F,F05b,5,b,Services,Services,email,Mail.Ru email,NA,NA
-2020,MailRu,F,F05b,5,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F05b,5,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F06,6,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F06,6,NA,Services,Services,email,Mail.Ru email,NA,NA
-2020,MailRu,F,F06,6,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F06,6,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F07,7,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F07,7,NA,Services,Services,email,Mail.Ru email,NA,NA
-2020,MailRu,F,F07,7,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F07,7,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F08,8,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F08,8,NA,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,F,F08,8,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,F,F08,8,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F09,9,NA,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
-2020,MailRu,F,F09,9,NA,Services,Services,email,Mail.Ru email,NA,NA
-2020,MailRu,F,F09,9,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2020,MailRu,F,F09,9,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F10,10,NA,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
-2020,MailRu,F,F10,10,NA,Services,Services,email,Mail.Ru email,NA,NA
-2020,MailRu,F,F10,10,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2020,MailRu,F,F10,10,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F11,11,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,F,F11,11,NA,Services,Services,email,Mail.Ru email,100,NA
-2020,MailRu,F,F11,11,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
-2020,MailRu,F,F11,11,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F12,12,NA,Services,Services,socialNetworkBlogs,Vkontakte,10,NA
-2020,MailRu,F,F12,12,NA,Services,Services,email,Mail.Ru email,NA,NA
-2020,MailRu,F,F12,12,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2020,MailRu,F,F12,12,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,F,F13,13,NA,Services,Services,socialNetworkBlogs,Vkontakte,38,NA
-2020,MailRu,F,F13,13,NA,Services,Services,email,Mail.Ru email,NA,NA
-2020,MailRu,F,F13,13,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2020,MailRu,F,F13,13,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P01a,1,a,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
-2020,MailRu,P,P01a,1,a,Services,Services,email,Mail.Ru email,67,NA
-2020,MailRu,P,P01a,1,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
-2020,MailRu,P,P01a,1,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P01b,1,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,P,P01b,1,b,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,P,P01b,1,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,P,P01b,1,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P02a,2,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,P,P02a,2,a,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,P,P02a,2,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,P,P02a,2,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P02b,2,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,P,P02b,2,b,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,P,P02b,2,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,P,P02b,2,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P03a,3,a,Services,Services,socialNetworkBlogs,Vkontakte,67,NA
-2020,MailRu,P,P03a,3,a,Services,Services,email,Mail.Ru email,67,NA
-2020,MailRu,P,P03a,3,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
-2020,MailRu,P,P03a,3,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P03b,3,b,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2020,MailRu,P,P03b,3,b,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,P,P03b,3,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,P,P03b,3,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P04,4,NA,Services,Services,socialNetworkBlogs,Vkontakte,50,NA
-2020,MailRu,P,P04,4,NA,Services,Services,email,Mail.Ru email,50,NA
-2020,MailRu,P,P04,4,NA,Services,Services,cloud,Mail.Ru Cloud,50,NA
-2020,MailRu,P,P04,4,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P05,5,NA,Services,Services,socialNetworkBlogs,Vkontakte,40,NA
-2020,MailRu,P,P05,5,NA,Services,Services,email,Mail.Ru email,30,NA
-2020,MailRu,P,P05,5,NA,Services,Services,cloud,Mail.Ru Cloud,30,NA
-2020,MailRu,P,P05,5,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P06,6,NA,Services,Services,socialNetworkBlogs,Vkontakte,20,NA
-2020,MailRu,P,P06,6,NA,Services,Services,email,Mail.Ru email,20,NA
-2020,MailRu,P,P06,6,NA,Services,Services,cloud,Mail.Ru Cloud,20,NA
-2020,MailRu,P,P06,6,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P07,7,NA,Services,Services,socialNetworkBlogs,Vkontakte,19,NA
-2020,MailRu,P,P07,7,NA,Services,Services,email,Mail.Ru email,25,NA
-2020,MailRu,P,P07,7,NA,Services,Services,cloud,Mail.Ru Cloud,25,NA
-2020,MailRu,P,P07,7,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P08,8,NA,Services,Services,socialNetworkBlogs,Vkontakte,8,NA
-2020,MailRu,P,P08,8,NA,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,P,P08,8,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,P,P08,8,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P09,9,NA,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
-2020,MailRu,P,P09,9,NA,Services,Services,email,Mail.Ru email,11,NA
-2020,MailRu,P,P09,9,NA,Services,Services,cloud,Mail.Ru Cloud,11,NA
-2020,MailRu,P,P09,9,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P10a,10,a,Services,Services,socialNetworkBlogs,Vkontakte,86,NA
-2020,MailRu,P,P10a,10,a,Services,Services,email,Mail.Ru email,79,NA
-2020,MailRu,P,P10a,10,a,Services,Services,cloud,Mail.Ru Cloud,79,NA
-2020,MailRu,P,P10a,10,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P10b,10,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,P,P10b,10,b,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,P,P10b,10,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,P,P10b,10,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P11a,11,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,P,P11a,11,a,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,P,P11a,11,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,P,P11a,11,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P11b,11,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,P,P11b,11,b,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,P,P11b,11,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,P,P11b,11,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P12,12,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2020,MailRu,P,P12,12,NA,Services,Services,email,Mail.Ru email,33,NA
-2020,MailRu,P,P12,12,NA,Services,Services,cloud,Mail.Ru Cloud,33,NA
-2020,MailRu,P,P12,12,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P13,13,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2020,MailRu,P,P13,13,NA,Services,Services,email,Mail.Ru email,50,NA
-2020,MailRu,P,P13,13,NA,Services,Services,cloud,Mail.Ru Cloud,50,NA
-2020,MailRu,P,P13,13,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P14,14,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2020,MailRu,P,P14,14,NA,Services,Services,email,Mail.Ru email,67,NA
-2020,MailRu,P,P14,14,NA,Services,Services,cloud,Mail.Ru Cloud,67,NA
-2020,MailRu,P,P14,14,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P15,15,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2020,MailRu,P,P15,15,NA,Services,Services,email,Mail.Ru email,0,NA
-2020,MailRu,P,P15,15,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,P,P15,15,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P16,16,NA,Services,Services,socialNetworkBlogs,Vkontakte,25,NA
-2020,MailRu,P,P16,16,NA,Services,Services,email,Mail.Ru email,25,NA
-2020,MailRu,P,P16,16,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2020,MailRu,P,P16,16,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P17,17,NA,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
-2020,MailRu,P,P17,17,NA,Services,Services,email,Mail.Ru email,100,NA
-2020,MailRu,P,P17,17,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
-2020,MailRu,P,P17,17,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2020,MailRu,P,P18,18,NA,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
-2020,MailRu,P,P18,18,NA,Services,Services,email,Mail.Ru email,100,NA
-2020,MailRu,P,P18,18,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
-2020,MailRu,P,P18,18,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,G,G01,1,NA,Company,Group,Group,Group,67,NA
+2020,VK,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,VK,G,G02,2,NA,Company,Group,Group,Group,17,NA
+2020,VK,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,VK,G,G02,2,NA,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
+2020,VK,G,G02,2,NA,Services,Services,email,Mail.Ru email,17,NA
+2020,VK,G,G02,2,NA,Services,Services,cloud,Mail.Ru Cloud,17,NA
+2020,VK,G,G02,2,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,G,G03,3,NA,Company,Group,Group,Group,38,NA
+2020,VK,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,VK,G,G03,3,NA,Services,Services,socialNetworkBlogs,Vkontakte,38,NA
+2020,VK,G,G03,3,NA,Services,Services,email,Mail.Ru email,38,NA
+2020,VK,G,G03,3,NA,Services,Services,cloud,Mail.Ru Cloud,38,NA
+2020,VK,G,G03,3,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,G,G04a,4,a,Company,Group,Group,Group,0,NA
+2020,VK,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,VK,G,G04a,4,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,G,G04a,4,a,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,G,G04a,4,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,G,G04a,4,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,G,G04b,4,b,Company,Group,Group,Group,0,NA
+2020,VK,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,VK,G,G04b,4,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,G,G04b,4,b,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,G,G04b,4,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,G,G04b,4,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,G,G04c,4,c,Company,Group,Group,Group,0,NA
+2020,VK,G,G04c,4,c,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,VK,G,G04c,4,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,G,G04c,4,c,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,G,G04c,4,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,G,G04c,4,c,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,G,G04d,4,d,Company,Group,Group,Group,0,NA
+2020,VK,G,G04d,4,d,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,VK,G,G04d,4,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,G,G04d,4,d,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,G,G04d,4,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,G,G04d,4,d,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,G,G04e,4,e,Company,Group,Group,Group,NA,NA
+2020,VK,G,G04e,4,e,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,VK,G,G04e,4,e,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
+2020,VK,G,G04e,4,e,Services,Services,email,Mail.Ru email,NA,NA
+2020,VK,G,G04e,4,e,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2020,VK,G,G04e,4,e,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,G,G05,5,NA,Company,Group,Group,Group,0,NA
+2020,VK,G,G05,5,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2020,VK,G,G06a,6,a,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2020,VK,G,G06a,6,a,Services,Services,email,Mail.Ru email,33,NA
+2020,VK,G,G06a,6,a,Services,Services,cloud,Mail.Ru Cloud,33,NA
+2020,VK,G,G06a,6,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,G,G06b,6,b,Services,Services,socialNetworkBlogs,Vkontakte,9,NA
+2020,VK,G,G06b,6,b,Services,Services,email,Mail.Ru email,NA,NA
+2020,VK,G,G06b,6,b,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2020,VK,G,G06b,6,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F01a,1,a,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
+2020,VK,F,F01a,1,a,Services,Services,email,Mail.Ru email,67,NA
+2020,VK,F,F01a,1,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
+2020,VK,F,F01a,1,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F01b,1,b,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
+2020,VK,F,F01b,1,b,Services,Services,email,Mail.Ru email,83,NA
+2020,VK,F,F01b,1,b,Services,Services,cloud,Mail.Ru Cloud,83,NA
+2020,VK,F,F01b,1,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F01c,1,c,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
+2020,VK,F,F01c,1,c,Services,Services,email,Mail.Ru email,100,NA
+2020,VK,F,F01c,1,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F01c,1,c,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F01d,1,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F01d,1,d,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,F,F01d,1,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F01d,1,d,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F02a,2,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F02a,2,a,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,F,F02a,2,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F02a,2,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F02b,2,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F02b,2,b,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,F,F02b,2,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F02b,2,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F02c,2,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F02c,2,c,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,F,F02c,2,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F02c,2,c,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F02d,2,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F02d,2,d,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,F,F02d,2,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F02d,2,d,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F03a,3,a,Services,Services,socialNetworkBlogs,Vkontakte,57,NA
+2020,VK,F,F03a,3,a,Services,Services,email,Mail.Ru email,80,NA
+2020,VK,F,F03a,3,a,Services,Services,cloud,Mail.Ru Cloud,60,NA
+2020,VK,F,F03a,3,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F03b,3,b,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2020,VK,F,F03b,3,b,Services,Services,email,Mail.Ru email,33,NA
+2020,VK,F,F03b,3,b,Services,Services,cloud,Mail.Ru Cloud,33,NA
+2020,VK,F,F03b,3,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F03c,3,c,Services,Services,socialNetworkBlogs,Vkontakte,20,NA
+2020,VK,F,F03c,3,c,Services,Services,email,Mail.Ru email,20,NA
+2020,VK,F,F03c,3,c,Services,Services,cloud,Mail.Ru Cloud,20,NA
+2020,VK,F,F03c,3,c,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F04a,4,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F04a,4,a,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,F,F04a,4,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F04a,4,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F04b,4,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F04b,4,b,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,F,F04b,4,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F04b,4,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F04c,4,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F04c,4,c,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,F,F04c,4,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F04c,4,c,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F05a,5,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F05a,5,a,Services,Services,email,Mail.Ru email,NA,NA
+2020,VK,F,F05a,5,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F05a,5,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F05b,5,b,Services,Services,socialNetworkBlogs,Vkontakte,20,NA
+2020,VK,F,F05b,5,b,Services,Services,email,Mail.Ru email,NA,NA
+2020,VK,F,F05b,5,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F05b,5,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F06,6,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F06,6,NA,Services,Services,email,Mail.Ru email,NA,NA
+2020,VK,F,F06,6,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F06,6,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F07,7,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F07,7,NA,Services,Services,email,Mail.Ru email,NA,NA
+2020,VK,F,F07,7,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F07,7,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F08,8,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F08,8,NA,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,F,F08,8,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,F,F08,8,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F09,9,NA,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
+2020,VK,F,F09,9,NA,Services,Services,email,Mail.Ru email,NA,NA
+2020,VK,F,F09,9,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2020,VK,F,F09,9,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F10,10,NA,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
+2020,VK,F,F10,10,NA,Services,Services,email,Mail.Ru email,NA,NA
+2020,VK,F,F10,10,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2020,VK,F,F10,10,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F11,11,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,F,F11,11,NA,Services,Services,email,Mail.Ru email,100,NA
+2020,VK,F,F11,11,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
+2020,VK,F,F11,11,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F12,12,NA,Services,Services,socialNetworkBlogs,Vkontakte,10,NA
+2020,VK,F,F12,12,NA,Services,Services,email,Mail.Ru email,NA,NA
+2020,VK,F,F12,12,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2020,VK,F,F12,12,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,F,F13,13,NA,Services,Services,socialNetworkBlogs,Vkontakte,38,NA
+2020,VK,F,F13,13,NA,Services,Services,email,Mail.Ru email,NA,NA
+2020,VK,F,F13,13,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2020,VK,F,F13,13,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P01a,1,a,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
+2020,VK,P,P01a,1,a,Services,Services,email,Mail.Ru email,67,NA
+2020,VK,P,P01a,1,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
+2020,VK,P,P01a,1,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P01b,1,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,P,P01b,1,b,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,P,P01b,1,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,P,P01b,1,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P02a,2,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,P,P02a,2,a,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,P,P02a,2,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,P,P02a,2,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P02b,2,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,P,P02b,2,b,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,P,P02b,2,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,P,P02b,2,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P03a,3,a,Services,Services,socialNetworkBlogs,Vkontakte,67,NA
+2020,VK,P,P03a,3,a,Services,Services,email,Mail.Ru email,67,NA
+2020,VK,P,P03a,3,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
+2020,VK,P,P03a,3,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P03b,3,b,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2020,VK,P,P03b,3,b,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,P,P03b,3,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,P,P03b,3,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P04,4,NA,Services,Services,socialNetworkBlogs,Vkontakte,50,NA
+2020,VK,P,P04,4,NA,Services,Services,email,Mail.Ru email,50,NA
+2020,VK,P,P04,4,NA,Services,Services,cloud,Mail.Ru Cloud,50,NA
+2020,VK,P,P04,4,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P05,5,NA,Services,Services,socialNetworkBlogs,Vkontakte,40,NA
+2020,VK,P,P05,5,NA,Services,Services,email,Mail.Ru email,30,NA
+2020,VK,P,P05,5,NA,Services,Services,cloud,Mail.Ru Cloud,30,NA
+2020,VK,P,P05,5,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P06,6,NA,Services,Services,socialNetworkBlogs,Vkontakte,20,NA
+2020,VK,P,P06,6,NA,Services,Services,email,Mail.Ru email,20,NA
+2020,VK,P,P06,6,NA,Services,Services,cloud,Mail.Ru Cloud,20,NA
+2020,VK,P,P06,6,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P07,7,NA,Services,Services,socialNetworkBlogs,Vkontakte,19,NA
+2020,VK,P,P07,7,NA,Services,Services,email,Mail.Ru email,25,NA
+2020,VK,P,P07,7,NA,Services,Services,cloud,Mail.Ru Cloud,25,NA
+2020,VK,P,P07,7,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P08,8,NA,Services,Services,socialNetworkBlogs,Vkontakte,8,NA
+2020,VK,P,P08,8,NA,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,P,P08,8,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,P,P08,8,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P09,9,NA,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
+2020,VK,P,P09,9,NA,Services,Services,email,Mail.Ru email,11,NA
+2020,VK,P,P09,9,NA,Services,Services,cloud,Mail.Ru Cloud,11,NA
+2020,VK,P,P09,9,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P10a,10,a,Services,Services,socialNetworkBlogs,Vkontakte,86,NA
+2020,VK,P,P10a,10,a,Services,Services,email,Mail.Ru email,79,NA
+2020,VK,P,P10a,10,a,Services,Services,cloud,Mail.Ru Cloud,79,NA
+2020,VK,P,P10a,10,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P10b,10,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,P,P10b,10,b,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,P,P10b,10,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,P,P10b,10,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P11a,11,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,P,P11a,11,a,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,P,P11a,11,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,P,P11a,11,a,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P11b,11,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,P,P11b,11,b,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,P,P11b,11,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,P,P11b,11,b,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P12,12,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2020,VK,P,P12,12,NA,Services,Services,email,Mail.Ru email,33,NA
+2020,VK,P,P12,12,NA,Services,Services,cloud,Mail.Ru Cloud,33,NA
+2020,VK,P,P12,12,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P13,13,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2020,VK,P,P13,13,NA,Services,Services,email,Mail.Ru email,50,NA
+2020,VK,P,P13,13,NA,Services,Services,cloud,Mail.Ru Cloud,50,NA
+2020,VK,P,P13,13,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P14,14,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2020,VK,P,P14,14,NA,Services,Services,email,Mail.Ru email,67,NA
+2020,VK,P,P14,14,NA,Services,Services,cloud,Mail.Ru Cloud,67,NA
+2020,VK,P,P14,14,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P15,15,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2020,VK,P,P15,15,NA,Services,Services,email,Mail.Ru email,0,NA
+2020,VK,P,P15,15,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,P,P15,15,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P16,16,NA,Services,Services,socialNetworkBlogs,Vkontakte,25,NA
+2020,VK,P,P16,16,NA,Services,Services,email,Mail.Ru email,25,NA
+2020,VK,P,P16,16,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2020,VK,P,P16,16,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P17,17,NA,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
+2020,VK,P,P17,17,NA,Services,Services,email,Mail.Ru email,100,NA
+2020,VK,P,P17,17,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
+2020,VK,P,P17,17,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2020,VK,P,P18,18,NA,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
+2020,VK,P,P18,18,NA,Services,Services,email,Mail.Ru email,100,NA
+2020,VK,P,P18,18,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
+2020,VK,P,P18,18,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
 2020,Microsoft,G,G01,1,NA,Company,Group,Group,Group,83,NA
 2020,Microsoft,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
 2020,Microsoft,G,G02,2,NA,Company,Group,Group,Group,100,NA
@@ -3347,248 +3347,248 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Baidu,P,P18,18,NA,Services,Services,search,Baidu Search,100,NA
 2022,Baidu,P,P18,18,NA,Services,Services,cloud,Baidu Cloud,100,NA
 2022,Baidu,P,P18,18,NA,Services,Services,socialNetworkBlogs,Baidu PostBar,100,NA
-2022,Facebook,G,G01,1,NA,Company,Group,Group,Group,83,NA
-2022,Facebook,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Facebook,G,G02,2,NA,Company,Group,Group,Group,100,NA
-2022,Facebook,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Facebook,G,G02,2,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2022,Facebook,G,G02,2,NA,Services,Services,photoVideo,Instagram,100,NA
-2022,Facebook,G,G02,2,NA,Services,Services,messagingVoip,WhatsApp,100,NA
-2022,Facebook,G,G02,2,NA,Services,Services,messagingVoip,Messenger,100,NA
-2022,Facebook,G,G03,3,NA,Company,Group,Group,Group,100,NA
-2022,Facebook,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Facebook,G,G03,3,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2022,Facebook,G,G03,3,NA,Services,Services,photoVideo,Instagram,100,NA
-2022,Facebook,G,G03,3,NA,Services,Services,messagingVoip,WhatsApp,100,NA
-2022,Facebook,G,G03,3,NA,Services,Services,messagingVoip,Messenger,100,NA
-2022,Facebook,G,G04a,4,a,Company,Group,Group,Group,82,NA
-2022,Facebook,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Facebook,G,G04a,4,a,Services,Services,socialNetworkBlogs,Facebook,82,NA
-2022,Facebook,G,G04a,4,a,Services,Services,photoVideo,Instagram,82,NA
-2022,Facebook,G,G04a,4,a,Services,Services,messagingVoip,WhatsApp,82,NA
-2022,Facebook,G,G04a,4,a,Services,Services,messagingVoip,Messenger,82,NA
-2022,Facebook,G,G04b,4,b,Company,Group,Group,Group,33,NA
-2022,Facebook,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Facebook,G,G04b,4,b,Services,Services,socialNetworkBlogs,Facebook,33,NA
-2022,Facebook,G,G04b,4,b,Services,Services,photoVideo,Instagram,33,NA
-2022,Facebook,G,G04b,4,b,Services,Services,messagingVoip,WhatsApp,33,NA
-2022,Facebook,G,G04b,4,b,Services,Services,messagingVoip,Messenger,33,NA
-2022,Facebook,G,G04c,4,c,Company,Group,Group,Group,25,NA
-2022,Facebook,G,G04c,4,c,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Facebook,G,G04c,4,c,Services,Services,socialNetworkBlogs,Facebook,25,NA
-2022,Facebook,G,G04c,4,c,Services,Services,photoVideo,Instagram,25,NA
-2022,Facebook,G,G04c,4,c,Services,Services,messagingVoip,WhatsApp,25,NA
-2022,Facebook,G,G04c,4,c,Services,Services,messagingVoip,Messenger,25,NA
-2022,Facebook,G,G04d,4,d,Company,Group,Group,Group,25,NA
-2022,Facebook,G,G04d,4,d,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Facebook,G,G04d,4,d,Services,Services,socialNetworkBlogs,Facebook,25,NA
-2022,Facebook,G,G04d,4,d,Services,Services,photoVideo,Instagram,25,NA
-2022,Facebook,G,G04d,4,d,Services,Services,messagingVoip,WhatsApp,25,NA
-2022,Facebook,G,G04d,4,d,Services,Services,messagingVoip,Messenger,25,NA
-2022,Facebook,G,G04e,4,e,Company,Group,Group,Group,0,NA
-2022,Facebook,G,G04e,4,e,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Facebook,G,G04e,4,e,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2022,Facebook,G,G04e,4,e,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,G,G04e,4,e,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,G,G04e,4,e,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,G,G05,5,NA,Company,Group,Group,Group,50,NA
-2022,Facebook,G,G05,5,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,Facebook,G,G06a,6,a,Services,Services,socialNetworkBlogs,Facebook,17,NA
-2022,Facebook,G,G06a,6,a,Services,Services,photoVideo,Instagram,6,NA
-2022,Facebook,G,G06a,6,a,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,G,G06a,6,a,Services,Services,messagingVoip,Messenger,17,NA
-2022,Facebook,G,G06b,6,b,Services,Services,socialNetworkBlogs,Facebook,73,NA
-2022,Facebook,G,G06b,6,b,Services,Services,photoVideo,Instagram,59,NA
-2022,Facebook,G,G06b,6,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,G,G06b,6,b,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F01a,1,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2022,Facebook,F,F01a,1,a,Services,Services,photoVideo,Instagram,100,NA
-2022,Facebook,F,F01a,1,a,Services,Services,messagingVoip,WhatsApp,100,NA
-2022,Facebook,F,F01a,1,a,Services,Services,messagingVoip,Messenger,100,NA
-2022,Facebook,F,F01b,1,b,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2022,Facebook,F,F01b,1,b,Services,Services,photoVideo,Instagram,83,NA
-2022,Facebook,F,F01b,1,b,Services,Services,messagingVoip,WhatsApp,67,NA
-2022,Facebook,F,F01b,1,b,Services,Services,messagingVoip,Messenger,100,NA
-2022,Facebook,F,F01c,1,c,Services,Services,socialNetworkBlogs,Facebook,83,NA
-2022,Facebook,F,F01c,1,c,Services,Services,photoVideo,Instagram,83,NA
-2022,Facebook,F,F01c,1,c,Services,Services,messagingVoip,WhatsApp,67,NA
-2022,Facebook,F,F01c,1,c,Services,Services,messagingVoip,Messenger,83,NA
-2022,Facebook,F,F01d,1,d,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2022,Facebook,F,F01d,1,d,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,F,F01d,1,d,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,F,F01d,1,d,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F02a,2,a,Services,Services,socialNetworkBlogs,Facebook,25,NA
-2022,Facebook,F,F02a,2,a,Services,Services,photoVideo,Instagram,50,NA
-2022,Facebook,F,F02a,2,a,Services,Services,messagingVoip,WhatsApp,38,NA
-2022,Facebook,F,F02a,2,a,Services,Services,messagingVoip,Messenger,25,NA
-2022,Facebook,F,F02b,2,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2022,Facebook,F,F02b,2,b,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,F,F02b,2,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,F,F02b,2,b,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F02c,2,c,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2022,Facebook,F,F02c,2,c,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,F,F02c,2,c,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,F,F02c,2,c,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F02d,2,d,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2022,Facebook,F,F02d,2,d,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,F,F02d,2,d,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,F,F02d,2,d,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F03a,3,a,Services,Services,socialNetworkBlogs,Facebook,71,NA
-2022,Facebook,F,F03a,3,a,Services,Services,photoVideo,Instagram,71,NA
-2022,Facebook,F,F03a,3,a,Services,Services,messagingVoip,WhatsApp,80,NA
-2022,Facebook,F,F03a,3,a,Services,Services,messagingVoip,Messenger,100,NA
-2022,Facebook,F,F03b,3,b,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2022,Facebook,F,F03b,3,b,Services,Services,photoVideo,Instagram,50,NA
-2022,Facebook,F,F03b,3,b,Services,Services,messagingVoip,WhatsApp,33,NA
-2022,Facebook,F,F03b,3,b,Services,Services,messagingVoip,Messenger,33,NA
-2022,Facebook,F,F03c,3,c,Services,Services,socialNetworkBlogs,Facebook,40,NA
-2022,Facebook,F,F03c,3,c,Services,Services,photoVideo,Instagram,40,NA
-2022,Facebook,F,F03c,3,c,Services,Services,messagingVoip,WhatsApp,75,NA
-2022,Facebook,F,F03c,3,c,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F04a,4,a,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2022,Facebook,F,F04a,4,a,Services,Services,photoVideo,Instagram,50,NA
-2022,Facebook,F,F04a,4,a,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,F,F04a,4,a,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F04b,4,b,Services,Services,socialNetworkBlogs,Facebook,60,NA
-2022,Facebook,F,F04b,4,b,Services,Services,photoVideo,Instagram,60,NA
-2022,Facebook,F,F04b,4,b,Services,Services,messagingVoip,WhatsApp,10,NA
-2022,Facebook,F,F04b,4,b,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F04c,4,c,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2022,Facebook,F,F04c,4,c,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,F,F04c,4,c,Services,Services,messagingVoip,WhatsApp,NA,NA
-2022,Facebook,F,F04c,4,c,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F05a,5,a,Services,Services,socialNetworkBlogs,Facebook,93,NA
-2022,Facebook,F,F05a,5,a,Services,Services,photoVideo,Instagram,93,NA
-2022,Facebook,F,F05a,5,a,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,F,F05a,5,a,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F05b,5,b,Services,Services,socialNetworkBlogs,Facebook,80,NA
-2022,Facebook,F,F05b,5,b,Services,Services,photoVideo,Instagram,80,NA
-2022,Facebook,F,F05b,5,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,F,F05b,5,b,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F06,6,NA,Services,Services,socialNetworkBlogs,Facebook,40,NA
-2022,Facebook,F,F06,6,NA,Services,Services,photoVideo,Instagram,40,NA
-2022,Facebook,F,F06,6,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,F,F06,6,NA,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F07,7,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2022,Facebook,F,F07,7,NA,Services,Services,photoVideo,Instagram,50,NA
-2022,Facebook,F,F07,7,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,F,F07,7,NA,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F08,8,NA,Services,Services,socialNetworkBlogs,Facebook,63,NA
-2022,Facebook,F,F08,8,NA,Services,Services,photoVideo,Instagram,50,NA
-2022,Facebook,F,F08,8,NA,Services,Services,messagingVoip,WhatsApp,25,NA
-2022,Facebook,F,F08,8,NA,Services,Services,messagingVoip,Messenger,63,NA
-2022,Facebook,F,F09,9,NA,Services,Services,socialNetworkBlogs,Facebook,NA,NA
-2022,Facebook,F,F09,9,NA,Services,Services,photoVideo,Instagram,NA,NA
-2022,Facebook,F,F09,9,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
-2022,Facebook,F,F09,9,NA,Services,Services,messagingVoip,Messenger,NA,NA
-2022,Facebook,F,F10,10,NA,Services,Services,socialNetworkBlogs,Facebook,NA,NA
-2022,Facebook,F,F10,10,NA,Services,Services,photoVideo,Instagram,NA,NA
-2022,Facebook,F,F10,10,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
-2022,Facebook,F,F10,10,NA,Services,Services,messagingVoip,Messenger,NA,NA
-2022,Facebook,F,F11,11,NA,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2022,Facebook,F,F11,11,NA,Services,Services,photoVideo,Instagram,100,NA
-2022,Facebook,F,F11,11,NA,Services,Services,messagingVoip,WhatsApp,100,NA
-2022,Facebook,F,F11,11,NA,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,F,F12,12,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2022,Facebook,F,F12,12,NA,Services,Services,photoVideo,Instagram,20,NA
-2022,Facebook,F,F12,12,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
-2022,Facebook,F,F12,12,NA,Services,Services,messagingVoip,Messenger,NA,NA
-2022,Facebook,F,F13,13,NA,Services,Services,socialNetworkBlogs,Facebook,25,NA
-2022,Facebook,F,F13,13,NA,Services,Services,photoVideo,Instagram,25,NA
-2022,Facebook,F,F13,13,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,F,F13,13,NA,Services,Services,messagingVoip,Messenger,25,NA
-2022,Facebook,P,P01a,1,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2022,Facebook,P,P01a,1,a,Services,Services,photoVideo,Instagram,100,NA
-2022,Facebook,P,P01a,1,a,Services,Services,messagingVoip,WhatsApp,100,NA
-2022,Facebook,P,P01a,1,a,Services,Services,messagingVoip,Messenger,100,NA
-2022,Facebook,P,P01b,1,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2022,Facebook,P,P01b,1,b,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,P,P01b,1,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,P,P01b,1,b,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,P,P02a,2,a,Services,Services,socialNetworkBlogs,Facebook,25,NA
-2022,Facebook,P,P02a,2,a,Services,Services,photoVideo,Instagram,25,NA
-2022,Facebook,P,P02a,2,a,Services,Services,messagingVoip,WhatsApp,50,NA
-2022,Facebook,P,P02a,2,a,Services,Services,messagingVoip,Messenger,25,NA
-2022,Facebook,P,P02b,2,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2022,Facebook,P,P02b,2,b,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,P,P02b,2,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,P,P02b,2,b,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,P,P03a,3,a,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2022,Facebook,P,P03a,3,a,Services,Services,photoVideo,Instagram,50,NA
-2022,Facebook,P,P03a,3,a,Services,Services,messagingVoip,WhatsApp,67,NA
-2022,Facebook,P,P03a,3,a,Services,Services,messagingVoip,Messenger,50,NA
-2022,Facebook,P,P03b,3,b,Services,Services,socialNetworkBlogs,Facebook,33,NA
-2022,Facebook,P,P03b,3,b,Services,Services,photoVideo,Instagram,33,NA
-2022,Facebook,P,P03b,3,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,P,P03b,3,b,Services,Services,messagingVoip,Messenger,33,NA
-2022,Facebook,P,P04,4,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2022,Facebook,P,P04,4,NA,Services,Services,photoVideo,Instagram,50,NA
-2022,Facebook,P,P04,4,NA,Services,Services,messagingVoip,WhatsApp,63,NA
-2022,Facebook,P,P04,4,NA,Services,Services,messagingVoip,Messenger,50,NA
-2022,Facebook,P,P05,5,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2022,Facebook,P,P05,5,NA,Services,Services,photoVideo,Instagram,50,NA
-2022,Facebook,P,P05,5,NA,Services,Services,messagingVoip,WhatsApp,40,NA
-2022,Facebook,P,P05,5,NA,Services,Services,messagingVoip,Messenger,50,NA
-2022,Facebook,P,P06,6,NA,Services,Services,socialNetworkBlogs,Facebook,40,NA
-2022,Facebook,P,P06,6,NA,Services,Services,photoVideo,Instagram,20,NA
-2022,Facebook,P,P06,6,NA,Services,Services,messagingVoip,WhatsApp,40,NA
-2022,Facebook,P,P06,6,NA,Services,Services,messagingVoip,Messenger,40,NA
-2022,Facebook,P,P07,7,NA,Services,Services,socialNetworkBlogs,Facebook,13,NA
-2022,Facebook,P,P07,7,NA,Services,Services,photoVideo,Instagram,13,NA
-2022,Facebook,P,P07,7,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,P,P07,7,NA,Services,Services,messagingVoip,Messenger,13,NA
-2022,Facebook,P,P08,8,NA,Services,Services,socialNetworkBlogs,Facebook,92,NA
-2022,Facebook,P,P08,8,NA,Services,Services,photoVideo,Instagram,42,NA
-2022,Facebook,P,P08,8,NA,Services,Services,messagingVoip,WhatsApp,42,NA
-2022,Facebook,P,P08,8,NA,Services,Services,messagingVoip,Messenger,92,NA
-2022,Facebook,P,P09,9,NA,Services,Services,socialNetworkBlogs,Facebook,33,NA
-2022,Facebook,P,P09,9,NA,Services,Services,photoVideo,Instagram,33,NA
-2022,Facebook,P,P09,9,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,P,P09,9,NA,Services,Services,messagingVoip,Messenger,33,NA
-2022,Facebook,P,P10a,10,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2022,Facebook,P,P10a,10,a,Services,Services,photoVideo,Instagram,100,NA
-2022,Facebook,P,P10a,10,a,Services,Services,messagingVoip,WhatsApp,100,NA
-2022,Facebook,P,P10a,10,a,Services,Services,messagingVoip,Messenger,100,NA
-2022,Facebook,P,P10b,10,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2022,Facebook,P,P10b,10,b,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,P,P10b,10,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,P,P10b,10,b,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,P,P11a,11,a,Services,Services,socialNetworkBlogs,Facebook,80,NA
-2022,Facebook,P,P11a,11,a,Services,Services,photoVideo,Instagram,80,NA
-2022,Facebook,P,P11a,11,a,Services,Services,messagingVoip,WhatsApp,80,NA
-2022,Facebook,P,P11a,11,a,Services,Services,messagingVoip,Messenger,80,NA
-2022,Facebook,P,P11b,11,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
-2022,Facebook,P,P11b,11,b,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,P,P11b,11,b,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,P,P11b,11,b,Services,Services,messagingVoip,Messenger,0,NA
-2022,Facebook,P,P12,12,NA,Services,Services,socialNetworkBlogs,Facebook,67,NA
-2022,Facebook,P,P12,12,NA,Services,Services,photoVideo,Instagram,67,NA
-2022,Facebook,P,P12,12,NA,Services,Services,messagingVoip,WhatsApp,67,NA
-2022,Facebook,P,P12,12,NA,Services,Services,messagingVoip,Messenger,67,NA
-2022,Facebook,P,P13,13,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
-2022,Facebook,P,P13,13,NA,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,P,P13,13,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,P,P13,13,NA,Services,Services,messagingVoip,Messenger,50,NA
-2022,Facebook,P,P14,14,NA,Services,Services,socialNetworkBlogs,Facebook,67,NA
-2022,Facebook,P,P14,14,NA,Services,Services,photoVideo,Instagram,67,NA
-2022,Facebook,P,P14,14,NA,Services,Services,messagingVoip,WhatsApp,67,NA
-2022,Facebook,P,P14,14,NA,Services,Services,messagingVoip,Messenger,67,NA
-2022,Facebook,P,P15,15,NA,Services,Services,socialNetworkBlogs,Facebook,17,NA
-2022,Facebook,P,P15,15,NA,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,P,P15,15,NA,Services,Services,messagingVoip,WhatsApp,0,NA
-2022,Facebook,P,P15,15,NA,Services,Services,messagingVoip,Messenger,17,NA
-2022,Facebook,P,P16,16,NA,Services,Services,socialNetworkBlogs,Facebook,75,NA
-2022,Facebook,P,P16,16,NA,Services,Services,photoVideo,Instagram,0,NA
-2022,Facebook,P,P16,16,NA,Services,Services,messagingVoip,WhatsApp,100,NA
-2022,Facebook,P,P16,16,NA,Services,Services,messagingVoip,Messenger,75,NA
-2022,Facebook,P,P17,17,NA,Services,Services,socialNetworkBlogs,Facebook,83,NA
-2022,Facebook,P,P17,17,NA,Services,Services,photoVideo,Instagram,33,NA
-2022,Facebook,P,P17,17,NA,Services,Services,messagingVoip,WhatsApp,33,NA
-2022,Facebook,P,P17,17,NA,Services,Services,messagingVoip,Messenger,83,NA
-2022,Facebook,P,P18,18,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
-2022,Facebook,P,P18,18,NA,Services,Services,photoVideo,Instagram,100,NA
-2022,Facebook,P,P18,18,NA,Services,Services,messagingVoip,WhatsApp,100,NA
-2022,Facebook,P,P18,18,NA,Services,Services,messagingVoip,Messenger,100,NA
+2022,Meta,G,G01,1,NA,Company,Group,Group,Group,83,NA
+2022,Meta,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,Meta,G,G02,2,NA,Company,Group,Group,Group,100,NA
+2022,Meta,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,Meta,G,G02,2,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2022,Meta,G,G02,2,NA,Services,Services,photoVideo,Instagram,100,NA
+2022,Meta,G,G02,2,NA,Services,Services,messagingVoip,WhatsApp,100,NA
+2022,Meta,G,G02,2,NA,Services,Services,messagingVoip,Messenger,100,NA
+2022,Meta,G,G03,3,NA,Company,Group,Group,Group,100,NA
+2022,Meta,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,Meta,G,G03,3,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2022,Meta,G,G03,3,NA,Services,Services,photoVideo,Instagram,100,NA
+2022,Meta,G,G03,3,NA,Services,Services,messagingVoip,WhatsApp,100,NA
+2022,Meta,G,G03,3,NA,Services,Services,messagingVoip,Messenger,100,NA
+2022,Meta,G,G04a,4,a,Company,Group,Group,Group,82,NA
+2022,Meta,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,Meta,G,G04a,4,a,Services,Services,socialNetworkBlogs,Facebook,82,NA
+2022,Meta,G,G04a,4,a,Services,Services,photoVideo,Instagram,82,NA
+2022,Meta,G,G04a,4,a,Services,Services,messagingVoip,WhatsApp,82,NA
+2022,Meta,G,G04a,4,a,Services,Services,messagingVoip,Messenger,82,NA
+2022,Meta,G,G04b,4,b,Company,Group,Group,Group,33,NA
+2022,Meta,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,Meta,G,G04b,4,b,Services,Services,socialNetworkBlogs,Facebook,33,NA
+2022,Meta,G,G04b,4,b,Services,Services,photoVideo,Instagram,33,NA
+2022,Meta,G,G04b,4,b,Services,Services,messagingVoip,WhatsApp,33,NA
+2022,Meta,G,G04b,4,b,Services,Services,messagingVoip,Messenger,33,NA
+2022,Meta,G,G04c,4,c,Company,Group,Group,Group,25,NA
+2022,Meta,G,G04c,4,c,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,Meta,G,G04c,4,c,Services,Services,socialNetworkBlogs,Facebook,25,NA
+2022,Meta,G,G04c,4,c,Services,Services,photoVideo,Instagram,25,NA
+2022,Meta,G,G04c,4,c,Services,Services,messagingVoip,WhatsApp,25,NA
+2022,Meta,G,G04c,4,c,Services,Services,messagingVoip,Messenger,25,NA
+2022,Meta,G,G04d,4,d,Company,Group,Group,Group,25,NA
+2022,Meta,G,G04d,4,d,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,Meta,G,G04d,4,d,Services,Services,socialNetworkBlogs,Facebook,25,NA
+2022,Meta,G,G04d,4,d,Services,Services,photoVideo,Instagram,25,NA
+2022,Meta,G,G04d,4,d,Services,Services,messagingVoip,WhatsApp,25,NA
+2022,Meta,G,G04d,4,d,Services,Services,messagingVoip,Messenger,25,NA
+2022,Meta,G,G04e,4,e,Company,Group,Group,Group,0,NA
+2022,Meta,G,G04e,4,e,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,Meta,G,G04e,4,e,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2022,Meta,G,G04e,4,e,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,G,G04e,4,e,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,G,G04e,4,e,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,G,G05,5,NA,Company,Group,Group,Group,50,NA
+2022,Meta,G,G05,5,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,Meta,G,G06a,6,a,Services,Services,socialNetworkBlogs,Facebook,17,NA
+2022,Meta,G,G06a,6,a,Services,Services,photoVideo,Instagram,6,NA
+2022,Meta,G,G06a,6,a,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,G,G06a,6,a,Services,Services,messagingVoip,Messenger,17,NA
+2022,Meta,G,G06b,6,b,Services,Services,socialNetworkBlogs,Facebook,73,NA
+2022,Meta,G,G06b,6,b,Services,Services,photoVideo,Instagram,59,NA
+2022,Meta,G,G06b,6,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,G,G06b,6,b,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F01a,1,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2022,Meta,F,F01a,1,a,Services,Services,photoVideo,Instagram,100,NA
+2022,Meta,F,F01a,1,a,Services,Services,messagingVoip,WhatsApp,100,NA
+2022,Meta,F,F01a,1,a,Services,Services,messagingVoip,Messenger,100,NA
+2022,Meta,F,F01b,1,b,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2022,Meta,F,F01b,1,b,Services,Services,photoVideo,Instagram,83,NA
+2022,Meta,F,F01b,1,b,Services,Services,messagingVoip,WhatsApp,67,NA
+2022,Meta,F,F01b,1,b,Services,Services,messagingVoip,Messenger,100,NA
+2022,Meta,F,F01c,1,c,Services,Services,socialNetworkBlogs,Facebook,83,NA
+2022,Meta,F,F01c,1,c,Services,Services,photoVideo,Instagram,83,NA
+2022,Meta,F,F01c,1,c,Services,Services,messagingVoip,WhatsApp,67,NA
+2022,Meta,F,F01c,1,c,Services,Services,messagingVoip,Messenger,83,NA
+2022,Meta,F,F01d,1,d,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2022,Meta,F,F01d,1,d,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,F,F01d,1,d,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,F,F01d,1,d,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F02a,2,a,Services,Services,socialNetworkBlogs,Facebook,25,NA
+2022,Meta,F,F02a,2,a,Services,Services,photoVideo,Instagram,50,NA
+2022,Meta,F,F02a,2,a,Services,Services,messagingVoip,WhatsApp,38,NA
+2022,Meta,F,F02a,2,a,Services,Services,messagingVoip,Messenger,25,NA
+2022,Meta,F,F02b,2,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2022,Meta,F,F02b,2,b,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,F,F02b,2,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,F,F02b,2,b,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F02c,2,c,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2022,Meta,F,F02c,2,c,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,F,F02c,2,c,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,F,F02c,2,c,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F02d,2,d,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2022,Meta,F,F02d,2,d,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,F,F02d,2,d,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,F,F02d,2,d,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F03a,3,a,Services,Services,socialNetworkBlogs,Facebook,71,NA
+2022,Meta,F,F03a,3,a,Services,Services,photoVideo,Instagram,71,NA
+2022,Meta,F,F03a,3,a,Services,Services,messagingVoip,WhatsApp,80,NA
+2022,Meta,F,F03a,3,a,Services,Services,messagingVoip,Messenger,100,NA
+2022,Meta,F,F03b,3,b,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2022,Meta,F,F03b,3,b,Services,Services,photoVideo,Instagram,50,NA
+2022,Meta,F,F03b,3,b,Services,Services,messagingVoip,WhatsApp,33,NA
+2022,Meta,F,F03b,3,b,Services,Services,messagingVoip,Messenger,33,NA
+2022,Meta,F,F03c,3,c,Services,Services,socialNetworkBlogs,Facebook,40,NA
+2022,Meta,F,F03c,3,c,Services,Services,photoVideo,Instagram,40,NA
+2022,Meta,F,F03c,3,c,Services,Services,messagingVoip,WhatsApp,75,NA
+2022,Meta,F,F03c,3,c,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F04a,4,a,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2022,Meta,F,F04a,4,a,Services,Services,photoVideo,Instagram,50,NA
+2022,Meta,F,F04a,4,a,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,F,F04a,4,a,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F04b,4,b,Services,Services,socialNetworkBlogs,Facebook,60,NA
+2022,Meta,F,F04b,4,b,Services,Services,photoVideo,Instagram,60,NA
+2022,Meta,F,F04b,4,b,Services,Services,messagingVoip,WhatsApp,10,NA
+2022,Meta,F,F04b,4,b,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F04c,4,c,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2022,Meta,F,F04c,4,c,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,F,F04c,4,c,Services,Services,messagingVoip,WhatsApp,NA,NA
+2022,Meta,F,F04c,4,c,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F05a,5,a,Services,Services,socialNetworkBlogs,Facebook,93,NA
+2022,Meta,F,F05a,5,a,Services,Services,photoVideo,Instagram,93,NA
+2022,Meta,F,F05a,5,a,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,F,F05a,5,a,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F05b,5,b,Services,Services,socialNetworkBlogs,Facebook,80,NA
+2022,Meta,F,F05b,5,b,Services,Services,photoVideo,Instagram,80,NA
+2022,Meta,F,F05b,5,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,F,F05b,5,b,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F06,6,NA,Services,Services,socialNetworkBlogs,Facebook,40,NA
+2022,Meta,F,F06,6,NA,Services,Services,photoVideo,Instagram,40,NA
+2022,Meta,F,F06,6,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,F,F06,6,NA,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F07,7,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2022,Meta,F,F07,7,NA,Services,Services,photoVideo,Instagram,50,NA
+2022,Meta,F,F07,7,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,F,F07,7,NA,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F08,8,NA,Services,Services,socialNetworkBlogs,Facebook,63,NA
+2022,Meta,F,F08,8,NA,Services,Services,photoVideo,Instagram,50,NA
+2022,Meta,F,F08,8,NA,Services,Services,messagingVoip,WhatsApp,25,NA
+2022,Meta,F,F08,8,NA,Services,Services,messagingVoip,Messenger,63,NA
+2022,Meta,F,F09,9,NA,Services,Services,socialNetworkBlogs,Facebook,NA,NA
+2022,Meta,F,F09,9,NA,Services,Services,photoVideo,Instagram,NA,NA
+2022,Meta,F,F09,9,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
+2022,Meta,F,F09,9,NA,Services,Services,messagingVoip,Messenger,NA,NA
+2022,Meta,F,F10,10,NA,Services,Services,socialNetworkBlogs,Facebook,NA,NA
+2022,Meta,F,F10,10,NA,Services,Services,photoVideo,Instagram,NA,NA
+2022,Meta,F,F10,10,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
+2022,Meta,F,F10,10,NA,Services,Services,messagingVoip,Messenger,NA,NA
+2022,Meta,F,F11,11,NA,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2022,Meta,F,F11,11,NA,Services,Services,photoVideo,Instagram,100,NA
+2022,Meta,F,F11,11,NA,Services,Services,messagingVoip,WhatsApp,100,NA
+2022,Meta,F,F11,11,NA,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,F,F12,12,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2022,Meta,F,F12,12,NA,Services,Services,photoVideo,Instagram,20,NA
+2022,Meta,F,F12,12,NA,Services,Services,messagingVoip,WhatsApp,NA,NA
+2022,Meta,F,F12,12,NA,Services,Services,messagingVoip,Messenger,NA,NA
+2022,Meta,F,F13,13,NA,Services,Services,socialNetworkBlogs,Facebook,25,NA
+2022,Meta,F,F13,13,NA,Services,Services,photoVideo,Instagram,25,NA
+2022,Meta,F,F13,13,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,F,F13,13,NA,Services,Services,messagingVoip,Messenger,25,NA
+2022,Meta,P,P01a,1,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2022,Meta,P,P01a,1,a,Services,Services,photoVideo,Instagram,100,NA
+2022,Meta,P,P01a,1,a,Services,Services,messagingVoip,WhatsApp,100,NA
+2022,Meta,P,P01a,1,a,Services,Services,messagingVoip,Messenger,100,NA
+2022,Meta,P,P01b,1,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2022,Meta,P,P01b,1,b,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,P,P01b,1,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,P,P01b,1,b,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,P,P02a,2,a,Services,Services,socialNetworkBlogs,Facebook,25,NA
+2022,Meta,P,P02a,2,a,Services,Services,photoVideo,Instagram,25,NA
+2022,Meta,P,P02a,2,a,Services,Services,messagingVoip,WhatsApp,50,NA
+2022,Meta,P,P02a,2,a,Services,Services,messagingVoip,Messenger,25,NA
+2022,Meta,P,P02b,2,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2022,Meta,P,P02b,2,b,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,P,P02b,2,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,P,P02b,2,b,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,P,P03a,3,a,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2022,Meta,P,P03a,3,a,Services,Services,photoVideo,Instagram,50,NA
+2022,Meta,P,P03a,3,a,Services,Services,messagingVoip,WhatsApp,67,NA
+2022,Meta,P,P03a,3,a,Services,Services,messagingVoip,Messenger,50,NA
+2022,Meta,P,P03b,3,b,Services,Services,socialNetworkBlogs,Facebook,33,NA
+2022,Meta,P,P03b,3,b,Services,Services,photoVideo,Instagram,33,NA
+2022,Meta,P,P03b,3,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,P,P03b,3,b,Services,Services,messagingVoip,Messenger,33,NA
+2022,Meta,P,P04,4,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2022,Meta,P,P04,4,NA,Services,Services,photoVideo,Instagram,50,NA
+2022,Meta,P,P04,4,NA,Services,Services,messagingVoip,WhatsApp,63,NA
+2022,Meta,P,P04,4,NA,Services,Services,messagingVoip,Messenger,50,NA
+2022,Meta,P,P05,5,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2022,Meta,P,P05,5,NA,Services,Services,photoVideo,Instagram,50,NA
+2022,Meta,P,P05,5,NA,Services,Services,messagingVoip,WhatsApp,40,NA
+2022,Meta,P,P05,5,NA,Services,Services,messagingVoip,Messenger,50,NA
+2022,Meta,P,P06,6,NA,Services,Services,socialNetworkBlogs,Facebook,40,NA
+2022,Meta,P,P06,6,NA,Services,Services,photoVideo,Instagram,20,NA
+2022,Meta,P,P06,6,NA,Services,Services,messagingVoip,WhatsApp,40,NA
+2022,Meta,P,P06,6,NA,Services,Services,messagingVoip,Messenger,40,NA
+2022,Meta,P,P07,7,NA,Services,Services,socialNetworkBlogs,Facebook,13,NA
+2022,Meta,P,P07,7,NA,Services,Services,photoVideo,Instagram,13,NA
+2022,Meta,P,P07,7,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,P,P07,7,NA,Services,Services,messagingVoip,Messenger,13,NA
+2022,Meta,P,P08,8,NA,Services,Services,socialNetworkBlogs,Facebook,92,NA
+2022,Meta,P,P08,8,NA,Services,Services,photoVideo,Instagram,42,NA
+2022,Meta,P,P08,8,NA,Services,Services,messagingVoip,WhatsApp,42,NA
+2022,Meta,P,P08,8,NA,Services,Services,messagingVoip,Messenger,92,NA
+2022,Meta,P,P09,9,NA,Services,Services,socialNetworkBlogs,Facebook,33,NA
+2022,Meta,P,P09,9,NA,Services,Services,photoVideo,Instagram,33,NA
+2022,Meta,P,P09,9,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,P,P09,9,NA,Services,Services,messagingVoip,Messenger,33,NA
+2022,Meta,P,P10a,10,a,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2022,Meta,P,P10a,10,a,Services,Services,photoVideo,Instagram,100,NA
+2022,Meta,P,P10a,10,a,Services,Services,messagingVoip,WhatsApp,100,NA
+2022,Meta,P,P10a,10,a,Services,Services,messagingVoip,Messenger,100,NA
+2022,Meta,P,P10b,10,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2022,Meta,P,P10b,10,b,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,P,P10b,10,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,P,P10b,10,b,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,P,P11a,11,a,Services,Services,socialNetworkBlogs,Facebook,80,NA
+2022,Meta,P,P11a,11,a,Services,Services,photoVideo,Instagram,80,NA
+2022,Meta,P,P11a,11,a,Services,Services,messagingVoip,WhatsApp,80,NA
+2022,Meta,P,P11a,11,a,Services,Services,messagingVoip,Messenger,80,NA
+2022,Meta,P,P11b,11,b,Services,Services,socialNetworkBlogs,Facebook,0,NA
+2022,Meta,P,P11b,11,b,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,P,P11b,11,b,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,P,P11b,11,b,Services,Services,messagingVoip,Messenger,0,NA
+2022,Meta,P,P12,12,NA,Services,Services,socialNetworkBlogs,Facebook,67,NA
+2022,Meta,P,P12,12,NA,Services,Services,photoVideo,Instagram,67,NA
+2022,Meta,P,P12,12,NA,Services,Services,messagingVoip,WhatsApp,67,NA
+2022,Meta,P,P12,12,NA,Services,Services,messagingVoip,Messenger,67,NA
+2022,Meta,P,P13,13,NA,Services,Services,socialNetworkBlogs,Facebook,50,NA
+2022,Meta,P,P13,13,NA,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,P,P13,13,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,P,P13,13,NA,Services,Services,messagingVoip,Messenger,50,NA
+2022,Meta,P,P14,14,NA,Services,Services,socialNetworkBlogs,Facebook,67,NA
+2022,Meta,P,P14,14,NA,Services,Services,photoVideo,Instagram,67,NA
+2022,Meta,P,P14,14,NA,Services,Services,messagingVoip,WhatsApp,67,NA
+2022,Meta,P,P14,14,NA,Services,Services,messagingVoip,Messenger,67,NA
+2022,Meta,P,P15,15,NA,Services,Services,socialNetworkBlogs,Facebook,17,NA
+2022,Meta,P,P15,15,NA,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,P,P15,15,NA,Services,Services,messagingVoip,WhatsApp,0,NA
+2022,Meta,P,P15,15,NA,Services,Services,messagingVoip,Messenger,17,NA
+2022,Meta,P,P16,16,NA,Services,Services,socialNetworkBlogs,Facebook,75,NA
+2022,Meta,P,P16,16,NA,Services,Services,photoVideo,Instagram,0,NA
+2022,Meta,P,P16,16,NA,Services,Services,messagingVoip,WhatsApp,100,NA
+2022,Meta,P,P16,16,NA,Services,Services,messagingVoip,Messenger,75,NA
+2022,Meta,P,P17,17,NA,Services,Services,socialNetworkBlogs,Facebook,83,NA
+2022,Meta,P,P17,17,NA,Services,Services,photoVideo,Instagram,33,NA
+2022,Meta,P,P17,17,NA,Services,Services,messagingVoip,WhatsApp,33,NA
+2022,Meta,P,P17,17,NA,Services,Services,messagingVoip,Messenger,83,NA
+2022,Meta,P,P18,18,NA,Services,Services,socialNetworkBlogs,Facebook,100,NA
+2022,Meta,P,P18,18,NA,Services,Services,photoVideo,Instagram,100,NA
+2022,Meta,P,P18,18,NA,Services,Services,messagingVoip,WhatsApp,100,NA
+2022,Meta,P,P18,18,NA,Services,Services,messagingVoip,Messenger,100,NA
 2022,Google,G,G01,1,NA,Company,Group,Group,Group,83,NA
 2022,Google,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Google,G,G02,2,NA,Company,Group,Group,Group,67,NA
@@ -4129,248 +4129,248 @@ Index,Company,Category,Indicator,IndicatorNr,IndicatorSuffix,Branch,Composite,Cl
 2022,Kakao,P,P18,18,NA,Services,Services,search,Daum Search,100,NA
 2022,Kakao,P,P18,18,NA,Services,Services,email,Daum Mail,100,NA
 2022,Kakao,P,P18,18,NA,Services,Services,messagingVoip,KakaoTalk,100,NA
-2022,MailRu,G,G01,1,NA,Company,Group,Group,Group,33,NA
-2022,MailRu,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,MailRu,G,G02,2,NA,Company,Group,Group,Group,17,NA
-2022,MailRu,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,MailRu,G,G02,2,NA,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
-2022,MailRu,G,G02,2,NA,Services,Services,email,Mail.Ru email,17,NA
-2022,MailRu,G,G02,2,NA,Services,Services,cloud,Mail.Ru Cloud,17,NA
-2022,MailRu,G,G02,2,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,17,NA
-2022,MailRu,G,G03,3,NA,Company,Group,Group,Group,38,NA
-2022,MailRu,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,MailRu,G,G03,3,NA,Services,Services,socialNetworkBlogs,Vkontakte,38,NA
-2022,MailRu,G,G03,3,NA,Services,Services,email,Mail.Ru email,38,NA
-2022,MailRu,G,G03,3,NA,Services,Services,cloud,Mail.Ru Cloud,38,NA
-2022,MailRu,G,G03,3,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,38,NA
-2022,MailRu,G,G04a,4,a,Company,Group,Group,Group,0,NA
-2022,MailRu,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,MailRu,G,G04a,4,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,G,G04a,4,a,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,G,G04a,4,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,G,G04a,4,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,G,G04b,4,b,Company,Group,Group,Group,0,NA
-2022,MailRu,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,MailRu,G,G04b,4,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,G,G04b,4,b,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,G,G04b,4,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,G,G04b,4,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,G,G04c,4,c,Company,Group,Group,Group,0,NA
-2022,MailRu,G,G04c,4,c,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,MailRu,G,G04c,4,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,G,G04c,4,c,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,G,G04c,4,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,G,G04c,4,c,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,G,G04d,4,d,Company,Group,Group,Group,0,NA
-2022,MailRu,G,G04d,4,d,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,MailRu,G,G04d,4,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,G,G04d,4,d,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,G,G04d,4,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,G,G04d,4,d,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,G,G04e,4,e,Company,Group,Group,Group,NA,NA
-2022,MailRu,G,G04e,4,e,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,MailRu,G,G04e,4,e,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
-2022,MailRu,G,G04e,4,e,Services,Services,email,Mail.Ru email,NA,NA
-2022,MailRu,G,G04e,4,e,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2022,MailRu,G,G04e,4,e,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2022,MailRu,G,G05,5,NA,Company,Group,Group,Group,0,NA
-2022,MailRu,G,G05,5,NA,Company,OpCom,OpCom,Operating Company,NA,NA
-2022,MailRu,G,G06a,6,a,Services,Services,socialNetworkBlogs,Vkontakte,39,NA
-2022,MailRu,G,G06a,6,a,Services,Services,email,Mail.Ru email,33,NA
-2022,MailRu,G,G06a,6,a,Services,Services,cloud,Mail.Ru Cloud,33,NA
-2022,MailRu,G,G06a,6,a,Services,Services,socialNetworkBlogs,Odnoklassniki,22,NA
-2022,MailRu,G,G06b,6,b,Services,Services,socialNetworkBlogs,Vkontakte,9,NA
-2022,MailRu,G,G06b,6,b,Services,Services,email,Mail.Ru email,NA,NA
-2022,MailRu,G,G06b,6,b,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2022,MailRu,G,G06b,6,b,Services,Services,socialNetworkBlogs,Odnoklassniki,9,NA
-2022,MailRu,F,F01a,1,a,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
-2022,MailRu,F,F01a,1,a,Services,Services,email,Mail.Ru email,67,NA
-2022,MailRu,F,F01a,1,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
-2022,MailRu,F,F01a,1,a,Services,Services,socialNetworkBlogs,Odnoklassniki,67,NA
-2022,MailRu,F,F01b,1,b,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
-2022,MailRu,F,F01b,1,b,Services,Services,email,Mail.Ru email,83,NA
-2022,MailRu,F,F01b,1,b,Services,Services,cloud,Mail.Ru Cloud,83,NA
-2022,MailRu,F,F01b,1,b,Services,Services,socialNetworkBlogs,Odnoklassniki,83,NA
-2022,MailRu,F,F01c,1,c,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
-2022,MailRu,F,F01c,1,c,Services,Services,email,Mail.Ru email,100,NA
-2022,MailRu,F,F01c,1,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F01c,1,c,Services,Services,socialNetworkBlogs,Odnoklassniki,100,NA
-2022,MailRu,F,F01d,1,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F01d,1,d,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,F,F01d,1,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F01d,1,d,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F02a,2,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F02a,2,a,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,F,F02a,2,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F02a,2,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F02b,2,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F02b,2,b,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,F,F02b,2,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F02b,2,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F02c,2,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F02c,2,c,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,F,F02c,2,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F02c,2,c,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F02d,2,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F02d,2,d,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,F,F02d,2,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F02d,2,d,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F03a,3,a,Services,Services,socialNetworkBlogs,Vkontakte,57,NA
-2022,MailRu,F,F03a,3,a,Services,Services,email,Mail.Ru email,80,NA
-2022,MailRu,F,F03a,3,a,Services,Services,cloud,Mail.Ru Cloud,60,NA
-2022,MailRu,F,F03a,3,a,Services,Services,socialNetworkBlogs,Odnoklassniki,43,NA
-2022,MailRu,F,F03b,3,b,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2022,MailRu,F,F03b,3,b,Services,Services,email,Mail.Ru email,33,NA
-2022,MailRu,F,F03b,3,b,Services,Services,cloud,Mail.Ru Cloud,33,NA
-2022,MailRu,F,F03b,3,b,Services,Services,socialNetworkBlogs,Odnoklassniki,33,NA
-2022,MailRu,F,F03c,3,c,Services,Services,socialNetworkBlogs,Vkontakte,20,NA
-2022,MailRu,F,F03c,3,c,Services,Services,email,Mail.Ru email,20,NA
-2022,MailRu,F,F03c,3,c,Services,Services,cloud,Mail.Ru Cloud,20,NA
-2022,MailRu,F,F03c,3,c,Services,Services,socialNetworkBlogs,Odnoklassniki,20,NA
-2022,MailRu,F,F04a,4,a,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
-2022,MailRu,F,F04a,4,a,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,F,F04a,4,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F04a,4,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F04b,4,b,Services,Services,socialNetworkBlogs,Vkontakte,10,NA
-2022,MailRu,F,F04b,4,b,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,F,F04b,4,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F04b,4,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F04c,4,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F04c,4,c,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,F,F04c,4,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F04c,4,c,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F05a,5,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F05a,5,a,Services,Services,email,Mail.Ru email,NA,NA
-2022,MailRu,F,F05a,5,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F05a,5,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F05b,5,b,Services,Services,socialNetworkBlogs,Vkontakte,20,NA
-2022,MailRu,F,F05b,5,b,Services,Services,email,Mail.Ru email,NA,NA
-2022,MailRu,F,F05b,5,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F05b,5,b,Services,Services,socialNetworkBlogs,Odnoklassniki,10,NA
-2022,MailRu,F,F06,6,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F06,6,NA,Services,Services,email,Mail.Ru email,NA,NA
-2022,MailRu,F,F06,6,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F06,6,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F07,7,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F07,7,NA,Services,Services,email,Mail.Ru email,NA,NA
-2022,MailRu,F,F07,7,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F07,7,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F08,8,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F08,8,NA,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,F,F08,8,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,F,F08,8,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F09,9,NA,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
-2022,MailRu,F,F09,9,NA,Services,Services,email,Mail.Ru email,NA,NA
-2022,MailRu,F,F09,9,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2022,MailRu,F,F09,9,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2022,MailRu,F,F10,10,NA,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
-2022,MailRu,F,F10,10,NA,Services,Services,email,Mail.Ru email,NA,NA
-2022,MailRu,F,F10,10,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2022,MailRu,F,F10,10,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
-2022,MailRu,F,F11,11,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,F,F11,11,NA,Services,Services,email,Mail.Ru email,100,NA
-2022,MailRu,F,F11,11,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
-2022,MailRu,F,F11,11,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,F,F12,12,NA,Services,Services,socialNetworkBlogs,Vkontakte,10,NA
-2022,MailRu,F,F12,12,NA,Services,Services,email,Mail.Ru email,NA,NA
-2022,MailRu,F,F12,12,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2022,MailRu,F,F12,12,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,10,NA
-2022,MailRu,F,F13,13,NA,Services,Services,socialNetworkBlogs,Vkontakte,38,NA
-2022,MailRu,F,F13,13,NA,Services,Services,email,Mail.Ru email,NA,NA
-2022,MailRu,F,F13,13,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
-2022,MailRu,F,F13,13,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,13,NA
-2022,MailRu,P,P01a,1,a,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
-2022,MailRu,P,P01a,1,a,Services,Services,email,Mail.Ru email,67,NA
-2022,MailRu,P,P01a,1,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
-2022,MailRu,P,P01a,1,a,Services,Services,socialNetworkBlogs,Odnoklassniki,67,NA
-2022,MailRu,P,P01b,1,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,P,P01b,1,b,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,P,P01b,1,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,P,P01b,1,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,P,P02a,2,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,P,P02a,2,a,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,P,P02a,2,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,P,P02a,2,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,P,P02b,2,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,P,P02b,2,b,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,P,P02b,2,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,P,P02b,2,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,P,P03a,3,a,Services,Services,socialNetworkBlogs,Vkontakte,67,NA
-2022,MailRu,P,P03a,3,a,Services,Services,email,Mail.Ru email,67,NA
-2022,MailRu,P,P03a,3,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
-2022,MailRu,P,P03a,3,a,Services,Services,socialNetworkBlogs,Odnoklassniki,67,NA
-2022,MailRu,P,P03b,3,b,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2022,MailRu,P,P03b,3,b,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,P,P03b,3,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,P,P03b,3,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,P,P04,4,NA,Services,Services,socialNetworkBlogs,Vkontakte,50,NA
-2022,MailRu,P,P04,4,NA,Services,Services,email,Mail.Ru email,63,NA
-2022,MailRu,P,P04,4,NA,Services,Services,cloud,Mail.Ru Cloud,63,NA
-2022,MailRu,P,P04,4,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,63,NA
-2022,MailRu,P,P05,5,NA,Services,Services,socialNetworkBlogs,Vkontakte,50,NA
-2022,MailRu,P,P05,5,NA,Services,Services,email,Mail.Ru email,40,NA
-2022,MailRu,P,P05,5,NA,Services,Services,cloud,Mail.Ru Cloud,30,NA
-2022,MailRu,P,P05,5,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,40,NA
-2022,MailRu,P,P06,6,NA,Services,Services,socialNetworkBlogs,Vkontakte,30,NA
-2022,MailRu,P,P06,6,NA,Services,Services,email,Mail.Ru email,20,NA
-2022,MailRu,P,P06,6,NA,Services,Services,cloud,Mail.Ru Cloud,20,NA
-2022,MailRu,P,P06,6,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,20,NA
-2022,MailRu,P,P07,7,NA,Services,Services,socialNetworkBlogs,Vkontakte,19,NA
-2022,MailRu,P,P07,7,NA,Services,Services,email,Mail.Ru email,25,NA
-2022,MailRu,P,P07,7,NA,Services,Services,cloud,Mail.Ru Cloud,25,NA
-2022,MailRu,P,P07,7,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,13,NA
-2022,MailRu,P,P08,8,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2022,MailRu,P,P08,8,NA,Services,Services,email,Mail.Ru email,8,NA
-2022,MailRu,P,P08,8,NA,Services,Services,cloud,Mail.Ru Cloud,8,NA
-2022,MailRu,P,P08,8,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,8,NA
-2022,MailRu,P,P09,9,NA,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
-2022,MailRu,P,P09,9,NA,Services,Services,email,Mail.Ru email,11,NA
-2022,MailRu,P,P09,9,NA,Services,Services,cloud,Mail.Ru Cloud,11,NA
-2022,MailRu,P,P09,9,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,11,NA
-2022,MailRu,P,P10a,10,a,Services,Services,socialNetworkBlogs,Vkontakte,86,NA
-2022,MailRu,P,P10a,10,a,Services,Services,email,Mail.Ru email,79,NA
-2022,MailRu,P,P10a,10,a,Services,Services,cloud,Mail.Ru Cloud,79,NA
-2022,MailRu,P,P10a,10,a,Services,Services,socialNetworkBlogs,Odnoklassniki,79,NA
-2022,MailRu,P,P10b,10,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,P,P10b,10,b,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,P,P10b,10,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,P,P10b,10,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,P,P11a,11,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,P,P11a,11,a,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,P,P11a,11,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,P,P11a,11,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,P,P11b,11,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,P,P11b,11,b,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,P,P11b,11,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,P,P11b,11,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,P,P12,12,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2022,MailRu,P,P12,12,NA,Services,Services,email,Mail.Ru email,33,NA
-2022,MailRu,P,P12,12,NA,Services,Services,cloud,Mail.Ru Cloud,33,NA
-2022,MailRu,P,P12,12,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,33,NA
-2022,MailRu,P,P13,13,NA,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
-2022,MailRu,P,P13,13,NA,Services,Services,email,Mail.Ru email,50,NA
-2022,MailRu,P,P13,13,NA,Services,Services,cloud,Mail.Ru Cloud,50,NA
-2022,MailRu,P,P13,13,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,83,NA
-2022,MailRu,P,P14,14,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
-2022,MailRu,P,P14,14,NA,Services,Services,email,Mail.Ru email,67,NA
-2022,MailRu,P,P14,14,NA,Services,Services,cloud,Mail.Ru Cloud,67,NA
-2022,MailRu,P,P14,14,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,33,NA
-2022,MailRu,P,P15,15,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
-2022,MailRu,P,P15,15,NA,Services,Services,email,Mail.Ru email,0,NA
-2022,MailRu,P,P15,15,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
-2022,MailRu,P,P15,15,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
-2022,MailRu,P,P16,16,NA,Services,Services,socialNetworkBlogs,Vkontakte,50,NA
-2022,MailRu,P,P16,16,NA,Services,Services,email,Mail.Ru email,50,NA
-2022,MailRu,P,P16,16,NA,Services,Services,cloud,Mail.Ru Cloud,50,NA
-2022,MailRu,P,P16,16,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,50,NA
-2022,MailRu,P,P17,17,NA,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
-2022,MailRu,P,P17,17,NA,Services,Services,email,Mail.Ru email,100,NA
-2022,MailRu,P,P17,17,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
-2022,MailRu,P,P17,17,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,100,NA
-2022,MailRu,P,P18,18,NA,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
-2022,MailRu,P,P18,18,NA,Services,Services,email,Mail.Ru email,100,NA
-2022,MailRu,P,P18,18,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
-2022,MailRu,P,P18,18,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,100,NA
+2022,VK,G,G01,1,NA,Company,Group,Group,Group,33,NA
+2022,VK,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,VK,G,G02,2,NA,Company,Group,Group,Group,17,NA
+2022,VK,G,G02,2,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,VK,G,G02,2,NA,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
+2022,VK,G,G02,2,NA,Services,Services,email,Mail.Ru email,17,NA
+2022,VK,G,G02,2,NA,Services,Services,cloud,Mail.Ru Cloud,17,NA
+2022,VK,G,G02,2,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,17,NA
+2022,VK,G,G03,3,NA,Company,Group,Group,Group,38,NA
+2022,VK,G,G03,3,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,VK,G,G03,3,NA,Services,Services,socialNetworkBlogs,Vkontakte,38,NA
+2022,VK,G,G03,3,NA,Services,Services,email,Mail.Ru email,38,NA
+2022,VK,G,G03,3,NA,Services,Services,cloud,Mail.Ru Cloud,38,NA
+2022,VK,G,G03,3,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,38,NA
+2022,VK,G,G04a,4,a,Company,Group,Group,Group,0,NA
+2022,VK,G,G04a,4,a,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,VK,G,G04a,4,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,G,G04a,4,a,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,G,G04a,4,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,G,G04a,4,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,G,G04b,4,b,Company,Group,Group,Group,0,NA
+2022,VK,G,G04b,4,b,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,VK,G,G04b,4,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,G,G04b,4,b,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,G,G04b,4,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,G,G04b,4,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,G,G04c,4,c,Company,Group,Group,Group,0,NA
+2022,VK,G,G04c,4,c,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,VK,G,G04c,4,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,G,G04c,4,c,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,G,G04c,4,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,G,G04c,4,c,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,G,G04d,4,d,Company,Group,Group,Group,0,NA
+2022,VK,G,G04d,4,d,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,VK,G,G04d,4,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,G,G04d,4,d,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,G,G04d,4,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,G,G04d,4,d,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,G,G04e,4,e,Company,Group,Group,Group,NA,NA
+2022,VK,G,G04e,4,e,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,VK,G,G04e,4,e,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
+2022,VK,G,G04e,4,e,Services,Services,email,Mail.Ru email,NA,NA
+2022,VK,G,G04e,4,e,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2022,VK,G,G04e,4,e,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2022,VK,G,G05,5,NA,Company,Group,Group,Group,0,NA
+2022,VK,G,G05,5,NA,Company,OpCom,OpCom,Operating Company,NA,NA
+2022,VK,G,G06a,6,a,Services,Services,socialNetworkBlogs,Vkontakte,39,NA
+2022,VK,G,G06a,6,a,Services,Services,email,Mail.Ru email,33,NA
+2022,VK,G,G06a,6,a,Services,Services,cloud,Mail.Ru Cloud,33,NA
+2022,VK,G,G06a,6,a,Services,Services,socialNetworkBlogs,Odnoklassniki,22,NA
+2022,VK,G,G06b,6,b,Services,Services,socialNetworkBlogs,Vkontakte,9,NA
+2022,VK,G,G06b,6,b,Services,Services,email,Mail.Ru email,NA,NA
+2022,VK,G,G06b,6,b,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2022,VK,G,G06b,6,b,Services,Services,socialNetworkBlogs,Odnoklassniki,9,NA
+2022,VK,F,F01a,1,a,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
+2022,VK,F,F01a,1,a,Services,Services,email,Mail.Ru email,67,NA
+2022,VK,F,F01a,1,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
+2022,VK,F,F01a,1,a,Services,Services,socialNetworkBlogs,Odnoklassniki,67,NA
+2022,VK,F,F01b,1,b,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
+2022,VK,F,F01b,1,b,Services,Services,email,Mail.Ru email,83,NA
+2022,VK,F,F01b,1,b,Services,Services,cloud,Mail.Ru Cloud,83,NA
+2022,VK,F,F01b,1,b,Services,Services,socialNetworkBlogs,Odnoklassniki,83,NA
+2022,VK,F,F01c,1,c,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
+2022,VK,F,F01c,1,c,Services,Services,email,Mail.Ru email,100,NA
+2022,VK,F,F01c,1,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F01c,1,c,Services,Services,socialNetworkBlogs,Odnoklassniki,100,NA
+2022,VK,F,F01d,1,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F01d,1,d,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,F,F01d,1,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F01d,1,d,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F02a,2,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F02a,2,a,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,F,F02a,2,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F02a,2,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F02b,2,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F02b,2,b,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,F,F02b,2,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F02b,2,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F02c,2,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F02c,2,c,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,F,F02c,2,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F02c,2,c,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F02d,2,d,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F02d,2,d,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,F,F02d,2,d,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F02d,2,d,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F03a,3,a,Services,Services,socialNetworkBlogs,Vkontakte,57,NA
+2022,VK,F,F03a,3,a,Services,Services,email,Mail.Ru email,80,NA
+2022,VK,F,F03a,3,a,Services,Services,cloud,Mail.Ru Cloud,60,NA
+2022,VK,F,F03a,3,a,Services,Services,socialNetworkBlogs,Odnoklassniki,43,NA
+2022,VK,F,F03b,3,b,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2022,VK,F,F03b,3,b,Services,Services,email,Mail.Ru email,33,NA
+2022,VK,F,F03b,3,b,Services,Services,cloud,Mail.Ru Cloud,33,NA
+2022,VK,F,F03b,3,b,Services,Services,socialNetworkBlogs,Odnoklassniki,33,NA
+2022,VK,F,F03c,3,c,Services,Services,socialNetworkBlogs,Vkontakte,20,NA
+2022,VK,F,F03c,3,c,Services,Services,email,Mail.Ru email,20,NA
+2022,VK,F,F03c,3,c,Services,Services,cloud,Mail.Ru Cloud,20,NA
+2022,VK,F,F03c,3,c,Services,Services,socialNetworkBlogs,Odnoklassniki,20,NA
+2022,VK,F,F04a,4,a,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
+2022,VK,F,F04a,4,a,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,F,F04a,4,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F04a,4,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F04b,4,b,Services,Services,socialNetworkBlogs,Vkontakte,10,NA
+2022,VK,F,F04b,4,b,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,F,F04b,4,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F04b,4,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F04c,4,c,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F04c,4,c,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,F,F04c,4,c,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F04c,4,c,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F05a,5,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F05a,5,a,Services,Services,email,Mail.Ru email,NA,NA
+2022,VK,F,F05a,5,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F05a,5,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F05b,5,b,Services,Services,socialNetworkBlogs,Vkontakte,20,NA
+2022,VK,F,F05b,5,b,Services,Services,email,Mail.Ru email,NA,NA
+2022,VK,F,F05b,5,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F05b,5,b,Services,Services,socialNetworkBlogs,Odnoklassniki,10,NA
+2022,VK,F,F06,6,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F06,6,NA,Services,Services,email,Mail.Ru email,NA,NA
+2022,VK,F,F06,6,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F06,6,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F07,7,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F07,7,NA,Services,Services,email,Mail.Ru email,NA,NA
+2022,VK,F,F07,7,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F07,7,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F08,8,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F08,8,NA,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,F,F08,8,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,F,F08,8,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F09,9,NA,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
+2022,VK,F,F09,9,NA,Services,Services,email,Mail.Ru email,NA,NA
+2022,VK,F,F09,9,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2022,VK,F,F09,9,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2022,VK,F,F10,10,NA,Services,Services,socialNetworkBlogs,Vkontakte,NA,NA
+2022,VK,F,F10,10,NA,Services,Services,email,Mail.Ru email,NA,NA
+2022,VK,F,F10,10,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2022,VK,F,F10,10,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,NA,NA
+2022,VK,F,F11,11,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,F,F11,11,NA,Services,Services,email,Mail.Ru email,100,NA
+2022,VK,F,F11,11,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
+2022,VK,F,F11,11,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,F,F12,12,NA,Services,Services,socialNetworkBlogs,Vkontakte,10,NA
+2022,VK,F,F12,12,NA,Services,Services,email,Mail.Ru email,NA,NA
+2022,VK,F,F12,12,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2022,VK,F,F12,12,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,10,NA
+2022,VK,F,F13,13,NA,Services,Services,socialNetworkBlogs,Vkontakte,38,NA
+2022,VK,F,F13,13,NA,Services,Services,email,Mail.Ru email,NA,NA
+2022,VK,F,F13,13,NA,Services,Services,cloud,Mail.Ru Cloud,NA,NA
+2022,VK,F,F13,13,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,13,NA
+2022,VK,P,P01a,1,a,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
+2022,VK,P,P01a,1,a,Services,Services,email,Mail.Ru email,67,NA
+2022,VK,P,P01a,1,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
+2022,VK,P,P01a,1,a,Services,Services,socialNetworkBlogs,Odnoklassniki,67,NA
+2022,VK,P,P01b,1,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,P,P01b,1,b,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,P,P01b,1,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,P,P01b,1,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,P,P02a,2,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,P,P02a,2,a,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,P,P02a,2,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,P,P02a,2,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,P,P02b,2,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,P,P02b,2,b,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,P,P02b,2,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,P,P02b,2,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,P,P03a,3,a,Services,Services,socialNetworkBlogs,Vkontakte,67,NA
+2022,VK,P,P03a,3,a,Services,Services,email,Mail.Ru email,67,NA
+2022,VK,P,P03a,3,a,Services,Services,cloud,Mail.Ru Cloud,67,NA
+2022,VK,P,P03a,3,a,Services,Services,socialNetworkBlogs,Odnoklassniki,67,NA
+2022,VK,P,P03b,3,b,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2022,VK,P,P03b,3,b,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,P,P03b,3,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,P,P03b,3,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,P,P04,4,NA,Services,Services,socialNetworkBlogs,Vkontakte,50,NA
+2022,VK,P,P04,4,NA,Services,Services,email,Mail.Ru email,63,NA
+2022,VK,P,P04,4,NA,Services,Services,cloud,Mail.Ru Cloud,63,NA
+2022,VK,P,P04,4,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,63,NA
+2022,VK,P,P05,5,NA,Services,Services,socialNetworkBlogs,Vkontakte,50,NA
+2022,VK,P,P05,5,NA,Services,Services,email,Mail.Ru email,40,NA
+2022,VK,P,P05,5,NA,Services,Services,cloud,Mail.Ru Cloud,30,NA
+2022,VK,P,P05,5,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,40,NA
+2022,VK,P,P06,6,NA,Services,Services,socialNetworkBlogs,Vkontakte,30,NA
+2022,VK,P,P06,6,NA,Services,Services,email,Mail.Ru email,20,NA
+2022,VK,P,P06,6,NA,Services,Services,cloud,Mail.Ru Cloud,20,NA
+2022,VK,P,P06,6,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,20,NA
+2022,VK,P,P07,7,NA,Services,Services,socialNetworkBlogs,Vkontakte,19,NA
+2022,VK,P,P07,7,NA,Services,Services,email,Mail.Ru email,25,NA
+2022,VK,P,P07,7,NA,Services,Services,cloud,Mail.Ru Cloud,25,NA
+2022,VK,P,P07,7,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,13,NA
+2022,VK,P,P08,8,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2022,VK,P,P08,8,NA,Services,Services,email,Mail.Ru email,8,NA
+2022,VK,P,P08,8,NA,Services,Services,cloud,Mail.Ru Cloud,8,NA
+2022,VK,P,P08,8,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,8,NA
+2022,VK,P,P09,9,NA,Services,Services,socialNetworkBlogs,Vkontakte,17,NA
+2022,VK,P,P09,9,NA,Services,Services,email,Mail.Ru email,11,NA
+2022,VK,P,P09,9,NA,Services,Services,cloud,Mail.Ru Cloud,11,NA
+2022,VK,P,P09,9,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,11,NA
+2022,VK,P,P10a,10,a,Services,Services,socialNetworkBlogs,Vkontakte,86,NA
+2022,VK,P,P10a,10,a,Services,Services,email,Mail.Ru email,79,NA
+2022,VK,P,P10a,10,a,Services,Services,cloud,Mail.Ru Cloud,79,NA
+2022,VK,P,P10a,10,a,Services,Services,socialNetworkBlogs,Odnoklassniki,79,NA
+2022,VK,P,P10b,10,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,P,P10b,10,b,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,P,P10b,10,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,P,P10b,10,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,P,P11a,11,a,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,P,P11a,11,a,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,P,P11a,11,a,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,P,P11a,11,a,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,P,P11b,11,b,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,P,P11b,11,b,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,P,P11b,11,b,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,P,P11b,11,b,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,P,P12,12,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2022,VK,P,P12,12,NA,Services,Services,email,Mail.Ru email,33,NA
+2022,VK,P,P12,12,NA,Services,Services,cloud,Mail.Ru Cloud,33,NA
+2022,VK,P,P12,12,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,33,NA
+2022,VK,P,P13,13,NA,Services,Services,socialNetworkBlogs,Vkontakte,83,NA
+2022,VK,P,P13,13,NA,Services,Services,email,Mail.Ru email,50,NA
+2022,VK,P,P13,13,NA,Services,Services,cloud,Mail.Ru Cloud,50,NA
+2022,VK,P,P13,13,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,83,NA
+2022,VK,P,P14,14,NA,Services,Services,socialNetworkBlogs,Vkontakte,33,NA
+2022,VK,P,P14,14,NA,Services,Services,email,Mail.Ru email,67,NA
+2022,VK,P,P14,14,NA,Services,Services,cloud,Mail.Ru Cloud,67,NA
+2022,VK,P,P14,14,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,33,NA
+2022,VK,P,P15,15,NA,Services,Services,socialNetworkBlogs,Vkontakte,0,NA
+2022,VK,P,P15,15,NA,Services,Services,email,Mail.Ru email,0,NA
+2022,VK,P,P15,15,NA,Services,Services,cloud,Mail.Ru Cloud,0,NA
+2022,VK,P,P15,15,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,0,NA
+2022,VK,P,P16,16,NA,Services,Services,socialNetworkBlogs,Vkontakte,50,NA
+2022,VK,P,P16,16,NA,Services,Services,email,Mail.Ru email,50,NA
+2022,VK,P,P16,16,NA,Services,Services,cloud,Mail.Ru Cloud,50,NA
+2022,VK,P,P16,16,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,50,NA
+2022,VK,P,P17,17,NA,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
+2022,VK,P,P17,17,NA,Services,Services,email,Mail.Ru email,100,NA
+2022,VK,P,P17,17,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
+2022,VK,P,P17,17,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,100,NA
+2022,VK,P,P18,18,NA,Services,Services,socialNetworkBlogs,Vkontakte,100,NA
+2022,VK,P,P18,18,NA,Services,Services,email,Mail.Ru email,100,NA
+2022,VK,P,P18,18,NA,Services,Services,cloud,Mail.Ru Cloud,100,NA
+2022,VK,P,P18,18,NA,Services,Services,socialNetworkBlogs,Odnoklassniki,100,NA
 2022,Microsoft,G,G01,1,NA,Company,Group,Group,Group,83,NA
 2022,Microsoft,G,G01,1,NA,Company,OpCom,OpCom,Operating Company,NA,NA
 2022,Microsoft,G,G02,2,NA,Company,Group,Group,Group,100,NA

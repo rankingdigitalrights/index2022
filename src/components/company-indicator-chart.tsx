@@ -40,7 +40,7 @@ const CompanyIndicatorChart = ({indicators}: CompanyIndicatorChartProps) => {
   };
 
   return (
-    <div>
+    <div className="font-sans">
       {indicators.map(
         ({indicator, display, label, category, score, familyMembers}, idx) => {
           // eslint-disable-next-line unicorn/no-null

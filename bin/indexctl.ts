@@ -18,13 +18,13 @@ import {
   indicatorCompanies,
   indicatorDetails,
   indicatorElements,
+  indicatorLensCompanyIndex,
+  indicatorLensIndex,
   indicators,
   indicatorScores,
-  indicatorTopicCompanyIndex,
-  indicatorTopicIndex,
   services,
 } from "../src/csv";
-import {companyDetails, narrativePage} from "../src/google";
+import {companyDetails, comparePage, narrativePage} from "../src/google";
 import {CompanyKind, CompanyYear, IndicatorCategoryExt} from "../src/types";
 import {uniqueBy} from "../src/utils";
 
@@ -76,10 +76,10 @@ const writeJsonFile = (
       const elementsTarget = path.join(dataDir, "elements.json");
       const servicesTarget = path.join(dataDir, "services.json");
       const glossaryTarget = path.join(dataDir, "glossary.json");
-      const indicatorTopicsTarget = path.join(dataDir, "indicator-topics.json");
-      const indicatorTopicsCompaniesTarget = path.join(
+      const indicatorLenssTarget = path.join(dataDir, "indicator-lenses.json");
+      const indicatorLenssCompaniesTarget = path.join(
         dataDir,
-        "indicator-topics-companies.json",
+        "indicator-lenses-companies.json",
       );
 
       console.log(`Generating glossary at ${glossaryTarget}`);
@@ -345,14 +345,14 @@ const writeJsonFile = (
       );
 
       /*
-       * Indicator topic scores.
+       * Indicator Lens scores.
        */
       console.log("Generating indicator topic scores");
 
       await Promise.all([
-        indicatorTopicIndex().then(writeJsonFile(indicatorTopicsTarget)),
-        indicatorTopicCompanyIndex().then(
-          writeJsonFile(indicatorTopicsCompaniesTarget),
+        indicatorLensIndex().then(writeJsonFile(indicatorLenssTarget)),
+        indicatorLensCompanyIndex().then(
+          writeJsonFile(indicatorLenssCompaniesTarget),
         ),
       ]);
     })
@@ -377,27 +377,13 @@ const writeJsonFile = (
         "acknowledgements.json",
       );
       const keyFindingsTarget = path.join(narrativesDir, "key-findings.json");
-      // const methodologyTarget = path.join(narrativesDir, "methodology.json");
-      // const policyRecommendationsTarget = path.join(
-      //   narrativesDir,
-      //   "policy-recommendations.json",
-      // );
-      // const algorithmsTarget = path.join(narrativesDir, "algorithms.json");
-      // const chinaTechGiantsTarget = path.join(
-      //   narrativesDir,
-      //   "china-tech-giants.json",
-      // );
-      // const compareTarget = path.join(narrativesDir, "compare.json");
+      const compareTarget = path.join(narrativesDir, "compare.json");
 
       console.log(`Pull content for: ${executiveSummaryTarget}`);
 
       await narrativePage("Executive Summary").then(
         writeJsonFile(executiveSummaryTarget),
       );
-
-      // console.log(`Pull content for: ${introEssayTarget}`);
-
-      // await narrativePage("Intro Essay").then(writeJsonFile(introEssayTarget));
 
       console.log(`Pull content for: ${acknowledgementsTarget}`);
 
@@ -411,29 +397,9 @@ const writeJsonFile = (
         writeJsonFile(keyFindingsTarget),
       );
 
-      // console.log(`Pull content for: ${methodologyTarget}`);
+      console.log(`Pull content for: ${compareTarget}`);
 
-      // await narrativePage("Methodology").then(writeJsonFile(methodologyTarget));
-
-      // console.log(`Pull content for: ${policyRecommendationsTarget}`);
-
-      // await narrativePage("Policy Recommendations").then(
-      //   writeJsonFile(policyRecommendationsTarget),
-      // );
-
-      // console.log(`Pull content for: ${algorithmsTarget}`);
-
-      // await narrativePage("Algorithms").then(writeJsonFile(algorithmsTarget));
-
-      // console.log(`Pull content for: ${chinaTechGiantsTarget}`);
-
-      // await narrativePage("China Tech Giants").then(
-      //   writeJsonFile(chinaTechGiantsTarget),
-      // );
-
-      // console.log(`Pull content for: ${compareTarget}`);
-
-      // await comparePage("Compare").then(writeJsonFile(compareTarget));
+      await comparePage("Compare").then(writeJsonFile(compareTarget));
 
       await Promise.all(
         details.map(async (company) => {

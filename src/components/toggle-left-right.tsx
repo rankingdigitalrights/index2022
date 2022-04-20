@@ -21,8 +21,8 @@ const ToggleLeftRight = ({
   };
 
   return (
-    <div className={c("flex items-center self-end", className)}>
-      <label htmlFor="toggle" className="font-circular text-sm mr-2">
+    <div className={c("flex items-center self-end font-sans", className)}>
+      <label htmlFor="toggle" className="text-sm mr-2">
         {labelLeft}
       </label>
       <button
@@ -50,7 +50,7 @@ const ToggleLeftRight = ({
           />
         </label>
       </button>
-      <label htmlFor="toggle" className="font-circular text-sm ml-2">
+      <label htmlFor="toggle" className="text-sm ml-2">
         {labelRight}
       </label>
     </div>
