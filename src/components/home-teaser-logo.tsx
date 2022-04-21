@@ -12,9 +12,9 @@ const HomeTeaserLogo = () => {
   return (
     <>
       {isMobile && (
-        <aside className="grid md:hidden grid-rows grid-cols-9 gap-0.5">
+        <aside className="grid md:hidden grid-rows-1 grid-cols-9 gap-0.5">
           {/* Row 1 */}
-          <Arrow color="blue" />
+          <Arrow className="w-full h-full" color="blue" />
 
           <div />
 
@@ -22,22 +22,22 @@ const HomeTeaserLogo = () => {
 
           <div />
 
-          <Arrow color="turquoise" />
+          <Arrow className="w-full h-full" color="turquoise" />
 
-          <Arrow color="turquoise" rotate />
+          <Arrow className="w-full h-full" color="turquoise" rotate />
 
-          <Arrow color="yellow" />
+          <Arrow className="w-full h-full" color="yellow" />
 
           <div />
 
-          <Circle color="red" />
+          <Circle className="w-full h-full" color="red" />
         </aside>
       )}
 
       {isTablet && (
         <aside className="hidden md:grid lg:hidden md:grid-rows-2 md:grid-cols-9 gap-0.5">
           {/* Row 1 */}
-          <Arrow color="blue" />
+          <Arrow className="w-full h-full" color="blue" />
 
           <div />
 
@@ -45,26 +45,26 @@ const HomeTeaserLogo = () => {
 
           <div />
 
-          <Arrow color="turquoise" />
+          <Arrow className="w-full h-full" color="turquoise" />
 
-          <Arrow color="turquoise" rotate />
+          <Arrow className="w-full h-full" color="turquoise" rotate />
 
-          <Arrow color="yellow" />
+          <Arrow className="w-full h-full" color="yellow" />
 
           <div />
 
-          <Circle color="red" />
+          <Circle className="w-full h-full" color="red" />
 
           {/* Row 2 */}
           <div />
 
-          <Arrow color="turquoise" rotate />
+          <Arrow className="w-full h-full" color="turquoise" rotate />
 
-          <Arrow color="blue" />
+          <Arrow className="w-full h-full" color="blue" />
 
-          <Arrow color="blue" />
+          <Arrow className="w-full h-full" color="blue" />
 
-          <Arrow color="blue" rotate />
+          <Arrow className="w-full h-full" color="blue" rotate />
 
           <div />
 
@@ -75,9 +75,9 @@ const HomeTeaserLogo = () => {
       )}
 
       {isDesktop && (
-        <aside className="hidden lg:grid grid-rows-2 grid-cols-9 lg:gap-1 xl:gap-2">
+        <aside className="hidden lg:grid grid-rows-3 grid-cols-9 lg:gap-1 xl:gap-2">
           {/* Row 1 */}
-          <Arrow color="blue" rotate />
+          <Arrow className="w-full h-full" color="blue" rotate />
 
           <div />
 
@@ -85,53 +85,53 @@ const HomeTeaserLogo = () => {
 
           <div />
 
-          <Arrow color="turquoise" rotate />
+          <Arrow className="w-full h-full" color="turquoise" rotate />
 
-          <Arrow color="turquoise" rotate />
+          <Arrow className="w-full h-full" color="turquoise" rotate />
 
-          <Arrow color="yellow" rotate />
+          <Arrow className="w-full h-full" color="yellow" rotate />
 
           <div />
 
-          <Circle className="w-fit h-fit" color="red" />
+          <Circle className="w-full h-full" color="red" />
 
           {/* Row 2 */}
           <div />
 
-          <Arrow color="turquoise" />
+          <Arrow className="w-full h-full" color="turquoise" />
 
-          <Arrow color="turquoise" rotate />
+          <Arrow className="w-full h-full" color="turquoise" rotate />
 
-          <Arrow color="blue" />
+          <Arrow className="w-full h-full" color="blue" />
 
-          <Arrow color="blue" rotate />
+          <Arrow className="w-full h-full" color="blue" rotate />
 
-          <Arrow color="blue" />
+          <Arrow className="w-full h-full" color="blue" />
 
-          <Arrow color="blue" rotate />
+          <Arrow className="w-full h-full" color="blue" rotate />
 
           <div />
 
           <div />
 
           {/* Row 3 */}
-          <Arrow color="turquoise" />
+          <Arrow className="w-full h-full" color="turquoise" />
 
-          <Arrow color="blue" />
+          <Arrow className="w-full h-full" color="blue" />
 
-          <Arrow color="blue" />
+          <Arrow className="w-full h-full" color="blue" />
 
-          <Arrow color="yellow" />
-
-          <div />
+          <Arrow className="w-full h-full" color="yellow" />
 
           <div />
 
           <div />
 
-          <Arrow color="blue" rotate />
+          <div />
 
-          <Arrow color="blue" />
+          <Arrow className="w-full h-full" color="blue" rotate />
+
+          <Arrow className="w-full h-full" color="blue" />
         </aside>
       )}
     </>
