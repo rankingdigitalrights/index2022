@@ -63,7 +63,7 @@ const HomeMainAreaMobile = ({
       </div>
 
       <Image
-        src="charting-the-future-of-big-tech-accountability.webp"
+        src="charting-the-future-of-big-tech-accountability.jpg"
         alt="Charting the Future of Big Tech Accountability"
         className="w-full"
       />
