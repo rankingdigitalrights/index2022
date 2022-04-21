@@ -242,7 +242,7 @@ Big Tech Scorecard`}
                 <li role="none" className="border-b border-disabled pt-3 pb-6">
                   <IconLink
                     name="Why Won't Chinese Companies Talk to Us?"
-                    href="/"
+                    href="https://rankingdigitalrights.org/2022/04/20/why-wont-chinese-companies-talk-to-us"
                     Icon={ChinaCompanies}
                   />
                 </li>
