@@ -1,26 +1,32 @@
-import Image from "next/image";
+import c from "clsx";
 import React from "react";
+
+import Image from "./image";
 
 interface FeaturedEssayTileProps {
   title: string;
   href: string;
-  image: StaticImageData;
+  src: string;
+  className?: string;
 }
 
-const FeaturedEssayTile = ({title, href, image}: FeaturedEssayTileProps) => {
+const FeaturedEssayTile = ({
+  title,
+  href,
+  src,
+  className,
+}: FeaturedEssayTileProps) => {
   return (
-    <a href={href} className="flex flex-col text-black font-sans space-y-6">
-      <div className="h-32 overflow-hidden">
-        <Image
-          src={image}
-          alt={title}
-          placeholder="blur"
-          className="object-cover"
-        />
-      </div>
-
-      <span>{title}</span>
-    </a>
+    <div className={c("flex flex-col space-y-6", className)}>
+      <Image
+        src={src}
+        alt={title}
+        className="aspect-ratio overflow-hidden md:h-72"
+      />
+      <a href={href} className="text-black font-sans">
+        {title}
+      </a>
+    </div>
   );
 };
 

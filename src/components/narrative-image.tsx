@@ -1,5 +1,4 @@
 /* eslint @typescript-eslint/no-var-requires: off, import/no-dynamic-require: off, global-require: off */
-import c from "clsx";
 import React from "react";
 
 import BoxPrompt from "./box-prompt";
@@ -26,8 +25,8 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
   }
 
   return (
-    <div className="flex flex-col justify-around items-center">
-      <figure className={c("flex flex-col justify-around my-6")}>
+    <div className="flex flex-col justify-around items-center h-full border">
+      <figure className="flex flex-col justify-around">
         <picture>
           <source srcSet={image.srcSet} type="image/png" />
           <source srcSet={image.srcSet} type="image/jpg" />

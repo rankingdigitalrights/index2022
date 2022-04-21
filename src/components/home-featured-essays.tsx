@@ -1,8 +1,5 @@
 import React from "react";
 
-import bigTech from "../images/essay-big-tech.jpg";
-import chineseCompanies from "../images/essay-chinese-companies.jpg";
-import onlineAds from "../images/essay-online-ads.jpg";
 import Tile from "./featured-essay-tile";
 
 const HomeFeaturedEssays = () => {
@@ -12,21 +9,30 @@ const HomeFeaturedEssays = () => {
         Featured essays
       </h3>
 
-      <div className="grid grid-rows-1 grid-cols-3 gap-5 mt-8">
+      <div className="grid grid-rows-4 grid-cols-1 md:grid-rows-2 md:grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 gap-5 mt-8">
+        <Tile
+          title="Key Findings"
+          href="https://rankingdigitalrights.org/"
+          src="essays/key-findings.jpg"
+          className="w-full overflow-hidden"
+        />
         <Tile
           title="We Must Govern Online Ads"
           href="https://rankingdigitalrights.org/mini-report/we-must-govern-online-ads"
-          image={onlineAds}
+          src="essays/online-ads.jpg"
+          className="w-full overflow-hidden"
         />
         <Tile
           title="Empowering Big Tech Shareholders"
           href="https://rankingdigitalrights.org/mini-report/its-time-to-bring-down-the-barriers-blocking-shareholders-on-human-rights"
-          image={bigTech}
+          src="essays/big-tech.jpg"
+          className="w-full overflow-hidden"
         />
         <Tile
           title="Why Won't Chinese Companies Talk to Us?"
           href="https://rankingdigitalrights.org/2022/04/20/why-wont-chinese-companies-talk-to-us"
-          image={chineseCompanies}
+          src="essays/chinese-companies.jpg"
+          className="w-full overflow-hidden"
         />
       </div>
     </section>
