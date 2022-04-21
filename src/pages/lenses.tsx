@@ -133,7 +133,7 @@ const LenseChartss = ({
                   <FlipAxis
                     label="Flip"
                     onChange={handleFlipLenseCharts}
-                    toggle={lenseChart}
+                    flip={lenseChart}
                   />
                 </div>
               </Container>

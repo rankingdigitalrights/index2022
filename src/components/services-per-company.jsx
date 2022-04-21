@@ -64,7 +64,7 @@ const ServicesByCompany = (props) => {
             />
           </svg>
         </div>
-        <div key={`score-span-${serviceName}-${score}%`} >
+        <div key={`score-span-${serviceName}-${score}%`}>
           <span className="w-4 flex-none select-none float-right text-right text-xs">
             {score}%
           </span>
@@ -78,7 +78,10 @@ const ServicesByCompany = (props) => {
       <div className="space-y-5">
         {companiesArr.map((company, idx) => {
           return (
-            <div key={`chartBlock-${company.name}-${company.id}`} className="flex flex-col space-y-5">
+            <div
+              key={`chartBlock-${company.name}-${company.id}`}
+              className="flex flex-col space-y-5"
+            >
               {chartHeader(company.name, company.id)}
               {company.services.map((service) => {
                 const sIcon = serviceIcon(service.kind);

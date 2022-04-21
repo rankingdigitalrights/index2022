@@ -1,9 +1,9 @@
 import c from "clsx";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-import { useChartResize } from "../hooks";
-import { CompanyRank, IndicatorCategoryExt } from "../types";
+import {useChartResize} from "../hooks";
+import {CompanyRank, IndicatorCategoryExt} from "../types";
 import PercentageBar from "./percentage-bar";
 
 interface RankChartProps {
@@ -41,7 +41,7 @@ const RankChart = ({
   const companyWidth = "w-24";
 
   const chartRow = (
-    { id, companyPretty, score, rank }: CompanyRank,
+    {id, companyPretty, score, rank}: CompanyRank,
     idx: number,
   ) => {
     // eslint-disable-next-line unicorn/no-null
