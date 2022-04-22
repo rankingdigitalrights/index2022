@@ -1,6 +1,6 @@
 import c from "clsx";
-import { useRouter } from "next/router";
-import React, { useReducer, useState } from "react";
+import {useRouter} from "next/router";
+import React, {useReducer, useState} from "react";
 import CategorySelector from "../components/category-selector";
 import CompaniesByService from "../components/companies-per-service";
 // FIXME: eventually switch this out for the original company-selector component with an optional label property added
@@ -37,7 +37,7 @@ const reducer = (state, action) => {
         category: action.category,
         platformRankings: state.service
           ? state.serviceRankings[state.service.kind]?.[action.category]
-            ?.internet
+              ?.internet
           : state.companyRankings[action.category]?.internet,
       };
     default:
@@ -46,7 +46,14 @@ const reducer = (state, action) => {
 };
 
 const CompaniesScores = (props) => {
-  const { companiesIds, companySelector, serviceOptions, serviceRankings, companyRankings, servicesByCompany } = props;
+  const {
+    companiesIds,
+    companySelector,
+    serviceOptions,
+    serviceRankings,
+    companyRankings,
+    servicesByCompany,
+  } = props;
 
   const router = useRouter();
   const queryService = serviceQueryParam(router.asPath);
@@ -70,7 +77,7 @@ const CompaniesScores = (props) => {
   );
 
   const handleSelectCategory = (category) => {
-    dispatch({ type: "setCategory", category });
+    dispatch({type: "setCategory", category});
   };
 
   const handleTypeOfGraphToggle = (toggle) => {
@@ -97,11 +104,10 @@ const CompaniesScores = (props) => {
     <div>
       <NarrativeTitle title="2022 Companies Score" />
       <p className="mt-6">
-        Select and compare total company and service scores, as well
-        as scores in our three top-level categories: governance,
-        freedom of expression and information, and privacy. Click on
-        “Change View” to see scores by service. Learn more about how
-        we tally our scores on our{" "}
+        Select and compare total company and service scores, as well as scores
+        in our three top-level categories: governance, freedom of expression and
+        information, and privacy. Click on “Change View” to see scores by
+        service. Learn more about how we tally our scores on our{" "}
         <a href="https://rankingdigitalrights.org/methods-and-standards">
           Methods and Standards
         </a>{" "}
@@ -136,9 +142,8 @@ const CompaniesScores = (props) => {
           onClick={handleSelectCategory}
         />
       </div>
-      <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
+      <div>
         <div
-          style={{ minHeight: "22rem" }}
           className={c(
             "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3",
           )}
@@ -147,41 +152,37 @@ const CompaniesScores = (props) => {
             <RankChart
               ranking={
                 selectedCompanies.length > 0
-                  ? state.platformRankings.filter(({ id }) =>
-                    selectedCompanies.includes(id),
-                  )
+                  ? state.platformRankings.filter(({id}) =>
+                      selectedCompanies.includes(id),
+                    )
                   : state.platformRankings
               }
               category={state.category}
               hasHeader
             />
           )}
-          {typeOfGraph === "services" &&
-            chartHeaders === "companies" && (
-              <ServicesByCompany
-                category={state.category}
-                companies={
-                  selectedCompanies.length > 0
-                    ? servicesByCompany.filter(({ id }) =>
+          {typeOfGraph === "services" && chartHeaders === "companies" && (
+            <ServicesByCompany
+              category={state.category}
+              companies={
+                selectedCompanies.length > 0
+                  ? servicesByCompany.filter(({id}) =>
                       selectedCompanies.includes(id),
                     )
-                    : servicesByCompany
-                }
-              />
-            )}
-          {typeOfGraph === "services" &&
-            chartHeaders === "services" && (
-              <CompaniesByService
-                category={state.category}
-                companies={
-                  selectedCompanies.length > 0
-                    ? selectedCompanies
-                    : companiesIds
-                }
-                serviceRankings={serviceRankings}
-                serviceOptions={serviceOptions}
-              />
-            )}
+                  : servicesByCompany
+              }
+            />
+          )}
+          {typeOfGraph === "services" && chartHeaders === "services" && (
+            <CompaniesByService
+              category={state.category}
+              companies={
+                selectedCompanies.length > 0 ? selectedCompanies : companiesIds
+              }
+              serviceRankings={serviceRankings}
+              serviceOptions={serviceOptions}
+            />
+          )}
         </div>
       </div>
     </div>

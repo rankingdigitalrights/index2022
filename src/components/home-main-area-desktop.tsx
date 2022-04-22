@@ -27,7 +27,7 @@ const HomeMainAreaDesktop = ({
           href="/"
           theme="altDark"
         >
-          <p className="text-black font-sans">
+          <p className="pb-2 text-black font-sans">
             For the sixth consecutive year, not one digital platform earned a
             passing grade in our ranking. While we see some incremental progress
             overall, this is no time for business as usual. Companies must
@@ -61,12 +61,13 @@ const HomeMainAreaDesktop = ({
       <div className="overlay-grid-col flex flex-col justify-between py-2 lg:pb-6 xl:py-8">
         <div className="flex flex-col lg:space-y-6 px-6">
           <HomeBoxAlt
+            className="2xl:h-60 mt-10 2xl:mt-16"
             title="Data Explorer"
             linkTitle="Visit the Data Explorer"
             href="/explore"
             theme="dark"
           >
-            <p className="pb-8 text-black font-sans">
+            <p className="pb-2 text-black font-sans">
               Which companies commit to human rights? Who does the best job
               describing how they moderate content? Where is your data safest in
               case of a breach? How has Apple’s scores changed over time? Drill
@@ -76,7 +77,7 @@ const HomeMainAreaDesktop = ({
           </HomeBoxAlt>
         </div>
 
-        <div className="self-center flex flex-row space-x-2 lg:mt-16 xl:mt-8 2xl:-mt-4">
+        <div className="self-center flex flex-row space-x-2 lg:mt-32 xl:mt-16 2xl:mt-32">
           <Arrow color="blue" className="w-16 h-16" outline />
           <Arrow color="turquoise" className="w-16 h-16" outline />
           <Arrow color="turquoise" className="w-16 h-16" outline />
@@ -90,7 +91,7 @@ const HomeMainAreaDesktop = ({
           href="https://events.newamerica.org/chartingthefutureofbigtech"
           theme="dark"
         >
-          <p className="pb-8 text-black font-sans">
+          <p className="pb-2 text-black font-sans">
             Join RDR and a superstar set of panelists on May 4 to discuss
             current strategies for holding Big Tech accountable through
             regulation, shareholder action, whistleblowing, and grassroots
