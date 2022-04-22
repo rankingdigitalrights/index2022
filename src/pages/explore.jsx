@@ -5,6 +5,8 @@ import CompaniesScores from "../components/companies-scores";
 import LensCharts from "../components/lenses"
 import TimeCharts from "../components/time-chart"
 import Layout from "../components/layout"
+import ExploreContainer from "../components/explore-container";
+import ExploreHeader from "../components/explore-header"
 import {
   allCompanies,
   allServices,
@@ -196,25 +198,32 @@ const Explorer = ({
 }) => {
   return (
     <Layout>
-      <div className="container mx-auto">
-        <CompaniesScores
-          companiesIds={companiesIds}
-          companySelector={companySelector}
-          serviceOptions={serviceOptions}
-          serviceRankings={serviceRankings}
-          companyRankings={companyRankings}
-          servicesByCompany={servicesByCompany}
-        />
-        <LensCharts
-          companySelectors={companySelector}
-          indicatorLenses={indicatorLenses}
-          indicatorCompanyLenses={indicatorCompanyLenses}
-        />
-        <TimeCharts
-          companySelectors={companySelector}
-          yoyScores={yoyScores}
-        />
-      </div>
+      <ExploreHeader />
+      <ExploreContainer>
+        {({ Container }) => {
+          return (
+            <Container>
+              <CompaniesScores
+                companiesIds={companiesIds}
+                companySelector={companySelector}
+                serviceOptions={serviceOptions}
+                serviceRankings={serviceRankings}
+                companyRankings={companyRankings}
+                servicesByCompany={servicesByCompany}
+              />
+              <LensCharts
+                companySelectors={companySelector}
+                indicatorLenses={indicatorLenses}
+                indicatorCompanyLenses={indicatorCompanyLenses}
+              />
+              <TimeCharts
+                companySelectors={companySelector}
+                yoyScores={yoyScores}
+              />
+            </Container>
+          );
+        }}
+      </ExploreContainer>
     </Layout>
   );
 };
