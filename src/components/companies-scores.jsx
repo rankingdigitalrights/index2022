@@ -112,7 +112,15 @@ const CompaniesScores = (props) => {
               <NarrativeTitle title="2022 Companies Score" />
 
               <p className="mt-6">
-                Some new text about the 2022 explore companies views.
+              Select and compare total company and service scores, as well
+                  as scores in our three top-level categories: governance,
+                  freedom of expression and information, and privacy. Click on
+                  “Change View” to see scores by service. Learn more about how
+                  we tally our scores on our{" "}
+                  <a href="https://rankingdigitalrights.org/methods-and-standards">
+                    Methods and Standards
+                  </a>{" "}
+                  page.
               </p>
 
               <div className="flex flex-col md:flex-row mt-10 justify-between items-center w-full">
