@@ -206,6 +206,7 @@
   }
 
   .explore-container {
+    @apply mx-auto;
     max-width: 900px;
   }
 
