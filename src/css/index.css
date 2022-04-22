@@ -192,6 +192,7 @@
   }
 
   .narrative-container :target,
+  .explore-container :target,
   .report-card :target {
     scroll-margin-top: 1rem;
   }
@@ -201,6 +202,14 @@
   }
 
   .narrative-container p:last-child {
+    @apply mb-0;
+  }
+
+  .explore-container {
+    max-width: 900px;
+  }
+
+  .explore-container p:last-child {
     @apply mb-0;
   }
 
