@@ -62,7 +62,7 @@ const HomeTeaserBox = ({
           <span className="text-white whitespace-pre">Executive summary</span>
           <span className="cursor-pointer w-12 h-12 mr-6 rounded-full flex items-center justify-center bg-white">
             <ArrowRight
-              className={c("w-6 h-6", animationClassName)}
+              className={c("w-6 h-6 fill-prissian", animationClassName)}
               aria-label="Goto page arrow"
             />
           </span>

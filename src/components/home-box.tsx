@@ -68,7 +68,7 @@ const HomeBox = ({
           onMouseLeave={() => setIsHover(false)}
         >
           <ArrowRight
-            className={c("w-6 h-6", animationClassName)}
+            className={c("w-6 h-6 fill-prissian", animationClassName)}
             aria-label="Goto page arrow"
           />
         </a>

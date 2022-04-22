@@ -22,17 +22,21 @@ const HomeMainAreaDesktop = ({
   return (
     <section className="xl:container xl:mx-auto grid grid-rows-3 md:grid-cols-3 lg:grid-rows-2">
       <div className="lg:row-end-2 lg:p-6 self-center">
-        <h3 className="font-bold text-lg sm:text-xl sm:leading-9 mt-0 mb-16">
-          Big Tech Keeps Failing Us
-        </h3>
-
-        <p>
-          For the sixth consecutive year, not one digital platform earned a
-          passing grade in our ranking. While we see some incremental progress
-          overall, companies must improve their governance and accelerate their
-          adoption of human rights standards to protect their users and the
-          public interest.
-        </p>
+        <HomeBoxAlt
+          className=""
+          title="Big Tech Keeps Failing Us"
+          linkTitle="Read Our Key Findings"
+          href="/"
+          theme="altDark"
+        >
+          <p>
+            For the sixth consecutive year, not one digital platform earned a
+            passing grade in our ranking. While we see some incremental progress
+            overall, this is no time for business as usual. Companies must
+            improve their governance and accelerate their adoption of human
+            rights standards to protect their users and the public interest.
+          </p>
+        </HomeBoxAlt>
       </div>
 
       <div className="md:col-span-2 lg:col-span-1 lg:row-end-2 p-6 space-y-4">
@@ -60,24 +64,11 @@ const HomeMainAreaDesktop = ({
         <div className="flex flex-col lg:space-y-6 px-6">
           <HomeBox
             className="h-32 xl:h-36"
-            title="Key findings"
-            href="/key-findings"
-            theme="dark"
-          >
-            <p className="hidden lg:block">
-              In 2022, what’s changed? What hasn’t? Read our top observations
-              and recommendations, and learn why—more than ever—this is no time
-              for business as usual.
-            </p>
-          </HomeBox>
-
-          <HomeBox
-            className="h-32 xl:h-36"
             title="Data Explorer"
             href="/explore"
             theme="dark"
           >
-            <p className="hidden lg:block">
+            <p>
               Which companies commit to human rights? Who does the best job
               describing how they moderate content? Where is your data safest in
               case of a breach? How has Apple’s scores changed over time? Drill
@@ -96,12 +87,17 @@ const HomeMainAreaDesktop = ({
 
         <HomeBoxAlt
           className="px-6 py-8 lg:mb-6"
-          title="Charting the Future of Big Tech Accountability"
-          linkTitle="Key findings"
-          href="/key-findings"
+          title="What’s Next for Big Tech Accountability?"
+          linkTitle="RVSP Now"
+          href="https://events.newamerica.org/chartingthefutureofbigtech"
           theme="dark"
         >
-          <span />
+          <p className="pb-8">
+            Join RDR and a superstar set of panelists on May 4 to discuss
+            current strategies for holding Big Tech accountable through
+            regulation, shareholder action, whistleblowing, and grassroots
+            research and advocacy.
+          </p>
         </HomeBoxAlt>
       </div>
     </section>
