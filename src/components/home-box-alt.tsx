@@ -8,7 +8,7 @@ interface HomeBoxAltProps {
   title: string;
   linkTitle: string;
   href: string;
-  theme?: "light" | "dark";
+  theme?: "light" | "dark" | "altDark";
   className?: string;
 }
 
@@ -22,7 +22,21 @@ const HomeBoxAlt = ({
 }: React.PropsWithChildren<HomeBoxAltProps>) => {
   const [isHover, setIsHover] = useState(false);
 
-  const textColor = theme === "light" ? "text-white" : "text-prissian";
+  const textColor = {
+    "text-white": theme === "light",
+    "text-prissian": theme === "dark",
+    "text-black": theme === "altDark",
+  };
+
+  const arrowColor = {
+    "fill-prissian": theme === "dark" || theme === "light",
+    "fill-black": theme === "altDark",
+  };
+
+  const arrowBgColor = {
+    "bg-white": theme === "dark" || theme === "light",
+    "bg-beige": theme === "altDark",
+  };
 
   const animationClassName = {
     "transition duration-200 ease-out transform translate-x-1": isHover,
@@ -36,7 +50,7 @@ const HomeBoxAlt = ({
           <a className="hover:no-underline flex space-x-2">
             <h3
               className={c(
-                "cursor-pointer font-bold text-xl leading-9 mt-0 flex flex-col",
+                "cursor-pointer font-bold text-xl mt-0 flex flex-col",
                 textColor,
               )}
               onMouseEnter={() => setIsHover(true)}
@@ -52,14 +66,22 @@ const HomeBoxAlt = ({
 
       <Link passHref href={href}>
         <a
-          className="flex items-center justify-between hover:no-underline"
+          className={c(
+            "flex items-center justify-between hover:no-underline",
+            textColor,
+          )}
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
         >
-          <span className="font-sans text-lg whitespace-pre">{linkTitle}</span>
-          <span className="cursor-pointer w-12 h-12 mr-6 rounded-full flex items-center justify-center bg-white">
+          <span className="font-sans whitespace-pre">{linkTitle}</span>
+          <span
+            className={c(
+              "cursor-pointer w-12 h-12 mr-6 rounded-full flex items-center justify-center",
+              arrowBgColor,
+            )}
+          >
             <ArrowRight
-              className={c("w-6 h-6", animationClassName)}
+              className={c("w-6 h-6", animationClassName, arrowColor)}
               aria-label="Goto page arrow"
             />
           </span>

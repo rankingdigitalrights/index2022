@@ -13,8 +13,8 @@ interface LensScoreProps {
 
 const LensScore = ({ lenses, className, companyList }: LensScoreProps) => {
   return (
-    <ul className={c("space-y-12", className)}>
-      {lenses.map(({ lens, lensPretty, scores, average }) => {
+    <ul className={c("ml-0 space-y-12", className)}>
+      {lenses.map(({lens, lensPretty, scores, average}) => {
         return (
           <li key={lens} className="flex flex-col mt-2">
             <div className="rounded-full bg-beige font-sans font-bold py-5 px-4 flex items-center">
