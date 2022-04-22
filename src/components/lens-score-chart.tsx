@@ -12,7 +12,7 @@ interface LensScoreProps {
 
 const LensScore = ({lenses, className}: LensScoreProps) => {
   return (
-    <ul className={c("space-y-12", className)}>
+    <ul className={c("ml-0 space-y-12", className)}>
       {lenses.map(({lens, lensPretty, scores, average}) => {
         return (
           <li key={lens} className="flex flex-col mt-2">
