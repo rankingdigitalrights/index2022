@@ -3,6 +3,7 @@ import path from "path";
 import { promises as fsP } from "fs";
 import CompaniesScores from "../components/companies-scores";
 import LensCharts from "../components/lenses"
+import TimeCharts from "../components/time-chart"
 import Layout from "../components/layout"
 import {
   allCompanies,
@@ -12,6 +13,7 @@ import {
   companyRankingData,
   companyServiceRankingData,
   companyServices,
+  companyYearOverYearCategoryScoreData
 } from "../data";
 import { uniqueBy } from "../utils";
 
@@ -147,6 +149,18 @@ export const getStaticProps = async () => {
     Promise.resolve({}),
   );
 
+  const yoyScores = await Promise.all(
+    companies.map(async ({ id, name, region }) => {
+      const { scores } = await companyYearOverYearCategoryScoreData(id, "total");
+      return {
+        company: id,
+        companyPretty: name,
+        region,
+        scores,
+      };
+    }),
+  );
+
   return {
     props: {
       companiesIds,
@@ -162,6 +176,7 @@ export const getStaticProps = async () => {
           scores: scores.filter(({ lens }) => betaLenses.has(lens)),
         }),
       ),
+      yoyScores,
     },
   };
 }
@@ -176,7 +191,8 @@ const Explorer = ({
   companyRankings,
   servicesByCompany,
   indicatorLenses,
-  indicatorCompanyLenses
+  indicatorCompanyLenses,
+  yoyScores
 }) => {
   return (
     <Layout>
@@ -193,7 +209,10 @@ const Explorer = ({
         indicatorLenses={indicatorLenses}
         indicatorCompanyLenses={indicatorCompanyLenses}
       />
-
+      <TimeCharts
+      companySelectors={companySelector}
+      yoyScores={yoyScores}
+      />
     </Layout>
   );
 };

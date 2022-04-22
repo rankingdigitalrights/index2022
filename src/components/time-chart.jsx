@@ -1,60 +1,15 @@
 import React, { useMemo, useState } from "react";
 
-import CompanySelector from "../components/company-selector-simple";
-import CompanyYearOverYearTable from "../components/company-year-over-year-table";
-import FlipTimeChart from "../components/flip-time-chart";
-import NarrativeContainer from "../components/narrative-container";
-import NarrativeTitle from "../components/narrative-title";
-import { allCompanies, companyYearOverYearCategoryScoreData } from "../data";
-import type {
-  CompanySelectOption,
-  CompanyYearOverYear,
-  SortStrategiesYOY,
-  SortStrategyYOY,
-} from "../types";
+import CompanySelector from "./company-selector-simple";
+import CompanyYearOverYearTable from "./company-year-over-year-table";
+import FlipTimeChart from "./flip-time-chart";
+import NarrativeContainer from "./narrative-container";
+import NarrativeTitle from "./narrative-title";
 
-interface TimeChartProps {
-  companySelectors: CompanySelectOption[];
-  yoyScores: CompanyYearOverYear[];
-}
-
-export const getStaticProps = async () => {
-  const companies = await allCompanies();
-  const companySelectors = companies.map(({ id: companyId, name, region }) => {
-    return {
-      value: companyId,
-      label: name,
-      region,
-    };
-  });
-
-  const yoyScores = await Promise.all(
-    companies.map(async ({ id, name, region }) => {
-      const { scores } = await companyYearOverYearCategoryScoreData(id, "total");
-      return {
-        company: id,
-        companyPretty: name,
-        region,
-        scores,
-      };
-    }),
-  );
-
-  return {
-    props: {
-      companySelectors,
-      yoyScores,
-    },
-  };
-};
-
-const strategies: SortStrategiesYOY<CompanyYearOverYear> = new Map<
-  string,
-  SortStrategyYOY<CompanyYearOverYear>
->();
+const strategies = new Map();
 strategies.set(
   "Alphabetically",
-  (options: CompanyYearOverYear[]): CompanyYearOverYear[] => {
+  options => {
     return options.sort((a, b) => {
       if (a.company > b.company) return 1;
       if (a.company < b.company) return -1;
@@ -64,7 +19,7 @@ strategies.set(
 );
 strategies.set(
   "By Region",
-  (options: CompanyYearOverYear[]): CompanyYearOverYear[] => {
+  options => {
     return options.sort((a, b) => {
       if (a.region > b.region) return 1;
       if (a.region < b.region) return -1;
@@ -73,27 +28,24 @@ strategies.set(
   },
 );
 
-const identitySortFn: SortStrategyYOY<CompanyYearOverYear> = (xs) => xs;
+const identitySortFn = (xs) => xs;
 
-const TimeCharts = ({ companySelectors, yoyScores }: TimeChartProps) => {
-  const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
+const TimeCharts = (props) => {
+  const { companySelectors, yoyScores } = props
+  const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [timeChart, setTimeChart] = useState(true);
-  const [sortStrategy, setSortStrategy] = useState<
-    "Alphabetically" | "By Region"
-  >("Alphabetically");
+  const [sortStrategy, setSortStrategy] = useState("Alphabetically");
   const years = useMemo(() => ["2017", "2018", "2019", "2020", "2022"], []);
 
-  const handleSelectCompany = (ids: string[]) => {
+  const handleSelectCompany = (ids) => {
     setSelectedCompanies(ids);
   };
 
-  const handleFlipTimeChart = (toggle: boolean) => {
+  const handleFlipTimeChart = (toggle) => {
     setTimeChart(toggle);
   };
 
-  const handleSelectSortStrategy = (
-    strategy: "Alphabetically" | "By Region",
-  ) => {
+  const handleSelectSortStrategy = (strategy) => {
     if (strategy) setSortStrategy(strategy);
   };
 
