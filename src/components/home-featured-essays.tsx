@@ -6,7 +6,7 @@ const HomeFeaturedEssays = () => {
   return (
     <section className="lg:container lg:mx-auto py-6">
       <h3 className="font-bold text-xl leading-9 text-prissian">
-        Featured essays
+        Featured Essays
       </h3>
 
       <div className="grid grid-rows-4 grid-cols-1 md:grid-rows-2 md:grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 gap-5 mt-8">

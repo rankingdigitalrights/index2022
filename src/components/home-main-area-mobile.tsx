@@ -2,7 +2,6 @@ import React from "react";
 
 import {CompanyRank, IndicatorCategoryExt} from "../types";
 import CategorySelector from "./category-selector";
-import HomeBox from "./home-box";
 import HomeBoxAlt from "./home-box-alt";
 import Image from "./image";
 import RankChart from "./rank-chart";
@@ -27,7 +26,7 @@ const HomeMainAreaMobile = ({
         href="/"
         theme="altDark"
       >
-        <p>
+        <p className="text-black font-sans">
           For the sixth consecutive year, not one digital platform earned a
           passing grade in our ranking. While we see some incremental progress
           overall, this is no time for business as usual. Companies must improve
@@ -43,17 +42,20 @@ const HomeMainAreaMobile = ({
       </div>
 
       <div className="flex flex-col px-2 py-8 space-y-8 bg-beige">
-        <HomeBox title="Data Explorer" href="/explore" theme="dark">
-          <div className="font-serif flex flex-col h-full justify-end">
-            <p>
-              Which companies commit to human rights? Who does the best job
-              describing how they moderate content? Where is your data safest in
-              case of a breach? How has Apple’s scores changed over time? Drill
-              down into hundreds of thousands of data points to answer questions
-              like these in our enhanced Data Explorer.
-            </p>
-          </div>
-        </HomeBox>
+        <HomeBoxAlt
+          title="Data Explorer"
+          linkTitle="Visit the Data Explorer"
+          href="/explore"
+          theme="dark"
+        >
+          <p className="pb-8 text-black font-sans">
+            Which companies commit to human rights? Who does the best job
+            describing how they moderate content? Where is your data safest in
+            case of a breach? How has Apple’s scores changed over time? Drill
+            down into hundreds of thousands of data points to answer questions
+            like these in our enhanced Data Explorer.
+          </p>
+        </HomeBoxAlt>
       </div>
 
       <Image
@@ -65,11 +67,11 @@ const HomeMainAreaMobile = ({
       <HomeBoxAlt
         className="px-2 py-8 bg-disabled"
         title="What’s Next for Big Tech Accountability?"
-        linkTitle="RVSP Now"
+        linkTitle="RSVP to Join the Conversation"
         href="https://events.newamerica.org/chartingthefutureofbigtech"
         theme="dark"
       >
-        <p className="pb-4">
+        <p className="pb-4 text-black font-sans">
           Join RDR and a superstar set of panelists on May 4 to discuss current
           strategies for holding Big Tech accountable through regulation,
           shareholder action, whistleblowing, and grassroots research and

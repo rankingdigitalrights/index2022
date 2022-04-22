@@ -50,7 +50,7 @@ const HomeBoxAlt = ({
           <a className="hover:no-underline flex space-x-2">
             <h3
               className={c(
-                "cursor-pointer font-bold text-xl leading-9 mt-0 flex flex-col",
+                "cursor-pointer font-bold text-xl mt-0 flex flex-col",
                 textColor,
               )}
               onMouseEnter={() => setIsHover(true)}
@@ -73,7 +73,7 @@ const HomeBoxAlt = ({
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
         >
-          <span className="font-sans text-lg whitespace-pre">{linkTitle}</span>
+          <span className="font-sans whitespace-pre">{linkTitle}</span>
           <span
             className={c(
               "cursor-pointer w-12 h-12 mr-6 rounded-full flex items-center justify-center",

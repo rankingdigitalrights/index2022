@@ -2,7 +2,6 @@ import React from "react";
 
 import {CompanyRank, IndicatorCategoryExt} from "../types";
 import CategorySelector from "./category-selector";
-import HomeBox from "./home-box";
 import HomeBoxAlt from "./home-box-alt";
 import Image from "./image";
 import RankChart from "./rank-chart";
@@ -23,13 +22,12 @@ const HomeMainAreaDesktop = ({
     <section className="xl:container xl:mx-auto grid grid-rows-3 md:grid-cols-3 lg:grid-rows-2">
       <div className="lg:row-end-2 lg:p-6 self-center">
         <HomeBoxAlt
-          className=""
           title="Big Tech Keeps Failing Us"
           linkTitle="Read Our Key Findings"
           href="/"
           theme="altDark"
         >
-          <p>
+          <p className="text-black font-sans">
             For the sixth consecutive year, not one digital platform earned a
             passing grade in our ranking. While we see some incremental progress
             overall, this is no time for business as usual. Companies must
@@ -62,20 +60,20 @@ const HomeMainAreaDesktop = ({
 
       <div className="overlay-grid-col flex flex-col justify-between py-2 lg:pb-6 xl:py-8">
         <div className="flex flex-col lg:space-y-6 px-6">
-          <HomeBox
-            className="h-32 xl:h-36"
+          <HomeBoxAlt
             title="Data Explorer"
+            linkTitle="Visit the Data Explorer"
             href="/explore"
             theme="dark"
           >
-            <p>
+            <p className="pb-8 text-black font-sans">
               Which companies commit to human rights? Who does the best job
               describing how they moderate content? Where is your data safest in
               case of a breach? How has Apple’s scores changed over time? Drill
               down into hundreds of thousands of data points to answer questions
               like these in our enhanced Data Explorer.
             </p>
-          </HomeBox>
+          </HomeBoxAlt>
         </div>
 
         <div className="self-center flex flex-row space-x-2 lg:mt-16 xl:mt-8 2xl:-mt-4">
@@ -88,11 +86,11 @@ const HomeMainAreaDesktop = ({
         <HomeBoxAlt
           className="px-6 py-8 lg:mb-6"
           title="What’s Next for Big Tech Accountability?"
-          linkTitle="RVSP Now"
+          linkTitle="RSVP to Join the Conversation"
           href="https://events.newamerica.org/chartingthefutureofbigtech"
           theme="dark"
         >
-          <p className="pb-8">
+          <p className="pb-8 text-black font-sans">
             Join RDR and a superstar set of panelists on May 4 to discuss
             current strategies for holding Big Tech accountable through
             regulation, shareholder action, whistleblowing, and grassroots

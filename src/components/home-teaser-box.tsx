@@ -45,7 +45,7 @@ const HomeTeaserBox = ({
           </a>
         </Link>
 
-        <p>
+        <p className="font-sans">
           Each year, Ranking Digital Rights evaluates and ranks 14 of the
           world’s most powerful digital platforms on their policies and
           practices affecting people’s rights to freedom of expression and
@@ -59,7 +59,9 @@ const HomeTeaserBox = ({
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
         >
-          <span className="text-white whitespace-pre">Executive summary</span>
+          <span className="text-white whitespace-pre">
+            Read the Executive Summary
+          </span>
           <span className="cursor-pointer w-12 h-12 mr-6 rounded-full flex items-center justify-center bg-white">
             <ArrowRight
               className={c("w-6 h-6 fill-prissian", animationClassName)}
