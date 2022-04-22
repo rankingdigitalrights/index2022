@@ -70,15 +70,6 @@ const CompaniesScores = (props) => {
     initializeState,
   );
 
-  const [firstRender, setFirstRender] = useState(true);
-  useEffect(() => {
-    // Ensure that we run this hook only once.
-    if (!firstRender) return;
-
-    router.push("/explore", undefined, { shallow: true });
-    setFirstRender(false);
-  }, [router, firstRender]);
-
   const handleSelectCategory = (category) => {
     dispatch({ type: "setCategory", category });
   };
