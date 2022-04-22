@@ -8,7 +8,7 @@ import RankChart from "./rank-chart-nolabel";
 interface LensScoreProps {
   lenses: IndicatorLensIndex[];
   className?: string;
-  companyList: [];
+  companyList: string[];
 }
 
 const LensScore = ({lenses, className, companyList}: LensScoreProps) => {
