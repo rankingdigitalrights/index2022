@@ -1,12 +1,11 @@
 import c from "clsx";
 import { useRouter } from "next/router";
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useReducer, useState } from "react";
 import CategorySelector from "../components/category-selector";
 import CompaniesByService from "../components/companies-per-service";
 // FIXME: eventually switch this out for the original company-selector component with an optional label property added
 import CompanySelector from "../components/company-selector-simple";
 import FlipAxis from "../components/flip-axis";
-import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
 import RankChart from "../components/rank-chart-nolabel";
 import ServicesByCompany from "../components/services-per-company";
