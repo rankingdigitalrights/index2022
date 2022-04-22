@@ -1,5 +1,4 @@
 import c from "clsx";
-import {useRouter} from "next/router";
 import React, {useReducer, useState} from "react";
 
 import CategorySelector from "./category-selector";
