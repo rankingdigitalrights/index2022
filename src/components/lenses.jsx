@@ -1,79 +1,21 @@
 import React, {useState} from "react";
+import CompanySelector from "./company-selector-simple";
+import FlipAxis from "./flip-axis";
+import LensCompanyChart from "./lens-company-chart";
+import LensScoreChart from "./lens-score-chart";
+import NarrativeContainer from "./narrative-container";
+import NarrativeTitle from "./narrative-title";
 
-import CompanySelector from "../components/company-selector-simple";
-import FlipAxis from "../components/flip-axis";
-import LensCompanyChart from "../components/lens-company-chart";
-import LensScoreChart from "../components/lens-score-chart";
-import NarrativeContainer from "../components/narrative-container";
-import NarrativeTitle from "../components/narrative-title";
-import {
-  allCompanies,
-  allIndicatorLenses,
-  allIndicatorLensesCompanies,
-} from "../data";
-import type {
-  CompanySelectOption,
-  IndicatorLensCompanyIndex,
-  IndicatorLensIndex,
-} from "../types";
-
-interface LenseChartsProps {
-  companySelectors: CompanySelectOption[];
-  indicatorLenses: IndicatorLensIndex[];
-  indicatorCompanyLenses: IndicatorLensCompanyIndex[];
-}
-
-const betaLenses = new Set([
-  "algorithmic-transparency",
-  "targeted-advertising",
-]);
-
-export const getStaticProps = async () => {
-  const [
-    companies,
-    indicatorLenses,
-    indicatorCompanyLenses,
-  ] = await Promise.all([
-    allCompanies(),
-    allIndicatorLenses(),
-    allIndicatorLensesCompanies(),
-  ]);
-
-  const companySelectors = companies.map(({id: companyId, name, region}) => {
-    return {
-      value: companyId,
-      label: name,
-      region,
-    };
-  });
-
-  return {
-    props: {
-      companySelectors,
-      indicatorLenses: indicatorLenses.filter(({lens}) => betaLenses.has(lens)),
-      indicatorCompanyLenses: indicatorCompanyLenses.map(
-        ({scores, ...rest}) => ({
-          ...rest,
-          scores: scores.filter(({lens}) => betaLenses.has(lens)),
-        }),
-      ),
-    },
-  };
-};
-
-const LensCharts = ({
-  companySelectors,
-  indicatorLenses,
-  indicatorCompanyLenses,
-}: LenseChartsProps) => {
-  const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
+const LensCharts = (props) => {
+  const {companySelectors, indicatorLenses, indicatorCompanyLenses} = props
+  const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [lenseChart, setLenseCharts] = useState(true);
 
-  const handleSelectCompany = (ids: string[]) => {
+  const handleSelectCompany = (ids) => {
     setSelectedCompanies(ids);
   };
 
-  const handleFlipLenseCharts = (toggle: boolean) => {
+  const handleFlipLenseCharts = (toggle) => {
     setLenseCharts(toggle);
   };
 
@@ -131,7 +73,7 @@ const LensCharts = ({
                   <FlipAxis
                     label="Flip"
                     onChange={handleFlipLenseCharts}
-                    toggle={lenseChart}
+                    flip={lenseChart}
                   />
                 </div>
               </Container>
@@ -153,4 +95,4 @@ const LensCharts = ({
   );
 };
 
-export default LensCharts
+export default LensCharts;

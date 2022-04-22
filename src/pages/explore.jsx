@@ -1,16 +1,19 @@
 import React from "react";
 import path from "path";
-import {promises as fsP} from "fs";
+import { promises as fsP } from "fs";
 import CompaniesScores from "../components/companies-scores";
+import LensCharts from "../components/lenses"
 import Layout from "../components/layout"
 import {
   allCompanies,
   allServices,
+  allIndicatorLenses,
+  allIndicatorLensesCompanies,
   companyRankingData,
   companyServiceRankingData,
   companyServices,
 } from "../data";
-import {uniqueBy} from "../utils";
+import { uniqueBy } from "../utils";
 
 export const getStaticProps = async () => {
   const services = (await allServices()).filter(
@@ -23,20 +26,31 @@ export const getStaticProps = async () => {
     value: kind,
   }));
 
-console.log('services: ', serviceOptions)
+  const [
+    companies,
+    indicatorLenses,
+    indicatorCompanyLenses,
+  ] = await Promise.all([
+    allCompanies(),
+    allIndicatorLenses(),
+    allIndicatorLensesCompanies(),
+  ]);
 
-  const companies = await allCompanies();
-
+  const betaLenses = new Set([
+    "algorithmic-transparency",
+    "targeted-advertising",
+  ]);
   const companiesIds = companies.reduce((agg, company) => {
     agg.push(company.id);
     return agg;
   }, []);
 
-  const companySelector = companies.map(({ id: companyId, name, kind }) => {
+  const companySelector = companies.map(({ id: companyId, name, kind, region }) => {
     return {
       value: companyId,
       label: name,
       kind,
+      region,
     };
   });
 
@@ -141,6 +155,13 @@ console.log('services: ', serviceOptions)
       serviceRankings,
       companyRankings,
       servicesByCompany,
+      indicatorLenses: indicatorLenses.filter(({ lens }) => betaLenses.has(lens)),
+      indicatorCompanyLenses: indicatorCompanyLenses.map(
+        ({ scores, ...rest }) => ({
+          ...rest,
+          scores: scores.filter(({ lens }) => betaLenses.has(lens)),
+        }),
+      ),
     },
   };
 }
@@ -151,7 +172,9 @@ const Explorer = ({
   serviceOptions,
   serviceRankings,
   companyRankings,
-  servicesByCompany
+  servicesByCompany,
+  indicatorLenses,
+  indicatorCompanyLenses
 }) => {
   return (
     <Layout>
@@ -163,6 +186,12 @@ const Explorer = ({
         companyRankings={companyRankings}
         servicesByCompany={servicesByCompany}
       />
+      <LensCharts
+        companySelectors={companySelector}
+        indicatorLenses={indicatorLenses}
+        indicatorCompanyLenses={indicatorCompanyLenses}
+      />
+
     </Layout>
   );
 };
