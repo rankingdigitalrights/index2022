@@ -4,6 +4,7 @@ import {CompanyRank, IndicatorCategoryExt} from "../types";
 import CategorySelector from "./category-selector";
 import HomeBox from "./home-box";
 import HomeBoxAlt from "./home-box-alt";
+import Image from "./image";
 import RankChart from "./rank-chart";
 import Arrow from "./rdr-arrow";
 
@@ -20,7 +21,7 @@ const HomeMainAreaDesktop = ({
 }: HomeMainAreaDesktopProps) => {
   return (
     <section className="xl:container xl:mx-auto grid grid-rows-3 md:grid-cols-3 lg:grid-rows-2">
-      <div className="lg:row-end-2 lg:p-6 grid self-center">
+      <div className="lg:row-end-2 lg:p-6 self-center">
         <h3 className="font-bold text-lg sm:text-xl sm:leading-9 mt-0 mb-16">
           Big Tech Keeps Failing Us
         </h3>
@@ -47,7 +48,11 @@ const HomeMainAreaDesktop = ({
 
       <div className="bg-beige beige-grid-col" />
 
-      <div className="md:col-span-3 lg:col-span-2 bg-landing-page" />
+      <Image
+        src="charting-the-future-of-big-tech-accountability.jpg"
+        alt="Charting the Future of Big Tech Accountability"
+        className="md:col-span-3 lg:col-span-2"
+      />
 
       <div className="disabled-grid-col bg-disabled" />
 

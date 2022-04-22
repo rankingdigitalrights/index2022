@@ -1,8 +1,7 @@
-import c from "clsx";
 import React from "react";
 
-import { useChartResize } from "../hooks";
-import { mapIcon } from "./evaluated-service";
+import {useChartResize} from "../hooks";
+import {mapIcon} from "./evaluated-service";
 import PercentageBar from "./percentage-bar";
 import RankLabel from "./rank-label";
 
@@ -16,7 +15,7 @@ const serviceIcon = (serviceKind) => {
 };
 
 const CompaniesByService = (props) => {
-  const { companies, category, serviceRankings, serviceOptions } = props;
+  const {companies, category, serviceRankings, serviceOptions} = props;
 
   const [chartRef, chartWidth] = useChartResize();
   const chartHeight = 10;
@@ -38,7 +37,7 @@ const CompaniesByService = (props) => {
   // [ {serviceKind: [ { id: company }, { id: company } ] } ]
   const prepRanks = keys.map((key) => {
     const companiesArr = serviceRankings[key][category].internet;
-    return { [key]: companiesArr };
+    return {[key]: companiesArr};
   });
 
   const chartHeader = (serviceKind) => {
@@ -66,9 +65,10 @@ const CompaniesByService = (props) => {
         key={`chart-row-${category}-${company.service}`}
         className="flex items-center space-x-1 pr-1.5 pl-1.5 font-sans"
       >
-        <div 
-        key={`chart-label-${company.companyPretty}`}
-        className="flex-none align-left w-24 h-10">
+        <div
+          key={`chart-label-${company.companyPretty}`}
+          className="flex-none align-left w-24 h-10"
+        >
           <p className="text-prissian text-xs font-bold">
             {company.companyPretty}
             <br />
@@ -78,7 +78,11 @@ const CompaniesByService = (props) => {
           </p>
         </div>
         <RankLabel rank={company.rank} className={rankClassName} />
-        <div key={`chart-bar-${company.companyPretty}-${company.service}-${company.score}`} ref={ref} className="flex-grow">
+        <div
+          key={`chart-bar-${company.companyPretty}-${company.service}-${company.score}`}
+          ref={ref}
+          className="flex-grow"
+        >
           <svg
             version="1"
             xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +106,7 @@ const CompaniesByService = (props) => {
         </div>
       </div>
     ) : // eslint-disable-next-line unicorn/no-null
-      null;
+    null;
   };
 
   // rankings is an array of objects of the form:
@@ -116,9 +120,12 @@ const CompaniesByService = (props) => {
           const key = Object.keys(entry);
           // values is an array of companies that provide services of that kind
           const values = entry[key[0]];
-          const list = values.filter((value) => companies.includes(value.id))
+          const list = values.filter((value) => companies.includes(value.id));
           return (
-            <div key={`chartBlock-${key[0]}`} className="flex flex-col space-y-5">
+            <div
+              key={`chartBlock-${key[0]}`}
+              className="flex flex-col space-y-5"
+            >
               {list.length > 0 && chartHeader(key[0])}
               {list.map((item, idx) => {
                 return chartRow(item, idx);

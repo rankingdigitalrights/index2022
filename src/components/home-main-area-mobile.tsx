@@ -4,6 +4,7 @@ import {CompanyRank, IndicatorCategoryExt} from "../types";
 import CategorySelector from "./category-selector";
 import HomeBox from "./home-box";
 import HomeBoxAlt from "./home-box-alt";
+import Image from "./image";
 import RankChart from "./rank-chart";
 
 interface HomeMainAreaMobileProps {
@@ -61,7 +62,11 @@ const HomeMainAreaMobile = ({
         </HomeBox>
       </div>
 
-      <div className="bg-landing-page w-full h-56" />
+      <Image
+        src="charting-the-future-of-big-tech-accountability.jpg"
+        alt="Charting the Future of Big Tech Accountability"
+        className="w-full"
+      />
 
       <HomeBoxAlt
         className="px-2 py-8 bg-disabled"

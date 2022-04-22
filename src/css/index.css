@@ -110,11 +110,6 @@
     background-image: url("../images/bg-key-findings.jpg?size=600");
   }
 
-  .bg-landing-page {
-    @apply bg-cover bg-left-top bg-no-repeat;
-    background-image: url("../images/charting-the-future-of-big-tech-accountability.jpg?size=600");
-  }
-
   /* Get rid of the border outlines on button unless user is actually tabbing. */
   body:not(.user-is-tabbing) button:focus,
   body:not(.user-is-tabbing) input:focus,

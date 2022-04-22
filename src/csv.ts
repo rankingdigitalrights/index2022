@@ -210,11 +210,17 @@ type CsvCompanyServiceRank = {
   privacyRank: number;
 };
 
+type CsvIndicatorLensSpec = {
+  lens: IndicatorLens;
+  lensName: string;
+  average: number;
+};
+
 type CsvIndicatorLens = {
   company: string;
   lens: IndicatorLens;
-  lensName: string;
   score: number;
+  rank: number;
 };
 
 /*
@@ -504,13 +510,22 @@ const loadCompanyServiceRanksCsv = loadCsv<CsvCompanyServiceRank>((record) => ({
 }));
 
 /*
+ * Load the Indicator Specs
+ */
+const loadIndicatorLensesSpecsCsv = loadCsv<CsvIndicatorLensSpec>((record) => ({
+  lens: mapIndicatorLens(record.Id),
+  lensName: record.Name,
+  average: Number.parseInt(record.AverageScore, 10),
+}));
+
+/*
  * Load the Indicator Topics
  */
 const loadIndicatorLensesCsv = loadCsv<CsvIndicatorLens>((record) => ({
   company: record.Company,
   lens: mapIndicatorLens(record.IndicatorLensId),
-  lensName: record.IndicatorLensName,
   score: Number.parseInt(record.Score, 10),
+  rank: Number.parseInt(record.Ranking, 10),
 }));
 
 /*
@@ -1384,15 +1399,30 @@ export const glossary = async (): Promise<Glossary[]> => {
  * Construct the indicator topic index.
  */
 export const indicatorLensIndex = async (): Promise<IndicatorLensIndex[]> => {
-  const [indicatorLensData, allCompanies] = await Promise.all([
-    loadIndicatorLensesCsv("csv/2022-indicator-lenses.csv"),
+  const [
+    indicatorLensSpec,
+    indicatorLensData,
+    allCompanies,
+  ] = await Promise.all([
+    loadIndicatorLensesSpecsCsv("csv/2022-lenses-specs.csv"),
+    loadIndicatorLensesCsv("csv/2022-lenses-scores.csv"),
     companies(),
   ]);
 
   const indicatorLenses = indicatorLensData.reduce(
-    (memo, {lens, lensName: lensPretty, company: companyId, score}) => {
-      // eslint-disable-next-line no-param-reassign
-      if (!memo[lens]) memo[lens] = {lens, lensPretty, scores: []};
+    (memo, {lens, company: companyId, score, rank}) => {
+      const spec = indicatorLensSpec.find(({lens: specId}) => specId === lens);
+      if (!spec)
+        return unreachable(`Indicator lens spec for ${lens} not found`);
+
+      if (!memo[lens])
+        // eslint-disable-next-line no-param-reassign
+        memo[lens] = {
+          lens,
+          lensPretty: spec.lensName,
+          average: spec.average,
+          scores: [],
+        };
       const company = allCompanies.find(({id}) => id === companyId);
 
       if (!company) return unreachable(`Company ${companyId} not found`);
@@ -1400,11 +1430,9 @@ export const indicatorLensIndex = async (): Promise<IndicatorLensIndex[]> => {
       memo[lens].scores.push({
         id: company.id,
         companyPretty: company.name,
-        score,
-        // FIXME: The rank for the lens os missing.
-        rank: 1,
         kind: company.kind,
-        category: "total",
+        score,
+        rank,
       });
 
       return memo;
@@ -1426,14 +1454,23 @@ export const indicatorLensIndex = async (): Promise<IndicatorLensIndex[]> => {
 export const indicatorLensCompanyIndex = async (): Promise<
   IndicatorLensCompanyIndex[]
 > => {
-  const [indicatorLensData, allCompanies] = await Promise.all([
-    loadIndicatorLensesCsv("csv/2022-indicator-lenses.csv"),
+  const [
+    indicatorLensSpec,
+    indicatorLensData,
+    allCompanies,
+  ] = await Promise.all([
+    loadIndicatorLensesSpecsCsv("csv/2022-lenses-specs.csv"),
+    loadIndicatorLensesCsv("csv/2022-lenses-scores.csv"),
     companies(),
   ]);
 
   const indicatorLenses = indicatorLensData.reduce(
-    (memo, {lens, lensName: lensPretty, company: companyId, score}) => {
+    (memo, {lens, company: companyId, score, rank}) => {
       const company = allCompanies.find(({id}) => id === companyId);
+      const spec = indicatorLensSpec.find(({lens: specId}) => specId === lens);
+
+      if (!spec)
+        return unreachable(`Indicator lens spec for ${lens} not found`);
 
       if (!company) return unreachable(`Company ${companyId} not found`);
 
@@ -1445,7 +1482,12 @@ export const indicatorLensCompanyIndex = async (): Promise<
           scores: [],
         };
 
-      memo[company.id].scores.push({lens, lensPretty, score});
+      memo[company.id].scores.push({
+        lens,
+        lensPretty: spec.lensName,
+        score,
+        rank,
+      });
 
       return memo;
     },
