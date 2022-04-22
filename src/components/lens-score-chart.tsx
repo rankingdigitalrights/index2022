@@ -13,11 +13,13 @@ interface LensScoreProps {
 const LensScore = ({lenses, className}: LensScoreProps) => {
   return (
     <ul className={c("space-y-12", className)}>
-      {lenses.map(({lens, lensPretty, scores}) => {
+      {lenses.map(({lens, lensPretty, scores, average}) => {
         return (
           <li key={lens} className="flex flex-col mt-2">
-            <div className="rounded-full bg-beige font-sans font-bold py-5 pl-4 flex items-center">
-              <LensCircle lens={lens} className="w-4 h-4 mr-3" /> {lensPretty}
+            <div className="rounded-full bg-beige font-sans font-bold py-5 px-4 flex items-center">
+              <LensCircle lens={lens} className="w-4 h-4 mr-3 grow-0" />
+              <span className="grow">{lensPretty}</span>
+              <span className="self-end text-prissian">{average}%</span>
             </div>
 
             <RankChart ranking={scores} />
