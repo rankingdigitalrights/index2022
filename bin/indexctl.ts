@@ -76,8 +76,8 @@ const writeJsonFile = (
       const elementsTarget = path.join(dataDir, "elements.json");
       const servicesTarget = path.join(dataDir, "services.json");
       const glossaryTarget = path.join(dataDir, "glossary.json");
-      const indicatorLenssTarget = path.join(dataDir, "indicator-lenses.json");
-      const indicatorLenssCompaniesTarget = path.join(
+      const inidcatorLensesTarget = path.join(dataDir, "indicator-lenses.json");
+      const indicatorCompanyLensesTarget = path.join(
         dataDir,
         "indicator-lenses-companies.json",
       );
@@ -350,9 +350,9 @@ const writeJsonFile = (
       console.log("Generating indicator topic scores");
 
       await Promise.all([
-        indicatorLensIndex().then(writeJsonFile(indicatorLenssTarget)),
+        indicatorLensIndex().then(writeJsonFile(inidcatorLensesTarget)),
         indicatorLensCompanyIndex().then(
-          writeJsonFile(indicatorLenssCompaniesTarget),
+          writeJsonFile(indicatorCompanyLensesTarget),
         ),
       ]);
     })
