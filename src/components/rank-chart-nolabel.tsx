@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import {useChartResize} from "../hooks";
 import {CompanyRank, IndicatorCategoryExt} from "../types";
 import PercentageBar from "./percentage-bar";
+import RankLabel from "./rank-label";
 
 type ChartRanking = Pick<
   CompanyRank,
@@ -17,7 +18,6 @@ interface RankChartProps {
   activeCompany?: string;
   category?: IndicatorCategoryExt;
   chartHeight?: number;
-  hasHeader?: boolean;
   isPrint?: boolean;
 }
 
@@ -27,7 +27,6 @@ const RankChart = ({
   activeCompany,
   category = "total",
   chartHeight = 10,
-  hasHeader = true,
   isPrint = false,
 }: RankChartProps) => {
   const [chartRef, chartWidth] = useChartResize();
@@ -100,19 +99,10 @@ const RankChart = ({
         onMouseLeave={() => setHighlightedCompany(undefined)}
       >
         {companyLabel}
-        {/* TODO: Replace with RankLabel component */}
-        <div className="flex-none w-8 flex justify-center">
-          <div
-            className={c(
-              "rounded-full h-5 w-5 text-white flex items-center justify-center",
-              rankClassName,
-            )}
-          >
-            {rank}
-          </div>
-        </div>
 
-        <div ref={ref} className="flex-grow ml-2">
+        <RankLabel rank={rank} className={c(rankClassName)} />
+
+        <div ref={ref} className="flex-grow flex items-center ml-2">
           <svg
             version="1"
             xmlns="http://www.w3.org/2000/svg"
@@ -128,22 +118,16 @@ const RankChart = ({
               className={barClassName}
             />
           </svg>
+          <span className="shrink-0 text-right w-12 pl-1 pr-1 select-none float-right">
+            {score}%
+          </span>
         </div>
-        <span className="pl-1 pr-1 select-none float-right">{score}%</span>
       </div>
     );
   };
 
   return (
     <div className={c("flex flex-col w-full font-sans", className)}>
-      {hasHeader && (
-        <>
-          <div className="flex items-center text-sm mb-2 mt-3">
-            <div className={c("flex-none", companyWidth)}>&nbsp;</div>
-          </div>
-        </>
-      )}
-
       {ranking.map((company, idx) => chartRow(company, idx))}
     </div>
   );

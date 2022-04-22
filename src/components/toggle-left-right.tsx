@@ -16,13 +16,21 @@ const ToggleLeftRight = ({
   toggle,
   className,
 }: ToggleLeftRightProps) => {
+  const leftClassName = {
+    "opacity-50": toggle,
+  };
+
+  const rightClassName = {
+    "opacity-50": !toggle,
+  };
+
   const handleToggle = () => {
     onChange(!toggle);
   };
 
   return (
     <div className={c("flex items-center self-end font-sans", className)}>
-      <label htmlFor="toggle" className="text-sm mr-2">
+      <label htmlFor="toggle" className={c("text-sm mr-2", leftClassName)}>
         {labelLeft}
       </label>
       <button
@@ -50,7 +58,7 @@ const ToggleLeftRight = ({
           />
         </label>
       </button>
-      <label htmlFor="toggle" className="text-sm ml-2">
+      <label htmlFor="toggle" className={c("text-sm ml-2", rightClassName)}>
         {labelRight}
       </label>
     </div>

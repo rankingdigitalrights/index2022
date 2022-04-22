@@ -111,17 +111,13 @@ const CompanySelector = ({
     }
   };
 
-  // const internetCompanies = companies.filter(({kind}) => kind === "internet");
-
   return (
     <div
       className={c(
-        "w-full flex flex-col justify-between h-16 z-20 font-sans",
+        "w-full flex flex-col justify-between z-20 font-sans",
         className,
       )}
     >
-      {/* <span className="text-sm">Select companies:</span> */}
-
       <Select
         instanceId="company-select"
         placeholder="Select companies"

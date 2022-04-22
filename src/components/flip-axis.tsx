@@ -8,16 +8,29 @@ interface FlipAxisProps {
   label: string;
   onChange: (flip: boolean) => void;
   flip: boolean;
+  disabled?: boolean;
   className?: string;
 }
 
-const FlipAxis = ({label, onChange, flip, className}: FlipAxisProps) => {
+const FlipAxis = ({
+  label,
+  onChange,
+  flip,
+  disabled = false,
+  className,
+}: FlipAxisProps) => {
+  const disabledClassName = {
+    "opacity-50": disabled,
+  };
+
   const handleToggle = () => {
     onChange(!flip);
   };
 
   return (
-    <div className={c("flex items-center font-sans", className)}>
+    <div
+      className={c("flex items-center font-sans", disabledClassName, className)}
+    >
       <label htmlFor="toggle" className="text-sm mr-2">
         {label}
       </label>
@@ -25,6 +38,7 @@ const FlipAxis = ({label, onChange, flip, className}: FlipAxisProps) => {
         className="relative inline-block w-5 align-middle select-none transition duration-200 ease-in"
         onClick={handleToggle}
         aria-label="Flip-Axis"
+        disabled={disabled}
       >
         {flip ? <Up /> : <Down />}
       </button>

@@ -21,7 +21,7 @@ const ServicesByCompany = (props) => {
     return (
       <div
         key={`chart-header-${category}-${companyId}`}
-        className="flex-grow flex items-center h-9 text-prissian font-bold pl-5 bg-beige rounded-full"
+        className="flex-grow flex items-center h-8 text-prissian font-bold pl-5 bg-beige rounded-full"
       >
         <Link passHref href={`/companies/${companyId}`}>
           <a>{companyName}</a>
@@ -46,7 +46,7 @@ const ServicesByCompany = (props) => {
 
         <div className="flex-none w-24 text-xs">{serviceName}</div>
 
-        <div ref={ref} className="flex-grow">
+        <div ref={ref} className="grow flex items-center ml-2">
           <svg
             version="1"
             xmlns="http://www.w3.org/2000/svg"
@@ -62,9 +62,7 @@ const ServicesByCompany = (props) => {
               className={categoryClassName}
             />
           </svg>
-        </div>
-        <div key={`score-span-${serviceName}-${score}%`}>
-          <span className="w-4 flex-none select-none float-right text-right text-xs">
+          <span className="shrink-0 text-right w-9 pl-1 pr-1 select-none float-right text-prissian text-xs">
             {score}%
           </span>
         </div>

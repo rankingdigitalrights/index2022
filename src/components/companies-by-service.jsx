@@ -49,7 +49,7 @@ const CompaniesByService = (props) => {
     return (
       <div
         key={`chart-header-${category}-${serviceKind}`}
-        className="flex-grow flex items-center font-medium font-sans text-sm pl-5 h-9 bg-beige rounded-full"
+        className="flex-grow flex items-center font-medium font-sans text-sm pl-5 h-8 bg-beige rounded-full"
       >
         <div>{sIcon}</div>
         <div>{kindName.label}</div>
@@ -67,21 +67,20 @@ const CompaniesByService = (props) => {
       >
         <div
           key={`chart-label-${company.companyPretty}`}
-          className="flex-none align-left w-24 h-10"
+          className="grow-0 flex flex-col align-left w-24"
         >
-          <p className="text-prissian text-xs font-bold">
+          <span className="text-prissian text-xs font-bold">
             {company.companyPretty}
-            <br />
-            <span className="text-black text-xs font-thin">
-              {company.service}
-            </span>
-          </p>
+          </span>
+          <span className="text-xs font-thin">{company.service}</span>
         </div>
+
         <RankLabel rank={company.rank} className={rankClassName} />
+
         <div
           key={`chart-bar-${company.companyPretty}-${company.service}-${company.score}`}
           ref={ref}
-          className="flex-grow"
+          className="grow flex items-center ml-2"
         >
           <svg
             version="1"
@@ -98,9 +97,8 @@ const CompaniesByService = (props) => {
               className={categoryClassName}
             />
           </svg>
-        </div>
-        <div>
-          <span className="w-4 flex-none select-none float-right text-right text-xs">
+
+          <span className="shrink-0 text-right w-9 pl-1 pr-1 select-none float-right text-prissian text-xs">
             {company.score}%
           </span>
         </div>
