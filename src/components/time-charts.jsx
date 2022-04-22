@@ -52,7 +52,7 @@ const TimeCharts = (props) => {
         );
 
   return (
-    <div>
+    <div className="px-2 lg:px-0">
       <NarrativeTitle title="Performance Over Time" />
 
       <p className="pb-3">
@@ -63,9 +63,9 @@ const TimeCharts = (props) => {
         score for many of the companies in 2020.
       </p>
 
-      <div className="flex flex-row justify-between items-center w-full">
+      <div className="flex flex-row justify-between items-center w-full my-12">
         <CompanySelector
-          className="flex-none w-10/12 md:w-9/12 "
+          className="flex-none w-9/12 md:w-1/2 self-center"
           companies={companySelectors}
           selected={selectedCompanies}
           onSelect={handleSelectCompany}
