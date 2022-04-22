@@ -34,7 +34,7 @@ const LensRankChart = ({
     "text-prissian": category === "total",
   };
 
-  const lensWidth = "w-48";
+  const lensWidth = "w-44";
 
   const chartRow = ({lens, lensPretty, score}: LensRank, idx: number) => {
     // eslint-disable-next-line unicorn/no-null
@@ -54,23 +54,27 @@ const LensRankChart = ({
     return (
       <div
         key={`home-rank-${category}-${lens}`}
-        className={c("flex items-center text-sm mb-1", highlightedClassName)}
+        className={c(
+          "flex items-center justify-end space-x-4 text-sm mb-1",
+          highlightedClassName,
+        )}
         onMouseEnter={() => setHighlightedLens(lens)}
         onMouseLeave={() => setHighlightedLens(undefined)}
       >
-        <LensCircle lens={lens} className="w-8 h-8" />
+        <div className="grow-0 flex items-center">
+          <LensCircle lens={lens} className="w-4 h-4" />
 
-        <span
-          className={c(
-            "flex-none select-none whitespace-nowrap text-right",
-            highlightedClassName,
-            lensWidth,
-          )}
-        >
-          {lensPretty}
-        </span>
+          <span
+            className={c(
+              "grow-0 ml-2 select-none whitespace-nowrap",
+              highlightedClassName,
+            )}
+          >
+            {lensPretty}
+          </span>
+        </div>
 
-        <div ref={ref} className="flex-grow flex items-center ml-2">
+        <div ref={ref} className="flex items-center ml-2 w-7/12 md:w-5/12">
           <svg
             version="1"
             xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +90,7 @@ const LensRankChart = ({
               className={barClassName}
             />
           </svg>
-          <span className="shrink-0 text-right w-8 pl-1 pr-1 select-none float-right">
+          <span className="shrink-0 text-right w-12 pl-1 pr-1 select-none float-right">
             {score}%
           </span>
         </div>

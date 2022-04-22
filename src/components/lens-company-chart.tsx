@@ -3,6 +3,7 @@ import React from "react";
 
 import type {IndicatorLensCompanyIndex} from "../types";
 import LensRankChart from "./lens-rank-chart";
+import PillHeader from "./pill-header";
 
 interface LensCompanyChartProps {
   companyLenses: IndicatorLensCompanyIndex[];
@@ -25,7 +26,7 @@ const LensCompanyChart = ({
   const divider = Math.ceil(selectedCompanies.length / 2);
 
   return (
-    <div className="flex flex-col space-x-8 md:flex-row font-sans">
+    <div className="flex flex-col space-y-5 md:space-y-0 md:space-x-8 md:flex-row font-sans">
       <div className="w-full md:w-1/2">
         <ul className={c("space-y-12 list-none list-outside ml-0", className)}>
           {selectedCompanies
@@ -33,9 +34,7 @@ const LensCompanyChart = ({
             .map(({company, companyPretty, scores}) => {
               return (
                 <li key={company} className="flex flex-col mt-2">
-                  <div className="rounded-full bg-beige font-sans font-bold py-5 pl-4">
-                    {companyPretty}
-                  </div>
+                  <PillHeader>{companyPretty}</PillHeader>
 
                   <LensRankChart ranking={scores} />
                 </li>
@@ -51,9 +50,7 @@ const LensCompanyChart = ({
             .map(({company, companyPretty, scores}) => {
               return (
                 <li key={company} className="flex flex-col mt-2">
-                  <div className="rounded-full bg-beige font-sans font-bold py-5 pl-4">
-                    {companyPretty}
-                  </div>
+                  <PillHeader>{companyPretty}</PillHeader>
 
                   <LensRankChart ranking={scores} />
                 </li>

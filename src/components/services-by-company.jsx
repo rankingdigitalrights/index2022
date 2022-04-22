@@ -4,6 +4,7 @@ import React from "react";
 import {useChartResize} from "../hooks";
 import {mapIcon} from "./evaluated-service";
 import PercentageBar from "./percentage-bar";
+import PillHeader from "./pill-header";
 
 const ServicesByCompany = (props) => {
   const {category, companies} = props;
@@ -19,14 +20,11 @@ const ServicesByCompany = (props) => {
 
   const chartHeader = (companyName, companyId) => {
     return (
-      <div
-        key={`chart-header-${category}-${companyId}`}
-        className="flex-grow flex items-center h-8 text-prissian font-bold pl-5 bg-beige rounded-full"
-      >
+      <PillHeader>
         <Link passHref href={`/companies/${companyId}`}>
           <a>{companyName}</a>
         </Link>
-      </div>
+      </PillHeader>
     );
   };
 
@@ -95,7 +93,7 @@ const ServicesByCompany = (props) => {
   const divider = Math.ceil(companies.length / 2);
 
   return (
-    <div className="flex flex-col space-x-8 md:flex-row font-sans">
+    <div className="flex flex-col space-y-5 md:space-y-0 md:space-x-8 md:flex-row font-sans">
       <div className="w-full md:w-1/2">
         {chartBlock(companies.slice(0, divider), category)}
       </div>

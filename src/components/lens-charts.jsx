@@ -20,7 +20,7 @@ const LensCharts = (props) => {
   };
 
   return (
-    <div>
+    <div className="px-2 lg:px-2">
       <NarrativeTitle title="Lenses (in beta)" />
 
       <p className="pb-3">
@@ -32,29 +32,9 @@ const LensCharts = (props) => {
         two policy areas.
       </p>
 
-      <ul>
-        <li>
-          <span className="font-bold">Algorithmic transparency -</span> This
-          Lens groups indicators that ask questions about whether companies make
-          a commitment to human rights in the development and deployment of
-          their algorithmic systems, conduct human rights impact assessments on
-          those systems, make related policies accessible, disclose how they use
-          algorithms to curate, recommend, and rank content, and how they use
-          algorithms to collect, process, and make inferences about user data.
-        </li>
-
-        <li>
-          <span className="font-bold">Targeted advertising -</span> This Lens
-          groups indicators that ask whether companies conduct human rights
-          impact assessments on their targeted advertising systems, as well as
-          whether they clearly disclose rules around ad targeting and how those
-          rules are enforced.
-        </li>
-      </ul>
-
-      <div className="flex flex-row justify-between items-center w-full">
+      <div className="flex flex-row justify-between items-center w-full my-12">
         <CompanySelector
-          className="flex-none w-10/12 md:w-9/12 "
+          className="flex-none w-9/12 md:w-1/2 self-center"
           companies={companySelectors}
           selected={selectedCompanies}
           onSelect={handleSelectCompany}

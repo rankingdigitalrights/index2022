@@ -3,6 +3,7 @@ import React from "react";
 import {useChartResize} from "../hooks";
 import {mapIcon} from "./evaluated-service";
 import PercentageBar from "./percentage-bar";
+import PillHeader from "./pill-header";
 import RankLabel from "./rank-label";
 
 // FIXME: going crazy with the 'unique key' warning (also in spc)
@@ -47,13 +48,10 @@ const CompaniesByService = (props) => {
       return service.kind === serviceKind;
     });
     return (
-      <div
-        key={`chart-header-${category}-${serviceKind}`}
-        className="flex-grow flex items-center font-medium font-sans text-sm pl-5 h-8 bg-beige rounded-full"
-      >
-        <div>{sIcon}</div>
+      <PillHeader className="flex items-center">
+        {sIcon}
         <div>{kindName.label}</div>
-      </div>
+      </PillHeader>
     );
   };
 
@@ -140,7 +138,7 @@ const CompaniesByService = (props) => {
   // TODO: add a conditional here so that if entries.length is 1, it shows only one column
   // TODO: this creates a chartblock before the selected companies have been filtered => rearrange this flow
   return (
-    <div className="flex flex-col space-x-8 md:flex-row">
+    <div className="flex flex-col space-y-5 md:space-y-0 md:space-x-8 md:flex-row">
       <div className="w-full md:w-1/2">
         {chartBlock(prepRanks.slice(0, divider))}
       </div>
