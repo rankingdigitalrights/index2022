@@ -1,26 +1,22 @@
-import c from "clsx";
 import {promises as fsP} from "fs";
-import {useRouter} from "next/router";
 import path from "path";
-import React, {useEffect, useReducer, useState} from "react";
+import React from "react";
 
-import CategorySelector from "../components/category-selector";
-import CompaniesByService from "../components/companies-per-service";
-// FIXME: eventually switch this out for the original company-selector component with an optional label property added
-import CompanySelector from "../components/company-selector-simple";
-import FlipAxis from "../components/flip-axis";
+import CompaniesScores from "../components/companies-scores";
+import ExploreContainer from "../components/explore-container";
+import ExploreHeader from "../components/explore-header";
 import Layout from "../components/layout";
-import NarrativeContainer from "../components/narrative-container";
-import NarrativeTitle from "../components/narrative-title";
-import RankChart from "../components/rank-chart-nolabel";
-import ServicesByCompany from "../components/services-per-company";
-import ToggleLeftRight from "../components/toggle-left-right";
+import LensCharts from "../components/lenses";
+import TimeCharts from "../components/time-chart";
 import {
   allCompanies,
+  allIndicatorLenses,
+  allIndicatorLensesCompanies,
   allServices,
   companyRankingData,
   companyServiceRankingData,
   companyServices,
+  companyYearOverYearCategoryScoreData,
 } from "../data";
 import {uniqueBy} from "../utils";
 
@@ -28,26 +24,42 @@ export const getStaticProps = async () => {
   const services = (await allServices()).filter(
     ({kind}) => kind !== "Group" && kind !== "Operating Company",
   );
+
   const serviceOptions = uniqueBy("kind", services).map(({kind, kindName}) => ({
     kind,
     label: kindName,
     value: kind,
   }));
 
-  const companies = await allCompanies();
+  const [
+    companies,
+    indicatorLenses,
+    indicatorCompanyLenses,
+  ] = await Promise.all([
+    allCompanies(),
+    allIndicatorLenses(),
+    allIndicatorLensesCompanies(),
+  ]);
 
-  const companiesArr = companies.reduce((compArr, company) => {
-    compArr.push(company.id);
-    return compArr;
+  const betaLenses = new Set([
+    "algorithmic-transparency",
+    "targeted-advertising",
+  ]);
+  const companiesIds = companies.reduce((agg, company) => {
+    agg.push(company.id);
+    return agg;
   }, []);
 
-  const companySelector = companies.map(({id: companyId, name, kind}) => {
-    return {
-      value: companyId,
-      label: name,
-      kind,
-    };
-  });
+  const companySelector = companies.map(
+    ({id: companyId, name, kind, region}) => {
+      return {
+        value: companyId,
+        label: name,
+        kind,
+        region,
+      };
+    },
+  );
 
   const servicesByCompany = await Promise.all(
     companies.map(async ({id, name}) => {
@@ -88,6 +100,7 @@ export const getStaticProps = async () => {
       };
     }),
   );
+
   const companyRankings = await ["internet"].reduce(async (memo, kind) => {
     return ["total", "governance", "freedom", "privacy"].reduce(
       async (agg, category) => {
@@ -141,215 +154,79 @@ export const getStaticProps = async () => {
     Promise.resolve({}),
   );
 
+  const yoyScores = await Promise.all(
+    companies.map(async ({id, name, region}) => {
+      const {scores} = await companyYearOverYearCategoryScoreData(id, "total");
+      return {
+        company: id,
+        companyPretty: name,
+        region,
+        scores,
+      };
+    }),
+  );
+
   return {
     props: {
-      companiesArr,
+      companiesIds,
       companySelector,
       serviceOptions,
       serviceRankings,
       companyRankings,
       servicesByCompany,
+      indicatorLenses: indicatorLenses.filter(({lens}) => betaLenses.has(lens)),
+      indicatorCompanyLenses: indicatorCompanyLenses.map(
+        ({scores, ...rest}) => ({
+          ...rest,
+          scores: scores.filter(({lens}) => betaLenses.has(lens)),
+        }),
+      ),
+      yoyScores,
     },
   };
 };
 
-const serviceQueryParam = (url) => {
-  const re = /[&?]s=(.*)(&|$)/;
-  const match = url.match(re);
-
-  if (!match) return undefined;
-  return match[1];
-};
-
-const initializeState = (state) => {
-  const platformRankings = state.service
-    ? state.serviceRankings[state.service.kind]?.[state.category]?.internet
-    : state.companyRankings[state.category]?.internet;
-  return {
-    ...state,
-    platformRankings,
-  };
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "setCategory":
-      return {
-        ...state,
-        category: action.category,
-        platformRankings: state.service
-          ? state.serviceRankings[state.service.kind]?.[action.category]
-              ?.internet
-          : state.companyRankings[action.category]?.internet,
-      };
-    default:
-      throw new Error(`No match for action ${action.type}.`);
-  }
-};
+// FIXME: lenses chart is not receiving companies selection
 
 const Explorer = ({
-  companiesArr,
+  companiesIds,
   companySelector,
   serviceOptions,
   serviceRankings,
   companyRankings,
   servicesByCompany,
+  indicatorLenses,
+  indicatorCompanyLenses,
+  yoyScores,
 }) => {
-  const router = useRouter();
-  const queryService = serviceQueryParam(router.asPath);
-
-  const [selectedCompanies, setSelectedCompanies] = useState([]);
-  const [typeOfGraph, setTypeOfGraph] = useState("total");
-  const [chartHeaders, setChartHeaders] = useState("companies");
-
-  const [state, dispatch] = useReducer(
-    reducer,
-    {
-      category: "total",
-      service: serviceOptions.find(({kind}) => kind === queryService),
-      platformRankings: undefined,
-      serviceRankings,
-      companyRankings,
-    },
-    initializeState,
-  );
-
-  const [firstRender, setFirstRender] = useState(true);
-  useEffect(() => {
-    // Ensure that we run this hook only once.
-    if (!firstRender) return;
-
-    router.push("/explore", undefined, {shallow: true});
-    setFirstRender(false);
-  }, [router, firstRender]);
-
-  const handleSelectCategory = (category) => {
-    dispatch({type: "setCategory", category});
-  };
-
-  const handleTypeOfGraphToggle = (toggle) => {
-    if (toggle) {
-      setTypeOfGraph("services");
-    } else {
-      setTypeOfGraph("total");
-    }
-  };
-
-  const handleFlipAxis = (flip) => {
-    if (flip) {
-      setChartHeaders("companies");
-    } else {
-      setChartHeaders("services");
-    }
-  };
-
-  const handleSelectCompany = (ids) => {
-    setSelectedCompanies(ids);
-  };
-
   return (
     <Layout>
-      <NarrativeContainer transparent>
+      <ExploreHeader />
+      <ExploreContainer>
         {({Container}) => {
           return (
-            <div>
-              <Container>
-                <NarrativeTitle title="2022 Company and Service Scores" />
-
-                <p className="mt-6">
-                  Select and compare total company and service scores, as well
-                  as scores in our three top-level categories: governance,
-                  freedom of expression and information, and privacy. Click on
-                  “Change View” to see scores by service. Learn more about how
-                  we tally our scores on our{" "}
-                  <a href="https://rankingdigitalrights.org/methods-and-standards">
-                    Methods and Standards
-                  </a>{" "}
-                  page.
-                </p>
-
-                <div className="flex flex-col md:flex-row mt-10 justify-between items-center w-full">
-                  <ToggleLeftRight
-                    labelLeft="Totals"
-                    labelRight="Services"
-                    toggle={typeOfGraph !== "total"}
-                    onChange={handleTypeOfGraphToggle}
-                  />
-                  {typeOfGraph === "services" && (
-                    <FlipAxis
-                      label="Flip axis"
-                      flip={chartHeaders === "companies"}
-                      onChange={handleFlipAxis}
-                    />
-                  )}
-                </div>
-                <div className="flex flex-col items-center mt-8">
-                  <CompanySelector
-                    className="flex-none w-full md:w-10/12 "
-                    companies={companySelector}
-                    selected={selectedCompanies}
-                    onSelect={handleSelectCompany}
-                  />
-
-                  <CategorySelector
-                    selected={state.category}
-                    onClick={handleSelectCategory}
-                  />
-                </div>
-              </Container>
-
-              <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
-                <div
-                  style={{minHeight: "22rem"}}
-                  className={c(
-                    "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3",
-                  )}
-                >
-                  {typeOfGraph === "total" && (
-                    <RankChart
-                      ranking={
-                        selectedCompanies.length > 0
-                          ? state.platformRankings.filter(({id}) =>
-                              selectedCompanies.includes(id),
-                            )
-                          : state.platformRankings
-                      }
-                      category={state.category}
-                      hasHeader
-                    />
-                  )}
-                  {typeOfGraph === "services" &&
-                    chartHeaders === "companies" && (
-                      <ServicesByCompany
-                        category={state.category}
-                        companies={
-                          selectedCompanies.length > 0
-                            ? servicesByCompany.filter(({id}) =>
-                                selectedCompanies.includes(id),
-                              )
-                            : servicesByCompany
-                        }
-                      />
-                    )}
-                  {typeOfGraph === "services" &&
-                    chartHeaders === "services" && (
-                      <CompaniesByService
-                        category={state.category}
-                        companies={
-                          selectedCompanies.length > 0
-                            ? selectedCompanies
-                            : companiesArr
-                        }
-                        serviceRankings={serviceRankings}
-                        serviceOptions={serviceOptions}
-                      />
-                    )}
-                </div>
-              </div>
-            </div>
+            <Container>
+              <CompaniesScores
+                companiesIds={companiesIds}
+                companySelector={companySelector}
+                serviceOptions={serviceOptions}
+                serviceRankings={serviceRankings}
+                companyRankings={companyRankings}
+                servicesByCompany={servicesByCompany}
+              />
+              <LensCharts
+                companySelectors={companySelector}
+                indicatorLenses={indicatorLenses}
+                indicatorCompanyLenses={indicatorCompanyLenses}
+              />
+              <TimeCharts
+                companySelectors={companySelector}
+                yoyScores={yoyScores}
+              />
+            </Container>
           );
         }}
-      </NarrativeContainer>
+      </ExploreContainer>
     </Layout>
   );
 };

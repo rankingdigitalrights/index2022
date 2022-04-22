@@ -6,8 +6,7 @@ import {mapIcon} from "./evaluated-service";
 import PercentageBar from "./percentage-bar";
 
 const ServicesByCompany = (props) => {
-  const {category} = props;
-  const {companies} = props;
+  const {category, companies} = props;
   const [chartRef, chartWidth] = useChartResize();
   const chartHeight = 10;
 
