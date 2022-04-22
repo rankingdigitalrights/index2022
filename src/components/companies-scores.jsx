@@ -1,23 +1,16 @@
 import c from "clsx";
 import {useRouter} from "next/router";
 import React, {useReducer, useState} from "react";
-import CategorySelector from "../components/category-selector";
-import CompaniesByService from "../components/companies-per-service";
+
+import CategorySelector from "./category-selector";
+import CompaniesByService from "./companies-per-service";
 // FIXME: eventually switch this out for the original company-selector component with an optional label property added
-import CompanySelector from "../components/company-selector-simple";
-import FlipAxis from "../components/flip-axis";
-import NarrativeTitle from "../components/narrative-title";
-import RankChart from "../components/rank-chart-nolabel";
-import ServicesByCompany from "../components/services-per-company";
-import ToggleLeftRight from "../components/toggle-left-right";
-
-const serviceQueryParam = (url) => {
-  const re = /[&?]s=(.*)(&|$)/;
-  const match = url.match(re);
-
-  if (!match) return undefined;
-  return match[1];
-};
+import CompanySelector from "./company-selector-simple";
+import FlipAxis from "./flip-axis";
+import NarrativeTitle from "./narrative-title";
+import RankChart from "./rank-chart-nolabel";
+import ServicesByCompany from "./services-per-company";
+import ToggleLeftRight from "./toggle-left-right";
 
 const initializeState = (state) => {
   const platformRankings = state.service
@@ -54,9 +47,6 @@ const CompaniesScores = (props) => {
     companyRankings,
     servicesByCompany,
   } = props;
-
-  const router = useRouter();
-  const queryService = serviceQueryParam(router.asPath);
 
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [typeOfGraph, setTypeOfGraph] = useState("total");
