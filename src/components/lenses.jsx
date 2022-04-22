@@ -3,20 +3,19 @@ import CompanySelector from "./company-selector-simple";
 import FlipAxis from "./flip-axis";
 import LensCompanyChart from "./lens-company-chart";
 import LensScoreChart from "./lens-score-chart";
-import NarrativeContainer from "./narrative-container";
 import NarrativeTitle from "./narrative-title";
 
 const LensCharts = (props) => {
   const { companySelectors, indicatorLenses, indicatorCompanyLenses } = props
   const [selectedCompanies, setSelectedCompanies] = useState([]);
-  const [lenseChart, setLenseCharts] = useState(true);
+  const [lensChart, setLensCharts] = useState(true);
 
   const handleSelectCompany = (ids) => {
     setSelectedCompanies(ids);
   };
 
   const handleFlipLenseCharts = (toggle) => {
-    setLenseCharts(toggle);
+    setLensCharts(toggle);
   };
 
   return (
@@ -69,17 +68,22 @@ const LensCharts = (props) => {
         <FlipAxis
           label="Flip"
           onChange={handleFlipLenseCharts}
-          flip={lenseChart}
+          flip={lensChart}
         />
       </div>
 
       <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
-        {lenseChart ? (
-          <LensScoreChart className="w-full" lenses={indicatorLenses} />
+        {lensChart ? (
+          <LensScoreChart
+            className="w-full"
+            lenses={indicatorLenses}
+            companyList={selectedCompanies}
+          />
         ) : (
           <LensCompanyChart
             className="w-full"
             companyLenses={indicatorCompanyLenses}
+            companyList={selectedCompanies}
           />
         )}
       </div>
