@@ -95,107 +95,97 @@ const CompaniesScores = (props) => {
   };
 
   return (
-    <NarrativeContainer transparent>
-      {({ Container }) => {
-        return (
-          <div>
-            <Container>
-              <NarrativeTitle title="2022 Companies Score" />
+    <div>
+      <NarrativeTitle title="2022 Companies Score" />
+      <p className="mt-6">
+        Select and compare total company and service scores, as well
+        as scores in our three top-level categories: governance,
+        freedom of expression and information, and privacy. Click on
+        “Change View” to see scores by service. Learn more about how
+        we tally our scores on our{" "}
+        <a href="https://rankingdigitalrights.org/methods-and-standards">
+          Methods and Standards
+        </a>{" "}
+        page.
+      </p>
 
-              <p className="mt-6">
-              Select and compare total company and service scores, as well
-                  as scores in our three top-level categories: governance,
-                  freedom of expression and information, and privacy. Click on
-                  “Change View” to see scores by service. Learn more about how
-                  we tally our scores on our{" "}
-                  <a href="https://rankingdigitalrights.org/methods-and-standards">
-                    Methods and Standards
-                  </a>{" "}
-                  page.
-              </p>
+      <div className="flex flex-col md:flex-row mt-10 justify-between items-center w-full">
+        <ToggleLeftRight
+          labelLeft="Totals"
+          labelRight="Services"
+          toggle={typeOfGraph !== "total"}
+          onChange={handleTypeOfGraphToggle}
+        />
+        {typeOfGraph === "services" && (
+          <FlipAxis
+            label="Flip axis"
+            flip={chartHeaders === "companies"}
+            onChange={handleFlipAxis}
+          />
+        )}
+      </div>
+      <div className="flex flex-col items-center mt-8">
+        <CompanySelector
+          className="flex-none w-full md:w-10/12 "
+          companies={companySelector}
+          selected={selectedCompanies}
+          onSelect={handleSelectCompany}
+        />
 
-              <div className="flex flex-col md:flex-row mt-10 justify-between items-center w-full">
-                <ToggleLeftRight
-                  labelLeft="Totals"
-                  labelRight="Services"
-                  toggle={typeOfGraph !== "total"}
-                  onChange={handleTypeOfGraphToggle}
-                />
-                {typeOfGraph === "services" && (
-                  <FlipAxis
-                    label="Flip axis"
-                    flip={chartHeaders === "companies"}
-                    onChange={handleFlipAxis}
-                  />
-                )}
-              </div>
-              <div className="flex flex-col items-center mt-8">
-                <CompanySelector
-                  className="flex-none w-full md:w-10/12 "
-                  companies={companySelector}
-                  selected={selectedCompanies}
-                  onSelect={handleSelectCompany}
-                />
-
-                <CategorySelector
-                  selected={state.category}
-                  onClick={handleSelectCategory}
-                />
-              </div>
-            </Container>
-
-            <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
-              <div
-                style={{ minHeight: "22rem" }}
-                className={c(
-                  "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3",
-                )}
-              >
-                {typeOfGraph === "total" && (
-                  <RankChart
-                    ranking={
-                      selectedCompanies.length > 0
-                        ? state.platformRankings.filter(({ id }) =>
-                          selectedCompanies.includes(id),
-                        )
-                        : state.platformRankings
-                    }
-                    category={state.category}
-                    hasHeader
-                  />
-                )}
-                {typeOfGraph === "services" &&
-                  chartHeaders === "companies" && (
-                    <ServicesByCompany
-                      category={state.category}
-                      companies={
-                        selectedCompanies.length > 0
-                          ? servicesByCompany.filter(({ id }) =>
-                            selectedCompanies.includes(id),
-                          )
-                          : servicesByCompany
-                      }
-                    />
-                  )}
-                {typeOfGraph === "services" &&
-                  chartHeaders === "services" && (
-                    <CompaniesByService
-                      category={state.category}
-                      companies={
-                        selectedCompanies.length > 0
-                          ? selectedCompanies
-                          : companiesIds
-                      }
-                      serviceRankings={serviceRankings}
-                      serviceOptions={serviceOptions}
-                    />
-                  )}
-              </div>
-            </div>
-          </div>
-        );
-      }}
-    </NarrativeContainer>
+        <CategorySelector
+          selected={state.category}
+          onClick={handleSelectCategory}
+        />
+      </div>
+      <div className="relative mx-auto md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12">
+        <div
+          style={{ minHeight: "22rem" }}
+          className={c(
+            "flex flex-col mx-auto mt-12 overflow-x-scroll sm:flex-row lg:overflow-x-visible px-3",
+          )}
+        >
+          {typeOfGraph === "total" && (
+            <RankChart
+              ranking={
+                selectedCompanies.length > 0
+                  ? state.platformRankings.filter(({ id }) =>
+                    selectedCompanies.includes(id),
+                  )
+                  : state.platformRankings
+              }
+              category={state.category}
+              hasHeader
+            />
+          )}
+          {typeOfGraph === "services" &&
+            chartHeaders === "companies" && (
+              <ServicesByCompany
+                category={state.category}
+                companies={
+                  selectedCompanies.length > 0
+                    ? servicesByCompany.filter(({ id }) =>
+                      selectedCompanies.includes(id),
+                    )
+                    : servicesByCompany
+                }
+              />
+            )}
+          {typeOfGraph === "services" &&
+            chartHeaders === "services" && (
+              <CompaniesByService
+                category={state.category}
+                companies={
+                  selectedCompanies.length > 0
+                    ? selectedCompanies
+                    : companiesIds
+                }
+                serviceRankings={serviceRankings}
+                serviceOptions={serviceOptions}
+              />
+            )}
+        </div>
+      </div>
+    </div>
   );
 };
 

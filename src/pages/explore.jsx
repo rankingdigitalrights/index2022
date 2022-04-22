@@ -196,23 +196,25 @@ const Explorer = ({
 }) => {
   return (
     <Layout>
-      <CompaniesScores
-        companiesIds={companiesIds}
-        companySelector={companySelector}
-        serviceOptions={serviceOptions}
-        serviceRankings={serviceRankings}
-        companyRankings={companyRankings}
-        servicesByCompany={servicesByCompany}
-      />
-      <LensCharts
-        companySelectors={companySelector}
-        indicatorLenses={indicatorLenses}
-        indicatorCompanyLenses={indicatorCompanyLenses}
-      />
-      <TimeCharts
-      companySelectors={companySelector}
-      yoyScores={yoyScores}
-      />
+      <div className="container mx-auto">
+        <CompaniesScores
+          companiesIds={companiesIds}
+          companySelector={companySelector}
+          serviceOptions={serviceOptions}
+          serviceRankings={serviceRankings}
+          companyRankings={companyRankings}
+          servicesByCompany={servicesByCompany}
+        />
+        <LensCharts
+          companySelectors={companySelector}
+          indicatorLenses={indicatorLenses}
+          indicatorCompanyLenses={indicatorCompanyLenses}
+        />
+        <TimeCharts
+          companySelectors={companySelector}
+          yoyScores={yoyScores}
+        />
+      </div>
     </Layout>
   );
 };
