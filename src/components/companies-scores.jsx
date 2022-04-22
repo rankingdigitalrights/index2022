@@ -2,13 +2,13 @@ import c from "clsx";
 import React, {useReducer, useState} from "react";
 
 import CategorySelector from "./category-selector";
-import CompaniesByService from "./companies-per-service";
+import CompaniesByService from "./companies-by-service";
 // FIXME: eventually switch this out for the original company-selector component with an optional label property added
 import CompanySelector from "./company-selector-simple";
 import FlipAxis from "./flip-axis";
 import NarrativeTitle from "./narrative-title";
 import RankChart from "./rank-chart-nolabel";
-import ServicesByCompany from "./services-per-company";
+import ServicesByCompany from "./services-by-company";
 import ToggleLeftRight from "./toggle-left-right";
 
 const initializeState = (state) => {
