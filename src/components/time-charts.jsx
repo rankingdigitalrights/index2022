@@ -26,7 +26,7 @@ const identitySortFn = (xs) => xs;
 const TimeCharts = (props) => {
   const {companySelectors, yoyScores} = props;
   const [selectedCompanies, setSelectedCompanies] = useState([]);
-  const [timeChart, setTimeChart] = useState(true);
+  const [timeChart, setTimeChart] = useState(false);
   const [sortStrategy, setSortStrategy] = useState("Alphabetically");
   const years = useMemo(() => ["2017", "2018", "2019", "2020", "2022"], []);
 
@@ -65,17 +65,13 @@ const TimeCharts = (props) => {
 
       <div className="flex flex-row justify-between items-center w-full my-12">
         <CompanySelector
-          className="flex-none w-9/12 md:w-1/2 self-center"
+          className="w-9/12 md:w-1/2 self-center"
           companies={companySelectors}
           selected={selectedCompanies}
           onSelect={handleSelectCompany}
         />
 
-        <FlipTimeChart
-          label={timeChart ? "Bars" : "Lines"}
-          onChange={handleFlipTimeChart}
-          toggle={timeChart}
-        />
+        <FlipTimeChart onChange={handleFlipTimeChart} toggle={timeChart} />
       </div>
 
       <CompanyYearOverYearTable

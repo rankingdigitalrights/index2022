@@ -69,9 +69,9 @@ const CompanyYearOverYearTable = ({
               </thead>
 
               {axis ? (
-                <CompanyYearOverYearSlope data={data} />
-              ) : (
                 <CompanyYearOverYearBar data={data} />
+              ) : (
+                <CompanyYearOverYearSlope data={data} />
               )}
             </table>
           </div>
