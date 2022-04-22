@@ -3,6 +3,7 @@ import path from "path";
 import React from "react";
 
 import CompaniesScores from "../components/companies-scores";
+import Divider from "../components/divider";
 import ExploreContainer from "../components/explore-container";
 import ExploreHeader from "../components/explore-header";
 import Layout from "../components/layout";
@@ -205,25 +206,37 @@ const Explorer = ({
       <ExploreContainer>
         {({Container}) => {
           return (
-            <Container>
-              <CompaniesScores
-                companiesIds={companiesIds}
-                companySelector={companySelector}
-                serviceOptions={serviceOptions}
-                serviceRankings={serviceRankings}
-                companyRankings={companyRankings}
-                servicesByCompany={servicesByCompany}
-              />
-              <LensCharts
-                companySelectors={companySelector}
-                indicatorLenses={indicatorLenses}
-                indicatorCompanyLenses={indicatorCompanyLenses}
-              />
-              <TimeCharts
-                companySelectors={companySelector}
-                yoyScores={yoyScores}
-              />
-            </Container>
+            <>
+              <Container>
+                <CompaniesScores
+                  companiesIds={companiesIds}
+                  companySelector={companySelector}
+                  serviceOptions={serviceOptions}
+                  serviceRankings={serviceRankings}
+                  companyRankings={companyRankings}
+                  servicesByCompany={servicesByCompany}
+                />
+              </Container>
+
+              <Divider />
+
+              <Container>
+                <LensCharts
+                  companySelectors={companySelector}
+                  indicatorLenses={indicatorLenses}
+                  indicatorCompanyLenses={indicatorCompanyLenses}
+                />
+              </Container>
+
+              <Divider />
+
+              <Container>
+                <TimeCharts
+                  companySelectors={companySelector}
+                  yoyScores={yoyScores}
+                />
+              </Container>
+            </>
           );
         }}
       </ExploreContainer>
