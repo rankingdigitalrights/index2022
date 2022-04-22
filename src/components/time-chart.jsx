@@ -1,9 +1,7 @@
 import React, { useMemo, useState } from "react";
-
 import CompanySelector from "./company-selector-simple";
 import CompanyYearOverYearTable from "./company-year-over-year-table";
 import FlipTimeChart from "./flip-time-chart";
-import NarrativeContainer from "./narrative-container";
 import NarrativeTitle from "./narrative-title";
 
 const strategies = new Map();
