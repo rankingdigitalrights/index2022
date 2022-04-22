@@ -166,6 +166,8 @@ export const getStaticProps = async () => {
   };
 }
 
+// FIXME: lenses chart is not receiving companies selection
+
 const Explorer = ({
   companiesIds,
   companySelector,
