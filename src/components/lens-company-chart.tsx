@@ -7,7 +7,7 @@ import LensRankChart from "./lens-rank-chart";
 interface LensCompanyChartProps {
   companyLenses: IndicatorLensCompanyIndex[];
   className?: string;
-  companyList: [];
+  companyList: string[];
 }
 
 const LensCompanyChart = ({
