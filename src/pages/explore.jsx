@@ -8,7 +8,7 @@ import ExploreContainer from "../components/explore-container";
 import ExploreHeader from "../components/explore-header";
 import Layout from "../components/layout";
 import LensCharts from "../components/lens-charts";
-import TimeCharts from "../components/time-chart";
+import TimeCharts from "../components/time-charts";
 import {
   allCompanies,
   allIndicatorLenses,
