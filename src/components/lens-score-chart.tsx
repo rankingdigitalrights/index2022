@@ -1,7 +1,7 @@
 import c from "clsx";
 import React from "react";
 
-import type { IndicatorLensIndex } from "../types";
+import type {IndicatorLensIndex} from "../types";
 import LensCircle from "./lens-circle";
 import RankChart from "./rank-chart-nolabel";
 
@@ -11,7 +11,7 @@ interface LensScoreProps {
   companyList: [];
 }
 
-const LensScore = ({ lenses, className, companyList }: LensScoreProps) => {
+const LensScore = ({lenses, className, companyList}: LensScoreProps) => {
   return (
     <ul className={c("ml-0 space-y-12", className)}>
       {lenses.map(({lens, lensPretty, scores, average}) => {
@@ -24,10 +24,10 @@ const LensScore = ({ lenses, className, companyList }: LensScoreProps) => {
             </div>
             <RankChart
               ranking={
-                companyList.length > 0 ?
-                  (scores.filter((score) => {
-                    return companyList.includes(score.id)
-                  }))
+                companyList.length > 0
+                  ? scores.filter((score) => {
+                      return companyList.includes(score.id);
+                    })
                   : scores
               }
             />
