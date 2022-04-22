@@ -281,13 +281,15 @@ export type IndicatorIndex = {
 export type IndicatorLensIndex = {
   lens: IndicatorLens;
   lensPretty: string;
-  scores: CompanyRank[];
+  average: number;
+  scores: Omit<CompanyRank, "category">[];
 };
 
 export type LensRank = {
   lens: IndicatorLens;
   lensPretty: string;
   score: number;
+  rank: number;
 };
 
 export type IndicatorLensCompanyIndex = {

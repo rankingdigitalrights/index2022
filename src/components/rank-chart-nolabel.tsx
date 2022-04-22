@@ -6,8 +6,13 @@ import {useChartResize} from "../hooks";
 import {CompanyRank, IndicatorCategoryExt} from "../types";
 import PercentageBar from "./percentage-bar";
 
+type ChartRanking = Pick<
+  CompanyRank,
+  "id" | "companyPretty" | "score" | "rank"
+>;
+
 interface RankChartProps {
-  ranking: CompanyRank[];
+  ranking: ChartRanking[];
   className?: string;
   activeCompany?: string;
   category?: IndicatorCategoryExt;
@@ -41,7 +46,7 @@ const RankChart = ({
   const companyWidth = "w-24";
 
   const chartRow = (
-    {id, companyPretty, score, rank}: CompanyRank,
+    {id, companyPretty, score, rank}: ChartRanking,
     idx: number,
   ) => {
     // eslint-disable-next-line unicorn/no-null
