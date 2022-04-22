@@ -74,11 +74,17 @@ const CompanyYearOverYearChart = ({data}: CompanyYearOverYearChartProps) => {
           </filter>
         </defs>
 
-        <text className="text-xs" x={30} y={0} dy={insetY / 2} dx="-30">
+        <text
+          className="font-sans text-xs"
+          x={30}
+          y={0}
+          dy={insetY / 2}
+          dx="-30"
+        >
           100%
         </text>
 
-        <text className="text-xs" x={30} y={h} dx="-17">
+        <text className="font-sans text-xs" x={30} y={h} dx="-17">
           0%
         </text>
 
@@ -88,7 +94,7 @@ const CompanyYearOverYearChart = ({data}: CompanyYearOverYearChartProps) => {
         {years.map((year) => {
           return (
             <text
-              className="text-xs"
+              className="font-sans text-xs"
               key={`year-label-${data.company}-${year}`}
               x={x(year)}
               y={height}
@@ -156,7 +162,7 @@ const CompanyYearOverYearChart = ({data}: CompanyYearOverYearChartProps) => {
                 rx="12"
                 filter="url(#shadow)"
               />
-              <text className="text-xs" x={16} y={26}>
+              <text className="font-sans text-xs" x={16} y={26}>
                 {score}%
               </text>
             </g>

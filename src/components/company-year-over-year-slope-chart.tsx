@@ -1,3 +1,4 @@
+import c from "clsx";
 import {scaleLinear, scalePoint} from "d3";
 import React, {useMemo} from "react";
 
@@ -135,7 +136,11 @@ const CompanyYearOverYearSlopeChart = ({
                 rx="12"
                 filter="url(#shadow)"
               />
-              <text className={isMobile ? "text-xxs" : "text-xs"} x={16} y={26}>
+              <text
+                className={c("font-sans", isMobile ? "text-xxs" : "text-xs")}
+                x={16}
+                y={26}
+              >
                 {score}%
               </text>
             </g>
