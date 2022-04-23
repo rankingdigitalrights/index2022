@@ -37,6 +37,20 @@ const HtmlHead = () => {
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta content="width=device-width, initial-scale=1" name="viewport" />
 
+      <link
+        rel="icon"
+        href="https://rankingdigitalrights.org/wp-content/uploads/2022/01/header-no-text-150x150.png"
+        sizes="32x32"
+      />
+      <link
+        rel="icon"
+        href="https://rankingdigitalrights.org/wp-content/uploads/2022/01/header-no-text.png"
+        sizes="192x192"
+      />
+      <link
+        rel="apple-touch-icon"
+        href="https://rankingdigitalrights.org/wp-content/uploads/2022/01/header-no-text.png"
+      />
       <>
         {twitterTags.map((name) => {
           const content = metaTags[path]?.[name]
