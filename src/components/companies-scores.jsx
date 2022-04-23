@@ -122,7 +122,7 @@ const CompaniesScores = (props) => {
 
         <FlipAxis
           className="mb-4 md:mb-0 self-center"
-          label="Flip axis"
+          label="Flip"
           flip={chartHeaders === "companies"}
           onChange={handleFlipAxis}
           disabled={typeOfGraph !== "services"}
