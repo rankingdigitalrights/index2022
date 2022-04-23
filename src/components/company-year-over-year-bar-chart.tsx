@@ -29,7 +29,7 @@ const CompanyYearOverYearBarChart = ({
   const insetRight = 15;
   // The real width of the graph.
   const w = width - insetLeft - insetRight;
-  const padding = 5;
+  const padding = 0;
   const paddingTop = 20;
   const paddingBottom = 20;
   const h = height - paddingTop - paddingBottom;
@@ -51,7 +51,7 @@ const CompanyYearOverYearBarChart = ({
   );
 
   return (
-    <div ref={chartRef} className="w-full h-28 px-1 font-sans">
+    <div ref={chartRef} className="w-full h-28 pl-1 font-sans">
       <svg
         version="1"
         xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ const CompanyYearOverYearBarChart = ({
               <PercentageBar
                 value={score}
                 width={w}
-                height={7}
+                height={9}
                 className={`fill-${year}`}
               />
             </g>

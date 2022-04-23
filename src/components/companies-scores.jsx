@@ -130,7 +130,7 @@ const CompaniesScores = (props) => {
       </div>
 
       <CategorySelector
-        className="mx-auto mb-6"
+        className="mx-auto mb-12"
         selected={state.category}
         onClick={handleSelectCategory}
       />

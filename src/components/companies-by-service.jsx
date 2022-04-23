@@ -65,12 +65,12 @@ const CompaniesByService = (props) => {
       >
         <div
           key={`chart-label-${company.companyPretty}`}
-          className="grow-0 flex flex-col align-left w-24"
+          className="grow-0 flex flex-col align-left w-32"
         >
-          <span className="text-prissian text-xs font-bold">
+          <span className="text-prissian text-sm font-bold">
             {company.companyPretty}
           </span>
-          <span className="text-xs font-thin">{company.service}</span>
+          <span className="text-sm font-thin">{company.service}</span>
         </div>
 
         <RankLabel rank={company.rank} className={rankClassName} />
@@ -110,7 +110,7 @@ const CompaniesByService = (props) => {
   // entry is an object: {serviceKind: [ {id: company}, {id: company} ] }
   const chartBlock = (rankings) => {
     return (
-      <div className="space-y-5">
+      <div className="flex flex-col items-start space-y-12">
         {rankings.map((entry) => {
           // key is the serviceKind name
           const key = Object.keys(entry);
@@ -120,7 +120,7 @@ const CompaniesByService = (props) => {
           return (
             <div
               key={`chartBlock-${key[0]}`}
-              className="flex flex-col space-y-5"
+              className="flex flex-col space-y-4"
             >
               {list.length > 0 && chartHeader(key[0])}
               {list.map((item, idx) => {

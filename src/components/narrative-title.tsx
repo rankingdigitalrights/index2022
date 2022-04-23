@@ -25,7 +25,7 @@ const NarrativeTitle = ({
         byLine ? "pb-4" : "pb-2",
       )}
     >
-      <h1 className="flex flex-col md:flex-row md:items-start bold text-xl leading-none mb-1">
+      <h1 className="flex flex-col md:flex-row md:items-start font-bold text-xl leading-none mb-1">
         {title}
       </h1>
 

@@ -42,7 +42,7 @@ const ServicesByCompany = (props) => {
       >
         <div className="flex-none justify-center w-8">{icon}</div>
 
-        <div className="flex-none w-24 text-xs">{serviceName}</div>
+        <div className="flex-none w-28 text-sm">{serviceName}</div>
 
         <div ref={ref} className="grow flex items-center ml-2">
           <svg

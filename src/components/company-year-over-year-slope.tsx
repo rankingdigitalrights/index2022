@@ -22,7 +22,7 @@ const CompanyYearOverYearSlope = ({data}: CompanyYearOverYearSlopeProps) => {
               <dd className="mt-1 truncate font-normal">{company.region}</dd>
             </dl>
           </td>
-          <td className="hidden px-3 py-4 text-sm text-center lg:table-cell">
+          <td className="hidden px-3 py-4 text-sm lg:table-cell">
             {company.region}
           </td>
           <td className="px-3 py-4">

@@ -12,11 +12,11 @@ const HomeTeaser = () => {
       </div>
 
       <div className="xl:container lg:mx-auto flex flex-col-reverse lg:flex-row">
-        <div className="lg:w-5/12 xl:w-1/2 2xl:w-5/12 2xl:pr-16 self-center bg-accent-red px-2 py-4 sm:py-6 lg:px-6">
+        <div className="h-full lg:w-5/12 xl:w-1/2 2xl:w-5/12 2xl:pr-16 bg-accent-red px-2 py-4 sm:py-6 lg:py-12 lg:px-6">
           <HomeBox href="/executive-summary" />
         </div>
 
-        <div className="lg:w-7/12 xl:w-1/2 2xl:w-7/12 bg-prissian flex flex-col justify-around py-4 px-2 md:py-4 md:px-2 lg:py-12 lg:px-6">
+        <div className="h-full lg:w-7/12 xl:w-1/2 2xl:w-7/12 bg-prissian py-4 px-2 md:py-4 lg:py-12 md:px-2 lg:px-6">
           <HomeLogo />
         </div>
       </div>

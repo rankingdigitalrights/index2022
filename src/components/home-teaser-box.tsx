@@ -27,13 +27,16 @@ const HomeTeaserBox = ({
 
   return (
     <div className={c("relative leading-none", textColor, className)}>
-      <div className="flex flex-col h-full justify-between">
+      <div className="flex flex-col space-y-8 2xl:space-y-16 justify-between">
         <Link passHref href={href}>
           <a className="hover:no-underline flex space-x-2">
-            <Logo className="flex-none w-12 h-12" theme={theme} />
+            <Logo
+              className="flex-initial w-[5rem] h-[5rem] sm:w-[4.3rem] sm:h-[4.3rem]"
+              theme={theme}
+            />
             <h3
               className={c(
-                "cursor-pointer font-bold text-lg sm:text-xl sm:leading-9 mt-0 flex flex-col",
+                "cursor-pointer font-bold text-xl sm:leading-9 mt-0 flex flex-col",
                 textColor,
               )}
               onMouseEnter={() => setIsHover(true)}

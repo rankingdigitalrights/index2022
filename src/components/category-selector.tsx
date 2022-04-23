@@ -14,9 +14,9 @@ const CategorySelector = ({
   onClick,
   className,
 }: CategorySelectorProps) => {
-  const buttonClassName = "px-4 py-2 my-1 border rounded-md";
+  const buttonClassName = "px-2 py-[0.3rem] my-1 border rounded-md";
 
-  const spacerClassName = "mr-2 md:mr-4";
+  const spacerClassName = "mr-1";
 
   const totalClassName = c(buttonClassName, spacerClassName, "text-prissian", {
     "border-prissian": selected !== "total",

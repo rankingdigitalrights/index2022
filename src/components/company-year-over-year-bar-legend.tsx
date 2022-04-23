@@ -11,7 +11,7 @@ const CompanyYearOverYearBarLegend = () => {
   // Insets the graph on the left and right.
   const insetLeft = 10;
   const insetRight = 15;
-  const padding = 10;
+  const padding = 5;
   // The real width of the graph.
   const w = width - insetLeft - insetRight;
 
@@ -52,7 +52,7 @@ const CompanyYearOverYearBarLegend = () => {
               break;
             }
             case "100%": {
-              mod = 29;
+              mod = 25;
               break;
             }
             default:

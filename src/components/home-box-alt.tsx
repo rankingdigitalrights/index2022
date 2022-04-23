@@ -45,12 +45,12 @@ const HomeBoxAlt = ({
 
   return (
     <div className={c("relative leading-none", textColor, className)}>
-      <div className="flex flex-col h-full justify-between space-y-8">
+      <div className="flex flex-col h-full justify-between space-y-4">
         <Link passHref href={href}>
           <a className="hover:no-underline flex space-x-2">
             <h3
               className={c(
-                "cursor-pointer font-bold text-xl mt-0 flex flex-col",
+                "cursor-pointer font-bold text-xl mt-0 lg:h-32 flex flex-col",
                 textColor,
               )}
               onMouseEnter={() => setIsHover(true)}
@@ -62,31 +62,31 @@ const HomeBoxAlt = ({
         </Link>
 
         {children}
-      </div>
 
-      <Link passHref href={href}>
-        <a
-          className={c(
-            "flex items-center justify-between hover:no-underline",
-            textColor,
-          )}
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
-        >
-          <span className="font-sans whitespace-pre">{linkTitle}</span>
-          <span
+        <Link passHref href={href}>
+          <a
             className={c(
-              "cursor-pointer w-12 h-12 mr-6 rounded-full flex items-center justify-center",
-              arrowBgColor,
+              "flex items-center justify-between hover:no-underline",
+              textColor,
             )}
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
           >
-            <ArrowRight
-              className={c("w-6 h-6", animationClassName, arrowColor)}
-              aria-label="Goto page arrow"
-            />
-          </span>
-        </a>
-      </Link>
+            <span className="font-sans whitespace-pre">{linkTitle}</span>
+            <span
+              className={c(
+                "cursor-pointer w-12 h-12 mr-6 rounded-full flex items-center justify-center",
+                arrowBgColor,
+              )}
+            >
+              <ArrowRight
+                className={c("w-6 h-6", animationClassName, arrowColor)}
+                aria-label="Goto page arrow"
+              />
+            </span>
+          </a>
+        </Link>
+      </div>
     </div>
   );
 };

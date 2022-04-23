@@ -31,15 +31,16 @@ const FlipAxis = ({
     <div
       className={c("flex items-center font-sans", disabledClassName, className)}
     >
-      <label htmlFor="toggle" className="text-sm mr-2">
+      <label htmlFor="toggle" className="sr-only text-sm mr-2">
         {label}
       </label>
       <button
-        className="relative inline-block w-5 align-middle select-none transition duration-200 ease-in"
+        className="relative inline-block w-12 align-middle select-none transition duration-200 ease-in flex items-center"
         onClick={handleToggle}
         aria-label="Flip-Axis"
         disabled={disabled}
       >
+        <span className="text-sm mr-2">{label}</span>
         {flip ? <Up /> : <Down />}
       </button>
     </div>

@@ -34,14 +34,14 @@ const ToggleLeftRight = ({
         {labelLeft}
       </label>
       <button
-        className="relative inline-block w-10 align-middle select-none transition duration-200 ease-in"
+        className="relative inline-block w-8 align-middle select-none transition duration-200 ease-in"
         onClick={handleToggle}
         aria-label="Toggle switch"
       >
         <label
           htmlFor="toggle"
           className={c(
-            "overflow-hidden h-5 rounded-full border-2 border-prissian cursor-pointer flex items-center",
+            "overflow-hidden h-4 rounded-full border-2 border-prissian cursor-pointer flex items-center",
             toggle ? "bg-prissian" : undefined,
           )}
         >
@@ -50,7 +50,7 @@ const ToggleLeftRight = ({
             name="toggle"
             checked={toggle}
             className={c(
-              "toggle-checkbox absolute block w-3 h-3 rounded-full appearance-none cursor-pointer",
+              "toggle-checkbox absolute block w-2 h-2 rounded-full appearance-none cursor-pointer",
               toggle ? "bg-beige" : "bg-prissian",
             )}
             onChange={handleToggle}
