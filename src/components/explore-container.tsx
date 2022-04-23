@@ -32,7 +32,7 @@ const ExploreContainer = ({
 
   return (
     <div>
-      <div className="flex flex-col justify-around py-3 md:py-12">
+      <div className="flex flex-col justify-around py-7 md:py-8">
         <div className="pb-0">{children({Container: ContainerWrapper})}</div>
 
         {hasDonate && (
