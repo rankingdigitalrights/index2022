@@ -6,7 +6,7 @@ const ExploreHeader = () => {
   return (
     <div className="py-12 bg-beige">
       <div className="relative explore-container px-2">
-        <section className="lg:w-2/3 pr-4 lg:h-56 flex flex-col justify-center">
+        <section className="sm:w-2/3 pr-4 sm:h-48 md:h-56 flex flex-col justify-center">
           <h1 className="font-bold text-xl leading-none text-prissian">
             Explore the Data
           </h1>
@@ -20,7 +20,7 @@ const ExploreHeader = () => {
           </p>
         </section>
 
-        <ExploreLogo className="hidden lg:grid lg:absolute inset-y-0 -right-48 lg:h-56" />
+        <ExploreLogo className="hidden sm:grid sm:absolute inset-y-0 sm:-right-44 md:-right-48 sm:h-48 md:h-56" />
       </div>
     </div>
   );

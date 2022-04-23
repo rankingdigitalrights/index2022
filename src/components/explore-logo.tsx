@@ -9,7 +9,7 @@ interface ExploreLogoProps {
 
 const ExploreLogo = ({className}: ExploreLogoProps) => {
   return (
-    <div className={c("grid grid-rows-3 grid-cols-6 lg:gap-1", className)}>
+    <div className={c("grid grid-rows-3 grid-cols-6 gap-1", className)}>
       {/* Row 1 */}
       <Arrow className="w-full h-full" color="blue" />
 
