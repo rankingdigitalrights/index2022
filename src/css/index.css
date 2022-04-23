@@ -118,6 +118,11 @@
     outline: none;
   }
 
+  html,
+  body {
+    @apply overflow-x-hidden;
+  }
+
   /* span is used as glossary buttons */
   body:not(.user-is-tabbing) span:focus {
     outline: none;

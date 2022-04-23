@@ -20,7 +20,9 @@ const ExploreHeader = () => {
           </p>
         </section>
 
-        <ExploreLogo className="hidden sm:grid sm:absolute inset-y-0 sm:-right-44 md:-right-48 sm:h-48 md:h-56" />
+        <div className="hidden sm:block sm:absolute inset-y-0 sm:-right-52 md:-right-48 sm:h-56 md:h-64 aspect-video">
+          <ExploreLogo />
+        </div>
       </div>
     </div>
   );
