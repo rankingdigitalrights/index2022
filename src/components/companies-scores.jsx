@@ -137,7 +137,7 @@ const CompaniesScores = (props) => {
 
       <div
         className={c(
-          "flex flex-col mx-auto w-full overflow-x-auto lg:overflow-x-visible px-3",
+          "flex flex-col mx-auto w-full overflow-x-auto lg:overflow-x-visible",
         )}
       >
         {typeOfGraph === "total" && (
