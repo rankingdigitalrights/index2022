@@ -20,8 +20,16 @@ interface EvaluatedServiceProps {
   kind: ServiceKind;
 }
 
-export const mapIcon = (kind: ServiceKind, hasShadow = true) => {
-  const className = c("mr-2", hasShadow ? "svg-shadow" : undefined);
+export const mapIcon = (
+  kind: ServiceKind,
+  hasShadow = true,
+  background = "beige",
+) => {
+  const className = c("mr-2", {
+    "fill-beige": background === "beige",
+    "fill-white": background === "white",
+    "svg-shadow": hasShadow,
+  });
 
   switch (kind) {
     case "broadband":

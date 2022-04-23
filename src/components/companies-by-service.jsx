@@ -12,7 +12,7 @@ import RankLabel from "./rank-label";
 // TODO: add links to company names?
 
 const serviceIcon = (serviceKind) => {
-  return mapIcon(serviceKind, false);
+  return mapIcon(serviceKind, false, "white");
 };
 
 const CompaniesByService = (props) => {
