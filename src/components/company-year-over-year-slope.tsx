@@ -6,10 +6,12 @@ import CompanyYearOverYearSlopeChart from "./company-year-over-year-slope-chart"
 interface CompanyYearOverYearSlopeProps {
   data: CompanyYearOverYear[];
   isNarrow: boolean;
+  highlightedYear?: string;
 }
 
 const CompanyYearOverYearSlope = ({
   data,
+  highlightedYear,
   isNarrow,
 }: CompanyYearOverYearSlopeProps) => {
   return (
@@ -30,7 +32,11 @@ const CompanyYearOverYearSlope = ({
             {company.region}
           </td>
           <td className="px-3 py-4">
-            <CompanyYearOverYearSlopeChart data={company} isNarrow={isNarrow} />
+            <CompanyYearOverYearSlopeChart
+              data={company}
+              highlightedYear={highlightedYear}
+              isNarrow={isNarrow}
+            />
           </td>
         </tr>
       ))}

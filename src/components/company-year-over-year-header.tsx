@@ -6,6 +6,7 @@ import {useChartResize} from "../hooks";
 interface CompanyYearOverYearHeaderProps {
   years: string[];
   isNarrow: boolean;
+  onHoverYear: (year?: string) => void;
 }
 
 const asteriskYears = new Set(["2020", "2022"]);
@@ -34,6 +35,7 @@ const YearText = ({year}: {year: string}) => {
 const CompanyYearOverYearHeader = ({
   years,
   isNarrow,
+  onHoverYear,
 }: CompanyYearOverYearHeaderProps) => {
   const [chartRef, width, height] = useChartResize();
 
@@ -62,7 +64,13 @@ const CompanyYearOverYearHeader = ({
       >
         {years.map((year) => {
           return (
-            <g key={`header-${year}`} transform={`translate(${x(year)},20)`}>
+            <g
+              key={`header-${year}`}
+              className="select-none"
+              transform={`translate(${x(year)},20)`}
+              onMouseEnter={() => onHoverYear(year)}
+              onMouseLeave={() => onHoverYear(undefined)}
+            >
               <circle r="4" className={`fill-${year}`} />
               {isNarrow ? (
                 <NarrowYearText year={year} />

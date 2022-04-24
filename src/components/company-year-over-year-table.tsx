@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {useMobileSize} from "../hooks";
 import type {CompanyYearOverYear} from "../types";
@@ -23,6 +23,7 @@ const CompanyYearOverYearTable = ({
   sortOrder,
 }: CompanyYearOverYearTableProps) => {
   const isNarrow = useMobileSize(768);
+  const [highlightedYear, setHighlightedYear] = useState<string>();
 
   return (
     <div className="mt-8 flex flex-col font-sans">
@@ -69,15 +70,23 @@ const CompanyYearOverYearTable = ({
                     <CompanyYearOverYearHeader
                       years={years}
                       isNarrow={isNarrow}
+                      onHoverYear={setHighlightedYear}
                     />
                   </th>
                 </tr>
               </thead>
 
               {axis ? (
-                <CompanyYearOverYearBar data={data} />
+                <CompanyYearOverYearBar
+                  data={data}
+                  highlightedYear={highlightedYear}
+                />
               ) : (
-                <CompanyYearOverYearSlope data={data} isNarrow={isNarrow} />
+                <CompanyYearOverYearSlope
+                  data={data}
+                  highlightedYear={highlightedYear}
+                  isNarrow={isNarrow}
+                />
               )}
             </table>
 

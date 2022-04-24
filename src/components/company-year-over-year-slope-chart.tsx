@@ -8,12 +8,14 @@ import type {CompanyYearOverYear} from "../types";
 interface CompanyYearOverYearSlopeChartProps {
   data: CompanyYearOverYear;
   isNarrow: boolean;
+  highlightedYear?: string;
 }
 
 type ScorePair = [{year: string; score: number}, {year: string; score: number}];
 
 const CompanyYearOverYearSlopeChart = ({
   data,
+  highlightedYear,
   isNarrow,
 }: CompanyYearOverYearSlopeChartProps) => {
   const years = data.scores.map(({year}) => year.toString());
@@ -91,6 +93,15 @@ const CompanyYearOverYearSlopeChart = ({
               floodOpacity="0.3"
             />
           </filter>
+
+          <filter id="shadow-highlighted">
+            <feDropShadow
+              dx="-1.5"
+              dy="1.5"
+              stdDeviation="1"
+              floodOpacity="0.8"
+            />
+          </filter>
         </defs>
 
         {yearScorePairs.map(([a, b]) => {
@@ -118,6 +129,8 @@ const CompanyYearOverYearSlopeChart = ({
         })}
 
         {scores.map(({year, score}) => {
+          const isHighlighted = year === highlightedYear;
+
           return (
             <g
               key={`labels-${data.company}-${year}`}
@@ -135,10 +148,20 @@ const CompanyYearOverYearSlopeChart = ({
                 strokeWidth="0.4"
                 ry="12"
                 rx="12"
-                filter="url(#shadow)"
+                filter={
+                  isHighlighted ? "url(#shadow-highlighted)" : "url(#shadow)"
+                }
               />
               <text
-                className={c("font-sans", isNarrow ? "text-xxs" : "text-xs")}
+                className={c(
+                  "font-sans",
+                  "transform-gpu transform-safari transition-colors ease-in-out duration-200",
+                  {
+                    "text-xxs": isNarrow,
+                    "text-xs": !isNarrow,
+                    "fill-prissian": isHighlighted,
+                  },
+                )}
                 x={16}
                 y={26}
               >

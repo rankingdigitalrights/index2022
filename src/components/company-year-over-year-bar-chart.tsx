@@ -7,10 +7,12 @@ import PercentageBar from "./company-year-over-year-percentage-bar";
 
 interface CompanyYearOverYearBarChartProps {
   data: CompanyYearOverYear;
+  highlightedYear?: string;
 }
 
 const CompanyYearOverYearBarChart = ({
   data,
+  highlightedYear,
 }: CompanyYearOverYearBarChartProps) => {
   const percentages = useMemo(() => ["0%", "25%", "50%", "75%", "100%"], []);
   const years = data.scores.map(({year}) => year.toString());
@@ -73,18 +75,21 @@ const CompanyYearOverYearBarChart = ({
         })}
 
         {scores.map(({year, score}) => {
+          const isHighlighted = year === highlightedYear;
+
           return (
             <g
               key={`bar-${data.company}-${year}`}
               transform={`translate(${xPercentage("0%")},${
                 (yYears(year) || 0) + paddingTop
               })`}
+              height={11}
             >
               <PercentageBar
                 value={score}
                 width={w}
                 height={9}
-                className={`fill-${year}`}
+                className={isHighlighted ? "fill-prissian" : `fill-${year}`}
               />
             </g>
           );

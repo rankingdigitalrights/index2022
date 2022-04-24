@@ -55,9 +55,12 @@ const PercentageBar = ({
   }
 
   return (
-    <g width={`${percentage}%`}>
+    <g>
       <rect
-        className={c(className)}
+        className={c(
+          "transform-gpu transform-safari transition-colors ease-in-out duration-200",
+          className,
+        )}
         x={0}
         y={0}
         width={percentage}

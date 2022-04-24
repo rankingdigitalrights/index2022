@@ -188,6 +188,10 @@
     @apply mb-3 leading-tight;
   }
 
+  g {
+    pointer-events: bounding-box;
+  }
+
   .element p {
     @apply inline;
   }

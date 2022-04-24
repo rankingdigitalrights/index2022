@@ -6,9 +6,13 @@ import CompanyYearOverYearBarLegend from "./company-year-over-year-bar-legend";
 
 interface CompanyYearOverYearBarProps {
   data: CompanyYearOverYear[];
+  highlightedYear?: string;
 }
 
-const CompanyYearOverYearBar = ({data}: CompanyYearOverYearBarProps) => {
+const CompanyYearOverYearBar = ({
+  data,
+  highlightedYear,
+}: CompanyYearOverYearBarProps) => {
   return (
     <tbody className="bg-white">
       <tr>
@@ -35,7 +39,10 @@ const CompanyYearOverYearBar = ({data}: CompanyYearOverYearBarProps) => {
             {company.region}
           </td>
           <td className="pl-3">
-            <CompanyYearOverYearBarChart data={company} />
+            <CompanyYearOverYearBarChart
+              data={company}
+              highlightedYear={highlightedYear}
+            />
           </td>
         </tr>
       ))}
