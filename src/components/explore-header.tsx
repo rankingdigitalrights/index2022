@@ -4,7 +4,7 @@ import ExploreLogo from "./explore-logo";
 
 const ExploreHeader = () => {
   return (
-    <div className="py-12 bg-beige">
+    <div className="py-12 bg-beige sm:overflow-x-hidden">
       <div className="relative explore-container px-2">
         <section className="sm:w-2/3 pr-4 sm:h-48 md:h-56 flex flex-col justify-center">
           <h1 className="font-bold text-xl leading-none text-prissian">
@@ -20,7 +20,10 @@ const ExploreHeader = () => {
           </p>
         </section>
 
-        <div className="hidden sm:block sm:absolute inset-y-0 sm:-right-52 md:-right-48 sm:h-56 md:h-64 aspect-video">
+        <div
+          className="hidden sm:block sm:absolute inset-y-0 sm:-right-52 md:-right-48 sm:h-56 md:h-64 aspect-video"
+          style={{contain: "paint"}}
+        >
           <ExploreLogo />
         </div>
       </div>

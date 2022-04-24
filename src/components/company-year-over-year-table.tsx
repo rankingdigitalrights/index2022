@@ -30,7 +30,7 @@ const CompanyYearOverYearTable = ({
         <div className="inline-block min-w-full py-2 align-middle">
           <div>
             <table className="min-w-full">
-              <thead>
+              <thead className="bg-gray-50">
                 <tr>
                   <th
                     scope="col"
