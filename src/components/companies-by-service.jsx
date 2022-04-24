@@ -6,18 +6,11 @@ import PercentageBar from "./percentage-bar";
 import PillHeader from "./pill-header";
 import RankLabel from "./rank-label";
 
-// FIXME: going crazy with the 'unique key' warning (also in spc)
-
-// TODO: add highlighting to rows?
-// TODO: add links to company names?
-
 const serviceIcon = (serviceKind) => {
   return mapIcon(serviceKind, false, "white");
 };
 
-const CompaniesByService = (props) => {
-  const {companies, category, serviceRankings, serviceOptions} = props;
-
+const CompaniesByService = ({serviceRankings, category}) => {
   const [chartRef, chartWidth] = useChartResize();
   const chartHeight = 10;
 
@@ -30,35 +23,10 @@ const CompaniesByService = (props) => {
 
   const rankClassName = "bg-diff-del";
 
-  // keys is an array of serviceKind strings
-  const keys = Object.keys(serviceRankings);
-
-  // collect together the data relevant to the selected category
-  // prepRanks is an array of objects of the form:
-  // [ {serviceKind: [ { id: company }, { id: company } ] } ]
-  const prepRanks = keys.map((key) => {
-    const companiesArr = serviceRankings[key][category].internet;
-    return {[key]: companiesArr};
-  });
-
-  const chartHeader = (serviceKind) => {
-    const sIcon = serviceIcon(serviceKind);
-    // TODO improve this kindName function
-    const kindName = serviceOptions.find((service) => {
-      return service.kind === serviceKind;
-    });
-    return (
-      <PillHeader className="flex items-center">
-        {sIcon}
-        <div>{kindName.label}</div>
-      </PillHeader>
-    );
-  };
-
   const chartRow = (company, idx) => {
     // eslint-disable-next-line unicorn/no-null
     const ref = idx === 0 ? chartRef : null;
-    return companies.includes(company.id) ? (
+    return (
       <div
         key={`chart-row-${category}-${company.service}`}
         className="flex items-center space-x-1 pr-1.5 pl-1.5 font-sans"
@@ -95,55 +63,65 @@ const CompaniesByService = (props) => {
               className={categoryClassName}
             />
           </svg>
-
-          <span className="shrink-0 text-right w-9 pl-1 pr-1 select-none float-right text-prissian text-xs">
-            {company.score}%
-          </span>
         </div>
-      </div>
-    ) : // eslint-disable-next-line unicorn/no-null
-    null;
-  };
 
-  // rankings is an array of objects of the form:
-  // [ {serviceKind: [ {id: company }, {id: company } ] } ]
-  // entry is an object: {serviceKind: [ {id: company}, {id: company} ] }
-  const chartBlock = (rankings) => {
-    return (
-      <div className="flex flex-col items-start space-y-12">
-        {rankings.map((entry) => {
-          // key is the serviceKind name
-          const key = Object.keys(entry);
-          // values is an array of companies that provide services of that kind
-          const values = entry[key[0]];
-          const list = values.filter((value) => companies.includes(value.id));
-          return (
-            <div
-              key={`chartBlock-${key[0]}`}
-              className="flex flex-col space-y-4"
-            >
-              {list.length > 0 && chartHeader(key[0])}
-              {list.map((item, idx) => {
-                return chartRow(item, idx);
-              })}
-            </div>
-          );
-        })}
+        <span className="shrink-0 text-right w-9 pl-1 pr-1 select-none float-right text-prissian text-xs">
+          {company.score}%
+        </span>
       </div>
     );
   };
 
-  const divider = Math.ceil(prepRanks.length / 2);
+  const divider = Math.ceil(serviceRankings.length / 2);
 
-  // TODO: add a conditional here so that if entries.length is 1, it shows only one column
-  // TODO: this creates a chartblock before the selected companies have been filtered => rearrange this flow
   return (
-    <div className="flex flex-col space-y-5 md:space-y-0 md:space-x-8 md:flex-row">
+    <div className="flex flex-col space-y-5 md:space-y-0 md:space-x-8 md:flex-row font-sans">
       <div className="w-full md:w-1/2">
-        {chartBlock(prepRanks.slice(0, divider))}
+        <div className="flex flex-col items-start space-y-12">
+          {serviceRankings
+            .slice(0, divider)
+            .map(({serviceCategory, serviceCategoryName, rankings}) => {
+              return (
+                <div
+                  key={`chartBlock-${serviceCategory}`}
+                  className="flex flex-col space-y-4 w-full"
+                >
+                  <PillHeader className="flex items-center w-full">
+                    {serviceIcon(serviceCategory)}
+                    <div>{serviceCategoryName}</div>
+                  </PillHeader>
+
+                  {rankings.map((item, idx) => {
+                    return chartRow(item, idx);
+                  })}
+                </div>
+              );
+            })}
+        </div>
       </div>
+
       <div className="w-full md:w-1/2">
-        {chartBlock(prepRanks.slice(divider))}
+        <div className="flex flex-col items-start space-y-12">
+          {serviceRankings
+            .slice(divider)
+            .map(({serviceCategory, serviceCategoryName, rankings}) => {
+              return (
+                <div
+                  key={`chartBlock-${serviceCategory}`}
+                  className="flex flex-col space-y-4 w-full"
+                >
+                  <PillHeader className="flex items-center w-full">
+                    {serviceIcon(serviceCategory)}
+                    <div>{serviceCategoryName}</div>
+                  </PillHeader>
+
+                  {rankings.map((item, idx) => {
+                    return chartRow(item, idx);
+                  })}
+                </div>
+              );
+            })}
+        </div>
       </div>
     </div>
   );

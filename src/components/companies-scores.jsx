@@ -1,5 +1,5 @@
 import c from "clsx";
-import React, {useReducer, useState} from "react";
+import React, {useState} from "react";
 
 import CategorySelector from "./category-selector";
 import CompaniesByService from "./companies-by-service";
@@ -11,62 +11,50 @@ import RankChart from "./rank-chart";
 import ServicesByCompany from "./services-by-company";
 import ToggleLeftRight from "./toggle-left-right";
 
-const initializeState = (state) => {
-  const platformRankings = state.service
-    ? state.serviceRankings[state.service.kind]?.[state.category]?.internet
-    : state.companyRankings[state.category]?.internet;
-  return {
-    ...state,
-    platformRankings,
-  };
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "setCategory":
-      return {
-        ...state,
-        category: action.category,
-        platformRankings: state.service
-          ? state.serviceRankings[state.service.kind]?.[action.category]
-              ?.internet
-          : state.companyRankings[action.category]?.internet,
-      };
-    default:
-      throw new Error(`No match for action ${action.type}.`);
-  }
-};
-
 const CompaniesScores = (props) => {
   const {
-    companiesIds,
-    companySelector,
-    serviceOptions,
+    totalRanking,
+    governanceRanking,
+    freedomRanking,
+    privacyRanking,
+    companySelectors,
     serviceRankings,
-    companyRankings,
     servicesByCompany,
   } = props;
 
   const [selectedCompanies, setSelectedCompanies] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("total");
+  const [platformRankings, setPlatformRankings] = useState(totalRanking);
+
   const [typeOfGraph, setTypeOfGraph] = useState("total");
   const [chartHeaders, setChartHeaders] = useState("companies");
 
-  // serviceOptions.find(({ kind }) => kind === queryService)
-
-  const [state, dispatch] = useReducer(
-    reducer,
-    {
-      category: "total",
-      service: undefined,
-      platformRankings: undefined,
-      serviceRankings,
-      companyRankings,
-    },
-    initializeState,
-  );
-
   const handleSelectCategory = (category) => {
-    dispatch({type: "setCategory", category});
+    switch (category) {
+      case "total": {
+        setSelectedCategory("total");
+        setPlatformRankings(totalRanking);
+        break;
+      }
+      case "governance": {
+        setSelectedCategory("governance");
+        setPlatformRankings(governanceRanking);
+        break;
+      }
+      case "freedom": {
+        setSelectedCategory("freedom");
+        setPlatformRankings(freedomRanking);
+        break;
+      }
+      case "privacy": {
+        setSelectedCategory("privacy");
+        setPlatformRankings(privacyRanking);
+        break;
+      }
+      default: {
+        break;
+      }
+    }
   };
 
   const handleTypeOfGraphToggle = (toggle) => {
@@ -107,7 +95,7 @@ const CompaniesScores = (props) => {
       <div className="flex flex-wrap-reverse justify-between items-center w-full my-12">
         <CompanySelector
           className="flex-none w-full md:w-1/2 mt-2 md:mt-0 self-center"
-          companies={companySelector}
+          companies={companySelectors}
           selected={selectedCompanies}
           onSelect={handleSelectCompany}
         />
@@ -132,7 +120,7 @@ const CompaniesScores = (props) => {
 
       <CategorySelector
         className="mx-auto mb-12"
-        selected={state.category}
+        selected={selectedCategory}
         onClick={handleSelectCategory}
       />
 
@@ -145,17 +133,17 @@ const CompaniesScores = (props) => {
           <RankChart
             ranking={
               selectedCompanies.length > 0
-                ? state.platformRankings.filter(({id}) =>
+                ? platformRankings.filter(({id}) =>
                     selectedCompanies.includes(id),
                   )
-                : state.platformRankings
+                : platformRankings
             }
-            category={state.category}
+            category={selectedCategory}
           />
         )}
         {typeOfGraph === "services" && chartHeaders === "companies" && (
           <ServicesByCompany
-            category={state.category}
+            category={selectedCategory}
             companies={
               selectedCompanies.length > 0
                 ? servicesByCompany.filter(({id}) =>
@@ -165,14 +153,22 @@ const CompaniesScores = (props) => {
             }
           />
         )}
+
         {typeOfGraph === "services" && chartHeaders === "services" && (
           <CompaniesByService
-            category={state.category}
-            companies={
-              selectedCompanies.length > 0 ? selectedCompanies : companiesIds
+            category={selectedCategory}
+            serviceRankings={
+              selectedCompanies.length > 0
+                ? serviceRankings[selectedCategory]
+                    .map(({rankings, ...rest}) => ({
+                      ...rest,
+                      rankings: rankings.filter(({id}) =>
+                        selectedCompanies.includes(id),
+                      ),
+                    }))
+                    .filter(({rankings}) => rankings.length > 0)
+                : serviceRankings[selectedCategory]
             }
-            serviceRankings={serviceRankings}
-            serviceOptions={serviceOptions}
           />
         )}
       </div>

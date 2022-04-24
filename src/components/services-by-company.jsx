@@ -6,8 +6,7 @@ import {mapIcon} from "./evaluated-service";
 import PercentageBar from "./percentage-bar";
 import PillHeader from "./pill-header";
 
-const ServicesByCompany = (props) => {
-  const {category, companies} = props;
+const ServicesByCompany = ({category, companies}) => {
   const [chartRef, chartWidth] = useChartResize();
   const chartHeight = 10;
 
@@ -60,10 +59,10 @@ const ServicesByCompany = (props) => {
               className={categoryClassName}
             />
           </svg>
-          <span className="shrink-0 text-right w-9 pl-1 pr-1 select-none float-right text-prissian text-xs">
-            {score}%
-          </span>
         </div>
+        <span className="shrink-0 text-right w-9 pl-1 pr-1 select-none float-right text-prissian text-xs">
+          {score}%
+        </span>
       </div>
     );
   };

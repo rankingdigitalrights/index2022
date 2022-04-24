@@ -120,3 +120,25 @@ export const byYear = (order?: SortOrder) => <
   if (a.year > b.year) return right;
   return 0;
 };
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const byServiceKind = (order?: SortOrder) => <
+  T extends Required<{kindName: string}>
+>(
+  a: T,
+  b: T,
+) => {
+  // The default is to sort ascending.
+  let left = -1;
+  let right = 1;
+
+  if (order && order === "desc") {
+    left = 1;
+    right = -1;
+  }
+
+  if (a.kindName.localeCompare(b.kindName) < 0) return left;
+  if (a.kindName.localeCompare(b.kindName) > 0) return right;
+
+  return 0;
+};

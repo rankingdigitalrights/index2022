@@ -19,18 +19,24 @@ import {
   companyServices,
   companyYearOverYearCategoryScoreData,
 } from "../data";
+import {byScore, byServiceKind} from "../sort";
 import {uniqueBy} from "../utils";
 
 export const getStaticProps = async () => {
+  const [
+    totalRanking,
+    governanceRanking,
+    freedomRanking,
+    privacyRanking,
+  ] = await Promise.all(
+    ["total", "governance", "freedom", "privacy"].map(async (category) =>
+      companyRankingData("internet", category),
+    ),
+  );
+
   const services = (await allServices()).filter(
     ({kind}) => kind !== "Group" && kind !== "Operating Company",
   );
-
-  const serviceOptions = uniqueBy("kind", services).map(({kind, kindName}) => ({
-    kind,
-    label: kindName,
-    value: kind,
-  }));
 
   const [
     companies,
@@ -46,12 +52,8 @@ export const getStaticProps = async () => {
     "algorithmic-transparency",
     "targeted-advertising",
   ]);
-  const companiesIds = companies.reduce((agg, company) => {
-    agg.push(company.id);
-    return agg;
-  }, []);
 
-  const companySelector = companies.map(
+  const companySelectors = companies.map(
     ({id: companyId, name, kind, region}) => {
       return {
         value: companyId,
@@ -102,58 +104,45 @@ export const getStaticProps = async () => {
     }),
   );
 
-  const companyRankings = await ["internet"].reduce(async (memo, kind) => {
-    return ["total", "governance", "freedom", "privacy"].reduce(
-      async (agg, category) => {
-        const data = await agg;
-        const rankings = await companyRankingData(kind, category);
+  const serviceRankings = await uniqueBy("kind", services)
+    .sort(byServiceKind)
+    .reduce(
+      async (memo, {kind: serviceCategory, kindName: serviceCategoryName}) => {
+        const files = await fsP.readdir(
+          path.join(process.cwd(), "data/rankings", serviceCategory),
+        );
+        return files.reduce(async (agg, file) => {
+          const data = await agg;
 
-        if (!data[category]) {
-          data[category] = {};
-        }
+          const match = file.match(
+            /^(internet)-(total|governance|privacy|freedom).json$/,
+          );
+          if (!match) return data;
 
-        data[category][kind] = rankings;
-        return data;
+          const kind = match[1];
+          const category = match[2];
+
+          const rankings = await companyServiceRankingData(
+            serviceCategory,
+            kind,
+            category,
+          );
+
+          if (!data[category]) {
+            data[category] = [];
+          }
+
+          data[category].push({
+            serviceCategory,
+            serviceCategoryName,
+            rankings: rankings.sort(byScore),
+          });
+
+          return data;
+        }, memo);
       },
-      memo,
+      Promise.resolve({}),
     );
-  }, Promise.resolve({}));
-
-  const serviceRankings = await serviceOptions.reduce(
-    async (memo, {kind: service}) => {
-      const files = await fsP.readdir(
-        path.join(process.cwd(), "data/rankings", service),
-      );
-      return files.reduce(async (agg, file) => {
-        const data = await agg;
-
-        const match = file.match(
-          /^(internet)-(total|governance|privacy|freedom).json$/,
-        );
-        if (!match) return data;
-
-        const kind = match[1];
-        const category = match[2];
-
-        const rankings = await companyServiceRankingData(
-          service,
-          kind,
-          category,
-        );
-
-        if (!data[service]) {
-          data[service] = {};
-        }
-        if (!data[service][category]) {
-          data[service][category] = {};
-        }
-        data[service][category][kind] = rankings;
-
-        return data;
-      }, memo);
-    },
-    Promise.resolve({}),
-  );
 
   const yoyScores = await Promise.all(
     companies.map(async ({id, name, region}) => {
@@ -169,12 +158,16 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      companiesIds,
-      companySelector,
-      serviceOptions,
+      // Company Scores
+      totalRanking,
+      governanceRanking,
+      freedomRanking,
+      privacyRanking,
+      companySelectors,
       serviceRankings,
-      companyRankings,
       servicesByCompany,
+
+      // Lenses
       indicatorLenses: indicatorLenses.filter(({lens}) => betaLenses.has(lens)),
       indicatorCompanyLenses: indicatorCompanyLenses.map(
         ({scores, ...rest}) => ({
@@ -182,6 +175,8 @@ export const getStaticProps = async () => {
           scores: scores.filter(({lens}) => betaLenses.has(lens)),
         }),
       ),
+
+      // Performance over Time
       yoyScores,
     },
   };
@@ -190,11 +185,12 @@ export const getStaticProps = async () => {
 // FIXME: lenses chart is not receiving companies selection
 
 const Explorer = ({
-  companiesIds,
-  companySelector,
-  serviceOptions,
+  totalRanking,
+  governanceRanking,
+  freedomRanking,
+  privacyRanking,
+  companySelectors,
   serviceRankings,
-  companyRankings,
   servicesByCompany,
   indicatorLenses,
   indicatorCompanyLenses,
@@ -209,11 +205,12 @@ const Explorer = ({
             <>
               <Container>
                 <CompaniesScores
-                  companiesIds={companiesIds}
-                  companySelector={companySelector}
-                  serviceOptions={serviceOptions}
+                  totalRanking={totalRanking}
+                  governanceRanking={governanceRanking}
+                  freedomRanking={freedomRanking}
+                  privacyRanking={privacyRanking}
+                  companySelectors={companySelectors}
                   serviceRankings={serviceRankings}
-                  companyRankings={companyRankings}
                   servicesByCompany={servicesByCompany}
                 />
               </Container>
@@ -222,7 +219,7 @@ const Explorer = ({
 
               <Container>
                 <LensCharts
-                  companySelectors={companySelector}
+                  companySelectors={companySelectors}
                   indicatorLenses={indicatorLenses}
                   indicatorCompanyLenses={indicatorCompanyLenses}
                 />
@@ -232,7 +229,7 @@ const Explorer = ({
 
               <Container>
                 <TimeCharts
-                  companySelectors={companySelector}
+                  companySelectors={companySelectors}
                   yoyScores={yoyScores}
                 />
               </Container>
