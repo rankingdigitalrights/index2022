@@ -76,7 +76,13 @@ const CompanyYearOverYearTable = ({
             </table>
 
             <p className="text-center text-xs">
-              * In 2020 and 2022 the methodology changed.
+              * Most companies’ scores dropped between 2019 and 2020 with the
+              inclusion of our new indicators on targeted advertising and
+              algorithmic systems. To learn more, please visit our{" "}
+              <a href="https://rankingdigitalrights.org/methods-and-standards/#methodology-archive">
+                Methodology development archive
+              </a>
+              .
             </p>
           </div>
         </div>
