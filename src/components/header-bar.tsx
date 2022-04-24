@@ -161,26 +161,17 @@ const HeaderBar = ({className}: HeaderBarProps) => {
           )}
 
           <Link passHref href="/">
-            <a className="flex lg:mx-auto items-center text-black no-underline hover:no-underline">
-              <Logo
-                className={c("flex-none", {
-                  "w-6 h-6": isMobile,
-                  "w-12 h-12": !isMobile,
-                })}
-              />
+            <a className="flex sm:mx-auto items-center text-black no-underline hover:no-underline">
+              <Logo className="grow-0 w-9 h-9 lg:w-11 lg:h-11" />
               <span
                 className={c(
-                  "flex-none font-bold text-prissian text-md ml-2 md:ml-4",
-                  {
-                    "whitespace-nowrap": isMobile,
-                    "whitespace-pre": !isMobile,
-                  },
+                  "flex flex-col font-bold text-prissian ml-1 lg:ml-2",
                 )}
               >
-                {isMobile
-                  ? "RDR Big Tech Scorecard"
-                  : `The Ranking Digital Rights
-Big Tech Scorecard`}
+                <span className="whitespace-nowrap">
+                  The Ranking Digital Rights
+                </span>
+                <span className="whitespace-nowrap">Big Tech Scorecard</span>
               </span>
             </a>
           </Link>
