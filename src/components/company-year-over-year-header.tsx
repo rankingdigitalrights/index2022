@@ -52,11 +52,11 @@ const CompanyYearOverYearHeader = ({
   );
 
   return (
-    <div ref={chartRef} className="w-full py-auto h-14 md:h-8 font-sans">
+    <div ref={chartRef} className="w-full h-14 md:h-8 font-sans">
       <svg
         version="1"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-fit md:-mt-2"
+        className="w-full md:-mt-2"
         viewBox={`0 0 ${w} ${height}`}
         aria-label="Company year over year chart header."
       >
