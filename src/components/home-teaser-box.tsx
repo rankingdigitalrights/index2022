@@ -29,9 +29,9 @@ const HomeTeaserBox = ({
     <div className={c("relative leading-none", textColor, className)}>
       <div className="flex flex-col space-y-8 2xl:space-y-16 justify-between">
         <Link passHref href={href}>
-          <a className="hover:no-underline flex space-x-2">
+          <a className="hover:no-underline flex items-center space-x-2">
             <Logo
-              className="flex-initial w-[5rem] h-[5rem] sm:w-[4.3rem] sm:h-[4.3rem]"
+              className="flex-initial shrink-0 -mt-4 w-[5rem] h-[5rem] sm:w-[4.3rem] sm:h-[4.3rem]"
               theme={theme}
             />
             <h3
