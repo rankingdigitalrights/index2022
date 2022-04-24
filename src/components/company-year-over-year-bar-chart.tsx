@@ -83,12 +83,11 @@ const CompanyYearOverYearBarChart = ({
               transform={`translate(${xPercentage("0%")},${
                 (yYears(year) || 0) + paddingTop
               })`}
-              height={11}
             >
               <PercentageBar
                 value={score}
                 width={w}
-                height={9}
+                height={6}
                 className={isHighlighted ? "fill-prissian" : `fill-${year}`}
               />
             </g>

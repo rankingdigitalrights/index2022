@@ -22,7 +22,7 @@ const PercentageBar = ({
   value,
   width,
   className,
-  height = 8,
+  height = 5,
   transform = "translate(0,0)",
   roundedCorners = true,
 }: PercentageBarProps) => {
@@ -54,17 +54,24 @@ const PercentageBar = ({
     percentage = `${percentageRaw}%`;
   }
 
+  console.log(height);
+
   return (
     <g>
-      <rect
+      <path
         className={c(
           "transform-gpu transform-safari transition-colors ease-in-out duration-200",
           className,
         )}
-        x={0}
-        y={0}
-        width={percentage}
-        height={height}
+        d={`M 0,0
+        h ${percentage}
+        q ${rx},0 ${rx},${rx}
+        v ${height - rx}
+        q 0,${rx} -${rx},${rx}
+        h -${percentage}
+        z
+        `}
+        transform={transform}
       />
     </g>
   );
