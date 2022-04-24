@@ -64,7 +64,7 @@ const CompanyYearOverYearTable = ({
                   </th>
                   <th
                     scope="col"
-                    className="sticky top-0 z-10 bg-white backdrop-blur backdrop-filter px-3 py-3.5 font-normal text-left text-sm sm:table-cell"
+                    className="lg:w-7/12 sticky top-0 z-10 bg-white backdrop-blur backdrop-filter px-3 py-3.5 font-normal text-left text-sm sm:table-cell"
                   >
                     <CompanyYearOverYearHeader
                       years={years}
