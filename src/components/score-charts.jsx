@@ -11,50 +11,25 @@ import RankChart from "./rank-chart";
 import ServicesByCompany from "./services-by-company";
 import ToggleLeftRight from "./toggle-left-right";
 
-const CompaniesScores = (props) => {
-  const {
-    totalRanking,
-    governanceRanking,
-    freedomRanking,
-    privacyRanking,
-    companySelectors,
-    serviceRankings,
-    servicesByCompany,
-  } = props;
-
+const ScoreCharts = ({
+  companySelectors,
+  companyScores,
+  companiesByServiceScores,
+  servicesByCompanyScores,
+}) => {
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("total");
-  const [platformRankings, setPlatformRankings] = useState(totalRanking);
-
+  const [platformRankings, setPlatformRankings] = useState(companyScores.total);
+  const [companiesByServiceRankings, setCompaniesByServiceRankings] = useState(
+    companiesByServiceScores.total,
+  );
   const [typeOfGraph, setTypeOfGraph] = useState("total");
   const [chartHeaders, setChartHeaders] = useState("companies");
 
   const handleSelectCategory = (category) => {
-    switch (category) {
-      case "total": {
-        setSelectedCategory("total");
-        setPlatformRankings(totalRanking);
-        break;
-      }
-      case "governance": {
-        setSelectedCategory("governance");
-        setPlatformRankings(governanceRanking);
-        break;
-      }
-      case "freedom": {
-        setSelectedCategory("freedom");
-        setPlatformRankings(freedomRanking);
-        break;
-      }
-      case "privacy": {
-        setSelectedCategory("privacy");
-        setPlatformRankings(privacyRanking);
-        break;
-      }
-      default: {
-        break;
-      }
-    }
+    setSelectedCategory(category);
+    setPlatformRankings(companyScores[category]);
+    setCompaniesByServiceRankings(companiesByServiceScores[category]);
   };
 
   const handleTypeOfGraphToggle = (toggle) => {
@@ -76,6 +51,8 @@ const CompaniesScores = (props) => {
   const handleSelectCompany = (ids) => {
     setSelectedCompanies(ids);
   };
+
+  const hasSelectedCompanies = selectedCompanies.length > 0;
 
   return (
     <div className="flex flex-col px-2 lg:px-0">
@@ -109,7 +86,7 @@ const CompaniesScores = (props) => {
         />
 
         <FlipAxis
-          id="companies-scores"
+          id="score-charts"
           className="md:mb-0 self-center"
           label="Flip"
           flip={chartHeaders === "companies"}
@@ -133,7 +110,7 @@ const CompaniesScores = (props) => {
           <RankChart
             category={selectedCategory}
             ranking={
-              selectedCompanies.length > 0
+              hasSelectedCompanies
                 ? platformRankings.filter(({id}) =>
                     selectedCompanies.includes(id),
                   )
@@ -141,15 +118,16 @@ const CompaniesScores = (props) => {
             }
           />
         )}
+
         {typeOfGraph === "services" && chartHeaders === "companies" && (
           <ServicesByCompany
             category={selectedCategory}
-            companies={
-              selectedCompanies.length > 0
-                ? servicesByCompany.filter(({id}) =>
+            scores={
+              hasSelectedCompanies
+                ? servicesByCompanyScores.filter(({id}) =>
                     selectedCompanies.includes(id),
                   )
-                : servicesByCompany
+                : servicesByCompanyScores
             }
           />
         )}
@@ -157,9 +135,9 @@ const CompaniesScores = (props) => {
         {typeOfGraph === "services" && chartHeaders === "services" && (
           <CompaniesByService
             category={selectedCategory}
-            serviceRankings={
-              selectedCompanies.length > 0
-                ? serviceRankings[selectedCategory]
+            scores={
+              hasSelectedCompanies
+                ? companiesByServiceRankings
                     .map(({rankings, ...rest}) => ({
                       ...rest,
                       rankings: rankings.filter(({id}) =>
@@ -167,7 +145,7 @@ const CompaniesScores = (props) => {
                       ),
                     }))
                     .filter(({rankings}) => rankings.length > 0)
-                : serviceRankings[selectedCategory]
+                : companiesByServiceRankings
             }
           />
         )}
@@ -176,4 +154,4 @@ const CompaniesScores = (props) => {
   );
 };
 
-export default CompaniesScores;
+export default ScoreCharts;

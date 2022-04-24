@@ -8,14 +8,14 @@ const serviceIcon = (serviceKind) => {
   return mapIcon(serviceKind, false, "white");
 };
 
-const CompaniesByService = ({serviceRankings, category}) => {
-  const divider = Math.ceil(serviceRankings.length / 2);
+const CompaniesByService = ({scores, category}) => {
+  const divider = Math.ceil(scores.length / 2);
 
   return (
     <div className="flex flex-col space-y-5 md:space-y-0 md:space-x-8 md:flex-row font-sans">
       <div className="w-full md:w-1/2">
         <div className="flex flex-col items-start space-y-12">
-          {serviceRankings
+          {scores
             .slice(0, divider)
             .map(({serviceCategory, serviceCategoryName, rankings}) => {
               return (
@@ -37,7 +37,7 @@ const CompaniesByService = ({serviceRankings, category}) => {
 
       <div className="w-full md:w-1/2">
         <div className="flex flex-col items-start space-y-12">
-          {serviceRankings
+          {scores
             .slice(divider)
             .map(({serviceCategory, serviceCategoryName, rankings}) => {
               return (

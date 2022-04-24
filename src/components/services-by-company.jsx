@@ -4,14 +4,14 @@ import React from "react";
 import PillHeader from "./pill-header";
 import ServiceCompanyChart from "./service-company-chart";
 
-const ServicesByCompany = ({category, companies}) => {
-  const divider = Math.ceil(companies.length / 2);
+const ServicesByCompany = ({category, scores}) => {
+  const divider = Math.ceil(scores.length / 2);
 
   return (
     <div className="flex flex-col space-y-5 md:space-y-0 md:space-x-8 md:flex-row font-sans">
       <div className="w-full md:w-1/2">
-        <div className="space-y-5">
-          {companies.slice(0, divider).map(({id, name, services}) => {
+        <div className="space-y-12">
+          {scores.slice(0, divider).map(({id, name, services}) => {
             return (
               <div
                 key={`services-by-company-${name}`}
@@ -40,8 +40,8 @@ const ServicesByCompany = ({category, companies}) => {
       </div>
 
       <div className="w-full md:w-1/2">
-        <div className="space-y-5">
-          {companies.slice(divider).map(({id, name, services}) => {
+        <div className="space-y-12">
+          {scores.slice(divider).map(({id, name, services}) => {
             return (
               <div
                 key={`services-by-company-${name}`}

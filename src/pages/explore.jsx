@@ -2,12 +2,12 @@ import {promises as fsP} from "fs";
 import path from "path";
 import React from "react";
 
-import CompaniesScores from "../components/companies-scores";
 import Divider from "../components/divider";
 import ExploreContainer from "../components/explore-container";
 import ExploreHeader from "../components/explore-header";
 import Layout from "../components/layout";
 import LensCharts from "../components/lens-charts";
+import ScoreCharts from "../components/score-charts";
 import TimeCharts from "../components/time-charts";
 import {
   allCompanies,
@@ -22,22 +22,12 @@ import {
 import {byScore, byServiceKind} from "../sort";
 import {uniqueBy} from "../utils";
 
+const betaLenses = new Set([
+  "algorithmic-transparency",
+  "targeted-advertising",
+]);
+
 export const getStaticProps = async () => {
-  const [
-    totalRanking,
-    governanceRanking,
-    freedomRanking,
-    privacyRanking,
-  ] = await Promise.all(
-    ["total", "governance", "freedom", "privacy"].map(async (category) =>
-      companyRankingData("internet", category),
-    ),
-  );
-
-  const services = (await allServices()).filter(
-    ({kind}) => kind !== "Group" && kind !== "Operating Company",
-  );
-
   const [
     companies,
     indicatorLenses,
@@ -48,10 +38,9 @@ export const getStaticProps = async () => {
     allIndicatorLensesCompanies(),
   ]);
 
-  const betaLenses = new Set([
-    "algorithmic-transparency",
-    "targeted-advertising",
-  ]);
+  const services = (await allServices()).filter(
+    ({kind}) => kind !== "Group" && kind !== "Operating Company",
+  );
 
   const companySelectors = companies.map(
     ({id: companyId, name, kind, region}) => {
@@ -64,7 +53,18 @@ export const getStaticProps = async () => {
     },
   );
 
-  const servicesByCompany = await Promise.all(
+  const [
+    totalRanking,
+    governanceRanking,
+    freedomRanking,
+    privacyRanking,
+  ] = await Promise.all(
+    ["total", "governance", "freedom", "privacy"].map(async (category) =>
+      companyRankingData("internet", category),
+    ),
+  );
+
+  const servicesByCompanyScores = await Promise.all(
     companies.map(async ({id, name}) => {
       const servicesPerCompany = await companyServices(id);
       const filteredServices = servicesPerCompany.filter((service) => {
@@ -72,8 +72,6 @@ export const getStaticProps = async () => {
       });
       const serviceScores = await Promise.all(
         filteredServices.map(async (filteredService) => {
-          // set an empty property on each service object to record the four category scores
-          // TODO Christo, change the data files ...
           const service = {...filteredService, categoryScore: {}};
 
           const files = await fsP.readdir(
@@ -104,7 +102,7 @@ export const getStaticProps = async () => {
     }),
   );
 
-  const serviceRankings = await uniqueBy("kind", services)
+  const companiesByServiceScores = await uniqueBy("kind", services)
     .sort(byServiceKind)
     .reduce(
       async (memo, {kind: serviceCategory, kindName: serviceCategoryName}) => {
@@ -158,14 +156,17 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      // Company Scores
-      totalRanking,
-      governanceRanking,
-      freedomRanking,
-      privacyRanking,
       companySelectors,
-      serviceRankings,
-      servicesByCompany,
+
+      // Company Scores
+      companyScores: {
+        total: totalRanking,
+        governance: governanceRanking,
+        freedom: freedomRanking,
+        privacy: privacyRanking,
+      },
+      servicesByCompanyScores,
+      companiesByServiceScores,
 
       // Lenses
       indicatorLenses: indicatorLenses.filter(({lens}) => betaLenses.has(lens)),
@@ -185,13 +186,10 @@ export const getStaticProps = async () => {
 // FIXME: lenses chart is not receiving companies selection
 
 const Explorer = ({
-  totalRanking,
-  governanceRanking,
-  freedomRanking,
-  privacyRanking,
   companySelectors,
-  serviceRankings,
-  servicesByCompany,
+  companyScores,
+  companiesByServiceScores,
+  servicesByCompanyScores,
   indicatorLenses,
   indicatorCompanyLenses,
   yoyScores,
@@ -204,14 +202,11 @@ const Explorer = ({
           return (
             <>
               <Container>
-                <CompaniesScores
-                  totalRanking={totalRanking}
-                  governanceRanking={governanceRanking}
-                  freedomRanking={freedomRanking}
-                  privacyRanking={privacyRanking}
+                <ScoreCharts
+                  companyScores={companyScores}
                   companySelectors={companySelectors}
-                  serviceRankings={serviceRankings}
-                  servicesByCompany={servicesByCompany}
+                  companiesByServiceScores={companiesByServiceScores}
+                  servicesByCompanyScores={servicesByCompanyScores}
                 />
               </Container>
 
