@@ -15,7 +15,7 @@ const Footer = ({className}: FooterProps) => {
   return (
     <footer
       className={c(
-        "bg-prissian font-serif text-white text-lg pt-12 pb-20",
+        "bg-prissian font-serif text-white text-lg pt-12 pb-20 overflow-x-hidden",
         className,
       )}
     >
@@ -28,7 +28,7 @@ const Footer = ({className}: FooterProps) => {
               <dd className="font-semibold">Media requests:</dd>
               <dt className="mb-16">
                 <a
-                  className="text-white font-normal"
+                  className="text-base md:text-lg text-white font-normal"
                   href="mailto:comms@rankingdigitalrights.org"
                 >
                   comms@rankingdigitalrights.org
@@ -38,7 +38,7 @@ const Footer = ({className}: FooterProps) => {
               <dd className="font-semibold">Other inquires:</dd>
               <dt>
                 <a
-                  className="text-white font-normal"
+                  className="text-base md:text-lg text-white font-normal"
                   href="mailto:info@rankingdigitalrights.org"
                 >
                   info@rankingdigitalrights.org

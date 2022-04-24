@@ -35,7 +35,7 @@ const FlipAxis = ({
         {label}
       </label>
       <button
-        className="relative inline-block w-12 align-middle select-none transition duration-200 ease-in flex items-center"
+        className="relative inline-block w-20 align-middle select-none transition duration-200 ease-in flex items-center"
         onClick={handleToggle}
         aria-label="Flip-Axis"
         disabled={disabled}
