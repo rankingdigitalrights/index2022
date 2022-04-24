@@ -41,6 +41,7 @@ const LensCharts = (props) => {
         />
 
         <FlipAxis
+          id="lenses"
           label="Flip"
           onChange={handleFlipLenseCharts}
           flip={lensChart}

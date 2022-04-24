@@ -106,14 +106,14 @@ const CompaniesScores = (props) => {
 
       <div className="flex flex-wrap-reverse justify-between items-center w-full my-12">
         <CompanySelector
-          className="flex-none w-full md:w-1/2 self-center"
+          className="flex-none w-full md:w-1/2 mt-2 md:mt-0 self-center"
           companies={companySelector}
           selected={selectedCompanies}
           onSelect={handleSelectCompany}
         />
 
         <ToggleLeftRight
-          className="mb-4 md:mb-0 self-center"
+          className="md:mb-0 self-center"
           labelLeft="Totals"
           labelRight="Services"
           toggle={typeOfGraph !== "total"}
@@ -121,7 +121,8 @@ const CompaniesScores = (props) => {
         />
 
         <FlipAxis
-          className="mb-4 md:mb-0 self-center"
+          id="companies-scores"
+          className="md:mb-0 self-center"
           label="Flip"
           flip={chartHeaders === "companies"}
           onChange={handleFlipAxis}

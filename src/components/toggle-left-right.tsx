@@ -1,7 +1,10 @@
 import c from "clsx";
 import React from "react";
 
+import ToggleLabel from "./toggle-label";
+
 interface ToggleLeftRightProps {
+  id: string;
   labelLeft: string;
   labelRight: string;
   onChange: (toggle: boolean) => void;
@@ -10,6 +13,7 @@ interface ToggleLeftRightProps {
 }
 
 const ToggleLeftRight = ({
+  id = "FLIP",
   labelLeft,
   labelRight,
   onChange,
@@ -29,38 +33,46 @@ const ToggleLeftRight = ({
   };
 
   return (
-    <div className={c("flex items-center self-end font-sans", className)}>
-      <label htmlFor="toggle" className={c("text-sm mr-2", leftClassName)}>
-        {labelLeft}
-      </label>
+    <div className={c("flex items-center font-sans", className)}>
+      <ToggleLabel
+        id={`${id}-left-label`}
+        className={c(leftClassName)}
+        label={labelLeft}
+      />
+
       <button
-        className="relative inline-block w-8 align-middle select-none transition duration-200 ease-in"
+        type="button"
+        className={c(
+          "relative inline-flex flex-shrink-0 w-7 cursor-pointer offset-focus-ring",
+          "border-2 border-prissian rounded-full",
+          "transition-colors ease-in-out duration-200",
+          {
+            "bg-prissian": toggle,
+          },
+        )}
+        role="switch"
         onClick={handleToggle}
-        aria-label="Toggle switch"
+        aria-checked="false"
+        aria-labelledby={`${id}-left-label ${id}-right-label`}
       >
-        <label
-          htmlFor="toggle"
+        <span
+          aria-hidden="true"
           className={c(
-            "overflow-hidden h-4 rounded-full border-2 border-prissian cursor-pointer flex items-center",
-            toggle ? "bg-prissian" : undefined,
+            "pointer-events-none inline-block m-[0.1rem] h-2 w-2 rounded-full shadow ring-0",
+            "transform-gpu transition-transform ease-in-out duration-200",
+            {
+              "translate-x-[0.9rem] bg-white": toggle,
+              "translate-x-0 bg-prissian": !toggle,
+            },
           )}
-        >
-          <input
-            type="checkbox"
-            name="toggle"
-            checked={toggle}
-            className={c(
-              "toggle-checkbox absolute block w-2 h-2 rounded-full appearance-none cursor-pointer",
-              toggle ? "bg-beige" : "bg-prissian",
-            )}
-            onChange={handleToggle}
-            aria-label="Toggle switch check mark"
-          />
-        </label>
+        />
       </button>
-      <label htmlFor="toggle" className={c("text-sm ml-2", rightClassName)}>
-        {labelRight}
-      </label>
+
+      <ToggleLabel
+        id={`${id}-right-label`}
+        className={c(rightClassName)}
+        label={labelRight}
+      />
     </div>
   );
 };
