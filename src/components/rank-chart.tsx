@@ -84,7 +84,7 @@ const RankChart = ({
 
             <div
               ref={idx === 0 ? chartRef : null}
-              className="grow flex items-center ml-2"
+              className="grow flex items-center ml-2 border"
             >
               <svg
                 version="1"
@@ -101,13 +101,13 @@ const RankChart = ({
                   className={c(categoryClassName)}
                 />
               </svg>
+            </div>
 
-              <div className={c("relative shrink-0 w-9 ml-2", scoreClassName)}>
-                <RankScore
-                  className={c(highlightedTextClassName)}
-                  score={score}
-                />
-              </div>
+            <div className={c("relative shrink-0 w-9 ml-2", scoreClassName)}>
+              <RankScore
+                className={c(highlightedTextClassName)}
+                score={score}
+              />
             </div>
           </div>
         );
