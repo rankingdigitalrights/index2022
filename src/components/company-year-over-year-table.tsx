@@ -1,5 +1,6 @@
 import React from "react";
 
+import {useMobileSize} from "../hooks";
 import type {CompanyYearOverYear} from "../types";
 import CompanyYearOverYearBar from "./company-year-over-year-bar";
 import CompanyYearOverYearHeader from "./company-year-over-year-header";
@@ -21,6 +22,8 @@ const CompanyYearOverYearTable = ({
   onChangeSorting,
   sortOrder,
 }: CompanyYearOverYearTableProps) => {
+  const isNarrow = useMobileSize(768);
+
   return (
     <div className="mt-8 flex flex-col font-sans">
       <div className="-my-2 -mx-2 lg:-mx-8">
@@ -63,7 +66,10 @@ const CompanyYearOverYearTable = ({
                     scope="col"
                     className="sticky top-0 z-10 bg-white backdrop-blur backdrop-filter px-3 py-3.5 font-normal text-left text-sm sm:table-cell"
                   >
-                    <CompanyYearOverYearHeader years={years} />
+                    <CompanyYearOverYearHeader
+                      years={years}
+                      isNarrow={isNarrow}
+                    />
                   </th>
                 </tr>
               </thead>
@@ -71,7 +77,7 @@ const CompanyYearOverYearTable = ({
               {axis ? (
                 <CompanyYearOverYearBar data={data} />
               ) : (
-                <CompanyYearOverYearSlope data={data} />
+                <CompanyYearOverYearSlope data={data} isNarrow={isNarrow} />
               )}
             </table>
 

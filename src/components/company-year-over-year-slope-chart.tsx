@@ -2,19 +2,20 @@ import c from "clsx";
 import {scaleLinear, scalePoint} from "d3";
 import React, {useMemo} from "react";
 
-import {useChartResize, useMobileSize} from "../hooks";
+import {useChartResize} from "../hooks";
 import type {CompanyYearOverYear} from "../types";
 
 interface CompanyYearOverYearSlopeChartProps {
   data: CompanyYearOverYear;
+  isNarrow: boolean;
 }
 
 type ScorePair = [{year: string; score: number}, {year: string; score: number}];
 
 const CompanyYearOverYearSlopeChart = ({
   data,
+  isNarrow,
 }: CompanyYearOverYearSlopeChartProps) => {
-  const isMobile = useMobileSize(768);
   const years = data.scores.map(({year}) => year.toString());
 
   const scores = data.scores
@@ -47,8 +48,8 @@ const CompanyYearOverYearSlopeChart = ({
   const [chartRef, width, height] = useChartResize();
 
   // Insets the graph on the left and right.
-  const insetLeft = isMobile ? 28 : 30;
-  const insetRight = isMobile ? 14 : 18;
+  const insetLeft = isNarrow ? 28 : 20;
+  const insetRight = isNarrow ? 14 : 48;
   // Insets the graph on the bottom y axis.
   const insetY = 22;
   // The real width of the graph.
@@ -125,10 +126,10 @@ const CompanyYearOverYearSlopeChart = ({
               })`}
             >
               <rect
-                x={isMobile ? "11" : "10"}
-                y={isMobile ? "12" : "10"}
-                width={isMobile ? "30" : "36"}
-                height={isMobile ? "20" : "23"}
+                x={isNarrow ? "11" : "10"}
+                y={isNarrow ? "12" : "10"}
+                width={isNarrow ? "30" : "36"}
+                height={isNarrow ? "20" : "23"}
                 stroke="none"
                 fill="white"
                 strokeWidth="0.4"
@@ -137,7 +138,7 @@ const CompanyYearOverYearSlopeChart = ({
                 filter="url(#shadow)"
               />
               <text
-                className={c("font-sans", isMobile ? "text-xxs" : "text-xs")}
+                className={c("font-sans", isNarrow ? "text-xxs" : "text-xs")}
                 x={16}
                 y={26}
               >
