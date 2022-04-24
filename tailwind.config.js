@@ -38,6 +38,14 @@ module.exports = {
     "fill-lens-security",
     "fill-lens-targeted-advertising",
     "fill-lens-user-agency",
+    "bg-lens-algorithmic-transparency",
+    "bg-lens-content-governance-moderation",
+    "bg-lens-data-handling",
+    "bg-lens-demands-data-censorship",
+    "bg-lens-private-requests",
+    "bg-lens-security",
+    "bg-lens-targeted-advertising",
+    "bg-lens-user-agency",
   ],
   theme: {
     extend: {

@@ -16,6 +16,7 @@ interface RankChartProps {
   ranking: ChartRanking[];
   className?: string;
   activeCompany?: string;
+  rankColorClass?: string;
   category?: IndicatorCategoryExt;
   chartHeight?: number;
   isPrint?: boolean;
@@ -25,6 +26,7 @@ const RankChart = ({
   ranking,
   className,
   activeCompany,
+  rankColorClass = "bg-diff-del",
   category = "total",
   chartHeight = 10,
   isPrint = false,
@@ -59,7 +61,7 @@ const RankChart = ({
 
     const rankClassName = {
       "bg-prissian": isHighlightedCompany,
-      "bg-diff-del": !isHighlightedCompany,
+      [`${rankColorClass}`]: !isHighlightedCompany,
     };
 
     const barClassName =

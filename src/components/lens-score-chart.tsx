@@ -99,6 +99,7 @@ const LensScore = ({lenses, className, companyList}: LensScoreProps) => {
                         })
                       : scores
                   }
+                  rankColorClass={`bg-lens-${lens}`}
                 />
               </li>
             );
