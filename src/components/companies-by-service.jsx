@@ -1,7 +1,7 @@
 import React from "react";
 
-import {useChartResize} from "../hooks";
-import {mapIcon} from "./evaluated-service";
+import { useChartResize } from "../hooks";
+import { mapIcon } from "./evaluated-service";
 import PercentageBar from "./percentage-bar";
 import PillHeader from "./pill-header";
 import RankLabel from "./rank-label";
@@ -16,7 +16,7 @@ const serviceIcon = (serviceKind) => {
 };
 
 const CompaniesByService = (props) => {
-  const {companies, category, serviceRankings, serviceOptions} = props;
+  const { companies, category, serviceRankings, serviceOptions } = props;
 
   const [chartRef, chartWidth] = useChartResize();
   const chartHeight = 10;
@@ -30,15 +30,13 @@ const CompaniesByService = (props) => {
 
   const rankClassName = "bg-diff-del";
 
-  // keys is an array of serviceKind strings
-  const keys = Object.keys(serviceRankings);
-
+  const serviceKindNames = Object.keys(serviceRankings);
   // collect together the data relevant to the selected category
   // prepRanks is an array of objects of the form:
   // [ {serviceKind: [ { id: company }, { id: company } ] } ]
-  const prepRanks = keys.map((key) => {
-    const companiesArr = serviceRankings[key][category].internet;
-    return {[key]: companiesArr};
+  const prepRanks = serviceKindNames.map((serviceKindName) => {
+    const companiesByService = serviceRankings[serviceKindName][category].internet;
+    return { [serviceKindName]: companiesByService };
   });
 
   const chartHeader = (serviceKind) => {
@@ -58,73 +56,68 @@ const CompaniesByService = (props) => {
   const chartRow = (company, idx) => {
     // eslint-disable-next-line unicorn/no-null
     const ref = idx === 0 ? chartRef : null;
-    return companies.includes(company.id) ? (
+    <div
+      key={`chart-row-${category}-${company.service}`}
+      className="flex items-center space-x-1 pr-1.5 pl-1.5 font-sans"
+    >
       <div
-        key={`chart-row-${category}-${company.service}`}
-        className="flex items-center space-x-1 pr-1.5 pl-1.5 font-sans"
+        key={`chart-label-${company.companyPretty}`}
+        className="grow-0 flex flex-col align-left w-32"
       >
-        <div
-          key={`chart-label-${company.companyPretty}`}
-          className="grow-0 flex flex-col align-left w-32"
-        >
-          <span className="text-prissian text-sm font-bold">
-            {company.companyPretty}
-          </span>
-          <span className="text-sm font-thin">{company.service}</span>
-        </div>
-
-        <RankLabel rank={company.rank} className={rankClassName} />
-
-        <div
-          key={`chart-bar-${company.companyPretty}-${company.service}-${company.score}`}
-          ref={ref}
-          className="grow flex items-center ml-2"
-        >
-          <svg
-            version="1"
-            xmlns="http://www.w3.org/2000/svg"
-            width="100%"
-            height={chartHeight}
-            transform="translate(0, 0)"
-            aria-label={`Score bar for ${company.companyPretty} ${company.service}: ${company.score}`}
-          >
-            <PercentageBar
-              value={company.score}
-              width={chartWidth}
-              height={chartHeight}
-              className={categoryClassName}
-            />
-          </svg>
-
-          <span className="shrink-0 text-right w-9 pl-1 pr-1 select-none float-right text-prissian text-xs">
-            {company.score}%
-          </span>
-        </div>
+        <span className="text-prissian text-sm font-bold">
+          {company.companyPretty}
+        </span>
+        <span className="text-sm font-thin">{company.service}</span>
       </div>
-    ) : // eslint-disable-next-line unicorn/no-null
-    null;
+
+      <RankLabel rank={company.rank} className={rankClassName} />
+
+      <div
+        key={`chart-bar-${company.companyPretty}-${company.service}-${company.score}`}
+        ref={ref}
+        className="grow flex items-center ml-2"
+      >
+        <svg
+          version="1"
+          xmlns="http://www.w3.org/2000/svg"
+          width="100%"
+          height={chartHeight}
+          transform="translate(0, 0)"
+          aria-label={`Score bar for ${company.companyPretty} ${company.service}: ${company.score}`}
+        >
+          <PercentageBar
+            value={company.score}
+            width={chartWidth}
+            height={chartHeight}
+            className={categoryClassName}
+          />
+        </svg>
+
+        <span className="shrink-0 text-right w-9 pl-1 pr-1 select-none float-right text-prissian text-xs">
+          {company.score}%
+        </span>
+      </div>
+    </div>
   };
 
   // rankings is an array of objects of the form:
   // [ {serviceKind: [ {id: company }, {id: company } ] } ]
   // entry is an object: {serviceKind: [ {id: company}, {id: company} ] }
-  const chartBlock = (rankings) => {
+  const chartBlock = (rankingsByCategory) => {
     return (
       <div className="flex flex-col items-start space-y-12">
-        {rankings.map((entry) => {
-          // key is the serviceKind name
-          const key = Object.keys(entry);
+        {rankingsByCategory.map((entry) => {
+          const serviceKindName = Object.keys(entry);
           // values is an array of companies that provide services of that kind
-          const values = entry[key[0]];
-          const list = values.filter((value) => companies.includes(value.id));
+          const companies = entry[serviceKindName[0]];
           return (
             <div
-              key={`chartBlock-${key[0]}`}
+              // key={`chartBlock-${key[0]}`}
               className="flex flex-col space-y-4"
             >
-              {list.length > 0 && chartHeader(key[0])}
-              {list.map((item, idx) => {
-                return chartRow(item, idx);
+              {companies.length > 0 && chartHeader(serviceKindName[0])}
+              {companies.map((company, idx) => {
+                return chartRow(company, idx);
               })}
             </div>
           );
@@ -133,17 +126,34 @@ const CompaniesByService = (props) => {
     );
   };
 
-  const divider = Math.ceil(prepRanks.length / 2);
+ // TODO: add a conditional here so that if entries.length is 1, it shows only one column
 
-  // TODO: add a conditional here so that if entries.length is 1, it shows only one column
-  // TODO: this creates a chartblock before the selected companies have been filtered => rearrange this flow
+  // prepRanks is an array of objects of the form:
+  // [ {serviceKind: [ { id: company }, { id: company } ] } ]
+
+  // we need to filter the serviceKind array for selected companies
+  // how can i access the serviceKind array
+  // we need to return only the serviceKinds that have filtered companies
+
+  const selectedCompanies = prepRanks.filter(serviceKind => {
+    let serviceKindName = Object.keys(serviceKind)
+    serviceKind[serviceKindName[0]].filter(company => {
+      return companies.includes(company.id)
+    })
+    if (serviceKind[serviceKindName[0]].length > 0) {
+      return serviceKind
+    }
+  })
+  const divider = Math.ceil(selectedCompanies.length / 2);
+
+  
   return (
     <div className="flex flex-col space-y-5 md:space-y-0 md:space-x-8 md:flex-row">
       <div className="w-full md:w-1/2">
-        {chartBlock(prepRanks.slice(0, divider))}
+        {chartBlock(selectedCompanies.slice(0, divider))}
       </div>
       <div className="w-full md:w-1/2">
-        {chartBlock(prepRanks.slice(divider))}
+        {chartBlock(selectedCompanies.slice(divider))}
       </div>
     </div>
   );
