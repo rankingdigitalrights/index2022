@@ -131,6 +131,7 @@ const CompaniesScores = (props) => {
       >
         {typeOfGraph === "total" && (
           <RankChart
+            category={selectedCategory}
             ranking={
               selectedCompanies.length > 0
                 ? platformRankings.filter(({id}) =>
@@ -138,7 +139,6 @@ const CompaniesScores = (props) => {
                   )
                 : platformRankings
             }
-            category={selectedCategory}
           />
         )}
         {typeOfGraph === "services" && chartHeaders === "companies" && (

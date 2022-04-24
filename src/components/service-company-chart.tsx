@@ -3,7 +3,7 @@ import c from "clsx";
 import React, {useState} from "react";
 
 import {useChartResize} from "../hooks";
-import {CompanyRank, ServiceKind} from "../types";
+import {CompanyRank, IndicatorCategoryExt, ServiceKind} from "../types";
 import {mapIcon} from "./evaluated-service";
 import PercentageBar from "./percentage-bar";
 import RankScore from "./rank-score";
@@ -15,6 +15,7 @@ type ChartRanking = Pick<CompanyRank, "score"> & {
 
 interface ServiceCompanyChartProps {
   ranking: ChartRanking[];
+  category?: IndicatorCategoryExt;
   className?: string;
   chartHeight?: number;
 }
@@ -22,6 +23,7 @@ interface ServiceCompanyChartProps {
 const ServiceCompanyChart = ({
   ranking,
   className,
+  category = "total",
   chartHeight = 10,
 }: ServiceCompanyChartProps) => {
   const [chartRef, chartWidth] = useChartResize();
@@ -34,6 +36,13 @@ const ServiceCompanyChart = ({
       {ranking.map(({service, kind, score}, idx) => {
         const isHighlighted = service === highlightedService;
 
+        const categoryClassName = {
+          "text-cat-governance": category === "governance",
+          "text-cat-freedom": category === "freedom",
+          "text-cat-privacy": category === "privacy",
+          "text-prissian": category === "total",
+        };
+
         const highlightedTextClassName = {
           "text-black": !isHighlighted,
           "text-prissian": isHighlighted,
@@ -41,7 +50,7 @@ const ServiceCompanyChart = ({
 
         return (
           <div
-            key={`home-rank-${kind}-${service}`}
+            key={`home-rank-${category}-${kind}-${service}`}
             className="flex items-center text-sm mb-1"
             onMouseEnter={() => setHighlightedService(service)}
             onMouseLeave={() => setHighlightedService(undefined)}
@@ -70,7 +79,7 @@ const ServiceCompanyChart = ({
                   value={score}
                   width={chartWidth}
                   height={chartHeight}
-                  className="text-prissian"
+                  className={c(categoryClassName)}
                 />
               </svg>
             </div>

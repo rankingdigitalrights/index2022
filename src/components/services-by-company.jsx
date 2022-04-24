@@ -31,6 +31,7 @@ const ServicesByCompany = ({category, companies}) => {
                       score: service.categoryScore[category],
                     };
                   })}
+                  category={category}
                 />
               </div>
             );
@@ -60,6 +61,7 @@ const ServicesByCompany = ({category, companies}) => {
                       score: service.categoryScore[category],
                     };
                   })}
+                  category={category}
                 />
               </div>
             );

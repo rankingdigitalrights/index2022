@@ -8,7 +8,7 @@ const serviceIcon = (serviceKind) => {
   return mapIcon(serviceKind, false, "white");
 };
 
-const CompaniesByService = ({serviceRankings}) => {
+const CompaniesByService = ({serviceRankings, category}) => {
   const divider = Math.ceil(serviceRankings.length / 2);
 
   return (
@@ -28,7 +28,7 @@ const CompaniesByService = ({serviceRankings}) => {
                     <div>{serviceCategoryName}</div>
                   </PillHeader>
 
-                  <CompanyServiceChart ranking={rankings} />
+                  <CompanyServiceChart ranking={rankings} category={category} />
                 </div>
               );
             })}
@@ -50,7 +50,7 @@ const CompaniesByService = ({serviceRankings}) => {
                     <div>{serviceCategoryName}</div>
                   </PillHeader>
 
-                  <CompanyServiceChart ranking={rankings} />
+                  <CompanyServiceChart ranking={rankings} category={category} />
                 </div>
               );
             })}

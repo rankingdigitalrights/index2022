@@ -58,7 +58,7 @@ const RankChart = ({
 
         return (
           <div
-            key={`home-rank-${id}-${service}`}
+            key={`home-rank-${category}-${id}-${service}`}
             className="flex items-center text-sm mb-1"
             onMouseEnter={() => setHighlightedService(service)}
             onMouseLeave={() => setHighlightedService(undefined)}
