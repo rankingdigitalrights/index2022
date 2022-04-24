@@ -310,6 +310,10 @@
   .offset-focus-ring {
     @apply focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-prissian;
   }
+
+  .transform-safari {
+    will-change: transform, opacity; /* Prevents flicker in Safari */
+  }
 }
 
 /* For some reason unknown to me those styles are being removed during build.

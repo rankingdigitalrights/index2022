@@ -31,7 +31,7 @@ const FlipAxis = ({
     <button
       className={c(
         "flex items-center justify-end select-none",
-        "transform-gpu transition-opacity duration-200 ease-in",
+        "transform-gpu transform-safari transition-opacity duration-200 ease-in",
         disabledClassName,
         className,
       )}

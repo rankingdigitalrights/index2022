@@ -46,7 +46,7 @@ const ToggleLeftRight = ({
         className={c(
           "relative inline-flex flex-shrink-0 w-7 cursor-pointer",
           "border-2 border-prissian rounded-full",
-          "transform-gpu transition-colors ease-in-out duration-200",
+          "transform-gpu transform-safari transition-colors ease-in-out duration-200",
           {
             "bg-prissian": toggle,
           },
@@ -60,7 +60,7 @@ const ToggleLeftRight = ({
           aria-hidden="true"
           className={c(
             "pointer-events-none inline-block m-[0.1rem] h-2 w-2 rounded-full shadow ring-0",
-            "transform-gpu transition-transform ease-in-out duration-200",
+            "transform-gpu transform-safari transition-transform ease-in-out duration-200",
             {
               "translate-x-[0.9rem] bg-white": toggle,
               "translate-x-0 bg-prissian": !toggle,
