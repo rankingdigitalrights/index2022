@@ -43,7 +43,7 @@ const ToggleLeftRight = ({
       <button
         type="button"
         className={c(
-          "relative inline-flex flex-shrink-0 w-7 cursor-pointer offset-focus-ring",
+          "relative inline-flex flex-shrink-0 w-7 cursor-pointer",
           "border-2 border-prissian rounded-full",
           "transition-colors ease-in-out duration-200",
           {

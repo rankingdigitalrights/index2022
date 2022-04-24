@@ -13,7 +13,7 @@ const ToggleLabel = ({id, label, className}: ToggleLabelProps) => {
       <span
         className={c(
           "text-sm",
-          "transition-opacity ease-in-out duration-200",
+          "transform-gpu transition-opacity ease-in-out duration-200",
           className,
         )}
       >
