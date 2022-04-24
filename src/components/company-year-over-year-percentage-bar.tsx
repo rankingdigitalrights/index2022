@@ -54,8 +54,6 @@ const PercentageBar = ({
     percentage = `${percentageRaw}%`;
   }
 
-  console.log(height);
-
   return (
     <g>
       <path
