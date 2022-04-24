@@ -44,12 +44,7 @@ const HomeMainAreaDesktop = ({
       <div className="px-6 py-12 space-y-4">
         <CategorySelector selected={category} onClick={onSelectCategory} />
 
-        <RankChart
-          className=""
-          ranking={rankings}
-          category={category}
-          hasHeader={false}
-        />
+        <RankChart className="" ranking={rankings} category={category} />
       </div>
 
       <div className="bg-beige pt-6">

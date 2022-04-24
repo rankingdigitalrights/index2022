@@ -4,7 +4,7 @@ import React from "react";
 import type {IndicatorLens, IndicatorLensIndex} from "../types";
 import LensCircle from "./lens-circle";
 import PillHeader from "./pill-header";
-import RankChart from "./rank-chart-nolabel";
+import RankChart from "./rank-chart";
 
 interface LensScoreProps {
   lenses: IndicatorLensIndex[];

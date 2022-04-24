@@ -7,7 +7,7 @@ import CompaniesByService from "./companies-by-service";
 import CompanySelector from "./company-selector-simple";
 import FlipAxis from "./flip-axis";
 import NarrativeTitle from "./narrative-title";
-import RankChart from "./rank-chart-nolabel";
+import RankChart from "./rank-chart";
 import ServicesByCompany from "./services-by-company";
 import ToggleLeftRight from "./toggle-left-right";
 

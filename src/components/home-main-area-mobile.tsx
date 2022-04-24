@@ -38,7 +38,7 @@ const HomeMainAreaMobile = ({
       <div className="py-8 px-2 flex flex-col space-y-4">
         <CategorySelector selected={category} onClick={onSelectCategory} />
 
-        <RankChart ranking={rankings} category={category} hasHeader={false} />
+        <RankChart ranking={rankings} category={category} />
       </div>
 
       <div className="flex flex-col px-2 py-8 space-y-8 bg-beige">

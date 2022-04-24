@@ -173,11 +173,7 @@ const CompanyPage = ({
           </div>
 
           <div className="w-full bg-beige p-3 z-10 md:w-5/12 md:p-0 md:mt-6 md:mb-3 md:ml-12 lg:w-4/12 lg:ml-0">
-            <RankChart
-              ranking={ranking}
-              activeCompany={index.id}
-              hasHeader={false}
-            />
+            <RankChart ranking={ranking} activeCompany={index.id} />
           </div>
         </div>
       </div>
