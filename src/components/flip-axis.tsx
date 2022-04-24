@@ -28,22 +28,19 @@ const FlipAxis = ({
   };
 
   return (
-    <div
-      className={c("flex items-center font-sans", disabledClassName, className)}
+    <button
+      className={c(
+        "relative flex items-center justify-end select-none transition duration-200 ease-in flex items-center",
+        disabledClassName,
+        className,
+      )}
+      onClick={handleToggle}
+      aria-label="Flip-Axis"
+      disabled={disabled}
     >
-      <label htmlFor="toggle" className="sr-only text-sm mr-2">
-        {label}
-      </label>
-      <button
-        className="relative inline-block w-20 align-middle select-none transition duration-200 ease-in flex items-center"
-        onClick={handleToggle}
-        aria-label="Flip-Axis"
-        disabled={disabled}
-      >
-        <span className="text-sm mr-2">{label}</span>
-        {flip ? <Up /> : <Down />}
-      </button>
-    </div>
+      <span className="font-sans text-sm mr-1">{label}</span>
+      {flip ? <Up className="w-4 h-4" /> : <Down className="w-4 h-4" />}
+    </button>
   );
 };
 
