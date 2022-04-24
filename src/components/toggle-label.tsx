@@ -3,22 +3,43 @@ import React from "react";
 
 interface ToggleLabelProps {
   id: string;
-  label: string;
+  label: string | ((c: string) => React.ReactNode);
+  position: "left" | "right";
   className?: string;
 }
 
-const ToggleLabel = ({id, label, className}: ToggleLabelProps) => {
+export const isString = (x: unknown): x is string => {
+  return typeof x === "string";
+};
+
+const ToggleLabel = ({id, label, position, className}: ToggleLabelProps) => {
   return (
-    <span className="ml-3 mr-2" id={id}>
-      <span
-        className={c(
-          "text-sm",
-          "transform-gpu transition-opacity ease-in-out duration-200",
-          className,
-        )}
-      >
-        {label}
-      </span>
+    <span
+      className={c({
+        "mr-2": position === "left",
+        "ml-2": position === "right",
+      })}
+      id={id}
+    >
+      {isString(label) ? (
+        <span
+          className={c(
+            "text-sm",
+            "transform-gpu transition-opacity ease-in-out duration-200",
+            className,
+          )}
+        >
+          {label}
+        </span>
+      ) : (
+        label(
+          c(
+            "text-sm",
+            "transform-gpu transition-opacity ease-in-out duration-200",
+            className,
+          ),
+        )
+      )}
     </span>
   );
 };

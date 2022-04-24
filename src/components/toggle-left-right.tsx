@@ -5,15 +5,15 @@ import ToggleLabel from "./toggle-label";
 
 interface ToggleLeftRightProps {
   id: string;
-  labelLeft: string;
-  labelRight: string;
+  labelLeft: string | ((c: string) => React.ReactNode);
+  labelRight: string | ((c: string) => React.ReactNode);
   onChange: (toggle: boolean) => void;
   toggle: boolean;
   className?: string;
 }
 
 const ToggleLeftRight = ({
-  id = "FLIP",
+  id,
   labelLeft,
   labelRight,
   onChange,
@@ -38,6 +38,7 @@ const ToggleLeftRight = ({
         id={`${id}-left-label`}
         className={c(leftClassName)}
         label={labelLeft}
+        position="left"
       />
 
       <button
@@ -45,7 +46,7 @@ const ToggleLeftRight = ({
         className={c(
           "relative inline-flex flex-shrink-0 w-7 cursor-pointer",
           "border-2 border-prissian rounded-full",
-          "transition-colors ease-in-out duration-200",
+          "transform-gpu transition-colors ease-in-out duration-200",
           {
             "bg-prissian": toggle,
           },
@@ -72,6 +73,7 @@ const ToggleLeftRight = ({
         id={`${id}-right-label`}
         className={c(rightClassName)}
         label={labelRight}
+        position="right"
       />
     </div>
   );

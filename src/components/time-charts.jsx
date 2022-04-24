@@ -1,9 +1,12 @@
+import c from "clsx";
 import React, {useMemo, useState} from "react";
 
+import Bars from "../images/icons/yoy-bars.svg";
+import Lines from "../images/icons/yoy-lines.svg";
 import CompanySelector from "./company-selector-simple";
 import CompanyYearOverYearTable from "./company-year-over-year-table";
-import FlipTimeChart from "./flip-time-chart";
 import NarrativeTitle from "./narrative-title";
+import ToggleLeftRight from "./toggle-left-right";
 
 const strategies = new Map();
 strategies.set("Alphabetically", (options) => {
@@ -63,7 +66,7 @@ const TimeCharts = (props) => {
         score for many of the companies in 2020.
       </p>
 
-      <div className="flex flex-row justify-between items-center w-full my-12">
+      <div className="flex flex-row space-x-2 justify-between items-center w-full my-12">
         <CompanySelector
           className="w-9/12 md:w-1/2 self-center"
           companies={companySelectors}
@@ -71,7 +74,29 @@ const TimeCharts = (props) => {
           onSelect={handleSelectCompany}
         />
 
-        <FlipTimeChart onChange={handleFlipTimeChart} toggle={timeChart} />
+        <ToggleLeftRight
+          id="time-chart"
+          onChange={handleFlipTimeChart}
+          toggle={timeChart}
+          labelLeft={(labelClassName) => {
+            return (
+              <span
+                className={c("flex items-center space-x-1", labelClassName)}
+              >
+                <span>Lines</span> <Lines className="w-5 h-5 hidden md:block" />
+              </span>
+            );
+          }}
+          labelRight={(labelClassName) => {
+            return (
+              <span
+                className={c("flex items-center space-x-1", labelClassName)}
+              >
+                <span>Bars</span> <Bars className="w-5 h-5 hidden md:block" />
+              </span>
+            );
+          }}
+        />
       </div>
 
       <CompanyYearOverYearTable
