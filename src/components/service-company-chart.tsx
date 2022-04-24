@@ -65,7 +65,7 @@ const ServiceCompanyChart = ({
 
             <div
               ref={idx === 0 ? chartRef : null}
-              className="grow flex items-center ml-2 border"
+              className="grow flex items-center ml-2"
             >
               <svg
                 version="1"
