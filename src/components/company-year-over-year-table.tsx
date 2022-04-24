@@ -74,6 +74,10 @@ const CompanyYearOverYearTable = ({
                 <CompanyYearOverYearSlope data={data} />
               )}
             </table>
+
+            <p className="text-center text-xs">
+              * In 2020 and 2022 the methodology changed.
+            </p>
           </div>
         </div>
       </div>

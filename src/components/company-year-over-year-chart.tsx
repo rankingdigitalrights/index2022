@@ -10,6 +10,8 @@ interface CompanyYearOverYearChartProps {
 
 type ScorePair = [{year: string; score: number}, {year: string; score: number}];
 
+const asteriskYears = new Set(["2020", "2022"]);
+
 const CompanyYearOverYearChart = ({data}: CompanyYearOverYearChartProps) => {
   const years = data.scores.map(({year}) => year.toString());
 
@@ -92,15 +94,17 @@ const CompanyYearOverYearChart = ({data}: CompanyYearOverYearChartProps) => {
         <line stroke="#D6C9C9" x1={insetX} x2={w} y1={h} y2={h} />
 
         {years.map((year) => {
+          const yearX = x(year) ?? 0;
+
           return (
             <text
               className="font-sans text-xs"
               key={`year-label-${data.company}-${year}`}
-              x={x(year)}
+              x={asteriskYears.has(year) ? yearX - 3 : yearX}
               y={height}
               dx="-12"
             >
-              {year}
+              {asteriskYears.has(year) ? `${year}*` : year}
             </text>
           );
         })}
@@ -169,6 +173,9 @@ const CompanyYearOverYearChart = ({data}: CompanyYearOverYearChartProps) => {
           );
         })}
       </svg>
+      <p className="text-center text-xs mt-2 font-sans">
+        * In 2020 and 2022 the methodology changed.
+      </p>
     </div>
   );
 };

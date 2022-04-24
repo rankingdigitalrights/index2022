@@ -7,6 +7,8 @@ interface CompanyYearOverYearHeaderProps {
   years: string[];
 }
 
+const asteriskYears = new Set(["2020", "2022"]);
+
 const CompanyYearOverYearHeader = ({years}: CompanyYearOverYearHeaderProps) => {
   const isMobile = useMobileSize(768);
 
@@ -41,11 +43,11 @@ const CompanyYearOverYearHeader = ({years}: CompanyYearOverYearHeaderProps) => {
               <circle r="4" className={`fill-${year}`} />
               <text
                 className="font-normal text-xs"
-                x={10}
-                y={4}
+                x={asteriskYears.has(year) ? 3 : 10}
+                y={asteriskYears.has(year) ? 4 : 4}
                 transform="rotate(-45,26,56)"
               >
-                {year}
+                {asteriskYears.has(year) ? `${year}*` : year}
               </text>
             </g>
           );
