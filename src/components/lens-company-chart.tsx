@@ -33,7 +33,7 @@ const LensCompanyChart = ({
             .slice(0, divider)
             .map(({company, companyPretty, scores}) => {
               return (
-                <li key={company} className="flex flex-col mt-2">
+                <li key={company} className="flex flex-col mt-2 space-y-4">
                   <PillHeader>{companyPretty}</PillHeader>
 
                   <LensRankChart ranking={scores} />
@@ -49,7 +49,7 @@ const LensCompanyChart = ({
             .slice(divider)
             .map(({company, companyPretty, scores}) => {
               return (
-                <li key={company} className="flex flex-col mt-2">
+                <li key={company} className="flex flex-col mt-2 space-y-4">
                   <PillHeader>{companyPretty}</PillHeader>
 
                   <LensRankChart ranking={scores} />

@@ -2,79 +2,62 @@ import c from "clsx";
 import React, {useState} from "react";
 
 import {useChartResize} from "../hooks";
-import {IndicatorCategoryExt, LensRank} from "../types";
+import {LensRank} from "../types";
 import LensCircle from "./lens-circle";
 import PercentageBar from "./percentage-bar";
+import RankScore from "./rank-score";
 
 interface LensRankChartProps {
   ranking: LensRank[];
   className?: string;
-  activeCompany?: string;
-  category?: IndicatorCategoryExt;
   chartHeight?: number;
-  hasHeader?: boolean;
 }
 
 const LensRankChart = ({
   ranking,
   className,
-  activeCompany,
-  category = "total",
   chartHeight = 10,
-  hasHeader = true,
 }: LensRankChartProps) => {
   const [chartRef, chartWidth] = useChartResize();
 
   const [highlightedLens, setHighlightedLens] = useState<string | undefined>();
 
-  const categoryClassName = {
-    "text-cat-governance": category === "governance",
-    "text-cat-freedom": category === "freedom",
-    "text-cat-privacy": category === "privacy",
-    "text-prissian": category === "total",
-  };
-
-  const lensWidth = "w-44";
-
   const chartRow = ({lens, lensPretty, score}: LensRank, idx: number) => {
     // eslint-disable-next-line unicorn/no-null
     const ref = idx === 0 ? chartRef : null;
-    const isActiveCompany = lens === activeCompany;
-    const isHighlightedLens = lens === highlightedLens;
+    const isHighlighted = lens === highlightedLens;
 
-    const highlightedClassName = {
-      "text-prissian": isActiveCompany || isHighlightedLens,
+    const highlightedTextClassName = {
+      "text-prissian": isHighlighted,
     };
-
-    const barClassName =
-      isActiveCompany || isHighlightedLens
-        ? "text-prissian"
-        : categoryClassName;
 
     return (
       <div
-        key={`home-rank-${category}-${lens}`}
-        className={c(
-          "flex items-center justify-end space-x-4 text-sm mb-1",
-          highlightedClassName,
-        )}
+        key={`home-rank-${lens}`}
+        className="w-full flex items-center justify-end space-x-2 text-sm mb-1"
         onMouseEnter={() => setHighlightedLens(lens)}
         onMouseLeave={() => setHighlightedLens(undefined)}
       >
-        <div className="grow-0 flex items-center">
-          <LensCircle lens={lens} className="w-4 h-4" />
+        <div className="flex items-center justify-end">
+          <LensCircle
+            lens={lens}
+            className="grow-0 self-start mt-0.5 w-4 h-4"
+          />
 
           <span
             className={c(
-              "grow-0 ml-2 select-none whitespace-nowrap",
-              highlightedClassName,
+              "ml-2 text-sm select-none whitespace-nowrap",
+              highlightedTextClassName,
             )}
           >
             {lensPretty}
           </span>
         </div>
 
-        <div ref={ref} className="flex items-center ml-2 w-7/12 md:w-5/12">
+        <div
+          ref={ref}
+          className="w-[30%] sm:w-7/12 md:w-[30%] lg:w-5/12 flex items-center ml-2"
+        >
           <svg
             version="1"
             xmlns="http://www.w3.org/2000/svg"
@@ -87,12 +70,11 @@ const LensRankChart = ({
               value={score}
               width={chartWidth}
               height={chartHeight}
-              className={barClassName}
+              className="text-prissian"
             />
           </svg>
-          <span className="shrink-0 text-right w-12 pl-1 pr-1 select-none float-right">
-            {score}%
-          </span>
+
+          <RankScore className={c(highlightedTextClassName)} score={score} />
         </div>
       </div>
     );
@@ -100,14 +82,6 @@ const LensRankChart = ({
 
   return (
     <div className={c("flex flex-col w-full font-sans", className)}>
-      {hasHeader && (
-        <>
-          <div className="flex items-center text-sm mb-2 mt-3">
-            <div className={c("flex-none", lensWidth)}>&nbsp;</div>
-          </div>
-        </>
-      )}
-
       {ranking.map((company, idx) => chartRow(company, idx))}
     </div>
   );

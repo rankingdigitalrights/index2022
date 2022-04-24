@@ -78,7 +78,7 @@ const RankChart = ({
 
             <div
               ref={idx === 0 ? chartRef : null}
-              className="flex-grow flex items-center ml-2"
+              className="grow flex items-center ml-2"
             >
               <svg
                 version="1"
