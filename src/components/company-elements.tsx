@@ -38,7 +38,7 @@ const CompanyElements = ({
 
   return (
     <div className={className}>
-      <div className="flex items-center">
+      <div className="flex items-center sticky top-0 bg-beige py-2 z-10">
         {score !== "NA" && (
           <span className="text-md font-sans text-white bg-prissian rounded px-2 py-1 text-center mr-3">
             {score}%
