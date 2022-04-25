@@ -148,15 +148,13 @@ const CompanyYearOverYearSlopeChart = ({
                 strokeWidth="0.4"
                 ry="12"
                 rx="12"
-                filter={
-                  isHighlighted ? "url(#shadow-highlighted)" : "url(#shadow)"
-                }
+                filter="url(#shadow)"
               />
               <text
                 className={c("font-sans hover-colors", {
                   "text-xxs": isNarrow,
                   "text-xs": !isNarrow,
-                  "fill-prissian": isHighlighted,
+                  "fill-prissian font-bold": isHighlighted,
                 })}
                 x={16}
                 y={26}

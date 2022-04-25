@@ -131,10 +131,12 @@ const IndicatorTableMobile = ({
                 <div className="flex justify-between items-center pl-1 pr-1 border-t border-b border-disabled-dark">
                   <div className="w-1/12" />
                   <div className="flex justify-around items-center w-10/12">
-                    <span className="font-bold text-center p-2 w-5/12">
+                    <span className="font-bold font-sans text-center p-2 w-5/12">
                       Average
                     </span>
-                    <span className="pl-10 p-2 w-5/12">{average}</span>
+                    <span className="pl-10 p-2 w-5/12 font-sans">
+                      {average}
+                    </span>
                   </div>
                   <div className="w-1/12" />
                 </div>

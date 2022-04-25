@@ -28,7 +28,7 @@ const GraphLabel = ({
       transform={transform}
       textAnchor={textAnchor}
       className={c(
-        "select-none fill-current",
+        "select-none fill-current font-sans",
         {
           "font-black": bold,
           "text-xxs": size === "extra-small",

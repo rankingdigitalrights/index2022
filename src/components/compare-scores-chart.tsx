@@ -36,7 +36,7 @@ const CompareScoresChart = ({scores, className}: CompareScoresChartProps) => {
           transform="translate(0, 0)"
           aria-label="Empty spacer element"
         />
-        <span className="text-sm mr-2">0</span>
+        <span className="text-sm mr-2 font-sans">0</span>
       </div>
 
       {scores

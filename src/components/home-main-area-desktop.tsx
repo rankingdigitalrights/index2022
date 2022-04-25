@@ -74,7 +74,7 @@ const HomeMainAreaDesktop = ({
           <HomeBoxAlt
             className={c("self-center", altBoxClassName)}
             title="What’s Next for Big Tech Accountability?"
-            linkTitle="RSVP Now"
+            linkTitle="RSVP to Join the Conversation"
             href="https://events.newamerica.org/chartingthefutureofbigtech"
             theme="dark"
           >

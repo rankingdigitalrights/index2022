@@ -41,12 +41,12 @@ const LensRankChart = ({
         <div className="flex items-center justify-end">
           <LensCircle
             lens={lens}
-            className="grow-0 self-start mt-0.5 w-4 h-4"
+            className="grow-0 self-start mt-[0.2rem] w-3 h-3"
           />
 
           <span
             className={c(
-              "ml-2 text-sm select-none whitespace-nowrap",
+              "ml-1 text-sm select-none whitespace-nowrap",
               highlightedTextClassName,
             )}
           >

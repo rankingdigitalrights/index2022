@@ -71,6 +71,7 @@ const CompanyYearOverYearTable = ({
                       years={years}
                       isNarrow={isNarrow}
                       onHoverYear={setHighlightedYear}
+                      highlightedYear={highlightedYear}
                     />
                   </th>
                 </tr>

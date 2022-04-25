@@ -60,7 +60,7 @@ const IndicatorHeading = ({
   };
 
   return (
-    <h2 className={c("font-bold text-md", colorClassName, className)}>
+    <h2 className={c("font-bold text-md font-sans", colorClassName, className)}>
       {title}
     </h2>
   );
@@ -69,7 +69,7 @@ const IndicatorHeading = ({
 const IndicatorLink = ({option}: {option: IndicatorSelectOption}) => {
   const {isParent, hasParent, label, value} = option;
 
-  const className = c("text-sm text-black font-normal py-1", {
+  const className = c("text-sm text-black font-normal font-sans py-1", {
     "font-bold": isParent,
     "pl-6": hasParent,
   });

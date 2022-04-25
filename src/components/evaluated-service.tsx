@@ -1,5 +1,4 @@
 import c from "clsx";
-import Link from "next/link";
 import React from "react";
 
 import Assistant from "../images/icons/assistant.svg";
@@ -87,11 +86,9 @@ const EvaluatedService = ({name, kind}: EvaluatedServiceProps) => {
   const icon = mapIcon(kind);
 
   return (
-    <Link passHref href={`/explore-services?s=${kind}`}>
-      <a className="flex items-center h-8">
-        {icon} {name}
-      </a>
-    </Link>
+    <span className="flex items-center h-8">
+      {icon} {name}
+    </span>
   );
 };
 

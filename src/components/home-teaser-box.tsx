@@ -2,6 +2,7 @@ import c from "clsx";
 import Link from "next/link";
 import React, {useState} from "react";
 
+import {useMobileSize} from "../hooks";
 import ArrowRight from "../images/icons/arrow-right.svg";
 import Logo from "./rdr-logo";
 
@@ -16,6 +17,7 @@ const HomeTeaserBox = ({
   theme = "light",
   className,
 }: HomeTeaserBoxProps) => {
+  const isMobile = useMobileSize(538);
   const [isHover, setIsHover] = useState(false);
 
   const textColor = theme === "light" ? "text-white" : "text-prissian";
@@ -35,9 +37,9 @@ const HomeTeaserBox = ({
     >
       <div className="flex flex-col space-y-8 2xl:space-y-16 justify-between">
         <Link passHref href={href}>
-          <a className="hover:no-underline flex items-center space-x-2">
+          <a className="hover:no-underline flex items-start space-x-2">
             <Logo
-              className="flex-initial shrink-0 -mt-4 w-[5rem] h-[5rem] sm:w-[4.3rem] sm:h-[4.3rem]"
+              className="flex-initial shrink-0 mt-1 w-[5rem] h-[5rem] sm:w-[4.3rem] sm:h-[4.3rem]"
               theme={theme}
             />
             <h3
@@ -48,8 +50,18 @@ const HomeTeaserBox = ({
               onMouseEnter={() => setIsHover(true)}
               onMouseLeave={() => setIsHover(false)}
             >
-              <span className="whitespace-pre">The 2022 Big Tech</span>
-              <span className="whitespace-pre">Scorecard</span>
+              {isMobile ? (
+                <>
+                  <span className="whitespace-pre">The 2022</span>
+                  <span className="whitespace-pre">Big Tech</span>
+                  <span className="whitespace-pre">Scorecard</span>
+                </>
+              ) : (
+                <>
+                  <span className="whitespace-pre">The 2022 Big Tech</span>
+                  <span className="whitespace-pre">Scorecard</span>
+                </>
+              )}
             </h3>
           </a>
         </Link>

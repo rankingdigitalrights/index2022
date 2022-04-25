@@ -67,7 +67,7 @@ const HomeMainAreaMobile = ({
       <HomeBoxAlt
         className="px-2 py-8 bg-disabled overflow-x-hidden"
         title="What’s Next for Big Tech Accountability?"
-        linkTitle="RSVP to Join the Conversation"
+        linkTitle="RSVP Now"
         href="https://events.newamerica.org/chartingthefutureofbigtech"
         theme="dark"
       >

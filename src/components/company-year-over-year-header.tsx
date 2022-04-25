@@ -1,3 +1,4 @@
+import c from "clsx";
 import {scalePoint} from "d3";
 import React, {useMemo} from "react";
 
@@ -7,14 +8,23 @@ interface CompanyYearOverYearHeaderProps {
   years: string[];
   isNarrow: boolean;
   onHoverYear: (year?: string) => void;
+  highlightedYear?: string;
 }
 
 const asteriskYears = new Set(["2020", "2022"]);
 
-const NarrowYearText = ({year}: {year: string}) => {
+const NarrowYearText = ({
+  year,
+  isHighlighted,
+}: {
+  year: string;
+  isHighlighted: boolean;
+}) => {
   return (
     <text
-      className="font-normal text-xs"
+      className={c("font-normal text-xs", {
+        "font-bold fill-prissian": isHighlighted,
+      })}
       x={asteriskYears.has(year) ? 3 : 10}
       y={asteriskYears.has(year) ? 4 : 4}
       transform="rotate(-45,26,56)"
@@ -24,9 +34,21 @@ const NarrowYearText = ({year}: {year: string}) => {
   );
 };
 
-const YearText = ({year}: {year: string}) => {
+const YearText = ({
+  year,
+  isHighlighted,
+}: {
+  year: string;
+  isHighlighted: boolean;
+}) => {
   return (
-    <text className="font-normal text-xs" x={10} y={4}>
+    <text
+      className={c("font-normal text-xs", {
+        "font-bold fill-prissian": isHighlighted,
+      })}
+      x={10}
+      y={4}
+    >
       {asteriskYears.has(year) ? `${year}*` : year}
     </text>
   );
@@ -36,6 +58,7 @@ const CompanyYearOverYearHeader = ({
   years,
   isNarrow,
   onHoverYear,
+  highlightedYear,
 }: CompanyYearOverYearHeaderProps) => {
   const [chartRef, width, height] = useChartResize();
 
@@ -63,6 +86,8 @@ const CompanyYearOverYearHeader = ({
         aria-label="Company year over year chart header."
       >
         {years.map((year) => {
+          const isHighlighted = highlightedYear === year;
+
           return (
             <g
               key={`header-${year}`}
@@ -73,9 +98,9 @@ const CompanyYearOverYearHeader = ({
             >
               <circle r="4" className={`fill-${year}`} />
               {isNarrow ? (
-                <NarrowYearText year={year} />
+                <NarrowYearText year={year} isHighlighted={isHighlighted} />
               ) : (
-                <YearText year={year} />
+                <YearText year={year} isHighlighted={isHighlighted} />
               )}
             </g>
           );

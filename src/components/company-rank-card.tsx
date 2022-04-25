@@ -23,7 +23,7 @@ const CompanyRankCard = ({
 
   return (
     <div className={c("rank-card flex flex-col", className)}>
-      <h1 className="text-white bold text-xl py-4">{company}</h1>
+      <h1 className="text-white font-bold text-xl py-4">{company}</h1>
 
       <div className="flex flex-wrap ">
         <div className="flex items-center text-white text-md font-bold mt-4 mr-6 md:mr-8 lg:mr-16">

@@ -27,11 +27,11 @@ const Option = ({
 }: OptionProps<IndicatorSelectOption, false>) => {
   const {isParent, hasParent} = data;
 
-  const className = c("text-sm text-black p-1 pl-2 pr-2", {
+  const className = c("text-sm font-normal text-black p-1 pl-2 pr-2", {
     "bg-prissian text-white": isSelected || isFocused,
     "font-bold": isParent,
     "cursor-pointer": !isSelected && !isParent,
-    "pl-6": hasParent,
+    "pl-8": hasParent,
   });
 
   if (isParent)
@@ -101,7 +101,7 @@ const IndicatorSelector = ({
     <div className="w-full font-sans">
       <Select
         instanceId="indicator-select"
-        className="text-xs text-prissian"
+        className="text-xs font-bold text-prissian"
         options={options}
         value={selected}
         openMenuOnFocus
