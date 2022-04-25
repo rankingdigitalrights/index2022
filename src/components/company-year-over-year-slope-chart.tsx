@@ -93,15 +93,6 @@ const CompanyYearOverYearSlopeChart = ({
               floodOpacity="0.3"
             />
           </filter>
-
-          <filter id="shadow-highlighted">
-            <feDropShadow
-              dx="-1.5"
-              dy="1.5"
-              stdDeviation="1"
-              floodOpacity="0.8"
-            />
-          </filter>
         </defs>
 
         {yearScorePairs.map(([a, b]) => {

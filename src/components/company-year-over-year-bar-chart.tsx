@@ -61,6 +61,17 @@ const CompanyYearOverYearBarChart = ({
         viewBox={`0 0 ${w} ${height}`}
         aria-label={`Company year over year chart for ${data.companyPretty}`}
       >
+        <defs>
+          <filter id="shadow">
+            <feDropShadow
+              dx="-1.5"
+              dy="1.5"
+              stdDeviation="1"
+              floodOpacity="0.3"
+            />
+          </filter>
+        </defs>
+
         {percentages.map((p) => {
           return (
             <line
@@ -88,6 +99,7 @@ const CompanyYearOverYearBarChart = ({
                 value={score}
                 width={w}
                 height={6}
+                isHighlighted={isHighlighted}
                 className={isHighlighted ? "fill-prissian" : `fill-${year}`}
               />
             </g>

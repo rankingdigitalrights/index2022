@@ -27,10 +27,7 @@ const MenuList = ({
   innerRef,
 }: MenuListComponentProps<CompanySelectOption, true>) => {
   return (
-    <div
-      className="flex flex-wrap bg-white divide-y divide-light-disabled"
-      ref={innerRef}
-    >
+    <div className="flex flex-wrap bg-white" ref={innerRef}>
       {children}
     </div>
   );

@@ -3,11 +3,12 @@ import React from "react";
 import {useTween} from "react-use";
 
 import {IndicatorScore} from "../types";
-import {isNA, isNumber, scaleLinear} from "../utils";
+import {isNA, scaleLinear} from "../utils";
 
 interface PercentageBarProps {
   value: IndicatorScore;
-  width: number | "100%";
+  width: number;
+  isHighlighted?: boolean;
   height?: number;
   transform?: string;
   className?: string;
@@ -21,6 +22,7 @@ interface PercentageBarProps {
 const PercentageBar = ({
   value,
   width,
+  isHighlighted = false,
   className,
   height = 5,
   transform = "translate(0,0)",
@@ -41,18 +43,7 @@ const PercentageBar = ({
       />
     );
 
-  // Some percentage bars have to render as well when generating a PDF. Printing
-  // to PDF using Puppeteer doesn't trigger the resize event handler and the bars
-  // render too short. In those case I supply 100% as width and render the value
-  // on a scale of 0-100.
-  let percentage: string | number = 0;
-
-  if (isNumber(width)) {
-    percentage = scaleLinear([0, 100], [0, width])(value) * t;
-  } else if (width === "100%") {
-    const percentageRaw = scaleLinear([0, 100], [0, 100])(value);
-    percentage = `${percentageRaw}%`;
-  }
+  const percentage = scaleLinear([0, 100], [0, width])(value) * t;
 
   return (
     <g>
@@ -68,6 +59,32 @@ const PercentageBar = ({
         `}
         transform={transform}
       />
+
+      {isHighlighted && (
+        <g>
+          <rect
+            x={percentage + 20}
+            y="-7"
+            width="36"
+            height="23"
+            stroke="none"
+            fill="white"
+            strokeWidth="0.4"
+            ry="12"
+            rx="12"
+            filter="url(#shadow)"
+          />
+          <text
+            className={c("font-san text-xs", {
+              "fill-prissian font-bold": isHighlighted,
+            })}
+            x={percentage + 25}
+            y={9}
+          >
+            {value}%
+          </text>
+        </g>
+      )}
     </g>
   );
 };
