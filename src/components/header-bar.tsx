@@ -197,7 +197,7 @@ const HeaderBar = ({className}: HeaderBarProps) => {
                 <li role="none" className="border-b border-disabled pt-3 pb-6">
                   <IconLink
                     name="Key Findings"
-                    href="/key-findings"
+                    href="https://rankingdigitalrights.org/mini-report/key-findings-2022"
                     Icon={KeyFindings}
                   />
                 </li>

@@ -4,17 +4,11 @@ import React from "react";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
 import NarrativeTitle from "../components/narrative-title";
-import {ReadmoreKind} from "../types";
 
 const FourOhFour = () => {
-  const readmore: ReadmoreKind[] = ["key-findings", "shareholders", "ads"];
-
   return (
     <Layout>
-      <NarrativeContainer
-        backgroundClassName="bg-rdr bg-opacity-30"
-        readmore={readmore}
-      >
+      <NarrativeContainer backgroundClassName="bg-rdr bg-opacity-30">
         {({Container}) => {
           return (
             <Container>

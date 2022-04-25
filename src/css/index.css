@@ -100,16 +100,6 @@
         format("svg"); /* Legacy iOS */
   }
 
-  .hero-key-findings {
-    @apply bg-cover bg-center;
-    background-image: url("../images/bg-key-findings.jpg?size=1440");
-  }
-
-  .bg-key-findings {
-    @apply bg-cover;
-    background-image: url("../images/bg-key-findings.jpg?size=600");
-  }
-
   /* Get rid of the border outlines on button unless user is actually tabbing. */
   body:not(.user-is-tabbing) button:focus,
   body:not(.user-is-tabbing) input:focus,

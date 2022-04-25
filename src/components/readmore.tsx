@@ -6,7 +6,6 @@ import Ads from "../images/icons/ads.svg";
 import ChinaCompanies from "../images/icons/china-companies.svg";
 import ExecutiveSummary from "../images/icons/executive-summary.svg";
 import Services from "../images/icons/explore-the-data.svg";
-import KeyFindings from "../images/icons/key-findings.svg";
 import Methodology from "../images/icons/methodology.svg";
 import Indicators from "../images/icons/scores-by-indicator.svg";
 import Compare from "../images/icons/scores-over-time.svg";
@@ -28,15 +27,6 @@ const Readmore = ({readmore, className}: ReadmoreProps) => {
         <ExecutiveSummary
           className={iconClassName}
           aria-label="Readmore summary icon"
-        />
-      );
-      break;
-    }
-    case "key-findings": {
-      icon = (
-        <KeyFindings
-          className={iconClassName}
-          aria-label="Readmore key findings icon"
         />
       );
       break;
@@ -102,9 +92,9 @@ const Readmore = ({readmore, className}: ReadmoreProps) => {
     }
     default: {
       icon = (
-        <KeyFindings
+        <Compare
           className={iconClassName}
-          aria-label="Readmore key findings icon"
+          aria-label="Readmore compare year on year icon"
         />
       );
     }

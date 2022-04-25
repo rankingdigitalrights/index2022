@@ -376,7 +376,6 @@ const writeJsonFile = (
         narrativesDir,
         "acknowledgements.json",
       );
-      const keyFindingsTarget = path.join(narrativesDir, "key-findings.json");
       const compareTarget = path.join(narrativesDir, "compare.json");
 
       console.log(`Pull content for: ${executiveSummaryTarget}`);
@@ -389,12 +388,6 @@ const writeJsonFile = (
 
       await narrativePage("Acknowledgements").then(
         writeJsonFile(acknowledgementsTarget),
-      );
-
-      console.log(`Pull content for: ${keyFindingsTarget}`);
-
-      await narrativePage("Key Findings").then(
-        writeJsonFile(keyFindingsTarget),
       );
 
       console.log(`Pull content for: ${compareTarget}`);

@@ -12,7 +12,7 @@ const HomeFeaturedEssays = () => {
       <div className="grid grid-rows-4 grid-cols-1 md:grid-rows-2 md:grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 gap-5 mt-8">
         <Tile
           title="Key Findings"
-          href="https://rankingdigitalrights.org/"
+          href="https://rankingdigitalrights.org/mini-report/key-findings-2022/"
           src="essays/key-findings.jpg"
           className="w-full overflow-hidden"
         />

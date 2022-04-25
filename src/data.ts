@@ -321,13 +321,6 @@ export const acknowledgements = loadJson<NarrativePage>(
 );
 
 /*
- * Load the intro essay HTML.
- */
-export const keyFindings = loadJson<NarrativePage>(
-  "data/narratives/key-findings.json",
-);
-
-/*
  * Load the policy recommendations HTML.
  */
 export const policyRecommendations = loadJson<NarrativePage>(

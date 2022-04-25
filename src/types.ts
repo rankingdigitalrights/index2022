@@ -376,7 +376,6 @@ export interface ComparePage {
 
 export type ReadmoreKind =
   | "summary"
-  | "key-findings"
   | "methodology"
   | "shareholders"
   | "ads"

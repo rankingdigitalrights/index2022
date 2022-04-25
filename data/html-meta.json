@@ -18,19 +18,6 @@
   "twitter:domain": "Ranking Digital Rights",
   "twitter:image": "https://rankingdigitalrights.org/index2022/social/2020RDRranking.png",
 
-  "/key-findings": {
-    "title": "Key findings from the 2020 RDR Corporate Accountability Index",
-    "og:title": "Key findings from the 2020 RDR Corporate Accountability Index",
-    "twitter:title": "Key findings from the 2020 RDR Corporate Accountability Index",
-
-    "description": "Our research sheds light on a systemic crisis of transparency and accountability among digital platforms and telecommunications companies.",
-    "og:description": "Our research sheds light on a systemic crisis of transparency and accountability among digital platforms and telecommunications companies.",
-    "twitter:description": "Our research sheds light on a systemic crisis of transparency and accountability among digital platforms and telecommunications companies.",
-
-    "og:image": "https://rankingdigitalrights.org/index2022/social/2020RDRIndexphoto2.png",
-    "twitter:image": "https://rankingdigitalrights.org/index2022/social/2020RDRIndexphoto.png"
-  },
-
   "/intro-essay": {
     "title": "Will we govern tech? Or will we let it govern us?",
     "og:title": "Will we govern tech? Or will we let it govern us?",
