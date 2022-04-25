@@ -63,7 +63,7 @@ const PercentageBar = ({
       {isHighlighted && (
         <g>
           <rect
-            x={percentage + 20}
+            x={percentage + 15}
             y="-7"
             width="36"
             height="23"
@@ -78,7 +78,7 @@ const PercentageBar = ({
             className={c("font-san text-xs", {
               "fill-prissian font-bold": isHighlighted,
             })}
-            x={percentage + 25}
+            x={percentage + 20}
             y={9}
           >
             {value}%
