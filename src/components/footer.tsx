@@ -56,7 +56,7 @@ const Footer = ({className}: FooterProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Who we are
+                  Who We Are
                 </a>
               </li>
 
