@@ -318,9 +318,9 @@ const IndicatorPage = ({
         </ExpandableDescription>
       </section>
 
-      <section className="lg:container lg:mx-auto lg:flex xl:justify-start lg:w-9/12 xl:w-7/12 px-2 lg:px-0">
+      <section className="lg:container lg:mx-auto flex flex-col lg:flex-row xl:justify-start lg:w-9/12 xl:w-7/12 px-2 pt-6 lg:px-0 overflow-x-auto">
         <IndicatorCompaniesChartContainer
-          className="flex-none mt-6"
+          className="mt-6"
           indicator={details.id}
           category={details.category}
           scores={scores}

@@ -4,7 +4,7 @@ import Tile from "./featured-essay-tile";
 
 const HomeFeaturedEssays = () => {
   return (
-    <section className="lg:container lg:mx-auto py-6">
+    <section className="lg:container lg:mx-auto py-6 px-2 lg:px-0">
       <h3 className="font-bold text-xl leading-9 text-prissian">
         Featured Essays
       </h3>

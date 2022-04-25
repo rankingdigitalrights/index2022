@@ -116,7 +116,7 @@ const Indicators = ({indicators}: IndicatorsProps) => {
                   containerWidth,
                 )}
               >
-                <div className="flex flex-col w-full mx-3 md:w-1/2 xl:w-2/5 md:mr-3 md:ml-0 lg:mr-6">
+                <div className="flex flex-col w-full px-3 md:w-1/2 xl:w-2/5 md:mr-3 md:ml-0 lg:mr-6">
                   <IndicatorHeading category="governance" />
                   {governanceIndicators.map((option) => (
                     <IndicatorLink key={option.value} option={option} />
@@ -127,7 +127,7 @@ const Indicators = ({indicators}: IndicatorsProps) => {
                   ))}
                 </div>
 
-                <div className="flex flex-col w-full mx-3 md:w-1/2 xl:w-2/5 md:ml-3 md:mr-0 lg:ml-6">
+                <div className="flex flex-col w-full px-3 md:w-1/2 xl:w-2/5 md:ml-3 md:mr-0 lg:ml-6">
                   <IndicatorHeading category="privacy" />
                   {privacyIndicators.map((option) => (
                     <IndicatorLink key={option.value} option={option} />

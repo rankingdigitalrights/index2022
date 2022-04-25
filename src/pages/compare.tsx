@@ -3,7 +3,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 import {MdxRemote} from "next-mdx-remote/types";
 import React from "react";
 
-import CompanyKindLabel from "../components/company-kind-label";
+// import CompanyKindLabel from "../components/company-kind-label";
 import CompareScoresChart from "../components/compare-scores-chart";
 import Layout from "../components/layout";
 import NarrativeContainer from "../components/narrative-container";
@@ -76,7 +76,7 @@ const ScoresOverTime = ({diffScores, details}: ScoresOverTimeProps) => {
               <div className="container mx-auto mt-10">
                 <div className="flex flex-col px-6 overflow-x-scroll md:px-0 md:items-center lg:justify-center lg:flex-row lg:overflow-x-visible">
                   <div className="flex flex-col">
-                    <CompanyKindLabel kind="internet" theme="dark" />
+                    {/* <CompanyKindLabel kind="internet" theme="dark" /> */}
                     <CompareScoresChart
                       className="flex-none w-full lg:w-1/2 mt-3"
                       scores={diffScores.filter(

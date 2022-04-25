@@ -2,7 +2,7 @@ import c from "clsx";
 import React from "react";
 
 import {IndicatorCategory, IndicatorCompanyScore} from "../types";
-import CompanyKindLabel from "./company-kind-label";
+// import CompanyKindLabel from "./company-kind-label";
 import IndicatorCompaniesChart from "./indicator-companies-chart";
 
 interface IndicatorCompaniesChartContainerProps {
@@ -28,14 +28,9 @@ const IndicatorCompaniesChartContainer = ({
   // other.
   if (hasTelecomScores && hasPlatformScores)
     return (
-      <div
-        className={c(
-          "flex flex-col py-3 md:py-0 md:flex-row overflow-x-auto lg:overflow-x-visible",
-          className,
-        )}
-      >
+      <div className={c("flex flex-col md:flex-row", className)}>
         <div className="flex flex-col">
-          <CompanyKindLabel kind="internet" theme="dark" />
+          {/* <CompanyKindLabel kind="internet" theme="dark" /> */}
 
           <IndicatorCompaniesChart
             indicator={indicator}
@@ -46,7 +41,7 @@ const IndicatorCompaniesChartContainer = ({
         </div>
 
         <div className="flex flex-col mt-6 md:ml-3 lg:ml-8 md:mt-0">
-          <CompanyKindLabel kind="telecom" theme="dark" />
+          {/* <CompanyKindLabel kind="telecom" theme="dark" /> */}
 
           <IndicatorCompaniesChart
             indicator={indicator}
@@ -66,10 +61,10 @@ const IndicatorCompaniesChartContainer = ({
   return (
     <div className="flex justify-center mx-auto">
       <div className="flex flex-col">
-        <CompanyKindLabel
-          kind={hasTelecomScores ? "telecom" : "internet"}
-          theme="dark"
-        />
+        {/* <CompanyKindLabel
+            kind={hasTelecomScores ? "telecom" : "internet"}
+            theme="dark"
+            /> */}
 
         <IndicatorCompaniesChart
           indicator={indicator}

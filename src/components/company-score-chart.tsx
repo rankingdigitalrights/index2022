@@ -38,7 +38,7 @@ const CompanyScoreChart = ({category, score}: CompanyScoreChartProps) => {
   });
 
   return (
-    <div className="flex flex-col items-center w-96">
+    <div className="flex flex-col items-center w-56 lg:w-96">
       <span className="font-black text-center text-md">
         {mapCategoryName(category)}
       </span>

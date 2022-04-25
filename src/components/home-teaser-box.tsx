@@ -26,7 +26,13 @@ const HomeTeaserBox = ({
   };
 
   return (
-    <div className={c("relative leading-none", textColor, className)}>
+    <div
+      className={c(
+        "relative leading-none overflow-x-hidden",
+        textColor,
+        className,
+      )}
+    >
       <div className="flex flex-col space-y-8 2xl:space-y-16 justify-between">
         <Link passHref href={href}>
           <a className="hover:no-underline flex items-center space-x-2">

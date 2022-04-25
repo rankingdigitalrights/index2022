@@ -377,14 +377,12 @@ const CompanyPage = ({
             practices affecting freedom of expression and privacy.
           </p>
 
-          <div>
-            <CompanySection
-              category="governance"
-              score={index.scores.governance}
-              text={governance}
-              indicators={index.indicators.governance}
-            />
-          </div>
+          <CompanySection
+            category="governance"
+            score={index.scores.governance}
+            text={governance}
+            indicators={index.indicators.governance}
+          />
 
           <CompanySection
             category="freedom"
