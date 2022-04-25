@@ -48,7 +48,7 @@ const HomeTeaserBox = ({
               onMouseEnter={() => setIsHover(true)}
               onMouseLeave={() => setIsHover(false)}
             >
-              <span className="whitespace-pre">2022 Big Tech</span>
+              <span className="whitespace-pre">The 2022 Big Tech</span>
               <span className="whitespace-pre">Scorecard</span>
             </h3>
           </a>

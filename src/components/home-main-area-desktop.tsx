@@ -32,11 +32,10 @@ const HomeMainAreaDesktop = ({
           theme="altDark"
         >
           <p className="pb-2 text-sm text-black font-sans">
-            For the sixth consecutive year, not one digital platform earned a
-            passing grade in our ranking. While we see some incremental progress
-            overall, this is no time for business as usual. Companies must
-            improve their governance and accelerate their adoption of human
-            rights standards to protect their users and the public interest.
+            For the sixth year, no digital platform earned a passing grade.
+            While we see some progress, this is no time for business as usual.
+            Companies must do better to protect their users and the public
+            interest.
           </p>
         </HomeBoxAlt>
       </div>
@@ -56,11 +55,10 @@ const HomeMainAreaDesktop = ({
           theme="dark"
         >
           <p className="pb-2 text-sm text-black font-sans">
-            Which companies commit to human rights? Who does the best job
-            describing how they moderate content? Where is your data safest in
-            case of a breach? How has Apple’s scores changed over time? Drill
-            down into hundreds of thousands of data points to answer questions
-            like these in our enhanced Data Explorer.
+            Which companies commit to human rights? Who discloses the most about
+            how they moderate content? Where is your data safest in case of a
+            breach? Drill down into more than 300 aspects of company policies to
+            answer questions like these in our interactive Data Explorer.
           </p>
         </HomeBoxAlt>
       </div>
@@ -76,15 +74,15 @@ const HomeMainAreaDesktop = ({
           <HomeBoxAlt
             className={c("self-center", altBoxClassName)}
             title="What’s Next for Big Tech Accountability?"
-            linkTitle="RSVP to Join the Conversation"
+            linkTitle="RSVP Now"
             href="https://events.newamerica.org/chartingthefutureofbigtech"
             theme="dark"
           >
             <p className="pb-2 text-black font-sans">
-              Join RDR and a superstar set of panelists on May 4 to discuss
-              current strategies for holding Big Tech accountable through
-              regulation, shareholder action, whistleblowing, and grassroots
-              research and advocacy.
+              Join RDR and a superstar set of panelists on May 4 to review
+              highlights of the Big Tech Scorecard and discuss strategies for
+              holding companies accountable through regulation, shareholder
+              action, whistleblowing, and grassroots research and advocacy.
             </p>
           </HomeBoxAlt>
         </div>
