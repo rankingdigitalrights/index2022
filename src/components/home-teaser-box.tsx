@@ -2,7 +2,6 @@ import c from "clsx";
 import Link from "next/link";
 import React, {useState} from "react";
 
-import {useMobileSize} from "../hooks";
 import ArrowRight from "../images/icons/arrow-right.svg";
 import Logo from "./rdr-logo";
 
@@ -17,7 +16,6 @@ const HomeTeaserBox = ({
   theme = "light",
   className,
 }: HomeTeaserBoxProps) => {
-  const isMobile = useMobileSize(538);
   const [isHover, setIsHover] = useState(false);
 
   const textColor = theme === "light" ? "text-white" : "text-prissian";
@@ -39,29 +37,18 @@ const HomeTeaserBox = ({
         <Link passHref href={href}>
           <a className="hover:no-underline flex items-start space-x-2">
             <Logo
-              className="flex-initial shrink-0 mt-1 w-[5rem] h-[5rem] sm:w-[4.3rem] sm:h-[4.3rem]"
+              className="flex-initial shrink-0 mt-1 w-16 h-16"
               theme={theme}
             />
             <h3
               className={c(
-                "cursor-pointer font-bold text-xl sm:leading-9 mt-0 flex flex-col",
+                "cursor-pointer font-bold text-xl leading-9 mt-0 flex flex-col",
                 textColor,
               )}
               onMouseEnter={() => setIsHover(true)}
               onMouseLeave={() => setIsHover(false)}
             >
-              {isMobile ? (
-                <>
-                  <span className="whitespace-pre">The 2022</span>
-                  <span className="whitespace-pre">Big Tech</span>
-                  <span className="whitespace-pre">Scorecard</span>
-                </>
-              ) : (
-                <>
-                  <span className="whitespace-pre">The 2022 Big Tech</span>
-                  <span className="whitespace-pre">Scorecard</span>
-                </>
-              )}
+              <span className="md:max-w-lg">The 2022 Big Tech Scorecard</span>
             </h3>
           </a>
         </Link>
@@ -83,7 +70,7 @@ const HomeTeaserBox = ({
           <span className="text-white whitespace-pre">
             Read the Executive Summary
           </span>
-          <span className="cursor-pointer w-12 h-12 mr-6 rounded-full flex items-center justify-center bg-white">
+          <span className="cursor-pointer w-12 h-12 mr-2 sm:mr-6 rounded-full flex items-center justify-center bg-white">
             <ArrowRight
               className={c("w-6 h-6 fill-prissian", animationClassName)}
               aria-label="Goto page arrow"
