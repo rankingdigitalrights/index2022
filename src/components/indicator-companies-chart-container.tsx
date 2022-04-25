@@ -70,7 +70,6 @@ const IndicatorCompaniesChartContainer = ({
           indicator={indicator}
           category={category}
           scores={singleScores}
-          className="mt-3"
         />
       </div>
     </div>

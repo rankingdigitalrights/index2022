@@ -24,8 +24,8 @@ const IndicatorCompaniesChart = ({
   >();
 
   const containerClassName = {
-    "h-80": isMobile,
-    "h-72": !isMobile,
+    "h-[17rem]": isMobile,
+    "h-64": !isMobile,
   };
   const categoryClassName = {
     "text-cat-governance": category === "governance",
@@ -34,8 +34,8 @@ const IndicatorCompaniesChart = ({
   };
 
   const labelClassName = {
-    "transform -rotate-90 translate-y-8 w-32": isMobile,
-    "transform -rotate-45 -translate-x-10 mt-2 w-28": !isMobile,
+    "transform -rotate-90 translate-y-4 w-16": isMobile,
+    "transform -rotate-45 mt-2 -translate-x-5 w-16": !isMobile,
   };
 
   return (
@@ -109,7 +109,7 @@ const IndicatorCompaniesChart = ({
                   version="1"
                   xmlns="http://www.w3.org/2000/svg"
                   width={10}
-                  height={221}
+                  height={200}
                   transform="translate(0, 0)"
                   aria-label="Company score for indicator chart bar"
                 >
