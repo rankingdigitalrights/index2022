@@ -17,10 +17,10 @@ import Methodology from "../images/icons/methodology.svg";
 import ScoresByIndicator from "../images/icons/scores-by-indicator.svg";
 import ScoresOverTime from "../images/icons/scores-over-time.svg";
 import Shareholders from "../images/icons/shareholders.svg";
+import HeaderLogo from "../images/logo-header-bar.svg";
 import {CompanyKind} from "../types";
 import {isMouseEvent} from "../utils";
 import MenuBarColumn from "./menu-bar-column";
-import Logo from "./rdr-logo";
 
 interface HeaderBarProps {
   className?: string;
@@ -161,18 +161,8 @@ const HeaderBar = ({className}: HeaderBarProps) => {
           )}
 
           <Link passHref href="/">
-            <a className="flex sm:mx-auto items-center text-black no-underline hover:no-underline">
-              <Logo className="grow-0 w-9 h-9 lg:w-11 lg:h-11" />
-              <span
-                className={c(
-                  "flex flex-col font-bold text-prissian ml-1 lg:ml-2",
-                )}
-              >
-                <span className="whitespace-nowrap">
-                  The Ranking Digital Rights
-                </span>
-                <span className="whitespace-nowrap">Big Tech Scorecard</span>
-              </span>
+            <a className="sm:mx-auto text-black no-underline hover:no-underline">
+              <HeaderLogo className="h-9 sm:h-12" />
             </a>
           </Link>
         </div>
