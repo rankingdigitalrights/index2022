@@ -57,10 +57,7 @@ const PercentageBar = ({
   return (
     <g>
       <path
-        className={c(
-          "transform-gpu transform-safari transition-colors ease-in-out duration-200",
-          className,
-        )}
+        className={c("hover-colors", className)}
         d={`M 0,0
         h ${percentage}
         q ${rx},0 ${rx},${rx}

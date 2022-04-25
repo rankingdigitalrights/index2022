@@ -12,8 +12,7 @@ const RankScore = ({score, className}: RankScoreProps) => {
   return (
     <span
       className={c(
-        "text-right pl-1 pr-1 select-none float-right",
-        "transform-gpu transform-safari transition-colors ease-in-out duration-200",
+        "text-right pl-1 pr-1 select-none float-right hover-colors",
         className,
       )}
     >

@@ -22,23 +22,9 @@ const ToggleLabel = ({id, label, position, className}: ToggleLabelProps) => {
       id={id}
     >
       {isString(label) ? (
-        <span
-          className={c(
-            "text-sm",
-            "transform-gpu transform-safari transition-opacity ease-in-out duration-200",
-            className,
-          )}
-        >
-          {label}
-        </span>
+        <span className={c("text-sm hover-opacity", className)}>{label}</span>
       ) : (
-        label(
-          c(
-            "text-sm",
-            "transform-gpu transform-safari transition-opacity ease-in-out duration-200",
-            className,
-          ),
-        )
+        label(c("text-sm hover-opacity", className))
       )}
     </span>
   );

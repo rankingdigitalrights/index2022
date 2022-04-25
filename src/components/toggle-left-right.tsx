@@ -45,8 +45,7 @@ const ToggleLeftRight = ({
         type="button"
         className={c(
           "relative inline-flex flex-shrink-0 w-7 cursor-pointer",
-          "border-2 border-prissian rounded-full",
-          "transform-gpu transform-safari transition-colors ease-in-out duration-200",
+          "border-2 border-prissian rounded-full hover-colors",
           {
             "bg-prissian": toggle,
           },
@@ -59,8 +58,7 @@ const ToggleLeftRight = ({
         <span
           aria-hidden="true"
           className={c(
-            "pointer-events-none inline-block m-[0.1rem] h-2 w-2 rounded-full shadow ring-0",
-            "transform-gpu transform-safari transition-transform ease-in-out duration-200",
+            "pointer-events-none inline-block m-[0.1rem] h-2 w-2 rounded-full shadow ring-0 hover-transform",
             {
               "translate-x-[0.9rem] bg-white": toggle,
               "translate-x-0 bg-prissian": !toggle,

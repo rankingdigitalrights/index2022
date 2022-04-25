@@ -97,8 +97,7 @@ const IndicatorCompaniesChart = ({
             >
               <span
                 className={c(
-                  "w-5 md:w-6 select-none text-sm text-center",
-                  "transform-gpu transform-safari transition-colors ease-in-out duration-200",
+                  "w-5 md:w-6 select-none text-sm text-center hover-colors",
                   highlightedClassName,
                 )}
               >
@@ -120,17 +119,14 @@ const IndicatorCompaniesChart = ({
                     width={10}
                     height={180}
                     orientation="vertical"
-                    className={c(
-                      "transform-gpu transform-safari transition-colors ease-in-out duration-200",
-                      barClassName,
-                    )}
+                    className={c("hover-colors", barClassName)}
                   />
                 </svg>
               </div>
               <span
                 className={c(
-                  "text-sm text-right cursor-default",
-                  "transform-gpu transform-safari transition-colors ease-in-out duration-200",
+                  "text-sm text-right cursor-default hover-colors",
+
                   labelClassName,
                   highlightedClassName,
                 )}

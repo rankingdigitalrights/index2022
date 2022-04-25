@@ -318,6 +318,18 @@
   .transform-safari {
     will-change: transform, opacity; /* Prevents flicker in Safari */
   }
+
+  .hover-colors {
+    @apply transform-gpu transform-safari transition-colors ease-in-out duration-200;
+  }
+
+  .hover-opacity {
+    @apply transform-gpu transform-safari transition-opacity ease-in-out duration-200;
+  }
+
+  .hover-transform {
+    @apply transform-gpu transform-safari transition-transform ease-in-out duration-200;
+  }
 }
 
 /* For some reason unknown to me those styles are being removed during build.

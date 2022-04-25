@@ -13,8 +13,7 @@ const RankCompanyLabel = ({id, name, className}: RankCompanyLabelProps) => {
     <Link passHref href={`/companies/${id}`}>
       <a
         className={c(
-          "flex-none font-normal select-none whitespace-nowrap",
-          "transform-gpu transform-safari transition-colors ease-in-out duration-200",
+          "flex-none font-normal select-none whitespace-nowrap hover-colors",
           className,
         )}
       >

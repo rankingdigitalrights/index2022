@@ -153,15 +153,11 @@ const CompanyYearOverYearSlopeChart = ({
                 }
               />
               <text
-                className={c(
-                  "font-sans",
-                  "transform-gpu transform-safari transition-colors ease-in-out duration-200",
-                  {
-                    "text-xxs": isNarrow,
-                    "text-xs": !isNarrow,
-                    "fill-prissian": isHighlighted,
-                  },
-                )}
+                className={c("font-sans hover-colors", {
+                  "text-xxs": isNarrow,
+                  "text-xs": !isNarrow,
+                  "fill-prissian": isHighlighted,
+                })}
                 x={16}
                 y={26}
               >
