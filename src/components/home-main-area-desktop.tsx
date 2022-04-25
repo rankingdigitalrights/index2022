@@ -22,7 +22,7 @@ const HomeMainAreaDesktop = ({
   const altBoxClassName = "lg:p-6";
 
   return (
-    <section className="xl:container xl:mx-auto grid grid-rows-2 grid-cols-3">
+    <section className="xl:container xl:mx-auto grid lg:grid-rows-2 lg:grid-cols-3">
       <div className="pt-6">
         <HomeBoxAlt
           className={c("h-10/12", altBoxClassName)}
@@ -66,7 +66,7 @@ const HomeMainAreaDesktop = ({
       <Image
         src="charting-the-future-of-big-tech-accountability.jpg"
         alt="Charting the Future of Big Tech Accountability"
-        className="md:col-span-3 lg:col-span-2"
+        className="lg:col-span-2"
       />
 
       <div className="relative disabled-grid-col bg-disabled">
