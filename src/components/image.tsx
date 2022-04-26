@@ -5,10 +5,11 @@ import React from "react";
 interface ImageProps {
   src: string;
   alt?: string;
+  alignment?: "left-top" | "center";
   className?: string;
 }
 
-const Image = ({src, alt, className}: ImageProps) => {
+const Image = ({src, alt, alignment = "left-top", className}: ImageProps) => {
   const image = require(`../images/${src}?resize&sizes[]=400&sizes[]=750&sizes[]=1500`);
 
   return (
@@ -19,7 +20,10 @@ const Image = ({src, alt, className}: ImageProps) => {
           <source srcSet={image.srcSet} type="image/jpg" />
 
           <img
-            className="mx-auto object-cover object-left-top"
+            className={c("mx-auto object-cover", {
+              "object-left-top": alignment === "left-top",
+              "object-center": alignment === "center",
+            })}
             src={image.src}
             srcSet={image.srcSet}
             alt={alt}

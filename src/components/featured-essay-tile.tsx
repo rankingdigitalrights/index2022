@@ -29,6 +29,7 @@ const FeaturedEssayTile = ({
         <Image
           src={src}
           alt={title}
+          alignment="center"
           className="aspect-video overflow-hidden md:h-72 pointer-events-none group-hover:opacity-75"
         />
 

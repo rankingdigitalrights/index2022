@@ -56,7 +56,7 @@ const ScoreCharts = ({
 
   return (
     <div className="flex flex-col px-2 lg:px-0">
-      <NarrativeTitle title="2022 Companies Score" />
+      <NarrativeTitle title="2022 Company Scores" />
 
       <p className="mb-0">
         Select and compare total company and service scores, as well as scores

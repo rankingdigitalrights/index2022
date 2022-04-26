@@ -15,20 +15,12 @@ interface LensScoreProps {
 const lensDescription = (lens: IndicatorLens) => {
   switch (lens) {
     case "algorithmic-transparency": {
-      return `This Lens groups indicators that ask questions about whether
-              companies make a commitment to human rights in the development and
-              deployment of their algorithmic systems, conduct human rights
-              impact assessments on those systems, make related policies
-              accessible, disclose how they use algorithms to curate, recommend,
-              and rank content, and how they use algorithms to collect, process,
-              and make inferences about user data.`;
+      return `This lens groups indicators that ask questions about whether companies conduct human rights impact assessments on algorithmic systems and whether they disclose how they use and develop algorithms. The scores are an average of the following indicators: G1, element 3; G4(d); F1(d); F2(d); F3(a), element 4; F3(c), element 4; F12; F13; P1b; P2(b); and P7, elements 7 and 8.`;
     }
     case "targeted-advertising": {
-      return `This Lens
-          groups indicators that ask whether companies conduct human rights
-          impact assessments on their targeted advertising systems, as well as
-          whether they clearly disclose rules around ad targeting and how those
-          rules are enforced.`;
+      return `This lens groups indicators that ask whether companies conduct human rights impact assessments on their targeted advertising systems, and whether they clearly disclose rules around ad targeting and how those rules are enforced.
+
+The scores are an average of the following indicators: G4(c); F1(b); F2(b); F1(c); F2(c); F3(b); F3(c); F4(c); P3(a); P3(b); P4; P5; P7; P8, elements 5 and 6; and P9.`;
     }
     default:
       return "";
@@ -42,48 +34,44 @@ const LensScore = ({lenses, className, companyList}: LensScoreProps) => {
     <div className="flex flex-col space-y-5 md:space-y-0 md:space-x-8 md:flex-row font-sans">
       <div className="w-full md:w-1/2">
         <ul className={c("ml-0 space-y-12", className)}>
-          {lenses
-            .slice(0, divider)
-            .map(({lens, lensPretty, scores, average}) => {
-              return (
-                <li key={lens} className="flex flex-col mt-2">
-                  <PillHeader className="flex items-center">
-                    <>
-                      <LensCircle lens={lens} className="w-4 h-4 mr-3 grow-0" />
-                      <span className="grow">{lensPretty}</span>
-                      <span className="self-end text-prissian">{average}%</span>
-                    </>
-                  </PillHeader>
-
-                  <p className="font-sans text-xs mt-3 h-32">
-                    {lensDescription(lens)}
-                  </p>
-
-                  <RankChart
-                    ranking={
-                      companyList.length > 0
-                        ? scores.filter((score) => {
-                            return companyList.includes(score.id);
-                          })
-                        : scores
-                    }
-                  />
-                </li>
-              );
-            })}
-        </ul>
-      </div>
-
-      <div className="w-full md:w-1/2">
-        <ul className={c("ml-0 space-y-12", className)}>
-          {lenses.slice(divider).map(({lens, lensPretty, scores, average}) => {
+          {lenses.slice(0, divider).map(({lens, lensPretty, scores}) => {
             return (
               <li key={lens} className="flex flex-col mt-2">
                 <PillHeader className="flex items-center">
                   <>
                     <LensCircle lens={lens} className="w-4 h-4 mr-3 grow-0" />
                     <span className="grow">{lensPretty}</span>
-                    <span className="self-end text-prissian">{average}%</span>
+                  </>
+                </PillHeader>
+
+                <p className="font-sans text-xs mt-3 h-32 whitespace-pre-line">
+                  {lensDescription(lens)}
+                </p>
+
+                <RankChart
+                  ranking={
+                    companyList.length > 0
+                      ? scores.filter((score) => {
+                          return companyList.includes(score.id);
+                        })
+                      : scores
+                  }
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <div className="w-full md:w-1/2">
+        <ul className={c("ml-0 space-y-12", className)}>
+          {lenses.slice(divider).map(({lens, lensPretty, scores}) => {
+            return (
+              <li key={lens} className="flex flex-col mt-2">
+                <PillHeader className="flex">
+                  <>
+                    <LensCircle lens={lens} className="w-4 h-4 mr-3 grow-0" />
+                    <span className="grow">{lensPretty}</span>
                   </>
                 </PillHeader>
 
