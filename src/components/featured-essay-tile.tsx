@@ -30,7 +30,7 @@ const FeaturedEssayTile = ({
           src={src}
           alt={title}
           alignment="center"
-          className="aspect-video overflow-hidden md:h-72 pointer-events-none group-hover:opacity-75"
+          className="aspect-video overflow-hidden pointer-events-none group-hover:opacity-75"
         />
 
         <span className="text-md leading-6">{title}</span>

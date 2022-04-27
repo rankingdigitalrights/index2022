@@ -4,12 +4,12 @@ import Tile from "./featured-essay-tile";
 
 const HomeFeaturedEssays = () => {
   return (
-    <section className="xl:container xl:mx-auto py-6 px-2 lg:px-6 xl:px-0">
+    <section className="xl:container xl:mx-auto py-6 px-2 lg:px-6">
       <h3 className="font-bold text-xl leading-9 text-prissian">
         Featured Essays
       </h3>
 
-      <div className="flex flex-col sm:grid sm:grid-rows-4 sm:grid-cols-1 md:grid-rows-2 md:grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 gap-5 mt-8">
+      <div className="flex flex-col sm:grid sm:grid-rows-4 sm:grid-cols-1 md:grid-rows-2 md:grid-cols-2 xl:grid-rows-1 xl:grid-cols-4 gap-5 mt-8 mb-8">
         <Tile
           title="Key Findings"
           subText="Key Findings from the 2022 RDR Big Tech Scorecard."
