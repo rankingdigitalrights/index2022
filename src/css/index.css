@@ -246,7 +246,7 @@
   }
 
   .narrative h2 {
-    @apply my-6;
+    @apply my-6 font-bold;
   }
 
   .pullquote {

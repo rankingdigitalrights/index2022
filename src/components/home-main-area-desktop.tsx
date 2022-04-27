@@ -49,7 +49,7 @@ const HomeMainAreaDesktop = ({
       <div className="bg-beige pt-6">
         <HomeBoxAlt
           className={c("h-10/12", altBoxClassName)}
-          title="Data Explorer"
+          title="Explore the Data!"
           linkTitle="Visit the Data Explorer"
           href="/explore"
           theme="dark"

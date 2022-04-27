@@ -43,7 +43,7 @@ const HomeMainAreaMobile = ({
 
       <div className="flex flex-col px-2 py-8 space-y-8 bg-beige">
         <HomeBoxAlt
-          title="Data Explorer"
+          title="Explore the Data!"
           linkTitle="Visit the Data Explorer"
           href="/explore"
           theme="dark"

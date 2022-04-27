@@ -25,7 +25,7 @@ const NarrativeImage = ({src, alt, title}: NarrativeImageProps) => {
   }
 
   return (
-    <div className="flex flex-col justify-around items-center h-full border">
+    <div className="flex flex-col justify-around items-center h-full">
       <figure className="flex flex-col justify-around">
         <picture>
           <source srcSet={image.srcSet} type="image/png" />
