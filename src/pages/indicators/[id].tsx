@@ -342,7 +342,7 @@ const IndicatorPage = ({
             <Selector<SelectOption>
               id="sort-selector"
               title="Sort"
-              className="flex-grow w-full mt-2 md:mt-0 mx-6"
+              className="flex-grow w-full mt-2 md:mt-0 mx-6 z-20"
               options={sortOptions}
               defaultValue={sortOptions[0]}
               onSelect={handleSelectSortStrategy}

@@ -47,33 +47,37 @@ const IndicatorCompaniesChart = ({
       )}
     >
       <div className="flex flex-col w-12 mr-1">
-        <span className="flex-none text-sm">&nbsp;</span>
+        {scores.length > 0 && (
+          <>
+            <span className="flex-none text-sm">&nbsp;</span>
 
-        <div className="flex mt-2">
-          <div className="flex flex-col justify-between">
-            <span className="text-right">100%</span>
+            <div className="flex mt-2">
+              <div className="flex flex-col justify-between">
+                <span className="text-right">100%</span>
 
-            <span className="text-right">0%</span>
-          </div>
-          <svg
-            version="1"
-            xmlns="http://www.w3.org/2000/svg"
-            width={4}
-            height={180}
-            transform="translate(0, 0)"
-            className="ml-2"
-            aria-label="Indicator score chart element"
-          >
-            <line
-              x1={1}
-              y1={0}
-              x2={1}
-              y2={180}
-              strokeWidth={2}
-              className="text-disabled-dark stroke-current"
-            />
-          </svg>
-        </div>
+                <span className="text-right">0%</span>
+              </div>
+              <svg
+                version="1"
+                xmlns="http://www.w3.org/2000/svg"
+                width={4}
+                height={180}
+                transform="translate(0, 0)"
+                className="ml-2"
+                aria-label="Indicator score chart element"
+              >
+                <line
+                  x1={1}
+                  y1={0}
+                  x2={1}
+                  y2={180}
+                  strokeWidth={2}
+                  className="text-disabled-dark stroke-current"
+                />
+              </svg>
+            </div>
+          </>
+        )}
       </div>
 
       <div className="flex">

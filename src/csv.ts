@@ -536,15 +536,19 @@ export const companies = memoizeAsync(
     const csvCompanySpecs = await loadCompanySpecsCsv(
       "csv/2022-company-specs.csv",
     );
-    return csvCompanySpecs.map(
-      ({company: id, companyPretty: name, kind, brand, region}) => ({
+    return csvCompanySpecs
+      .map(({company: id, companyPretty: name, kind, brand, region}) => ({
         id,
         name,
         kind,
         brand,
         region,
-      }),
-    );
+      }))
+      .sort((a, b) => {
+        if (a.name.localeCompare(b.name) < 0) return -1;
+        if (a.name.localeCompare(b.name) > 0) return 1;
+        return 0;
+      });
   },
 );
 
