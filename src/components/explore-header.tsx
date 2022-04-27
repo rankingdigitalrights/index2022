@@ -8,7 +8,7 @@ const ExploreHeader = () => {
       <div className="relative explore-container px-2">
         <section className="sm:w-2/3 pr-4 sm:h-48 md:h-56 flex flex-col justify-center">
           <h1 className="font-bold text-xl leading-none text-prissian">
-            Explore the Data
+            Explore the Data!
           </h1>
 
           <p className="mt-8">
