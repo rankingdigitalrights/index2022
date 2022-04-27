@@ -25,6 +25,12 @@ import {uniqueBy} from "../utils";
 const betaLenses = new Set([
   "algorithmic-transparency",
   "targeted-advertising",
+  // "content-governance-moderation",
+  // "data-handling",
+  // "demands-data-censorship",
+  // "private-requests",
+  // "security",
+  // "user-agency",
 ]);
 
 export const getStaticProps = async () => {

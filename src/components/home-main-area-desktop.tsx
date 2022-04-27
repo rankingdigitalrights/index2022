@@ -28,7 +28,7 @@ const HomeMainAreaDesktop = ({
           className={c("h-10/12", altBoxClassName)}
           title="Big Tech Keeps Failing Us"
           linkTitle="Read Our Key Findings"
-          href="/"
+          href="https://rankingdigitalrights.org/mini-report/key-findings-2022"
           theme="altDark"
         >
           <p className="pb-2 text-sm text-black font-sans">

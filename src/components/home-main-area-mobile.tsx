@@ -23,7 +23,7 @@ const HomeMainAreaMobile = ({
         className="px-2 pt-8"
         title="Big Tech Keeps Failing Us"
         linkTitle="Read Our Key Findings"
-        href="/"
+        href="https://rankingdigitalrights.org/mini-report/key-findings-2022"
         theme="altDark"
       >
         <p className="text-black font-sans">
