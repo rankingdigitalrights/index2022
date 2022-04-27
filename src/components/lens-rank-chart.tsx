@@ -54,10 +54,7 @@ const LensRankChart = ({
           </span>
         </div>
 
-        <div
-          ref={ref}
-          className="w-[30%] sm:w-7/12 md:w-[30%] lg:w-5/12 flex items-center ml-2"
-        >
+        <div ref={ref} className="w-[30%] sm:w-7/12 md:w-[30%] lg:w-5/12">
           <svg
             version="1"
             xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +70,9 @@ const LensRankChart = ({
               className="text-prissian"
             />
           </svg>
+        </div>
 
+        <div className="shrink-0 w-9">
           <RankScore className={c(highlightedTextClassName)} score={score} />
         </div>
       </div>
