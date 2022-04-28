@@ -22,7 +22,9 @@ const Footer = ({className}: FooterProps) => {
       <div className="lg:container lg:mx-auto flex flex-col justify-center ">
         <div className="flex flex-col md:flex-row md:flex-row-reverse md:justify-between">
           <div className="md:w-1/2 py-3 ml-8 md:px-3 lg:py-6 lg:pl-6">
-            <LogoLarge className="max-h-10 md:max-h-20 mb-16" />
+            <a href="https://rankingdigitalrights.org">
+              <LogoLarge className="max-h-10 md:max-h-20 mb-16" />
+            </a>
 
             <dl>
               <dd className="font-semibold">Media requests:</dd>
