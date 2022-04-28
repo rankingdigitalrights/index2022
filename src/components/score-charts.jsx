@@ -56,7 +56,7 @@ const ScoreCharts = ({
 
   return (
     <div className="flex flex-col px-2 lg:px-0">
-      <NarrativeTitle title="2022 Company Scores" />
+      <NarrativeTitle title="2022 Company & Service Scores" />
 
       <p className="mb-0">
         Select and compare total company and service scores, as well as scores
@@ -88,7 +88,7 @@ const ScoreCharts = ({
         <FlipAxis
           id="score-charts"
           className="md:mb-0 self-center"
-          label="Flip"
+          label="Change View"
           flip={chartHeaders === "companies"}
           onChange={handleFlipAxis}
           disabled={typeOfGraph !== "services"}

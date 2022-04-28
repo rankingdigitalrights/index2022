@@ -23,8 +23,9 @@ const Donate = ({className}: DonateProps) => {
         <br />
         <br />
         As a nonprofit initiative that <u>receives no corporate funding</u>, we
-        need your support. Help us guarantee future editions of the RDR Index by
-        making a donation. Do your part to help keep tech power in check!
+        need your support. Help us guarantee future editions of the RDR Big Tech
+        Scorecard by making a donation. Do your part to help keep tech power in
+        check!
       </p>
 
       <a

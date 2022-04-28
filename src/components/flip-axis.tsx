@@ -38,7 +38,7 @@ const FlipAxis = ({
       aria-label="Flip-Axis"
       disabled={disabled}
     >
-      <span className="font-sans text-sm mr-1">{label}</span>
+      <span className="font-sans text-sm mr-1 whitespace-nowrap">{label}</span>
       {flip ? <Up className="w-4 h-4" /> : <Down className="w-4 h-4" />}
     </button>
   );

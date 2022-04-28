@@ -34,7 +34,7 @@ const LensCharts = (props) => {
 
       <div className="flex flex-row justify-between items-center w-full my-12">
         <CompanySelector
-          className="flex-none w-9/12 md:w-1/2 self-center"
+          className="flex-none w-7/12 sm:w-9/12 md:w-1/2 self-center"
           companies={companySelectors}
           selected={selectedCompanies}
           onSelect={handleSelectCompany}
@@ -42,9 +42,10 @@ const LensCharts = (props) => {
 
         <FlipAxis
           id="lenses"
-          label="Flip"
+          label="Change View"
           onChange={handleFlipLenseCharts}
           flip={lensChart}
+          className="ml-2"
         />
       </div>
 

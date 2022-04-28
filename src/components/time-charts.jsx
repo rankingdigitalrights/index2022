@@ -68,7 +68,7 @@ const TimeCharts = (props) => {
 
       <div className="flex flex-row space-x-2 justify-between items-center w-full my-12">
         <CompanySelector
-          className="w-9/12 md:w-1/2 self-center"
+          className="w-7/12 sm:w-9/12 md:w-1/2 self-center"
           companies={companySelectors}
           selected={selectedCompanies}
           onSelect={handleSelectCompany}
