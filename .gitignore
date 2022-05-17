@@ -48,4 +48,6 @@ storybook-static
 # Google Docs
 .auth.json
 
+public/videos/*
+
 !.keep

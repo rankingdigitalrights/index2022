@@ -1,10 +1,10 @@
 import c from "clsx";
 import React from "react";
+import ReactPlayer from "react-player";
 
 import {CompanyRank, IndicatorCategoryExt} from "../types";
 import CategorySelector from "./category-selector";
 import HomeBoxAlt from "./home-box-alt";
-import Image from "./image";
 import RankChart from "./rank-chart";
 import Arrow from "./rdr-arrow";
 
@@ -63,28 +63,65 @@ const HomeMainAreaDesktop = ({
         </HomeBoxAlt>
       </div>
 
-      <Image
-        src="charting-the-future-of-big-tech-accountability.jpg"
-        alt="Charting the Future of Big Tech Accountability"
-        className="lg:col-span-2"
-      />
+      <div className="lg:col-span-2 relative bg-black">
+        <ReactPlayer
+          className="absolute top-0 left-0"
+          url={[
+            {
+              src:
+                "/index2022/videos/Charting_the_Future_of_Big_Tech_Accountability.webm",
+              type: "video/webm",
+            },
+            {
+              src:
+                "/index2022/videos/Charting_the_Future_of_Big_Tech_Accountability.mp4",
+              type: "video/mp4",
+            },
+          ]}
+          config={{
+            file: {
+              attributes: {
+                poster:
+                  "/index2022/charting-the-future-of-big-tech-accountability.webp",
+              },
+            },
+          }}
+          width="100%"
+          height="100%"
+          playsinline
+          pip
+          controls
+        />
+      </div>
 
-      <div className="relative disabled-grid-col bg-disabled">
+      <div className="relative bg-disabled">
         <div className="h-full flex ">
-          <HomeBoxAlt
-            className={c("self-center", altBoxClassName)}
-            title="What’s Next for Big Tech Accountability?"
-            linkTitle="RSVP to Join the Conversation"
-            href="https://events.newamerica.org/chartingthefutureofbigtech"
-            theme="dark"
-          >
-            <p className="pb-2 text-black font-sans">
-              Join RDR and a superstar set of panelists on May 4 to review
-              highlights of the Big Tech Scorecard and discuss strategies for
-              holding companies accountable through regulation, shareholder
-              action, whistleblowing, and grassroots research and advocacy.
+          <div className={c("self-center", altBoxClassName)}>
+            <h3 className="font-bold text-xl mt-0 lg:h-32 flex flex-col text-prissian">
+              What’s Next for Big Tech Accountability?
+            </h3>
+
+            <p className="pb-0 text-black text-sm font-sans">
+              On May 4, RDR brought together a panel of digital rights activists
+              with deep experience taking on Big Tech. We asked them to assess
+              the current landscape and look to the future in terms of activism,
+              regulation, and accountability. As the panelists made clear, our
+              very democracies are at stake.
             </p>
-          </HomeBoxAlt>
+
+            <p className="pb-0 text-black text-sm font-sans">
+              RDR Director Jessica Dheere kicked off the event with key findings
+              from the Big Tech Scorecard, after which Nathalie Maréchal, our
+              policy director, moderated the wide-ranging discussion. Topics
+              covered included European and US legislation, the threat of too
+              much power over digital platforms in the hands of too few
+              individuals, and the future of privacy.
+            </p>
+
+            <p className="pb-0 text-black text-sm font-sans">
+              Watch the full discussion on our website, tracker-free.
+            </p>
+          </div>
         </div>
 
         <div className="absolute -top-8 left-0 self-center w-full">

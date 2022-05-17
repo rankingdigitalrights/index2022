@@ -1,9 +1,9 @@
 import React from "react";
+import ReactPlayer from "react-player";
 
 import {CompanyRank, IndicatorCategoryExt} from "../types";
 import CategorySelector from "./category-selector";
 import HomeBoxAlt from "./home-box-alt";
-import Image from "./image";
 import RankChart from "./rank-chart";
 
 interface HomeMainAreaMobileProps {
@@ -49,35 +49,70 @@ const HomeMainAreaMobile = ({
           theme="dark"
         >
           <p className="pb-8 text-black font-sans">
-            Which companies commit to human rights? Who does the best job
-            describing how they moderate content? Where is your data safest in
-            case of a breach? How has Apple’s scores changed over time? Drill
-            down into hundreds of thousands of data points to answer questions
-            like these in our enhanced Data Explorer.
+            Watch a fascinating discussion on the future of Big Tech
+            accountability with RDR&apos;s superstar panel. Hear what they have
+            to say and new legislation, ESG shareholder resolutions targeting
+            human rights harms, and how we can hold Big Tech accountable.
           </p>
         </HomeBoxAlt>
       </div>
 
-      <Image
-        src="charting-the-future-of-big-tech-accountability.jpg"
-        alt="Charting the Future of Big Tech Accountability"
-        className="w-full"
-      />
+      <div className="pt-[56.25%] relative">
+        <ReactPlayer
+          className="absolute top-0 left-0"
+          url={[
+            {
+              src:
+                "/index2022/videos/Charting_the_Future_of_Big_Tech_Accountability.webm",
+              type: "video/webm",
+            },
+            {
+              src:
+                "/index2022/videos/Charting_the_Future_of_Big_Tech_Accountability.mp4",
+              type: "video/mp4",
+            },
+          ]}
+          config={{
+            file: {
+              attributes: {
+                poster:
+                  "/index2022/charting-the-future-of-big-tech-accountability.webp",
+              },
+            },
+          }}
+          width="100%"
+          height="100%"
+          pip
+          controls
+        />
+      </div>
 
-      <HomeBoxAlt
-        className="px-2 py-8 bg-disabled overflow-x-hidden"
-        title="What’s Next for Big Tech Accountability?"
-        linkTitle="RSVP Now"
-        href="https://events.newamerica.org/chartingthefutureofbigtech"
-        theme="dark"
-      >
-        <p className="pb-4 text-black font-sans">
-          Join RDR and a superstar set of panelists on May 4 to discuss current
-          strategies for holding Big Tech accountable through regulation,
-          shareholder action, whistleblowing, and grassroots research and
-          advocacy.
+      <div className="px-2 py-8 bg-disabled overflow-x-hidden">
+        <h3 className="font-bold text-xl mt-0 lg:h-32 flex flex-col text-prissian">
+          What’s Next for Big Tech Accountability?
+        </h3>
+
+        <p className="pt-4 pb-0 text-black font-sans">
+          On May 4, RDR brought together a panel of digital rights activists
+          with deep experience taking on Big Tech. We asked them to assess the
+          current landscape and look to the future in terms of activism,
+          regulation, and accountability. As the panelists made clear, our very
+          democracies are at stake.
         </p>
-      </HomeBoxAlt>
+
+        <p className="pb-0 text-black font-sans">
+          RDR Director Jessica Dheere kicked off the event with key findings
+          from the Big Tech Scorecard, after which Nathalie Maréchal, our policy
+          director, moderated the wide-ranging discussion. Topics covered
+          included European and US legislation, the threat of too much power
+          over digital platforms in the hands of too few individuals, and the
+          future of privacy.
+        </p>
+
+        <p className="pb-0 text-black font-sans">
+          Watch the full discussion on our website, tracker-free.
+        </p>
+      </div>
     </section>
   );
 };

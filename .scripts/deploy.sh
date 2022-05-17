@@ -100,6 +100,7 @@ setup_colors
 # The deploy path is the target directory on the remote host.
 now="$(date +'%Y-%m-%d_%H-%M-%S')"
 deploy_path="~/deploys/${base_path}-${now}"
+static_path="~/static"
 
 msg_info "clearing stale builds"
 yarn -s clean || die "failing to clean local environment"
@@ -109,5 +110,7 @@ BASE_PATH="${base_path}" yarn -s export
 htaccess_stg
 
 msg_info "deploying to remote host"
-rsync -qaz out/ "ranking5@rankingdigitalrights.org:${deploy_path}" || die "failed to sync to the remote host"
+rsync -qaz --exclude videos out/ "ranking5@rankingdigitalrights.org:${deploy_path}" || die "failed to sync to the remote host"
+rsync -qaz out/videos/ "ranking5@rankingdigitalrights.org:${static_path}/videos" || die "failed to sync to the remote host"
+ssh -q ranking5@rankingdigitalrights.org "ln -sfn ${static_path}/videos ${deploy_path}/videos"
 ssh -q ranking5@rankingdigitalrights.org "ln -sfn ${deploy_path} public_html/${base_path}"
